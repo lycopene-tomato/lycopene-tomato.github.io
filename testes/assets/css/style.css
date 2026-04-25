@@ -1,0 +1,219 @@
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --ink-faint: #8a8a8a;
+  --paper: #fdfcf9;
+  --paper-alt: #f6f3ec;
+  --line: #e5e0d4;
+  --accent: #d6864e;
+  --accent-soft: #f2d6be;
+  --max: 760px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-soft);
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+}
+
+h1, h2, h3 {
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+/* Hero */
+.hero {
+  padding: 4rem 0 2.5rem;
+  background: var(--paper-alt);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero h1 {
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+}
+
+.hero .lede {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.hero.minor {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.hero.minor h1 {
+  font-size: 1.4rem;
+}
+
+/* Apps */
+.apps {
+  padding: 3rem 0 1rem;
+}
+
+.apps h2,
+.choose h2,
+.author h2,
+.policy h2 {
+  font-size: 1.25rem;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ink);
+  display: inline-block;
+}
+
+.app-card {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.app-card:last-child {
+  border-bottom: none;
+}
+
+.app-card h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+}
+
+.app-card .one-liner {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: var(--accent);
+}
+
+.app-card .target {
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+  margin: 0 0 1rem;
+}
+
+.app-card p {
+  margin: 0 0 0.5rem;
+}
+
+/* Choose */
+.choose {
+  padding: 3rem 0;
+  background: var(--paper-alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.choose-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.choose-list li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--line);
+  gap: 0.5rem;
+}
+
+.choose-list .q {
+  color: var(--ink-soft);
+}
+
+.choose-list .a {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.choose .note {
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Author */
+.author {
+  padding: 3rem 0;
+}
+
+.author p {
+  margin: 0 0 1.25rem;
+}
+
+/* Policy */
+.policy {
+  padding: 2.5rem 0 3rem;
+}
+
+.policy section {
+  margin-bottom: 2rem;
+}
+
+.policy h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.policy p {
+  margin: 0 0 0.5rem;
+}
+
+.policy .last-updated {
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.policy .back {
+  margin-top: 2rem;
+}
+
+/* Footer */
+footer {
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+}
+
+footer nav a {
+  margin-right: 1rem;
+}
+
+footer .copy {
+  margin: 0.75rem 0 0;
+}
+
+/* Responsive */
+@media (min-width: 720px) {
+  .hero { padding: 5rem 0 3rem; }
+  .hero h1 { font-size: 2.1rem; }
+  .hero .lede { font-size: 1.1rem; }
+  .apps { padding: 4rem 0 1rem; }
+  .choose, .author { padding: 4rem 0; }
+}
