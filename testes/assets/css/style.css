@@ -359,6 +359,62 @@ p { margin: 0; }
 }
 
 /* ===========================
+   Positioning map
+   =========================== */
+.position-section {
+  padding: 5rem 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(184, 155, 58, 0.06), transparent 60%),
+    var(--paper);
+}
+
+.position-lead {
+  color: var(--ink-soft);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.position-map-wrap {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.position-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.position-legend {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem auto 0;
+  max-width: 520px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  display: grid;
+  gap: 0.4rem;
+}
+
+.position-legend li {
+  padding-left: 0.25rem;
+}
+
+.position-legend .mark {
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+@media (min-width: 720px) {
+  .position-map-wrap { padding: 1.5rem 2rem; }
+}
+
+/* ===========================
    Choose section
    =========================== */
 .choose-section {
