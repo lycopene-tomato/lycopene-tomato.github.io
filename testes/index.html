@@ -5,104 +5,231 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>親子のタスク管理アプリ 5 種</title>
 <meta name="description" content="「早くして！」を言わずに済むかもしれない、親子のタスク管理アプリを 5 本つくりました。子によって合うものが違うので、使い分けられます。">
+<meta property="og:title" content="親子のタスク管理アプリ 5 種">
+<meta property="og:description" content="子によって合うものが違うので、使い分けられる 5 本のアプリ。">
+<meta property="og:type" content="website">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <header class="hero">
-  <div class="wrap">
-    <h1>「早くして！」を、言わずに済むかもしれない。</h1>
-    <p class="lede">親子のタスク管理アプリを 5 本つくりました。子によって合うものが違うので、使い分けられます。</p>
+  <div class="container hero-inner">
+    <h1>「早くして！」を、<br><em>言わずに済む</em>かもしれない。</h1>
+    <p class="lede">親子のタスク管理アプリを 5 本つくりました。<br>子によって合うものが違うので、使い分けられます。</p>
+
+    <div class="hero-cluster">
+      <div class="phone phone--gatya" aria-hidden="true">
+        <div class="phone-screen">
+          <div class="label">Todoガチャ</div>
+          <div class="big">🎰</div>
+          <div class="text">次は何が出る？</div>
+          <div class="pill">引く</div>
+        </div>
+      </div>
+      <div class="phone phone--bingo" aria-hidden="true">
+        <div class="phone-screen">
+          <div class="label">TodoBingo</div>
+          <div class="grid">
+            <div class="cell done">✓</div><div class="cell">2</div><div class="cell done">✓</div>
+            <div class="cell">4</div><div class="cell done">✓</div><div class="cell">6</div>
+            <div class="cell done">✓</div><div class="cell">8</div><div class="cell done">✓</div>
+          </div>
+          <div class="pill">あと1</div>
+        </div>
+      </div>
+      <div class="phone phone--farm" aria-hidden="true">
+        <div class="phone-screen">
+          <div class="label">Todoファーム</div>
+          <div class="big">🌱</div>
+          <div class="text">水やり完了</div>
+          <div class="pill">8 日目</div>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
 <main>
 
-<section class="apps">
-  <div class="wrap">
-    <h2>5 本のアプリ</h2>
+<section class="apps-section section">
+  <div class="container">
+    <h2 class="section-title">5 本のアプリ</h2>
 
-    <article class="app-card" id="gatya">
-      <h3>Todoガチャ</h3>
-      <p class="one-liner">ガチャで「次にやること」を引く。</p>
-      <p class="target">飽きっぽくて、サプライズで動く子に。</p>
-      <p>朝の支度や宿題をランダムで引く。次が見えないから、気になる。大人がタスクを登録して、子どもがガチャを回すだけ。「やりなさい」じゃなく「次、何が出るかな？」で動きます。</p>
+    <article class="app-row fade-up" data-app="gatya" data-side="left" id="gatya">
+      <div class="app-text">
+        <div class="app-tag">サプライズで動く</div>
+        <h3 class="app-name">Todoガチャ</h3>
+        <p class="app-tagline">ガチャで「次にやること」を引く。</p>
+        <p class="app-target">飽きっぽくて、サプライズで動く子に。</p>
+        <p class="app-desc">朝の支度や宿題をランダムで引く。次が見えないから、気になる。大人がタスクを登録して、子どもがガチャを回すだけ。「やりなさい」じゃなく「次、何が出るかな？」で動きます。</p>
+      </div>
+      <div class="app-visual">
+        <div class="phone phone--gatya">
+          <div class="phone-screen">
+            <div class="label">Todoガチャ</div>
+            <div class="big">🎰</div>
+            <div class="text">回してみる？</div>
+            <div class="pill">引く</div>
+          </div>
+        </div>
+      </div>
     </article>
 
-    <article class="app-card" id="ladders">
-      <h3>Todoすごろく</h3>
-      <p class="one-liner">すごろくで道のりが全部見える。</p>
-      <p class="target">先が見えないと不安な子に。</p>
-      <p>今日やることを一本道に並べて、一歩ずつ進む。ごほうびマスが途中にあるので「あと 3 マスで◯◯」が見えます。見通しがあると動けるタイプの子向け。</p>
+    <article class="app-row fade-up" data-app="ladders" data-side="right" id="ladders">
+      <div class="app-text">
+        <div class="app-tag">見通しで動く</div>
+        <h3 class="app-name">Todoすごろく</h3>
+        <p class="app-tagline">すごろくで道のりが全部見える。</p>
+        <p class="app-target">先が見えないと不安な子に。</p>
+        <p class="app-desc">今日やることを一本道に並べて、一歩ずつ進む。ごほうびマスが途中にあるので「あと 3 マスで◯◯」が見えます。見通しがあると動けるタイプの子向け。</p>
+      </div>
+      <div class="app-visual">
+        <div class="phone phone--ladders">
+          <div class="phone-screen">
+            <div class="label">Todoすごろく</div>
+            <div class="big">🚶</div>
+            <div class="text">あと 3 マス</div>
+            <div class="pill">進む</div>
+          </div>
+        </div>
+      </div>
     </article>
 
-    <article class="app-card" id="bingo">
-      <h3>TodoBingo</h3>
-      <p class="one-liner">ビンゴの盤面で、子が順番を選ぶ。</p>
-      <p class="target">「自分で決めたい！」が強い子に。</p>
-      <p>盤面にタスクを配置。どこから埋めるかは子どもの自由。列がそろえばビンゴ、ごほうびが出ます。カレンダー型もあって、夏休みの宿題みたいな長期プロジェクトにも使えます。</p>
+    <article class="app-row fade-up" data-app="bingo" data-side="left" id="bingo">
+      <div class="app-text">
+        <div class="app-tag">自分で決める</div>
+        <h3 class="app-name">TodoBingo</h3>
+        <p class="app-tagline">ビンゴの盤面で、子が順番を選ぶ。</p>
+        <p class="app-target">「自分で決めたい！」が強い子に。</p>
+        <p class="app-desc">盤面にタスクを配置。どこから埋めるかは子どもの自由。列がそろえばビンゴ、ごほうびが出ます。カレンダー型もあって、夏休みの宿題みたいな長期プロジェクトにも使えます。</p>
+      </div>
+      <div class="app-visual">
+        <div class="phone phone--bingo">
+          <div class="phone-screen">
+            <div class="label">TodoBingo</div>
+            <div class="grid">
+              <div class="cell done">✓</div><div class="cell">2</div><div class="cell done">✓</div>
+              <div class="cell">4</div><div class="cell done">✓</div><div class="cell">6</div>
+              <div class="cell done">✓</div><div class="cell">8</div><div class="cell done">✓</div>
+            </div>
+            <div class="pill">あと 1</div>
+          </div>
+        </div>
+      </div>
     </article>
 
-    <article class="app-card" id="farm">
-      <h3>Todoファーム</h3>
-      <p class="one-liner">タスクをやると、植物が育つ。</p>
-      <p class="target">コツコツ派と、成果が見えたい子に。</p>
-      <p>タスクに取り組むと水や日光が増えて、植物が育つ。育て切ったら収穫、ごほうび。長期で少しずつ積み上げていく快感があります。</p>
+    <article class="app-row fade-up" data-app="farm" data-side="right" id="farm">
+      <div class="app-text">
+        <div class="app-tag">育てる楽しみ</div>
+        <h3 class="app-name">Todoファーム</h3>
+        <p class="app-tagline">タスクをやると、植物が育つ。</p>
+        <p class="app-target">コツコツ派と、成果が見えたい子に。</p>
+        <p class="app-desc">タスクに取り組むと水や日光が増えて、植物が育つ。育て切ったら収穫、ごほうび。長期で少しずつ積み上げていく快感があります。</p>
+      </div>
+      <div class="app-visual">
+        <div class="phone phone--farm">
+          <div class="phone-screen">
+            <div class="label">Todoファーム</div>
+            <div class="big">🌱</div>
+            <div class="text">水やり OK</div>
+            <div class="pill">8 日目</div>
+          </div>
+        </div>
+      </div>
     </article>
 
-    <article class="app-card" id="yakusoku">
-      <h3>Todoやくそく</h3>
-      <p class="one-liner">親子の小さな約束帳。</p>
-      <p class="target">「言った言わない」で揉めがちな親子に。</p>
-      <p>「お皿洗ったら 100 円」みたいな約束を記録します。親も子も、あとで証拠を見られる。約束を守るごとにカードが集まるので、子どもが集めるのを楽しみにしてくれます。</p>
+    <article class="app-row fade-up" data-app="yakusoku" data-side="left" id="yakusoku">
+      <div class="app-text">
+        <div class="app-tag">約束を残す</div>
+        <h3 class="app-name">Todoやくそく</h3>
+        <p class="app-tagline">親子の小さな約束帳。</p>
+        <p class="app-target">「言った言わない」で揉めがちな親子に。</p>
+        <p class="app-desc">「お皿洗ったら 100 円」みたいな約束を記録します。親も子も、あとで証拠を見られる。約束を守るごとにカードが集まるので、子どもが集めるのを楽しみにしてくれます。</p>
+      </div>
+      <div class="app-visual">
+        <div class="phone phone--yakusoku">
+          <div class="phone-screen">
+            <div class="label">Todoやくそく</div>
+            <div class="big">📜</div>
+            <div class="text">No.013</div>
+            <div class="pill">合意 ✓</div>
+          </div>
+        </div>
+      </div>
     </article>
   </div>
 </section>
 
-<section class="choose">
-  <div class="wrap">
-    <h2>どれを選ぶ？</h2>
-    <ul class="choose-list">
-      <li><span class="q">飽きっぽい / サプライズで動く</span><span class="a">Todoガチャ</span></li>
-      <li><span class="q">先が見えないと不安</span><span class="a">Todoすごろく</span></li>
-      <li><span class="q">自分で決めたい / 指示が嫌い</span><span class="a">TodoBingo</span></li>
-      <li><span class="q">コツコツ育てるのが好き</span><span class="a">Todoファーム</span></li>
-      <li><span class="q">約束が反故にされがち</span><span class="a">Todoやくそく</span></li>
-    </ul>
-    <p class="note">いくつか試してみて、うちの子に合うのはどれか確かめる使い方がおすすめです。</p>
+<section class="choose-section section">
+  <div class="container">
+    <h2 class="section-title">どれを選ぶ？</h2>
+
+    <div class="choose-grid">
+      <a class="choose-card fade-up" data-app="gatya" href="#gatya">
+        <span class="emoji">🎰</span>
+        <span class="q">飽きっぽい / サプライズで動く</span>
+        <span class="a">Todoガチャ</span>
+      </a>
+      <a class="choose-card fade-up" data-app="ladders" href="#ladders">
+        <span class="emoji">🚶</span>
+        <span class="q">先が見えないと不安</span>
+        <span class="a">Todoすごろく</span>
+      </a>
+      <a class="choose-card fade-up" data-app="bingo" href="#bingo">
+        <span class="emoji">🎯</span>
+        <span class="q">自分で決めたい / 指示が嫌い</span>
+        <span class="a">TodoBingo</span>
+      </a>
+      <a class="choose-card fade-up" data-app="farm" href="#farm">
+        <span class="emoji">🌱</span>
+        <span class="q">コツコツ育てるのが好き</span>
+        <span class="a">Todoファーム</span>
+      </a>
+      <a class="choose-card fade-up" data-app="yakusoku" href="#yakusoku">
+        <span class="emoji">📜</span>
+        <span class="q">約束が反故にされがち</span>
+        <span class="a">Todoやくそく</span>
+      </a>
+    </div>
+
+    <p class="choose-note">いくつか試してみて、うちの子に合うのはどれか確かめる使い方がおすすめです。</p>
   </div>
 </section>
 
-<section class="author">
-  <div class="wrap">
-    <h2>このアプリを作っている話</h2>
+<section class="author-section section">
+  <div class="container container-narrow">
+    <div class="author-card fade-up">
+      <h2 class="author-title">このアプリを作っている話</h2>
 
-    <p>私は、子の朝の支度で毎日戦争でした。「早く着替えて」「早く食べて」「早く歯みがき」を、毎朝 10 回以上言っていました。</p>
+      <p>私は、子の朝の支度で毎日戦争でした。「早く着替えて」「早く食べて」「早く歯みがき」を、毎朝 10 回以上言っていました。</p>
 
-    <p>うちの子はたぶん ADHD 気味で、切り替えが苦手です。タイマーも、絵カードも、何種類も試して、どれも数日で効かなくなりました。</p>
+      <p>うちの子はたぶん ADHD 気味で、切り替えが苦手です。タイマーも、絵カードも、何種類も試して、どれも数日で効かなくなりました。</p>
 
-    <p>あるとき、ガチャのおもちゃを何回も飽きずに回している子を見て、「次に何が出るか分からないから、回したくなるのか」と気づきました。だったら、やることもガチャにしたら？ と思って作ったのが Todoガチャです。</p>
+      <p>あるとき、ガチャのおもちゃを何回も飽きずに回している子を見て、「次に何が出るか分からないから、回したくなるのか」と気づきました。だったら、やることもガチャにしたら？ と思って作ったのが Todoガチャです。</p>
 
-    <p>使ってみたら、うちの子は確かに少し動くようになりました。万能じゃないです。眠い朝はやっぱり動かないし、飽きる日もあります。でも、怒鳴る回数は減りました。</p>
+      <p>使ってみたら、うちの子は確かに少し動くようになりました。万能じゃないです。眠い朝はやっぱり動かないし、飽きる日もあります。でも、怒鳴る回数は減りました。</p>
 
-    <p>その後、同じ家の下の子には違う方法が合いました。下の子は次の予定が見えてないと固まるタイプで、ガチャは逆効果でした。それで作ったのが Todoすごろくです。</p>
+      <p>その後、同じ家の下の子には違う方法が合いました。下の子は次の予定が見えてないと固まるタイプで、ガチャは逆効果でした。それで作ったのが Todoすごろくです。</p>
 
-    <p>いろんな子がいるので、5 本になりました。</p>
+      <p>いろんな子がいるので、5 本になりました。</p>
 
-    <p>使ってみて、合わなかったらごめんなさい。うちの家でたまたま効いただけかもしれません。でも、もし似た状況の方がいたら、試してみてください。</p>
+      <p>使ってみて、合わなかったらごめんなさい。うちの家でたまたま効いただけかもしれません。でも、もし似た状況の方がいたら、試してみてください。</p>
+    </div>
   </div>
 </section>
 
 </main>
 
-<footer>
-  <div class="wrap">
+<footer class="site-footer">
+  <div class="container">
     <nav>
       <a href="privacy-policy/">プライバシーポリシー</a>
     </nav>
     <p class="copy">© Lycopene</p>
   </div>
 </footer>
+
+<script src="assets/js/main.js" defer></script>
 
 </body>
 </html>
