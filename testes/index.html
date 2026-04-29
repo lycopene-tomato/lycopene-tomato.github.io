@@ -1,291 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>親子のタスク管理アプリ 5 種</title>
-<meta name="description" content="「早くして！」を言わずに済むかもしれない、親子のタスク管理アプリを 5 本つくりました。子によって合うものが違うので、使い分けられます。">
-<meta property="og:title" content="親子のタスク管理アプリ 5 種">
-<meta property="og:description" content="子によって合うものが違うので、使い分けられる 5 本のアプリ。">
-<meta property="og:type" content="website">
-<link rel="stylesheet" href="assets/css/style.css">
+<meta charset="utf-8" />
+<title>遊び × やる事 = 習慣 — 子どもが自分から動き出すTodoアプリ</title>
+<meta name="description" content="遊びの仕掛けで、子どもが自分から動き出すTodoアプリシリーズ。ガチャ、ビンゴ、すごろく、農園、WBS。" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="遊び × やる事 = 習慣" />
+<meta property="og:description" content="子どもが自分から動き出すTodoアプリシリーズ" />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  /* ====================================================
+     グローバル
+  ==================================================== */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #FBF6EE;
+    font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Yu Gothic', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+
+  /* ====================================================
+     ヘッダー（共通）
+  ==================================================== */
+  .site-header-inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+
+  /* ====================================================
+     Hero タイトル — 流体タイポグラフィ
+  ==================================================== */
+  .hero-title {
+    font-size: clamp(48px, 9vw, 88px);
+    line-height: 1.2;
+  }
+  .hero-sub {
+    font-size: clamp(15px, 2.4vw, 18px);
+    line-height: 2;
+  }
+
+  /* ====================================================
+     アプリ一覧グリッド — 自動列数
+     320pxを下限に auto-fill。アプリが増えても勝手に複数行に。
+  ==================================================== */
+  .lineup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .app-card { transition: transform .2s, box-shadow .2s; }
+  .app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(189,153,108,0.3);
+  }
+
+  /* ====================================================
+     詳細ページのヒーロー
+     PC: 横並び 1.1fr 1fr / SP: 縦積み
+  ==================================================== */
+  .detail-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .detail-prevnext {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* ====================================================
+     レスポンシブブレークポイント
+     - 1024px以下: タブレット
+     -  768px以下: スマホ
+  ==================================================== */
+  @media (max-width: 1024px) {
+    .detail-hero { gap: 48px; }
+  }
+
+  @media (max-width: 768px) {
+    .site-header-inner { padding: 12px 20px; }
+    .site-nav { display: none !important; }      /* ナビは隠してメニューに */
+    .site-menu-btn { display: block !important; } /* ハンバーガーを表示 */
+
+    .deco-only-pc { display: none; }              /* 装飾SVG非表示 */
+
+    .detail-hero { grid-template-columns: 1fr; gap: 32px; }
+    .detail-prevnext { grid-template-columns: 1fr; }
+
+    /* カードグリッドも1列寄りに */
+    .lineup-grid {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .lineup-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
+<div id="root"></div>
 
-<header class="hero">
-  <div class="container hero-inner">
-    <h1>「早くして！」を、<br><em>言わずに済む</em>かもしれない。</h1>
-    <p class="lede">親子のタスク管理アプリを 5 本つくりました。<br>子によって合うものが違うので、使い分けられます。</p>
+<!-- ============================================================
+     React + Babel（CDN, バージョン固定）
+============================================================ -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
-    <div class="hero-cluster">
-      <div class="phone phone--gatya" aria-hidden="true">
-        <div class="phone-screen">
-          <div class="label">Todoガチャ</div>
-          <div class="big">🎰</div>
-          <div class="text">次は何が出る？</div>
-          <div class="pill">引く</div>
-        </div>
-      </div>
-      <div class="phone phone--bingo" aria-hidden="true">
-        <div class="phone-screen">
-          <div class="label">TodoBingo</div>
-          <div class="grid">
-            <div class="cell done">✓</div><div class="cell">2</div><div class="cell done">✓</div>
-            <div class="cell">4</div><div class="cell done">✓</div><div class="cell">6</div>
-            <div class="cell done">✓</div><div class="cell">8</div><div class="cell done">✓</div>
-          </div>
-          <div class="pill">あと1</div>
-        </div>
-      </div>
-      <div class="phone phone--farm" aria-hidden="true">
-        <div class="phone-screen">
-          <div class="label">Todoファーム</div>
-          <div class="big">🌱</div>
-          <div class="text">水やり完了</div>
-          <div class="pill">8 日目</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
+<!-- ============================================================
+     アプリのソース。読み込み順は依存関係の順。
+     1. i18n.js          : 文面とアプリデータ
+     2. app-mocks.jsx    : 各アプリの画面モック
+     3. site-shared.jsx  : 共通コンポーネント
+     4. page-home.jsx    : このページ本体
+============================================================ -->
+<script src="i18n.js"></script>
+<script type="text/babel" src="app-mocks.jsx"></script>
+<script type="text/babel" src="site-shared.jsx"></script>
+<script type="text/babel" src="page-home.jsx"></script>
 
-<main>
-
-<section class="apps-section section">
-  <div class="container">
-    <h2 class="section-title">5 本のアプリ</h2>
-
-    <article class="app-row fade-up" data-app="gatya" data-side="left" id="gatya">
-      <div class="app-text">
-        <div class="app-tag">サプライズで動く</div>
-        <h3 class="app-name">Todoガチャ</h3>
-        <p class="app-tagline">ガチャで「次にやること」を引く。</p>
-        <p class="app-target">飽きっぽくて、サプライズで動く子に。</p>
-        <p class="app-desc">朝の支度や宿題をランダムで引く。次が見えないから、気になる。大人がタスクを登録して、子どもがガチャを回すだけ。「やりなさい」じゃなく「次、何が出るかな？」で動きます。</p>
-      </div>
-      <div class="app-visual">
-        <div class="phone phone--gatya">
-          <div class="phone-screen">
-            <div class="label">Todoガチャ</div>
-            <div class="big">🎰</div>
-            <div class="text">回してみる？</div>
-            <div class="pill">引く</div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="app-row fade-up" data-app="ladders" data-side="right" id="ladders">
-      <div class="app-text">
-        <div class="app-tag">見通しで動く</div>
-        <h3 class="app-name">Todoすごろく</h3>
-        <p class="app-tagline">すごろくで道のりが全部見える。</p>
-        <p class="app-target">先が見えないと不安な子に。</p>
-        <p class="app-desc">今日やることを一本道に並べて、一歩ずつ進む。ごほうびマスが途中にあるので「あと 3 マスで◯◯」が見えます。見通しがあると動けるタイプの子向け。</p>
-      </div>
-      <div class="app-visual">
-        <div class="phone phone--ladders">
-          <div class="phone-screen">
-            <div class="label">Todoすごろく</div>
-            <div class="big">🚶</div>
-            <div class="text">あと 3 マス</div>
-            <div class="pill">進む</div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="app-row fade-up" data-app="bingo" data-side="left" id="bingo">
-      <div class="app-text">
-        <div class="app-tag">自分で決める</div>
-        <h3 class="app-name">TodoBingo</h3>
-        <p class="app-tagline">ビンゴの盤面で、子が順番を選ぶ。</p>
-        <p class="app-target">「自分で決めたい！」が強い子に。</p>
-        <p class="app-desc">盤面にタスクを配置。どこから埋めるかは子どもの自由。列がそろえばビンゴ、ごほうびが出ます。カレンダー型もあって、夏休みの宿題みたいな長期プロジェクトにも使えます。</p>
-      </div>
-      <div class="app-visual">
-        <div class="phone phone--bingo">
-          <div class="phone-screen">
-            <div class="label">TodoBingo</div>
-            <div class="grid">
-              <div class="cell done">✓</div><div class="cell">2</div><div class="cell done">✓</div>
-              <div class="cell">4</div><div class="cell done">✓</div><div class="cell">6</div>
-              <div class="cell done">✓</div><div class="cell">8</div><div class="cell done">✓</div>
-            </div>
-            <div class="pill">あと 1</div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="app-row fade-up" data-app="farm" data-side="right" id="farm">
-      <div class="app-text">
-        <div class="app-tag">育てる楽しみ</div>
-        <h3 class="app-name">Todoファーム</h3>
-        <p class="app-tagline">タスクをやると、植物が育つ。</p>
-        <p class="app-target">コツコツ派と、成果が見えたい子に。</p>
-        <p class="app-desc">タスクに取り組むと水や日光が増えて、植物が育つ。育て切ったら収穫、ごほうび。長期で少しずつ積み上げていく快感があります。</p>
-      </div>
-      <div class="app-visual">
-        <div class="phone phone--farm">
-          <div class="phone-screen">
-            <div class="label">Todoファーム</div>
-            <div class="big">🌱</div>
-            <div class="text">水やり OK</div>
-            <div class="pill">8 日目</div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="app-row fade-up" data-app="yakusoku" data-side="left" id="yakusoku">
-      <div class="app-text">
-        <div class="app-tag">約束を残す</div>
-        <h3 class="app-name">Todoやくそく</h3>
-        <p class="app-tagline">親子の小さな約束帳。</p>
-        <p class="app-target">「言った言わない」で揉めがちな親子に。</p>
-        <p class="app-desc">「お皿洗ったら 100 円」みたいな約束を記録します。親も子も、あとで証拠を見られる。約束を守るごとにカードが集まるので、子どもが集めるのを楽しみにしてくれます。</p>
-      </div>
-      <div class="app-visual">
-        <div class="phone phone--yakusoku">
-          <div class="phone-screen">
-            <div class="label">Todoやくそく</div>
-            <div class="big">📜</div>
-            <div class="text">No.013</div>
-            <div class="pill">合意 ✓</div>
-          </div>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="position-section section">
-  <div class="container">
-    <h2 class="section-title">5 本のポジショニング</h2>
-    <p class="position-lead">「順番を誰が決めるか」と「期間」の 2 軸で見ると、それぞれの立ち位置が見えてきます。</p>
-
-    <div class="position-map-wrap fade-up">
-      <svg viewBox="0 0 720 540" class="position-map" role="img" aria-labelledby="position-map-title position-map-desc" xmlns="http://www.w3.org/2000/svg">
-        <title id="position-map-title">アプリのポジショニング</title>
-        <desc id="position-map-desc">5 つのアプリを「順番が決まっている vs 自分で決める」と「毎日 vs 計画」の2軸で配置した図。</desc>
-
-        <rect x="80" y="70" width="300" height="200" fill="#fdfbf6" />
-        <rect x="380" y="70" width="300" height="200" fill="#fdfbf6" />
-        <rect x="80" y="270" width="300" height="200" fill="#f6f1e7" />
-        <rect x="380" y="270" width="300" height="200" fill="#f6f1e7" />
-
-        <line x1="80" y1="270" x2="680" y2="270" stroke="#1c1a17" stroke-width="1" />
-        <line x1="380" y1="70" x2="380" y2="470" stroke="#1c1a17" stroke-width="1" />
-
-        <polygon points="680,270 670,265 670,275" fill="#1c1a17" />
-        <polygon points="80,270 90,265 90,275" fill="#1c1a17" />
-        <polygon points="380,70 375,80 385,80" fill="#1c1a17" />
-        <polygon points="380,470 375,460 385,460" fill="#1c1a17" />
-
-        <text x="380" y="42" text-anchor="middle" font-size="14" fill="#1c1a17" font-weight="700">毎日のリズム</text>
-        <text x="380" y="500" text-anchor="middle" font-size="14" fill="#1c1a17" font-weight="700">計画 / 長期</text>
-        <text x="70" y="275" text-anchor="end" font-size="14" fill="#1c1a17" font-weight="700">順番が決まってる</text>
-        <text x="690" y="275" text-anchor="start" font-size="14" fill="#1c1a17" font-weight="700">自分で決める</text>
-
-        <ellipse cx="150" cy="160" rx="70" ry="44" fill="#d6e7ef" fill-opacity="0.85" stroke="#3b82a3" stroke-width="2" />
-        <text x="150" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#3b82a3">Todoすごろく</text>
-
-        <ellipse cx="295" cy="160" rx="60" ry="40" fill="#fce5d3" fill-opacity="0.85" stroke="#e07a3c" stroke-width="2" />
-        <text x="295" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#e07a3c">Todoガチャ</text>
-
-        <ellipse cx="200" cy="400" rx="72" ry="42" fill="#f0e7c7" fill-opacity="0.85" stroke="#b89b3a" stroke-width="2" />
-        <text x="200" y="395" text-anchor="middle" font-size="13" font-weight="700" fill="#7a6826">Todoファーム</text>
-        <text x="200" y="416" text-anchor="middle" font-size="11" fill="#7a6826">🎯 1 タスク特化</text>
-
-        <ellipse cx="470" cy="270" rx="65" ry="42" fill="#e3d9ef" fill-opacity="0.85" stroke="#8a6db8" stroke-width="2" />
-        <text x="470" y="277" text-anchor="middle" font-size="13" font-weight="700" fill="#8a6db8">Todoやくそく</text>
-
-        <ellipse cx="600" cy="270" rx="55" ry="160" fill="#d8ead9" fill-opacity="0.85" stroke="#5e9b62" stroke-width="2" />
-        <text x="600" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="#3f6e43">TodoBingo</text>
-        <text x="600" y="195" text-anchor="middle" font-size="11" fill="#3f6e43">通常</text>
-        <text x="600" y="350" text-anchor="middle" font-size="11" fill="#3f6e43">🎯 カレンダー</text>
-      </svg>
-    </div>
-
-    <ul class="position-legend">
-      <li><span class="mark">🎯</span> 1 つのタスクやプロジェクトに集中するタイプ</li>
-      <li>マークなし = 複数タスクを並行管理するタイプ</li>
-      <li>TodoBingo は通常モード (毎日) とカレンダーモード (長期) の両方をカバー</li>
-    </ul>
-  </div>
-</section>
-
-<section class="choose-section section">
-  <div class="container">
-    <h2 class="section-title">どれを選ぶ？</h2>
-
-    <div class="choose-grid">
-      <a class="choose-card fade-up" data-app="gatya" href="#gatya">
-        <span class="emoji">🎰</span>
-        <span class="q">飽きっぽい / サプライズで動く</span>
-        <span class="a">Todoガチャ</span>
-      </a>
-      <a class="choose-card fade-up" data-app="ladders" href="#ladders">
-        <span class="emoji">🚶</span>
-        <span class="q">先が見えないと不安</span>
-        <span class="a">Todoすごろく</span>
-      </a>
-      <a class="choose-card fade-up" data-app="bingo" href="#bingo">
-        <span class="emoji">🎯</span>
-        <span class="q">自分で決めたい / 指示が嫌い</span>
-        <span class="a">TodoBingo</span>
-      </a>
-      <a class="choose-card fade-up" data-app="farm" href="#farm">
-        <span class="emoji">🌱</span>
-        <span class="q">コツコツ育てるのが好き</span>
-        <span class="a">Todoファーム</span>
-      </a>
-      <a class="choose-card fade-up" data-app="yakusoku" href="#yakusoku">
-        <span class="emoji">📜</span>
-        <span class="q">約束が反故にされがち</span>
-        <span class="a">Todoやくそく</span>
-      </a>
-    </div>
-
-    <p class="choose-note">いくつか試してみて、うちの子に合うのはどれか確かめる使い方がおすすめです。</p>
-  </div>
-</section>
-
-<section class="author-section section">
-  <div class="container container-narrow">
-    <div class="author-card fade-up">
-      <h2 class="author-title">このアプリを作っている話</h2>
-
-      <p>私は、子の朝の支度で毎日戦争でした。「早く着替えて」「早く食べて」「早く歯みがき」を、毎朝 10 回以上言っていました。</p>
-
-      <p>うちの子はたぶん ADHD 気味で、切り替えが苦手です。タイマーも、絵カードも、何種類も試して、どれも数日で効かなくなりました。</p>
-
-      <p>あるとき、ガチャのおもちゃを何回も飽きずに回している子を見て、「次に何が出るか分からないから、回したくなるのか」と気づきました。だったら、やることもガチャにしたら？ と思って作ったのが Todoガチャです。</p>
-
-      <p>使ってみたら、うちの子は確かに少し動くようになりました。万能じゃないです。眠い朝はやっぱり動かないし、飽きる日もあります。でも、怒鳴る回数は減りました。</p>
-
-      <p>その後、同じ家の下の子には違う方法が合いました。下の子は次の予定が見えてないと固まるタイプで、ガチャは逆効果でした。それで作ったのが Todoすごろくです。</p>
-
-      <p>いろんな子がいるので、5 本になりました。</p>
-
-      <p>使ってみて、合わなかったらごめんなさい。うちの家でたまたま効いただけかもしれません。でも、もし似た状況の方がいたら、試してみてください。</p>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <nav>
-      <a href="privacy-policy/">プライバシーポリシー</a>
-    </nav>
-    <p class="copy">© Lycopene</p>
-  </div>
-</footer>
-
-<script src="assets/js/main.js" defer></script>
-
+<script type="text/babel">
+  // マウント
+  ReactDOM.createRoot(document.getElementById('root')).render(<window.HomePage />);
+</script>
 </body>
 </html>
