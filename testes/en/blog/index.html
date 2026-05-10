@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Column — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Notes from making apps for parents and kids." />
+<style>
+  body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; }
+  .wrap { max-width:720px; margin:0 auto; padding:32px 18px 60px; }
+  h1 { font-size:26px; font-weight:900; margin:0 0 8px; }
+  .lead { font-size:13px; opacity:.7; margin:0 0 22px; line-height:1.7; }
+  .posts { display:grid; gap:14px; list-style:none; padding:0; margin:0; }
+  .post { display:block; background:#fff; border:1px solid #eee; border-radius:14px; padding:18px 20px; text-decoration:none; color:inherit; transition: transform .15s ease, box-shadow .15s ease; }
+  .post:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
+  .post .date { font-size:11px; opacity:.55; letter-spacing:1px; font-variant-numeric:tabular-nums; margin-bottom:6px; }
+  .post .title { font-size:17px; font-weight:800; line-height:1.5; margin-bottom:6px; }
+  .post .excerpt { font-size:13px; opacity:.75; line-height:1.7; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+</head>
+<body>
+<div id="site-header"></div>
+<div class="wrap">
+  <h1>Column</h1>
+  <p class="lead">Notes from making apps for parents and kids.</p>
+  <div class="posts">
+      <a class="post" href="posts/first-thing-when-designing.html">
+        <div class="date">2026-05-08</div>
+        <div class="title">The first thing I decide when designing a kids' app</div>
+        <div class="excerpt">Not features, not visuals — I start by writing one line: 'How should the child feel after using this?'</div>
+      </a>
+      <a class="post" href="posts/morning-routine-tweak.html">
+        <div class="date">2026-05-05</div>
+        <div class="title">A tiny tweak that fixed our slow mornings</div>
+        <div class="excerpt">My kid hated mornings. Reminders didn't work. Then I let him choose the order — and everything shifted.</div>
+      </a>
+      <a class="post" href="posts/no-more-nagging.html">
+        <div class="date">2026-05-02</div>
+        <div class="title">Three small mechanics that stopped my nagging</div>
+        <div class="excerpt">I stopped saying 'hurry up' and 'did you pack everything?' — here's what replaced it.</div>
+      </a>
+  </div>
+</div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="../../shared/langs.js"></script>
+<script src="../../content/ja/common.js"></script>
+<script src="../../content/ja/todo.js"></script>
+<script src="../../content/ja/record.js"></script>
+<script src="../../content/ja/tool.js"></script>
+<script src="../../content/ja/other.js"></script>
+<script src="../../content/en/common.js"></script>
+<script src="../../content/en/todo.js"></script>
+<script src="../../content/en/record.js"></script>
+<script src="../../content/en/tool.js"></script>
+<script src="../../content/en/other.js"></script>
+<script src="../../shared/i18n-loader.js"></script>
+<script type="text/babel" src="../../shared/site-shared.jsx"></script>
+<script type="text/babel" src="../../shared/blog-shell.jsx" data-path-prefix="../"></script>
+</body>
+</html>
