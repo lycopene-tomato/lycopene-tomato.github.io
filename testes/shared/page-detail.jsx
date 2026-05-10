@@ -158,17 +158,12 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
             <div style={{ fontSize: 14, fontWeight: 700, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{next.name}</div>
           </a>
         </div>
-        {/* TOPに戻る */}
-        <div style={{ textAlign: "center", marginTop: 24 }}>
-          <a href={`${prefix}index.html`} style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            padding: "10px 24px", background: accent.c, color: "#fff",
-            textDecoration: "none", borderRadius: 999, fontSize: 13, fontWeight: 800,
-          }}>
-            ↑ Topへ戻る
-          </a>
-        </div>
       </section>
+
+      {/* OTHER CATEGORIES (トップページと同じ E パターン) */}
+      {window.CatNavPatternE && (
+        <window.CatNavPatternE t={t} currentId={category.id} prefix={prefix} accent={accent} />
+      )}
 
       <window.SiteFooter pathPrefix={prefix} />
     </>
