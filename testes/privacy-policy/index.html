@@ -5,9 +5,9 @@
 <title>Privacy Policy — Lyco App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Lyco App Privacy Policy" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
 <style>
   body { font-family: system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; padding: 40px 20px; text-align: center; }
   a { color: #E89A3D; }
@@ -26,12 +26,12 @@
 -->
 
 <noscript>
-  <p>Please enable JavaScript, or go to <a href="/privacy-policy/ja/">日本語版</a>.</p>
+  <p>Please enable JavaScript, or go to <a href="ja/">日本語版</a>.</p>
 </noscript>
 
 <p id="msg">Redirecting…</p>
 
-<script src="/shared/langs.js"></script>
+<script src="../shared/langs.js"></script>
 <script>
 (function () {
   var saved = null;
@@ -49,7 +49,8 @@
     var primary = lang.split("-")[0];
     if (EXISTING.indexOf(primary) >= 0) lang = primary; else lang = "ja";
   }
-  location.replace("/privacy-policy/" + lang + "/");
+  // 相対リダイレクトにすることで /testes/ 配下でも本番でも動く。
+  location.replace(lang + "/");
 })();
 </script>
 
