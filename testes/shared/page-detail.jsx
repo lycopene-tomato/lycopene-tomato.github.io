@@ -76,26 +76,58 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
       {/* CALL */}
       {app.call && app.call.length > 0 && (
         <section className="reveal" data-snap data-progress-color={accent.c}
-          style={{ padding: "32px 18px", maxWidth: 640, margin: "0 auto", background: accent.soft, borderRadius: 16 }}>
-          <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 10 }}>
-            {t.detail.label_call}
+          style={{ padding: "0 18px", maxWidth: 640, margin: "32px auto" }}>
+          <div style={{
+            position: "relative",
+            border: `2px solid ${accent.c}`,
+            borderRadius: 16,
+            padding: "32px 24px 24px",
+            background: "#fff",
+          }}>
+            <div style={{
+              position: "absolute", top: -11, left: 0, right: 0,
+              textAlign: "center", pointerEvents: "none",
+            }}>
+              <span style={{
+                background: "#FBF6EE",
+                padding: "0 16px",
+                fontSize: 13, fontWeight: 800, letterSpacing: 3,
+                color: accent.deep,
+              }}>{t.detail.label_call}</span>
+            </div>
+            <ul style={{ paddingLeft: 18, margin: 0, display: "flex", flexDirection: "column", gap: 8, color: accent.deep, fontSize: 14, lineHeight: 1.6 }}>
+              {app.call.map((c, i) => <li key={i}>{c}</li>)}
+            </ul>
           </div>
-          <ul style={{ paddingLeft: 18, margin: 0, display: "flex", flexDirection: "column", gap: 6, color: accent.deep, fontSize: 14, lineHeight: 1.6 }}>
-            {app.call.map((c, i) => <li key={i}>{c}</li>)}
-          </ul>
         </section>
       )}
 
       {/* TRICK */}
       {app.trick && app.trick.length > 0 && (
         <section className="reveal" data-snap data-progress-color={accent.c}
-          style={{ padding: "32px 18px", maxWidth: 640, margin: "0 auto", background: accent.soft, borderRadius: 16 }}>
-          <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 10 }}>
-            {t.detail.label_trick}
+          style={{ padding: "0 18px", maxWidth: 640, margin: "32px auto" }}>
+          <div style={{
+            position: "relative",
+            border: `2px solid ${accent.c}`,
+            borderRadius: 16,
+            padding: "32px 24px 24px",
+            background: "#fff",
+          }}>
+            <div style={{
+              position: "absolute", top: -11, left: 0, right: 0,
+              textAlign: "center", pointerEvents: "none",
+            }}>
+              <span style={{
+                background: "#FBF6EE",
+                padding: "0 16px",
+                fontSize: 13, fontWeight: 800, letterSpacing: 3,
+                color: accent.deep,
+              }}>{t.detail.label_trick}</span>
+            </div>
+            <ul style={{ paddingLeft: 18, margin: 0, display: "flex", flexDirection: "column", gap: 8, color: accent.deep, fontSize: 14, lineHeight: 1.6 }}>
+              {app.trick.map((c, i) => <li key={i}>{c}</li>)}
+            </ul>
           </div>
-          <ul style={{ paddingLeft: 18, margin: 0, display: "flex", flexDirection: "column", gap: 6, color: accent.deep, fontSize: 14, lineHeight: 1.6 }}>
-            {app.trick.map((c, i) => <li key={i}>{c}</li>)}
-          </ul>
         </section>
       )}
 

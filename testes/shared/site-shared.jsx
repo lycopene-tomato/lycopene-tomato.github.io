@@ -257,17 +257,20 @@ window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
   return (
     <footer style={{
       background: "#2C2218", color: "#FBF6EE",
-      padding: "20px 20px 16px", textAlign: "center",
+      padding: "10px 20px 8px", textAlign: "center",
       borderTop: `1px solid #1B130C`,
     }}>
-      {f.tagline && (
-        <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: 0.5, marginBottom: 4, color: "#FFB263" }}>
-          {f.tagline}
-        </div>
-      )}
-      {f.tagline_sub && (
-        <div style={{ fontSize: 11, opacity: 0.65, marginBottom: 12, letterSpacing: 0.3 }}>
-          {f.tagline_sub}
+      {(f.tagline || f.tagline_sub) && (
+        <div style={{ marginBottom: 6, letterSpacing: 0.4, lineHeight: 1.4 }}>
+          {f.tagline && (
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#FFB263" }}>{f.tagline}</span>
+          )}
+          {f.tagline && f.tagline_sub && (
+            <span style={{ margin: "0 8px", opacity: 0.4, fontSize: 10 }}>·</span>
+          )}
+          {f.tagline_sub && (
+            <span style={{ fontSize: 10, opacity: 0.65 }}>{f.tagline_sub}</span>
+          )}
         </div>
       )}
       <div style={{
