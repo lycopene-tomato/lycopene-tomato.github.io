@@ -20,7 +20,7 @@ window.__CONTENT__.ja.categories.todo = {
     tagline: "「やって！」を、「やってみたい！」に。",
     intro: "遊びの仕掛けで、子どもが自分から動き出す。\n「早く！」を言わなくて済む、毎日のしくみ。",
     empathy: {
-      label: "こんな日々、ありませんか？",
+      label: "こんな日ばっかり。",
       badge: "イライラ",
       lines: [
         "今朝もまた、怒鳴ってしまった。",

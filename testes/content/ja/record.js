@@ -14,7 +14,7 @@ window.__CONTENT__.ja.categories.record = {
     tagline: "「またか」が、「減ってきた」に変わる。",
     intro: "記憶のままだと、見えない変化がある。\n記録すれば、子の小さな成長と、親の安心が、見えてくる。",
     empathy: {
-      label: "こんな日々、ありませんか？",
+      label: "こんな日ばっかり。",
       badge: "ドキドキ",
       lines: [
         "学校から、また電話。",

@@ -40,10 +40,7 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
       {/* HERO */}
       <section className="hero reveal" data-snap data-progress-color={accent.c}
         style={{ background: accent.soft, padding: "32px 18px", textAlign: "center", color: accent.deep }}>
-        <a href={`${prefix}index.html#cat-${category.id}`} style={{ fontSize: 12, color: accent.deep, opacity: 0.8, textDecoration: "none" }}>
-          ← {category.name}
-        </a>
-        <h1 style={{ fontSize: 28, fontWeight: 900, margin: "10px 0 6px" }}>{app.name}</h1>
+        <h1 style={{ fontSize: 28, fontWeight: 900, margin: "0 0 6px" }}>{app.name}</h1>
         <div style={{ marginTop: 18, padding: "16px 14px", background: "#fff", borderRadius: 14, color: "#333" }}>
           <div style={{ fontSize: 11, letterSpacing: 2, fontWeight: 800, color: accent.deep, marginBottom: 6 }}>
             {t.detail.label_concept}
@@ -60,17 +57,13 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
           <img src={window.resolveHeroImage(app, prefix)} alt={app.name}
             style={{ display: "block", maxWidth: 360, width: "100%", margin: "20px auto 0", borderRadius: 14 }} />
         )}
-        {app.appstore_url && (
-          <a href={app.appstore_url} target="_blank" rel="noopener" style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            marginTop: 20, padding: "12px 22px",
-            background: "#000", color: "#fff", textDecoration: "none",
-            borderRadius: 999, fontSize: 14, fontWeight: 700,
-          }}>
-            <span style={{ fontSize: 18 }}></span>
-            <span>App Store</span>
-          </a>
-        )}
+        <div style={{
+          display: "flex", gap: 12, justifyContent: "center",
+          marginTop: 20, flexWrap: "wrap",
+        }}>
+          <window.StoreButton platform="apple" href={app.appstore_url} />
+          <window.StoreButton platform="google" comingSoon={true} />
+        </div>
       </section>
 
       {/* CALL */}
@@ -85,12 +78,12 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
             background: "#fff",
           }}>
             <div style={{
-              position: "absolute", top: -11, left: 0, right: 0,
-              textAlign: "center", pointerEvents: "none",
+              position: "absolute", top: -11, left: 20,
+              pointerEvents: "none",
             }}>
               <span style={{
                 background: "#FBF6EE",
-                padding: "0 16px",
+                padding: "0 12px",
                 fontSize: 13, fontWeight: 800, letterSpacing: 3,
                 color: accent.deep,
               }}>{t.detail.label_call}</span>
@@ -114,12 +107,12 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
             background: "#fff",
           }}>
             <div style={{
-              position: "absolute", top: -11, left: 0, right: 0,
-              textAlign: "center", pointerEvents: "none",
+              position: "absolute", top: -11, left: 20,
+              pointerEvents: "none",
             }}>
               <span style={{
                 background: "#FBF6EE",
-                padding: "0 16px",
+                padding: "0 12px",
                 fontSize: 13, fontWeight: 800, letterSpacing: 3,
                 color: accent.deep,
               }}>{t.detail.label_trick}</span>
@@ -163,20 +156,13 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
         </div>
         {/* TOPに戻る */}
         <div style={{ textAlign: "center", marginTop: 24 }}>
-          <a href={`${prefix}index.html?cat=${category.id}`} style={{
+          <a href={`${prefix}index.html`} style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             padding: "10px 24px", background: accent.c, color: "#fff",
             textDecoration: "none", borderRadius: 999, fontSize: 13, fontWeight: 800,
           }}>
-            ↑ {category.name}のTOPに戻る
+            ↑ Topへ戻る
           </a>
-          <div style={{ marginTop: 10 }}>
-            <a href={`${prefix}index.html`} style={{
-              fontSize: 12, color: "#8B7355", textDecoration: "none",
-            }}>
-              ホームへ →
-            </a>
-          </div>
         </div>
       </section>
 
@@ -191,14 +177,17 @@ window.AppScreens = function AppScreens({ lang, appId, pathPrefix, accent, label
   React.useEffect(() => {
     let alive = true;
     (async () => {
+      // /ja/apps/<id>.html から見ると images/ は 2 階層上 (../../images/...)
+      // pathPrefix は /<lang>/ までの相対なので、images/ にはさらに "../" 1 つ要る。
+      const base = `${pathPrefix}../`;
       const candidates = [];
       for (let i = 1; i <= 6; i++) {
         // 言語別パス → 共通パス → png/jpeg どちらでも
         candidates.push([
-          `${pathPrefix}images/screenshots/${lang}/${appId}-${i}.jpeg`,
-          `${pathPrefix}images/screenshots/${lang}/${appId}-${i}.png`,
-          `${pathPrefix}images/screenshots/${appId}-${i}.jpeg`,
-          `${pathPrefix}images/screenshots/${appId}-${i}.png`,
+          `${base}images/screenshots/${lang}/${appId}-${i}.jpeg`,
+          `${base}images/screenshots/${lang}/${appId}-${i}.png`,
+          `${base}images/screenshots/${appId}-${i}.jpeg`,
+          `${base}images/screenshots/${appId}-${i}.png`,
         ]);
       }
       const found = [];
