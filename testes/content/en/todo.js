@@ -106,21 +106,5 @@ window.__CONTENT__.en.categories.todo = {
         "Push past the goal and the water changes color.",
       ],
     },
-    {
-      id: "wbs",
-      name: "Todo WBS",
-      tag: "Time",
-      appstore_url: "",
-      hero_image: "images/apps/wbs.jpeg",
-      formula_a: "Arrows",
-      formula_b: "Tasks",
-      formula_c: "Move by time",
-      concept: "Arrows × Tasks = Move by time",
-      call: ["Finish quick — more game time later."],
-      trick: [
-        "Lay tasks out from a start time.",
-        "Finish early and reward time grows.",
-      ],
-    },
   ],
 };

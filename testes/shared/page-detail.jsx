@@ -57,7 +57,7 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
           </div>
         </div>
         {app.hero_image && (
-          <img src={`${prefix}${app.hero_image}`} alt={app.name}
+          <img src={window.resolveHeroImage(app, prefix)} alt={app.name}
             style={{ display: "block", maxWidth: 360, width: "100%", margin: "20px auto 0", borderRadius: 14 }} />
         )}
         {app.appstore_url && (

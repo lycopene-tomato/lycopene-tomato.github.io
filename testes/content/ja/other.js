@@ -33,7 +33,7 @@ window.__CONTENT__.ja.categories.other = {
       id: "puzzle",
       name: "ちいさなパズル",
       tag: "ゲーム",
-      appstore_url: "https://apps.apple.com/app/id000000000",
+      appstore_url: "",
       hero_image: "images/apps/puzzle.jpeg",
       formula_a: "1分",
       formula_b: "頭の体操",

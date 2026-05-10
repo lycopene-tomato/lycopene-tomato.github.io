@@ -28,7 +28,6 @@ window.AppTheme = {
   bingo:    { c: "#F5A8C0", soft: "#FFF0F4", deep: "#B85575" },
   sugoroku: { c: "#F5A8C0", soft: "#FFF0F4", deep: "#B85575" },
   farm:     { c: "#F5A8C0", soft: "#FFF0F4", deep: "#B85575" },
-  wbs:      { c: "#F5A8C0", soft: "#FFF0F4", deep: "#B85575" },
   trouble:  { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
   timer:    { c: "#7BAE74", soft: "#EAF3E5", deep: "#3F7239" },
   puzzle:   { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },
@@ -412,27 +411,39 @@ window.AppCard = ({ app, idx, category, pathPrefix = "" }) => {
   const lang = window.useLang();
   const t = window.I18N[lang] || window.I18N[window.LANG_FALLBACK];
   const theme = window.getTheme(app.id, category, idx);
+  const inProgress = !app.appstore_url;
+  const inProgressLabel = (t.allapps && t.allapps.in_progress) || "準備中";
+  const Card = inProgress ? "div" : "a";
+  const cardProps = inProgress ? {} : { href: `${pathPrefix}apps/${app.id}.html` };
 
   return (
-    <a href={`${pathPrefix}apps/${app.id}.html`} className="app-card" style={{
+    <Card {...cardProps} className="app-card" style={{
       background: "#fff", borderRadius: 20, padding: 18,
       textDecoration: "none", color: "inherit",
       border: `2px solid ${theme.c}`,
       display: "flex", flexDirection: "column", gap: 14,
       position: "relative",
       transition: "transform 0.2s, box-shadow 0.2s",
+      opacity: inProgress ? 0.65 : 1,
+      cursor: inProgress ? "default" : "pointer",
     }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
         <div style={{
           background: theme.c, color: "#fff",
           fontSize: 11, fontWeight: 700, padding: "3px 12px", borderRadius: 999, letterSpacing: 1,
         }}>{String(idx + 1).padStart(2, "0")}</div>
-        {app.tag && (
+        {inProgress ? (
+          <div style={{
+            fontSize: 11, color: "#8B7355", background: "#fff",
+            border: "1px dashed #BDA68C",
+            padding: "3px 10px", borderRadius: 999, fontWeight: 700, letterSpacing: 1, whiteSpace: "nowrap",
+          }}>{inProgressLabel}</div>
+        ) : (app.tag && (
           <div style={{
             fontSize: 11, color: theme.deep, background: theme.soft,
             padding: "3px 10px", borderRadius: 999, fontWeight: 700, whiteSpace: "nowrap",
           }}>{app.tag}</div>
-        )}
+        ))}
       </div>
       <div style={{ aspectRatio: "16 / 9", overflow: "hidden", borderRadius: 12 }}>
         <window.HeroImage app={app} theme={theme} pathPrefix={pathPrefix} radius={12} />
@@ -470,9 +481,11 @@ window.AppCard = ({ app, idx, category, pathPrefix = "" }) => {
           <span style={{ fontWeight: 500 }}>{app.call && app.call[0]}</span>
         </div>
       </div>
-      <div style={{ marginTop: "auto", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12, color: theme.deep, fontWeight: 700 }}>
-        <span>{t.lineup.view_detail}</span><span>→</span>
-      </div>
-    </a>
+      {!inProgress && (
+        <div style={{ marginTop: "auto", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12, color: theme.deep, fontWeight: 700 }}>
+          <span>{t.lineup.view_detail}</span><span>→</span>
+        </div>
+      )}
+    </Card>
   );
 };

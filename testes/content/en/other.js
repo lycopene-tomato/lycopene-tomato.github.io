@@ -36,7 +36,7 @@ window.__CONTENT__.en.categories.other = {
       id: "puzzle",
       name: "Tiny Puzzle",
       tag: "Game",
-      appstore_url: "https://apps.apple.com/app/id000000000",
+      appstore_url: "",
       hero_image: "images/apps/puzzle.jpeg",
       formula_a: "1 minute",
       formula_b: "Brain workout",
