@@ -218,20 +218,38 @@ window.AppScreens = function AppScreens({ lang, appId, pathPrefix, accent, label
   if (imgs.length === 0) return null;
 
   return (
-    <section className="reveal" style={{ padding: "32px 18px", maxWidth: 720, margin: "0 auto" }}>
-      <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 12 }}>
-        {label}
-      </div>
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "32px auto" }}>
       <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gap: 12,
-        maxWidth: 420,
-        margin: "0 auto",
+        position: "relative",
+        border: `2px solid ${accent.c}`,
+        borderRadius: 16,
+        padding: "32px 24px 24px",
+        background: "#fff",
       }}>
-        {imgs.map((src, i) => (
-          <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" }} />
-        ))}
+        <div style={{
+          position: "absolute", top: -11, left: 20,
+          pointerEvents: "none",
+        }}>
+          <span style={{
+            display: "inline-block",
+            background: "#FBF6EE",
+            padding: "2px 14px",
+            borderRadius: 999,
+            fontSize: 13, fontWeight: 800, letterSpacing: 3,
+            color: accent.deep,
+          }}>{label}</span>
+        </div>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: 12,
+          maxWidth: 420,
+          margin: "0 auto",
+        }}>
+          {imgs.map((src, i) => (
+            <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" }} />
+          ))}
+        </div>
       </div>
     </section>
   );
