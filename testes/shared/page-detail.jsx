@@ -82,8 +82,10 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
               pointerEvents: "none",
             }}>
               <span style={{
+                display: "inline-block",
                 background: "#FBF6EE",
-                padding: "0 12px",
+                padding: "2px 14px",
+                borderRadius: 999,
                 fontSize: 13, fontWeight: 800, letterSpacing: 3,
                 color: accent.deep,
               }}>{t.detail.label_call}</span>
@@ -111,8 +113,10 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
               pointerEvents: "none",
             }}>
               <span style={{
+                display: "inline-block",
                 background: "#FBF6EE",
-                padding: "0 12px",
+                padding: "2px 14px",
+                borderRadius: 999,
                 fontSize: 13, fontWeight: 800, letterSpacing: 3,
                 color: accent.deep,
               }}>{t.detail.label_trick}</span>
@@ -218,9 +222,15 @@ window.AppScreens = function AppScreens({ lang, appId, pathPrefix, accent, label
       <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 12 }}>
         {label}
       </div>
-      <div style={{ display: "flex", gap: 10, overflowX: "auto", paddingBottom: 8 }}>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: 12,
+        maxWidth: 420,
+        margin: "0 auto",
+      }}>
         {imgs.map((src, i) => (
-          <img key={i} src={src} alt="" style={{ height: 320, borderRadius: 12, boxShadow: "0 2px 12px rgba(0,0,0,.08)" }} />
+          <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" }} />
         ))}
       </div>
     </section>

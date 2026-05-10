@@ -93,8 +93,9 @@
 }
 
 /* ---------- スクロール進捗バー ---------- */
-/* 画面上端に細いバー。セクションごとの色は JS で更新 */
+/* 画面上端に細いバー。視覚的ノイズになるため現状非表示。 */
 .scroll-progress {
+  display: none;
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 3px;
