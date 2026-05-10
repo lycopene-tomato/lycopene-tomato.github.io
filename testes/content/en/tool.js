@@ -33,24 +33,6 @@ window.__CONTENT__.en.categories.tool = {
 
   apps: [
     {
-      id: "atodeyaru",
-      name: "Later Countdown",
-      tag: "Switch",
-      appstore_url: "https://apps.apple.com/app/id000000000",
-      hero_image: "images/apps/atodeyaru.jpeg",
-      formula_a: "Countdown",
-      formula_b: "Switch",
-      formula_c: "Smooth transition",
-      concept: "Countdown × Switch = Smooth transition",
-      call: ["Five minutes, then we go.", "When it hits zero, we start!"],
-      trick: [
-        "When ‘right now’ won’t work, give a short buffer.",
-        "Big, simple time display.",
-        "A gentle sound when it finishes.",
-        "One tap for your common durations.",
-      ],
-    },
-    {
       id: "timer",
       name: "Plain Timer",
       tag: "Time",

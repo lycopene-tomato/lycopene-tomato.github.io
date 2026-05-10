@@ -29,11 +29,9 @@ window.AppTheme = {
   sugoroku: { c: "#F5A8C0", soft: "#FFF0F4", deep: "#B85575" },
   farm:     { c: "#F5A8C0", soft: "#FFF0F4", deep: "#B85575" },
   wbs:      { c: "#F5A8C0", soft: "#FFF0F4", deep: "#B85575" },
-  wasuremono: { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
-  trouble:    { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
-  atodeyaru: { c: "#7BAE74", soft: "#EAF3E5", deep: "#3F7239" },
-  timer:     { c: "#7BAE74", soft: "#EAF3E5", deep: "#3F7239" },
-  puzzle:    { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },
+  trouble:  { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
+  timer:    { c: "#7BAE74", soft: "#EAF3E5", deep: "#3F7239" },
+  puzzle:   { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },
 };
 
 window.getTheme = function (id, category, idx = 0) {

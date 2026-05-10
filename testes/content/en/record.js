@@ -33,25 +33,6 @@ window.__CONTENT__.en.categories.record = {
 
   apps: [
     {
-      id: "wasuremono",
-      name: "Forget-Me-Not",
-      tag: "Belongings",
-      appstore_url: "https://apps.apple.com/app/id000000000",
-      hero_image: "images/apps/wasuremono.jpeg",
-      formula_a: "Logs",
-      formula_b: "Belongings",
-      formula_c: "Fewer things forgotten",
-      concept: "Logs × Belongings = Fewer things forgotten",
-      call: ["Did anything get left behind today?", "Let’s check tomorrow’s bag together."],
-      trick: [
-        "Capture what was forgotten, when, and the situation.",
-        "See trends by weekday or subject — easier to plan around.",
-        "Set the night-before reminders for repeat offenders.",
-        "Aim is to review together with data, not to scold.",
-        "Per-child entries supported.",
-      ],
-    },
-    {
       id: "trouble",
       name: "Trouble Notebook",
       tag: "School life",

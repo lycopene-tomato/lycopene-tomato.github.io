@@ -30,24 +30,6 @@ window.__CONTENT__.ja.categories.tool = {
 
   apps: [
     {
-      id: "atodeyaru",
-      name: "あとでやるカウントダウン",
-      tag: "切り替え",
-      appstore_url: "https://apps.apple.com/app/id000000000",
-      hero_image: "images/apps/atodeyaru.jpeg",
-      formula_a: "カウントダウン",
-      formula_b: "切り替え",
-      formula_c: "スッと動ける",
-      concept: "カウントダウン × 切り替え = スッと動ける",
-      call: ["あと5分でやろうね。", "0になったらスタート！"],
-      trick: [
-        "「今すぐ」が難しい時に、短い猶予で気持ちを切り替える。",
-        "残り時間が大きく見える、シンプルな表示。",
-        "終了時の合図はやさしい音で。",
-        "よく使う長さはワンタップで呼び出せる。",
-      ],
-    },
-    {
       id: "timer",
       name: "シンプルタイマー",
       tag: "時間",

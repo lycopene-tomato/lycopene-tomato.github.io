@@ -30,25 +30,6 @@ window.__CONTENT__.ja.categories.record = {
 
   apps: [
     {
-      id: "wasuremono",
-      name: "忘れ物ノート",
-      tag: "持ち物",
-      appstore_url: "https://apps.apple.com/app/id000000000",
-      hero_image: "images/apps/wasuremono.jpeg",
-      formula_a: "記録",
-      formula_b: "持ち物",
-      formula_c: "忘れ物が減る",
-      concept: "記録 × 持ち物 = 忘れ物が減る",
-      call: ["今日も忘れ物しなかった？", "明日の準備、一緒に見ようか。"],
-      trick: [
-        "「何を、いつ、どんな状況で」忘れたかを記録できます。",
-        "曜日ごと・教科ごとの傾向が見えるので、対策が打ちやすい。",
-        "繰り返し忘れる物には、前日リマインドが設定できます。",
-        "怒るのではなく、データで一緒に振り返るのが目的です。",
-        "兄弟で別々に記録できます。",
-      ],
-    },
-    {
       id: "trouble",
       name: "トラブルノート",
       tag: "学校生活",
