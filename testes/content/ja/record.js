@@ -8,7 +8,7 @@ window.__CONTENT__.ja.categories.record = {
   subtitle: "毎日の「またか」を、子の成長と親の安心に変える記録系。",
   accent: { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
   eyebrow: "予防",
-  formula: { a: "記録", b: "「またか」", c: "「減ってる」が見える" },
+  formula: { a: "また", b: "記録", c: "成長？" },
 
   story: {
     tagline: "「またか」が、「減ってきた」に変わる。",

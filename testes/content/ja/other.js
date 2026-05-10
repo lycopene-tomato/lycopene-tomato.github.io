@@ -4,7 +4,7 @@ window.__CONTENT__.ja.categories = window.__CONTENT__.ja.categories || {};
 
 window.__CONTENT__.ja.categories.other = {
   id: "other",
-  name: "Others",
+  name: "Other系",
   subtitle: "「育児を少しでも楽に」から外れる、おまけ枠。ゲーム・便利ツール・息抜きなど。",
   accent: { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },
   eyebrow: "おまけ",

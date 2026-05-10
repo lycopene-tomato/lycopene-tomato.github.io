@@ -1,68 +1,57 @@
-<!DOCTYPE html>
-<html lang="ja">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>プライバシーポリシー</title>
-<link rel="stylesheet" href="../assets/css/style.css">
+<meta charset="utf-8" />
+<title>Privacy Policy — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Lyco App Privacy Policy" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<style>
+  body { font-family: system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; padding: 40px 20px; text-align: center; }
+  a { color: #E89A3D; }
+</style>
 </head>
 <body>
 
-<header class="hero minor">
-  <div class="container">
-    <h1>プライバシーポリシー</h1>
-    <p class="lede">Todoガチャ / Todoすごろく / TodoBingo / Todoファーム / Todoやくそく の共通ポリシーです。</p>
-  </div>
-</header>
+<!--
+  ============================================================
+   /privacy-policy/ — UA 判定リダイレクタ
+  ============================================================
+   - Accept-Language を見て /privacy-policy/<lang>/ にリダイレクト
+   - localStorage に保存された言語があればそれを優先
+   - 未対応言語は ja にフォールバック (一時的・en 追加時に変更)
+  ============================================================
+-->
 
-<main class="policy">
-  <div class="container container-narrow">
+<noscript>
+  <p>Please enable JavaScript, or go to <a href="/privacy-policy/ja/">日本語版</a>.</p>
+</noscript>
 
-    <section>
-      <h2>収集する情報</h2>
-      <p>アプリが動作する上で必要な情報 (登録したタスク・ごほうび・進捗・設定など) は、お使いの端末内にのみ保存されます。これらの情報を外部のサーバーに送信することはありません。</p>
-    </section>
+<p id="msg">Redirecting…</p>
 
-    <section>
-      <h2>広告について</h2>
-      <p>アプリの一部には Google AdMob による広告が表示されます。広告は保護者向けの管理画面にのみ表示され、お子さまが操作する画面には表示されません。</p>
-      <p>AdMob は広告配信のために、広告識別子などの情報を取得する場合があります。詳しくは Google のプライバシーポリシーをご確認ください。</p>
-      <p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー</a></p>
-    </section>
-
-    <section>
-      <h2>解析ツール</h2>
-      <p>アプリの不具合把握と改善のため、匿名の利用統計を Apple の提供する仕組みを通じて取得する場合があります。個人を特定する情報は含まれません。</p>
-    </section>
-
-    <section>
-      <h2>第三者への提供</h2>
-      <p>ユーザーの個人情報を第三者に販売・提供することはありません。</p>
-    </section>
-
-    <section>
-      <h2>お問い合わせ</h2>
-      <p>ご質問・ご要望があれば、App Store の各アプリページから「デベロッパ Web サイト」経由でご連絡ください。</p>
-    </section>
-
-    <section>
-      <h2>改定</h2>
-      <p>本ポリシーは必要に応じて改定することがあります。重要な変更がある場合は、このページ上でお知らせします。</p>
-      <p class="last-updated">最終更新: 2026-04-25</p>
-    </section>
-
-    <p class="back"><a href="../">← トップに戻る</a></p>
-  </div>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <p class="copy">© 2026 Lyco App.</p>
-  </div>
-</footer>
+<script src="/shared/langs.js"></script>
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("lp_lang"); } catch (e) {}
+  var lang;
+  if (saved && window.LANGS.some(function (l) { return l.code === saved; })) {
+    lang = saved;
+  } else {
+    lang = window.matchLang(navigator.languages ? navigator.languages.join(",") : navigator.language);
+  }
+  // /privacy-policy/<lang>/ がまだ作られていない言語は ja にフォールバック
+  // (将来 en/de/... を追加したらここに足す)
+  var EXISTING = ["ja"];
+  if (EXISTING.indexOf(lang) === -1) {
+    var primary = lang.split("-")[0];
+    if (EXISTING.indexOf(primary) >= 0) lang = primary; else lang = "ja";
+  }
+  location.replace("/privacy-policy/" + lang + "/");
+})();
+</script>
 
 </body>
 </html>

@@ -176,7 +176,7 @@ window.CatNavPatternE = function CatNavPatternE({ t, currentId, prefix, accent }
     <section className="reveal" data-snap data-progress-color={accent.c} style={{ background: "#FBF6EE", padding: "48px 16px 56px", borderTop: `2px solid ${accent.c}`, borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
       <div style={{ maxWidth: 720, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginTop: 4, marginBottom: 4 }}>— ほかのフィールドへ —</div>
+          <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginTop: 4, marginBottom: 4 }}>— 他のカテゴリ —</div>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
           {t.categories.map((cat, idx) => {

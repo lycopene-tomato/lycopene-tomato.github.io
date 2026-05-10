@@ -314,6 +314,15 @@ window.AllAppsList = ({ pathPrefix = "", currentCategoryId }) => {
   return (
     <section className="reveal" data-snap style={{ padding: "clamp(48px, 7vw, 72px) 24px", borderTop: "1px solid rgba(189,153,108,0.15)", background: "#fff" }}>
       <div style={{ maxWidth: 880, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginBottom: 8 }}>
+            — {allHeading} —
+          </div>
+          <h2 style={{ fontSize: 22, fontWeight: 900, margin: "0 0 8px", color: "#3D2E1F" }}>{allTitle}</h2>
+          {allSub && (
+            <p style={{ fontSize: 13, color: "#8B7355", margin: 0, lineHeight: 1.6 }}>{allSub}</p>
+          )}
+        </div>
         {t.categories.map((c) => {
           const isCurrent = currentCategoryId && c.id === currentCategoryId;
           return (

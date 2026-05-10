@@ -8,7 +8,7 @@ window.__CONTENT__.ja.categories.tool = {
   subtitle: "「あとで」を「今」に。後回し・先延ばし対策のタイマー系。",
   accent: { c: "#7BAE74", soft: "#EAF3E5", deep: "#3F7239" },
   eyebrow: "後回し対策",
-  formula: { a: "仕掛け", b: "「あとで」", c: "「今」になる" },
+  formula: { a: "仕掛け", b: "あとで", c: "今に" },
 
   story: {
     tagline: "「あとで」が、「今」になる。",
@@ -40,9 +40,9 @@ window.__CONTENT__.ja.categories.tool = {
       appstore_url: "https://apps.apple.com/app/id000000000",
       hero_image: "images/apps/timer.jpeg",
       formula_a: "打ち上げ",
-      formula_b: "「あとで」",
-      formula_c: "「もう一回」で動く",
-      concept: "打ち上げ × 「あとで」 = 「もう一回」で動く",
+      formula_b: "あとで",
+      formula_c: "もう一回で動く",
+      concept: "打ち上げ × あとで = もう一回で動く",
       call: [
         "ちょっと、休む？",
         "もう一回、打ち上げる？",
