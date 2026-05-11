@@ -1,6 +1,1 @@
-# app-ads.txt
-# AdMob 用のエントリをここに追記してください。
-# 既存のサイトから内容をコピーする場合は上書き。
-#
-# 例 (実際のパブリッシャー ID に置き換え):
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-7929629980123916, DIRECT, f08c47fec0942fa0

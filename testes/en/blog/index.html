@@ -10,12 +10,11 @@
   .wrap { max-width:720px; margin:0 auto; padding:32px 18px 60px; }
   h1 { font-size:26px; font-weight:900; margin:0 0 8px; }
   .lead { font-size:13px; opacity:.7; margin:0 0 22px; line-height:1.7; }
-  .posts { display:grid; gap:14px; list-style:none; padding:0; margin:0; }
-  .post { display:block; background:#fff; border:1px solid #eee; border-radius:14px; padding:18px 20px; text-decoration:none; color:inherit; transition: transform .15s ease, box-shadow .15s ease; }
-  .post:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
-  .post .date { font-size:11px; opacity:.55; letter-spacing:1px; font-variant-numeric:tabular-nums; margin-bottom:6px; }
-  .post .title { font-size:17px; font-weight:800; line-height:1.5; margin-bottom:6px; }
-  .post .excerpt { font-size:13px; opacity:.75; line-height:1.7; }
+  .coming-soon { background:#fff; border:1px solid #eee; border-radius:14px; padding:48px 24px; text-align:center; }
+  .coming-soon .emoji { font-size:36px; margin-bottom:12px; }
+  .coming-soon .msg { font-size:16px; font-weight:700; margin-bottom:6px; }
+  .coming-soon .sub { font-size:13px; opacity:.65; margin-bottom:20px; line-height:1.7; }
+  .coming-soon .link { display:inline-block; padding:10px 20px; background:#E89A3D; color:#fff; text-decoration:none; border-radius:999px; font-size:13px; font-weight:700; }
   .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
   .site-nav { flex: 1; justify-content: center; }
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
@@ -29,22 +28,11 @@
 <div class="wrap">
   <h1>Column</h1>
   <p class="lead">Notes from making apps for parents and kids.</p>
-  <div class="posts">
-      <a class="post" href="posts/first-thing-when-designing.html">
-        <div class="date">2026-05-08</div>
-        <div class="title">The first thing I decide when designing a kids' app</div>
-        <div class="excerpt">Not features, not visuals — I start by writing one line: 'How should the child feel after using this?'</div>
-      </a>
-      <a class="post" href="posts/morning-routine-tweak.html">
-        <div class="date">2026-05-05</div>
-        <div class="title">A tiny tweak that fixed our slow mornings</div>
-        <div class="excerpt">My kid hated mornings. Reminders didn't work. Then I let him choose the order — and everything shifted.</div>
-      </a>
-      <a class="post" href="posts/no-more-nagging.html">
-        <div class="date">2026-05-02</div>
-        <div class="title">Three small mechanics that stopped my nagging</div>
-        <div class="excerpt">I stopped saying 'hurry up' and 'did you pack everything?' — here's what replaced it.</div>
-      </a>
+  <div class="coming-soon">
+    <div class="emoji">✍️</div>
+    <div class="msg">English columns are coming soon.</div>
+    <div class="sub">For now, columns are available in Japanese only.</div>
+    <a class="link" href="../../ja/blog/index.html">日本語のコラムを読む →</a>
   </div>
 </div>
 <div id="site-footer"></div>

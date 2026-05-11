@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>忘れない事を忘れない — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="子供に Todo リストを持たせた。でも、リストを見ることを忘れる。仕事のスケジューラ・ミルトンモデルの前提質問・ワーキングメモリ研究を絡めて、子供の記憶の仕組みを考える。" />
+<link rel="canonical" href="https://lycoapp.com/ja/blog/posts/remember-to-remember.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="忘れない事を忘れない" />
+<meta property="og:description" content="子供に Todo リストを持たせた。でも、リストを見ることを忘れる。仕事のスケジューラ・ミルトンモデルの前提質問・ワーキングメモリ研究を絡めて、子供の記憶の仕組みを考える。" />
+<meta property="og:url" content="https://lycoapp.com/ja/blog/posts/remember-to-remember.html" />
+<meta property="og:site_name" content="Lyco App" />
+<style>
+  body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #8B7355; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #FFE9B0 60%); padding: 0 2px; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #8B7355; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.7; }
+  .body blockquote p { margin: 0 0 .4em; }
+  .body blockquote p:last-child { margin-bottom: 0; }
+  .refs { margin-top: 40px; padding-top: 18px; border-top: 1px dashed #D6C9B5; font-size: 12px; color:#5C4936; }
+  .refs ol { padding-left: 18px; margin: 0; }
+  .refs li { margin-bottom: 6px; }
+  .related-apps { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-apps .related-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; display: block; }
+  .related-apps .related-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+  .related-apps .related-list a { display: inline-block; padding: 6px 14px; background: #FBF6EE; border: 1px solid #E8E0CC; border-radius: 999px; text-decoration: none; color: #5C4936; font-size: 13px; font-weight: 600; transition: background .15s ease; }
+  .related-apps .related-list a:hover { background: #FFE9B0; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../../../favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "忘れない事を忘れない",
+  "description": "子供に Todo リストを持たせた。でも、リストを見ることを忘れる。仕事のスケジューラ・ミルトンモデルの前提質問・ワーキングメモリ研究を絡めて、子供の記憶の仕組みを考える。",
+  "datePublished": "2026-05-11",
+  "dateModified": "2026-05-11",
+  "author": { "@type": "Organization", "name": "Lyco App" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/ja/blog/posts/remember-to-remember.html",
+  "inLanguage": "ja"
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← コラム一覧</a>
+  <h1>忘れない事を忘れない</h1>
+  <div class="meta">2026-05-11</div>
+  <div class="body">
+
+<blockquote>
+<p>「ねぇ、これ、見た?」<br />「あー、見てない」</p>
+</blockquote>
+
+<p>朝書いた Todo リスト、しわくちゃで戻ってくる。今日も、見てない。</p>
+
+<p>「書いたら、忘れない」とはよく言うけど、「<strong>見ることを、忘れる</strong>」。</p>
+
+<h2>仕事では？</h2>
+
+<p>忘れないのは、「タスクを片付ける」とは別に、「<strong>タスクリストを見るタスク</strong>」自体をスケジューラに入れてるから。</p>
+
+<p>毎週月曜の朝、「チケットの棚卸」が自動で予定に入る。これがないと、普通に忘れる。</p>
+
+<p>大人は <strong>思い出すための仕組みを、外に置いてる</strong>。子供には、それがない。</p>
+
+<h2>言い方を変えたら、少し効いた</h2>
+
+<p>「リスト見なさい」じゃなくて、「<strong>リスト、何個目から始める?</strong>」と聞く。これは <strong>ミルトンモデル</strong> で言われる <strong>前提質問</strong> という、心理学のテクニックに近い。</p>
+
+<p>最初は少し効いた。すぐ慣れて、また忘れる。</p>
+
+<h2>アラームは、子供には使えない</h2>
+
+<p>大人はスマホのアラームで強制的に思い出せる。でも、子供は学校でスマホ持てない。腕時計のアラームを禁止してる学校もある。</p>
+
+<p>子供は、<strong>外部記憶なし</strong>で、すべて頭の中で記憶を回してる。</p>
+
+<h2>容量を超えたら、消える</h2>
+
+<p>人間の作業記憶 (ワーキングメモリ) には <strong>容量がある</strong><sup>¹</sup>。子どもの容量は大人より小さく、ADHD 傾向のある子はさらに小さく出ることもある<sup>²</sup>。</p>
+
+<p>容量を超えると、<strong>優先度が低いものから、頭から消える</strong>。「Todo リストを見ること」は、まさに消える側だ。「やらされ感」のあるもの。<strong>興味のない情報は、優先度が下がる</strong><sup>³</sup>。</p>
+
+<h2>でも、興味があるものなら、覚えてる</h2>
+
+<p>ポケモンの全種類は、教えてないのに頭に入ってる。<br />
+ゴミ収集車の通る曜日も、なぜか把握してる。</p>
+
+<p>子供にとっての最強の外部記憶は、「<strong>興味</strong>」。</p>
+
+<p>じゃー、Todo リストを「興味」に変換できないかな?</p>
+
+  </div>
+
+  <div class="related-apps">
+    <span class="related-label">こんなアプリがあります</span>
+    <ul class="related-list">
+      <li><a href="../../apps/category-tool.html">タイマー系 →</a></li>
+      <li><a href="../../index.html">Todo 系 (習慣づくり) →</a></li>
+    </ul>
+  </div>
+
+  <div class="refs">
+    <ol>
+      <li>Baddeley, A.D. <em>Working Memory.</em> Oxford University Press, 1986.</li>
+      <li>Martinussen, R., et al. <em>A meta-analysis of working memory impairments in children with attention-deficit/hyperactivity disorder.</em> Journal of the American Academy of Child &amp; Adolescent Psychiatry, 44(4):377-384, 2005.</li>
+      <li>Craik, F.I.M. &amp; Lockhart, R.S. <em>Levels of processing: A framework for memory research.</em> Journal of Verbal Learning and Verbal Behavior, 11(6):671-684, 1972.</li>
+    </ol>
+  </div>
+</div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/ja/common.js"></script>
+<script src="../../../content/ja/todo.js"></script>
+<script src="../../../content/ja/record.js"></script>
+<script src="../../../content/ja/tool.js"></script>
+<script src="../../../content/ja/other.js"></script>
+<script src="../../../content/en/common.js"></script>
+<script src="../../../content/en/todo.js"></script>
+<script src="../../../content/en/record.js"></script>
+<script src="../../../content/en/tool.js"></script>
+<script src="../../../content/en/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script type="text/babel" src="../../../shared/site-shared.jsx"></script>
+<script type="text/babel" src="../../../shared/blog-shell.jsx" data-path-prefix="../../"></script>
+</body>
+</html>
