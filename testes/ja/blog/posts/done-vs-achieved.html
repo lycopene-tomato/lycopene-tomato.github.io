@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>「やった」と「できた」は、別物 — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="「歯磨きして」「やった」「歯ブラシくわえてるだけでしょ！」── 子の『やった』と親の『できた』は別物。要件定義と実装のギャップに似た構造を、家庭での試行錯誤と一緒に。" />
+<link rel="canonical" href="https://lycoapp.com/ja/blog/posts/done-vs-achieved.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="「やった」と「できた」は、別物" />
+<meta property="og:description" content="子の『やった』と親の『できた』は別物。要件定義と実装のギャップに似た構造を、家庭での試行錯誤と一緒に。" />
+<meta property="og:url" content="https://lycoapp.com/ja/blog/posts/done-vs-achieved.html" />
+<meta property="og:site_name" content="Lyco App" />
+<style>
+  body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #8B7355; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #FFE9B0 60%); padding: 0 2px; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #8B7355; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.7; }
+  .body blockquote p { margin: 0 0 .4em; }
+  .body blockquote p:last-child { margin-bottom: 0; }
+  .body ol, .body ul { margin: 0 0 1.4em; padding-left: 22px; }
+  .body li { margin-bottom: 6px; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../../../favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "「やった」と「できた」は、別物",
+  "description": "「歯磨きして」「やった」「歯ブラシくわえてるだけでしょ！」── 子の『やった』と親の『できた』は別物。要件定義と実装のギャップに似た構造を、家庭での試行錯誤と一緒に。",
+  "datePublished": "2026-05-11",
+  "dateModified": "2026-05-11",
+  "author": { "@type": "Organization", "name": "Lyco App" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/ja/blog/posts/done-vs-achieved.html",
+  "inLanguage": "ja"
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← コラム一覧</a>
+  <h1>「やった」と「できた」は、別物</h1>
+  <div class="meta">2026-05-11</div>
+  <div class="body">
+
+<blockquote>
+<p>「歯磨きして」<br />「やった」<br />「歯ブラシくわえてるだけでしょ！！」</p>
+</blockquote>
+
+<blockquote>
+<p>「着替えして」「やった」<br />行ったら、脱いだ服はそこら辺に散乱。</p>
+</blockquote>
+
+<blockquote>
+<p>「片付けして」「やった」<br />床のおもちゃが、1 個だけ箱に入ってる。</p>
+</blockquote>
+
+<p>子は嘘ついてないです。「やる」をちゃんとやってる。咥えた、脱いだ、1 個入れた。やった、はやった。</p>
+
+<p>ただ、親の頭の中にあったのは「やった」じゃなくて「できた」だったんですよね。</p>
+
+<h2>これ、仕事でも、まったく同じことが起きるやつ</h2>
+
+<p>エンジニアをやってると、これに似た事故、よく起こします。</p>
+
+<p>要件: <strong>「注文できること」</strong><br />
+実装: <strong>「CSV をアップロードしたら、注文が登録される」</strong></p>
+
+<p>機能としては、注文できる。確かに、できる。</p>
+
+<p>でも、これ EC サイトです。<strong>誰が、CSV 作って、アップするの?</strong></p>
+
+<p>「やった (実装した)」と「<strong>目的が達成された</strong>」は、別物。</p>
+
+<p>要件を出した側が <strong>「やってほしいこと」しか言わなくて、「達成したい状態」を言わなかった</strong> から、こうなる。</p>
+
+<p>子の「やった」も、構造は同じです。</p>
+
+<h2>言い直してみたら</h2>
+
+<p>伝え方を変えるだけ。</p>
+
+<ul>
+  <li>❌ 「歯磨きして」 → ⭕ 「歯がツルツルになったら教えて」</li>
+  <li>❌ 「片付けして」 → ⭕ 「床に何も落ちてない状態にして」</li>
+  <li>❌ 「着替えて」 → ⭕ 「パジャマ脱いで、服着替えて、パジャマたたむまで」</li>
+</ul>
+
+<p><strong>最初から、目的を渡す</strong>。「やる」じゃなくて「達成したい状態」を。</p>
+
+  </div>
+</div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/ja/common.js"></script>
+<script src="../../../content/ja/todo.js"></script>
+<script src="../../../content/ja/record.js"></script>
+<script src="../../../content/ja/tool.js"></script>
+<script src="../../../content/ja/other.js"></script>
+<script src="../../../content/en/common.js"></script>
+<script src="../../../content/en/todo.js"></script>
+<script src="../../../content/en/record.js"></script>
+<script src="../../../content/en/tool.js"></script>
+<script src="../../../content/en/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script type="text/babel" src="../../../shared/site-shared.jsx"></script>
+<script type="text/babel" src="../../../shared/blog-shell.jsx" data-path-prefix="../../"></script>
+</body>
+</html>

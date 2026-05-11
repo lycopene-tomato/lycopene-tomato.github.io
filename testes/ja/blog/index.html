@@ -10,16 +10,20 @@
   .wrap { max-width:720px; margin:0 auto; padding:32px 18px 60px; }
   h1 { font-size:26px; font-weight:900; margin:0 0 8px; }
   .lead { font-size:13px; opacity:.7; margin:0 0 22px; line-height:1.7; }
-  .section-label { font-size:11px; letter-spacing:3px; font-weight:800; color:#8B7355; margin:28px 0 10px; }
+  .section-label { font-size:11px; letter-spacing:3px; font-weight:800; color:#8B7355; margin:32px 0 10px; }
+  .section-label.app { color:#3F8C7E; }
+  .section-sublead { font-size:12px; opacity:.65; margin:-4px 0 14px; line-height:1.7; }
   .posts { display:grid; gap:14px; list-style:none; padding:0; margin:0; }
   .post { display:block; background:#fff; border:1px solid #eee; border-radius:14px; padding:18px 20px; text-decoration:none; color:inherit; transition: transform .15s ease, box-shadow .15s ease; }
   .post:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
   .post .date { font-size:11px; opacity:.55; letter-spacing:1px; font-variant-numeric:tabular-nums; margin-bottom:6px; }
   .post .title { font-size:17px; font-weight:800; line-height:1.5; margin-bottom:6px; }
   .post .excerpt { font-size:13px; opacity:.75; line-height:1.7; }
+  .post .app-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.5px; color:#fff; background:#3F8C7E; padding:3px 10px; border-radius:999px; margin-bottom:8px; }
   .post.pinned { background: linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%); border: 2px solid #E89A3D; }
   .post.pinned .pin-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:2px; color:#fff; background:#E89A3D; padding:3px 10px; border-radius:999px; margin-bottom:10px; }
   .post.pinned .title { font-size: 18px; }
+  .post.app-post { border-left: 4px solid #3F8C7E; background:#FBFAF5; }
   .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
   .site-nav { flex: 1; justify-content: center; }
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
@@ -34,31 +38,56 @@
   <h1>コラム</h1>
   <p class="lead">子育てアプリづくりで考えていること、家庭で試したこと。</p>
 
+  <!-- ▼ セクション 1: ピン留め (はじめにお読みください) -->
   <div class="posts">
       <a class="post pinned" href="posts/rewards-and-dopamine.html">
         <span class="pin-badge">📌 はじめにお読みください</span>
         <div class="date">2026-05-11</div>
-        <div class="title">ご褒美ばっかりで、ご褒美が無いとやらない子にならない? ── 私たちがアプリにゲーム性を組み込む理由</div>
+        <div class="title">褒美が無いとやらない子にならない？</div>
         <div class="excerpt">「ご褒美が無いと動かない子を作るのでは?」という疑問に、ADHD 研究のドーパミン特性と習慣化の視点からお答えします。</div>
       </a>
   </div>
 
+  <!-- ▼ セクション 2: アプリ別 (各アプリ専用コラム、書けたものから順次表示) -->
+  <!--
+    対象アプリ (LP に存在する 7 アプリ):
+    - farm (TodoFarm)     → posts/app-farm.html
+    - gacha (TodoGatya)   → posts/app-gacha.html
+    - bingo (TodoBingo)   → posts/app-bingo.html
+    - sugoroku            → posts/app-sugoroku.html
+    - puzzle              → posts/app-puzzle.html
+    - timer               → posts/app-timer.html
+    - trouble (TroubleNote) → posts/app-trouble.html
+    書けたものから .app-section .posts の中に追記する。未執筆は表示しない。
+  -->
+  <div class="app-section">
+    <div class="section-label app">📱 どんな時に、どのアプリ?</div>
+    <p class="section-sublead">日々の困りごとに、どのアプリが効くか。アプリごとに 1 本ずつ書いています。</p>
+    <div class="posts">
+      <a class="post app-post" href="posts/app-gacha.html">
+        <span class="app-badge">Todoガチャ</span>
+        <div class="date">2026-05-11</div>
+        <div class="title">「やりなさい」が、口グセになっていた</div>
+        <div class="excerpt">「早くして！」を毎朝3回。Todoガチャは「やる事」を子が自分で引く仕組み。自己決定理論を踏まえて『やらされ感』を消し、朝のセリフが半分以下になった使い方。</div>
+      </a>
+      <!-- 書けたら以下のような形式で追加:
+      <a class="post app-post" href="posts/app-farm.html">
+        <span class="app-badge">TodoFarm</span>
+        <div class="date">2026-MM-DD</div>
+        <div class="title">〇〇な日に、TodoFarm</div>
+        <div class="excerpt">...</div>
+      </a>
+      -->
+    </div>
+  </div>
+
+  <!-- ▼ セクション 3: 最新の記事 (時系列、アプリ非依存、SEO 拾い) -->
   <div class="section-label">— 最新の記事 —</div>
   <div class="posts">
-      <a class="post" href="posts/first-thing-when-designing.html">
-        <div class="date">2026-05-08</div>
-        <div class="title">アプリを作るとき、いちばん最初に決めていること</div>
-        <div class="excerpt">機能でも見た目でもなく、「子どもが使い終わったあと、何を感じてほしいか」を最初に書きます。</div>
-      </a>
-      <a class="post" href="posts/morning-routine-tweak.html">
-        <div class="date">2026-05-05</div>
-        <div class="title">「ぐずぐずする朝」を変えた、たった一つの工夫</div>
-        <div class="excerpt">うちの子は朝が苦手でした。声をかけても動かない。あるとき、順番を「子どもに選ばせる」ようにしただけで、世界が変わりました。</div>
-      </a>
-      <a class="post" href="posts/no-more-nagging.html">
-        <div class="date">2026-05-02</div>
-        <div class="title">親が口を出さなくなる、小さな仕掛け</div>
-        <div class="excerpt">「早くして」「忘れ物ない？」を言わなくて済むようになった、3つの仕掛けの話。</div>
+      <a class="post" href="posts/done-vs-achieved.html">
+        <div class="date">2026-05-11</div>
+        <div class="title">「やった」と「できた」は、別物</div>
+        <div class="excerpt">「歯磨きして」「やった」「歯ブラシくわえてるだけでしょ！」── 子の「やった」と親の「できた」は別物。要件定義と実装のギャップに似た構造を、家庭での試行錯誤と一緒に。</div>
       </a>
   </div>
 </div>
