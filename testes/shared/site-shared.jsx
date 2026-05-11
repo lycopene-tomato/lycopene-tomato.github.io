@@ -278,7 +278,7 @@ window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
         <a href={`${pathPrefix}index.html#lineup`} style={{ color: "inherit", textDecoration: "none" }}>{f.nav_apps}</a>
         <a href={`${pathPrefix}blog/index.html`} style={{ color: "inherit", textDecoration: "none" }}>{f.nav_blog || "Blog"}</a>
         {f.nav_privacy && (
-          <a href={`${pathPrefix}privacy-policy/`} style={{ color: "inherit", textDecoration: "none" }}>{f.nav_privacy}</a>
+          <a href={`${pathPrefix}../privacy-policy/`} style={{ color: "inherit", textDecoration: "none" }}>{f.nav_privacy}</a>
         )}
         <span style={{ opacity: 0.5, fontSize: 10 }}>·</span>
         <span style={{ fontSize: 10, opacity: 0.5, letterSpacing: 0.3 }}>{f.copy}</span>

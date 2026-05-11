@@ -1,160 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
 <title>プライバシーポリシー — Lyco App</title>
-<meta name="description" content="Lyco App の共通プライバシーポリシー。広告・トラッキングの扱い、データ保存範囲、お問い合わせ先など。">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Lyco App の共通プライバシーポリシー。広告識別子を取得せず、データは端末内のみで完結します。" />
+<link rel="stylesheet" href="../../shared/motion.css" />
+<style>
+  body { margin: 0; font-family: "Helvetica Neue", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; }
+  * { box-sizing: border-box; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) {
+    .site-nav { display: none !important; }
+    .site-menu-btn { display: block !important; }
+  }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
 <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="../../favicon-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
-<style>
-  body {
-    margin: 0;
-    font-family: "Helvetica Neue", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
-    background: #FBF6EE;
-    color: #3D2E1F;
-    line-height: 1.85;
-    -webkit-text-size-adjust: 100%;
-  }
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  .hero {
-    background: #2C2218;
-    color: #FBF6EE;
-    padding: 32px 20px 28px;
-    text-align: center;
-  }
-  .hero h1 {
-    margin: 0 0 8px;
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: 1px;
-  }
-  .hero .lede {
-    margin: 0;
-    font-size: 13px;
-    opacity: 0.7;
-  }
-  main {
-    padding: 36px 0 48px;
-  }
-  section {
-    margin-bottom: 28px;
-  }
-  section h2 {
-    font-size: 16px;
-    font-weight: 800;
-    margin: 0 0 8px;
-    color: #3D2E1F;
-    border-left: 4px solid #FFB263;
-    padding-left: 10px;
-  }
-  section p {
-    margin: 0 0 10px;
-    font-size: 14px;
-    color: #5C4936;
-  }
-  ul {
-    margin: 0 0 10px;
-    padding-left: 22px;
-  }
-  ul li {
-    font-size: 14px;
-    color: #5C4936;
-    margin-bottom: 6px;
-  }
-  .last-updated {
-    font-size: 12px;
-    opacity: 0.55;
-    font-variant-numeric: tabular-nums;
-  }
-  footer.site-footer {
-    background: #2C2218;
-    color: #FBF6EE;
-    text-align: center;
-    padding: 12px 20px;
-    font-size: 11px;
-    opacity: 0.85;
-  }
-  footer.site-footer .tagline {
-    color: #FFB263;
-    font-weight: 700;
-    margin-right: 8px;
-  }
-</style>
 </head>
 <body>
+<div id="root"></div>
 
-<header class="hero">
-  <div class="container">
-    <h1>プライバシーポリシー</h1>
-    <p class="lede">Lyco App 共通</p>
-  </div>
-</header>
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
-<main>
-  <div class="container">
+<!-- Motion -->
+<script src="../../shared/motion.js" defer></script>
 
-    <section>
-      <h2>適用範囲</h2>
-      <p>本ポリシーは Lyco App が提供するすべてのアプリに共通で適用されます。各アプリの App Store ページからリンクされる本ページが、そのアプリのプライバシーポリシーとなります。</p>
+<!-- 言語メタ -->
+<script src="../../shared/langs.js"></script>
+
+<!-- コンテンツ (SiteHeader/SiteFooter が I18N を参照するため必要) -->
+<script src="../../content/ja/common.js"></script>
+<script src="../../content/ja/todo.js"></script>
+<script src="../../content/ja/record.js"></script>
+<script src="../../content/ja/tool.js"></script>
+<script src="../../content/ja/other.js"></script>
+<script>window.__CONTENT__ = window.__CONTENT__ || {}; window.__CONTENT__._fb_lang = "en";</script>
+<script src="../../content/en/common.js"></script>
+<script src="../../content/en/todo.js"></script>
+<script src="../../content/en/record.js"></script>
+<script src="../../content/en/tool.js"></script>
+<script src="../../content/en/other.js"></script>
+
+<script src="../../shared/i18n-loader.js"></script>
+
+<!-- 共通コンポーネント -->
+<script type="text/babel" src="../../shared/site-shared.jsx"></script>
+
+<!-- ページ本体 -->
+<script type="text/babel" data-presets="env,react">
+
+const { createRoot } = ReactDOM;
+// SiteHeader/SiteFooter は pathPrefix を「言語ホームへの相対」として使う
+// (画像は ${pathPrefix}../images/...、privacy-policy は ${pathPrefix}../privacy-policy/)。
+// /privacy-policy/ja/index.html から /ja/ 言語ホームに戻るには ../../ja/
+const PREFIX = "../../ja/";
+const ACCENT = "#E89A3D";
+const ACCENT_DEEP = "#8B5A1A";
+
+function Card({ label, children }) {
+  return (
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "28px auto" }}>
+      <div style={{
+        position: "relative",
+        border: `2px solid ${ACCENT}`,
+        borderRadius: 16,
+        padding: "32px 24px 24px",
+        background: "#fff",
+      }}>
+        <div style={{ position: "absolute", top: -11, left: 20, pointerEvents: "none" }}>
+          <span style={{
+            display: "inline-block",
+            background: "#FBF6EE",
+            padding: "2px 14px",
+            borderRadius: 999,
+            fontSize: 13, fontWeight: 800, letterSpacing: 3,
+            color: ACCENT_DEEP,
+          }}>{label}</span>
+        </div>
+        {children}
+      </div>
     </section>
+  );
+}
 
-    <section>
-      <h2>収集する情報</h2>
-      <ul>
-        <li>アプリの設定・進捗・記録などは、お使いの端末内にのみ保存されます。</li>
-        <li>当方のサーバーや外部のサービスに送信することはありません。</li>
-        <li>個人を特定する情報 (氏名・メールアドレス・電話番号など) は取得しません。</li>
-      </ul>
+function Promise3() {
+  // 冒頭の "3つの約束" ハイライト
+  const items = [
+    { k: "01", t: "広告識別子 (IDFA) は取得しません", d: "アプリ利用が広告ネットワークに紐づくことはありません。" },
+    { k: "02", t: "データは端末の中だけ", d: "あなたの記録・設定は端末内に保存され、外部サーバーには送信されません。" },
+    { k: "03", t: "“集めない” を設計の出発点に", d: "便利機能のために情報を集める設計ではなく、集めなくても成立する設計を優先しています。" },
+  ];
+  return (
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "32px auto 8px" }}>
+      <div style={{
+        background: "linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%)",
+        border: `2px solid ${ACCENT}`,
+        borderRadius: 18,
+        padding: "26px 22px 22px",
+      }}>
+        <div style={{ textAlign: "center", marginBottom: 18 }}>
+          <div style={{ fontSize: 11, letterSpacing: 4, fontWeight: 800, color: ACCENT_DEEP, marginBottom: 6 }}>— 3 つの約束 —</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: "#3D2E1F", lineHeight: 1.5 }}>
+            安心して使ってもらうために、<br />
+            <span style={{ color: ACCENT_DEEP }}>守っていること</span>
+          </div>
+        </div>
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+          {items.map((it) => (
+            <li key={it.k} style={{
+              display: "flex", gap: 14, alignItems: "flex-start",
+              padding: "12px 14px", background: "#fff", borderRadius: 12,
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+            }}>
+              <span style={{
+                flex: "0 0 auto",
+                fontFamily: "ui-monospace, monospace",
+                fontSize: 11, fontWeight: 800, letterSpacing: 1,
+                color: "#fff", background: ACCENT,
+                padding: "3px 8px", borderRadius: 6,
+              }}>{it.k}</span>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#3D2E1F", marginBottom: 2 }}>{it.t}</div>
+                <div style={{ fontSize: 12.5, color: "#5C4936", lineHeight: 1.6 }}>{it.d}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
+  );
+}
 
-    <section>
-      <h2>広告について</h2>
-      <ul>
-        <li>子ども向けアプリでは広告を一切表示しません。</li>
-        <li>その他のアプリでは、保護者向けの管理画面にのみ Google AdMob による広告が表示される場合があります。お子さまが操作する画面には表示されません。</li>
-      </ul>
-      <p>AdMob は広告配信のために広告識別子などの情報を取得する場合があります。詳しくは Google のプライバシーポリシーをご確認ください。</p>
-    </section>
+function Page() {
+  return (
+    <>
+      <window.SiteHeader pathPrefix={PREFIX} currentCategoryId="todo" />
 
-    <section>
-      <h2>解析ツール / トラッキング</h2>
-      <ul>
-        <li>子ども向けアプリでは、解析ツール・トラッキングを一切使用しません。広告識別子 (IDFA) の取得も行いません。</li>
-        <li>その他のアプリでは、不具合把握と改善のため、匿名の利用統計を Apple の提供する仕組み経由で取得する場合があります。個人を特定する情報は含まれません。</li>
-      </ul>
-    </section>
+      {/* HERO */}
+      <section className="reveal" style={{
+        background: "#2C2218", color: "#FBF6EE",
+        padding: "36px 20px 30px", textAlign: "center",
+      }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <h1 style={{ margin: "0 0 8px", fontSize: 26, fontWeight: 900, letterSpacing: 1 }}>プライバシーポリシー</h1>
+          <p style={{ margin: 0, fontSize: 13, opacity: 0.7 }}>Lyco App 共通</p>
+        </div>
+      </section>
 
-    <section>
-      <h2>第三者への提供</h2>
-      <p>ユーザーの情報を第三者に販売・提供することはありません。</p>
-    </section>
+      {/* 3つの約束 (冒頭ハイライト) */}
+      <Promise3 />
 
-    <section>
-      <h2>お問い合わせ</h2>
-      <p>ご質問・ご要望は <strong>lycopenecafei+LP@gmail.com</strong> までお寄せください。App Store のアプリページからもご連絡いただけます。</p>
-    </section>
+      {/* 詳細セクション */}
+      <main style={{ paddingBottom: 48 }}>
+        <Card label="適用範囲">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            本ポリシーは、Lyco App が提供するすべてのアプリに共通で適用されます。各アプリの App Store ページからリンクされる本ページが、そのアプリのプライバシーポリシーとなります。
+          </p>
+        </Card>
 
-    <section>
-      <h2>改定</h2>
-      <p>本ポリシーは必要に応じて改定することがあります。重要な変更がある場合は、このページ上でお知らせします。</p>
-      <p class="last-updated">最終更新: 2026-05-10</p>
-    </section>
+        <Card label="収集する情報">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>アプリの設定・進捗・記録などは、お使いの端末内にのみ保存されます。</li>
+            <li>当方のサーバーや外部サービスに送信することはありません。</li>
+            <li>個人を特定する情報 (氏名・メールアドレス・電話番号など) は取得しません。</li>
+          </ul>
+        </Card>
 
-  </div>
-</main>
+        <Card label="広告について">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>子ども向けアプリでは広告を一切表示しません。</li>
+            <li>その他のアプリでは、保護者向けの管理画面にのみ Google AdMob による広告が表示される場合があります。お子さまが操作する画面には表示されません。</li>
+            <li>当アプリは AdMob に対しても広告識別子 (IDFA) を渡さない設定で配信しています。</li>
+          </ul>
+        </Card>
 
-<footer class="site-footer">
-  <div class="container">
-    <span class="tagline">Own Your Day!</span>
-    <span>© 2026 Lyco App.</span>
-  </div>
-</footer>
+        <Card label="解析ツール / トラッキング">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>子ども向けアプリでは、解析ツール・トラッキングを一切使用しません。</li>
+            <li>その他のアプリでも、不具合把握と改善のため Apple の提供する匿名統計を利用する場合のみで、個人を特定する情報は含まれません。</li>
+          </ul>
+        </Card>
+
+        <Card label="第三者への提供">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            ユーザーの情報を第三者に販売・提供することはありません。
+          </p>
+        </Card>
+
+        <Card label="お問い合わせ">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            ご質問・ご要望は <strong style={{ color: "#3D2E1F" }}>lycopenecafei+LP@gmail.com</strong> までお寄せください。App Store のアプリページからもご連絡いただけます。
+          </p>
+        </Card>
+
+        <Card label="改定">
+          <p style={{ margin: "0 0 8px", fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            本ポリシーは必要に応じて改定することがあります。重要な変更がある場合は、このページ上でお知らせします。
+          </p>
+          <p style={{ margin: 0, fontSize: 12, opacity: 0.55, fontVariantNumeric: "tabular-nums" }}>
+            最終更新: 2026-05-11
+          </p>
+        </Card>
+      </main>
+
+      <window.SiteFooter pathPrefix={PREFIX} />
+    </>
+  );
+}
+
+createRoot(document.getElementById("root")).render(<Page />);
+
+</script>
 
 </body>
 </html>

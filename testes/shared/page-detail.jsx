@@ -57,13 +57,6 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
           <img src={window.resolveHeroImage(app, prefix)} alt={app.name}
             style={{ display: "block", maxWidth: 360, width: "100%", margin: "20px auto 0", borderRadius: 14 }} />
         )}
-        <div style={{
-          display: "flex", gap: 12, justifyContent: "center",
-          marginTop: 20, flexWrap: "wrap",
-        }}>
-          <window.StoreButton platform="apple" href={app.appstore_url} />
-          <window.StoreButton platform="google" comingSoon={true} />
-        </div>
       </section>
 
       {/* CALL */}
@@ -130,6 +123,17 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
 
       {/* SCREENS (optional, language-specific path) */}
       <window.AppScreens lang={lang} appId={app.id} pathPrefix={prefix} accent={accent} label={t.detail.label_screen} />
+
+      {/* STORE LINKS — 説明を読み終えたあとに表示 */}
+      <section className="reveal" data-snap data-progress-color={accent.c}
+        style={{ padding: "0 18px", maxWidth: 640, margin: "28px auto 8px", textAlign: "center" }}>
+        <div style={{
+          display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap",
+        }}>
+          <window.StoreButton platform="apple" href={app.appstore_url} />
+          <window.StoreButton platform="google" comingSoon={true} />
+        </div>
+      </section>
 
       {/* SAME CATEGORY NAV */}
       <section className="reveal" style={{ padding: "32px 18px 16px", maxWidth: 720, margin: "0 auto" }}>
