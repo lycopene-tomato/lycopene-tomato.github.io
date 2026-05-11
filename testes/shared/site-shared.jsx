@@ -163,7 +163,7 @@ window.SiteHeader = ({ pathPrefix = "", currentCategoryId = "todo" }) => {
           whiteSpace: "nowrap",
           display: "inline-flex", alignItems: "center", gap: 8,
         }}>
-          <img src={`${pathPrefix}../images/logo-mark.jpeg`} alt="Lyco App"
+          <img src="/images/logo-mark.jpeg" alt="Lyco App"
             width="32" height="32"
             style={{ display: "block", borderRadius: 6, background: "#FBF6EE" }} />
           <span>Lyco App</span>
