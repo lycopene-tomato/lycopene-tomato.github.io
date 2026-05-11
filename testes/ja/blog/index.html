@@ -10,12 +10,16 @@
   .wrap { max-width:720px; margin:0 auto; padding:32px 18px 60px; }
   h1 { font-size:26px; font-weight:900; margin:0 0 8px; }
   .lead { font-size:13px; opacity:.7; margin:0 0 22px; line-height:1.7; }
+  .section-label { font-size:11px; letter-spacing:3px; font-weight:800; color:#8B7355; margin:28px 0 10px; }
   .posts { display:grid; gap:14px; list-style:none; padding:0; margin:0; }
   .post { display:block; background:#fff; border:1px solid #eee; border-radius:14px; padding:18px 20px; text-decoration:none; color:inherit; transition: transform .15s ease, box-shadow .15s ease; }
   .post:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
   .post .date { font-size:11px; opacity:.55; letter-spacing:1px; font-variant-numeric:tabular-nums; margin-bottom:6px; }
   .post .title { font-size:17px; font-weight:800; line-height:1.5; margin-bottom:6px; }
   .post .excerpt { font-size:13px; opacity:.75; line-height:1.7; }
+  .post.pinned { background: linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%); border: 2px solid #E89A3D; }
+  .post.pinned .pin-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:2px; color:#fff; background:#E89A3D; padding:3px 10px; border-radius:999px; margin-bottom:10px; }
+  .post.pinned .title { font-size: 18px; }
   .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
   .site-nav { flex: 1; justify-content: center; }
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
@@ -29,6 +33,17 @@
 <div class="wrap">
   <h1>コラム</h1>
   <p class="lead">子育てアプリづくりで考えていること、家庭で試したこと。</p>
+
+  <div class="posts">
+      <a class="post pinned" href="posts/rewards-and-dopamine.html">
+        <span class="pin-badge">📌 はじめにお読みください</span>
+        <div class="date">2026-05-11</div>
+        <div class="title">ご褒美ばっかりで、ご褒美が無いとやらない子にならない? ── 私たちがアプリにゲーム性を組み込む理由</div>
+        <div class="excerpt">「ご褒美が無いと動かない子を作るのでは?」という疑問に、ADHD 研究のドーパミン特性と習慣化の視点からお答えします。</div>
+      </a>
+  </div>
+
+  <div class="section-label">— 最新の記事 —</div>
   <div class="posts">
       <a class="post" href="posts/first-thing-when-designing.html">
         <div class="date">2026-05-08</div>
