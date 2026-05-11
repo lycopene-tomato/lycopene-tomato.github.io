@@ -140,7 +140,7 @@ window.CategoryPage = function CategoryPage({ categoryId, pathPrefix }) {
         <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 4 }}>
           {(t.lineup && t.lineup.label) || "LINEUP"}
         </div>
-        <h2 style={{ fontSize: 22, fontWeight: 900, margin: "0 0 16px" }}>{(t.lineup && t.lineup.title) || ""}</h2>
+        <h2 style={{ fontSize: 22, fontWeight: 900, margin: "0 0 16px" }}>{(category && category.lineup_title) || (t.lineup && t.lineup.title) || ""}</h2>
 
         <div className="lineup-grid" style={{ display: "grid", gap: 16 }}>
           {category.apps.map((app, i) => (

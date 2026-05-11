@@ -81,7 +81,7 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
                 borderRadius: 999,
                 fontSize: 13, fontWeight: 800, letterSpacing: 3,
                 color: accent.deep,
-              }}>{t.detail.label_call}</span>
+              }}>{(category && category.label_call) || t.detail.label_call}</span>
             </div>
             <ul style={{ paddingLeft: 18, margin: 0, display: "flex", flexDirection: "column", gap: 8, color: accent.deep, fontSize: 14, lineHeight: 1.6 }}>
               {app.call.map((c, i) => <li key={i}>{c}</li>)}

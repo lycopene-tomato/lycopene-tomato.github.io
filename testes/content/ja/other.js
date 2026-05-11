@@ -6,6 +6,7 @@ window.__CONTENT__.ja.categories.other = {
   id: "other",
   name: "Other系",
   subtitle: "「育児を少しでも楽に」から外れる、おまけ枠。ゲーム・便利ツール・息抜きなど。",
+  lineup_title: "おまけのアプリ。",
   accent: { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },
   eyebrow: "おまけ",
   formula: { a: "気まぐれ", b: "開発", c: "おまけ" },
@@ -19,7 +20,6 @@ window.__CONTENT__.ja.categories.other = {
       lines: [
         "メインの話は、ちょっと置いといて。",
         "ゲームでも、便利ツールでも。",
-        "何かふらっと、覗いてみたい。",
         "……まだ、何もないけど。",
       ],
     },

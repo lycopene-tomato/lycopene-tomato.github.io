@@ -6,6 +6,8 @@ window.__CONTENT__.ja.categories.record = {
   id: "record",
   name: "Log系",
   subtitle: "毎日の「またか」を、子の成長と親の安心に変える記録系。",
+  lineup_title: "内容に合わせて、整理のアプリ。",
+  label_call: "もやもや",
   accent: { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
   eyebrow: "予防",
   formula: { a: "また", b: "記録", c: "成長？" },
@@ -14,7 +16,7 @@ window.__CONTENT__.ja.categories.record = {
     tagline: "「またか」が、「減ってきた」に変わる。",
     intro: "記憶のままだと、見えない変化がある。\n記録すれば、子の小さな成長と、親の安心が、見えてくる。",
     empathy: {
-      label: "こんな日ばっかり。",
+      label: "また、今日もか…。",
       badge: "ドキドキ",
       lines: [
         "学校から、また電話。",
