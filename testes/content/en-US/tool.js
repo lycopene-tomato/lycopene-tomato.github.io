@@ -1,5 +1,5 @@
 /* ============================================================
- * content/en-US/tool.js — English: Tools category
+ * content/en-US/tool.js — English: Timer category
  * ============================================================ */
 window.__CONTENT__ = window.__CONTENT__ || {};
 window.__CONTENT__["en-US"] = window.__CONTENT__["en-US"] || {};
@@ -7,27 +7,32 @@ window.__CONTENT__["en-US"].categories = window.__CONTENT__["en-US"].categories 
 
 window.__CONTENT__["en-US"].categories.tool = {
   id: "tool",
-  name: "Tool",
-  subtitle: "Small but reliable tools. One thing, well, right now.",
+  name: "Timer",
+  subtitle: "Turn “later” into “now.” Timers built for the kid who keeps putting things off.",
+  lineup_title: "Countdowns that fit the moment.",
   accent: { c: "#7BAE74", soft: "#EAF3E5", deep: "#3F7239" },
-  eyebrow: "Ad-hoc",
-  formula: { a: "Tool", b: "Moment", c: "Solved" },
+  eyebrow: "Beat procrastination",
+  formula: { a: "Hook", b: "Later", c: "Now" },
 
   story: {
-    tagline: "I just need this — right now.",
-    intro: "Not multipurpose. Just no-fuss.",
+    tagline: "“Later” becomes “now.”",
+    intro: "For the kid stuck on “in a minute” and “just five more.”\nApps that use time and boundaries to make switching gears possible.",
     empathy: {
-      label: "Know this moment?",
+      label: "Sound familiar?",
+      badge: "Dragging it out",
       lines: [
-        "I grab the phone the moment it happens.",
-        "Hunt for the app, hunt for the setting, get lost.",
-        "And then — “never mind.”",
-        "Wait, what was I about to do?",
-        "I just want to pull up the right thing instantly.",
+        "“Five more minutes” never ends.",
+        "“Just a bit” turns into 30 minutes.",
+        "Open a comic and the day is gone.",
+        "The more you say “do it,” the more they freeze.",
+        "A plain timer only starts a fight.",
       ],
-      pivot: "Multi-feature apps look powerful. They aren’t in this moment.\nA single-purpose tool is what I need now.",
-      idea_label: "So I had an idea.",
-      idea: "Make tiny tools that match a single moment.\nOpen, tap, done.",
+      tried_label: "I’ve tried everything.",
+      tried: [
+        "Saying “five more minutes” doesn’t help — they don’t feel five minutes yet.",
+        "Even during the break, I have to keep calling out “three minutes,” “two minutes.”",
+        "Take the screen away and they explode.",
+      ],
     },
   },
 
@@ -35,18 +40,21 @@ window.__CONTENT__["en-US"].categories.tool = {
     {
       id: "timer",
       name: "PlanetLoopTimer",
-      tag: "Time",
+      tag: "Active break",
       appstore_url: "https://apps.apple.com/app/id000000000",
       hero_image: "images/apps/timer.jpeg",
-      formula_a: "Timer",
-      formula_b: "Plain",
-      formula_c: "Zero learning curve",
-      concept: "Timer × Plain = Zero learning curve",
-      call: ["How many minutes?", "Tell me when it rings."],
+      formula_a: "Launch",
+      formula_b: "Later",
+      formula_c: "One more launch to start",
+      concept: "Launch × Later = One more launch to start",
+      call: [
+        "Take a little break?",
+        "Want to launch one more?",
+      ],
       trick: [
-        "Stripped-down UI — readable at a glance.",
-        "Big numbers visible from the lock screen.",
-        "Run several at once.",
+        "Not “press for 5 minutes” — you set the time yourself by choosing the launch angle and power. The ending feels earned.",
+        "Each planet runs on its own clock. The farther from the sun, the longer the orbit; closer in, it spirals down and gets pulled back.",
+        "Only Pluto runs the ∞ Challenge — no gravity buildup over time. A reward for beating your own longest record.",
       ],
     },
   ],

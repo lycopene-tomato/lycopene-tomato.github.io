@@ -32,6 +32,22 @@ window.__CONTENT__["en-US"].common = {
     label_same_category: "More in this category",
   },
 
+  empathy: {
+    badge: "That nagging feeling",
+  },
+
+  catNav: {
+    total_prefix: "",
+    total_suffix: " categories in total",
+    showing: "Showing",
+    here_now: "You are here",
+    index_label: "Index",
+    other_categories: "Other categories",
+    find_by_category: "Find by category",
+    choose_by_category: "Pick by category",
+    view: "View",
+  },
+
   footer: {
     tagline: "Own Your Day!",
     tagline_sub: "Start with One Step",

@@ -1,23 +1,24 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en-US">
 <head>
 <meta charset="utf-8" />
-<title>「やった」と「できた」は、別物 — Lyco App</title>
+<title>"Did it" and "done" are not the same thing — Lyco App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="「歯磨きして」「やった」「歯ブラシくわえてるだけでしょ！」── 子の『やった』と親の『できた』は別物。要件定義と実装のギャップに似た構造を、家庭での試行錯誤と一緒に。" />
-<link rel="canonical" href="https://lycoapp.com/ja/blog/posts/done-vs-achieved.html" />
+<meta name="description" content="'Brush your teeth' — 'I did it' — 'you're literally just holding the toothbrush in your mouth.' The kid's 'I did it' and the parent's 'done' are different things. Same structure as a requirements-vs-implementation gap at work." />
+<link rel="canonical" href="https://lycoapp.com/en-US/blog/posts/done-vs-achieved.html" />
 <link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/done-vs-achieved.html" />
 <link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/done-vs-achieved.html" />
 <link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/done-vs-achieved.html" />
 <link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/done-vs-achieved.html" />
 <link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/done-vs-achieved.html" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="「やった」と「できた」は、別物" />
-<meta property="og:description" content="子の『やった』と親の『できた』は別物。要件定義と実装のギャップに似た構造を、家庭での試行錯誤と一緒に。" />
-<meta property="og:url" content="https://lycoapp.com/ja/blog/posts/done-vs-achieved.html" />
+<meta property="og:title" content="&quot;Did it&quot; and &quot;done&quot; are not the same thing" />
+<meta property="og:description" content="'Brush your teeth' — 'I did it' — 'you're literally just holding the toothbrush in your mouth.' The kid's 'I did it' and the parent's 'done' are different things. Same structure as a requirements-vs-implementation gap at work." />
+<meta property="og:url" content="https://lycoapp.com/en-US/blog/posts/done-vs-achieved.html" />
+<meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Lyco App" />
 <style>
-  body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  body { margin:0; font-family: system-ui,-apple-system,"Segoe UI",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
   .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
   .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
   h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
@@ -47,80 +48,80 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "「やった」と「できた」は、別物",
-  "description": "「歯磨きして」「やった」「歯ブラシくわえてるだけでしょ！」── 子の『やった』と親の『できた』は別物。要件定義と実装のギャップに似た構造を、家庭での試行錯誤と一緒に。",
-  "datePublished": "2026-05-08",
-  "dateModified": "2026-05-08",
+  "headline": "\"Did it\" and \"done\" are not the same thing",
+  "description": "'Brush your teeth' — 'I did it' — 'you're literally just holding the toothbrush in your mouth.' The kid's 'I did it' and the parent's 'done' are different things. Same structure as a requirements-vs-implementation gap at work.",
+  "datePublished": "2026-05-12",
+  "dateModified": "2026-05-12",
   "author": { "@type": "Organization", "name": "Lyco App" },
   "publisher": {
     "@type": "Organization",
     "name": "Lyco App",
     "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
   },
-  "mainEntityOfPage": "https://lycoapp.com/ja/blog/posts/done-vs-achieved.html",
-  "inLanguage": "ja"
+  "mainEntityOfPage": "https://lycoapp.com/en-US/blog/posts/done-vs-achieved.html",
+  "inLanguage": "en-US"
 }
 </script>
 </head>
 <body>
 <div id="site-header"></div>
 <div class="wrap">
-  <a class="back" href="../index.html">← コラム一覧</a>
-  <h1>「やった」と「できた」は、別物</h1>
-  <div class="meta">2026-05-08</div>
+  <a class="back" href="../index.html">← Back to columns</a>
+  <h1>"Did it" and "done" are not the same thing</h1>
+  <div class="meta">2026-05-12</div>
   <div class="body">
 
 <blockquote>
-<p>「歯磨きして」<br />「やった」<br />「歯ブラシくわえてるだけでしょ！！」</p>
+<p>"Brush your teeth."<br />"Did it."<br />"You're literally just holding the toothbrush in your mouth!!"</p>
 </blockquote>
 
 <blockquote>
-<p>「着替えして」「やった」<br />行ったら、脱いだ服はそこら辺に散乱。</p>
+<p>"Get dressed." "Did it."<br />Walk in: pajamas scattered across the floor.</p>
 </blockquote>
 
 <blockquote>
-<p>「片付けして」「やった」<br />床のおもちゃが、1 個だけ箱に入ってる。</p>
+<p>"Clean up your room." "Did it."<br />Exactly one Lego is back in the bin.</p>
 </blockquote>
 
-<p>子は嘘ついてないです。「やる」をちゃんとやってる。咥えた、脱いだ、1 個入れた。やった、はやった。</p>
+<p>The kid's not lying. The "doing" part actually happened. Toothbrush, in mouth. Pajamas, off. One Lego, in the bin. Did = did.</p>
 
-<p>ただ、親の頭の中にあったのは「やった」じゃなくて「できた」だったんですよね。</p>
+<p>What was actually in my head though, wasn't "did" — it was "done."</p>
 
-<h2>これ、仕事でも、まったく同じことが起きるやつ</h2>
+<h2>This same thing happens at work, all the time</h2>
 
-<p>エンジニアをやってると、これに似た事故、よく起こします。</p>
+<p>Anyone who writes code for a living has shipped this bug.</p>
 
-<p>要件: <strong>「注文できること」</strong><br />
-実装: <strong>「CSV をアップロードしたら、注文が登録される」</strong></p>
+<p>Requirement: <strong>"Customers should be able to place orders."</strong><br />
+Implementation: <strong>"Customers can upload a CSV and it registers as an order."</strong></p>
 
-<p>機能としては、注文できる。確かに、できる。</p>
+<p>As a feature, sure, it works. Orders can be placed.</p>
 
-<p>でも、これ EC サイトです。<strong>誰が、CSV 作って、アップするの?</strong></p>
+<p>But this is a consumer e-commerce site. <strong>Who is actually going to open Excel, build a CSV, and upload it to buy socks?</strong></p>
 
-<p>「やった (実装した)」と「<strong>目的が達成された</strong>」は、別物。</p>
+<p>"Did it (built it)" and "<strong>the goal was met</strong>" are different things.</p>
 
-<p>要件を出した側が <strong>「やってほしいこと」しか言わなくて、「達成したい状態」を言わなかった</strong> から、こうなる。</p>
+<p>The person who wrote the requirement <strong>only said what to do, not the state they wanted to be in</strong> — so this is what ships.</p>
 
-<p>子の「やった」も、構造は同じです。</p>
+<p>The kid's "did it" has the same structure.</p>
 
-<h2>言い直してみたら</h2>
+<h2>Saying it differently</h2>
 
-<p>伝え方を変えるだけ。</p>
+<p>Change the framing.</p>
 
 <ul>
-  <li>❌ 「歯磨きして」 → ⭕ 「歯がツルツルになったら教えて」</li>
-  <li>❌ 「片付けして」 → ⭕ 「床に何も落ちてない状態にして」</li>
-  <li>❌ 「着替えて」 → ⭕ 「パジャマ脱いで、服着替えて、パジャマたたむまで」</li>
+  <li>❌ "Brush your teeth" → ⭕ "Let me know when your teeth feel smooth"</li>
+  <li>❌ "Clean up" → ⭕ "I want the floor to have nothing on it"</li>
+  <li>❌ "Get dressed" → ⭕ "Pajamas off, clothes on, pajamas folded — that whole thing"</li>
 </ul>
 
-<p><strong>最初から、目的を渡す</strong>。「やる」じゃなくて「達成したい状態」を。</p>
+<p><strong>Hand over the goal up front</strong>. Not the action — the end state.</p>
 
   </div>
 
   <div class="related-apps">
-    <span class="related-label">こんなアプリがあります</span>
+    <span class="related-label">Apps that fit</span>
     <ul class="related-list">
-      <li><a href="../../index.html">Todo 系 →</a></li>
+      <li><a href="../../index.html">Todo →</a></li>
     </ul>
   </div>
 </div>

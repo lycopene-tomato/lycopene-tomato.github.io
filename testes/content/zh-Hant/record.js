@@ -1,5 +1,5 @@
 /* ============================================================
- * content/zh-Hant/record.js — Chinese (Traditional): Log category
+ * content/zh-Hant/record.js — 繁體中文：記錄系列
  * ============================================================ */
 window.__CONTENT__ = window.__CONTENT__ || {};
 window.__CONTENT__["zh-Hant"] = window.__CONTENT__["zh-Hant"] || {};
@@ -7,36 +7,33 @@ window.__CONTENT__["zh-Hant"].categories = window.__CONTENT__["zh-Hant"].categor
 
 window.__CONTENT__["zh-Hant"].categories.record = {
   id: "record",
-  name: "Log系列",
-  subtitle: "默默記錄小事件,看见模式,预防下一次。",
-  lineup_title: "按內容整理的應用。",
-  label_call: "心聲",
+  name: "記錄系列",
+  subtitle: "把每天的「又來了」，化作看見孩子的成長，與父母的安心。",
+  lineup_title: "依內容不同，整理用的應用程式。",
+  label_call: "煩躁",
   accent: { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
-  eyebrow: "预防",
-  formula: { a: "記錄", b: "事件", c: "下次不重來" },
+  eyebrow: "預防",
+  formula: { a: "又來了", b: "記錄", c: "成長？" },
 
   story: {
-    tagline: "把「又來了」變成「下次有準备了」。",
-    intro: "不是情绪,而是記錄。模式浮現,答案也隨之出現。",
+    tagline: "「又來了」會變成「好像減少了」。",
+    intro: "只憑記憶，看不見的變化很多。\n寫下來，孩子的小小成長與父母的安心，就會浮現出來。",
     empathy: {
-      label: "又是今天啊……",
-      badge: "心跳",
+      label: "今天又是這樣……",
+      badge: "心慌",
       lines: [
         "學校又打電話來了。",
-        "心里揪着。",
-        "可真的是「又來」嗎?",
-        "和上次一樣?还是不一樣?",
-        "光靠記忆,看不清——。",
+        "胸口被揪緊。",
+        "可是，真的是「又」嗎？",
+        "和上次一樣嗎？還是有變化？",
+        "光靠記憶，分不出來——",
       ],
-      tried_label: "其實有做笔記。",
+      tried_label: "也有做筆記，可是……",
       tried: [
-        "寫在纸上,後來找不到。",
-        "用手機便签,整理起來太難。",
-        "「以前是不是也有過?」想確認也確認不了。",
+        "寫在紙上，之後找不到。",
+        "用手機的備忘錄又難整理。",
+        "「以前是不是也有過？」想確認也沒辦法。",
       ],
-      pivot: "光記在脑子里,堆到爆炸為止。\n記下來,才能看见全貌。",
-      idea_label: "于是我想到——",
-      idea: "當下快速捕捉,\n再從模式中预防下一次。",
     },
   },
 
@@ -44,21 +41,21 @@ window.__CONTENT__["zh-Hant"].categories.record = {
     {
       id: "trouble",
       name: "TroubleNote",
-      tag: "校園生活",
+      tag: "家長備忘",
       appstore_url: "https://apps.apple.com/app/id000000000",
       hero_image: "images/apps/trouble.jpeg",
-      formula_a: "記錄",
-      formula_b: "事件",
-      formula_c: "更從容地跟進",
-      concept: "記錄 × 事件 = 更從容地跟進",
-      call: ["○○是誰來着?", "和上次吵架的孩子是同一个?"],
+      formula_a: "麻煩事",
+      formula_b: "記錄",
+      formula_c: "整理過後變得清楚",
+      concept: "麻煩事 × 記錄 = 整理過後變得清楚",
+      call: [
+        "○○是誰來著？",
+        "和上次吵架是同一個孩子嗎？",
+      ],
       trick: [
-        "記錄日期、地點、相關人物和發生了什麼。",
-        "設計成等冷静下來再补充也没問題。",
-        "按時間排序,反復出現的模式自然浮現。",
-        "為家長會單独抽出重點。",
-        "可附帶照片或語音备忘錄(仅保存在設备內)。",
-        "支持導出為 PDF 或文本。",
+        "在日曆上以圓點顯示發生日，依朋友別統計件數。可以用「人」與「時間」整理。",
+        "只給家長看的備忘（對方家長的聯絡方式、朋友的個性等）用心算題的家長閘門保護。",
+        "依場所（學校、家庭、才藝班）分類，多個兄弟姊妹也能切換。",
       ],
     },
   ],

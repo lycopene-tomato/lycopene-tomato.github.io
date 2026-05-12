@@ -21,12 +21,13 @@ window.CatNavLabel = function CatNavLabel({ letter, name, desc }) {
  * A: フォルダタブ 2x2（白タイル＋色ストライプ＋ハードシャドウ）
  * ────────────────────────────────────────────── */
 window.CatNavPatternA = function CatNavPatternA({ t, currentId, prefix, accent }) {
+  const cn = t.catNav || {};
   return (
     <section style={{ background: accent.soft, padding: "32px 16px 48px" }}>
       <div style={{ maxWidth: 720, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginBottom: 6 }}>— INDEX —</div>
-          <div style={{ fontSize: 14, color: "#5C4936", fontWeight: 600 }}>ぜんぶで{t.categories.length}カテゴリ</div>
+          <div style={{ fontSize: 14, color: "#5C4936", fontWeight: 600 }}>{cn.total_prefix || ""}{t.categories.length}{cn.total_suffix || ""}</div>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
           {t.categories.map((cat, idx) => {
@@ -46,13 +47,13 @@ window.CatNavPatternA = function CatNavPatternA({ t, currentId, prefix, accent }
                 <div style={{ padding: "12px 14px 14px", flex: 1, display: "flex", flexDirection: "column" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
                     <span style={{ fontSize: 10, fontFamily: "ui-monospace, monospace", color: "#8B7355" }}>0{idx + 1} / 0{t.categories.length}</span>
-                    {isCurrent && <span style={{ fontSize: 10, fontWeight: 800, color: cat.accent.c }}>● 表示中</span>}
+                    {isCurrent && <span style={{ fontSize: 10, fontWeight: 800, color: cat.accent.c }}>● {cn.showing || ""}</span>}
                   </div>
                   <div style={{ fontSize: 17, fontWeight: 900, marginBottom: 6 }}>{cat.name}</div>
                   <div style={{ fontSize: 11, lineHeight: 1.55, color: "#5C4936", flex: 1 }}>{cat.subtitle || ""}</div>
                   <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", fontSize: 11, color: "#8B7355", fontWeight: 600 }}>
                     <span>{cat.apps.length}{(t.lineup && t.lineup.app_unit) || ""}</span>
-                    {!isCurrent && <span style={{ color: cat.accent.c, fontWeight: 800 }}>見る →</span>}
+                    {!isCurrent && <span style={{ color: cat.accent.c, fontWeight: 800 }}>{cn.view || ""} →</span>}
                   </div>
                 </div>
               </Tag>
@@ -69,6 +70,7 @@ window.CatNavPatternA = function CatNavPatternA({ t, currentId, prefix, accent }
  *   もやもやセクションと同じ言語
  * ────────────────────────────────────────────── */
 window.CatNavPatternB = function CatNavPatternB({ t, currentId, prefix, accent }) {
+  const cn = t.catNav || {};
   return (
     <section style={{ background: accent.soft, padding: "40px 16px 56px" }}>
       <div style={{ maxWidth: 720, margin: "0 auto" }}>
@@ -80,7 +82,7 @@ window.CatNavPatternB = function CatNavPatternB({ t, currentId, prefix, accent }
             position: "absolute", top: -14, left: 24, background: "#FFD27A",
             padding: "5px 14px", fontSize: 11, fontWeight: 700, transform: "rotate(-2deg)",
             boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-          }}>もくじ</div>
+          }}>{cn.index_label || ""}</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
             {t.categories.map((cat, idx) => {
               const isCurrent = cat.id === currentId;
@@ -97,7 +99,7 @@ window.CatNavPatternB = function CatNavPatternB({ t, currentId, prefix, accent }
                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
                     <span style={{ width: 10, height: 10, borderRadius: "50%", background: cat.accent.c }}></span>
                     <span style={{ fontSize: 10, fontFamily: "ui-monospace, monospace", color: "#8B7355" }}>0{idx + 1}</span>
-                    {isCurrent && <span style={{ fontSize: 10, color: cat.accent.c, fontWeight: 800, marginLeft: "auto" }}>● 表示中</span>}
+                    {isCurrent && <span style={{ fontSize: 10, color: cat.accent.c, fontWeight: 800, marginLeft: "auto" }}>● {cn.showing || ""}</span>}
                   </div>
                   <div style={{ fontSize: 16, fontWeight: 900, marginBottom: 4 }}>{cat.name}</div>
                   <div style={{ fontSize: 11, lineHeight: 1.55, color: "#5C4936", flex: 1,
@@ -120,12 +122,13 @@ window.CatNavPatternB = function CatNavPatternB({ t, currentId, prefix, accent }
  * C: 大数字 2x2（左に巨大セリフ数字・右に名前+説明）
  * ────────────────────────────────────────────── */
 window.CatNavPatternC = function CatNavPatternC({ t, currentId, prefix, accent }) {
+  const cn = t.catNav || {};
   return (
     <section style={{ background: accent.soft, padding: "40px 16px 56px" }}>
       <div style={{ maxWidth: 720, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <div style={{ fontSize: 12, letterSpacing: 4, fontWeight: 800, color: "#8B7355", marginBottom: 4 }}>CONTENTS</div>
-          <div style={{ fontSize: 14, color: "#5C4936" }}>カテゴリで見つける</div>
+          <div style={{ fontSize: 14, color: "#5C4936" }}>{cn.find_by_category || ""}</div>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
           {t.categories.map((cat, idx) => {
@@ -148,7 +151,7 @@ window.CatNavPatternC = function CatNavPatternC({ t, currentId, prefix, accent }
                   <div style={{ fontSize: 17, fontWeight: 900, marginBottom: 4, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     {cat.name}
                     {isCurrent && (
-                      <span style={{ fontSize: 9, padding: "2px 6px", background: cat.accent.c, color: "#fff", fontWeight: 800 }}>いまここ</span>
+                      <span style={{ fontSize: 9, padding: "2px 6px", background: cat.accent.c, color: "#fff", fontWeight: 800 }}>{cn.here_now || ""}</span>
                     )}
                   </div>
                   <div style={{ fontSize: 11, color: "#5C4936", lineHeight: 1.5,
@@ -171,12 +174,13 @@ window.CatNavPatternC = function CatNavPatternC({ t, currentId, prefix, accent }
  * E: 巨大番号 2x2（前バージョン踏襲・数式入り）
  * ────────────────────────────────────────────── */
 window.CatNavPatternE = function CatNavPatternE({ t, currentId, prefix, accent }) {
+  const cn = t.catNav || {};
   const current = t.categories.find((c) => c.id === currentId);
   return (
     <section className="reveal" data-snap data-progress-color={accent.c} style={{ background: "#FBF6EE", padding: "48px 16px 56px", borderTop: `2px solid ${accent.c}`, borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
       <div style={{ maxWidth: 720, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginTop: 4, marginBottom: 4 }}>— 他のカテゴリ —</div>
+          <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginTop: 4, marginBottom: 4 }}>— {cn.other_categories || ""} —</div>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
           {t.categories.map((cat, idx) => {
@@ -235,7 +239,7 @@ window.CatNavPatternE = function CatNavPatternE({ t, currentId, prefix, accent }
                     color: isCurrent ? "#fff" : cat.accent.deep, fontWeight: 700,
                   }}>
                     <span>{cat.apps.length}{(t.lineup && t.lineup.app_unit) || ""}</span>
-                    <span>{isCurrent ? "● 表示中" : "→"}</span>
+                    <span>{isCurrent ? `● ${cn.showing || ""}` : "→"}</span>
                   </div>
                 </div>
               </Tag>
@@ -251,11 +255,12 @@ window.CatNavPatternE = function CatNavPatternE({ t, currentId, prefix, accent }
  * D: カラーブロック 2x2（強い色塗り分け）
  * ────────────────────────────────────────────── */
 window.CatNavPatternD = function CatNavPatternD({ t, currentId, prefix, accent }) {
+  const cn = t.catNav || {};
   return (
     <section style={{ background: accent.soft, padding: "40px 16px 56px" }}>
       <div style={{ maxWidth: 720, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 20 }}>
-          <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginBottom: 6 }}>— カテゴリで選ぶ —</div>
+          <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginBottom: 6 }}>— {cn.choose_by_category || ""} —</div>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, border: "2px solid #3D2E1F" }}>
           {t.categories.map((cat, idx) => {
@@ -277,7 +282,7 @@ window.CatNavPatternD = function CatNavPatternD({ t, currentId, prefix, accent }
                     padding: "2px 8px", border: "1.5px solid #fff", letterSpacing: 1,
                   }}>0{idx + 1}</span>
                   {isCurrent && (
-                    <span style={{ fontSize: 10, fontWeight: 800, padding: "3px 8px", background: "#fff", color: cat.accent.deep }}>表示中</span>
+                    <span style={{ fontSize: 10, fontWeight: 800, padding: "3px 8px", background: "#fff", color: cat.accent.deep }}>{cn.showing || ""}</span>
                   )}
                 </div>
                 <div>
@@ -286,7 +291,7 @@ window.CatNavPatternD = function CatNavPatternD({ t, currentId, prefix, accent }
                     display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{cat.subtitle || ""}</div>
                   <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", fontSize: 11, fontWeight: 600 }}>
                     <span style={{ opacity: 0.85 }}>{cat.apps.length}{(t.lineup && t.lineup.app_unit) || ""}</span>
-                    {!isCurrent && <span style={{ fontWeight: 800 }}>見る →</span>}
+                    {!isCurrent && <span style={{ fontWeight: 800 }}>{cn.view || ""} →</span>}
                   </div>
                 </div>
               </Tag>

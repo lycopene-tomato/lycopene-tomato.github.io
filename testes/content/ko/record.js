@@ -1,42 +1,39 @@
 /* ============================================================
- * content/ko/record.js — Korean: Log category
+ * content/ko/record.js — 한국어: 기록 시리즈
  * ============================================================ */
 window.__CONTENT__ = window.__CONTENT__ || {};
-window.__CONTENT__["ko"] = window.__CONTENT__["ko"] || {};
-window.__CONTENT__["ko"].categories = window.__CONTENT__["ko"].categories || {};
+window.__CONTENT__.ko = window.__CONTENT__.ko || {};
+window.__CONTENT__.ko.categories = window.__CONTENT__.ko.categories || {};
 
-window.__CONTENT__["ko"].categories.record = {
+window.__CONTENT__.ko.categories.record = {
   id: "record",
-  name: "Log 시리즈",
-  subtitle: "작은 일을 살며시 기록. 패턴을 보고, 다음을 막아요.",
-  lineup_title: "내용에 따라 정리하는 앱.",
-  label_call: "마음의 소리",
+  name: "기록 시리즈",
+  subtitle: "매일의 「또야」를, 아이의 성장과 부모의 안도로 바꾸는 기록 시리즈.",
+  lineup_title: "내용에 맞춰, 정리용 앱.",
+  label_call: "답답함",
   accent: { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
   eyebrow: "예방",
-  formula: { a: "기록", b: "사건", c: "다음을 막다" },
+  formula: { a: "또야", b: "기록", c: "성장?" },
 
   story: {
-    tagline: "「또야」가 「다음엔 준비된다」로.",
-    intro: "감정이 아닌, 기록. 패턴이 보이면, 답도 보입니다.",
+    tagline: "「또야」가 「줄어들고 있네」로 바뀌어요.",
+    intro: "기억만으로는 보이지 않는 변화가 있어요.\n기록하면 아이의 작은 성장과 부모의 안도가 보이기 시작해요.",
     empathy: {
-      label: "오늘도 또…",
-      badge: "두근",
+      label: "오늘도, 또……",
+      badge: "조마조마",
       lines: [
-        "학교에서 또 전화.",
-        "심장이 조여옵니다.",
-        "근데 정말 「또」일까?",
-        "지난번과 같은 일? 아니면 다른 일?",
-        "기억만으론 알 수 없어요——.",
+        "학교에서 또 전화가 왔다.",
+        "심장이 조여 온다.",
+        "그런데, 정말 「또」일까?",
+        "전과 똑같은 걸까? 아니면 달라진 걸까?",
+        "기억만으로는 알 수 없다——.",
       ],
-      tried_label: "메모는 해봤지만.",
+      tried_label: "메모는 해 왔지만.",
       tried: [
-        "종이에 적어도, 나중에 찾을 수 없어.",
-        "스마트폰 메모는 정리하기 어려워.",
-        "「전에도 있지 않았나?」 확인하고 싶어도 못해.",
+        "종이에 써도, 나중에 찾을 수 없다.",
+        "스마트폰 메모는 정리가 어렵다.",
+        "「전에도 있지 않았나?」 싶어도 확인할 수가 없다.",
       ],
-      pivot: "기억에만 담아두면 터질 때까지 쌓이기만.\n기록해두면 전체를 볼 수 있어요.",
-      idea_label: "그래서 생각했어요.",
-      idea: "그 순간을 빠르게 잡아두고,\n패턴으로 다음을 막자.",
     },
   },
 
@@ -44,21 +41,21 @@ window.__CONTENT__["ko"].categories.record = {
     {
       id: "trouble",
       name: "TroubleNote",
-      tag: "학교 생활",
+      tag: "부모 메모",
       appstore_url: "https://apps.apple.com/app/id000000000",
       hero_image: "images/apps/trouble.jpeg",
-      formula_a: "기록",
-      formula_b: "사건",
-      formula_c: "차분한 후속 대응",
-      concept: "기록 × 사건 = 차분한 후속 대응",
-      call: ["○○이가 누구더라?", "전에 싸운 그 친구야?"],
+      formula_a: "트러블",
+      formula_b: "기록",
+      formula_c: "정리해서 보이게",
+      concept: "트러블 × 기록 = 정리해서 보이게",
+      call: [
+        "○○이 누구더라?",
+        "지난번 싸움이랑 같은 아이?",
+      ],
       trick: [
-        "날짜, 장소, 관련 인물, 어떤 일이 있었는지 기록.",
-        "마음이 가라앉은 후 채워도 되도록 설계.",
-        "시간순으로 정렬하면 반복되는 패턴이 자연스럽게 떠올라요.",
-        "학부모 면담용으로 요점만 따로 빼낼 수 있어요.",
-        "사진이나 음성 메모도 첨부 (단말기 내에만 저장).",
-        "PDF나 텍스트로 내보내기 지원.",
+        "달력에 발생일을 점으로 표시, 친구별로 건수 집계. 「누구」와 「언제」로 정리할 수 있어요.",
+        "부모만 보는 메모(상대 부모 연락처, 친구의 성격 등)는 암산 문제 페어런트 게이트로 보호.",
+        "장소(학교・가족・학원)로 분류, 여러 형제자매 전환도 가능해요.",
       ],
     },
   ],

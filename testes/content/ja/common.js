@@ -32,6 +32,22 @@ window.__CONTENT__.ja.common = {
     label_same_category: "同じカテゴリのアプリ",
   },
 
+  empathy: {
+    badge: "もやもや",
+  },
+
+  catNav: {
+    total_prefix: "ぜんぶで",
+    total_suffix: "カテゴリ",
+    showing: "表示中",
+    here_now: "いまここ",
+    index_label: "もくじ",
+    other_categories: "他のカテゴリ",
+    find_by_category: "カテゴリで見つける",
+    choose_by_category: "カテゴリで選ぶ",
+    view: "見る",
+  },
+
   footer: {
     tagline: "Own Your Day!",
     tagline_sub: "Start with One Step",

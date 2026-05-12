@@ -45,7 +45,7 @@
   // /privacy-policy/<lang>/ がまだ作られていない言語は en-US にフォールバック
   // App Store メタデータの privacyPolicyUrl はこのページを指す。
   // ★ 言語ディレクトリを追加したらここに足す
-  var EXISTING = ["ja", "en-US", "zh-Hans", "zh-Hant", "ko", "es-ES", "es-MX", "fr-FR", "fr-CA", "de-DE", "pt-BR", "pt-PT", "it", "nl-NL", "ru", "pl", "tr", "ar-SA", "he", "hi", "th", "vi", "id", "ms", "sv", "no", "da", "fi", "cs", "sk", "hu", "ro", "el", "hr", "uk", "ca", "sl-SI", "ur-PK", "bn-BD", "gu-IN", "kn-IN", "ml-IN", "mr-IN", "or-IN", "pa-IN", "ta-IN", "te-IN"];
+  var EXISTING = ["ja", "en-US", "zh-Hant", "ko"];
   if (EXISTING.indexOf(lang) === -1) {
     // matchLang() で既に主区別ロケール (en-US 等) に変換されてるはず
     var primary = lang.split("-")[0];

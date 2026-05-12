@@ -45,7 +45,7 @@
   }
   // /<lang>/ がまだ作られていない言語は en-US にフォールバック
   // GitHub Pages では未存在パスは404になるので、安全側に倒す
-  var EXISTING = ["ja", "en-US", "zh-Hans", "zh-Hant", "ko", "es-ES", "es-MX", "fr-FR", "fr-CA", "de-DE", "pt-BR", "pt-PT", "it", "nl-NL", "ru", "pl", "tr", "ar-SA", "he", "hi", "th", "vi", "id", "ms", "sv", "no", "da", "fi", "cs", "sk", "hu", "ro", "el", "hr", "uk", "ca", "sl-SI", "ur-PK", "bn-BD", "gu-IN", "kn-IN", "ml-IN", "mr-IN", "or-IN", "pa-IN", "ta-IN", "te-IN"]; // ★ 言語ディレクトリを追加したらここに足す
+  var EXISTING = ["ja", "en-US", "zh-Hant", "ko"]; // ★ 言語ディレクトリを追加したらここに足す
   if (EXISTING.indexOf(lang) === -1) {
     // matchLang() で既に主区別ロケール (en-US 等) に変換されてるはずだが念のため
     var primary = lang.split("-")[0];

@@ -308,9 +308,9 @@ window.AllAppsList = ({ pathPrefix = "", currentCategoryId }) => {
   const t = window.I18N[lang] || window.I18N[window.LANG_FALLBACK];
   if (!t || !t.categories) return null;
   const allHeading  = (t.allapps && t.allapps.heading) || "All Apps";
-  const allTitle    = (t.allapps && t.allapps.title)   || "全アプリ一覧";
-  const allSub      = (t.allapps && t.allapps.sub)     || "シーンに合わせて選べます。準備中のアプリも近日公開予定。";
-  const inProgressLabel = (t.allapps && t.allapps.in_progress) || "準備中";
+  const allTitle    = (t.allapps && t.allapps.title)   || "";
+  const allSub      = (t.allapps && t.allapps.sub)     || "";
+  const inProgressLabel = (t.allapps && t.allapps.in_progress) || "";
   return (
     <section className="reveal" data-snap style={{ padding: "clamp(48px, 7vw, 72px) 24px", borderTop: "1px solid rgba(189,153,108,0.15)", background: "#fff" }}>
       <div style={{ maxWidth: 880, margin: "0 auto" }}>
@@ -466,7 +466,7 @@ window.AppCard = ({ app, idx, category, pathPrefix = "" }) => {
   const t = window.I18N[lang] || window.I18N[window.LANG_FALLBACK];
   const theme = window.getTheme(app.id, category, idx);
   const inProgress = !app.appstore_url;
-  const inProgressLabel = (t.allapps && t.allapps.in_progress) || "準備中";
+  const inProgressLabel = (t.allapps && t.allapps.in_progress) || "";
   const Card = inProgress ? "div" : "a";
   const cardProps = inProgress ? {} : { href: `${pathPrefix}apps/${app.id}.html` };
 

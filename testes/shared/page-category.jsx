@@ -111,7 +111,7 @@ window.CategoryPage = function CategoryPage({ categoryId, pathPrefix }) {
                 position: "absolute", top: -16, right: 32,
                 background: "#FFD27A", padding: "6px 16px", fontSize: 12,
                 transform: "rotate(3deg)", boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-              }}>{empathy.badge || "もやもや"}</div>
+              }}>{empathy.badge || (t.empathy && t.empathy.badge) || ""}</div>
               {empathy.lines.map((line, i) => (
                 <p key={i} style={{ fontSize: "clamp(15px, 2.4vw, 17px)", lineHeight: 2.2, margin: 0, color: "#3D2E1F" }}>{line}</p>
               ))}

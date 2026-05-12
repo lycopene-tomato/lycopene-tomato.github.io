@@ -1,20 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
 <head>
 <meta charset="utf-8" />
 <title>Column — Lyco App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Notes from making apps for parents and kids." />
 <style>
-  body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; }
+  body { margin:0; font-family: system-ui,-apple-system,"Segoe UI",sans-serif; background:#FBF6EE; color:#3D2E1F; }
   .wrap { max-width:720px; margin:0 auto; padding:32px 18px 60px; }
   h1 { font-size:26px; font-weight:900; margin:0 0 8px; }
   .lead { font-size:13px; opacity:.7; margin:0 0 22px; line-height:1.7; }
-  .coming-soon { background:#fff; border:1px solid #eee; border-radius:14px; padding:48px 24px; text-align:center; }
-  .coming-soon .emoji { font-size:36px; margin-bottom:12px; }
-  .coming-soon .msg { font-size:16px; font-weight:700; margin-bottom:6px; }
-  .coming-soon .sub { font-size:13px; opacity:.65; margin-bottom:20px; line-height:1.7; }
-  .coming-soon .link { display:inline-block; padding:10px 20px; background:#E89A3D; color:#fff; text-decoration:none; border-radius:999px; font-size:13px; font-weight:700; }
+  .section-label { font-size:11px; letter-spacing:3px; font-weight:800; color:#8B7355; margin:32px 0 10px; }
+  .section-label.app { color:#3F8C7E; }
+  .posts { display:grid; gap:14px; list-style:none; padding:0; margin:0; }
+  .post { display:block; background:#fff; border:1px solid #eee; border-radius:14px; padding:18px 20px; text-decoration:none; color:inherit; transition: transform .15s ease, box-shadow .15s ease; }
+  .post:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
+  .post .date { font-size:11px; opacity:.55; letter-spacing:1px; font-variant-numeric:tabular-nums; margin-bottom:6px; }
+  .post .title { font-size:17px; font-weight:800; line-height:1.5; margin-bottom:6px; }
+  .post .excerpt { font-size:13px; opacity:.75; line-height:1.7; }
+  .post .app-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.5px; color:#fff; background:#3F8C7E; padding:3px 10px; border-radius:999px; margin-bottom:8px; }
+  .post.pinned { background: linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%); border: 2px solid #E89A3D; }
+  .post.pinned .pin-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:2px; color:#fff; background:#E89A3D; padding:3px 10px; border-radius:999px; margin-bottom:10px; }
+  .post.pinned .title { font-size: 18px; }
+  .posts.slim { gap: 4px; }
+  .post.slim { padding: 10px 14px; display: flex; align-items: center; gap: 10px; border-radius: 8px; border: 1px solid #eee; }
+  .post.slim .date { font-size:10px; opacity:.45; margin-bottom:0; min-width: 64px; flex-shrink: 0; }
+  .post.slim .title { font-size:14px; font-weight:700; line-height:1.4; margin-bottom:0; flex: 1; }
+  .post.slim .excerpt { display: none; }
+  .post.slim .app-badge { margin-bottom:0; min-width: 72px; text-align: center; flex-shrink: 0; font-size: 9px; padding: 3px 8px; }
+  .post.app-post { border-left: 4px solid #3F8C7E; background:#FBFAF5; }
+  .post.slim.app-post { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .post.slim.app-post .app-badge { min-width: 0; }
   .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
   .site-nav { flex: 1; justify-content: center; }
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
@@ -28,11 +44,35 @@
 <div class="wrap">
   <h1>Column</h1>
   <p class="lead">Notes from making apps for parents and kids.</p>
-  <div class="coming-soon">
-    <div class="emoji">✍️</div>
-    <div class="msg">English columns are coming soon.</div>
-    <div class="sub">For now, columns are available in Japanese only.</div>
-    <a class="link" href="../../ja/blog/index.html">日本語のコラムを読む →</a>
+
+  <div class="posts">
+      <a class="post pinned" href="posts/rewards-and-dopamine.html">
+        <span class="pin-badge">📌 Start here</span>
+        <div class="title">Will the rewards make my kid lazy?</div>
+        <div class="excerpt">"Are we raising a kid who won't move without a prize?" — answered through ADHD dopamine research.</div>
+      </a>
+  </div>
+
+  <div class="app-section">
+    <div class="section-label app">📱 Which app fits when?</div>
+    <div class="posts slim">
+      <a class="post slim app-post" href="posts/app-gacha.html">
+        <span class="app-badge">TodoGatya</span>
+        <div class="title">"Hurry up" had become my whole morning vocabulary</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section-label">— Latest —</div>
+  <div class="posts slim">
+      <a class="post slim" href="posts/remember-to-remember.html">
+        <div class="date">2026-05-12</div>
+        <div class="title">Remembering to remember</div>
+      </a>
+      <a class="post slim" href="posts/done-vs-achieved.html">
+        <div class="date">2026-05-12</div>
+        <div class="title">"Did it" and "done" are not the same thing</div>
+      </a>
   </div>
 </div>
 <div id="site-footer"></div>
