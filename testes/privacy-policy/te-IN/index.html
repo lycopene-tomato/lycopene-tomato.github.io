@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="te-IN">
+<head>
+<meta charset="utf-8" />
+<title>గోప్యతా విధానం — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Lyco యాప్‌ల ఉమ్మడి గోప్యతా విధానం. మేము ప్రకటన గుర్తింపులను సేకరించము; మీ డేటా పరికరంలోనే ఉంటుంది." />
+<link rel="stylesheet" href="../../shared/motion.css" />
+<style>
+  body { margin: 0; font-family: "Helvetica Neue", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; }
+  * { box-sizing: border-box; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) {
+    .site-nav { display: none !important; }
+    .site-menu-btn { display: block !important; }
+  }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../../favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<!-- Motion -->
+<script src="../../shared/motion.js" defer></script>
+
+<!-- 言語メタ -->
+<script src="../../shared/langs.js"></script>
+
+<!-- コンテンツ (SiteHeader/SiteFooter が I18N を参照するため必要) -->
+<script src="../../content/ja/common.js"></script>
+<script src="../../content/ja/todo.js"></script>
+<script src="../../content/ja/record.js"></script>
+<script src="../../content/ja/tool.js"></script>
+<script src="../../content/ja/other.js"></script>
+<script>window.__CONTENT__ = window.__CONTENT__ || {}; window.__CONTENT__._fb_lang = "ja";</script>
+<script src="../../content/ja/common.js"></script>
+<script src="../../content/ja/todo.js"></script>
+<script src="../../content/ja/record.js"></script>
+<script src="../../content/ja/tool.js"></script>
+<script src="../../content/ja/other.js"></script>
+
+<script src="../../shared/i18n-loader.js"></script>
+
+<!-- 共通コンポーネント -->
+<script type="text/babel" src="../../shared/site-shared.jsx"></script>
+
+<!-- ページ本体 -->
+<script type="text/babel" data-presets="env,react">
+
+const { createRoot } = ReactDOM;
+// SiteHeader/SiteFooter は pathPrefix を「言語ホームへの相対」として使う
+// (画像は ${pathPrefix}../images/...、privacy-policy は ${pathPrefix}../privacy-policy/)。
+// /privacy-policy/ja/index.html から /ja/ 言語ホームに戻るには ../../ja/
+const PREFIX = "../../te-IN/";
+const ACCENT = "#E89A3D";
+const ACCENT_DEEP = "#8B5A1A";
+
+function Card({ label, children }) {
+  return (
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "28px auto" }}>
+      <div style={{
+        position: "relative",
+        border: `2px solid ${ACCENT}`,
+        borderRadius: 16,
+        padding: "32px 24px 24px",
+        background: "#fff",
+      }}>
+        <div style={{ position: "absolute", top: -11, left: 20, pointerEvents: "none" }}>
+          <span style={{
+            display: "inline-block",
+            background: "#FBF6EE",
+            padding: "2px 14px",
+            borderRadius: 999,
+            fontSize: 13, fontWeight: 800, letterSpacing: 3,
+            color: ACCENT_DEEP,
+          }}>{label}</span>
+        </div>
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function Promise3() {
+  // 冒頭の "3つの約束" ハイライト
+  const items = [
+    { k: "01", t: "మేము ప్రకటన గుర్తింపు (IDFA) సేకరించము", d: "మీ యాప్ వాడకం ఏ ప్రకటన నెట్‌వర్క్‌తోనూ ముడిపడదు." },
+    { k: "02", t: "మీ డేటా పరికరంలో ఉంటుంది", d: "రికార్డులు, సెట్టింగ్‌లు పరికరంలో మాత్రమే నిల్వ చేయబడతాయి; బాహ్య సర్వర్‌లకు పంపబడవు." },
+    { k: "03", t: "సేకరించకుండా రూపొందించబడింది", d: "సదుపాయం కోసం డేటా మార్పిడి కాదు — డేటా సేకరణ లేకుండా పని చేసే యాప్‌లను తయారు చేస్తాము." },
+  ];
+  return (
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "32px auto 8px" }}>
+      <div style={{
+        background: "linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%)",
+        border: `2px solid ${ACCENT}`,
+        borderRadius: 18,
+        padding: "26px 22px 22px",
+      }}>
+        <div style={{ textAlign: "center", marginBottom: 18 }}>
+          <div style={{ fontSize: 11, letterSpacing: 4, fontWeight: 800, color: ACCENT_DEEP, marginBottom: 6 }}>— మా 3 వాగ్దానాలు —</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: "#3D2E1F", lineHeight: 1.5 }}>
+            మీ ప్రశాంతత కోసం,<br />
+            <span style={{ color: ACCENT_DEEP }}>మేము కట్టుబడేది</span>
+          </div>
+        </div>
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+          {items.map((it) => (
+            <li key={it.k} style={{
+              display: "flex", gap: 14, alignItems: "flex-start",
+              padding: "12px 14px", background: "#fff", borderRadius: 12,
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+            }}>
+              <span style={{
+                flex: "0 0 auto",
+                fontFamily: "ui-monospace, monospace",
+                fontSize: 11, fontWeight: 800, letterSpacing: 1,
+                color: "#fff", background: ACCENT,
+                padding: "3px 8px", borderRadius: 6,
+              }}>{it.k}</span>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#3D2E1F", marginBottom: 2 }}>{it.t}</div>
+                <div style={{ fontSize: 12.5, color: "#5C4936", lineHeight: 1.6 }}>{it.d}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function Page() {
+  return (
+    <>
+      <window.SiteHeader pathPrefix={PREFIX} currentCategoryId="todo" />
+
+      {/* HERO */}
+      <section className="reveal" style={{
+        background: "#2C2218", color: "#FBF6EE",
+        padding: "36px 20px 30px", textAlign: "center",
+      }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <h1 style={{ margin: "0 0 8px", fontSize: 26, fontWeight: 900, letterSpacing: 1 }}>గోప్యతా విధానం</h1>
+          <p style={{ margin: 0, fontSize: 13, opacity: 0.7 }}>అన్ని Lyco యాప్‌ల కోసం</p>
+        </div>
+      </section>
+
+      {/* 3つの約束 (冒頭ハイライト) */}
+      <Promise3 />
+
+      {/* 詳細セクション */}
+      <main style={{ paddingBottom: 48 }}>
+        <Card label="పరిధి">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            ఈ విధానం Lyco App అందించే అన్ని యాప్‌లకు వర్తిస్తుంది. ప్రతి యాప్ యొక్క App Store పేజీ నుండి లింక్ చేయబడిన ఈ పేజీ ఆ యాప్ యొక్క గోప్యతా విధానంగా కూడా పనిచేస్తుంది.
+          </p>
+        </Card>
+
+        <Card label="మేము సేకరించే సమాచారం">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>యాప్ సెట్టింగ్‌లు, ప్రగతి, రికార్డులు మీ పరికరంలో మాత్రమే నిల్వ చేయబడతాయి.</li>
+            <li>ఈ డేటా మా సర్వర్‌లకు లేదా బాహ్య సేవలకు ఎప్పుడూ పంపబడదు.</li>
+            <li>వ్యక్తిగత గుర్తింపు సమాచారం (పేరు, ఇమెయిల్, ఫోన్ నంబర్ మొదలైనవి) సేకరించము.</li>
+          </ul>
+        </Card>
+
+        <Card label="ప్రకటనల గురించి">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>పిల్లల కోసం రూపొందించిన యాప్‌లలో ఎటువంటి ప్రకటనలూ చూపబడవు.</li>
+            <li>ఇతర యాప్‌లలో Google AdMob ప్రకటనలు తల్లిదండ్రుల నిర్వహణ స్క్రీన్‌లో మాత్రమే కనిపించవచ్చు, పిల్లాడు ఉపయోగించే స్క్రీన్‌లలో ఎప్పుడూ కాదు.</li>
+            <li>AdMob తోనైనా మా యాప్‌లు ప్రకటన గుర్తింపు (IDFA) పంపకుండా కాన్ఫిగర్ చేయబడ్డాయి.</li>
+          </ul>
+        </Card>
+
+        <Card label="విశ్లేషణ మరియు ట్రాకింగ్">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>పిల్లల యాప్‌లలో ఎటువంటి విశ్లేషణ లేదా ట్రాకింగ్ ఉపయోగించబడదు.</li>
+            <li>ఇతర యాప్‌లలో సమస్యలను గుర్తించడానికి, నాణ్యతను మెరుగుపరచడానికి Apple యొక్క అనామిక గణాంకాలను మాత్రమే — వ్యక్తిగత డేటా లేకుండా.</li>
+          </ul>
+        </Card>
+
+        <Card label="మూడవ పక్షంతో పంచుకోవడం">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            మీ సమాచారాన్ని మేము విక్రయించము, మూడవ పక్షాలతో పంచుకోము.
+          </p>
+        </Card>
+
+        <Card label="సంప్రదింపులు">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            ప్రశ్నలు లేదా అభ్యర్థనల కోసం <strong style={{ color: "#3D2E1F" }}>lycopenecafei+LP@gmail.com</strong>‌ను సంప్రదించండి. ఏదైనా యాప్ యొక్క App Store పేజీ ద్వారా కూడా మమ్మల్ని చేరుకోవచ్చు.
+          </p>
+        </Card>
+
+        <Card label="నవీకరణలు">
+          <p style={{ margin: "0 0 8px", fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            అవసరమైనప్పుడు ఈ విధానాన్ని నవీకరించవచ్చు. ముఖ్యమైన మార్పులు ఈ పేజీలో తెలియజేయబడతాయి.
+          </p>
+          <p style={{ margin: 0, fontSize: 12, opacity: 0.55, fontVariantNumeric: "tabular-nums" }}>
+            చివరి నవీకరణ: 2026-05-11
+          </p>
+        </Card>
+      </main>
+
+      <window.SiteFooter pathPrefix={PREFIX} />
+    </>
+  );
+}
+
+createRoot(document.getElementById("root")).render(<Page />);
+
+</script>
+
+<script defer src="../../shared/analytics.js"></script>
+</body>
+</html>

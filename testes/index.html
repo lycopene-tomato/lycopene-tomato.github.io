@@ -5,7 +5,7 @@
 <title>Lyco App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="An indie app series. Play × Tasks = Habit." />
-<link rel="canonical" href="/en/" />
+<link rel="canonical" href="/en-US/" />
 <style>
   body { font-family: system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; padding: 40px 20px; text-align: center; }
   a { color: #E89A3D; }
@@ -27,7 +27,7 @@
 -->
 
 <noscript>
-  <p>Please enable JavaScript, or go to <a href="/en/">English site</a> / <a href="/ja/">日本語サイト</a>.</p>
+  <p>Please enable JavaScript, or go to <a href="/en-US/">English site</a> / <a href="/ja/">日本語サイト</a>.</p>
 </noscript>
 
 <p id="msg">Redirecting…</p>
@@ -43,12 +43,17 @@
   } else {
     lang = window.matchLang(navigator.languages ? navigator.languages.join(",") : navigator.language);
   }
-  // /<lang>/ がまだ作られていない言語は en にフォールバック
+  // /<lang>/ がまだ作られていない言語は en-US にフォールバック
   // GitHub Pages では未存在パスは404になるので、安全側に倒す
-  var EXISTING = ["ja", "en"]; // ★ 言語ディレクトリを追加したらここに足す
+  var EXISTING = ["ja", "en-US", "zh-Hans", "zh-Hant", "ko", "es-ES", "es-MX", "fr-FR", "fr-CA", "de-DE", "pt-BR", "pt-PT", "it", "nl-NL", "ru", "pl", "tr", "ar-SA", "he", "hi", "th", "vi", "id", "ms", "sv", "no", "da", "fi", "cs", "sk", "hu", "ro", "el", "hr", "uk", "ca", "sl-SI", "ur-PK", "bn-BD", "gu-IN", "kn-IN", "ml-IN", "mr-IN", "or-IN", "pa-IN", "ta-IN", "te-IN"]; // ★ 言語ディレクトリを追加したらここに足す
   if (EXISTING.indexOf(lang) === -1) {
+    // matchLang() で既に主区別ロケール (en-US 等) に変換されてるはずだが念のため
     var primary = lang.split("-")[0];
-    if (EXISTING.indexOf(primary) >= 0) lang = primary; else lang = "en";
+    var found = null;
+    for (var i = 0; i < EXISTING.length; i++) {
+      if (EXISTING[i].split("-")[0] === primary) { found = EXISTING[i]; break; }
+    }
+    lang = found || "en-US";
   }
   location.replace("/" + lang + "/");
 })();

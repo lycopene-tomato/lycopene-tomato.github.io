@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<title>隱私政策 — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Lyco App 通用隱私政策。我們不收集廣告标識符,所有數據仅保存在您的設备內。" />
+<link rel="stylesheet" href="../../shared/motion.css" />
+<style>
+  body { margin: 0; font-family: "Helvetica Neue", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; }
+  * { box-sizing: border-box; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) {
+    .site-nav { display: none !important; }
+    .site-menu-btn { display: block !important; }
+  }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../../favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<!-- Motion -->
+<script src="../../shared/motion.js" defer></script>
+
+<!-- 言語メタ -->
+<script src="../../shared/langs.js"></script>
+
+<!-- コンテンツ (SiteHeader/SiteFooter が I18N を參照するため必要) -->
+<script src="../../content/en-US/common.js"></script>
+<script src="../../content/en-US/todo.js"></script>
+<script src="../../content/en-US/record.js"></script>
+<script src="../../content/en-US/tool.js"></script>
+<script src="../../content/en-US/other.js"></script>
+<script>window.__CONTENT__ = window.__CONTENT__ || {}; window.__CONTENT__._fb_lang = "en-US";</script>
+<script src="../../content/en-US/common.js"></script>
+<script src="../../content/en-US/todo.js"></script>
+<script src="../../content/en-US/record.js"></script>
+<script src="../../content/en-US/tool.js"></script>
+<script src="../../content/en-US/other.js"></script>
+
+<script src="../../shared/i18n-loader.js"></script>
+
+<!-- 共通コンポーネント -->
+<script type="text/babel" src="../../shared/site-shared.jsx"></script>
+
+<!-- ページ本體 -->
+<script type="text/babel" data-presets="env,react">
+
+const { createRoot } = ReactDOM;
+// SiteHeader/SiteFooter は pathPrefix を「言語ホームへの相対」として使う
+// (畫像は ${pathPrefix}../images/...、privacy-policy は ${pathPrefix}../privacy-policy/)。
+// /privacy-policy/ja/index.html から /ja/ 言語ホームに戻るには ../../ja/
+const PREFIX = "../../zh-Hant/";
+const ACCENT = "#E89A3D";
+const ACCENT_DEEP = "#8B5A1A";
+
+function Card({ label, children }) {
+  return (
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "28px auto" }}>
+      <div style={{
+        position: "relative",
+        border: `2px solid ${ACCENT}`,
+        borderRadius: 16,
+        padding: "32px 24px 24px",
+        background: "#fff",
+      }}>
+        <div style={{ position: "absolute", top: -11, left: 20, pointerEvents: "none" }}>
+          <span style={{
+            display: "inline-block",
+            background: "#FBF6EE",
+            padding: "2px 14px",
+            borderRadius: 999,
+            fontSize: 13, fontWeight: 800, letterSpacing: 3,
+            color: ACCENT_DEEP,
+          }}>{label}</span>
+        </div>
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function Promise3() {
+  // 冒頭の "3つの約束" ハイライト
+  const items = [
+    { k: "01", t: "我們不收集廣告标識符 (IDFA)", d: "您的應用使用情况不會被關聯到任何廣告网络。" },
+    { k: "02", t: "數據仅在您的設备內", d: "您的記錄和設置仅保存在設备內,绝不會發送到任何外部服務器。" },
+    { k: "03", t: "以「不收集」為設計起點", d: "我們優先做不依赖信息收集就能成立的設計,而不是為了便利功能去收集信息。" },
+  ];
+  return (
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "32px auto 8px" }}>
+      <div style={{
+        background: "linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%)",
+        border: `2px solid ${ACCENT}`,
+        borderRadius: 18,
+        padding: "26px 22px 22px",
+      }}>
+        <div style={{ textAlign: "center", marginBottom: 18 }}>
+          <div style={{ fontSize: 11, letterSpacing: 4, fontWeight: 800, color: ACCENT_DEEP, marginBottom: 6 }}>— 三个承諾 —</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: "#3D2E1F", lineHeight: 1.5 }}>
+            為了讓您放心使用,<br />
+            <span style={{ color: ACCENT_DEEP }}>我們堅持的几件事</span>
+          </div>
+        </div>
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+          {items.map((it) => (
+            <li key={it.k} style={{
+              display: "flex", gap: 14, alignItems: "flex-start",
+              padding: "12px 14px", background: "#fff", borderRadius: 12,
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+            }}>
+              <span style={{
+                flex: "0 0 auto",
+                fontFamily: "ui-monospace, monospace",
+                fontSize: 11, fontWeight: 800, letterSpacing: 1,
+                color: "#fff", background: ACCENT,
+                padding: "3px 8px", borderRadius: 6,
+              }}>{it.k}</span>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#3D2E1F", marginBottom: 2 }}>{it.t}</div>
+                <div style={{ fontSize: 12.5, color: "#5C4936", lineHeight: 1.6 }}>{it.d}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function Page() {
+  return (
+    <>
+      <window.SiteHeader pathPrefix={PREFIX} currentCategoryId="todo" />
+
+      {/* HERO */}
+      <section className="reveal" style={{
+        background: "#2C2218", color: "#FBF6EE",
+        padding: "36px 20px 30px", textAlign: "center",
+      }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <h1 style={{ margin: "0 0 8px", fontSize: 26, fontWeight: 900, letterSpacing: 1 }}>隱私政策</h1>
+          <p style={{ margin: 0, fontSize: 13, opacity: 0.7 }}>通用于所有 Lyco 應用</p>
+        </div>
+      </section>
+
+      {/* 3つの約束 (冒頭ハイライト) */}
+      <Promise3 />
+
+      {/* 詳細セクション */}
+      <main style={{ paddingBottom: 48 }}>
+        <Card label="适用范圍">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            本政策适用于 Lyco App 提供的所有應用。每个應用的 App Store 頁面鏈接到此頁,即作為該應用的隱私政策。
+          </p>
+        </Card>
+
+        <Card label="收集的信息">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>應用設置、進度和記錄仅保存在您的設备內。</li>
+            <li>我們绝不會將這些數據傳輸到我們的服務器或任何外部服務。</li>
+            <li>我們不收集可識別个人身份的信息(姓名、邮箱、電話號碼等)。</li>
+          </ul>
+        </Card>
+
+        <Card label="關于廣告">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>面向儿童的應用完全不顯示廣告。</li>
+            <li>其他應用中,仅在家長管理界面可能顯示 Google AdMob 廣告。孩子使用的界面绝不會顯示。</li>
+            <li>即使使用 AdMob,我們的應用也設置為不傳遞廣告标識符 (IDFA)。</li>
+          </ul>
+        </Card>
+
+        <Card label="分析與追踪">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>面向儿童的應用完全不使用任何分析工具或追踪。</li>
+            <li>其他應用也仅使用 Apple 提供的匿名统計來識別問題并改進質量,不包含任何可識別个人身份的信息。</li>
+          </ul>
+        </Card>
+
+        <Card label="第三方共享">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            我們绝不會向第三方出售或共享您的信息。
+          </p>
+        </Card>
+
+        <Card label="聯系我們">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            如有疑問或建議,請聯系 <strong style={{ color: "#3D2E1F" }}>lycopenecafei+LP@gmail.com</strong>。您也可以通過任意應用的 App Store 頁面與我們聯系。
+          </p>
+        </Card>
+
+        <Card label="政策修订">
+          <p style={{ margin: "0 0 8px", fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            我們會根據需要修订本政策。重大變更時會在本頁面進行通知。
+          </p>
+          <p style={{ margin: 0, fontSize: 12, opacity: 0.55, fontVariantNumeric: "tabular-nums" }}>
+            最後更新: 2026-05-11
+          </p>
+        </Card>
+      </main>
+
+      <window.SiteFooter pathPrefix={PREFIX} />
+    </>
+  );
+}
+
+createRoot(document.getElementById("root")).render(<Page />);
+
+</script>
+
+<script defer src="../../shared/analytics.js"></script>
+</body>
+</html>

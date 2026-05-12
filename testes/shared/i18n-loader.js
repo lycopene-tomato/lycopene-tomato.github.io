@@ -41,7 +41,7 @@ window.I18N = window.I18N || {};
 // findApp / flattenApps（旧 i18n.js から踏襲）
 // ----------------------------------------------------------
 window.flattenApps = function (lang) {
-  const t = window.I18N[lang] || window.I18N[window.LANG_FALLBACK || "en"];
+  const t = window.I18N[lang] || window.I18N[window.LANG_FALLBACK || "en-US"];
   if (!t || !t.categories) return [];
   const out = [];
   t.categories.forEach((cat) => {
@@ -53,7 +53,7 @@ window.flattenApps = function (lang) {
 };
 
 window.findApp = function (lang, appId) {
-  const t = window.I18N[lang] || window.I18N[window.LANG_FALLBACK || "en"];
+  const t = window.I18N[lang] || window.I18N[window.LANG_FALLBACK || "en-US"];
   if (!t || !t.categories) return null;
   for (let ci = 0; ci < t.categories.length; ci++) {
     const cat = t.categories[ci];

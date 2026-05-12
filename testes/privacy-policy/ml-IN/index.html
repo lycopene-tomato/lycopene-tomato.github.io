@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ml-IN">
+<head>
+<meta charset="utf-8" />
+<title>സ്വകാര്യതാ നയം — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Lyco ആപ്പുകളുടെ പൊതുവായ സ്വകാര്യതാ നയം. ഞങ്ങൾ പരസ്യ ഐഡികൾ ശേഖരിക്കില്ല; നിങ്ങളുടെ ഡാറ്റ ഉപകരണത്തിൽ തന്നെ." />
+<link rel="stylesheet" href="../../shared/motion.css" />
+<style>
+  body { margin: 0; font-family: "Helvetica Neue", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; }
+  * { box-sizing: border-box; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) {
+    .site-nav { display: none !important; }
+    .site-menu-btn { display: block !important; }
+  }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../../favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<!-- Motion -->
+<script src="../../shared/motion.js" defer></script>
+
+<!-- 言語メタ -->
+<script src="../../shared/langs.js"></script>
+
+<!-- コンテンツ (SiteHeader/SiteFooter が I18N を参照するため必要) -->
+<script src="../../content/ja/common.js"></script>
+<script src="../../content/ja/todo.js"></script>
+<script src="../../content/ja/record.js"></script>
+<script src="../../content/ja/tool.js"></script>
+<script src="../../content/ja/other.js"></script>
+<script>window.__CONTENT__ = window.__CONTENT__ || {}; window.__CONTENT__._fb_lang = "ja";</script>
+<script src="../../content/ja/common.js"></script>
+<script src="../../content/ja/todo.js"></script>
+<script src="../../content/ja/record.js"></script>
+<script src="../../content/ja/tool.js"></script>
+<script src="../../content/ja/other.js"></script>
+
+<script src="../../shared/i18n-loader.js"></script>
+
+<!-- 共通コンポーネント -->
+<script type="text/babel" src="../../shared/site-shared.jsx"></script>
+
+<!-- ページ本体 -->
+<script type="text/babel" data-presets="env,react">
+
+const { createRoot } = ReactDOM;
+// SiteHeader/SiteFooter は pathPrefix を「言語ホームへの相対」として使う
+// (画像は ${pathPrefix}../images/...、privacy-policy は ${pathPrefix}../privacy-policy/)。
+// /privacy-policy/ja/index.html から /ja/ 言語ホームに戻るには ../../ja/
+const PREFIX = "../../ml-IN/";
+const ACCENT = "#E89A3D";
+const ACCENT_DEEP = "#8B5A1A";
+
+function Card({ label, children }) {
+  return (
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "28px auto" }}>
+      <div style={{
+        position: "relative",
+        border: `2px solid ${ACCENT}`,
+        borderRadius: 16,
+        padding: "32px 24px 24px",
+        background: "#fff",
+      }}>
+        <div style={{ position: "absolute", top: -11, left: 20, pointerEvents: "none" }}>
+          <span style={{
+            display: "inline-block",
+            background: "#FBF6EE",
+            padding: "2px 14px",
+            borderRadius: 999,
+            fontSize: 13, fontWeight: 800, letterSpacing: 3,
+            color: ACCENT_DEEP,
+          }}>{label}</span>
+        </div>
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function Promise3() {
+  // 冒頭の "3つの約束" ハイライト
+  const items = [
+    { k: "01", t: "ഞങ്ങൾ പരസ്യ ഐഡി (IDFA) ശേഖരിക്കില്ല", d: "നിങ്ങളുടെ ആപ്പ് ഉപയോഗം ഒരു പരസ്യ ശൃംഖലയുമായും ബന്ധിപ്പിക്കില്ല." },
+    { k: "02", t: "നിങ്ങളുടെ ഡാറ്റ ഉപകരണത്തിൽ", d: "രേഖകളും ക്രമീകരണങ്ങളും ഉപകരണത്തിൽ മാത്രം സൂക്ഷിക്കും, ബാഹ്യ സെർവറുകളിലേക്ക് ഒരിക്കലും അയക്കില്ല." },
+    { k: "03", t: "ശേഖരിക്കാത്ത വിധം രൂപകൽപ്പന", d: "സൗകര്യത്തിന് ഡാറ്റ കൈമാറ്റമല്ല — ഡാറ്റ ശേഖരിക്കാതെ പ്രവർത്തിക്കുന്ന ആപ്പുകൾ ഞങ്ങൾ ഉണ്ടാക്കും." },
+  ];
+  return (
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "32px auto 8px" }}>
+      <div style={{
+        background: "linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%)",
+        border: `2px solid ${ACCENT}`,
+        borderRadius: 18,
+        padding: "26px 22px 22px",
+      }}>
+        <div style={{ textAlign: "center", marginBottom: 18 }}>
+          <div style={{ fontSize: 11, letterSpacing: 4, fontWeight: 800, color: ACCENT_DEEP, marginBottom: 6 }}>— ഞങ്ങളുടെ 3 വാഗ്ദാനങ്ങൾ —</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: "#3D2E1F", lineHeight: 1.5 }}>
+            നിങ്ങളുടെ സമാധാനത്തിനായി,<br />
+            <span style={{ color: ACCENT_DEEP }}>ഞങ്ങൾ കടപ്പെടുന്നത്</span>
+          </div>
+        </div>
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+          {items.map((it) => (
+            <li key={it.k} style={{
+              display: "flex", gap: 14, alignItems: "flex-start",
+              padding: "12px 14px", background: "#fff", borderRadius: 12,
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+            }}>
+              <span style={{
+                flex: "0 0 auto",
+                fontFamily: "ui-monospace, monospace",
+                fontSize: 11, fontWeight: 800, letterSpacing: 1,
+                color: "#fff", background: ACCENT,
+                padding: "3px 8px", borderRadius: 6,
+              }}>{it.k}</span>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#3D2E1F", marginBottom: 2 }}>{it.t}</div>
+                <div style={{ fontSize: 12.5, color: "#5C4936", lineHeight: 1.6 }}>{it.d}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function Page() {
+  return (
+    <>
+      <window.SiteHeader pathPrefix={PREFIX} currentCategoryId="todo" />
+
+      {/* HERO */}
+      <section className="reveal" style={{
+        background: "#2C2218", color: "#FBF6EE",
+        padding: "36px 20px 30px", textAlign: "center",
+      }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <h1 style={{ margin: "0 0 8px", fontSize: 26, fontWeight: 900, letterSpacing: 1 }}>സ്വകാര്യതാ നയം</h1>
+          <p style={{ margin: 0, fontSize: 13, opacity: 0.7 }}>എല്ലാ Lyco ആപ്പുകൾക്കും</p>
+        </div>
+      </section>
+
+      {/* 3つの約束 (冒頭ハイライト) */}
+      <Promise3 />
+
+      {/* 詳細セクション */}
+      <main style={{ paddingBottom: 48 }}>
+        <Card label="വ്യാപ്തി">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            ഈ നയം Lyco App നൽകുന്ന എല്ലാ ആപ്പുകൾക്കും ബാധകമാണ്. ഓരോ ആപ്പിന്റെയും App Store പേജിൽ നിന്ന് ലിങ്ക് ചെയ്ത ഈ പേജ് ആ ആപ്പിന്റെ സ്വകാര്യതാ നയമായും പ്രവർത്തിക്കും.
+          </p>
+        </Card>
+
+        <Card label="ശേഖരിക്കുന്ന വിവരങ്ങൾ">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>ആപ്പ് ക്രമീകരണങ്ങൾ, പുരോഗതി, കുറിപ്പുകൾ നിങ്ങളുടെ ഉപകരണത്തിൽ മാത്രം സൂക്ഷിക്കും.</li>
+            <li>ഈ ഡാറ്റ ഞങ്ങളുടെ സെർവറുകളിലേക്കോ ബാഹ്യ സേവനങ്ങളിലേക്കോ അയക്കില്ല.</li>
+            <li>വ്യക്തിഗത തിരിച്ചറിയൽ വിവരങ്ങൾ (പേര്, ഇമെയിൽ, ഫോൺ മുതലായവ) ശേഖരിക്കില്ല.</li>
+          </ul>
+        </Card>
+
+        <Card label="പരസ്യങ്ങളെക്കുറിച്ച്">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>കുട്ടികൾക്കായുള്ള ആപ്പുകളിൽ പരസ്യങ്ങൾ കാണിക്കില്ല.</li>
+            <li>മറ്റ് ആപ്പുകളിൽ Google AdMob പരസ്യങ്ങൾ രക്ഷിതാവിന്റെ മാനേജ്മെന്റ് സ്ക്രീനിൽ മാത്രമേ കാണിക്കൂ, കുട്ടി ഉപയോഗിക്കുന്ന സ്ക്രീനിൽ ഒരിക്കലുമില്ല.</li>
+            <li>AdMob ഉണ്ടെങ്കിലും ഞങ്ങളുടെ ആപ്പുകൾ പരസ്യ ഐഡി (IDFA) കൈമാറാത്ത വിധം ക്രമീകരിച്ചിരിക്കുന്നു.</li>
+          </ul>
+        </Card>
+
+        <Card label="അനലിറ്റിക്സും ട്രാക്കിങ്ങും">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>കുട്ടികൾക്കായുള്ള ആപ്പുകളിൽ ഒരു അനലിറ്റിക്സും ട്രാക്കിങ്ങും ഉപയോഗിക്കില്ല.</li>
+            <li>മറ്റ് ആപ്പുകളിൽ പ്രശ്നങ്ങൾ കണ്ടെത്താനും ഗുണനിലവാരം മെച്ചപ്പെടുത്താനും Apple-ന്റെ അജ്ഞാത സ്ഥിതിവിവരക്കണക്കുകൾ മാത്രം — വ്യക്തിഗത വിവരങ്ങളൊന്നുമില്ലാതെ.</li>
+          </ul>
+        </Card>
+
+        <Card label="മൂന്നാം കക്ഷിയുമായി പങ്കിടൽ">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            നിങ്ങളുടെ വിവരങ്ങൾ ഞങ്ങൾ വിൽക്കില്ല, മൂന്നാം കക്ഷിയുമായി പങ്കിടുകയുമില്ല.
+          </p>
+        </Card>
+
+        <Card label="ബന്ധപ്പെടുക">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            ചോദ്യങ്ങൾക്കോ അഭ്യർത്ഥനകൾക്കോ <strong style={{ color: "#3D2E1F" }}>lycopenecafei+LP@gmail.com</strong>-ൽ ബന്ധപ്പെടുക. ഏതെങ്കിലും ആപ്പിന്റെ App Store പേജിലൂടെയും ഞങ്ങളിലെത്താം.
+          </p>
+        </Card>
+
+        <Card label="അപ്ഡേറ്റുകൾ">
+          <p style={{ margin: "0 0 8px", fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            ആവശ്യാനുസരണം ഈ നയം പുതുക്കാം. പ്രധാന മാറ്റങ്ങൾ ഈ പേജിൽ അറിയിക്കും.
+          </p>
+          <p style={{ margin: 0, fontSize: 12, opacity: 0.55, fontVariantNumeric: "tabular-nums" }}>
+            അവസാന അപ്ഡേറ്റ്: 2026-05-11
+          </p>
+        </Card>
+      </main>
+
+      <window.SiteFooter pathPrefix={PREFIX} />
+    </>
+  );
+}
+
+createRoot(document.getElementById("root")).render(<Page />);
+
+</script>
+
+<script defer src="../../shared/analytics.js"></script>
+</body>
+</html>

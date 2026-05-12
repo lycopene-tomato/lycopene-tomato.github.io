@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ar-SA" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<title>سياسة الخصوصية — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="سياسة الخصوصية الموحَّدة لتطبيقات Lyco. لا نجمع معرّفات الإعلانات؛ تبقى بياناتك على جهازك." />
+<link rel="stylesheet" href="../../shared/motion.css" />
+<style>
+  body { margin: 0; font-family: "Helvetica Neue", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; }
+  * { box-sizing: border-box; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) {
+    .site-nav { display: none !important; }
+    .site-menu-btn { display: block !important; }
+  }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../../favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<!-- Motion -->
+<script src="../../shared/motion.js" defer></script>
+
+<!-- 言語メタ -->
+<script src="../../shared/langs.js"></script>
+
+<!-- コンテンツ (SiteHeader/SiteFooter が I18N を参照するため必要) -->
+<script src="../../content/ja/common.js"></script>
+<script src="../../content/ja/todo.js"></script>
+<script src="../../content/ja/record.js"></script>
+<script src="../../content/ja/tool.js"></script>
+<script src="../../content/ja/other.js"></script>
+<script>window.__CONTENT__ = window.__CONTENT__ || {}; window.__CONTENT__._fb_lang = "ja";</script>
+<script src="../../content/ja/common.js"></script>
+<script src="../../content/ja/todo.js"></script>
+<script src="../../content/ja/record.js"></script>
+<script src="../../content/ja/tool.js"></script>
+<script src="../../content/ja/other.js"></script>
+
+<script src="../../shared/i18n-loader.js"></script>
+
+<!-- 共通コンポーネント -->
+<script type="text/babel" src="../../shared/site-shared.jsx"></script>
+
+<!-- ページ本体 -->
+<script type="text/babel" data-presets="env,react">
+
+const { createRoot } = ReactDOM;
+// SiteHeader/SiteFooter は pathPrefix を「言語ホームへの相対」として使う
+// (画像は ${pathPrefix}../images/...、privacy-policy は ${pathPrefix}../privacy-policy/)。
+// /privacy-policy/ja/index.html から /ja/ 言語ホームに戻るには ../../ja/
+const PREFIX = "../../ar-SA/";
+const ACCENT = "#E89A3D";
+const ACCENT_DEEP = "#8B5A1A";
+
+function Card({ label, children }) {
+  return (
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "28px auto" }}>
+      <div style={{
+        position: "relative",
+        border: `2px solid ${ACCENT}`,
+        borderRadius: 16,
+        padding: "32px 24px 24px",
+        background: "#fff",
+      }}>
+        <div style={{ position: "absolute", top: -11, left: 20, pointerEvents: "none" }}>
+          <span style={{
+            display: "inline-block",
+            background: "#FBF6EE",
+            padding: "2px 14px",
+            borderRadius: 999,
+            fontSize: 13, fontWeight: 800, letterSpacing: 3,
+            color: ACCENT_DEEP,
+          }}>{label}</span>
+        </div>
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function Promise3() {
+  // 冒頭の "3つの約束" ハイライト
+  const items = [
+    { k: "01", t: "لا نجمع معرّف الإعلانات (IDFA)", d: "استخدامك للتطبيق لا يُربط بأي شبكة إعلانية." },
+    { k: "02", t: "تبقى بياناتك على جهازك", d: "السجلات والإعدادات تُحفظ فقط على الجهاز ولا تُرسل إلى أي خادم خارجي." },
+    { k: "03", t: "مُصمَّم ألا يجمع", d: "نبني تطبيقاتنا لتعمل دون جمع بيانات، بدلًا من جمعها مقابل ميزات الراحة." },
+  ];
+  return (
+    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "32px auto 8px" }}>
+      <div style={{
+        background: "linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%)",
+        border: `2px solid ${ACCENT}`,
+        borderRadius: 18,
+        padding: "26px 22px 22px",
+      }}>
+        <div style={{ textAlign: "center", marginBottom: 18 }}>
+          <div style={{ fontSize: 11, letterSpacing: 4, fontWeight: 800, color: ACCENT_DEEP, marginBottom: 6 }}>— وعودنا الثلاثة —</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: "#3D2E1F", lineHeight: 1.5 }}>
+            من أجل راحة بالك،<br />
+            <span style={{ color: ACCENT_DEEP }}>ما الذي نلتزم به</span>
+          </div>
+        </div>
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+          {items.map((it) => (
+            <li key={it.k} style={{
+              display: "flex", gap: 14, alignItems: "flex-start",
+              padding: "12px 14px", background: "#fff", borderRadius: 12,
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+            }}>
+              <span style={{
+                flex: "0 0 auto",
+                fontFamily: "ui-monospace, monospace",
+                fontSize: 11, fontWeight: 800, letterSpacing: 1,
+                color: "#fff", background: ACCENT,
+                padding: "3px 8px", borderRadius: 6,
+              }}>{it.k}</span>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#3D2E1F", marginBottom: 2 }}>{it.t}</div>
+                <div style={{ fontSize: 12.5, color: "#5C4936", lineHeight: 1.6 }}>{it.d}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function Page() {
+  return (
+    <>
+      <window.SiteHeader pathPrefix={PREFIX} currentCategoryId="todo" />
+
+      {/* HERO */}
+      <section className="reveal" style={{
+        background: "#2C2218", color: "#FBF6EE",
+        padding: "36px 20px 30px", textAlign: "center",
+      }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <h1 style={{ margin: "0 0 8px", fontSize: 26, fontWeight: 900, letterSpacing: 1 }}>سياسة الخصوصية</h1>
+          <p style={{ margin: 0, fontSize: 13, opacity: 0.7 }}>لكل تطبيقات Lyco</p>
+        </div>
+      </section>
+
+      {/* 3つの約束 (冒頭ハイライト) */}
+      <Promise3 />
+
+      {/* 詳細セクション */}
+      <main style={{ paddingBottom: 48 }}>
+        <Card label="النطاق">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            تُطبَّق هذه السياسة على جميع التطبيقات التي تقدّمها Lyco App. هذه الصفحة، المربوطة من صفحة كل تطبيق على App Store، تُعدّ سياسة الخصوصية لذلك التطبيق.
+          </p>
+        </Card>
+
+        <Card label="المعلومات التي نجمعها">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>إعدادات التطبيق والتقدّم والسجلات تُحفظ على جهازك فقط.</li>
+            <li>هذه البيانات لا تُرسل أبدًا إلى خوادمنا أو إلى أي خدمة خارجية.</li>
+            <li>لا نجمع بيانات تعريف شخصية (الاسم، البريد، الهاتف…).</li>
+          </ul>
+        </Card>
+
+        <Card label="الإعلانات">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>التطبيقات الموجَّهة للأطفال لا تعرض أي إعلانات.</li>
+            <li>في التطبيقات الأخرى، قد تظهر إعلانات Google AdMob فقط على شاشة إدارة ولي الأمر، ولا تظهر على الشاشات التي يستخدمها الطفل.</li>
+            <li>حتى مع AdMob، تطبيقاتنا مُهيّأة لعدم تمرير معرّف الإعلانات (IDFA).</li>
+          </ul>
+        </Card>
+
+        <Card label="التحليلات والتعقّب">
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
+            <li>تطبيقات الأطفال لا تستخدم أي أداة تحليلات أو تعقّب.</li>
+            <li>في باقي التطبيقات، نستخدم إحصاءات Apple المجهولة الهوية فقط لاكتشاف المشاكل وتحسين الجودة — دون أي معلومات تعريفية.</li>
+          </ul>
+        </Card>
+
+        <Card label="المشاركة مع طرف ثالث">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            لا نبيع معلوماتك ولا نشاركها مع أي طرف ثالث.
+          </p>
+        </Card>
+
+        <Card label="التواصل">
+          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            للأسئلة أو الطلبات، تواصل معنا على <strong style={{ color: "#3D2E1F" }}>lycopenecafei+LP@gmail.com</strong>. يمكنك أيضًا الوصول إلينا من صفحة أي تطبيق على App Store.
+          </p>
+        </Card>
+
+        <Card label="التحديثات">
+          <p style={{ margin: "0 0 8px", fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
+            قد نُحدِّث هذه السياسة عند الحاجة. سنُعلن التغييرات الجوهرية على هذه الصفحة.
+          </p>
+          <p style={{ margin: 0, fontSize: 12, opacity: 0.55, fontVariantNumeric: "tabular-nums" }}>
+            آخر تحديث: 2026-05-11
+          </p>
+        </Card>
+      </main>
+
+      <window.SiteFooter pathPrefix={PREFIX} />
+    </>
+  );
+}
+
+createRoot(document.getElementById("root")).render(<Page />);
+
+</script>
+
+<script defer src="../../shared/analytics.js"></script>
+</body>
+</html>
