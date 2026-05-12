@@ -7,7 +7,7 @@ window.__CONTENT__.ko.categories = window.__CONTENT__.ko.categories || {};
 
 window.__CONTENT__.ko.categories.tool = {
   id: "tool",
-  name: "Timer 시리즈",
+  name: "Timer",
   subtitle: "「이따가」를 「지금」으로. 미루기・뒤로 밀기 대책의 타이머 시리즈.",
   lineup_title: "상황에 맞춰, 카운트다운.",
   accent: { c: "#7BAE74", soft: "#EAF3E5", deep: "#3F7239" },

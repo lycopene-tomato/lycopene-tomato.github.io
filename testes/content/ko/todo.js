@@ -7,7 +7,7 @@ window.__CONTENT__.ko.categories = window.__CONTENT__.ko.categories || {};
 
 window.__CONTENT__.ko.categories.todo = {
   id: "todo",
-  name: "Todo 시리즈",
+  name: "Todo",
   subtitle: "「해!」를 「해 보고 싶어!」로 바꾸는, 습관 만들기 시리즈.",
   accent: { c: "#F5A8C0", soft: "#FFF0F4", deep: "#B85575" },
   eyebrow: "습관 만들기",

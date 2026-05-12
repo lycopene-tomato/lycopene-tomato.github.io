@@ -4,7 +4,7 @@ window.__CONTENT__.ja.categories = window.__CONTENT__.ja.categories || {};
 
 window.__CONTENT__.ja.categories.tool = {
   id: "tool",
-  name: "Timer系",
+  name: "Timer",
   subtitle: "「あとで」を「今」に。後回し・先延ばし対策のタイマー系。",
   lineup_title: "状況に合わせて、カウントダウン。",
   accent: { c: "#7BAE74", soft: "#EAF3E5", deep: "#3F7239" },

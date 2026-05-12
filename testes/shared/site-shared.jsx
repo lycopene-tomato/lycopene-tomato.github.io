@@ -52,24 +52,14 @@ window.resolveScreenshot = function (appId, lang, pathPrefix = "") {
 };
 
 // ----------------------------------------------------------
-// 言語スイッチャー（44言語対応ドロップダウン + 検索）
+// ----------------------------------------------------------
+// 言語スイッチャー（4言語ドロップダウン）
 // ----------------------------------------------------------
 const LangSwitcher = () => {
   const lang = window.useLang();
   const [open, setOpen] = React.useState(false);
-  const [q, setQ] = React.useState("");
   const current = window.LANGS.find(l => l.code === lang) || window.LANGS[0];
   const shortLabel = window.LANG_SHORT[current.code] || current.code.toUpperCase();
-
-  const filtered = React.useMemo(() => {
-    if (!q) return window.LANGS;
-    const lq = q.toLowerCase();
-    return window.LANGS.filter(l =>
-      l.code.toLowerCase().includes(lq) ||
-      l.label.toLowerCase().includes(lq) ||
-      l.native.toLowerCase().includes(lq)
-    );
-  }, [q]);
 
   React.useEffect(() => {
     if (!open) return;
@@ -101,19 +91,8 @@ const LangSwitcher = () => {
           zIndex: 100, display: "flex", flexDirection: "column",
           boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
         }}>
-          <input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="Search language..."
-            autoFocus
-            style={{
-              border: "1px solid #E5D8C0", borderRadius: 8,
-              padding: "6px 10px", fontSize: 12, marginBottom: 6,
-              fontFamily: "inherit", outline: "none",
-            }}
-          />
           <div style={{ overflowY: "auto", flex: 1 }}>
-            {filtered.map(l => (
+            {window.LANGS.map(l => (
               <button key={l.code} onClick={() => { window.setLang(l.code); setOpen(false); }} style={{
                 display: "flex", width: "100%", textAlign: "left",
                 padding: "7px 10px", border: "none",
@@ -123,14 +102,9 @@ const LangSwitcher = () => {
                 justifyContent: "space-between", alignItems: "center", gap: 8,
               }}>
                 <span style={{ fontWeight: l.code === lang ? 700 : 500 }}>{l.native}</span>
-                <span style={{ fontSize: 10, opacity: 0.5 }}>{l.code}</span>
+                <span style={{ fontSize: 10, opacity: 0.5 }}>{l.code === "en-US" ? "en" : l.code}</span>
               </button>
             ))}
-            {filtered.length === 0 && (
-              <div style={{ padding: "12px 10px", fontSize: 11, color: "#8B7355", textAlign: "center" }}>
-                No match
-              </div>
-            )}
           </div>
         </div>
       )}

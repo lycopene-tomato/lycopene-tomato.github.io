@@ -7,7 +7,7 @@ window.__CONTENT__.ko.categories = window.__CONTENT__.ko.categories || {};
 
 window.__CONTENT__.ko.categories.other = {
   id: "other",
-  name: "기타",
+  name: "Other",
   subtitle: "「육아를 조금이라도 편하게」 축에서 벗어난, 보너스 칸. 게임・편리한 도구・숨돌리기 등.",
   lineup_title: "보너스 앱.",
   accent: { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },

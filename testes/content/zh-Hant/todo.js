@@ -7,7 +7,7 @@ window.__CONTENT__["zh-Hant"].categories = window.__CONTENT__["zh-Hant"].categor
 
 window.__CONTENT__["zh-Hant"].categories.todo = {
   id: "todo",
-  name: "Todo 系列",
+  name: "Todo",
   subtitle: "把「快去做！」變成「我想試試看！」的習慣養成系列。",
   accent: { c: "#F5A8C0", soft: "#FFF0F4", deep: "#B85575" },
   eyebrow: "養成習慣",

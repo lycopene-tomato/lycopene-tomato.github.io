@@ -4,7 +4,7 @@ window.__CONTENT__.ja.categories = window.__CONTENT__.ja.categories || {};
 
 window.__CONTENT__.ja.categories.record = {
   id: "record",
-  name: "Log系",
+  name: "Log",
   subtitle: "毎日の「またか」を、子の成長と親の安心に変える記録系。",
   lineup_title: "内容に合わせて、整理のアプリ。",
   label_call: "もやもや",

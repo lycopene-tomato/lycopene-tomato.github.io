@@ -7,7 +7,7 @@ window.__CONTENT__["zh-Hant"].categories = window.__CONTENT__["zh-Hant"].categor
 
 window.__CONTENT__["zh-Hant"].categories.other = {
   id: "other",
-  name: "其他類",
+  name: "Other",
   subtitle: "偏離「讓育兒輕鬆一些」主軸的附加區。遊戲、便利工具、喘口氣的小東西。",
   lineup_title: "附加的應用程式。",
   accent: { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },

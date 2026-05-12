@@ -51,7 +51,7 @@ window.__CONTENT__["zh-Hant"].common = {
     copy: "© 2026 Lyco App.",
     nav_home: "首頁",
     nav_apps: "應用程式",
-    nav_blog: "專欄",
+    nav_blog: "Blog",
     nav_privacy: "隱私權政策",
   },
 };

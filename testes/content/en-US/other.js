@@ -7,7 +7,7 @@ window.__CONTENT__["en-US"].categories = window.__CONTENT__["en-US"].categories 
 
 window.__CONTENT__["en-US"].categories.other = {
   id: "other",
-  name: "Others",
+  name: "Other",
   subtitle: "Off the “make parenting easier” path — a bonus shelf. Games, handy tools, little breathers.",
   lineup_title: "Bonus apps.",
   accent: { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },

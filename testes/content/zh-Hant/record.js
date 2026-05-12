@@ -7,7 +7,7 @@ window.__CONTENT__["zh-Hant"].categories = window.__CONTENT__["zh-Hant"].categor
 
 window.__CONTENT__["zh-Hant"].categories.record = {
   id: "record",
-  name: "記錄系列",
+  name: "Log",
   subtitle: "把每天的「又來了」，化作看見孩子的成長，與父母的安心。",
   lineup_title: "依內容不同，整理用的應用程式。",
   label_call: "煩躁",

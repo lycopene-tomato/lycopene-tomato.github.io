@@ -7,7 +7,7 @@ window.__CONTENT__["zh-Hant"].categories = window.__CONTENT__["zh-Hant"].categor
 
 window.__CONTENT__["zh-Hant"].categories.tool = {
   id: "tool",
-  name: "Timer 系列",
+  name: "Timer",
   subtitle: "把「等一下」變成「現在」。對付拖延的計時器系列。",
   lineup_title: "依情境選擇，倒數計時。",
   accent: { c: "#7BAE74", soft: "#EAF3E5", deep: "#3F7239" },

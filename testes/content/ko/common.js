@@ -51,7 +51,7 @@ window.__CONTENT__.ko.common = {
     copy: "© 2026 Lyco App.",
     nav_home: "홈",
     nav_apps: "앱 목록",
-    nav_blog: "칼럼",
+    nav_blog: "Blog",
     nav_privacy: "개인정보처리방침",
   },
 };

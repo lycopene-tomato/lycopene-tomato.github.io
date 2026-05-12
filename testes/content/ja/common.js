@@ -54,7 +54,7 @@ window.__CONTENT__.ja.common = {
     copy: "© 2026 Lyco App.",
     nav_home: "トップ",
     nav_apps: "アプリ一覧",
-    nav_blog: "コラム",
+    nav_blog: "Blog",
     nav_privacy: "プライバシーポリシー",
   },
 };

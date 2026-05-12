@@ -7,7 +7,7 @@ window.__CONTENT__.ko.categories = window.__CONTENT__.ko.categories || {};
 
 window.__CONTENT__.ko.categories.record = {
   id: "record",
-  name: "기록 시리즈",
+  name: "Log",
   subtitle: "매일의 「또야」를, 아이의 성장과 부모의 안도로 바꾸는 기록 시리즈.",
   lineup_title: "내용에 맞춰, 정리용 앱.",
   label_call: "답답함",

@@ -10,7 +10,7 @@ window.__CONTENT__.ja.categories = window.__CONTENT__.ja.categories || {};
 
 window.__CONTENT__.ja.categories.todo = {
   id: "todo",
-  name: "Todo系",
+  name: "Todo",
   subtitle: "「やって！」を「やってみたい！」に変える、習慣づくりシリーズ。",
   accent: { c: "#F5A8C0", soft: "#FFF0F4", deep: "#B85575" },
   eyebrow: "習慣づくり",
