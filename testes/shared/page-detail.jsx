@@ -122,7 +122,7 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
       )}
 
       {/* SCREENS (optional, language-specific path) */}
-      <window.AppScreens lang={lang} appId={app.id} pathPrefix={prefix} accent={accent} label={t.detail.label_screen} />
+      <window.AppScreens lang={lang} appId={app.id} appName={app.name} pathPrefix={prefix} accent={accent} label={t.detail.label_screen} />
 
       {/* STORE LINKS — 説明を読み終えたあとに表示 */}
       <section className="reveal" data-snap data-progress-color={accent.c}
@@ -175,7 +175,7 @@ window.AppDetailPage = function AppDetailPage({ appId, pathPrefix }) {
 };
 
 // 言語別スクリーンショット（あれば表示。なければ何も出さない）
-window.AppScreens = function AppScreens({ lang, appId, pathPrefix, accent, label }) {
+window.AppScreens = function AppScreens({ lang, appId, appName, pathPrefix, accent, label }) {
   const [imgs, setImgs] = React.useState([]);
   React.useEffect(() => {
     let alive = true;
@@ -246,7 +246,7 @@ window.AppScreens = function AppScreens({ lang, appId, pathPrefix, accent, label
           margin: "0 auto",
         }}>
           {imgs.map((src, i) => (
-            <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" }} />
+            <img key={i} src={src} alt={`${appName || appId} screenshot ${i + 1}`} style={{ width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" }} />
           ))}
         </div>
       </div>
