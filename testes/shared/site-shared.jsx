@@ -240,7 +240,7 @@ window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
             <span style={{ margin: "0 8px", opacity: 0.4, fontSize: 10 }}>·</span>
           )}
           {f.tagline_sub && (
-            <span style={{ fontSize: 10, opacity: 0.65 }}>{f.tagline_sub}</span>
+            <span style={{ fontSize: 10, opacity: 0.5, fontStyle: "italic" }}>{f.tagline_sub}</span>
           )}
         </div>
       )}
@@ -286,7 +286,7 @@ window.AllAppsList = ({ pathPrefix = "", currentCategoryId }) => {
   const allSub      = (t.allapps && t.allapps.sub)     || "";
   const inProgressLabel = (t.allapps && t.allapps.in_progress) || "";
   return (
-    <section className="reveal" data-snap style={{ padding: "clamp(48px, 7vw, 72px) 24px", borderTop: "1px solid rgba(189,153,108,0.15)", background: "#fff" }}>
+    <section id="lineup" className="reveal" data-snap style={{ padding: "clamp(48px, 7vw, 72px) 24px", borderTop: "1px solid rgba(189,153,108,0.15)", background: "#fff" }}>
       <div style={{ maxWidth: 880, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <div style={{ fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginBottom: 8 }}>
