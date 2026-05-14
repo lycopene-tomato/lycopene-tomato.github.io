@@ -231,16 +231,39 @@ window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
       padding: "10px 20px 8px", textAlign: "center",
       borderTop: `1px solid #1B130C`,
     }}>
-      {(f.tagline || f.tagline_sub) && (
-        <div style={{ marginBottom: 6, letterSpacing: 0.4, lineHeight: 1.4 }}>
-          {f.tagline && (
-            <span style={{ fontSize: 12, fontWeight: 700, color: "#FFB263" }}>{f.tagline}</span>
+      {(f.tagline || f.tagline_sub || f.support_url) && (
+        <div style={{
+          display: "flex", justifyContent: "center", alignItems: "center",
+          flexWrap: "wrap", gap: "6px 14px",
+          marginBottom: 6, letterSpacing: 0.4, lineHeight: 1.4,
+        }}>
+          {(f.tagline || f.tagline_sub) && (
+            <div>
+              {f.tagline && (
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#FFB263" }}>{f.tagline}</span>
+              )}
+              {f.tagline && f.tagline_sub && (
+                <span style={{ margin: "0 8px", opacity: 0.4, fontSize: 10 }}>·</span>
+              )}
+              {f.tagline_sub && (
+                <span style={{ fontSize: 10, opacity: 0.5, fontStyle: "italic" }}>{f.tagline_sub}</span>
+              )}
+            </div>
           )}
-          {f.tagline && f.tagline_sub && (
-            <span style={{ margin: "0 8px", opacity: 0.4, fontSize: 10 }}>·</span>
-          )}
-          {f.tagline_sub && (
-            <span style={{ fontSize: 10, opacity: 0.5, fontStyle: "italic" }}>{f.tagline_sub}</span>
+          {f.support_url && (
+            <a
+              href={f.support_url}
+              target="_blank"
+              rel="noopener"
+              aria-label={f.support_label || "Buy me a coffee"}
+              style={{ display: "inline-block", lineHeight: 0 }}
+            >
+              <img
+                src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=lycoapp&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
+                alt={f.support_label || "Buy me a coffee"}
+                style={{ height: 32, width: "auto", verticalAlign: "middle" }}
+              />
+            </a>
           )}
         </div>
       )}
@@ -257,39 +280,6 @@ window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
         <span style={{ opacity: 0.5, fontSize: 10 }}>·</span>
         <span style={{ fontSize: 10, opacity: 0.5, letterSpacing: 0.3 }}>{f.copy}</span>
       </div>
-      {f.support_url && (
-        <div style={{ marginTop: 10, textAlign: "center" }}>
-          <a
-            href={f.support_url}
-            target="_blank"
-            rel="noopener"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              fontSize: 11,
-              color: "#FFB263",
-              textDecoration: "none",
-              padding: "5px 14px",
-              border: "1px solid rgba(255, 178, 99, 0.35)",
-              borderRadius: 999,
-              background: "rgba(255, 178, 99, 0.06)",
-              transition: "background .15s ease, transform .15s ease",
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background = "rgba(255, 178, 99, 0.18)";
-              e.currentTarget.style.transform = "translateY(-1px)";
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background = "rgba(255, 178, 99, 0.06)";
-              e.currentTarget.style.transform = "none";
-            }}
-          >
-            <span aria-hidden="true">☕</span>
-            <span>{f.support_label || "Buy me a coffee"}</span>
-          </a>
-        </div>
-      )}
     </footer>
   );
 };
