@@ -53,5 +53,7 @@ window.__CONTENT__["zh-Hant"].common = {
     nav_apps: "應用程式",
     nav_blog: "Blog",
     nav_privacy: "隱私權政策",
+    support_label: "請我喝杯咖啡",
+    support_url: "https://buymeacoffee.com/lycoapp",
   },
 };

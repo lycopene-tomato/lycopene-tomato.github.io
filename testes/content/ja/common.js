@@ -56,5 +56,7 @@ window.__CONTENT__.ja.common = {
     nav_apps: "アプリ一覧",
     nav_blog: "Blog",
     nav_privacy: "プライバシーポリシー",
+    support_label: "コーヒーをおごる",
+    support_url: "https://buymeacoffee.com/lycoapp",
   },
 };

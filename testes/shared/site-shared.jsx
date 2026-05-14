@@ -257,6 +257,39 @@ window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
         <span style={{ opacity: 0.5, fontSize: 10 }}>·</span>
         <span style={{ fontSize: 10, opacity: 0.5, letterSpacing: 0.3 }}>{f.copy}</span>
       </div>
+      {f.support_url && (
+        <div style={{ marginTop: 10, textAlign: "center" }}>
+          <a
+            href={f.support_url}
+            target="_blank"
+            rel="noopener"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              fontSize: 11,
+              color: "#FFB263",
+              textDecoration: "none",
+              padding: "5px 14px",
+              border: "1px solid rgba(255, 178, 99, 0.35)",
+              borderRadius: 999,
+              background: "rgba(255, 178, 99, 0.06)",
+              transition: "background .15s ease, transform .15s ease",
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = "rgba(255, 178, 99, 0.18)";
+              e.currentTarget.style.transform = "translateY(-1px)";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = "rgba(255, 178, 99, 0.06)";
+              e.currentTarget.style.transform = "none";
+            }}
+          >
+            <span aria-hidden="true">☕</span>
+            <span>{f.support_label || "Buy me a coffee"}</span>
+          </a>
+        </div>
+      )}
     </footer>
   );
 };
