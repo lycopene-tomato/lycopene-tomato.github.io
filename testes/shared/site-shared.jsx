@@ -246,7 +246,7 @@ window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
                 <span style={{ margin: "0 8px", opacity: 0.4, fontSize: 10 }}>·</span>
               )}
               {f.tagline_sub && (
-                <span style={{ fontSize: 10, opacity: 0.5, fontStyle: "italic" }}>{f.tagline_sub}</span>
+                <span style={{ fontSize: 9, opacity: 0.5, fontStyle: "italic", letterSpacing: 0.2 }}>{f.tagline_sub}</span>
               )}
             </div>
           )}
