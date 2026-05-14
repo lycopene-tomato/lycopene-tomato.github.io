@@ -243,10 +243,10 @@ window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
                 <span style={{ fontSize: 12, fontWeight: 700, color: "#FFB263" }}>{f.tagline}</span>
               )}
               {f.tagline && f.tagline_sub && (
-                <span style={{ margin: "0 8px", opacity: 0.4, fontSize: 10 }}>·</span>
+                <span className="footer-tagline-sep" style={{ margin: "0 8px", opacity: 0.4, fontSize: 10 }}>·</span>
               )}
               {f.tagline_sub && (
-                <span style={{ fontSize: 9, opacity: 0.5, fontStyle: "italic", letterSpacing: 0.2 }}>{f.tagline_sub}</span>
+                <span className="footer-tagline-sub" style={{ fontSize: 9, opacity: 0.5, fontStyle: "italic", letterSpacing: 0.2 }}>{f.tagline_sub}</span>
               )}
             </div>
           )}
@@ -259,7 +259,7 @@ window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
               style={{ display: "inline-block", lineHeight: 0 }}
             >
               <img
-                src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
+                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
                 alt={f.support_label || "Buy me a coffee"}
                 style={{ height: 32, width: "auto", verticalAlign: "middle" }}
               />

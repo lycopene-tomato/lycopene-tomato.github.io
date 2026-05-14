@@ -167,3 +167,14 @@
   }
 }
 .motion-off .scroll-progress { display: none; }
+
+/* ---------- フッターのタグライン副題 (italic 部分) ----------
+ * mobile (≤500px) では非表示にして、tagline + BMC バッジを 1 行に
+ * 収まりやすくする。デスクトップでは引き続き表示。
+ * ---------------------------------------------------------- */
+@media (max-width: 500px) {
+  .footer-tagline-sub,
+  .footer-tagline-sep {
+    display: none !important;
+  }
+}
