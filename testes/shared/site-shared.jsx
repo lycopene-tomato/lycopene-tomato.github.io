@@ -259,7 +259,7 @@ window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
               style={{ display: "inline-block", lineHeight: 0 }}
             >
               <img
-                src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=lycoapp&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
+                src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
                 alt={f.support_label || "Buy me a coffee"}
                 style={{ height: 32, width: "auto", verticalAlign: "middle" }}
               />
