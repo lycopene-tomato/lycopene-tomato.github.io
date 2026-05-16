@@ -56,4 +56,11 @@ window.__CONTENT__.ko.common = {
     support_label: "커피 한 잔",
     support_url: "https://buymeacoffee.com/lycoapp",
   },
+
+  in_app: {
+    title: "다른 앱도 있어요",
+    lead: "Lyco App은 양육을 조금 더 편하게 해주는 작은 앱들의 모음입니다.",
+    current_badge: "지금 사용 중",
+    view_detail: "자세히 보기",
+  },
 };

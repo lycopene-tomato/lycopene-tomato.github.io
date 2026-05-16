@@ -92,11 +92,10 @@
       "app_badge": "Todoガチャ"
     },
     {
+      "_comment": "ピン留め (0-A) はタグ無しが原則 (サイト全体への入り口、特定セグメントに見えないように)。BLOG_GUIDE §13-2 参照。",
       "slug": "rewards-and-dopamine",
       "date": "2026-04-28",
-      "tags": [
-        "adhd-related"
-      ],
+      "tags": [],
       "series_id": null,
       "series_order": null,
       "section": "pinned",

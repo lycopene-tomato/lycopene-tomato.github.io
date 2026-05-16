@@ -56,4 +56,11 @@ window.__CONTENT__["zh-Hant"].common = {
     support_label: "請我喝杯咖啡",
     support_url: "https://buymeacoffee.com/lycoapp",
   },
+
+  in_app: {
+    title: "我們也有其他 app",
+    lead: "Lyco App 是一系列讓育兒輕鬆一點的小型應用程式集合。",
+    current_badge: "目前使用中",
+    view_detail: "查看詳細",
+  },
 };

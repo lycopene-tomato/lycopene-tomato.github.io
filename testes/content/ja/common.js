@@ -59,4 +59,11 @@ window.__CONTENT__.ja.common = {
     support_label: "コーヒーをおごる",
     support_url: "https://buymeacoffee.com/lycoapp",
   },
+
+  in_app: {
+    title: "他のアプリも、あります",
+    lead: "Lyco App は、子育てを少しラクにする小さなアプリ集です。",
+    current_badge: "いま使用中",
+    view_detail: "くわしく見る",
+  },
 };

@@ -27,8 +27,13 @@
   .post:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
   .post .date { font-size:11px; opacity:.55; letter-spacing:1px; font-variant-numeric:tabular-nums; margin-bottom:6px; }
   .post .title { font-size:17px; font-weight:800; line-height:1.5; margin-bottom:6px; }
-  .post .excerpt { font-size:13px; opacity:.75; line-height:1.7; }
+  .post .excerpt { font-size:13px; opacity:.75; line-height:1.5; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis; }
   .empty { font-size: 14px; opacity:.6; }
+  .pagination { display:flex; gap:8px; justify-content:center; align-items:center; margin-top:32px; padding-top:18px; border-top:1px dashed #D6C9B5; flex-wrap:wrap; }
+  .pagination a, .pagination span { padding:6px 14px; border:1px solid #E8E0CC; border-radius:8px; text-decoration:none; color:#5C4936; font-size:13px; }
+  .pagination a:hover { background:#FFE9B0; }
+  .pagination .current { background:#fff; font-weight:700; }
+  .pagination .disabled { opacity:.3; pointer-events:none; }
   .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
   .site-nav { flex: 1; justify-content: center; }
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
@@ -49,11 +54,6 @@
     <div class="date">2026-05-11</div>
     <div class="title">忘れない事を忘れない</div>
     <div class="excerpt">子供に Todo リストを持たせた。でも、リストを見ることを忘れる。仕事のスケジューラ・ミルトンモデルの前提質問・ワーキングメモリ研究を絡めて、子供の記憶の仕組みを考える。</div>
-  </a>
-    <a class="post" href="../posts/rewards-and-dopamine.html">
-    <div class="date">2026-04-28</div>
-    <div class="title">褒美が無いとやらない子にならない？</div>
-    <div class="excerpt">Lyco App はご褒美やゲーム性を多く組み込んでいます。「ご褒美が無いと動かない子を作るのでは?」という疑問に、ADHD 研究のドーパミン特性と習慣化の視点からお答えします。</div>
   </a>
   </div>
 </div>

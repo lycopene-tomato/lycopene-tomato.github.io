@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>We have other apps too — Lyco App</title>
+<meta name="description" content="Lyco App is a collection of small apps that make parenting a little easier." />
+<link rel="canonical" href="https://lycoapp.com/en-US/in-app/apps.html" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<style>
+  body { margin: 0; font-family: "Helvetica Neue", system-ui, sans-serif; background: #FBF6EE; }
+  * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<!-- Language meta + content -->
+<script src="../../shared/langs.js"></script>
+<script src="../../content/en-US/common.js"></script>
+<script src="../../content/en-US/todo.js"></script>
+<script src="../../content/en-US/record.js"></script>
+<script src="../../content/en-US/tool.js"></script>
+<script src="../../content/en-US/other.js"></script>
+<script src="../../shared/i18n-loader.js"></script>
+
+<!-- Shared components (for AppTheme / useLang / resolveHeroImage / getTheme) -->
+<script type="text/babel" src="../../shared/site-shared.jsx"></script>
+<script type="text/babel" src="../../shared/in-app-shell.jsx"></script>
+
+<!-- Page body -->
+<script type="text/babel" data-presets="env,react">
+const { createRoot } = ReactDOM;
+createRoot(document.getElementById("root")).render(<window.InAppAppsPage />);
+</script>
+
+<script defer src="../../shared/analytics.js"></script>
+</body>
+</html>
