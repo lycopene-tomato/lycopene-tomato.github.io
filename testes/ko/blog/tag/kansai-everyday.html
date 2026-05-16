@@ -15,6 +15,8 @@
 <meta property="og:title" content="「혼잣말」 태그 글 — Lyco App 칼럼" />
 <meta property="og:description" content="밤샘 후의 푸념, 시시한 간사이 사투리. 앱을 만드는 아빠의 혼잣말." />
 <meta property="og:url" content="https://lycoapp.com/ko/blog/tag/kansai-everyday.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="ko_KR" />
 <meta property="og:site_name" content="Lyco App" />
 <style>
   body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; }
@@ -41,6 +43,33 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "홈",
+      "item": "https://lycoapp.com/ko/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "칼럼",
+      "item": "https://lycoapp.com/ko/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "「혼잣말」 태그 글"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
 </head>
 <body>
 <div id="site-header"></div>
@@ -53,9 +82,8 @@
 </div>
 <div id="site-footer"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="../../../shared/langs.js"></script>
 <script src="../../../content/ko/common.js"></script>
 <script src="../../../content/ko/todo.js"></script>
@@ -63,8 +91,8 @@
 <script src="../../../content/ko/tool.js"></script>
 <script src="../../../content/ko/other.js"></script>
 <script src="../../../shared/i18n-loader.js"></script>
-<script type="text/babel" src="../../../shared/site-shared.jsx"></script>
-<script type="text/babel" src="../../../shared/blog-shell.jsx" data-path-prefix="../../"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
 <script defer src="../../../shared/analytics.js"></script>
 </body>
 </html>

@@ -15,6 +15,8 @@
 <meta property="og:title" content="「xx 驅動育兒」分類文章 — Lyco App 專欄" />
 <meta property="og:description" content="TDD、BDD、DDD、IDD、USDD…把工程師的「◯◯驅動」套用到育兒上,意外地都解釋得通。寫給工程師父母的系列。" />
 <meta property="og:url" content="https://lycoapp.com/zh-Hant/blog/tag/dev-methods.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="zh_TW" />
 <meta property="og:site_name" content="Lyco App" />
 <style>
   body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; }
@@ -41,6 +43,33 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首頁",
+      "item": "https://lycoapp.com/zh-Hant/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "專欄",
+      "item": "https://lycoapp.com/zh-Hant/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "「xx 驅動育兒」分類文章"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
 </head>
 <body>
 <div id="site-header"></div>
@@ -52,16 +81,15 @@
   <div class="posts">
     <a class="post" href="../posts/done-vs-achieved.html">
     <div class="date">2026-05-08</div>
-    <div class="title">「我做了」跟「做完了」不是同一件事</div>
+    <div class="title">「我做了」跟「做完了」不是同一件事<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></div>
     <div class="excerpt">「刷牙」「我刷了」「你只是含著牙刷在發呆！」── 小孩的「我做了」跟父母想的「做完了」是不一樣的東西。跟工程界的需求對實作落差，是同一個結構。</div>
   </a>
   </div>
 </div>
 <div id="site-footer"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="../../../shared/langs.js"></script>
 <script src="../../../content/zh-Hant/common.js"></script>
 <script src="../../../content/zh-Hant/todo.js"></script>
@@ -69,8 +97,8 @@
 <script src="../../../content/zh-Hant/tool.js"></script>
 <script src="../../../content/zh-Hant/other.js"></script>
 <script src="../../../shared/i18n-loader.js"></script>
-<script type="text/babel" src="../../../shared/site-shared.jsx"></script>
-<script type="text/babel" src="../../../shared/blog-shell.jsx" data-path-prefix="../../"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
 <script defer src="../../../shared/analytics.js"></script>
 </body>
 </html>

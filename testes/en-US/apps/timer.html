@@ -16,14 +16,14 @@
 <meta property="og:title" content="PlanetLoopTimer — Lyco App" />
 <meta property="og:description" content="Launch × Later = One more launch to start" />
 <meta property="og:url" content="https://lycoapp.com/en-US/apps/timer.html" />
-<meta property="og:image" content="https://lycoapp.com/images/logo-full.jpeg" />
+<meta property="og:image" content="https://lycoapp.com/images/apps/timer.jpeg" />
 <meta property="og:site_name" content="Lyco App" />
 <meta property="og:locale" content="en_US" />
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="PlanetLoopTimer — Lyco App" />
 <meta name="twitter:description" content="Launch × Later = One more launch to start" />
-<meta name="twitter:image" content="https://lycoapp.com/images/logo-full.jpeg" />
+<meta name="twitter:image" content="https://lycoapp.com/images/apps/timer.jpeg" />
 <link rel="stylesheet" href="../../shared/motion.css" />
 <style>
   body { margin: 0; font-family: "Helvetica Neue", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; }
@@ -60,15 +60,34 @@
   "description": "Launch × Later = One more launch to start"
 }
 </script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lycoapp.com/en-US/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PlanetLoopTimer"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
 </head>
 <body>
 <div id="root"></div>
 
 <!-- React + Babel -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
-
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <!-- Motion -->
 <script src="../../shared/motion.js" defer></script>
 
@@ -88,20 +107,20 @@
 <script src="../../shared/i18n-loader.js"></script>
 
 <!-- 共通コンポーネント -->
-<script type="text/babel" src="../../shared/site-shared.jsx"></script>
-<script type="text/babel" src="../../shared/page-category.jsx"></script>
-<script type="text/babel" src="../../shared/category-nav-patterns.jsx"></script>
-<script type="text/babel" src="../../shared/page-detail.jsx"></script>
+<script src="../../shared/site-shared.js"></script>
+<script src="../../shared/page-category.js"></script>
+<script src="../../shared/category-nav-patterns.js"></script>
+<script src="../../shared/page-detail.js"></script>
 
 <!-- ページ本体 -->
-<script type="text/babel" data-presets="env,react">
-
-const { createRoot } = ReactDOM;
-function Mount() {
-  return <window.AppDetailPage appId="timer" pathPrefix="../" />;
-}
-createRoot(document.getElementById("root")).render(<Mount />);
-
+<script>
+(() => {
+  const { createRoot } = ReactDOM;
+  function Mount() {
+    return /* @__PURE__ */ React.createElement(window.AppDetailPage, { appId: "timer", pathPrefix: "../" });
+  }
+  createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Mount, null));
+})();
 </script>
 
 <script defer src="../../shared/analytics.js"></script>

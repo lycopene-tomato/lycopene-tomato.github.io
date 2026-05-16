@@ -15,6 +15,8 @@
 <meta property="og:title" content="「認知偏誤」分類文章 — Lyco App 專欄" />
 <meta property="og:description" content="「當父母的就應該…」── 被這樣說了卻無法接受時。從認知偏誤的角度,把那份不對勁慢慢拆開。" />
 <meta property="og:url" content="https://lycoapp.com/zh-Hant/blog/tag/cognitive-bias.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="zh_TW" />
 <meta property="og:site_name" content="Lyco App" />
 <style>
   body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; }
@@ -41,6 +43,33 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首頁",
+      "item": "https://lycoapp.com/zh-Hant/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "專欄",
+      "item": "https://lycoapp.com/zh-Hant/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "「認知偏誤」分類文章"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
 </head>
 <body>
 <div id="site-header"></div>
@@ -53,9 +82,8 @@
 </div>
 <div id="site-footer"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="../../../shared/langs.js"></script>
 <script src="../../../content/zh-Hant/common.js"></script>
 <script src="../../../content/zh-Hant/todo.js"></script>
@@ -63,8 +91,8 @@
 <script src="../../../content/zh-Hant/tool.js"></script>
 <script src="../../../content/zh-Hant/other.js"></script>
 <script src="../../../shared/i18n-loader.js"></script>
-<script type="text/babel" src="../../../shared/site-shared.jsx"></script>
-<script type="text/babel" src="../../../shared/blog-shell.jsx" data-path-prefix="../../"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
 <script defer src="../../../shared/analytics.js"></script>
 </body>
 </html>

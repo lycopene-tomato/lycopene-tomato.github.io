@@ -15,6 +15,8 @@
 <meta property="og:title" content="「아침의 분주함」 태그 글 — Lyco App 칼럼" />
 <meta property="og:description" content="아침이 도무지 안 움직이고, 시간에 쫓기는 매일의 장면들." />
 <meta property="og:url" content="https://lycoapp.com/ko/blog/tag/morning-routine.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="ko_KR" />
 <meta property="og:site_name" content="Lyco App" />
 <style>
   body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; }
@@ -41,6 +43,33 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "홈",
+      "item": "https://lycoapp.com/ko/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "칼럼",
+      "item": "https://lycoapp.com/ko/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "「아침의 분주함」 태그 글"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
 </head>
 <body>
 <div id="site-header"></div>
@@ -52,16 +81,15 @@
   <div class="posts">
     <a class="post" href="../posts/app-gacha.html">
     <div class="date">2026-05-04</div>
-    <div class="title">「빨리 해！」가 어느새 입에 붙어 있었어요</div>
+    <div class="title">「빨리 해！」가 어느새 입에 붙어 있었어요<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></div>
     <div class="excerpt">매일 아침 「빨리 해！」를 3 번씩. 등교 준비가 안 굴러갈 때, TodoGatya 는 「할 일」을 아이가 직접 뽑게 합니다. 자기결정성을 활용해서 「하라고 시킨다」 느낌을 빼니까, 아침의 잔소리가 절반 이하로 줄었어요.</div>
   </a>
   </div>
 </div>
 <div id="site-footer"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="../../../shared/langs.js"></script>
 <script src="../../../content/ko/common.js"></script>
 <script src="../../../content/ko/todo.js"></script>
@@ -69,8 +97,8 @@
 <script src="../../../content/ko/tool.js"></script>
 <script src="../../../content/ko/other.js"></script>
 <script src="../../../shared/i18n-loader.js"></script>
-<script type="text/babel" src="../../../shared/site-shared.jsx"></script>
-<script type="text/babel" src="../../../shared/blog-shell.jsx" data-path-prefix="../../"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
 <script defer src="../../../shared/analytics.js"></script>
 </body>
 </html>

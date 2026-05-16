@@ -26,10 +26,8 @@
 <div id="root"></div>
 
 <!-- React + Babel -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
-
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <!-- Motion -->
 <script src="../../shared/motion.js" defer></script>
 
@@ -52,172 +50,74 @@
 <script src="../../shared/i18n-loader.js"></script>
 
 <!-- 共通コンポーネント -->
-<script type="text/babel" src="../../shared/site-shared.jsx"></script>
+<script src="../../shared/site-shared.js"></script>
 
 <!-- ページ本体 -->
-<script type="text/babel" data-presets="env,react">
-
-const { createRoot } = ReactDOM;
-// SiteHeader/SiteFooter は pathPrefix を「言語ホームへの相対」として使う
-// (画像は ${pathPrefix}../images/...、privacy-policy は ${pathPrefix}../privacy-policy/)。
-// /privacy-policy/ja/index.html から /ja/ 言語ホームに戻るには ../../ja/
-const PREFIX = "../../en-US/";
-const ACCENT = "#E89A3D";
-const ACCENT_DEEP = "#8B5A1A";
-
-function Card({ label, children }) {
-  return (
-    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "28px auto" }}>
-      <div style={{
-        position: "relative",
-        border: `2px solid ${ACCENT}`,
-        borderRadius: 16,
-        padding: "32px 24px 24px",
-        background: "#fff",
-      }}>
-        <div style={{ position: "absolute", top: -11, left: 20, pointerEvents: "none" }}>
-          <span style={{
-            display: "inline-block",
-            background: "#FBF6EE",
-            padding: "2px 14px",
-            borderRadius: 999,
-            fontSize: 13, fontWeight: 800, letterSpacing: 3,
-            color: ACCENT_DEEP,
-          }}>{label}</span>
-        </div>
-        {children}
-      </div>
-    </section>
-  );
-}
-
-function Promise3() {
-  // 冒頭の "3つの約束" ハイライト
-  const items = [
-    { k: "01", t: "We do not collect the advertising identifier (IDFA)", d: "Your app usage is never tied to any ad network." },
-    { k: "02", t: "Your data stays on your device", d: "Your records and settings are saved on your device only and never sent to any external server." },
-    { k: "03", t: "Designed not to collect", d: "We design our apps to work without collecting information, rather than collecting it for convenience features." },
-  ];
-  return (
-    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "32px auto 8px" }}>
-      <div style={{
-        background: "linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%)",
-        border: `2px solid ${ACCENT}`,
-        borderRadius: 18,
-        padding: "26px 22px 22px",
-      }}>
-        <div style={{ textAlign: "center", marginBottom: 18 }}>
-          <div style={{ fontSize: 11, letterSpacing: 4, fontWeight: 800, color: ACCENT_DEEP, marginBottom: 6 }}>— Our 3 Promises —</div>
-          <div style={{ fontSize: 18, fontWeight: 900, color: "#3D2E1F", lineHeight: 1.5 }}>
-            For your peace of mind,<br />
-            <span style={{ color: ACCENT_DEEP }}>what we commit to</span>
-          </div>
-        </div>
-        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-          {items.map((it) => (
-            <li key={it.k} style={{
-              display: "flex", gap: 14, alignItems: "flex-start",
-              padding: "12px 14px", background: "#fff", borderRadius: 12,
-              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
-            }}>
-              <span style={{
-                flex: "0 0 auto",
-                fontFamily: "ui-monospace, monospace",
-                fontSize: 11, fontWeight: 800, letterSpacing: 1,
-                color: "#fff", background: ACCENT,
-                padding: "3px 8px", borderRadius: 6,
-              }}>{it.k}</span>
-              <div>
-                <div style={{ fontSize: 14, fontWeight: 800, color: "#3D2E1F", marginBottom: 2 }}>{it.t}</div>
-                <div style={{ fontSize: 12.5, color: "#5C4936", lineHeight: 1.6 }}>{it.d}</div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-function Page() {
-  return (
-    <>
-      <window.SiteHeader pathPrefix={PREFIX} currentCategoryId="todo" />
-
-      {/* HERO */}
-      <section className="reveal" style={{
-        background: "#2C2218", color: "#FBF6EE",
-        padding: "36px 20px 30px", textAlign: "center",
-      }}>
-        <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          <h1 style={{ margin: "0 0 8px", fontSize: 26, fontWeight: 900, letterSpacing: 1 }}>Privacy Policy</h1>
-          <p style={{ margin: 0, fontSize: 13, opacity: 0.7 }}>For all Lyco apps</p>
-        </div>
-      </section>
-
-      {/* 3つの約束 (冒頭ハイライト) */}
-      <Promise3 />
-
-      {/* 詳細セクション */}
-      <main style={{ paddingBottom: 48 }}>
-        <Card label="SCOPE">
-          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
-            This policy applies to all apps provided by Lyco App. This page, linked from each app's App Store page, serves as the privacy policy for that app.
-          </p>
-        </Card>
-
-        <Card label="INFORMATION WE COLLECT">
-          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
-            <li>App settings, progress, and records are stored on your device only.</li>
-            <li>We never transmit this data to our servers or any external service.</li>
-            <li>We do not collect personally identifiable information (name, email, phone number, etc.).</li>
-          </ul>
-        </Card>
-
-        <Card label="ABOUT ADS">
-          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
-            <li>Apps designed for children show no ads at all.</li>
-            <li>For our other apps, Google AdMob ads may appear only on the parent's management screen, never on screens the child uses.</li>
-            <li>Even with AdMob, our apps are configured not to pass the advertising identifier (IDFA).</li>
-          </ul>
-        </Card>
-
-        <Card label="ANALYTICS & TRACKING">
-          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
-            <li>Apps for children use no analytics or tracking whatsoever.</li>
-            <li>For other apps, we only use Apple's anonymized statistics to identify issues and improve quality, with no personally identifiable information included.</li>
-          </ul>
-        </Card>
-
-        <Card label="THIRD-PARTY SHARING">
-          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
-            We never sell or share your information with third parties.
-          </p>
-        </Card>
-
-        <Card label="CONTACT">
-          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
-            For questions or requests, please contact us at <strong style={{ color: "#3D2E1F" }}>lycopenecafei+LP@gmail.com</strong>. You can also reach us through any app's App Store page.
-          </p>
-        </Card>
-
-        <Card label="REVISIONS">
-          <p style={{ margin: "0 0 8px", fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
-            We may revise this policy as needed. We will notify you of any significant changes on this page.
-          </p>
-          <p style={{ margin: 0, fontSize: 12, opacity: 0.55, fontVariantNumeric: "tabular-nums" }}>
-            Last updated: 2026-05-11
-          </p>
-        </Card>
-      </main>
-
-      <window.SiteFooter pathPrefix={PREFIX} />
-    </>
-  );
-}
-
-createRoot(document.getElementById("root")).render(<Page />);
-
+<script>
+(() => {
+  const { createRoot } = ReactDOM;
+  const PREFIX = "../../en-US/";
+  const ACCENT = "#E89A3D";
+  const ACCENT_DEEP = "#8B5A1A";
+  function Card({ label, children }) {
+    return /* @__PURE__ */ React.createElement("section", { className: "reveal", style: { padding: "0 18px", maxWidth: 640, margin: "28px auto" } }, /* @__PURE__ */ React.createElement("div", { style: {
+      position: "relative",
+      border: `2px solid ${ACCENT}`,
+      borderRadius: 16,
+      padding: "32px 24px 24px",
+      background: "#fff"
+    } }, /* @__PURE__ */ React.createElement("div", { style: { position: "absolute", top: -11, left: 20, pointerEvents: "none" } }, /* @__PURE__ */ React.createElement("span", { style: {
+      display: "inline-block",
+      background: "#FBF6EE",
+      padding: "2px 14px",
+      borderRadius: 999,
+      fontSize: 13,
+      fontWeight: 800,
+      letterSpacing: 3,
+      color: ACCENT_DEEP
+    } }, label)), children));
+  }
+  function Promise3() {
+    const items = [
+      { k: "01", t: "We do not collect the advertising identifier (IDFA)", d: "Your app usage is never tied to any ad network." },
+      { k: "02", t: "Your data stays on your device", d: "Your records and settings are saved on your device only and never sent to any external server." },
+      { k: "03", t: "Designed not to collect", d: "We design our apps to work without collecting information, rather than collecting it for convenience features." }
+    ];
+    return /* @__PURE__ */ React.createElement("section", { className: "reveal", style: { padding: "0 18px", maxWidth: 640, margin: "32px auto 8px" } }, /* @__PURE__ */ React.createElement("div", { style: {
+      background: "linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%)",
+      border: `2px solid ${ACCENT}`,
+      borderRadius: 18,
+      padding: "26px 22px 22px"
+    } }, /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginBottom: 18 } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 11, letterSpacing: 4, fontWeight: 800, color: ACCENT_DEEP, marginBottom: 6 } }, "\u2014 Our 3 Promises \u2014"), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 18, fontWeight: 900, color: "#3D2E1F", lineHeight: 1.5 } }, "For your peace of mind,", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("span", { style: { color: ACCENT_DEEP } }, "what we commit to"))), /* @__PURE__ */ React.createElement("ul", { style: { listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 } }, items.map((it) => /* @__PURE__ */ React.createElement("li", { key: it.k, style: {
+      display: "flex",
+      gap: 14,
+      alignItems: "flex-start",
+      padding: "12px 14px",
+      background: "#fff",
+      borderRadius: 12,
+      boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+    } }, /* @__PURE__ */ React.createElement("span", { style: {
+      flex: "0 0 auto",
+      fontFamily: "ui-monospace, monospace",
+      fontSize: 11,
+      fontWeight: 800,
+      letterSpacing: 1,
+      color: "#fff",
+      background: ACCENT,
+      padding: "3px 8px",
+      borderRadius: 6
+    } }, it.k), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 14, fontWeight: 800, color: "#3D2E1F", marginBottom: 2 } }, it.t), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12.5, color: "#5C4936", lineHeight: 1.6 } }, it.d)))))));
+  }
+  function Page() {
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(window.SiteHeader, { pathPrefix: PREFIX, currentCategoryId: "todo" }), /* @__PURE__ */ React.createElement("section", { className: "reveal", style: {
+      background: "#2C2218",
+      color: "#FBF6EE",
+      padding: "36px 20px 30px",
+      textAlign: "center"
+    } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("h1", { style: { margin: "0 0 8px", fontSize: 26, fontWeight: 900, letterSpacing: 1 } }, "Privacy Policy"), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 13, opacity: 0.7 } }, "For all Lyco apps"))), /* @__PURE__ */ React.createElement(Promise3, null), /* @__PURE__ */ React.createElement("main", { style: { paddingBottom: 48 } }, /* @__PURE__ */ React.createElement(Card, { label: "SCOPE" }, /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "This policy applies to all apps provided by Lyco App. This page, linked from each app's App Store page, serves as the privacy policy for that app.")), /* @__PURE__ */ React.createElement(Card, { label: "INFORMATION WE COLLECT" }, /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 } }, /* @__PURE__ */ React.createElement("li", null, "App settings, progress, and records are stored on your device only."), /* @__PURE__ */ React.createElement("li", null, "We never transmit this data to our servers or any external service."), /* @__PURE__ */ React.createElement("li", null, "We do not collect personally identifiable information (name, email, phone number, etc.)."))), /* @__PURE__ */ React.createElement(Card, { label: "ABOUT ADS" }, /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 } }, /* @__PURE__ */ React.createElement("li", null, "Apps designed for children show no ads at all."), /* @__PURE__ */ React.createElement("li", null, "For our other apps, Google AdMob ads may appear only on the parent's management screen, never on screens the child uses."), /* @__PURE__ */ React.createElement("li", null, "Even with AdMob, our apps are configured not to pass the advertising identifier (IDFA)."))), /* @__PURE__ */ React.createElement(Card, { label: "ANALYTICS & TRACKING" }, /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 } }, /* @__PURE__ */ React.createElement("li", null, "Apps for children use no analytics or tracking whatsoever."), /* @__PURE__ */ React.createElement("li", null, "For other apps, we only use Apple's anonymized statistics to identify issues and improve quality, with no personally identifiable information included."))), /* @__PURE__ */ React.createElement(Card, { label: "THIRD-PARTY SHARING" }, /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "We never sell or share your information with third parties.")), /* @__PURE__ */ React.createElement(Card, { label: "CONTACT" }, /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "For questions or requests, please contact us at ", /* @__PURE__ */ React.createElement("strong", { style: { color: "#3D2E1F" } }, "lycopenecafei+LP@gmail.com"), ". You can also reach us through any app's App Store page.")), /* @__PURE__ */ React.createElement(Card, { label: "REVISIONS" }, /* @__PURE__ */ React.createElement("p", { style: { margin: "0 0 8px", fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "We may revise this policy as needed. We will notify you of any significant changes on this page."), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 12, opacity: 0.55, fontVariantNumeric: "tabular-nums" } }, "Last updated: 2026-05-11"))), /* @__PURE__ */ React.createElement(window.SiteFooter, { pathPrefix: PREFIX }));
+  }
+  createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Page, null));
+})();
 </script>
 
 <script defer src="../../shared/analytics.js"></script>

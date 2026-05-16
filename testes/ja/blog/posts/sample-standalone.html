@@ -65,6 +65,33 @@ LP/blog_series.json (the "sample-series" key). Then run:
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "トップ",
+      "item": "https://lycoapp.com/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://lycoapp.com/ja/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "【サンプル】お風呂の 30 秒"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
 </head>
 <body>
 <div id="site-header"></div>
@@ -99,16 +126,15 @@ LP/blog_series.json (the "sample-series" key). Then run:
   <!-- END related-posts -->
   <!-- BEGIN post-nav -->
   <nav class="post-nav">
-    <a class="post-nav-prev" href="sample-series-2.html"><span class="post-nav-label">← 前の記事</span><span class="post-nav-title">【サンプル】シリーズ第 2 回</span></a>
-    <span class="post-nav-next empty"></span>
+    <a class="post-nav-prev" href="app-gacha.html"><span class="post-nav-label">← 前の記事</span><span class="post-nav-title">「やりなさい」が、口グセになっていた<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+    <a class="post-nav-next" href="sample-series-2.html"><span class="post-nav-label">次の記事 →</span><span class="post-nav-title">【サンプル】シリーズ第 2 回<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
   </nav>
   <!-- END post-nav -->
   </div>
 <div id="site-footer"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="../../../shared/langs.js"></script>
 <script src="../../../content/ja/common.js"></script>
 <script src="../../../content/ja/todo.js"></script>
@@ -116,8 +142,8 @@ LP/blog_series.json (the "sample-series" key). Then run:
 <script src="../../../content/ja/tool.js"></script>
 <script src="../../../content/ja/other.js"></script>
 <script src="../../../shared/i18n-loader.js"></script>
-<script type="text/babel" src="../../../shared/site-shared.jsx"></script>
-<script type="text/babel" src="../../../shared/blog-shell.jsx" data-path-prefix="../../"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
 <script defer src="../../../shared/analytics.js"></script>
 </body>
 </html>

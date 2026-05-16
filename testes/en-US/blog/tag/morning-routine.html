@@ -15,6 +15,8 @@
 <meta property="og:title" content="Posts tagged Morning rush — Lyco App Column" />
 <meta property="og:description" content="When mornings won&#x27;t move and you&#x27;re racing against the clock. Stories from time-pressured days." />
 <meta property="og:url" content="https://lycoapp.com/en-US/blog/tag/morning-routine.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Lyco App" />
 <style>
   body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; }
@@ -41,6 +43,33 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lycoapp.com/en-US/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Column",
+      "item": "https://lycoapp.com/en-US/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Posts tagged “Morning rush”"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
 </head>
 <body>
 <div id="site-header"></div>
@@ -52,16 +81,15 @@
   <div class="posts">
     <a class="post" href="../posts/app-gacha.html">
     <div class="date">2026-05-04</div>
-    <div class="title">&quot;Hurry up&quot; had become my whole morning vocabulary</div>
+    <div class="title">&quot;Hurry up&quot; had become my whole morning vocabulary<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></div>
     <div class="excerpt">Three rounds of &#x27;hurry up!&#x27; before 7:45 every morning. When the morning routine isn&#x27;t moving, TodoGatya lets the kid draw the next task themselves — and the self-determination piece cuts the nagging in half.</div>
   </a>
   </div>
 </div>
 <div id="site-footer"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="../../../shared/langs.js"></script>
 <script src="../../../content/en-US/common.js"></script>
 <script src="../../../content/en-US/todo.js"></script>
@@ -69,8 +97,8 @@
 <script src="../../../content/en-US/tool.js"></script>
 <script src="../../../content/en-US/other.js"></script>
 <script src="../../../shared/i18n-loader.js"></script>
-<script type="text/babel" src="../../../shared/site-shared.jsx"></script>
-<script type="text/babel" src="../../../shared/blog-shell.jsx" data-path-prefix="../../"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
 <script defer src="../../../shared/analytics.js"></script>
 </body>
 </html>

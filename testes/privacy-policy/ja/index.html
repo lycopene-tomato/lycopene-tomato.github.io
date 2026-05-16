@@ -26,10 +26,8 @@
 <div id="root"></div>
 
 <!-- React + Babel -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
-
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <!-- Motion -->
 <script src="../../shared/motion.js" defer></script>
 
@@ -52,172 +50,74 @@
 <script src="../../shared/i18n-loader.js"></script>
 
 <!-- 共通コンポーネント -->
-<script type="text/babel" src="../../shared/site-shared.jsx"></script>
+<script src="../../shared/site-shared.js"></script>
 
 <!-- ページ本体 -->
-<script type="text/babel" data-presets="env,react">
-
-const { createRoot } = ReactDOM;
-// SiteHeader/SiteFooter は pathPrefix を「言語ホームへの相対」として使う
-// (画像は ${pathPrefix}../images/...、privacy-policy は ${pathPrefix}../privacy-policy/)。
-// /privacy-policy/ja/index.html から /ja/ 言語ホームに戻るには ../../ja/
-const PREFIX = "../../ja/";
-const ACCENT = "#E89A3D";
-const ACCENT_DEEP = "#8B5A1A";
-
-function Card({ label, children }) {
-  return (
-    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "28px auto" }}>
-      <div style={{
-        position: "relative",
-        border: `2px solid ${ACCENT}`,
-        borderRadius: 16,
-        padding: "32px 24px 24px",
-        background: "#fff",
-      }}>
-        <div style={{ position: "absolute", top: -11, left: 20, pointerEvents: "none" }}>
-          <span style={{
-            display: "inline-block",
-            background: "#FBF6EE",
-            padding: "2px 14px",
-            borderRadius: 999,
-            fontSize: 13, fontWeight: 800, letterSpacing: 3,
-            color: ACCENT_DEEP,
-          }}>{label}</span>
-        </div>
-        {children}
-      </div>
-    </section>
-  );
-}
-
-function Promise3() {
-  // 冒頭の "3つの約束" ハイライト
-  const items = [
-    { k: "01", t: "広告識別子 (IDFA) は取得しません", d: "アプリ利用が広告ネットワークに紐づくことはありません。" },
-    { k: "02", t: "データは端末の中だけ", d: "あなたの記録・設定は端末内に保存され、外部サーバーには送信されません。" },
-    { k: "03", t: "“集めない” を設計の出発点に", d: "便利機能のために情報を集める設計ではなく、集めなくても成立する設計を優先しています。" },
-  ];
-  return (
-    <section className="reveal" style={{ padding: "0 18px", maxWidth: 640, margin: "32px auto 8px" }}>
-      <div style={{
-        background: "linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%)",
-        border: `2px solid ${ACCENT}`,
-        borderRadius: 18,
-        padding: "26px 22px 22px",
-      }}>
-        <div style={{ textAlign: "center", marginBottom: 18 }}>
-          <div style={{ fontSize: 11, letterSpacing: 4, fontWeight: 800, color: ACCENT_DEEP, marginBottom: 6 }}>— 3 つの約束 —</div>
-          <div style={{ fontSize: 18, fontWeight: 900, color: "#3D2E1F", lineHeight: 1.5 }}>
-            安心して使ってもらうために、<br />
-            <span style={{ color: ACCENT_DEEP }}>守っていること</span>
-          </div>
-        </div>
-        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-          {items.map((it) => (
-            <li key={it.k} style={{
-              display: "flex", gap: 14, alignItems: "flex-start",
-              padding: "12px 14px", background: "#fff", borderRadius: 12,
-              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
-            }}>
-              <span style={{
-                flex: "0 0 auto",
-                fontFamily: "ui-monospace, monospace",
-                fontSize: 11, fontWeight: 800, letterSpacing: 1,
-                color: "#fff", background: ACCENT,
-                padding: "3px 8px", borderRadius: 6,
-              }}>{it.k}</span>
-              <div>
-                <div style={{ fontSize: 14, fontWeight: 800, color: "#3D2E1F", marginBottom: 2 }}>{it.t}</div>
-                <div style={{ fontSize: 12.5, color: "#5C4936", lineHeight: 1.6 }}>{it.d}</div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-function Page() {
-  return (
-    <>
-      <window.SiteHeader pathPrefix={PREFIX} currentCategoryId="todo" />
-
-      {/* HERO */}
-      <section className="reveal" style={{
-        background: "#2C2218", color: "#FBF6EE",
-        padding: "36px 20px 30px", textAlign: "center",
-      }}>
-        <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          <h1 style={{ margin: "0 0 8px", fontSize: 26, fontWeight: 900, letterSpacing: 1 }}>プライバシーポリシー</h1>
-          <p style={{ margin: 0, fontSize: 13, opacity: 0.7 }}>Lyco App 共通</p>
-        </div>
-      </section>
-
-      {/* 3つの約束 (冒頭ハイライト) */}
-      <Promise3 />
-
-      {/* 詳細セクション */}
-      <main style={{ paddingBottom: 48 }}>
-        <Card label="適用範囲">
-          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
-            本ポリシーは、Lyco App が提供するすべてのアプリに共通で適用されます。各アプリの App Store ページからリンクされる本ページが、そのアプリのプライバシーポリシーとなります。
-          </p>
-        </Card>
-
-        <Card label="収集する情報">
-          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
-            <li>アプリの設定・進捗・記録などは、お使いの端末内にのみ保存されます。</li>
-            <li>当方のサーバーや外部サービスに送信することはありません。</li>
-            <li>個人を特定する情報 (氏名・メールアドレス・電話番号など) は取得しません。</li>
-          </ul>
-        </Card>
-
-        <Card label="広告について">
-          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
-            <li>子ども向けアプリでは広告を一切表示しません。</li>
-            <li>その他のアプリでは、保護者向けの管理画面にのみ Google AdMob による広告が表示される場合があります。お子さまが操作する画面には表示されません。</li>
-            <li>当アプリは AdMob に対しても広告識別子 (IDFA) を渡さない設定で配信しています。</li>
-          </ul>
-        </Card>
-
-        <Card label="解析ツール / トラッキング">
-          <ul style={{ margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 }}>
-            <li>子ども向けアプリでは、解析ツール・トラッキングを一切使用しません。</li>
-            <li>その他のアプリでも、不具合把握と改善のため Apple の提供する匿名統計を利用する場合のみで、個人を特定する情報は含まれません。</li>
-          </ul>
-        </Card>
-
-        <Card label="第三者への提供">
-          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
-            ユーザーの情報を第三者に販売・提供することはありません。
-          </p>
-        </Card>
-
-        <Card label="お問い合わせ">
-          <p style={{ margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
-            ご質問・ご要望は <strong style={{ color: "#3D2E1F" }}>lycopenecafei+LP@gmail.com</strong> までお寄せください。App Store のアプリページからもご連絡いただけます。
-          </p>
-        </Card>
-
-        <Card label="改定">
-          <p style={{ margin: "0 0 8px", fontSize: 14, color: "#5C4936", lineHeight: 1.85 }}>
-            本ポリシーは必要に応じて改定することがあります。重要な変更がある場合は、このページ上でお知らせします。
-          </p>
-          <p style={{ margin: 0, fontSize: 12, opacity: 0.55, fontVariantNumeric: "tabular-nums" }}>
-            最終更新: 2026-05-11
-          </p>
-        </Card>
-      </main>
-
-      <window.SiteFooter pathPrefix={PREFIX} />
-    </>
-  );
-}
-
-createRoot(document.getElementById("root")).render(<Page />);
-
+<script>
+(() => {
+  const { createRoot } = ReactDOM;
+  const PREFIX = "../../ja/";
+  const ACCENT = "#E89A3D";
+  const ACCENT_DEEP = "#8B5A1A";
+  function Card({ label, children }) {
+    return /* @__PURE__ */ React.createElement("section", { className: "reveal", style: { padding: "0 18px", maxWidth: 640, margin: "28px auto" } }, /* @__PURE__ */ React.createElement("div", { style: {
+      position: "relative",
+      border: `2px solid ${ACCENT}`,
+      borderRadius: 16,
+      padding: "32px 24px 24px",
+      background: "#fff"
+    } }, /* @__PURE__ */ React.createElement("div", { style: { position: "absolute", top: -11, left: 20, pointerEvents: "none" } }, /* @__PURE__ */ React.createElement("span", { style: {
+      display: "inline-block",
+      background: "#FBF6EE",
+      padding: "2px 14px",
+      borderRadius: 999,
+      fontSize: 13,
+      fontWeight: 800,
+      letterSpacing: 3,
+      color: ACCENT_DEEP
+    } }, label)), children));
+  }
+  function Promise3() {
+    const items = [
+      { k: "01", t: "\u5E83\u544A\u8B58\u5225\u5B50 (IDFA) \u306F\u53D6\u5F97\u3057\u307E\u305B\u3093", d: "\u30A2\u30D7\u30EA\u5229\u7528\u304C\u5E83\u544A\u30CD\u30C3\u30C8\u30EF\u30FC\u30AF\u306B\u7D10\u3065\u304F\u3053\u3068\u306F\u3042\u308A\u307E\u305B\u3093\u3002" },
+      { k: "02", t: "\u30C7\u30FC\u30BF\u306F\u7AEF\u672B\u306E\u4E2D\u3060\u3051", d: "\u3042\u306A\u305F\u306E\u8A18\u9332\u30FB\u8A2D\u5B9A\u306F\u7AEF\u672B\u5185\u306B\u4FDD\u5B58\u3055\u308C\u3001\u5916\u90E8\u30B5\u30FC\u30D0\u30FC\u306B\u306F\u9001\u4FE1\u3055\u308C\u307E\u305B\u3093\u3002" },
+      { k: "03", t: "\u201C\u96C6\u3081\u306A\u3044\u201D \u3092\u8A2D\u8A08\u306E\u51FA\u767A\u70B9\u306B", d: "\u4FBF\u5229\u6A5F\u80FD\u306E\u305F\u3081\u306B\u60C5\u5831\u3092\u96C6\u3081\u308B\u8A2D\u8A08\u3067\u306F\u306A\u304F\u3001\u96C6\u3081\u306A\u304F\u3066\u3082\u6210\u7ACB\u3059\u308B\u8A2D\u8A08\u3092\u512A\u5148\u3057\u3066\u3044\u307E\u3059\u3002" }
+    ];
+    return /* @__PURE__ */ React.createElement("section", { className: "reveal", style: { padding: "0 18px", maxWidth: 640, margin: "32px auto 8px" } }, /* @__PURE__ */ React.createElement("div", { style: {
+      background: "linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%)",
+      border: `2px solid ${ACCENT}`,
+      borderRadius: 18,
+      padding: "26px 22px 22px"
+    } }, /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginBottom: 18 } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 11, letterSpacing: 4, fontWeight: 800, color: ACCENT_DEEP, marginBottom: 6 } }, "\u2014 3 \u3064\u306E\u7D04\u675F \u2014"), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 18, fontWeight: 900, color: "#3D2E1F", lineHeight: 1.5 } }, "\u5B89\u5FC3\u3057\u3066\u4F7F\u3063\u3066\u3082\u3089\u3046\u305F\u3081\u306B\u3001", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("span", { style: { color: ACCENT_DEEP } }, "\u5B88\u3063\u3066\u3044\u308B\u3053\u3068"))), /* @__PURE__ */ React.createElement("ul", { style: { listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 } }, items.map((it) => /* @__PURE__ */ React.createElement("li", { key: it.k, style: {
+      display: "flex",
+      gap: 14,
+      alignItems: "flex-start",
+      padding: "12px 14px",
+      background: "#fff",
+      borderRadius: 12,
+      boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+    } }, /* @__PURE__ */ React.createElement("span", { style: {
+      flex: "0 0 auto",
+      fontFamily: "ui-monospace, monospace",
+      fontSize: 11,
+      fontWeight: 800,
+      letterSpacing: 1,
+      color: "#fff",
+      background: ACCENT,
+      padding: "3px 8px",
+      borderRadius: 6
+    } }, it.k), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 14, fontWeight: 800, color: "#3D2E1F", marginBottom: 2 } }, it.t), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12.5, color: "#5C4936", lineHeight: 1.6 } }, it.d)))))));
+  }
+  function Page() {
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(window.SiteHeader, { pathPrefix: PREFIX, currentCategoryId: "todo" }), /* @__PURE__ */ React.createElement("section", { className: "reveal", style: {
+      background: "#2C2218",
+      color: "#FBF6EE",
+      padding: "36px 20px 30px",
+      textAlign: "center"
+    } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("h1", { style: { margin: "0 0 8px", fontSize: 26, fontWeight: 900, letterSpacing: 1 } }, "\u30D7\u30E9\u30A4\u30D0\u30B7\u30FC\u30DD\u30EA\u30B7\u30FC"), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 13, opacity: 0.7 } }, "Lyco App \u5171\u901A"))), /* @__PURE__ */ React.createElement(Promise3, null), /* @__PURE__ */ React.createElement("main", { style: { paddingBottom: 48 } }, /* @__PURE__ */ React.createElement(Card, { label: "\u9069\u7528\u7BC4\u56F2" }, /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "\u672C\u30DD\u30EA\u30B7\u30FC\u306F\u3001Lyco App \u304C\u63D0\u4F9B\u3059\u308B\u3059\u3079\u3066\u306E\u30A2\u30D7\u30EA\u306B\u5171\u901A\u3067\u9069\u7528\u3055\u308C\u307E\u3059\u3002\u5404\u30A2\u30D7\u30EA\u306E App Store \u30DA\u30FC\u30B8\u304B\u3089\u30EA\u30F3\u30AF\u3055\u308C\u308B\u672C\u30DA\u30FC\u30B8\u304C\u3001\u305D\u306E\u30A2\u30D7\u30EA\u306E\u30D7\u30E9\u30A4\u30D0\u30B7\u30FC\u30DD\u30EA\u30B7\u30FC\u3068\u306A\u308A\u307E\u3059\u3002")), /* @__PURE__ */ React.createElement(Card, { label: "\u53CE\u96C6\u3059\u308B\u60C5\u5831" }, /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 } }, /* @__PURE__ */ React.createElement("li", null, "\u30A2\u30D7\u30EA\u306E\u8A2D\u5B9A\u30FB\u9032\u6357\u30FB\u8A18\u9332\u306A\u3069\u306F\u3001\u304A\u4F7F\u3044\u306E\u7AEF\u672B\u5185\u306B\u306E\u307F\u4FDD\u5B58\u3055\u308C\u307E\u3059\u3002"), /* @__PURE__ */ React.createElement("li", null, "\u5F53\u65B9\u306E\u30B5\u30FC\u30D0\u30FC\u3084\u5916\u90E8\u30B5\u30FC\u30D3\u30B9\u306B\u9001\u4FE1\u3059\u308B\u3053\u3068\u306F\u3042\u308A\u307E\u305B\u3093\u3002"), /* @__PURE__ */ React.createElement("li", null, "\u500B\u4EBA\u3092\u7279\u5B9A\u3059\u308B\u60C5\u5831 (\u6C0F\u540D\u30FB\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9\u30FB\u96FB\u8A71\u756A\u53F7\u306A\u3069) \u306F\u53D6\u5F97\u3057\u307E\u305B\u3093\u3002"))), /* @__PURE__ */ React.createElement(Card, { label: "\u5E83\u544A\u306B\u3064\u3044\u3066" }, /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 } }, /* @__PURE__ */ React.createElement("li", null, "\u5B50\u3069\u3082\u5411\u3051\u30A2\u30D7\u30EA\u3067\u306F\u5E83\u544A\u3092\u4E00\u5207\u8868\u793A\u3057\u307E\u305B\u3093\u3002"), /* @__PURE__ */ React.createElement("li", null, "\u305D\u306E\u4ED6\u306E\u30A2\u30D7\u30EA\u3067\u306F\u3001\u4FDD\u8B77\u8005\u5411\u3051\u306E\u7BA1\u7406\u753B\u9762\u306B\u306E\u307F Google AdMob \u306B\u3088\u308B\u5E83\u544A\u304C\u8868\u793A\u3055\u308C\u308B\u5834\u5408\u304C\u3042\u308A\u307E\u3059\u3002\u304A\u5B50\u3055\u307E\u304C\u64CD\u4F5C\u3059\u308B\u753B\u9762\u306B\u306F\u8868\u793A\u3055\u308C\u307E\u305B\u3093\u3002"), /* @__PURE__ */ React.createElement("li", null, "\u5F53\u30A2\u30D7\u30EA\u306F AdMob \u306B\u5BFE\u3057\u3066\u3082\u5E83\u544A\u8B58\u5225\u5B50 (IDFA) \u3092\u6E21\u3055\u306A\u3044\u8A2D\u5B9A\u3067\u914D\u4FE1\u3057\u3066\u3044\u307E\u3059\u3002"))), /* @__PURE__ */ React.createElement(Card, { label: "\u89E3\u6790\u30C4\u30FC\u30EB / \u30C8\u30E9\u30C3\u30AD\u30F3\u30B0" }, /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 } }, /* @__PURE__ */ React.createElement("li", null, "\u5B50\u3069\u3082\u5411\u3051\u30A2\u30D7\u30EA\u3067\u306F\u3001\u89E3\u6790\u30C4\u30FC\u30EB\u30FB\u30C8\u30E9\u30C3\u30AD\u30F3\u30B0\u3092\u4E00\u5207\u4F7F\u7528\u3057\u307E\u305B\u3093\u3002"), /* @__PURE__ */ React.createElement("li", null, "\u305D\u306E\u4ED6\u306E\u30A2\u30D7\u30EA\u3067\u3082\u3001\u4E0D\u5177\u5408\u628A\u63E1\u3068\u6539\u5584\u306E\u305F\u3081 Apple \u306E\u63D0\u4F9B\u3059\u308B\u533F\u540D\u7D71\u8A08\u3092\u5229\u7528\u3059\u308B\u5834\u5408\u306E\u307F\u3067\u3001\u500B\u4EBA\u3092\u7279\u5B9A\u3059\u308B\u60C5\u5831\u306F\u542B\u307E\u308C\u307E\u305B\u3093\u3002"))), /* @__PURE__ */ React.createElement(Card, { label: "\u7B2C\u4E09\u8005\u3078\u306E\u63D0\u4F9B" }, /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "\u30E6\u30FC\u30B6\u30FC\u306E\u60C5\u5831\u3092\u7B2C\u4E09\u8005\u306B\u8CA9\u58F2\u30FB\u63D0\u4F9B\u3059\u308B\u3053\u3068\u306F\u3042\u308A\u307E\u305B\u3093\u3002")), /* @__PURE__ */ React.createElement(Card, { label: "\u304A\u554F\u3044\u5408\u308F\u305B" }, /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "\u3054\u8CEA\u554F\u30FB\u3054\u8981\u671B\u306F ", /* @__PURE__ */ React.createElement("strong", { style: { color: "#3D2E1F" } }, "lycopenecafei+LP@gmail.com"), " \u307E\u3067\u304A\u5BC4\u305B\u304F\u3060\u3055\u3044\u3002App Store \u306E\u30A2\u30D7\u30EA\u30DA\u30FC\u30B8\u304B\u3089\u3082\u3054\u9023\u7D61\u3044\u305F\u3060\u3051\u307E\u3059\u3002")), /* @__PURE__ */ React.createElement(Card, { label: "\u6539\u5B9A" }, /* @__PURE__ */ React.createElement("p", { style: { margin: "0 0 8px", fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "\u672C\u30DD\u30EA\u30B7\u30FC\u306F\u5FC5\u8981\u306B\u5FDC\u3058\u3066\u6539\u5B9A\u3059\u308B\u3053\u3068\u304C\u3042\u308A\u307E\u3059\u3002\u91CD\u8981\u306A\u5909\u66F4\u304C\u3042\u308B\u5834\u5408\u306F\u3001\u3053\u306E\u30DA\u30FC\u30B8\u4E0A\u3067\u304A\u77E5\u3089\u305B\u3057\u307E\u3059\u3002"), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 12, opacity: 0.55, fontVariantNumeric: "tabular-nums" } }, "\u6700\u7D42\u66F4\u65B0: 2026-05-11"))), /* @__PURE__ */ React.createElement(window.SiteFooter, { pathPrefix: PREFIX }));
+  }
+  createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Page, null));
+})();
 </script>
 
 <script defer src="../../shared/analytics.js"></script>

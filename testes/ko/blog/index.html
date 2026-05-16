@@ -16,14 +16,14 @@
 <meta property="og:title" content="칼럼 — Lyco App" />
 <meta property="og:description" content="육아 앱을 만들면서 생각한 것, 집에서 해 본 것." />
 <meta property="og:url" content="https://lycoapp.com/ko/blog/" />
-<meta property="og:image" content="https://lycoapp.com/images/logo-full.jpeg" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
 <meta property="og:site_name" content="Lyco App" />
 <meta property="og:locale" content="ko_KR" />
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="칼럼 — Lyco App" />
 <meta name="twitter:description" content="육아 앱을 만들면서 생각한 것, 집에서 해 본 것." />
-<meta name="twitter:image" content="https://lycoapp.com/images/logo-full.jpeg" />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
 <style>
   body { margin:0; font-family: system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; background:#FBF6EE; color:#3D2E1F; }
   .wrap { max-width:720px; margin:0 auto; padding:32px 18px 60px; }
@@ -87,20 +87,19 @@
   <div class="posts slim">
     <a class="post slim" href="posts/remember-to-remember.html">
       <div class="date">2026-05-11</div>
-      <div class="title">잊지 않는 것을, 잊지 않기</div>
+      <div class="title">잊지 않는 것을, 잊지 않기<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></div>
     </a>
     <a class="post slim" href="posts/done-vs-achieved.html">
       <div class="date">2026-05-08</div>
-      <div class="title">「했어」 와 「됐어」 는, 다른 거예요</div>
+      <div class="title">「했어」 와 「됐어」 는, 다른 거예요<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></div>
     </a>
   </div>
   <!-- END latest-section -->
 </div>
 <div id="site-footer"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="../../shared/langs.js"></script>
 <script src="../../content/ja/common.js"></script>
 <script src="../../content/ja/todo.js"></script>
@@ -113,8 +112,8 @@
 <script src="../../content/en-US/tool.js"></script>
 <script src="../../content/en-US/other.js"></script>
 <script src="../../shared/i18n-loader.js"></script>
-<script type="text/babel" src="../../shared/site-shared.jsx"></script>
-<script type="text/babel" src="../../shared/blog-shell.jsx" data-path-prefix="../"></script>
+<script src="../../shared/site-shared.js"></script>
+<script src="../../shared/blog-shell.js" data-path-prefix="../"></script>
 <script defer src="../../shared/analytics.js"></script>
 </body>
 </html>

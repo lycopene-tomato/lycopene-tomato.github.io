@@ -19,10 +19,8 @@
 <div id="root"></div>
 
 <!-- React + Babel -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
-
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <!-- 언어 메타 + 콘텐츠 -->
 <script src="../../shared/langs.js"></script>
 <script src="../../content/ko/common.js"></script>
@@ -33,13 +31,15 @@
 <script src="../../shared/i18n-loader.js"></script>
 
 <!-- 공용 컴포넌트 -->
-<script type="text/babel" src="../../shared/site-shared.jsx"></script>
-<script type="text/babel" src="../../shared/in-app-shell.jsx"></script>
+<script src="../../shared/site-shared.js"></script>
+<script src="../../shared/in-app-shell.js"></script>
 
 <!-- 페이지 본체 -->
-<script type="text/babel" data-presets="env,react">
-const { createRoot } = ReactDOM;
-createRoot(document.getElementById("root")).render(<window.InAppAppsPage />);
+<script>
+(() => {
+  const { createRoot } = ReactDOM;
+  createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(window.InAppAppsPage, null));
+})();
 </script>
 
 <script defer src="../../shared/analytics.js"></script>
