@@ -1,0 +1,65 @@
+{
+  "posts": [
+    {
+      "slug": "remember-to-remember",
+      "date": "2026-05-11",
+      "tags": [
+        "parenting",
+        "reflection"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "잊지 않는 것을, 잊지 않기",
+      "description": "아이한테 할 일 목록을 줬어요. 그런데 아이는 그 목록을 보는 걸 까먹습니다. 회사의 스케줄러, 전제 질문, 작업 기억 연구를 엮어서 아이 기억의 구조를 같이 생각해 봅니다."
+    },
+    {
+      "slug": "done-vs-achieved",
+      "date": "2026-05-08",
+      "tags": [
+        "parenting",
+        "engineering"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "「했어」 와 「됐어」 는, 다른 거예요",
+      "description": "「양치해」 「했어」 「칫솔 입에 물고만 있잖아！」── 아이의 「했어」 와 부모의 「됐어」 는 다른 것. 일터의 요구사항과 구현 사이 갭과 똑같은 구조."
+    },
+    {
+      "slug": "app-gacha",
+      "date": "2026-05-04",
+      "tags": [
+        "parenting",
+        "everyday"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-gacha",
+      "title": "「빨리 해！」가 어느새 입에 붙어 있었어요",
+      "description": "매일 아침 「빨리 해！」를 3 번씩. 등교 준비가 안 굴러갈 때, TodoGatya 는 「할 일」을 아이가 직접 뽑게 합니다. 자기결정성을 활용해서 「하라고 시킨다」 느낌을 빼니까, 아침의 잔소리가 절반 이하로 줄었어요.",
+      "app_badge": "Todo가챠"
+    },
+    {
+      "slug": "rewards-and-dopamine",
+      "date": "2026-04-28",
+      "tags": [
+        "parenting",
+        "reflection"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "pinned",
+      "pinned": true,
+      "app_badge": null,
+      "title": "보상 없으면 안 하는 아이가 되는 거 아닐까요?",
+      "description": "Lyco App 의 앱에는 보상이나 게임적 요소가 꽤 많이 들어가 있어요. 「보상 없으면 안 하는 아이가 되는 거 아닐까?」 ── ADHD 도파민 연구와 습관화의 관점에서 이 걱정에 답합니다."
+    }
+  ]
+}

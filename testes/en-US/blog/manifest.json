@@ -1,0 +1,65 @@
+{
+  "posts": [
+    {
+      "slug": "remember-to-remember",
+      "date": "2026-05-11",
+      "tags": [
+        "parenting",
+        "reflection"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "Remembering to remember",
+      "description": "Wrote a to-do list for the kid. The kid forgets to look at the list. A note on workplace schedulers, presupposition questions, and working memory research — and what's actually going on with kid memory."
+    },
+    {
+      "slug": "done-vs-achieved",
+      "date": "2026-05-08",
+      "tags": [
+        "parenting",
+        "engineering"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "\"Did it\" and \"done\" are not the same thing",
+      "description": "'Brush your teeth' — 'I did it' — 'you're literally just holding the toothbrush in your mouth.' The kid's 'I did it' and the parent's 'done' are different things. Same structure as a requirements-vs-implementation gap at work."
+    },
+    {
+      "slug": "app-gacha",
+      "date": "2026-05-04",
+      "tags": [
+        "parenting",
+        "everyday"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-gacha",
+      "title": "\"Hurry up\" had become my whole morning vocabulary",
+      "description": "Three rounds of 'hurry up!' before 7:45 every morning. When the morning routine isn't moving, TodoGatya lets the kid draw the next task themselves — and the self-determination piece cuts the nagging in half.",
+      "app_badge": "TodoGacha"
+    },
+    {
+      "slug": "rewards-and-dopamine",
+      "date": "2026-04-28",
+      "tags": [
+        "parenting",
+        "reflection"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "pinned",
+      "pinned": true,
+      "app_badge": null,
+      "title": "Will the rewards make my kid lazy?",
+      "description": "The Lyco App apps lean on rewards and game mechanics. So this concern comes up: are we raising a kid who won't move without a prize? Our answer, anchored in ADHD dopamine research and how habits actually form."
+    }
+  ]
+}

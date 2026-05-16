@@ -43,6 +43,34 @@
   .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
   .site-nav { flex: 1; justify-content: center; }
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+            /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← 今ココ"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  /* END blog-extension-styles */
+
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
@@ -72,6 +100,15 @@
   <a class="back" href="../index.html">← コラム一覧</a>
   <h1>「やった」と「できた」は、別物</h1>
   <div class="meta">2026-05-08</div>
+  <!-- BEGIN series-box -->
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">タグ:</span>
+    <a class="post-tag" href="../tag/parenting.html">子育て</a>
+    <a class="post-tag" href="../tag/engineering.html">仕事・エンジニアリング</a>
+  </div>
+  <!-- END tags -->
   <div class="body">
 
 <blockquote>
@@ -127,7 +164,23 @@
       <li><a href="../../index.html">Todo 系 →</a></li>
     </ul>
   </div>
-</div>
+  <!-- BEGIN related-posts -->
+  <aside class="related-posts">
+    <div class="related-posts-label">関連する記事</div>
+    <ul>
+      <li><a href="remember-to-remember.html">忘れない事を忘れない</a></li>
+      <li><a href="app-gacha.html">「やりなさい」が、口グセになっていた</a></li>
+      <li><a href="rewards-and-dopamine.html">褒美が無いとやらない子にならない？</a></li>
+    </ul>
+  </aside>
+  <!-- END related-posts -->
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="app-gacha.html"><span class="post-nav-label">← 前の記事</span><span class="post-nav-title">「やりなさい」が、口グセになっていた</span></a>
+    <a class="post-nav-next" href="remember-to-remember.html"><span class="post-nav-label">次の記事 →</span><span class="post-nav-title">忘れない事を忘れない</span></a>
+  </nav>
+  <!-- END post-nav -->
+  </div>
 <div id="site-footer"></div>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>

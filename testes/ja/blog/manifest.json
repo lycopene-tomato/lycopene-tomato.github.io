@@ -1,0 +1,65 @@
+{
+  "posts": [
+    {
+      "slug": "remember-to-remember",
+      "date": "2026-05-11",
+      "tags": [
+        "parenting",
+        "reflection"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "忘れない事を忘れない",
+      "description": "子供に Todo リストを持たせた。でも、リストを見ることを忘れる。仕事のスケジューラ・ミルトンモデルの前提質問・ワーキングメモリ研究を絡めて、子供の記憶の仕組みを考える。"
+    },
+    {
+      "slug": "done-vs-achieved",
+      "date": "2026-05-08",
+      "tags": [
+        "parenting",
+        "engineering"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "「やった」と「できた」は、別物",
+      "description": "「歯磨きして」「やった」「歯ブラシくわえてるだけでしょ！」── 子の『やった』と親の『できた』は別物。要件定義と実装のギャップに似た構造を、家庭での試行錯誤と一緒に。"
+    },
+    {
+      "slug": "app-gacha",
+      "date": "2026-05-04",
+      "tags": [
+        "parenting",
+        "everyday"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-gacha",
+      "title": "「やりなさい」が、口グセになっていた",
+      "description": "「早くして！」を毎朝3回。朝の支度が動かない時、Todoガチャは「やる事」を子が自分で引く仕組み。自己決定理論を踏まえて『やらされ感』を消し、朝のセリフが半分以下になった使い方を紹介します。",
+      "app_badge": "Todoガチャ"
+    },
+    {
+      "slug": "rewards-and-dopamine",
+      "date": "2026-04-28",
+      "tags": [
+        "parenting",
+        "reflection"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "pinned",
+      "pinned": true,
+      "app_badge": null,
+      "title": "褒美が無いとやらない子にならない？",
+      "description": "Lyco App はご褒美やゲーム性を多く組み込んでいます。「ご褒美が無いと動かない子を作るのでは?」という疑問に、ADHD 研究のドーパミン特性と習慣化の視点からお答えします。"
+    }
+  ]
+}
