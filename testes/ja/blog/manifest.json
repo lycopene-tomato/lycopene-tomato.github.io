@@ -5,8 +5,7 @@
       "slug": "sample-standalone",
       "date": "2026-05-15",
       "tags": [
-        "parenting",
-        "everyday"
+        "morning-routine"
       ],
       "series_id": null,
       "series_order": null,
@@ -21,7 +20,7 @@
       "slug": "sample-series-2",
       "date": "2026-05-14",
       "tags": [
-        "engineering"
+        "dev-methods"
       ],
       "series_id": "sample-series",
       "series_order": 2,
@@ -36,7 +35,7 @@
       "slug": "sample-series-1",
       "date": "2026-05-13",
       "tags": [
-        "engineering"
+        "dev-methods"
       ],
       "series_id": "sample-series",
       "series_order": 1,
@@ -50,8 +49,8 @@
       "slug": "remember-to-remember",
       "date": "2026-05-11",
       "tags": [
-        "parenting",
-        "reflection"
+        "adhd-related",
+        "koe-kake"
       ],
       "series_id": null,
       "series_order": null,
@@ -65,8 +64,8 @@
       "slug": "done-vs-achieved",
       "date": "2026-05-08",
       "tags": [
-        "parenting",
-        "engineering"
+        "dev-methods",
+        "koe-kake"
       ],
       "series_id": null,
       "series_order": null,
@@ -80,8 +79,8 @@
       "slug": "app-gacha",
       "date": "2026-05-04",
       "tags": [
-        "parenting",
-        "everyday"
+        "morning-routine",
+        "koe-kake"
       ],
       "series_id": null,
       "series_order": null,
@@ -96,8 +95,7 @@
       "slug": "rewards-and-dopamine",
       "date": "2026-04-28",
       "tags": [
-        "parenting",
-        "reflection"
+        "adhd-related"
       ],
       "series_id": null,
       "series_order": null,
