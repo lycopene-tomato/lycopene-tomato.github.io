@@ -70,6 +70,12 @@
   .post-nav-next { text-align: right; }
   .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
   .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 32px 0 0; padding: 16px 18px; background: #FBFAF5; border: 1px solid #E8E0CC; border-radius: 12px; }
+  .post-byline-text { margin: 0 0 6px; font-size: 13px; line-height: 1.7; color: #4D3E2F; }
+  .post-byline-links { margin: 0; font-size: 13px; line-height: 1.7; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
   /* END blog-extension-styles */
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -199,6 +205,16 @@
     <span class="post-nav-next empty"></span>
   </nav>
   <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — 個人開発でアプリ作ってる父親。家でも試行錯誤中。</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ About</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ contact</a>
+  </p>
+</div>
+<!-- END byline -->
   </div>
 <div id="site-footer"></div>
 

@@ -398,6 +398,42 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/apps/trouble.html" />
   </url>
   <url>
+    <loc>https://lycoapp.com/ja/about/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/about/" />
+  </url>
+  <url>
+    <loc>https://lycoapp.com/en-US/about/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/about/" />
+  </url>
+  <url>
+    <loc>https://lycoapp.com/zh-Hant/about/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/about/" />
+  </url>
+  <url>
+    <loc>https://lycoapp.com/ko/about/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/about/" />
+  </url>
+  <url>
     <loc>https://lycoapp.com/ja/blog/</loc>
     <lastmod>2026-05-11</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/" />
@@ -579,7 +615,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/ja/blog/tag/morning-routine.html</loc>
-    <lastmod>2026-05-15</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/morning-routine.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/morning-routine.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/morning-routine.html" />
@@ -588,7 +624,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/en-US/blog/tag/morning-routine.html</loc>
-    <lastmod>2026-05-15</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/morning-routine.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/morning-routine.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/morning-routine.html" />
@@ -597,7 +633,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/zh-Hant/blog/tag/morning-routine.html</loc>
-    <lastmod>2026-05-15</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/morning-routine.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/morning-routine.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/morning-routine.html" />
@@ -606,7 +642,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/ko/blog/tag/morning-routine.html</loc>
-    <lastmod>2026-05-15</lastmod>
+    <lastmod>2026-05-04</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/morning-routine.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/morning-routine.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/morning-routine.html" />
@@ -723,7 +759,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/ja/blog/tag/dev-methods.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/dev-methods.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/dev-methods.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/dev-methods.html" />
@@ -732,7 +768,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/en-US/blog/tag/dev-methods.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/dev-methods.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/dev-methods.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/dev-methods.html" />
@@ -741,7 +777,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/zh-Hant/blog/tag/dev-methods.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/dev-methods.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/dev-methods.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/dev-methods.html" />
@@ -750,7 +786,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/ko/blog/tag/dev-methods.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/dev-methods.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/dev-methods.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/dev-methods.html" />
@@ -864,14 +900,5 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/kansai-everyday.html" />
     <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/blog/tag/kansai-everyday.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/tag/kansai-everyday.html" />
-  </url>
-  <url>
-    <loc>https://lycoapp.com/ja/blog/all.html</loc>
-    <lastmod>2026-05-11</lastmod>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/all.html" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/all.html" />
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/all.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/blog/all.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/all.html" />
   </url>
 </urlset>

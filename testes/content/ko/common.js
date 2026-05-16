@@ -52,6 +52,7 @@ window.__CONTENT__.ko.common = {
     nav_home: "홈",
     nav_apps: "앱 목록",
     nav_blog: "Blog",
+    nav_about: "소개",
     nav_privacy: "개인정보처리방침",
     support_label: "커피 한 잔",
     support_url: "https://buymeacoffee.com/lycoapp",

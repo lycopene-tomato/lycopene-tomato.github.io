@@ -55,6 +55,7 @@ window.__CONTENT__["en-US"].common = {
     nav_home: "Home",
     nav_apps: "Apps",
     nav_blog: "Blog",
+    nav_about: "About",
     nav_privacy: "Privacy Policy",
     support_label: "Buy me a coffee",
     support_url: "https://buymeacoffee.com/lycoapp",
