@@ -44,8 +44,21 @@
         className: "hero reveal",
         "data-snap": true,
         "data-progress-color": accent.c,
-        style: { background: accent.soft, padding: "32px 18px", textAlign: "center", color: accent.deep }
+        style: { position: "relative", background: accent.soft, padding: "32px 18px", textAlign: "center", color: accent.deep }
       },
+      app.pricing && /* @__PURE__ */ React.createElement("div", { style: {
+        position: "absolute",
+        top: 10,
+        left: 10,
+        padding: "2px 8px",
+        background: "#fff",
+        borderRadius: 999,
+        fontSize: 10,
+        fontWeight: 700,
+        letterSpacing: 1,
+        color: accent.deep,
+        opacity: 0.65
+      } }, app.pricing),
       /* @__PURE__ */ React.createElement("h1", { style: { fontSize: 28, fontWeight: 900, margin: "0 0 6px" } }, app.name),
       /* @__PURE__ */ React.createElement("div", { style: { marginTop: 18, padding: "16px 14px", background: "#fff", borderRadius: 14, color: "#333" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 11, letterSpacing: 2, fontWeight: 800, color: accent.deep, marginBottom: 6 } }, t.detail.label_concept), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 17, fontWeight: 800 } }, /* @__PURE__ */ React.createElement("span", { style: { color: accent.c } }, app.formula_a), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .35em", opacity: 0.5 } }, "\xD7"), /* @__PURE__ */ React.createElement("span", null, app.formula_b), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .35em", opacity: 0.5 } }, "="), /* @__PURE__ */ React.createElement("span", { style: { color: accent.c } }, app.formula_c))),
       app.hero_image && /* @__PURE__ */ React.createElement(
@@ -55,18 +68,7 @@
           alt: app.name,
           style: { display: "block", maxWidth: 360, width: "100%", margin: "20px auto 0", borderRadius: 14 }
         }
-      ),
-      app.pricing && /* @__PURE__ */ React.createElement("div", { style: {
-        display: "inline-block",
-        marginTop: 16,
-        padding: "4px 14px",
-        background: "#fff",
-        borderRadius: 999,
-        fontSize: 13,
-        fontWeight: 700,
-        color: accent.deep,
-        border: `1px solid ${accent.c}`
-      } }, app.pricing)
+      )
     ), app.call && app.call.length > 0 && /* @__PURE__ */ React.createElement(
       "section",
       {
@@ -154,6 +156,44 @@
         letterSpacing: 3,
         color: accent.deep
       } }, t.detail.label_setup_steps)), /* @__PURE__ */ React.createElement("ol", { style: { paddingLeft: 20, margin: 0, display: "flex", flexDirection: "column", gap: 14, color: accent.deep, fontSize: 14, lineHeight: 1.6 } }, app.setupSteps.map((s, i) => /* @__PURE__ */ React.createElement("li", { key: i }, /* @__PURE__ */ React.createElement("div", { style: { fontWeight: 800, marginBottom: 2 } }, s.title), s.desc && /* @__PURE__ */ React.createElement("div", { style: { opacity: 0.85 } }, s.desc)))))
+    ), app.code_sample && /* @__PURE__ */ React.createElement(
+      "section",
+      {
+        className: "reveal",
+        "data-snap": true,
+        "data-progress-color": accent.c,
+        style: { padding: "0 18px", maxWidth: 640, margin: "32px auto" }
+      },
+      /* @__PURE__ */ React.createElement("div", { style: {
+        position: "relative",
+        border: `2px solid ${accent.c}`,
+        borderRadius: 16,
+        padding: "32px 20px 20px",
+        background: "#1E1E1E"
+      } }, /* @__PURE__ */ React.createElement("div", { style: {
+        position: "absolute",
+        top: -11,
+        left: 20,
+        pointerEvents: "none"
+      } }, /* @__PURE__ */ React.createElement("span", { style: {
+        display: "inline-block",
+        background: "#FBF6EE",
+        padding: "2px 14px",
+        borderRadius: 999,
+        fontSize: 13,
+        fontWeight: 800,
+        letterSpacing: 3,
+        color: accent.deep
+      } }, "CODE")), /* @__PURE__ */ React.createElement("pre", { style: {
+        margin: 0,
+        fontFamily: 'Menlo, Consolas, "Courier New", monospace',
+        fontSize: 12,
+        lineHeight: 1.6,
+        color: "#E0E0E0",
+        whiteSpace: "pre-wrap",
+        wordBreak: "break-all",
+        overflowX: "auto"
+      } }, app.code_sample))
     ), /* @__PURE__ */ React.createElement(window.AppScreens, { lang, appId: app.id, appName: app.name, pathPrefix: prefix, accent, label: t.detail.label_screen }), /* @__PURE__ */ React.createElement(
       "section",
       {

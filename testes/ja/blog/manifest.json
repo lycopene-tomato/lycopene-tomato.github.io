@@ -14,6 +14,22 @@
       "description": "Lyco App はご褒美やゲーム性を多く組み込んでいます。「ご褒美が無いと動かない子を作るのでは?」という疑問に、ADHD 研究のドーパミン特性と習慣化の視点からお答えします。"
     },
     {
+      "_comment": "Receive No.1 (PC-9801 N88-BASIC テニスゲーム移植) の開発記。意図的に off-topic (育児テーマ外)、ターゲットは日本のレトロ PC 好きで被リンク獲得目的。ja のみ公開 (他言語版は作らない)。pin なし、tags は retro-pc 1 つだけ (育児系タグは付けない)。",
+      "slug": "receive-no1",
+      "date": "2026-05-17",
+      "tags": [
+        "retro-pc"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "receive",
+      "title": "レシーブ No.1",
+      "description": "PC-9801 のテニスゲーム「レシーブ No.1」(ベーマガ掲載作品) を 30 年ぶりに iPhone に移植。N88-BASIC 100 行の物理計算と三角関数テーブルを完全再現、当時不可能だった CPU 対戦を Genetic Algorithm で実装。",
+      "app_badge": "Receive No.1"
+    },
+    {
       "slug": "app-gacha",
       "date": "2026-05-04",
       "tags": [
