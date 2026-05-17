@@ -91,13 +91,14 @@
   "description": "아이한테 할 일 목록을 줬어요. 그런데 아이는 그 목록을 보는 걸 까먹습니다. 회사의 스케줄러, 전제 질문, 작업 기억 연구를 엮어서 아이 기억의 구조를 같이 생각해 봅니다.",
   "datePublished": "2026-05-12",
   "dateModified": "2026-05-12",
-  "author": { "@type": "Organization", "name": "Lyco App" },
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/ko/about/#lyco", "name": "Lyco" },
   "publisher": {
     "@type": "Organization",
     "name": "Lyco App",
     "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
   },
   "mainEntityOfPage": "https://lycoapp.com/ko/blog/posts/remember-to-remember.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
   "inLanguage": "ko"
 }
 </script>
@@ -146,6 +147,8 @@
   <!-- END tags -->
   <div class="body">
 
+<p id="tldr" class="post-tldr">우리 아이가 할 일 목록을 보는 것 자체를 잊어버리는 걸 보면서, 워킹메모리와 '관심이 우선순위를 정한다' 는 시점에서 다시 생각해 본 기록입니다. 외부 도구 (앱) 를 기억 장치처럼 쓰자는 게, 지금 앱 설계의 출발점이에요.</p>
+
 <blockquote>
 <p>「야, 이거 봤어?」<br />「⋯⋯안 봤어」</p>
 </blockquote>
@@ -168,15 +171,17 @@
 
 <p>며칠은 효과가 있었어요. 익숙해지니 또 까먹습니다.</p>
 
-<h2>알람은, 아이한테는 못 써요</h2>
+<h2>알람은, 우리 아이한테는 못 써요</h2>
 
-<p>어른은 스마트폰 알람으로 강제로 떠올릴 수 있죠. 그런데 아이는 학교에 스마트폰을 못 가져갑니다. 스마트워치 알람도 금지하는 학교가 있어요.</p>
+<p>어른은 스마트폰 알람으로 강제로 떠올릴 수 있죠. 그런데 우리 아이는 학교에 스마트폰을 못 가져갑니다. 스마트워치 알람도 금지하는 학교가 있어요.</p>
 
-<p>아이는 <strong>외부 메모리 없이</strong>, 전부 머릿속에서만 돌리고 있는 거예요.</p>
+<p>우리 아이는 <strong>외부 메모리 없이</strong>, 전부 머릿속에서만 돌리고 있는 거예요.</p>
 
 <h2>용량을 넘으면, 떨어집니다</h2>
 
 <p>사람의 작업 기억 (워킹메모리) 에는 <strong>용량 한계</strong> 가 있어요<sup>1</sup>. 아이의 용량은 어른보다 작고, ADHD 경향이 있는 아이는 더 작게 나오기도 한대요<sup>2</sup>.</p>
+
+<p>저희 집에서는 이런 워킹메모리 연구를 <strong>앱 만드는 데 참고로</strong> 쓰고 있어요. 머릿속에서만 할 일을 굴리는 부담을, 바깥 도구에 조금 덜어 주려는 생각에서 출발한 겁니다.</p>
 
 <p>용량을 넘으면, <strong>우선순위가 낮은 게 먼저 떨어집니다</strong>. 「할 일 목록 보기」 는 딱 이 「떨어지는」 쪽이에요. 「하라고 시킨」 부류의 일. <strong>관심 없는 정보는, 우선순위가 자동으로 내려갑니다</strong><sup>3</sup>.</p>
 
@@ -201,9 +206,9 @@
   <!-- END related-posts -->
   <div class="refs">
     <ol>
-      <li>Baddeley, A.D. <em>Working Memory.</em> Oxford University Press, 1986.</li>
-      <li>Martinussen, R., et al. <em>A meta-analysis of working memory impairments in children with attention-deficit/hyperactivity disorder.</em> Journal of the American Academy of Child &amp; Adolescent Psychiatry, 44(4):377-384, 2005.</li>
-      <li>Craik, F.I.M. &amp; Lockhart, R.S. <em>Levels of processing: A framework for memory research.</em> Journal of Verbal Learning and Verbal Behavior, 11(6):671-684, 1972.</li>
+      <li>Baddeley, A.D. <a href="https://psycnet.apa.org/record/1986-98526-000" target="_blank" rel="noopener"><em>Working Memory.</em></a> Oxford University Press, 1986.</li>
+      <li>Martinussen, R., et al. <a href="https://pubmed.ncbi.nlm.nih.gov/15782085/" target="_blank" rel="noopener"><em>A meta-analysis of working memory impairments in children with attention-deficit/hyperactivity disorder.</em></a> Journal of the American Academy of Child &amp; Adolescent Psychiatry, 44(4):377-384, 2005.</li>
+      <li>Craik, F.I.M. &amp; Lockhart, R.S. <a href="https://doi.org/10.1016/S0022-5371(72)80001-X" target="_blank" rel="noopener"><em>Levels of processing: A framework for memory research.</em></a> Journal of Verbal Learning and Verbal Behavior, 11(6):671-684, 1972.</li>
     </ol>
   </div>
   <!-- BEGIN post-nav -->

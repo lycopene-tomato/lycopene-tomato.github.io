@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>소개 — Lyco App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Lyco App 을 만드는 「Lyco」── 1 인 개발자이자 아빠. 아이와 같이 살아보면서 만든 앱, ADHD 연구를 참고한 칼럼." />
+<meta name="description" content="엔지니어 아빠의 1 인 앱 개발 공유 공간. Lyco App 개발 기록과 집에서 시도한 개인 육아 체험. 육아 블로그도 아니고, 의료 조언도 아닙니다." />
 <link rel="canonical" href="https://lycoapp.com/ko/about/" />
 <link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/about/" />
 <link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/about/" />
@@ -14,7 +14,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="소개 — Lyco App" />
-<meta property="og:description" content="Lyco App 을 만드는 1 인 개발자 「Lyco」 소개." />
+<meta property="og:description" content="엔지니어 아빠의 1 인 앱 개발 공유. Lyco App 개발 기록과 집에서 시도한 개인 육아 체험. 의료 조언이 아닙니다." />
 <meta property="og:url" content="https://lycoapp.com/ko/about/" />
 <meta property="og:image" content="https://lycoapp.com/images/logo-full.jpeg" />
 <meta property="og:site_name" content="Lyco App" />
@@ -22,7 +22,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="소개 — Lyco App" />
-<meta name="twitter:description" content="Lyco App 을 만드는 1 인 개발자 「Lyco」 소개." />
+<meta name="twitter:description" content="엔지니어 아빠의 1 인 앱 개발 공유. Lyco App 개발 기록과 집에서 시도한 개인 육아 체험. 의료 조언이 아닙니다." />
 <meta name="twitter:image" content="https://lycoapp.com/images/logo-full.jpeg" />
 <!-- JSON-LD: AboutPage -->
 <script type="application/ld+json">
@@ -50,6 +50,20 @@
   ]
 }
 </script>
+<!-- JSON-LD: Person (author credentialing for E-E-A-T / GEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://lycoapp.com/ko/about/#lyco",
+  "name": "Lyco",
+  "url": "https://lycoapp.com/ko/about/",
+  "jobTitle": "소프트웨어 엔지니어 / 1 인 iOS 앱 개발자",
+  "description": "엔지니어 아빠로서 1 인 개발로 iOS 앱 (Lyco App) 을 만들고 있어요. 직접 키우려고 만든 앱과 집에서 시도한 경험을 공유합니다.",
+  "knowsAbout": ["iOS 앱 개발", "Swift", "1 인 개발", "육아", "ADHD 친화 UX"],
+  "worksFor": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" }
+}
+</script>
 <style>
   body { margin:0; font-family: system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; background:#FBF6EE; color:#3D2E1F; }
   .wrap { max-width:720px; margin:0 auto; padding:32px 18px 60px; }
@@ -73,6 +87,12 @@
   .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
   .site-nav { flex: 1; justify-content: center; }
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+  .faq { margin: 32px 0; padding: 20px 22px; background: #FBF4E8; border: 1px solid #E8D9BC; border-radius: 10px; }
+  .faq h2 { font-size: 20px; font-weight: 800; margin: 0 0 14px; color: #3D2E1F; }
+  .faq dl { margin: 0; }
+  .faq dt { font-weight: 700; margin-top: 16px; color: #3D2E1F; font-size: 15px; }
+  .faq dt:first-of-type { margin-top: 0; }
+  .faq dd { margin: 6px 0 0; padding-left: 0; color: #5C4A38; line-height: 1.75; font-size: 14px; }
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
@@ -83,33 +103,77 @@
 <div class="wrap">
 
   <h1>안녕하세요, Lyco 입니다</h1>
-  <p class="lead">1 인 개발로 「아이 × 습관」을 주제로 앱을 만드는 아빠입니다. 집에서 해 보고, 가끔 연구를 읽고, 그 과정을 칼럼에 적습니다.</p>
+  <p class="lead">이 사이트는 엔지니어 아빠의 1 인 앱 개발 공유 공간입니다. 입장은 「제가 직접 키우기 위해 만든 앱입니다. 한번 써보실래요?」 ── Lyco App 의 개발 기록과 집에서 시도한 것들을 적습니다.</p>
 
   <div class="pen-card">
     <div class="pen-label">— 이 사이트의 글쓴이 —</div>
     <div class="pen-name">Lyco</div>
-    <div class="pen-sub">이 사이트에서는 필명 「Lyco」 로 글을 씁니다. 앱은 「Lyco App」 이라는 브랜드명으로 출시되어 있고, Apple 개인 개발자 계정을 통하면 본명까지 추적할 수는 있습니다.</div>
+    <div class="pen-sub">Apple App Store 에 앱을 출시하고 있는 엔지니어 아빠. 육아 블로거가 아니라, 제가 직접 키우기 위해 만든 앱과 그 개발 기록을 공유합니다. 사이트에서는 필명 「Lyco」 로 글을 씁니다.</div>
   </div>
 
   <h2>하고 있는 일</h2>
-  <p><strong>앱 만들기</strong>: <a href="../" style="color:#3F8C7E;text-decoration:none;font-weight:700;">Lyco App 목록</a> 에 있는 모든 앱 ── TodoGatya, TodoBingo, TodoSugoroku, TodoFarm, TodoTimer, TodoPuzzle, TroubleNote ── 은 집에서 먼저 써보고 출시한 것들입니다. 「아이의 의욕이 어떻게 움직이는가」 라는 주제를 조금씩 다른 각도로 다룹니다.</p>
-  <p><strong>칼럼</strong>: <a href="../blog/" style="color:#3F8C7E;text-decoration:none;font-weight:700;">Blog</a> 에서는 앱을 만들면서 생각한 것, 집에서 시도한 것을 씁니다. 가끔 엔지니어식 개념 (TDD, BDD 등) 을 양육에 적용해 보거나, ADHD 연구를 앱 설계의 참고로 삼습니다.</p>
+  <p><strong>앱 만들기</strong>: <a href="../" style="color:#3F8C7E;text-decoration:none;font-weight:700;">Lyco App 목록</a> 의 앱 ── TodoGatya, TodoBingo, TodoSugoroku, TodoFarm, PlanetLoopTimer, TroubleNote 의 6 종 ── 은 모두 제가 직접 키우기 위해 만들고, 집에서 먼저 써본 것들입니다. 주제는 「아이의 의욕이 어떻게 움직이는가」 를 조금씩 다른 각도로 다루는 것.</p>
+  <p><strong>개발 기록</strong>: <a href="../blog/" style="color:#3F8C7E;text-decoration:none;font-weight:700;">Blog</a> 는 앱 개발의 기록과 집에서 시도한 것들입니다. ADHD 논문을 읽는 건 앱을 더 잘 만들기 위한 참고일 뿐, 의료 조언이 아닙니다. 인용을 다는 건 엔지니어의 습관입니다.</p>
 
-  <h2>입장과 전제</h2>
+  <h2>이 사이트의 입장</h2>
   <div class="disclosure">
-    <div class="disc-label">★ 전문성에 대한 투명한 안내</div>
-    <p style="margin:0;">저는 <strong>의학·임상·교육 전문가가 아닙니다</strong>. ADHD 연구와 인지과학 논문을 독학으로 읽고 있지만, 이 사이트의 글은 <strong>1 인 개발자이자 부모의 개인적인 노트</strong> 일 뿐이며 의료 조언이나 진단이 아닙니다. 걱정되는 부분이 있다면 반드시 전문가와 상담해 주세요.</p>
+    <div class="disc-label">★ 이 사이트의 입장</div>
+    <p style="margin:0 0 10px;">이 사이트는 <strong>엔지니어 아빠의 1 인 앱 개발 공유</strong> 이지, 육아 블로그도 의료 정보 사이트도 아닙니다. 저는 <strong>육아 전문가도, 의료 전문가도 아닙니다</strong>.</p>
+    <p style="margin:0 0 10px;">쓰는 글은 <strong>제 자신의 육아 기록</strong> 이지, 당신의 아이에 대한 이야기가 아닙니다. ADHD 논문을 읽는 건 <strong>앱을 더 잘 만들기 위한 참고</strong> 일 뿐, 의료 조언이 아닙니다.</p>
+    <p style="margin:0;">인용을 다는 건 <strong>엔지니어의 습관</strong> 일 뿐, 의료 권위의 주장이 아닙니다. 걱정되는 부분이 있다면 반드시 전문가와 상담해 주세요.</p>
   </div>
 
-  <h2>사이트 방침</h2>
+  <h2>글쓰기 방침</h2>
   <ul>
-    <li><strong>아이에게 라벨을 붙이지 않습니다</strong>: 「ADHD 아이」 「발달장애 아이」 같은 분류어를 쓰지 않습니다</li>
-    <li><strong>비교로 상처주지 않습니다</strong>: 「정상발달」 「보통 아이와 다른」 같은 대비를 쓰지 않습니다</li>
+    <li><strong>아이에게 라벨·비교로 상처주지 않습니다</strong>: 「ADHD 아이」 「정상발달과 다르다」 같은 표현을 쓰지 않습니다</li>
     <li><strong>의료 조언·진단을 하지 않습니다</strong>: 「ADHD 일지도 모른다」 같은 추측을 쓰지 않습니다</li>
-    <li><strong>인용은 출처 명시</strong>: ADHD 연구를 인용할 때는 논문 링크나 책 이름을 반드시 첨부합니다</li>
+    <li><strong>인용은 출처 명시</strong>: 논문을 인용할 때는 링크나 책 이름을 반드시 첨부합니다 (엔지니어의 습관)</li>
     <li><strong>아이의 프라이버시를 지킵니다</strong>: 사진·본명은 공개하지 않고 상황은 각색합니다</li>
     <li><strong>부모를 탓하지 않습니다</strong>: 「부모 탓」 「혼내도 소용없다」 같은 표현을 쓰지 않습니다</li>
   </ul>
+  <p style="margin-top:16px;font-size:13px;opacity:.85;">저도 매일 고민하면서 키우고 있고, 정답을 알고 있는 건 아닙니다. 같이 고민하고 있는 한 부모로서, 제가 시도해 본 것들을 적어 둡니다.</p>
+
+  <!-- BEGIN: FAQ (site-level, GEO Phase 5) -->
+  <section class="faq">
+    <h2>자주 묻는 질문</h2>
+    <dl>
+      <dt>이 사이트는 의료 조언인가요?</dt>
+      <dd>아닙니다. 엔지니어 아빠의 개인 육아 기록일 뿐, 의료 조언이나 진단이 아닙니다. 연구를 인용하는 건 앱 설계의 참고 자료로 읽은 것이고, 당신의 아이에 대한 의료 조언이 아닙니다.</dd>
+      <dt>ADHD 논문을 인용하는 이유는?</dt>
+      <dd>엔지니어로서 「사람이 어떻게 움직이기 시작하는가」「기억은 어떻게 작동하는가」를 이해하면 더 좋은 도구를 만들 수 있어서요. 인용은 앱 설계의 입력일 뿐, 의료 권고가 아닙니다.</dd>
+      <dt>「Lyco」가 본명인가요?</dt>
+      <dd>필명입니다. Apple Developer Program 규정으로 App Store 에는 본명을 등록했지만, 사이트에서는 Lyco 라는 이름으로 글을 씁니다. 사생활 보호와 일관된 글쓰기 스타일을 위해서요.</dd>
+      <dt>예전의 TodoPuzzle / TodoTimer 는 왜 사라졌나요?</dt>
+      <dd>앱 라인업을 정리하면서 공개를 중지했습니다. 현재는 TodoGatya / TodoBingo / TodoLadders / TodoFarm / PlanetLoopTimer / TroubleNote 6 개를 중심으로 운영하고 있어요.</dd>
+      <dt>PlanetLoopTimer 는 어떤 앱인가요?</dt>
+      <dd>반복되는 활동 (집중/휴식 루프, 학원 로테이션 등) 을 시각적으로 표시하는 타이머 앱입니다. 최신작입니다.</dd>
+      <dt>참고 문헌은 어디 논문을 인용하나요?</dt>
+      <dd>주로 PubMed (미국 국립의학도서관) 에서 동료 심사 학술지 논문을 링크합니다. 글 끝의 위첨자 번호로 원문에 갈 수 있어요.</dd>
+      <dt>앱은 무료인가요? 유료인가요?</dt>
+      <dd>각 앱의 가격과 결제 방식은 App Store 페이지에 적혀 있습니다. 사이트 자체는 무료로 읽을 수 있어요.</dd>
+      <dt>지원 언어는?</dt>
+      <dd>사이트는 일본어 / 영어 (en-US) / 번체 중국어 (zh-Hant) / 한국어 (ko) 4 개 언어입니다. App Store 의 앱 설명은 50+ 개 로케일을 다룹니다.</dd>
+    </dl>
+  </section>
+  <!-- END: FAQ -->
+
+  <!-- JSON-LD: FAQPage (content mirrored from <section class="faq"> above) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "이 사이트는 의료 조언인가요?", "acceptedAnswer": { "@type": "Answer", "text": "아닙니다. 엔지니어 아빠의 개인 육아 기록일 뿐, 의료 조언이나 진단이 아닙니다. 연구를 인용하는 건 앱 설계의 참고 자료로 읽은 것이고, 당신의 아이에 대한 의료 조언이 아닙니다." } },
+      { "@type": "Question", "name": "ADHD 논문을 인용하는 이유는?", "acceptedAnswer": { "@type": "Answer", "text": "엔지니어로서 「사람이 어떻게 움직이기 시작하는가」「기억은 어떻게 작동하는가」를 이해하면 더 좋은 도구를 만들 수 있어서요. 인용은 앱 설계의 입력일 뿐, 의료 권고가 아닙니다." } },
+      { "@type": "Question", "name": "「Lyco」가 본명인가요?", "acceptedAnswer": { "@type": "Answer", "text": "필명입니다. Apple Developer Program 규정으로 App Store 에는 본명을 등록했지만, 사이트에서는 Lyco 라는 이름으로 글을 씁니다. 사생활 보호와 일관된 글쓰기 스타일을 위해서요." } },
+      { "@type": "Question", "name": "예전의 TodoPuzzle / TodoTimer 는 왜 사라졌나요?", "acceptedAnswer": { "@type": "Answer", "text": "앱 라인업을 정리하면서 공개를 중지했습니다. 현재는 TodoGatya / TodoBingo / TodoLadders / TodoFarm / PlanetLoopTimer / TroubleNote 6 개를 중심으로 운영하고 있어요." } },
+      { "@type": "Question", "name": "PlanetLoopTimer 는 어떤 앱인가요?", "acceptedAnswer": { "@type": "Answer", "text": "반복되는 활동 (집중/휴식 루프, 학원 로테이션 등) 을 시각적으로 표시하는 타이머 앱입니다. 최신작입니다." } },
+      { "@type": "Question", "name": "참고 문헌은 어디 논문을 인용하나요?", "acceptedAnswer": { "@type": "Answer", "text": "주로 PubMed (미국 국립의학도서관) 에서 동료 심사 학술지 논문을 링크합니다. 글 끝의 위첨자 번호로 원문에 갈 수 있어요." } },
+      { "@type": "Question", "name": "앱은 무료인가요? 유료인가요?", "acceptedAnswer": { "@type": "Answer", "text": "각 앱의 가격과 결제 방식은 App Store 페이지에 적혀 있습니다. 사이트 자체는 무료로 읽을 수 있어요." } },
+      { "@type": "Question", "name": "지원 언어는?", "acceptedAnswer": { "@type": "Answer", "text": "사이트는 일본어 / 영어 (en-US) / 번체 중국어 (zh-Hant) / 한국어 (ko) 4 개 언어입니다. App Store 의 앱 설명은 50+ 개 로케일을 다룹니다." } }
+    ]
+  }
+  </script>
 
   <h2>연락처</h2>
   <div class="contact">

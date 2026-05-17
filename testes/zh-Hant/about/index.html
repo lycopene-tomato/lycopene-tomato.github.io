@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>關於 — Lyco App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="關於 Lyco App 的個人開發者「Lyco」── 一個一邊帶小孩、一邊寫 App 的爸爸。寫專欄、做給孩子用的 App、讀 ADHD 研究做參考。" />
+<meta name="description" content="工程師爸爸個人 App 開發的分享空間。Lyco App 的開發紀錄,以及在家試過的個人育兒體驗。不是育兒部落格,也不是醫療建議。" />
 <link rel="canonical" href="https://lycoapp.com/zh-Hant/about/" />
 <link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/about/" />
 <link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/about/" />
@@ -14,7 +14,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="關於 — Lyco App" />
-<meta property="og:description" content="關於 Lyco App 的個人開發者「Lyco」。" />
+<meta property="og:description" content="工程師爸爸個人 App 開發的分享。Lyco App 開發紀錄與在家試過的個人育兒體驗。不是醫療建議。" />
 <meta property="og:url" content="https://lycoapp.com/zh-Hant/about/" />
 <meta property="og:image" content="https://lycoapp.com/images/logo-full.jpeg" />
 <meta property="og:site_name" content="Lyco App" />
@@ -22,7 +22,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="關於 — Lyco App" />
-<meta name="twitter:description" content="關於 Lyco App 的個人開發者「Lyco」。" />
+<meta name="twitter:description" content="工程師爸爸個人 App 開發的分享。Lyco App 開發紀錄與在家試過的個人育兒體驗。不是醫療建議。" />
 <meta name="twitter:image" content="https://lycoapp.com/images/logo-full.jpeg" />
 <!-- JSON-LD: AboutPage -->
 <script type="application/ld+json">
@@ -50,6 +50,20 @@
   ]
 }
 </script>
+<!-- JSON-LD: Person (author credentialing for E-E-A-T / GEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://lycoapp.com/zh-Hant/about/#lyco",
+  "name": "Lyco",
+  "url": "https://lycoapp.com/zh-Hant/about/",
+  "jobTitle": "軟體工程師 / 個人 iOS App 開發者",
+  "description": "工程師爸爸,一個人開發 iOS App。把為了帶自己的小孩做出來的 App,跟在家試過的事情分享出來的網站。",
+  "knowsAbout": ["iOS App 開發", "Swift", "個人開發", "育兒", "ADHD 友善 UX"],
+  "worksFor": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" }
+}
+</script>
 <style>
   body { margin:0; font-family: system-ui,"PingFang TC","Microsoft JhengHei",sans-serif; background:#FBF6EE; color:#3D2E1F; }
   .wrap { max-width:720px; margin:0 auto; padding:32px 18px 60px; }
@@ -73,6 +87,12 @@
   .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
   .site-nav { flex: 1; justify-content: center; }
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+  .faq { margin: 32px 0; padding: 20px 22px; background: #FBF4E8; border: 1px solid #E8D9BC; border-radius: 10px; }
+  .faq h2 { font-size: 20px; font-weight: 800; margin: 0 0 14px; color: #3D2E1F; }
+  .faq dl { margin: 0; }
+  .faq dt { font-weight: 700; margin-top: 16px; color: #3D2E1F; font-size: 15px; }
+  .faq dt:first-of-type { margin-top: 0; }
+  .faq dd { margin: 6px 0 0; padding-left: 0; color: #5C4A38; line-height: 1.75; font-size: 14px; }
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
@@ -83,33 +103,77 @@
 <div class="wrap">
 
   <h1>你好,我是 Lyco</h1>
-  <p class="lead">一個一邊帶小孩、一邊一個人寫 App 的爸爸。「小孩 × 習慣」是 Lyco App 的主題。在家試過,有時讀點研究,就把心得寫成專欄。</p>
+  <p class="lead">這個網站,是工程師爸爸個人 App 開發的分享空間。立場是「我為了帶自己的小孩做了這些 App,你要不要試試看?」── 寫 Lyco App 的開發紀錄,以及自己在家試過的事。</p>
 
   <div class="pen-card">
     <div class="pen-label">— 寫這個網站的人 —</div>
     <div class="pen-name">Lyco</div>
-    <div class="pen-sub">這個網站上用的是筆名「Lyco」。App 是以「Lyco App」這個品牌名上架的,在 Apple 的個人開發者帳號上能查到本名。</div>
+    <div class="pen-sub">在 Apple App Store 上架 App 的工程師爸爸。不是育兒部落客,而是把自己為了帶小孩做的 App 跟開發紀錄分享出來。網站上用的是筆名「Lyco」。</div>
   </div>
 
   <h2>在做什麼</h2>
-  <p><strong>App</strong>: <a href="../" style="color:#3F8C7E;text-decoration:none;font-weight:700;">Lyco App 一覽</a> 裡的每一支 App ── TodoGatya、TodoBingo、TodoSugoroku、TodoFarm、TodoTimer、TodoPuzzle、TroubleNote ── 都是我自己先在家試過,才上架的。主題是「小孩的『想做的動力』到底怎麼動」,用稍微不同的角度去拆。</p>
-  <p><strong>專欄</strong>: <a href="../blog/" style="color:#3F8C7E;text-decoration:none;font-weight:700;">Blog</a> 寫寫做 App 時在想的事,還有家裡實際試過的方法。有時候會把工程師的概念(TDD、BDD 之類)套到育兒上,有時候會讀 ADHD 研究來做 App 設計的參考。</p>
+  <p><strong>做 App</strong>: <a href="../" style="color:#3F8C7E;text-decoration:none;font-weight:700;">Lyco App 一覽</a> 裡的每一支 ── TodoGatya、TodoBingo、TodoSugoroku、TodoFarm、PlanetLoopTimer、TroubleNote 共 6 支 ── 都是我為了帶自己的小孩做的,先在家試過才上架。主題是「小孩的『想做的動力』到底怎麼動」,從幾個不同角度去拆。</p>
+  <p><strong>開發筆記</strong>: <a href="../blog/" style="color:#3F8C7E;text-decoration:none;font-weight:700;">Blog</a> 是 App 開發的紀錄,還有家裡試過的事。我會讀 ADHD 的論文,只是為了讓做出來的 App 更好用,不是醫療建議。附引用的習慣,是工程師的職業病。</p>
 
-  <h2>立場與前提</h2>
+  <h2>這個網站的立場</h2>
   <div class="disclosure">
-    <div class="disc-label">★ 關於專業性的透明說明</div>
-    <p style="margin:0;">我 <strong>不是醫學、臨床或教育方面的專家</strong>。我會自己讀 ADHD 研究跟認知科學的論文,但這個網站上寫的東西,終究是 <strong>一個個人開發者爸爸的筆記</strong>,不是醫療建議,也不是診斷。如果有疑慮,請務必諮詢專業人員。</p>
+    <div class="disc-label">★ 這個網站的立場</div>
+    <p style="margin:0 0 10px;">這個網站是 <strong>工程師爸爸個人 App 開發的分享</strong>,不是育兒部落格,也不是醫療資訊網站。我 <strong>不是育兒專家,也不是醫療專家</strong>。</p>
+    <p style="margin:0 0 10px;">寫的是 <strong>我自己的育兒紀錄</strong>,不是在說你的小孩。讀 ADHD 的論文,<strong>只是為了讓做出來的 App 更好用</strong>,不是醫療建議。</p>
+    <p style="margin:0;">附引用的習慣,是 <strong>工程師的職業病</strong>,不是在主張醫療權威。如果有疑慮,請務必諮詢專業人員。</p>
   </div>
 
-  <h2>網站的方針</h2>
+  <h2>寫作方針</h2>
   <ul>
-    <li><strong>不給孩子貼標籤</strong>:不會寫「ADHD 的孩子」「發展障礙的孩子」這類分類詞</li>
-    <li><strong>不用比較去傷害讀者</strong>:不會用「典型發展」「跟正常的孩子不一樣」這種對比</li>
+    <li><strong>不給孩子貼標籤、不用比較傷人</strong>:不會寫「ADHD 的孩子」「跟典型發展不一樣」這種講法</li>
     <li><strong>不做醫療建議、不做診斷</strong>:不寫「可能是 ADHD」這種推測</li>
-    <li><strong>引用要附出處</strong>:引用 ADHD 研究時,一定附上論文連結或書名</li>
+    <li><strong>引用要附出處</strong>:引用研究時一定附論文連結或書名 (工程師的習慣)</li>
     <li><strong>保護孩子的隱私</strong>:不放照片、不寫本名;情境會做改寫</li>
     <li><strong>不責怪父母</strong>:不寫「都是父母的錯」「罵也沒用」這種說法</li>
   </ul>
+  <p style="margin-top:16px;font-size:13px;opacity:.85;">我自己也不知道這樣對不對,每天就是一邊煩惱一邊帶。寫在這裡的,是身為一個跟你一樣在摸索的家長,把試過的事整理出來。</p>
+
+  <!-- BEGIN: FAQ (site-level, GEO Phase 5) -->
+  <section class="faq">
+    <h2>常見問題</h2>
+    <dl>
+      <dt>這個網站是醫療建議嗎?</dt>
+      <dd>不是。這是一個工程師爸爸的個人育兒紀錄,不是醫療建議或診斷。我引用研究文獻,是當作做 App 的設計參考,不是要對你的小孩提出醫療建議。</dd>
+      <dt>為什麼引用 ADHD 的研究?</dt>
+      <dd>因為作為工程師,理解「人怎麼動起來」「記憶怎麼運作」可以做出更好的工具。引用是 App 設計的輸入,不是醫療建議。</dd>
+      <dt>「Lyco」是本名嗎?</dt>
+      <dd>是筆名。Apple Developer Program 規定 App Store 上要用本名,但網站上我用 Lyco 來寫,為了隱私和書寫風格的一致性。</dd>
+      <dt>之前的 TodoPuzzle / TodoTimer 為什麼沒有了?</dt>
+      <dd>整理 App 陣容時下架了。現在主要在運營 TodoGatya / TodoBingo / TodoLadders / TodoFarm / PlanetLoopTimer / TroubleNote 這 6 個。</dd>
+      <dt>PlanetLoopTimer 是什麼樣的 App?</dt>
+      <dd>把「重複的活動」(專注/休息循環、課後輪替等) 視覺化的計時器 App。是最新作品。</dd>
+      <dt>參考文獻是從哪邊引用的?</dt>
+      <dd>主要從 PubMed (美國國家醫學圖書館) 連結同行評審期刊的論文。文章最後的上標數字可以跳到原文。</dd>
+      <dt>App 是免費的還是付費?</dt>
+      <dd>各 App 的價格和購買方式請看 App Store 頁面。網站本身免費閱讀。</dd>
+      <dt>支援哪些語言?</dt>
+      <dd>網站有日文 / 英文 (en-US) / 繁體中文 (zh-Hant) / 韓文 (ko) 4 種語言。App Store 上的 App 說明則涵蓋 50+ 個地區。</dd>
+    </dl>
+  </section>
+  <!-- END: FAQ -->
+
+  <!-- JSON-LD: FAQPage (content mirrored from <section class="faq"> above) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "這個網站是醫療建議嗎?", "acceptedAnswer": { "@type": "Answer", "text": "不是。這是一個工程師爸爸的個人育兒紀錄,不是醫療建議或診斷。我引用研究文獻,是當作做 App 的設計參考,不是要對你的小孩提出醫療建議。" } },
+      { "@type": "Question", "name": "為什麼引用 ADHD 的研究?", "acceptedAnswer": { "@type": "Answer", "text": "因為作為工程師,理解「人怎麼動起來」「記憶怎麼運作」可以做出更好的工具。引用是 App 設計的輸入,不是醫療建議。" } },
+      { "@type": "Question", "name": "「Lyco」是本名嗎?", "acceptedAnswer": { "@type": "Answer", "text": "是筆名。Apple Developer Program 規定 App Store 上要用本名,但網站上我用 Lyco 來寫,為了隱私和書寫風格的一致性。" } },
+      { "@type": "Question", "name": "之前的 TodoPuzzle / TodoTimer 為什麼沒有了?", "acceptedAnswer": { "@type": "Answer", "text": "整理 App 陣容時下架了。現在主要在運營 TodoGatya / TodoBingo / TodoLadders / TodoFarm / PlanetLoopTimer / TroubleNote 這 6 個。" } },
+      { "@type": "Question", "name": "PlanetLoopTimer 是什麼樣的 App?", "acceptedAnswer": { "@type": "Answer", "text": "把「重複的活動」(專注/休息循環、課後輪替等) 視覺化的計時器 App。是最新作品。" } },
+      { "@type": "Question", "name": "參考文獻是從哪邊引用的?", "acceptedAnswer": { "@type": "Answer", "text": "主要從 PubMed (美國國家醫學圖書館) 連結同行評審期刊的論文。文章最後的上標數字可以跳到原文。" } },
+      { "@type": "Question", "name": "App 是免費的還是付費?", "acceptedAnswer": { "@type": "Answer", "text": "各 App 的價格和購買方式請看 App Store 頁面。網站本身免費閱讀。" } },
+      { "@type": "Question", "name": "支援哪些語言?", "acceptedAnswer": { "@type": "Answer", "text": "網站有日文 / 英文 (en-US) / 繁體中文 (zh-Hant) / 韓文 (ko) 4 種語言。App Store 上的 App 說明則涵蓋 50+ 個地區。" } }
+    ]
+  }
+  </script>
 
   <h2>聯絡方式</h2>
   <div class="contact">

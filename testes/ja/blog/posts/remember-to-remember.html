@@ -90,13 +90,14 @@
   "description": "子供に Todo リストを持たせた。でも、リストを見ることを忘れる。仕事のスケジューラ・ミルトンモデルの前提質問・ワーキングメモリ研究を絡めて、子供の記憶の仕組みを考える。",
   "datePublished": "2026-05-11",
   "dateModified": "2026-05-11",
-  "author": { "@type": "Organization", "name": "Lyco App" },
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/ja/about/#lyco", "name": "Lyco" },
   "publisher": {
     "@type": "Organization",
     "name": "Lyco App",
     "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
   },
   "mainEntityOfPage": "https://lycoapp.com/ja/blog/posts/remember-to-remember.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
   "inLanguage": "ja"
 }
 </script>
@@ -145,6 +146,8 @@
   <!-- END tags -->
   <div class="body">
 
+<p id="tldr" class="post-tldr">子どもが Todo リストを見ること自体を忘れるのを見て、ワーキングメモリと「興味の優先度」を、エンジニアの私が改めて考え直した記録です。リストではなく『興味で覚えてる』仕組みを外側に作りたい、というのが今のアプリ設計の出発点になっています。</p>
+
 <blockquote>
 <p>「ねぇ、これ、見た?」<br />「あー、見てない」</p>
 </blockquote>
@@ -167,15 +170,17 @@
 
 <p>最初は少し効いた。すぐ慣れて、また忘れる。</p>
 
-<h2>アラームは、子供には使えない</h2>
+<h2>アラームは、うちの子には使えない</h2>
 
-<p>大人はスマホのアラームで強制的に思い出せる。でも、子供は学校でスマホ持てない。腕時計のアラームを禁止してる学校もある。</p>
+<p>大人はスマホのアラームで強制的に思い出せる。でも、うちの子は学校でスマホ持てない。腕時計のアラームを禁止してる学校もある。</p>
 
-<p>子供は、<strong>外部記憶なし</strong>で、すべて頭の中で記憶を回してる。</p>
+<p>うちの子は、<strong>外部記憶なし</strong>で、すべて頭の中で記憶を回してる。</p>
 
 <h2>容量を超えたら、消える</h2>
 
 <p>人間の作業記憶 (ワーキングメモリ) には <strong>容量がある</strong><sup>¹</sup>。子どもの容量は大人より小さく、ADHD 傾向のある子はさらに小さく出ることもある<sup>²</sup>。</p>
+
+<p>うちでは、こうしたワーキングメモリの研究を <strong>アプリ作りの参考</strong> にしています。頭の中だけで Todo を回す負担を、外側に少し逃がす道具として組み立てたい、というのが出発点でした。</p>
 
 <p>容量を超えると、<strong>優先度が低いものから、頭から消える</strong>。「Todo リストを見ること」は、まさに消える側だ。「やらされ感」のあるもの。<strong>興味のない情報は、優先度が下がる</strong><sup>³</sup>。</p>
 
@@ -200,9 +205,9 @@
   <!-- END related-posts -->
   <div class="refs">
     <ol>
-      <li>Baddeley, A.D. <em>Working Memory.</em> Oxford University Press, 1986.</li>
-      <li>Martinussen, R., et al. <em>A meta-analysis of working memory impairments in children with attention-deficit/hyperactivity disorder.</em> Journal of the American Academy of Child &amp; Adolescent Psychiatry, 44(4):377-384, 2005.</li>
-      <li>Craik, F.I.M. &amp; Lockhart, R.S. <em>Levels of processing: A framework for memory research.</em> Journal of Verbal Learning and Verbal Behavior, 11(6):671-684, 1972.</li>
+      <li>Baddeley, A.D. <a href="https://psycnet.apa.org/record/1986-98526-000" target="_blank" rel="noopener"><em>Working Memory.</em></a> Oxford University Press, 1986.</li>
+      <li>Martinussen, R., et al. <a href="https://pubmed.ncbi.nlm.nih.gov/15782085/" target="_blank" rel="noopener"><em>A meta-analysis of working memory impairments in children with attention-deficit/hyperactivity disorder.</em></a> Journal of the American Academy of Child &amp; Adolescent Psychiatry, 44(4):377-384, 2005.</li>
+      <li>Craik, F.I.M. &amp; Lockhart, R.S. <a href="https://doi.org/10.1016/S0022-5371(72)80001-X" target="_blank" rel="noopener"><em>Levels of processing: A framework for memory research.</em></a> Journal of Verbal Learning and Verbal Behavior, 11(6):671-684, 1972.</li>
     </ol>
   </div>
   <!-- BEGIN post-nav -->

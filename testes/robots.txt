@@ -1,4 +1,62 @@
+# Lyco App — robots policy
+# Generic crawlers
 User-agent: *
+Allow: /
+
+# AI crawlers — explicitly allowed for both training and citation.
+# Stance: this is a small personal site, being read/quoted by AI search
+# engines is net-positive. If a specific bot becomes a problem, switch its
+# block to "Disallow: /" individually.
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI (Bard / Gemini / AI Overviews learning corpus)
+User-agent: Google-Extended
+Allow: /
+
+# Apple AI
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (used by many downstream AI training pipelines)
+User-agent: CCBot
+Allow: /
+
+# ByteDance / TikTok
+User-agent: Bytespider
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Diffbot
+User-agent: Diffbot
 Allow: /
 
 Sitemap: https://lycoapp.com/sitemap.xml
