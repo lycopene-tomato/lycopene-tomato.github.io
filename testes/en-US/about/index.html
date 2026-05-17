@@ -89,10 +89,13 @@
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
   .faq { margin: 32px 0; padding: 20px 22px; background: #FBF4E8; border: 1px solid #E8D9BC; border-radius: 10px; }
   .faq h2 { font-size: 20px; font-weight: 800; margin: 0 0 14px; color: #3D2E1F; }
-  .faq dl { margin: 0; }
-  .faq dt { font-weight: 700; margin-top: 16px; color: #3D2E1F; font-size: 15px; }
-  .faq dt:first-of-type { margin-top: 0; }
-  .faq dd { margin: 6px 0 0; padding-left: 0; color: #5C4A38; line-height: 1.75; font-size: 14px; }
+  .faq details { margin-top: 14px; border-top: 1px solid #E8D9BC; padding-top: 14px; }
+  .faq details:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .faq summary { font-weight: 700; color: #3D2E1F; font-size: 15px; cursor: pointer; list-style: none; padding-right: 28px; position: relative; line-height: 1.5; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 0; font-size: 20px; font-weight: 400; color: #3F8C7E; line-height: 1; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details > p { margin: 10px 0 0; padding-left: 0; color: #5C4A38; line-height: 1.75; font-size: 14px; }
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
@@ -133,27 +136,41 @@
   </ul>
   <p style="margin-top:16px;font-size:13px;opacity:.85;">I don't have the answers either — I'm just another parent figuring it out day by day. What I write is what I tried, from one parent to another.</p>
 
-  <!-- BEGIN: FAQ (site-level, GEO Phase 5) -->
+  <!-- BEGIN: FAQ (site-level) -->
   <section class="faq">
     <h2>FAQ</h2>
-    <dl>
-      <dt>Is this site medical advice?</dt>
-      <dd>No. This is one engineer dad's personal parenting log — not medical advice or diagnostic claims. When I cite research, I'm reading it as input for app design, not advising you about your kid.</dd>
-      <dt>Why do you cite ADHD research?</dt>
-      <dd>As an engineer, understanding "how people actually start moving" and "how memory works" helps me build better tools. The citations are app design inputs, not medical recommendations.</dd>
-      <dt>Is "Lyco" your real name?</dt>
-      <dd>It's a pen name. Apple Developer Program requires my real name on the App Store listing, but on the site I write as Lyco — for privacy and a consistent writer voice.</dd>
-      <dt>What happened to TodoPuzzle and TodoTimer?</dt>
-      <dd>They were retired when I consolidated the app lineup. The current set is TodoGatya, TodoBingo, TodoLadders, TodoFarm, PlanetLoopTimer, and TroubleNote.</dd>
-      <dt>What is PlanetLoopTimer?</dt>
-      <dd>A timer app that visualizes repeating activities (focus/break loops, after-school rotations, etc.). It's my newest release.</dd>
-      <dt>Where do you source the cited papers?</dt>
-      <dd>Mostly PubMed (US National Library of Medicine), linking peer-reviewed journals. The superscript numbers at the end of each post jump to the source.</dd>
-      <dt>Are the apps free or paid?</dt>
-      <dd>Pricing varies per app — see each App Store listing for details. The site itself is free to read.</dd>
-      <dt>What languages do you support?</dt>
-      <dd>The site is in Japanese / English (en-US) / Traditional Chinese (zh-Hant) / Korean (ko). App Store listings cover 50+ locales.</dd>
-    </dl>
+    <details>
+      <summary>Is this site medical advice?</summary>
+      <p>No. This is one engineer dad's personal parenting log — not medical advice or diagnostic claims. When I cite research, I'm reading it as input for app design, not advising you about your kid.</p>
+    </details>
+    <details>
+      <summary>Why do you cite ADHD research?</summary>
+      <p>As an engineer, understanding "how people actually start moving" and "how memory works" helps me build better tools. The citations are app design inputs, not medical recommendations.</p>
+    </details>
+    <details>
+      <summary>Is "Lyco" your real name?</summary>
+      <p>It's a pen name. Apple Developer Program requires my real name on the App Store listing, but on the site I write as Lyco — for privacy and a consistent writer voice.</p>
+    </details>
+    <details>
+      <summary>What happened to TodoPuzzle and TodoTimer?</summary>
+      <p>They were retired when I consolidated the app lineup. The current set is TodoGatya, TodoBingo, TodoLadders, TodoFarm, PlanetLoopTimer, and TroubleNote.</p>
+    </details>
+    <details>
+      <summary>What is PlanetLoopTimer?</summary>
+      <p>A timer app that visualizes repeating activities (focus/break loops, after-school rotations, etc.). It's my newest release.</p>
+    </details>
+    <details>
+      <summary>Where do you source the cited papers?</summary>
+      <p>Mostly PubMed (US National Library of Medicine), linking peer-reviewed journals. The superscript numbers at the end of each post jump to the source.</p>
+    </details>
+    <details>
+      <summary>Are the apps free or paid?</summary>
+      <p>Pricing varies per app — see each App Store listing for details. The site itself is free to read.</p>
+    </details>
+    <details>
+      <summary>What languages do you support?</summary>
+      <p>The site is in Japanese / English (en-US) / Traditional Chinese (zh-Hant) / Korean (ko). App Store listings cover 50+ locales.</p>
+    </details>
   </section>
   <!-- END: FAQ -->
 
@@ -205,5 +222,3 @@
 <script defer src="../../shared/analytics.js"></script>
 </body>
 </html>
-</content>
-</invoke>

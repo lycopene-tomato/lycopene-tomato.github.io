@@ -89,10 +89,13 @@
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
   .faq { margin: 32px 0; padding: 20px 22px; background: #FBF4E8; border: 1px solid #E8D9BC; border-radius: 10px; }
   .faq h2 { font-size: 20px; font-weight: 800; margin: 0 0 14px; color: #3D2E1F; }
-  .faq dl { margin: 0; }
-  .faq dt { font-weight: 700; margin-top: 16px; color: #3D2E1F; font-size: 15px; }
-  .faq dt:first-of-type { margin-top: 0; }
-  .faq dd { margin: 6px 0 0; padding-left: 0; color: #5C4A38; line-height: 1.75; font-size: 14px; }
+  .faq details { margin-top: 14px; border-top: 1px solid #E8D9BC; padding-top: 14px; }
+  .faq details:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .faq summary { font-weight: 700; color: #3D2E1F; font-size: 15px; cursor: pointer; list-style: none; padding-right: 28px; position: relative; line-height: 1.5; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 0; font-size: 20px; font-weight: 400; color: #3F8C7E; line-height: 1; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details > p { margin: 10px 0 0; padding-left: 0; color: #5C4A38; line-height: 1.75; font-size: 14px; }
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
@@ -133,27 +136,41 @@
   </ul>
   <p style="margin-top:16px;font-size:13px;opacity:.85;">我自己也不知道這樣對不對,每天就是一邊煩惱一邊帶。寫在這裡的,是身為一個跟你一樣在摸索的家長,把試過的事整理出來。</p>
 
-  <!-- BEGIN: FAQ (site-level, GEO Phase 5) -->
+  <!-- BEGIN: FAQ (site-level) -->
   <section class="faq">
     <h2>常見問題</h2>
-    <dl>
-      <dt>這個網站是醫療建議嗎?</dt>
-      <dd>不是。這是一個工程師爸爸的個人育兒紀錄,不是醫療建議或診斷。我引用研究文獻,是當作做 App 的設計參考,不是要對你的小孩提出醫療建議。</dd>
-      <dt>為什麼引用 ADHD 的研究?</dt>
-      <dd>因為作為工程師,理解「人怎麼動起來」「記憶怎麼運作」可以做出更好的工具。引用是 App 設計的輸入,不是醫療建議。</dd>
-      <dt>「Lyco」是本名嗎?</dt>
-      <dd>是筆名。Apple Developer Program 規定 App Store 上要用本名,但網站上我用 Lyco 來寫,為了隱私和書寫風格的一致性。</dd>
-      <dt>之前的 TodoPuzzle / TodoTimer 為什麼沒有了?</dt>
-      <dd>整理 App 陣容時下架了。現在主要在運營 TodoGatya / TodoBingo / TodoLadders / TodoFarm / PlanetLoopTimer / TroubleNote 這 6 個。</dd>
-      <dt>PlanetLoopTimer 是什麼樣的 App?</dt>
-      <dd>把「重複的活動」(專注/休息循環、課後輪替等) 視覺化的計時器 App。是最新作品。</dd>
-      <dt>參考文獻是從哪邊引用的?</dt>
-      <dd>主要從 PubMed (美國國家醫學圖書館) 連結同行評審期刊的論文。文章最後的上標數字可以跳到原文。</dd>
-      <dt>App 是免費的還是付費?</dt>
-      <dd>各 App 的價格和購買方式請看 App Store 頁面。網站本身免費閱讀。</dd>
-      <dt>支援哪些語言?</dt>
-      <dd>網站有日文 / 英文 (en-US) / 繁體中文 (zh-Hant) / 韓文 (ko) 4 種語言。App Store 上的 App 說明則涵蓋 50+ 個地區。</dd>
-    </dl>
+    <details>
+      <summary>這個網站是醫療建議嗎?</summary>
+      <p>不是。這是一個工程師爸爸的個人育兒紀錄,不是醫療建議或診斷。我引用研究文獻,是當作做 App 的設計參考,不是要對你的小孩提出醫療建議。</p>
+    </details>
+    <details>
+      <summary>為什麼引用 ADHD 的研究?</summary>
+      <p>因為作為工程師,理解「人怎麼動起來」「記憶怎麼運作」可以做出更好的工具。引用是 App 設計的輸入,不是醫療建議。</p>
+    </details>
+    <details>
+      <summary>「Lyco」是本名嗎?</summary>
+      <p>是筆名。Apple Developer Program 規定 App Store 上要用本名,但網站上我用 Lyco 來寫,為了隱私和書寫風格的一致性。</p>
+    </details>
+    <details>
+      <summary>之前的 TodoPuzzle / TodoTimer 為什麼沒有了?</summary>
+      <p>整理 App 陣容時下架了。現在主要在運營 TodoGatya / TodoBingo / TodoLadders / TodoFarm / PlanetLoopTimer / TroubleNote 這 6 個。</p>
+    </details>
+    <details>
+      <summary>PlanetLoopTimer 是什麼樣的 App?</summary>
+      <p>把「重複的活動」(專注/休息循環、課後輪替等) 視覺化的計時器 App。是最新作品。</p>
+    </details>
+    <details>
+      <summary>參考文獻是從哪邊引用的?</summary>
+      <p>主要從 PubMed (美國國家醫學圖書館) 連結同行評審期刊的論文。文章最後的上標數字可以跳到原文。</p>
+    </details>
+    <details>
+      <summary>App 是免費的還是付費?</summary>
+      <p>各 App 的價格和購買方式請看 App Store 頁面。網站本身免費閱讀。</p>
+    </details>
+    <details>
+      <summary>支援哪些語言?</summary>
+      <p>網站有日文 / 英文 (en-US) / 繁體中文 (zh-Hant) / 韓文 (ko) 4 種語言。App Store 上的 App 說明則涵蓋 50+ 個地區。</p>
+    </details>
   </section>
   <!-- END: FAQ -->
 
@@ -205,5 +222,3 @@
 <script defer src="../../shared/analytics.js"></script>
 </body>
 </html>
-</content>
-</invoke>

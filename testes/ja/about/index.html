@@ -89,10 +89,13 @@
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
   .faq { margin: 32px 0; padding: 20px 22px; background: #FBF4E8; border: 1px solid #E8D9BC; border-radius: 10px; }
   .faq h2 { font-size: 20px; font-weight: 800; margin: 0 0 14px; color: #3D2E1F; }
-  .faq dl { margin: 0; }
-  .faq dt { font-weight: 700; margin-top: 16px; color: #3D2E1F; font-size: 15px; }
-  .faq dt:first-of-type { margin-top: 0; }
-  .faq dd { margin: 6px 0 0; padding-left: 0; color: #5C4A38; line-height: 1.75; font-size: 14px; }
+  .faq details { margin-top: 14px; border-top: 1px solid #E8D9BC; padding-top: 14px; }
+  .faq details:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .faq summary { font-weight: 700; color: #3D2E1F; font-size: 15px; cursor: pointer; list-style: none; padding-right: 28px; position: relative; line-height: 1.5; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 0; font-size: 20px; font-weight: 400; color: #3F8C7E; line-height: 1; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details > p { margin: 10px 0 0; padding-left: 0; color: #5C4A38; line-height: 1.75; font-size: 14px; }
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
@@ -133,27 +136,41 @@
   </ul>
   <p style="margin-top:16px;font-size:13px;opacity:.85;">私もこれが正解か分からないまま、日々悩みながら育児しています。同じように悩んでいる親の一人として、自分が試したことを書いています。</p>
 
-  <!-- BEGIN: FAQ (site-level, GEO Phase 5) -->
+  <!-- BEGIN: FAQ (site-level) -->
   <section class="faq">
     <h2>よくある質問</h2>
-    <dl>
-      <dt>このサイトは医療助言ですか?</dt>
-      <dd>いいえ。書いているのはエンジニア父の個人体験で、医療助言や診断断定ではありません。研究の引用も、より良いアプリを作るための参考として読んでいるだけです。</dd>
-      <dt>ADHD の論文を引用しているのはなぜですか?</dt>
-      <dd>エンジニアの仕事として「人がどう動くか」「記憶はどう働くか」を理解した方が良い道具を作れる、と感じているからです。アプリ設計の参考であって、医療助言ではありません。</dd>
-      <dt>「Lyco」は本名ですか?</dt>
-      <dd>ペンネームです。Apple Developer Program の規約により App Store では本名で登録していますが、サイトでは Lyco の名前で書いています。プライバシー保護と、書き手としての一貫性のためです。</dd>
-      <dt>過去にあった TodoPuzzle / TodoTimer はなぜ無くなったのですか?</dt>
-      <dd>運用方針を整理する中で公開を停止しました。現在は TodoGacha / TodoBingo / TodoSugoroku / TodoFarm / PlanetLoopTimer / TroubleNote の 6 本を中心に運営しています。</dd>
-      <dt>PlanetLoopTimer はどんなアプリですか?</dt>
-      <dd>繰り返しの活動 (集中・休憩のループ、習い事のローテーションなど) を視覚的に表示するタイマーアプリです。最新作になります。</dd>
-      <dt>参考文献はどこの論文を引いていますか?</dt>
-      <dd>主に PubMed (米国国立医学図書館) で引ける、ピアレビュー誌の論文をリンクしています。記事末尾の上付き番号からそれぞれの論文に飛べます。</dd>
-      <dt>アプリは無料ですか? 有料ですか?</dt>
-      <dd>各アプリの料金・課金体系は App Store のページに記載しています。サイト自体は無料で読めます。</dd>
-      <dt>対応している言語は?</dt>
-      <dd>サイトは日本語 / 英語 (en-US) / 繁体字中国語 (zh-Hant) / 韓国語 (ko) の 4 言語。アプリは App Store 側で 50+ ロケールの説明文を用意しています。</dd>
-    </dl>
+    <details>
+      <summary>このサイトは医療助言ですか?</summary>
+      <p>いいえ。書いているのはエンジニア父の個人体験で、医療助言や診断断定ではありません。研究の引用も、より良いアプリを作るための参考として読んでいるだけです。</p>
+    </details>
+    <details>
+      <summary>ADHD の論文を引用しているのはなぜですか?</summary>
+      <p>エンジニアの仕事として「人がどう動くか」「記憶はどう働くか」を理解した方が良い道具を作れる、と感じているからです。アプリ設計の参考であって、医療助言ではありません。</p>
+    </details>
+    <details>
+      <summary>「Lyco」は本名ですか?</summary>
+      <p>ペンネームです。Apple Developer Program の規約により App Store では本名で登録していますが、サイトでは Lyco の名前で書いています。プライバシー保護と、書き手としての一貫性のためです。</p>
+    </details>
+    <details>
+      <summary>過去にあった TodoPuzzle / TodoTimer はなぜ無くなったのですか?</summary>
+      <p>運用方針を整理する中で公開を停止しました。現在は TodoGacha / TodoBingo / TodoSugoroku / TodoFarm / PlanetLoopTimer / TroubleNote の 6 本を中心に運営しています。</p>
+    </details>
+    <details>
+      <summary>PlanetLoopTimer はどんなアプリですか?</summary>
+      <p>繰り返しの活動 (集中・休憩のループ、習い事のローテーションなど) を視覚的に表示するタイマーアプリです。最新作になります。</p>
+    </details>
+    <details>
+      <summary>参考文献はどこの論文を引いていますか?</summary>
+      <p>主に PubMed (米国国立医学図書館) で引ける、ピアレビュー誌の論文をリンクしています。記事末尾の上付き番号からそれぞれの論文に飛べます。</p>
+    </details>
+    <details>
+      <summary>アプリは無料ですか? 有料ですか?</summary>
+      <p>各アプリの料金・課金体系は App Store のページに記載しています。サイト自体は無料で読めます。</p>
+    </details>
+    <details>
+      <summary>対応している言語は?</summary>
+      <p>サイトは日本語 / 英語 (en-US) / 繁体字中国語 (zh-Hant) / 韓国語 (ko) の 4 言語。アプリは App Store 側で 50+ ロケールの説明文を用意しています。</p>
+    </details>
   </section>
   <!-- END: FAQ -->
 
@@ -205,5 +222,3 @@
 <script defer src="../../shared/analytics.js"></script>
 </body>
 </html>
-</content>
-</invoke>

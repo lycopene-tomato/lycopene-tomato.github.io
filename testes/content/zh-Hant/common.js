@@ -26,6 +26,7 @@ window.__CONTENT__["zh-Hant"].common = {
     label_call: "怎麼說",
     label_trick: "巧思",
     label_screen: "畫面",
+    label_setup_steps: "開始使用",
     label_same_category: "同分類的應用程式",
   },
 

@@ -26,6 +26,7 @@ window.__CONTENT__.ko.common = {
     label_call: "말 걸기",
     label_trick: "장치",
     label_screen: "앱 화면",
+    label_setup_steps: "시작하기",
     label_same_category: "같은 카테고리의 앱",
   },
 

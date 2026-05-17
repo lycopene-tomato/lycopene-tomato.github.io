@@ -29,6 +29,7 @@ window.__CONTENT__.ja.common = {
     label_call: "声かけ",
     label_trick: "仕掛け",
     label_screen: "アプリ画面",
+    label_setup_steps: "使い始め",
     label_same_category: "同じカテゴリのアプリ",
   },
 

@@ -89,10 +89,13 @@
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
   .faq { margin: 32px 0; padding: 20px 22px; background: #FBF4E8; border: 1px solid #E8D9BC; border-radius: 10px; }
   .faq h2 { font-size: 20px; font-weight: 800; margin: 0 0 14px; color: #3D2E1F; }
-  .faq dl { margin: 0; }
-  .faq dt { font-weight: 700; margin-top: 16px; color: #3D2E1F; font-size: 15px; }
-  .faq dt:first-of-type { margin-top: 0; }
-  .faq dd { margin: 6px 0 0; padding-left: 0; color: #5C4A38; line-height: 1.75; font-size: 14px; }
+  .faq details { margin-top: 14px; border-top: 1px solid #E8D9BC; padding-top: 14px; }
+  .faq details:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .faq summary { font-weight: 700; color: #3D2E1F; font-size: 15px; cursor: pointer; list-style: none; padding-right: 28px; position: relative; line-height: 1.5; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 0; font-size: 20px; font-weight: 400; color: #3F8C7E; line-height: 1; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details > p { margin: 10px 0 0; padding-left: 0; color: #5C4A38; line-height: 1.75; font-size: 14px; }
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
@@ -133,27 +136,41 @@
   </ul>
   <p style="margin-top:16px;font-size:13px;opacity:.85;">저도 매일 고민하면서 키우고 있고, 정답을 알고 있는 건 아닙니다. 같이 고민하고 있는 한 부모로서, 제가 시도해 본 것들을 적어 둡니다.</p>
 
-  <!-- BEGIN: FAQ (site-level, GEO Phase 5) -->
+  <!-- BEGIN: FAQ (site-level) -->
   <section class="faq">
     <h2>자주 묻는 질문</h2>
-    <dl>
-      <dt>이 사이트는 의료 조언인가요?</dt>
-      <dd>아닙니다. 엔지니어 아빠의 개인 육아 기록일 뿐, 의료 조언이나 진단이 아닙니다. 연구를 인용하는 건 앱 설계의 참고 자료로 읽은 것이고, 당신의 아이에 대한 의료 조언이 아닙니다.</dd>
-      <dt>ADHD 논문을 인용하는 이유는?</dt>
-      <dd>엔지니어로서 「사람이 어떻게 움직이기 시작하는가」「기억은 어떻게 작동하는가」를 이해하면 더 좋은 도구를 만들 수 있어서요. 인용은 앱 설계의 입력일 뿐, 의료 권고가 아닙니다.</dd>
-      <dt>「Lyco」가 본명인가요?</dt>
-      <dd>필명입니다. Apple Developer Program 규정으로 App Store 에는 본명을 등록했지만, 사이트에서는 Lyco 라는 이름으로 글을 씁니다. 사생활 보호와 일관된 글쓰기 스타일을 위해서요.</dd>
-      <dt>예전의 TodoPuzzle / TodoTimer 는 왜 사라졌나요?</dt>
-      <dd>앱 라인업을 정리하면서 공개를 중지했습니다. 현재는 TodoGatya / TodoBingo / TodoLadders / TodoFarm / PlanetLoopTimer / TroubleNote 6 개를 중심으로 운영하고 있어요.</dd>
-      <dt>PlanetLoopTimer 는 어떤 앱인가요?</dt>
-      <dd>반복되는 활동 (집중/휴식 루프, 학원 로테이션 등) 을 시각적으로 표시하는 타이머 앱입니다. 최신작입니다.</dd>
-      <dt>참고 문헌은 어디 논문을 인용하나요?</dt>
-      <dd>주로 PubMed (미국 국립의학도서관) 에서 동료 심사 학술지 논문을 링크합니다. 글 끝의 위첨자 번호로 원문에 갈 수 있어요.</dd>
-      <dt>앱은 무료인가요? 유료인가요?</dt>
-      <dd>각 앱의 가격과 결제 방식은 App Store 페이지에 적혀 있습니다. 사이트 자체는 무료로 읽을 수 있어요.</dd>
-      <dt>지원 언어는?</dt>
-      <dd>사이트는 일본어 / 영어 (en-US) / 번체 중국어 (zh-Hant) / 한국어 (ko) 4 개 언어입니다. App Store 의 앱 설명은 50+ 개 로케일을 다룹니다.</dd>
-    </dl>
+    <details>
+      <summary>이 사이트는 의료 조언인가요?</summary>
+      <p>아닙니다. 엔지니어 아빠의 개인 육아 기록일 뿐, 의료 조언이나 진단이 아닙니다. 연구를 인용하는 건 앱 설계의 참고 자료로 읽은 것이고, 당신의 아이에 대한 의료 조언이 아닙니다.</p>
+    </details>
+    <details>
+      <summary>ADHD 논문을 인용하는 이유는?</summary>
+      <p>엔지니어로서 「사람이 어떻게 움직이기 시작하는가」「기억은 어떻게 작동하는가」를 이해하면 더 좋은 도구를 만들 수 있어서요. 인용은 앱 설계의 입력일 뿐, 의료 권고가 아닙니다.</p>
+    </details>
+    <details>
+      <summary>「Lyco」가 본명인가요?</summary>
+      <p>필명입니다. Apple Developer Program 규정으로 App Store 에는 본명을 등록했지만, 사이트에서는 Lyco 라는 이름으로 글을 씁니다. 사생활 보호와 일관된 글쓰기 스타일을 위해서요.</p>
+    </details>
+    <details>
+      <summary>예전의 TodoPuzzle / TodoTimer 는 왜 사라졌나요?</summary>
+      <p>앱 라인업을 정리하면서 공개를 중지했습니다. 현재는 TodoGatya / TodoBingo / TodoLadders / TodoFarm / PlanetLoopTimer / TroubleNote 6 개를 중심으로 운영하고 있어요.</p>
+    </details>
+    <details>
+      <summary>PlanetLoopTimer 는 어떤 앱인가요?</summary>
+      <p>반복되는 활동 (집중/휴식 루프, 학원 로테이션 등) 을 시각적으로 표시하는 타이머 앱입니다. 최신작입니다.</p>
+    </details>
+    <details>
+      <summary>참고 문헌은 어디 논문을 인용하나요?</summary>
+      <p>주로 PubMed (미국 국립의학도서관) 에서 동료 심사 학술지 논문을 링크합니다. 글 끝의 위첨자 번호로 원문에 갈 수 있어요.</p>
+    </details>
+    <details>
+      <summary>앱은 무료인가요? 유료인가요?</summary>
+      <p>각 앱의 가격과 결제 방식은 App Store 페이지에 적혀 있습니다. 사이트 자체는 무료로 읽을 수 있어요.</p>
+    </details>
+    <details>
+      <summary>지원 언어는?</summary>
+      <p>사이트는 일본어 / 영어 (en-US) / 번체 중국어 (zh-Hant) / 한국어 (ko) 4 개 언어입니다. App Store 의 앱 설명은 50+ 개 로케일을 다룹니다.</p>
+    </details>
   </section>
   <!-- END: FAQ -->
 
@@ -205,5 +222,3 @@
 <script defer src="../../shared/analytics.js"></script>
 </body>
 </html>
-</content>
-</invoke>

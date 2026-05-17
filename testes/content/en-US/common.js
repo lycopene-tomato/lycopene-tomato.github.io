@@ -29,6 +29,7 @@ window.__CONTENT__["en-US"].common = {
     label_call: "Call",
     label_trick: "How it works",
     label_screen: "Screens",
+    label_setup_steps: "Getting started",
     label_same_category: "More in this category",
   },
 

@@ -4,6 +4,32 @@
     const lang = typeof window.useLang === "function" ? window.useLang() : window.getLang ? window.getLang() : "en";
     const t = window.I18N[lang] || window.I18N[window.LANG_FALLBACK];
     const found = window.findApp(lang, appId);
+    React.useEffect(() => {
+      if (!found) return void 0;
+      const steps = found.app.setupSteps;
+      if (!Array.isArray(steps) || steps.length === 0) return void 0;
+      const labelSetup = t && t.detail && t.detail.label_setup_steps || "Getting started";
+      const data = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": `${found.app.name} \u2014 ${labelSetup}`,
+        "inLanguage": lang,
+        "step": steps.map((s, i) => ({
+          "@type": "HowToStep",
+          "position": i + 1,
+          "name": s.title,
+          "text": s.desc || s.title
+        }))
+      };
+      const el = document.createElement("script");
+      el.type = "application/ld+json";
+      el.setAttribute("data-howto-for", appId);
+      el.text = JSON.stringify(data);
+      document.head.appendChild(el);
+      return () => {
+        el.remove();
+      };
+    }, [appId, lang, found]);
     if (!t || !found) {
       return /* @__PURE__ */ React.createElement("div", { style: { padding: 80, textAlign: "center" } }, /* @__PURE__ */ React.createElement("h1", null, "App not found: ", appId), /* @__PURE__ */ React.createElement("a", { href: `${prefix}index.html` }, "\u2190 Home"));
     }
@@ -29,7 +55,18 @@
           alt: app.name,
           style: { display: "block", maxWidth: 360, width: "100%", margin: "20px auto 0", borderRadius: 14 }
         }
-      )
+      ),
+      app.pricing && /* @__PURE__ */ React.createElement("div", { style: {
+        display: "inline-block",
+        marginTop: 16,
+        padding: "4px 14px",
+        background: "#fff",
+        borderRadius: 999,
+        fontSize: 13,
+        fontWeight: 700,
+        color: accent.deep,
+        border: `1px solid ${accent.c}`
+      } }, app.pricing)
     ), app.call && app.call.length > 0 && /* @__PURE__ */ React.createElement(
       "section",
       {
@@ -88,6 +125,35 @@
         letterSpacing: 3,
         color: accent.deep
       } }, t.detail.label_trick)), /* @__PURE__ */ React.createElement("ul", { style: { paddingLeft: 18, margin: 0, display: "flex", flexDirection: "column", gap: 8, color: accent.deep, fontSize: 14, lineHeight: 1.6 } }, app.trick.map((c, i) => /* @__PURE__ */ React.createElement("li", { key: i }, c))))
+    ), Array.isArray(app.setupSteps) && app.setupSteps.length > 0 && /* @__PURE__ */ React.createElement(
+      "section",
+      {
+        className: "reveal",
+        "data-snap": true,
+        "data-progress-color": accent.c,
+        style: { padding: "0 18px", maxWidth: 640, margin: "32px auto" }
+      },
+      /* @__PURE__ */ React.createElement("div", { style: {
+        position: "relative",
+        border: `2px solid ${accent.c}`,
+        borderRadius: 16,
+        padding: "32px 24px 24px",
+        background: "#fff"
+      } }, /* @__PURE__ */ React.createElement("div", { style: {
+        position: "absolute",
+        top: -11,
+        left: 20,
+        pointerEvents: "none"
+      } }, /* @__PURE__ */ React.createElement("span", { style: {
+        display: "inline-block",
+        background: "#FBF6EE",
+        padding: "2px 14px",
+        borderRadius: 999,
+        fontSize: 13,
+        fontWeight: 800,
+        letterSpacing: 3,
+        color: accent.deep
+      } }, t.detail.label_setup_steps)), /* @__PURE__ */ React.createElement("ol", { style: { paddingLeft: 20, margin: 0, display: "flex", flexDirection: "column", gap: 14, color: accent.deep, fontSize: 14, lineHeight: 1.6 } }, app.setupSteps.map((s, i) => /* @__PURE__ */ React.createElement("li", { key: i }, /* @__PURE__ */ React.createElement("div", { style: { fontWeight: 800, marginBottom: 2 } }, s.title), s.desc && /* @__PURE__ */ React.createElement("div", { style: { opacity: 0.85 } }, s.desc)))))
     ), /* @__PURE__ */ React.createElement(window.AppScreens, { lang, appId: app.id, appName: app.name, pathPrefix: prefix, accent, label: t.detail.label_screen }), /* @__PURE__ */ React.createElement(
       "section",
       {
