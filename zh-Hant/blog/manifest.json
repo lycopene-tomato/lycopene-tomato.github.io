@@ -1,0 +1,63 @@
+{
+  "posts": [
+    {
+      "_comment": "ピン留め (0-A) はタグ無しが原則 (サイト全体への入り口、特定セグメントに見えないように)。BLOG_GUIDE §13-2 参照。",
+      "slug": "rewards-and-dopamine",
+      "date": "2026-04-28",
+      "tags": [],
+      "series_id": null,
+      "series_order": null,
+      "section": "pinned",
+      "pinned": true,
+      "app_badge": null,
+      "title": "沒有獎勵，小孩就不會做事嗎？",
+      "description": "Lyco App 的 App 裡放了不少獎勵跟遊戲性的設計。「沒獎勵就不動的小孩，會不會被養成?」── 從 ADHD 的多巴胺研究跟習慣養成的角度回答這個擔心。"
+    },
+    {
+      "slug": "app-gacha",
+      "date": "2026-05-04",
+      "tags": [
+        "morning-routine",
+        "koe-kake"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-gacha",
+      "title": "「快點啦！」變成我每天早上的口頭禪",
+      "description": "每天早上「快一點啦！」要喊 3 次。早晨拖拖拉拉動不起來的時候，TodoGatya 讓小孩自己抽下一件要做的事 ── 用自我決定理論的角度，把「被叫做」的感覺消掉，早上的口頭禪少了一半。",
+      "app_badge": "Todo扭蛋"
+    },
+    {
+      "slug": "remember-to-remember",
+      "date": "2026-05-11",
+      "tags": [
+        "adhd-related",
+        "koe-kake"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "記得，不要忘記去看",
+      "description": "幫小孩寫了待辦清單。然後小孩忘記去看清單。從工作的行事曆、預設提問、工作記憶研究的角度，想一想小孩的記憶是怎麼運作的。"
+    },
+    {
+      "slug": "done-vs-achieved",
+      "date": "2026-05-08",
+      "tags": [
+        "dev-methods",
+        "koe-kake"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "「我做了」跟「做完了」不是同一件事",
+      "description": "「刷牙」「我刷了」「你只是含著牙刷在發呆！」── 小孩的「我做了」跟父母想的「做完了」是不一樣的東西。跟工程界的需求對實作落差，是同一個結構。"
+    }
+  ]
+}

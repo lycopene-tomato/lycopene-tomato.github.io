@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>개인정보처리방침 — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Lyco App 공통 개인정보처리방침. 광고 식별자를 가져오지 않으며, 데이터는 기기 안에서만 처리됩니다." />
+<link rel="stylesheet" href="../../shared/motion.css" />
+<style>
+  body { margin: 0; font-family: "Helvetica Neue", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; }
+  * { box-sizing: border-box; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) {
+    .site-nav { display: none !important; }
+    .site-menu-btn { display: block !important; }
+  }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../../favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../shared/motion.js" defer></script>
+
+<script src="../../shared/langs.js"></script>
+
+<script src="../../content/ja/common.js"></script>
+<script src="../../content/ja/todo.js"></script>
+<script src="../../content/ja/record.js"></script>
+<script src="../../content/ja/tool.js"></script>
+<script src="../../content/ja/other.js"></script>
+<script src="../../content/ko/common.js"></script>
+<script src="../../content/ko/todo.js"></script>
+<script src="../../content/ko/record.js"></script>
+<script src="../../content/ko/tool.js"></script>
+<script src="../../content/ko/other.js"></script>
+
+<script src="../../shared/i18n-loader.js"></script>
+
+<script src="../../shared/site-shared.js"></script>
+
+<script>
+(() => {
+  const { createRoot } = ReactDOM;
+  const PREFIX = "../../ko/";
+  const ACCENT = "#E89A3D";
+  const ACCENT_DEEP = "#8B5A1A";
+  function Card({ label, children }) {
+    return /* @__PURE__ */ React.createElement("section", { className: "reveal", style: { padding: "0 18px", maxWidth: 640, margin: "28px auto" } }, /* @__PURE__ */ React.createElement("div", { style: {
+      position: "relative",
+      border: `2px solid ${ACCENT}`,
+      borderRadius: 16,
+      padding: "32px 24px 24px",
+      background: "#fff"
+    } }, /* @__PURE__ */ React.createElement("div", { style: { position: "absolute", top: -11, left: 20, pointerEvents: "none" } }, /* @__PURE__ */ React.createElement("span", { style: {
+      display: "inline-block",
+      background: "#FBF6EE",
+      padding: "2px 14px",
+      borderRadius: 999,
+      fontSize: 13,
+      fontWeight: 800,
+      letterSpacing: 3,
+      color: ACCENT_DEEP
+    } }, label)), children));
+  }
+  function Promise3() {
+    const items = [
+      { k: "01", t: "\uAD11\uACE0 \uC2DD\uBCC4\uC790 (IDFA)\uB97C \uAC00\uC838\uC624\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4", d: "\uC5EC\uB7EC\uBD84\uC758 \uC571 \uC0AC\uC6A9\uC774 \uAD11\uACE0 \uB124\uD2B8\uC6CC\uD06C\uC640 \uC5F0\uACB0\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4." },
+      { k: "02", t: "\uB370\uC774\uD130\uB294 \uAE30\uAE30 \uC548\uC5D0\uB9CC", d: "\uAE30\uB85D\uACFC \uC124\uC815\uC740 \uAE30\uAE30 \uC548\uC5D0\uB9CC \uC800\uC7A5\uB418\uBA70, \uC678\uBD80 \uC11C\uBC84\uB85C \uC804\uC1A1\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4." },
+      { k: "03", t: "\u300C\uC218\uC9D1\uD558\uC9C0 \uC54A\uB294\uB2E4\u300D\uB97C \uC124\uACC4\uC758 \uCD9C\uBC1C\uC810\uC73C\uB85C", d: "\uD3B8\uB9AC\uD55C \uAE30\uB2A5\uC744 \uC704\uD574 \uC815\uBCF4\uB97C \uC218\uC9D1\uD558\uB294 \uC124\uACC4\uAC00 \uC544\uB2C8\uB77C, \uC218\uC9D1\uD558\uC9C0 \uC54A\uC544\uB3C4 \uC131\uB9BD\uD558\uB294 \uC124\uACC4\uB97C \uC6B0\uC120\uD569\uB2C8\uB2E4." }
+    ];
+    return /* @__PURE__ */ React.createElement("section", { className: "reveal", style: { padding: "0 18px", maxWidth: 640, margin: "32px auto 8px" } }, /* @__PURE__ */ React.createElement("div", { style: {
+      background: "linear-gradient(180deg, #FFF8EC 0%, #FFEFD4 100%)",
+      border: `2px solid ${ACCENT}`,
+      borderRadius: 18,
+      padding: "26px 22px 22px"
+    } }, /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginBottom: 18 } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 11, letterSpacing: 4, fontWeight: 800, color: ACCENT_DEEP, marginBottom: 6 } }, "\u2014 3\uAC00\uC9C0 \uC57D\uC18D \u2014"), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 18, fontWeight: 900, color: "#3D2E1F", lineHeight: 1.5 } }, "\uC548\uC2EC\uD558\uACE0 \uC0AC\uC6A9\uD558\uC2E4 \uC218 \uC788\uB3C4\uB85D,", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("span", { style: { color: ACCENT_DEEP } }, "\uC800\uD76C\uAC00 \uC9C0\uD0A4\uB294 \uAC83"))), /* @__PURE__ */ React.createElement("ul", { style: { listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 } }, items.map((it) => /* @__PURE__ */ React.createElement("li", { key: it.k, style: {
+      display: "flex",
+      gap: 14,
+      alignItems: "flex-start",
+      padding: "12px 14px",
+      background: "#fff",
+      borderRadius: 12,
+      boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+    } }, /* @__PURE__ */ React.createElement("span", { style: {
+      flex: "0 0 auto",
+      fontFamily: "ui-monospace, monospace",
+      fontSize: 11,
+      fontWeight: 800,
+      letterSpacing: 1,
+      color: "#fff",
+      background: ACCENT,
+      padding: "3px 8px",
+      borderRadius: 6
+    } }, it.k), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 14, fontWeight: 800, color: "#3D2E1F", marginBottom: 2 } }, it.t), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12.5, color: "#5C4936", lineHeight: 1.6 } }, it.d)))))));
+  }
+  function Page() {
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(window.SiteHeader, { pathPrefix: PREFIX, currentCategoryId: "todo" }), /* @__PURE__ */ React.createElement("section", { className: "reveal", style: {
+      background: "#2C2218",
+      color: "#FBF6EE",
+      padding: "36px 20px 30px",
+      textAlign: "center"
+    } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("h1", { style: { margin: "0 0 8px", fontSize: 26, fontWeight: 900, letterSpacing: 1 } }, "\uAC1C\uC778\uC815\uBCF4\uCC98\uB9AC\uBC29\uCE68"), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 13, opacity: 0.7 } }, "Lyco App \uACF5\uD1B5"))), /* @__PURE__ */ React.createElement(Promise3, null), /* @__PURE__ */ React.createElement("main", { style: { paddingBottom: 48 } }, /* @__PURE__ */ React.createElement(Card, { label: "\uC801\uC6A9 \uBC94\uC704" }, /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "\uBCF8 \uBC29\uCE68\uC740 Lyco App\uC774 \uC81C\uACF5\uD558\uB294 \uBAA8\uB4E0 \uC571\uC5D0 \uACF5\uD1B5\uC73C\uB85C \uC801\uC6A9\uB429\uB2C8\uB2E4. \uAC01 \uC571\uC758 App Store \uD398\uC774\uC9C0\uC5D0\uC11C \uB9C1\uD06C\uB418\uB294 \uBCF8 \uD398\uC774\uC9C0\uAC00, \uADF8 \uC571\uC758 \uAC1C\uC778\uC815\uBCF4\uCC98\uB9AC\uBC29\uCE68\uC774 \uB429\uB2C8\uB2E4.")), /* @__PURE__ */ React.createElement(Card, { label: "\uC218\uC9D1\uD558\uB294 \uC815\uBCF4" }, /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 } }, /* @__PURE__ */ React.createElement("li", null, "\uC571\uC758 \uC124\uC815\u30FB\uC9C4\uD589\uB3C4\u30FB\uAE30\uB85D \uB4F1\uC740 \uC0AC\uC6A9 \uC911\uC778 \uAE30\uAE30 \uC548\uC5D0\uB9CC \uC800\uC7A5\uB429\uB2C8\uB2E4."), /* @__PURE__ */ React.createElement("li", null, "\uB2F9\uC0AC\uC758 \uC11C\uBC84\uB098 \uC678\uBD80 \uC11C\uBE44\uC2A4\uB85C \uC804\uC1A1\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."), /* @__PURE__ */ React.createElement("li", null, "\uAC1C\uC778\uC744 \uC2DD\uBCC4\uD560 \uC218 \uC788\uB294 \uC815\uBCF4(\uC774\uB984\u30FB\uC774\uBA54\uC77C\u30FB\uC804\uD654\uBC88\uD638 \uB4F1)\uB294 \uAC00\uC838\uC624\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."))), /* @__PURE__ */ React.createElement(Card, { label: "\uAD11\uACE0\uC5D0 \uB300\uD558\uC5EC" }, /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 } }, /* @__PURE__ */ React.createElement("li", null, "\uC5B4\uB9B0\uC774\uC6A9 \uC571\uC5D0\uC11C\uB294 \uAD11\uACE0\uB97C \uC77C\uC808 \uD45C\uC2DC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."), /* @__PURE__ */ React.createElement("li", null, "\uADF8 \uC678 \uC571\uC5D0\uC11C\uB294 \uBCF4\uD638\uC790\uC6A9 \uAD00\uB9AC \uD654\uBA74\uC5D0\uC11C\uB9CC Google AdMob\uC758 \uAD11\uACE0\uAC00 \uD45C\uC2DC\uB420 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC544\uC774\uAC00 \uC870\uC791\uD558\uB294 \uD654\uBA74\uC5D0\uB294 \uD45C\uC2DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."), /* @__PURE__ */ React.createElement("li", null, "\uBCF8 \uC571\uC740 AdMob\uC5D0\uB3C4 \uAD11\uACE0 \uC2DD\uBCC4\uC790(IDFA)\uB97C \uC804\uB2EC\uD558\uC9C0 \uC54A\uB294 \uC124\uC815\uC73C\uB85C \uBC30\uD3EC\uD569\uB2C8\uB2E4."))), /* @__PURE__ */ React.createElement(Card, { label: "\uBD84\uC11D \uB3C4\uAD6C / \uD2B8\uB798\uD0B9" }, /* @__PURE__ */ React.createElement("ul", { style: { margin: 0, paddingLeft: 20, color: "#5C4936", fontSize: 14, lineHeight: 1.85 } }, /* @__PURE__ */ React.createElement("li", null, "\uC5B4\uB9B0\uC774\uC6A9 \uC571\uC5D0\uC11C\uB294 \uBD84\uC11D \uB3C4\uAD6C\u30FB\uD2B8\uB798\uD0B9\uC744 \uC77C\uC808 \uC0AC\uC6A9\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."), /* @__PURE__ */ React.createElement("li", null, "\uADF8 \uC678 \uC571\uC5D0\uC11C\uB3C4 \uBB38\uC81C \uD30C\uC545\uACFC \uAC1C\uC120\uC744 \uC704\uD574 Apple\uC774 \uC81C\uACF5\uD558\uB294 \uC775\uBA85 \uD1B5\uACC4\uB97C \uC774\uC6A9\uD558\uB294 \uACBD\uC6B0\uC5D0 \uD55C\uD558\uBA70, \uAC1C\uC778\uC744 \uC2DD\uBCC4\uD560 \uC218 \uC788\uB294 \uC815\uBCF4\uB294 \uD3EC\uD568\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."))), /* @__PURE__ */ React.createElement(Card, { label: "\uC81C\uC0BC\uC790 \uC81C\uACF5" }, /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "\uC0AC\uC6A9\uC790\uC758 \uC815\uBCF4\uB97C \uC81C\uC0BC\uC790\uC5D0\uAC8C \uD310\uB9E4\u30FB\uC81C\uACF5\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.")), /* @__PURE__ */ React.createElement(Card, { label: "\uBB38\uC758" }, /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "\uC9C8\uBB38\uC774\uB098 \uC694\uCCAD \uC0AC\uD56D\uC740 ", /* @__PURE__ */ React.createElement("strong", { style: { color: "#3D2E1F" } }, "lycopenecafei+LP@gmail.com"), "\uC73C\uB85C \uBCF4\uB0B4 \uC8FC\uC138\uC694. App Store\uC758 \uC571 \uD398\uC774\uC9C0\uC5D0\uC11C\uB3C4 \uC5F0\uB77D\uD558\uC2E4 \uC218 \uC788\uC2B5\uB2C8\uB2E4.")), /* @__PURE__ */ React.createElement(Card, { label: "\uAC1C\uC815" }, /* @__PURE__ */ React.createElement("p", { style: { margin: "0 0 8px", fontSize: 14, color: "#5C4936", lineHeight: 1.85 } }, "\uBCF8 \uBC29\uCE68\uC740 \uD544\uC694\uC5D0 \uB530\uB77C \uAC1C\uC815\uB420 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC911\uC694\uD55C \uBCC0\uACBD\uC774 \uC788\uC744 \uACBD\uC6B0 \uC774 \uD398\uC774\uC9C0\uC5D0\uC11C \uC54C\uB824 \uB4DC\uB9BD\uB2C8\uB2E4."), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 12, opacity: 0.55, fontVariantNumeric: "tabular-nums" } }, "\uCD5C\uC885 \uAC31\uC2E0: 2026-05-12"))), /* @__PURE__ */ React.createElement(window.SiteFooter, { pathPrefix: PREFIX }));
+  }
+  createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Page, null));
+})();
+</script>
+
+<script defer src="../../shared/analytics.js"></script>
+</body>
+</html>

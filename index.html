@@ -1,52 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlanetLoopTimer — Privacy Policy</title>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-      padding: 20px;
-      max-width: 700px;
-      margin: auto;
-      color: #333;
-    }
-    h1 {
-      font-size: 1.6em;
-      margin-bottom: 0.5em;
-    }
-    ul {
-      padding-left: 1.2em;
-    }
-    li {
-      margin-bottom: 0.5em;
-    }
-    .date {
-      margin-top: 2em;
-      font-size: 0.9em;
-      color: #666;
-    }
-  </style>
+<meta charset="utf-8" />
+<title>Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="An indie app series. Play × Tasks = Habit." />
+<link rel="canonical" href="/en-US/" />
+<style>
+  body { font-family: system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; padding: 40px 20px; text-align: center; }
+  a { color: #E89A3D; }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 </head>
 <body>
 
-  <h1>PlanetLoopTimer — Privacy Policy</h1>
+<!--
+  ============================================================
+   ルート index.html — UA判定リダイレクタ
+  ============================================================
+   - Accept-Language を見て /<lang>/ にリダイレクト
+   - localStorage に保存された言語があればそれを優先
+   - フォールバックは /en/
+  ============================================================
+-->
 
-  <p>This app is designed for children. We do not collect any personal information.</p>
+<noscript>
+  <p>Please enable JavaScript, or go to <a href="/en-US/">English site</a> / <a href="/ja/">日本語サイト</a>.</p>
+</noscript>
 
-  <ul>
-    <li>No data is collected, stored, or transmitted to any server.</li>
-    <li>App settings and records are stored only on your device.</li>
-    <li>No advertising is shown — no third-party ads, no behavioral ads, no cross-promotion.</li>
-    <li>No analytics, tracking, or advertising identifiers are used.</li>
-    <li>No information is shared with any third party.</li>
-  </ul>
+<p id="msg">Redirecting…</p>
 
-  <p>For questions, please contact us through the App Store page.</p>
+<script src="shared/langs.js"></script>
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("lp_lang"); } catch (e) {}
+  var lang;
+  if (saved && window.LANGS.some(function (l) { return l.code === saved; })) {
+    lang = saved;
+  } else {
+    lang = window.matchLang(navigator.languages ? navigator.languages.join(",") : navigator.language);
+  }
+  // /<lang>/ がまだ作られていない言語は en-US にフォールバック
+  // GitHub Pages では未存在パスは404になるので、安全側に倒す
+  var EXISTING = ["ja", "en-US", "zh-Hant", "ko"]; // ★ 言語ディレクトリを追加したらここに足す
+  if (EXISTING.indexOf(lang) === -1) {
+    // matchLang() で既に主区別ロケール (en-US 等) に変換されてるはずだが念のため
+    var primary = lang.split("-")[0];
+    var found = null;
+    for (var i = 0; i < EXISTING.length; i++) {
+      if (EXISTING[i].split("-")[0] === primary) { found = EXISTING[i]; break; }
+    }
+    lang = found || "en-US";
+  }
+  location.replace("/" + lang + "/");
+})();
+</script>
 
-  <p class="date">Last updated: 2026-05-10</p>
-
+<script defer src="shared/analytics.js"></script>
 </body>
 </html>

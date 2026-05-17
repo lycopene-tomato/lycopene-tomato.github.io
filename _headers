@@ -1,0 +1,33 @@
+# Cloudflare Pages "_headers" — security headers applied to all responses.
+#
+# Reference: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Strategy (per SEO audit decision):
+#   - 5 "safe" headers are applied in production mode immediately:
+#       HSTS / X-Content-Type-Options / X-Frame-Options
+#       / Referrer-Policy / Permissions-Policy
+#   - CSP starts in **Report-Only** mode so misconfiguration won't break
+#     the site. After 1–2 weeks of monitoring browser console / Cloudflare
+#     CSP reports with no violations, swap the header name to
+#     `Content-Security-Policy` for enforcement.
+#
+# Allow-list rationale (CSP script-src):
+#   - unpkg.com                      — React / ReactDOM CDN
+#   - cdnjs.buymeacoffee.com         — Buy Me a Coffee widget script
+#   - static.cloudflareinsights.com  — Cloudflare Web Analytics beacon
+#   - 'unsafe-inline'                — required for the inline Mount blocks
+#     emitted by `scripts/build_jsx.py` (no nonce/hash flow yet)
+# Allow-list rationale (img-src):
+#   - 'self' + data: + https:        — blog posts may embed third-party
+#     research figures via HTTPS URLs (kept open intentionally)
+#
+# If you change the page structure to depend on another external host,
+# add it here AND verify the Report-Only mode catches it before promotion.
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.buymeacoffee.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://static.cloudflareinsights.com https://*.buymeacoffee.com; frame-src https://*.buymeacoffee.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://*.buymeacoffee.com; object-src 'none'

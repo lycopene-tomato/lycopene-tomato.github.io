@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>他のアプリも、あります — Lyco App</title>
+<meta name="description" content="Lyco App は、子育てを少しラクにする小さなアプリ集です。" />
+<link rel="canonical" href="https://lycoapp.com/ja/in-app/apps.html" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<style>
+  body { margin: 0; font-family: "Helvetica Neue", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; background: #FBF6EE; }
+  * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<!-- 言語メタ + コンテンツ -->
+<script src="../../shared/langs.js"></script>
+<script src="../../content/ja/common.js"></script>
+<script src="../../content/ja/todo.js"></script>
+<script src="../../content/ja/record.js"></script>
+<script src="../../content/ja/tool.js"></script>
+<script src="../../content/ja/other.js"></script>
+<script src="../../shared/i18n-loader.js"></script>
+
+<!-- 共通コンポーネント (AppTheme / useLang / resolveHeroImage / getTheme を使うため) -->
+<script src="../../shared/site-shared.js"></script>
+<script src="../../shared/in-app-shell.js"></script>
+
+<!-- ページ本体 -->
+<script>
+(() => {
+  const { createRoot } = ReactDOM;
+  createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(window.InAppAppsPage, null));
+})();
+</script>
+
+<script defer src="../../shared/analytics.js"></script>
+</body>
+</html>

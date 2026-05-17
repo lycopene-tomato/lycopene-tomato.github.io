@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>다른 앱도 있어요 — Lyco App</title>
+<meta name="description" content="Lyco App은 양육을 조금 더 편하게 해주는 작은 앱들의 모음입니다." />
+<link rel="canonical" href="https://lycoapp.com/ko/in-app/apps.html" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<style>
+  body { margin: 0; font-family: "Helvetica Neue", "Apple SD Gothic Neo", system-ui, sans-serif; background: #FBF6EE; }
+  * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<!-- 언어 메타 + 콘텐츠 -->
+<script src="../../shared/langs.js"></script>
+<script src="../../content/ko/common.js"></script>
+<script src="../../content/ko/todo.js"></script>
+<script src="../../content/ko/record.js"></script>
+<script src="../../content/ko/tool.js"></script>
+<script src="../../content/ko/other.js"></script>
+<script src="../../shared/i18n-loader.js"></script>
+
+<!-- 공용 컴포넌트 -->
+<script src="../../shared/site-shared.js"></script>
+<script src="../../shared/in-app-shell.js"></script>
+
+<!-- 페이지 본체 -->
+<script>
+(() => {
+  const { createRoot } = ReactDOM;
+  createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(window.InAppAppsPage, null));
+})();
+</script>
+
+<script defer src="../../shared/analytics.js"></script>
+</body>
+</html>

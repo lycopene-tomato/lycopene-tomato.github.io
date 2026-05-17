@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>我們也有其他 app — Lyco App</title>
+<meta name="description" content="Lyco App 是一系列讓育兒輕鬆一點的小型應用程式集合。" />
+<link rel="canonical" href="https://lycoapp.com/zh-Hant/in-app/apps.html" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<style>
+  body { margin: 0; font-family: "Helvetica Neue", "PingFang TC", system-ui, sans-serif; background: #FBF6EE; }
+  * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<!-- 語言設定 + 內容 -->
+<script src="../../shared/langs.js"></script>
+<script src="../../content/zh-Hant/common.js"></script>
+<script src="../../content/zh-Hant/todo.js"></script>
+<script src="../../content/zh-Hant/record.js"></script>
+<script src="../../content/zh-Hant/tool.js"></script>
+<script src="../../content/zh-Hant/other.js"></script>
+<script src="../../shared/i18n-loader.js"></script>
+
+<!-- 共用元件 -->
+<script src="../../shared/site-shared.js"></script>
+<script src="../../shared/in-app-shell.js"></script>
+
+<!-- 頁面主體 -->
+<script>
+(() => {
+  const { createRoot } = ReactDOM;
+  createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(window.InAppAppsPage, null));
+})();
+</script>
+
+<script defer src="../../shared/analytics.js"></script>
+</body>
+</html>
