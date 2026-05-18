@@ -289,9 +289,9 @@
       color: accent.deep
     } }, label)), /* @__PURE__ */ React.createElement("div", { style: {
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateColumns: imgs.length === 1 ? "1fr" : "repeat(3, 1fr)",
       gap: 12,
-      maxWidth: 420,
+      maxWidth: imgs.length === 1 ? 560 : 420,
       margin: "0 auto"
     } }, imgs.map((src, i) => /* @__PURE__ */ React.createElement("img", { key: i, src, alt: `${appName || appId} screenshot ${i + 1}`, style: { width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" } })))));
   };

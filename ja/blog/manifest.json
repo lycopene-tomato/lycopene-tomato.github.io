@@ -46,6 +46,21 @@
       "app_badge": "Todoガチャ"
     },
     {
+      "_comment": "parenting-paradox シリーズ 1/3 (thesis)。失敗を奪わない / Productive Failure。4 言語派生済。",
+      "slug": "productive-failure",
+      "date": "2026-05-18",
+      "tags": [
+        "cognitive-bias"
+      ],
+      "series_id": "parenting-paradox",
+      "series_order": 1,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "子どもの失敗、勝手に拾ってた",
+      "description": "朝の宿題置き忘れに『持っていきな』と言いそうになって、止めた。Productive Failure (Kapur 2008) と『3 秒の我慢』について。失敗を奪うことのほうが、たぶん罪だった。"
+    },
+    {
       "slug": "remember-to-remember",
       "date": "2026-05-11",
       "tags": [

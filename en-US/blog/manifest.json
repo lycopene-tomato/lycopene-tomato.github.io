@@ -30,6 +30,21 @@
       "app_badge": "TodoGacha"
     },
     {
+      "_comment": "parenting-paradox シリーズ 1/3 (thesis)。失敗を奪わない / Productive Failure。4 言語派生済。",
+      "slug": "productive-failure",
+      "date": "2026-05-18",
+      "tags": [
+        "cognitive-bias"
+      ],
+      "series_id": "parenting-paradox",
+      "series_order": 1,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "I was grabbing his failures before he could feel them",
+      "description": "7:14 AM. Backpack on, homework still on the counter. Almost said 'grab it' — caught myself. Productive failure (Kapur 2008) and the 3-second pause we're trying at home."
+    },
+    {
       "slug": "remember-to-remember",
       "date": "2026-05-11",
       "tags": [
