@@ -16,14 +16,14 @@ window.__CONTENT__["en-US"].categories.other = {
 
   story: {
     tagline: "On a whim — a bonus.",
-    intro: "The main work is the “make parenting a little easier” apps. This is everything else, things made on a whim.\nGames, handy tools, breathers. Nothing here yet, though.",
+    intro: "The main work is the “make parenting a little easier” apps. This is everything else, things made on a whim.\nGames, handy tools, breathers.",
     empathy: {
       label: "Once in a while, this kind of mood?",
       badge: "Easygoing",
       lines: [
         "Set the main thing aside for a sec.",
         "A game, a handy tool — whatever.",
-        "…there’s nothing here yet, though.",
+        "Or a memory from when I was a kid.",
       ],
     },
   },

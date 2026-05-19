@@ -30,14 +30,14 @@
       "app_badge": "TodoGacha"
     },
     {
-      "_comment": "parenting-paradox シリーズ 1/3 (thesis)。失敗を奪わない / Productive Failure。4 言語派生済。",
+      "_comment": "失敗を奪わない / Productive Failure。4 言語派生済。シリーズ化はせず単体記事。",
       "slug": "productive-failure",
       "date": "2026-05-18",
       "tags": [
         "cognitive-bias"
       ],
-      "series_id": "parenting-paradox",
-      "series_order": 1,
+      "series_id": null,
+      "series_order": null,
       "section": "latest",
       "pinned": false,
       "app_badge": null,
