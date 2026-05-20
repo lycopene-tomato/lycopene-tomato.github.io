@@ -42,7 +42,7 @@ window.__CONTENT__["en-US"].categories.record = {
       id: "trouble",
       name: "TroubleNote",
       tag: "Parent notes",
-      appstore_url: "https://apps.apple.com/app/id000000000",
+      appstore_url: "https://apps.apple.com/app/id6762575526",
       hero_image: "images/apps/trouble.jpeg",
       pricing: "Free",
       formula_a: "Trouble",

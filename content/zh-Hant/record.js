@@ -42,7 +42,7 @@ window.__CONTENT__["zh-Hant"].categories.record = {
       id: "trouble",
       name: "TroubleNote",
       tag: "家長備忘",
-      appstore_url: "https://apps.apple.com/app/id000000000",
+      appstore_url: "https://apps.apple.com/app/id6762575526",
       hero_image: "images/apps/trouble.jpeg",
       pricing: "免費",
       formula_a: "麻煩事",

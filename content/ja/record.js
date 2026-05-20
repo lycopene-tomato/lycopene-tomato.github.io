@@ -39,7 +39,7 @@ window.__CONTENT__.ja.categories.record = {
       id: "trouble",
       name: "トラブルノート",
       tag: "親メモ",
-      appstore_url: "https://apps.apple.com/app/id000000000",
+      appstore_url: "https://apps.apple.com/app/id6762575526",
       hero_image: "images/apps/trouble.jpeg",
       pricing: "無料",
       formula_a: "トラブル",

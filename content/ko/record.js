@@ -42,7 +42,7 @@ window.__CONTENT__.ko.categories.record = {
       id: "trouble",
       name: "TroubleNote",
       tag: "부모 메모",
-      appstore_url: "https://apps.apple.com/app/id000000000",
+      appstore_url: "https://apps.apple.com/app/id6762575526",
       hero_image: "images/apps/trouble.jpeg",
       pricing: "무료",
       formula_a: "트러블",
