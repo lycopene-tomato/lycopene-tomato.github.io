@@ -34,6 +34,7 @@ window.__CONTENT__.ko.categories.other = {
       name: "Receive No.1",
       tag: "PC-98",
       appstore_url: "",
+      lp_published: true,
       hero_image: "images/apps/receive.jpeg",
       pricing: "무료",
       formula_a: "PC-98",

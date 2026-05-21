@@ -263,7 +263,7 @@
         letterSpacing: 2,
         textDecoration: "none"
       } }, "\u2014 ", c.name, " \u2014"), /* @__PURE__ */ React.createElement("span", { style: { width: 8, height: 8, borderRadius: "50%", background: c.accent.c } })), /* @__PURE__ */ React.createElement("div", { className: "all-apps-grid" }, c.apps.map((app) => {
-        const inProgress = !app.appstore_url;
+        const inProgress = !app.appstore_url && !app.lp_published;
         const href = inProgress ? null : `${pathPrefix}apps/${app.id}.html`;
         const Card = inProgress ? "div" : "a";
         return /* @__PURE__ */ React.createElement(
@@ -391,7 +391,7 @@
     const lang = window.useLang();
     const t = window.I18N[lang] || window.I18N[window.LANG_FALLBACK];
     const theme = window.getTheme(app.id, category, idx);
-    const inProgress = !app.appstore_url;
+    const inProgress = !app.appstore_url && !app.lp_published;
     const inProgressLabel = t.allapps && t.allapps.in_progress || "";
     const Card = inProgress ? "div" : "a";
     const cardProps = inProgress ? {} : { href: `${pathPrefix}apps/${app.id}.html` };

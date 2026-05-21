@@ -31,6 +31,7 @@ window.__CONTENT__.ja.categories.other = {
       name: "Receive No.1",
       tag: "PC-98",
       appstore_url: "",
+      lp_published: true,
       hero_image: "images/apps/receive.jpeg",
       pricing: "無料",
       formula_a: "PC-98",
