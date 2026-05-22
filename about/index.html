@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>About — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="About Lyco App" />
+<link rel="canonical" href="/en-US/about/" />
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+<style>
+  body { font-family: system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; padding: 40px 20px; text-align: center; }
+  a { color: #E89A3D; }
+</style>
+</head>
+<body>
+
+<!--
+  ============================================================
+   /about/ — UA 判定リダイレクタ
+  ============================================================
+   - Accept-Language / localStorage を見て /<lang>/about/ にリダイレクト
+   - 未対応言語は en-US にフォールバック
+   - App Store メタデータの supportUrl は全アプリ・全ロケールで
+     このページを指す (旧来の /<lang>/about/ 直リン廃止)。
+  ============================================================
+-->
+
+<noscript>
+  <p>Please enable JavaScript, or go to
+    <a href="/ja/about/">日本語</a> /
+    <a href="/en-US/about/">English</a> /
+    <a href="/zh-Hant/about/">繁體中文</a> /
+    <a href="/ko/about/">한국어</a>.
+  </p>
+</noscript>
+
+<p id="msg">Redirecting…</p>
+
+<script src="../shared/langs.js"></script>
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("lp_lang"); } catch (e) {}
+  var lang;
+  if (saved && window.LANGS.some(function (l) { return l.code === saved; })) {
+    lang = saved;
+  } else {
+    lang = window.matchLang(navigator.languages ? navigator.languages.join(",") : navigator.language);
+  }
+  // /<lang>/about/ がまだ作られていない言語は en-US にフォールバック
+  // ★ 言語ディレクトリを追加したらここに足す
+  var EXISTING = ["ja", "en-US", "zh-Hant", "ko"];
+  if (EXISTING.indexOf(lang) === -1) {
+    var primary = lang.split("-")[0];
+    var found = null;
+    for (var i = 0; i < EXISTING.length; i++) {
+      if (EXISTING[i].split("-")[0] === primary) { found = EXISTING[i]; break; }
+    }
+    lang = found || "en-US";
+  }
+  // 絶対パスでリダイレクト (about は /<lang>/about/ の下にあるので相対だと階層が合わない)
+  location.replace("/" + lang + "/about/");
+})();
+</script>
+
+<script defer src="../shared/analytics.js"></script>
+</body>
+</html>

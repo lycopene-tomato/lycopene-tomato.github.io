@@ -41,7 +41,7 @@ window.__CONTENT__["en-US"].categories.tool = {
       id: "timer",
       name: "PlanetLoopTimer",
       tag: "Active break",
-      appstore_url: "https://apps.apple.com/us/app/planetlooptimer/id6767539058",
+      appstore_url: "https://apps.apple.com/app/id6767539058",
       hero_image: "images/apps/timer.jpeg",
       pricing: "Free",
       formula_a: "Launch",

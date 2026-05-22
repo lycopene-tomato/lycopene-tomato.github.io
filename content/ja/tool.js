@@ -38,7 +38,7 @@ window.__CONTENT__.ja.categories.tool = {
       id: "timer",
       name: "PlanetLoopTimer",
       tag: "動かす休憩",
-      appstore_url: "https://apps.apple.com/us/app/planetlooptimer/id6767539058",
+      appstore_url: "https://apps.apple.com/app/id6767539058",
       hero_image: "images/apps/timer.jpeg",
       pricing: "無料",
       formula_a: "打ち上げ",

@@ -41,7 +41,7 @@ window.__CONTENT__.ko.categories.tool = {
       id: "timer",
       name: "PlanetLoopTimer",
       tag: "움직이는 휴식",
-      appstore_url: "https://apps.apple.com/us/app/planetlooptimer/id6767539058",
+      appstore_url: "https://apps.apple.com/app/id6767539058",
       hero_image: "images/apps/timer.jpeg",
       pricing: "무료",
       formula_a: "발사",

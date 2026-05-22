@@ -41,7 +41,7 @@ window.__CONTENT__["zh-Hant"].categories.tool = {
       id: "timer",
       name: "PlanetLoopTimer",
       tag: "動著休息",
-      appstore_url: "https://apps.apple.com/us/app/planetlooptimer/id6767539058",
+      appstore_url: "https://apps.apple.com/app/id6767539058",
       hero_image: "images/apps/timer.jpeg",
       pricing: "免費",
       formula_a: "發射",
