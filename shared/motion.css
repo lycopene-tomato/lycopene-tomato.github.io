@@ -178,3 +178,32 @@
     display: none !important;
   }
 }
+
+/* ---------- カテゴリナビ (CatNavPatternE) ----------
+ * スマホ: 2x2 (現状維持)
+ * デスクトップ (≥960px): 横並び 4 列、aspect-ratio 解除して自然な高さ
+ * ---------------------------------------------------------- */
+.cat-nav-section { max-width: 720px; margin: 0 auto; }
+.cat-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.cat-nav-grid > .cat-square { aspect-ratio: 1 / 1; }
+@media (min-width: 960px) {
+  .cat-nav-section { max-width: 1040px; }
+  .cat-nav-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .cat-nav-grid > .cat-square {
+    aspect-ratio: auto;
+    min-height: 200px;
+  }
+}
+
+/* ---------- 全アプリ一覧 (AllAppsList) ----------
+ * スマホ: 1 列 (現状維持)
+ * 600-959px: 2 列
+ * ≥960px: 3 列
+ * ---------------------------------------------------------- */
+.all-apps-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 600px) { .all-apps-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .all-apps-grid { grid-template-columns: repeat(3, 1fr); } }

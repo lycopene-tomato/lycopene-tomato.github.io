@@ -43,6 +43,8 @@
           if (!e.isIntersecting) continue;
           const el = e.target;
           el.classList.add("is-in");
+          // インライン CSS が `.reveal.visible` で表示判定する旧仕様との互換
+          el.classList.add("visible");
 
           // カウントアップ
           if (el.dataset.countup) {

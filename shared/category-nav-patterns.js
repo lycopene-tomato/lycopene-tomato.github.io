@@ -119,13 +119,12 @@
   window.CatNavPatternE = function CatNavPatternE({ t, currentId, prefix, accent }) {
     const cn = t.catNav || {};
     const current = t.categories.find((c) => c.id === currentId);
-    return /* @__PURE__ */ React.createElement("section", { className: "reveal", "data-snap": true, "data-progress-color": accent.c, style: { background: "#FBF6EE", padding: "48px 16px 56px", borderTop: `2px solid ${accent.c}`, borderBottom: "1px solid rgba(0,0,0,0.06)" } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginBottom: 24 } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginTop: 4, marginBottom: 4 } }, "\u2014 ", cn.other_categories || "", " \u2014")), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 } }, t.categories.map((cat, idx) => {
+    return /* @__PURE__ */ React.createElement("section", { className: "reveal", "data-snap": true, "data-progress-color": accent.c, style: { background: "#FBF6EE", padding: "48px 16px 56px", borderTop: `2px solid ${accent.c}`, borderBottom: "1px solid rgba(0,0,0,0.06)" } }, /* @__PURE__ */ React.createElement("div", { className: "cat-nav-section" }, /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginBottom: 24 } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginTop: 4, marginBottom: 4 } }, "\u2014 ", cn.other_categories || "", " \u2014")), /* @__PURE__ */ React.createElement("div", { className: "cat-nav-grid" }, t.categories.map((cat, idx) => {
       const isCurrent = cat.id === currentId;
       const href = isCurrent ? null : `${prefix}index.html?cat=${cat.id}`;
       const Tag = isCurrent ? "div" : "a";
       const f = cat.formula || {};
-      return /* @__PURE__ */ React.createElement(Tag, { key: cat.id, ...href ? { href } : {}, style: {
-        aspectRatio: "1 / 1",
+      return /* @__PURE__ */ React.createElement(Tag, { key: cat.id, className: "cat-square", ...href ? { href } : {}, style: {
         background: isCurrent ? cat.accent.c : cat.accent.soft,
         color: isCurrent ? "#fff" : "inherit",
         border: `2px solid ${cat.accent.c}`,
