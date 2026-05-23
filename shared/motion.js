@@ -8,8 +8,10 @@
  *   4. スクロールスナップ proximity (CSS側で適用、クラス付与なし)
  *
  * 仕組み:
- *   - CSS animation-timeline: view() が使える環境ではCSSだけで完結
- *   - 非対応 (Safari等) は IntersectionObserver で .is-in を付与
+ *   - 全ブラウザ共通で IntersectionObserver で .is-in / .visible を付与
+ *   - CSS transition でフェードアップ
+ *   - (旧: scroll-driven animation 経路は Safari 18.x の不完全実装で
+ *     `.reveal` が opacity:0 で凍る問題があったため撤廃)
  *
  * 注意: prefers-reduced-motion で全効果オフ
  * ============================================================ */
@@ -26,17 +28,7 @@
     return;
   }
 
-  // CSS animation-timeline: view() 対応チェック
-  const supportsViewTimeline =
-    CSS && CSS.supports && CSS.supports("animation-timeline: view()");
-
-  if (supportsViewTimeline) {
-    document.documentElement.classList.add("supports-view-timeline");
-  } else {
-    document.documentElement.classList.add("no-view-timeline");
-  }
-
-  // ----- IntersectionObserver フォールバック / カウントアップ用 -----
+  // ----- IntersectionObserver で表示クラス付与 -----
   const io = "IntersectionObserver" in window
     ? new IntersectionObserver((entries) => {
         for (const e of entries) {
@@ -76,7 +68,12 @@
     const targets = root.querySelectorAll(
       ".reveal:not(.is-in), .reveal-stagger:not(.is-in), [data-countup]:not(.is-in)"
     );
-    targets.forEach((el) => io.observe(el));
+    targets.forEach((el) => {
+      // JS が動いている時のみ初期 staging (opacity 0) する。CSS の
+      // `.reveal-staged` ルールにより JS 無効/失敗時はデフォルト表示のまま。
+      el.classList.add("reveal-staged");
+      io.observe(el);
+    });
   }
 
   // 初回 + DOMContentLoaded

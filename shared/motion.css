@@ -16,19 +16,30 @@
   }
 
 /* ---------- 基本: reveal （フェードアップ） ----------
- * 全ブラウザ共通: IntersectionObserver で .is-in / .visible が付与され、
- * CSS transition で表示する。Safari 18.x 系の scroll-driven animation
- * 不完全実装で要素が opacity:0 で凍る回避策として、`animation-timeline:
- * view()` 経路は撤廃した。
+ * 方針: コンテンツは "デフォルトで表示" し、JS が動けば
+ * IntersectionObserver で `.reveal-staged` を付けて一度隠してから
+ * `.is-in` / `.visible` でフェードアップする。
+ *
+ * これにより:
+ *   - JS が読み込まれない/止まる/IO 不対応の環境でも要素は必ず表示
+ *   - JS 動作時のみアニメーション効果が乗る
+ *
+ * Safari 18.x の scroll-driven animation 不完全実装で `.reveal` が
+ * opacity:0 で凍る現象を踏まえた防御的設計。
  * ---------------------------------------------------------- */
 .reveal,
 .reveal-stagger > * {
-  opacity: 0;
-  transform: translateY(28px) scale(0.985);
   transition: opacity .7s cubic-bezier(.2,.7,.2,1),
               transform .7s cubic-bezier(.2,.7,.2,1);
   will-change: opacity, transform;
 }
+/* JS が「これからアニメーションする要素」とマーキングした時だけ隠す */
+.reveal.reveal-staged,
+.reveal-stagger.reveal-staged > * {
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+}
+/* viewport に入ったら表示 */
 .reveal.is-in,
 .reveal.visible,
 .reveal-stagger.is-in > *,

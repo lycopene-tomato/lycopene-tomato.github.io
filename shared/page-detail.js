@@ -41,7 +41,7 @@
     return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(window.SiteHeader, { pathPrefix: prefix, currentCategoryId: category.id }), /* @__PURE__ */ React.createElement(
       "section",
       {
-        className: "hero reveal",
+        className: "hero",
         "data-snap": true,
         "data-progress-color": accent.c,
         style: { position: "relative", background: accent.soft, padding: "32px 18px", textAlign: "center", color: accent.deep }
@@ -72,7 +72,6 @@
     ), app.call && app.call.length > 0 && /* @__PURE__ */ React.createElement(
       "section",
       {
-        className: "reveal",
         "data-snap": true,
         "data-progress-color": accent.c,
         style: { padding: "0 18px", maxWidth: 640, margin: "32px auto" }
@@ -101,7 +100,6 @@
     ), app.trick && app.trick.length > 0 && /* @__PURE__ */ React.createElement(
       "section",
       {
-        className: "reveal",
         "data-snap": true,
         "data-progress-color": accent.c,
         style: { padding: "0 18px", maxWidth: 640, margin: "32px auto" }
@@ -130,7 +128,6 @@
     ), Array.isArray(app.setupSteps) && app.setupSteps.length > 0 && /* @__PURE__ */ React.createElement(
       "section",
       {
-        className: "reveal",
         "data-snap": true,
         "data-progress-color": accent.c,
         style: { padding: "0 18px", maxWidth: 640, margin: "32px auto" }
@@ -159,7 +156,6 @@
     ), app.code_sample && /* @__PURE__ */ React.createElement(
       "section",
       {
-        className: "reveal",
         "data-snap": true,
         "data-progress-color": accent.c,
         style: { padding: "0 18px", maxWidth: 640, margin: "32px auto" }
@@ -197,7 +193,6 @@
     ), /* @__PURE__ */ React.createElement(window.AppScreens, { lang, appId: app.id, appName: app.name, pathPrefix: prefix, accent, label: t.detail.label_screen }), /* @__PURE__ */ React.createElement(
       "section",
       {
-        className: "reveal",
         "data-snap": true,
         "data-progress-color": accent.c,
         style: { padding: "0 18px", maxWidth: 640, margin: "28px auto 8px", textAlign: "center" }
@@ -208,7 +203,7 @@
         justifyContent: "center",
         flexWrap: "wrap"
       } }, /* @__PURE__ */ React.createElement(window.StoreButton, { platform: "apple", href: app.appstore_url }), /* @__PURE__ */ React.createElement(window.StoreButton, { platform: "google", comingSoon: true }))
-    ), /* @__PURE__ */ React.createElement("section", { className: "reveal", style: { padding: "32px 18px 16px", maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 12, textAlign: "center" } }, t.detail.label_same_category), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 } }, /* @__PURE__ */ React.createElement("a", { href: `${prefix}apps/${prev.id}.html`, style: {
+    ), /* @__PURE__ */ React.createElement("section", { style: { padding: "32px 18px 16px", maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 12, textAlign: "center" } }, t.detail.label_same_category), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 } }, /* @__PURE__ */ React.createElement("a", { href: `${prefix}apps/${prev.id}.html`, style: {
       textDecoration: "none",
       color: "inherit",
       padding: "12px 14px",
@@ -267,7 +262,7 @@
       };
     }, [lang, appId, pathPrefix]);
     if (imgs.length === 0) return null;
-    return /* @__PURE__ */ React.createElement("section", { className: "reveal", style: { padding: "0 18px", maxWidth: 640, margin: "32px auto" } }, /* @__PURE__ */ React.createElement("div", { style: {
+    return /* @__PURE__ */ React.createElement("section", { style: { padding: "0 18px", maxWidth: 640, margin: "32px auto" } }, /* @__PURE__ */ React.createElement("div", { style: {
       position: "relative",
       border: `2px solid ${accent.c}`,
       borderRadius: 16,
