@@ -15,59 +15,40 @@
     }
   }
 
-/* ---------- 基本: reveal （フェードアップ） ---------- */
-/* CSS animation-timeline 対応ブラウザ */
-@supports (animation-timeline: view()) {
-  .reveal {
-    animation: reveal-up linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 60%;
-  }
-  /* 子要素を staggered に出す */
-  .reveal-stagger > * {
-    animation: reveal-up linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 70%;
-  }
-  .reveal-stagger > *:nth-child(2) { animation-range: entry 5% entry 75%; }
-  .reveal-stagger > *:nth-child(3) { animation-range: entry 10% entry 80%; }
-  .reveal-stagger > *:nth-child(4) { animation-range: entry 15% entry 85%; }
-  .reveal-stagger > *:nth-child(5) { animation-range: entry 20% entry 90%; }
-  .reveal-stagger > *:nth-child(n+6) { animation-range: entry 25% entry 95%; }
-}
-
-@keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(28px) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* 非対応ブラウザ: IntersectionObserver 経由で .is-in が付く */
-.no-view-timeline .reveal,
-.no-view-timeline .reveal-stagger > * {
+/* ---------- 基本: reveal （フェードアップ） ----------
+ * 全ブラウザ共通: IntersectionObserver で .is-in / .visible が付与され、
+ * CSS transition で表示する。Safari 18.x 系の scroll-driven animation
+ * 不完全実装で要素が opacity:0 で凍る回避策として、`animation-timeline:
+ * view()` 経路は撤廃した。
+ * ---------------------------------------------------------- */
+.reveal,
+.reveal-stagger > * {
   opacity: 0;
   transform: translateY(28px) scale(0.985);
   transition: opacity .7s cubic-bezier(.2,.7,.2,1),
               transform .7s cubic-bezier(.2,.7,.2,1);
   will-change: opacity, transform;
 }
-.no-view-timeline .reveal.is-in,
-.no-view-timeline .reveal-stagger.is-in > * {
+.reveal.is-in,
+.reveal.visible,
+.reveal-stagger.is-in > *,
+.reveal-stagger.visible > * {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-/* stagger を IO フォールバックでも */
-.no-view-timeline .reveal-stagger.is-in > *:nth-child(1) { transition-delay: 0ms; }
-.no-view-timeline .reveal-stagger.is-in > *:nth-child(2) { transition-delay: 80ms; }
-.no-view-timeline .reveal-stagger.is-in > *:nth-child(3) { transition-delay: 160ms; }
-.no-view-timeline .reveal-stagger.is-in > *:nth-child(4) { transition-delay: 240ms; }
-.no-view-timeline .reveal-stagger.is-in > *:nth-child(5) { transition-delay: 320ms; }
-.no-view-timeline .reveal-stagger.is-in > *:nth-child(n+6) { transition-delay: 400ms; }
+/* stagger: 子要素を順番に遅らせて出す */
+.reveal-stagger.is-in > *:nth-child(1),
+.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger.is-in > *:nth-child(2),
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger.is-in > *:nth-child(3),
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger.is-in > *:nth-child(4),
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger.is-in > *:nth-child(5),
+.reveal-stagger.visible > *:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger.is-in > *:nth-child(n+6),
+.reveal-stagger.visible > *:nth-child(n+6) { transition-delay: 400ms; }
 
 /* ---------- prefers-reduced-motion: 全効果オフ ---------- */
 .motion-off .reveal,
