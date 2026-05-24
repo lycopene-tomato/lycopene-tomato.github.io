@@ -247,7 +247,7 @@
               if (i >= list.length) return res(null);
               const url = list[i++];
               const img = new Image();
-              img.onload = () => res(url);
+              img.onload = () => res({ url, landscape: img.naturalWidth > img.naturalHeight });
               img.onerror = tryNext;
               img.src = url;
             };
@@ -262,6 +262,7 @@
       };
     }, [lang, appId, pathPrefix]);
     if (imgs.length === 0) return null;
+    const isLandscape = imgs.every((im) => im.landscape);
     return /* @__PURE__ */ React.createElement("section", { style: { padding: "0 18px", maxWidth: 640, margin: "32px auto" } }, /* @__PURE__ */ React.createElement("div", { style: {
       position: "relative",
       border: `2px solid ${accent.c}`,
@@ -284,10 +285,10 @@
       color: accent.deep
     } }, label)), /* @__PURE__ */ React.createElement("div", { style: {
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateColumns: isLandscape ? "1fr" : "repeat(3, 1fr)",
       gap: 12,
       maxWidth: 420,
       margin: "0 auto"
-    } }, imgs.map((src, i) => /* @__PURE__ */ React.createElement("img", { key: i, src, alt: `${appName || appId} screenshot ${i + 1}`, style: { width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" } })))));
+    } }, imgs.map((im, i) => /* @__PURE__ */ React.createElement("img", { key: i, src: im.url, alt: `${appName || appId} screenshot ${i + 1}`, style: { width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" } })))));
   };
 })();
