@@ -30,6 +30,21 @@
       "app_badge": "Todo가챠"
     },
     {
+      "_comment": "自己効力感 / リングが屋上にある = 届く気がしないとやらない。4 言語派生済 (ja/en-US/zh-Hant/ko)。LP/BLOG_DRAFTS/ring-on-the-rooftop.md 起点。tag は parent-self-image 1 つ (自分を責める親セグメント)。",
+      "slug": "ring-on-the-rooftop",
+      "date": "2026-05-26",
+      "tags": [
+        "parent-self-image"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "옥상에 달린 골대에는, 아무도 공을 안 던져요",
+      "description": "우리 아이가 시도조차 안 하는 일의 절반은, 못해서가 아니라 안 닿는다고 느껴서예요. 옥상 골대처럼. 응원보다 골대를 낮추는 것, 그리고 부모로서의 자신감에 대해 적었습니다."
+    },
+    {
       "_comment": "失敗を奪わない / Productive Failure。4 言語派生済。シリーズ化はせず単体記事。",
       "slug": "productive-failure",
       "date": "2026-05-18",

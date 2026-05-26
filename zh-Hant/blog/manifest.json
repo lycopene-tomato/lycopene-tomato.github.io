@@ -30,6 +30,21 @@
       "app_badge": "Todo扭蛋"
     },
     {
+      "_comment": "自己効力感 / リングが屋上にある = 届く気がしないとやらない。4 言語派生済 (ja/en-US/zh-Hant/ko)。LP/BLOG_DRAFTS/ring-on-the-rooftop.md 起点。tag は parent-self-image 1 つ (自分を責める親セグメント)。",
+      "slug": "ring-on-the-rooftop",
+      "date": "2026-05-26",
+      "tags": [
+        "parent-self-image"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "沒有人會對著屋頂上的籃框投籃",
+      "description": "我家小孩不肯嘗試的事,有一半不是不會,而是覺得搆不到,像裝在屋頂上的籃框。聊聊與其用力鼓勵,不如把籃框放低一公尺,還有我自己的自我懷疑。"
+    },
+    {
       "_comment": "失敗を奪わない / Productive Failure。4 言語派生済。シリーズ化はせず単体記事。",
       "slug": "productive-failure",
       "date": "2026-05-18",

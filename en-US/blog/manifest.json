@@ -30,6 +30,21 @@
       "app_badge": "TodoGacha"
     },
     {
+      "_comment": "自己効力感 / リングが屋上にある = 届く気がしないとやらない。4 言語派生済 (ja/en-US/zh-Hant/ko)。LP/BLOG_DRAFTS/ring-on-the-rooftop.md 起点。tag は parent-self-image 1 つ (自分を責める親セグメント)。",
+      "slug": "ring-on-the-rooftop",
+      "date": "2026-05-26",
+      "tags": [
+        "parent-self-image"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "Nobody shoots at a hoop on the roof",
+      "description": "Half the stuff my kid won't even try isn't about skill — he's decided it's out of reach, like a hoop bolted to a roof. On lowering the rim instead of cheering louder, and self-doubt as a parent."
+    },
+    {
       "_comment": "失敗を奪わない / Productive Failure。4 言語派生済。シリーズ化はせず単体記事。",
       "slug": "productive-failure",
       "date": "2026-05-18",

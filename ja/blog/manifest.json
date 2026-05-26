@@ -46,6 +46,21 @@
       "app_badge": "Todoガチャ"
     },
     {
+      "_comment": "自己効力感 / リングが屋上にある = 届く気がしないとやらない。4 言語派生済 (ja/en-US/zh-Hant/ko)。LP/BLOG_DRAFTS/ring-on-the-rooftop.md 起点。tag は parent-self-image 1 つ (自分を責める親セグメント)。",
+      "slug": "ring-on-the-rooftop",
+      "date": "2026-05-26",
+      "tags": [
+        "parent-self-image"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "ビルの屋上にあるリングには、人はボールを投げない",
+      "description": "子どもが挑戦をやりたがらないのは、下手だからではなく『自分にできる気がしない』から。バスケのリングが屋上にあったら投げないのと同じで、親が目標を低く置き直すと動き出す。自己効力感を、うちの子と自分の例で書きました。"
+    },
+    {
       "_comment": "失敗を奪わない / Productive Failure。4 言語派生済。シリーズ化はせず単体記事。",
       "slug": "productive-failure",
       "date": "2026-05-18",
