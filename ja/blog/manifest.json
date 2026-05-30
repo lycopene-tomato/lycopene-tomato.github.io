@@ -46,6 +46,22 @@
       "app_badge": "Todoガチャ"
     },
     {
+      "_comment": "親の責任範囲・経験 vs 歴史。parenting-paradox 三部作の Article 2 (antithesis)。Article 1 = productive-failure (2026-05-18) との対比、Article 3 = doublethink (未公開) で回収予定。4 言語派生 (ja/en-US/zh-Hant/ko)。",
+      "slug": "bismarck-experience",
+      "date": "2026-05-30",
+      "tags": [
+        "quote-essay",
+        "parent-self-image"
+      ],
+      "series_id": "parenting-paradox",
+      "series_order": 2,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "言われた通りやった方が楽なのに",
+      "description": "子は宿題で同じ漢字を 3 回間違える。私は 30 年前に同じ場所で止まった経験を『気をつけて』と渡してるのに、受け取らない。19 世紀ビスマルクの言葉と、ある夜の親の本音を書きました。"
+    },
+    {
       "_comment": "親のイライラ = 思い通りにならない / 結果責任 vs プロセス責任 / 一人の人間として認める = 親の精神安定のため。4 言語派生 (ja/en-US/zh-Hant/ko)。LP/BLOG_DRAFTS/parent-process-responsibility.md 起点。tag は parent-self-image 1 つ。",
       "slug": "parent-process-responsibility",
       "date": "2026-05-29",
@@ -76,14 +92,14 @@
       "description": "子どもが挑戦をやりたがらないのは、下手だからではなく『自分にできる気がしない』から。バスケのリングが屋上にあったら投げないのと同じで、親が目標を低く置き直すと動き出す。自己効力感を、うちの子と自分の例で書きました。"
     },
     {
-      "_comment": "失敗を奪わない / Productive Failure。4 言語派生済。シリーズ化はせず単体記事。",
+      "_comment": "失敗を奪わない / Productive Failure。4 言語派生済。parenting-paradox 三部作の Article 1 (thesis)。Article 2 = bismarck-experience (2026-05-30) / Article 3 = doublethink (未公開) で回収。2026-05-29 までは単体記事として扱われていたが、bismarck-experience 公開と同時に series 化。",
       "slug": "productive-failure",
       "date": "2026-05-18",
       "tags": [
         "cognitive-bias"
       ],
-      "series_id": null,
-      "series_order": null,
+      "series_id": "parenting-paradox",
+      "series_order": 1,
       "section": "latest",
       "pinned": false,
       "app_badge": null,
