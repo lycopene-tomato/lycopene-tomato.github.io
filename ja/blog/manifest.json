@@ -46,7 +46,23 @@
       "app_badge": "Todoガチャ"
     },
     {
-      "_comment": "親の責任範囲・経験 vs 歴史。parenting-paradox 三部作の Article 2 (antithesis)。Article 1 = productive-failure (2026-05-18) との対比、Article 3 = doublethink (未公開) で回収予定。4 言語派生 (ja/en-US/zh-Hant/ko)。",
+      "_comment": "parenting-paradox 三部作の Article 3 (recognition、最終回)。冒頭で 1984 三大スローガン + わが家版を並列、Article 1 (productive-failure) と Article 2 (bismarck-experience) を自己引用して『両方俺や』で回収。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語版で 1984 のスローガンは公式翻訳 (ja: 高橋和久訳, en: 原文, zh-Hant: 徐立妍訳, ko: 정회성 옮김) を使用。",
+      "slug": "doublethink",
+      "date": "2026-05-31",
+      "tags": [
+        "quote-essay",
+        "parent-self-image"
+      ],
+      "series_id": "parenting-paradox",
+      "series_order": 3,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "言うことを聞かないが、幸せになって欲しい",
+      "description": "『戦争は平和なり、自由は隷従なり、無知は力なり』── 1984 の三大スローガンに『うちの子は、言うことを聞かないが、幸せになって欲しい』を並べたら、わが家のリビングで毎日ダブルシンクが再演されていた、という話です。"
+    },
+    {
+      "_comment": "親の責任範囲・経験 vs 歴史。parenting-paradox 三部作の Article 2 (antithesis)。Article 1 = productive-failure (2026-05-18) との対比、Article 3 = doublethink (2026-05-31) で回収。4 言語派生 (ja/en-US/zh-Hant/ko)。",
       "slug": "bismarck-experience",
       "date": "2026-05-30",
       "tags": [
