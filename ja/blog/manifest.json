@@ -14,6 +14,23 @@
       "description": "Lyco App はご褒美やゲーム性を多く組み込んでいます。「ご褒美が無いと動かない子を作るのでは?」という疑問に、ADHD 研究のドーパミン特性と習慣化の視点からお答えします。"
     },
     {
+      "_comment": "TodoBingo (slug: bingo, SKU: TodoBingo) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-bingo.md 起点。「自分でやるから言わないで」vs「言わないと動かない」のジレンマ → やる事をビンゴ盤に置いて子が順番を選ぶ。真ん中マス戦略・カレンダービンゴ (夏休み宿題)・Zeigarnik 効果。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は morning-routine / koe-kake。色は実用ガイド。",
+      "slug": "app-bingo",
+      "date": "2026-06-02",
+      "tags": [
+        "morning-routine",
+        "koe-kake"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-bingo",
+      "title": "「自分でやるから言わないで」、でも言わないと動かない子に",
+      "description": "「自分でやるから言わないで」やのに言わないと動かない。朝の支度や夏休みの宿題が進まない時、Todoビンゴはやる事を盤に並べて子が順番を選ぶ仕組み。真ん中マスやカレンダービンゴの使い方を、うちの実例で紹介します。",
+      "app_badge": "Todoビンゴ"
+    },
+    {
       "_comment": "Receive No.1 (PC-9801 N88-BASIC テニスゲーム移植) の開発記。意図的に off-topic (育児テーマ外)、ターゲットは日本のレトロ PC 好きで被リンク獲得目的。ja のみ公開 (他言語版は作らない)。pin なし、tags は retro-pc 1 つだけ (育児系タグは付けない)。",
       "slug": "receive-no1",
       "date": "2026-05-17",

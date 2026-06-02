@@ -14,6 +14,23 @@
       "description": "Lyco App 의 앱에는 보상이나 게임적 요소가 꽤 많이 들어가 있어요. 「보상 없으면 안 하는 아이가 되는 거 아닐까?」 ── ADHD 도파민 연구와 습관화의 관점에서 이 걱정에 답합니다."
     },
     {
+      "_comment": "TodoBingo (slug: bingo, SKU: TodoBingo) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-bingo.md 起点。「自分でやるから言わないで」vs「言わないと動かない」のジレンマ → やる事をビンゴ盤に置いて子が順番を選ぶ。真ん中マス戦略・カレンダービンゴ (夏休み宿題)・Zeigarnik 効果。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は morning-routine / koe-kake。色は実用ガイド。",
+      "slug": "app-bingo",
+      "date": "2026-06-02",
+      "tags": [
+        "morning-routine",
+        "koe-kake"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-bingo",
+      "title": "\"내가 알아서 할게, 말 좀 하지 마\" 근데 말 안 하면 안 움직여요",
+      "description": "아이가 아침 준비를 안 하는데, 한마디 하면 바로 '내가 알아서 할게, 말 좀 하지 마'. Todo 빙고는 할 일을 빙고판에 올리고 아이가 순서를 고르게 합니다. 가운데 칸 쓰는 법, 방학 숙제를 달력 빙고로 돌리는 법까지 우리 집이 실제로 쓰는 방법.",
+      "app_badge": "TodoBingo"
+    },
+    {
       "slug": "app-gacha",
       "date": "2026-05-04",
       "tags": [

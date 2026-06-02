@@ -14,6 +14,23 @@
       "description": "Lyco App 的 App 裡放了不少獎勵跟遊戲性的設計。「沒獎勵就不動的小孩，會不會被養成?」── 從 ADHD 的多巴胺研究跟習慣養成的角度回答這個擔心。"
     },
     {
+      "_comment": "TodoBingo (slug: bingo, SKU: TodoBingo) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-bingo.md 起点。「自分でやるから言わないで」vs「言わないと動かない」のジレンマ → やる事をビンゴ盤に置いて子が順番を選ぶ。真ん中マス戦略・カレンダービンゴ (夏休み宿題)・Zeigarnik 効果。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は morning-routine / koe-kake。色は実用ガイド。",
+      "slug": "app-bingo",
+      "date": "2026-06-02",
+      "tags": [
+        "morning-routine",
+        "koe-kake"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-bingo",
+      "title": "「我自己會用啦,不要一直講」可是不講又不動",
+      "description": "小孩早上拖拉,可是我一開口就「我自己會用啦,不要一直講」。Todo 賓果把要做的事擺到賓果卡上,讓小孩自己選順序。中間那格怎麼用、暑假作業怎麼用日曆賓果跑,都是我們家實際在用的方法。",
+      "app_badge": "TodoBingo"
+    },
+    {
       "slug": "app-gacha",
       "date": "2026-05-04",
       "tags": [
