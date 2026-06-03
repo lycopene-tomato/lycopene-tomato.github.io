@@ -12,8 +12,7 @@
     }, []);
     const allApps = window.flattenApps(lang) || [];
     const otherApps = allApps.filter((a) => a.id !== fromApp);
-    const utmMedium = fromApp ? "from-" + fromApp : "from-unknown";
-    const utmSuffix = "?utm_source=in-app&utm_medium=" + utmMedium;
+    const ctSuffix = "?ct=in-app-from-" + (fromApp || "unknown");
     return /* @__PURE__ */ React.createElement("div", { style: { background: "#FBF6EE", minHeight: "100vh", color: "#3D2E1F" } }, /* @__PURE__ */ React.createElement("header", { style: {
       padding: "12px 16px",
       textAlign: "center",
@@ -27,12 +26,14 @@
     } }, "Lyco App")), /* @__PURE__ */ React.createElement("main", { style: { maxWidth: 720, margin: "0 auto", padding: "28px 18px 60px" } }, /* @__PURE__ */ React.createElement("h1", { style: { fontSize: 22, fontWeight: 900, margin: "0 0 10px", lineHeight: 1.4 } }, inApp.title || "Other apps"), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, opacity: 0.75, lineHeight: 1.7, margin: "0 0 24px" } }, inApp.lead || ""), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gap: 12 } }, otherApps.map((app) => {
       const theme = window.getTheme(app.id, app._category) || { soft: "#FFF0F4" };
       const heroSrc = window.resolveHeroImage(app, "../");
-      const detailHref = "../apps/" + app.id + ".html" + utmSuffix;
+      const detailHref = (app.appstore_url || "") + ctSuffix;
       return /* @__PURE__ */ React.createElement(
         "a",
         {
           key: app.id,
           href: detailHref,
+          target: "_blank",
+          rel: "noopener",
           style: {
             display: "flex",
             alignItems: "center",
