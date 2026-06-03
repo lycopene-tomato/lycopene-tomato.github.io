@@ -14,6 +14,23 @@
       "description": "Lyco App 의 앱에는 보상이나 게임적 요소가 꽤 많이 들어가 있어요. 「보상 없으면 안 하는 아이가 되는 거 아닐까?」 ── ADHD 도파민 연구와 습관화의 관점에서 이 걱정에 답합니다."
     },
     {
+      "_comment": "TodoFarm (slug: farm, SKU: TodoFarm) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-farm.md 起点。「昨日できなかったからもういい」完璧主義 0/1 思考に対し、やる事をタネとして植えて『やった分だけ水やり』のグラデーション記録で残す。枯れる機能 = 退路 / 単位選択 / 続ける子の正体 =『忘れない仕組み』。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は koe-kake / parent-self-image。色は真面目分析。",
+      "slug": "app-farm",
+      "date": "2026-06-02",
+      "tags": [
+        "koe-kake",
+        "parent-self-image"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-farm",
+      "title": "\"이번 주는 다 빠졌으니까 다음 주부터\" ── 매주 그러는 아이에게",
+      "description": "피아노, 문제집, 영어 단어. 이틀 빠지면 한 주를 통째로 버리려고 하는 우리 아이. Todo 텃밭은 할 일을 「씨앗」으로 심고, 한 만큼만 「물 주기」로 쌓아 둡니다. 5분도 5분만큼, 0분인 날도 지난 누적은 그대로. 작심삼일에서 빠져나오는 0/1 사고를 놓는 방법, 우리 집 실제 사용기.",
+      "app_badge": "Todo 텃밭"
+    },
+    {
       "_comment": "TodoBingo (slug: bingo, SKU: TodoBingo) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-bingo.md 起点。「自分でやるから言わないで」vs「言わないと動かない」のジレンマ → やる事をビンゴ盤に置いて子が順番を選ぶ。真ん中マス戦略・カレンダービンゴ (夏休み宿題)・Zeigarnik 効果。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は morning-routine / koe-kake。色は実用ガイド。",
       "slug": "app-bingo",
       "date": "2026-06-02",
@@ -31,6 +48,22 @@
       "app_badge": "TodoBingo"
     },
     {
+      "_comment": "Receive No.1 (PC-9801 N88-BASIC テニスゲーム移植) の開発記。意図的に off-topic (育児テーマ外)、ターゲットは日本のレトロ PC 好きで被リンク獲得目的。pin なし、tags は retro-pc 1 つだけ (育児系タグは付けない)。**2026-06-03 に 4 言語派生** (en-US / zh-Hant / ko) ── アプリ紹介記事として『日本にベーマガという雑誌があってね』フレーミングで dev-log + 文化導入として翻案。BASIC コード抜粋は universal で全 4 言語同一。JA の hreflang ブロックも 4 言語 + x-default=en-US に拡張済、言語スイッチャー (langs.js) からの 404 解消。",
+      "slug": "receive-no1",
+      "date": "2026-05-17",
+      "tags": [
+        "retro-pc"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "receive",
+      "title": "베마가, 30 년 뒤 ── 100 줄짜리 BASIC 게임을 iPhone 으로 옮겼습니다",
+      "description": "일본에 80 년대부터 『マイコン BASIC マガジン (베마가 / Bēmaga)』라는 hobbyist 프로그래밍 잡지가 있어서, 매호마다 작은 게임의 전체 소스 코드를 잡지 지면에 인쇄해 두면 독자가 PC-9801 에 한 줄 한 줄 직접 입력해서 돌렸어요. 그 중 『Receive No.1』(N88-BASIC 100 줄, 2 인용 테니스) 를 30 년 뒤 iPhone 으로 그대로 옮겼습니다. 물리, 삼각함수 테이블 원본 그대로 + 당시 못 했던 GA 학습 CPU 대전 추가.",
+      "app_badge": "Receive No.1"
+    },
+    {
       "slug": "app-gacha",
       "date": "2026-05-04",
       "tags": [
@@ -45,6 +78,21 @@
       "title": "「빨리 해！」가 어느새 입에 붙어 있었어요",
       "description": "매일 아침 「빨리 해！」를 3 번씩. 등교 준비가 안 굴러갈 때, TodoGatya 는 「할 일」을 아이가 직접 뽑게 합니다. 자기결정성을 활용해서 「하라고 시킨다」 느낌을 빼니까, 아침의 잔소리가 절반 이하로 줄었어요.",
       "app_badge": "Todo가챠"
+    },
+    {
+      "_comment": "韓国の諺『우는 아이 떡 하나 더 준다 (泣く子は餅を一つ多くもらえる)』を入口に、我が家ではごね得 (泣き叫んで通す) だけは絶対に通さない / でも『これ苦手、少しでいい?』みたいな騒がずの交渉は全部聞く、というルールを夕飯の癇癪エピソードから書いた 0-C 一般コラム。間欠強化 (Ferster & Skinner 1957) を『アプリ設計の参考にしてるエンジニアの癖』スタンスで 1 本だけ引用。ODD で『何を言われたか』でなく『誰に言われたか』で反抗してくる現実 + ADHD 育児ブログを読んで『大変』を超えた疲れ + アプリ群は試行錯誤の残骸でうちの子に効かなくても他の子に届けば、で締め。tag は kansai-everyday (愚痴・応援したい層 → BMC 寄付導線)。色はニュートラル。4 言語派生 (ja/en-US/zh-Hant/ko): en-US は 'squeaky wheel gets the grease' / zh-Hant は『會吵的孩子有糖吃』を自国の諺として並べ、韓国諺は Hangul のまま尊重して残す。ko は自国の諺なので『韓国の諺で』前置きなし、諺をそのまま投下し『ごね得』相当の別語は出さない (諺自体がそれ)。",
+      "slug": "crying-child-rice-cake",
+      "date": "2026-06-03",
+      "tags": [
+        "kansai-everyday"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "\"내가 생각한 밥이 아니야\", 그 한 마디로 식탁이 뒤집힙니다",
+      "description": "우는 아이 떡 하나 더 준다 — 이 말이 있긴 하죠. 근데 우리 집은 거꾸로 갑니다. 소리 질러서 통하는 건 하나도 안 통하게 했어요. 대신 협상은 얼마든지 들어줘요. 떼쓰지 말고 말로 하라, 그 한 줄이에요."
     },
     {
       "_comment": "parenting-paradox 三部作の Article 3 (recognition、最終回)。冒頭で 1984 三大スローガン + わが家版を並列、Article 1 (productive-failure) と Article 2 (bismarck-experience) を自己引用して『両方俺や』で回収。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語版で 1984 のスローガンは公式翻訳 (ja: 高橋和久訳, en: 原文, zh-Hant: 徐立妍訳, ko: 정회성 옮김) を使用。",
