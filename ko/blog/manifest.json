@@ -14,6 +14,23 @@
       "description": "Lyco App 의 앱에는 보상이나 게임적 요소가 꽤 많이 들어가 있어요. 「보상 없으면 안 하는 아이가 되는 거 아닐까?」 ── ADHD 도파민 연구와 습관화의 관점에서 이 걱정에 답합니다."
     },
     {
+      "_comment": "Todoすごろく (slug: sugoroku, SKU: TodoLadders) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-sugoroku.md 起点。「あと何個?」「次なに?」と朝じゅう聞かれる → 子は『1 日の地図』が頭に描けてないだけ → 今日のやる事をすごろく盤面にして先を見える化 / ごほうびマス = 休憩所 / 最初のマスは 30 秒で終わる簡単なやつ。後半で『もう 1 つの使い方』= 1 つのタスクをさらに細かいマスに割る (「勉強しなさい」を 問題集出す→座る→ノート開く→1 問解く の 4 マスに分解、ストッパー『鉛筆ない→ぐだー』を先に潰す)。視覚支援/TEACCH は『絵が見えるだけ』と平易化。tags は morning-routine / koe-kake。色は父親ワンオペ視点。JA のみ公開、多言語派生 (en-US/zh-Hant/ko) は未生成。TodoBingo との差別化: Bingo=自己決定 / Sugoroku=見通し。",
+      "slug": "app-sugoroku",
+      "date": "2026-06-04",
+      "tags": [
+        "morning-routine",
+        "koe-kake"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-sugoroku",
+      "title": "\"몇 개 남았어?\" \"아직 멀었어?\" 가 매일 아침의 인사가 됐어요",
+      "description": "아이가 아침 내내 「몇 개 남았어?」 「다음 뭐 해?」를 30초마다 묻는데, 솔직히 답하는 제가 더 지쳤어요. Todo 보드는 오늘 할 일을 보드에 올려서 아이가 직접 보게 합니다. ",
+      "app_badge": "Todo 보드"
+    },
+    {
       "_comment": "TodoFarm (slug: farm, SKU: TodoFarm) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-farm.md 起点。「昨日できなかったからもういい」完璧主義 0/1 思考に対し、やる事をタネとして植えて『やった分だけ水やり』のグラデーション記録で残す。枯れる機能 = 退路 / 単位選択 / 続ける子の正体 =『忘れない仕組み』。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は koe-kake / parent-self-image。色は真面目分析。",
       "slug": "app-farm",
       "date": "2026-06-02",
