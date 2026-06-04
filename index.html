@@ -5,6 +5,10 @@
 <title>Lyco App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="An indie app series. Play × Tasks = Habit." />
+<!-- JS なし環境 (App Store のレビュー自動チェッカー / 検索クローラ等) でも
+     必ず実ページに着地させるフォールバック。JS が動く環境では下の
+     location.replace が先に発火し、言語判定を維持したまま遷移する。 -->
+<meta http-equiv="refresh" content="0;url=/en-US/" />
 <link rel="canonical" href="/en-US/" />
 <style>
   body { font-family: system-ui, sans-serif; background: #FBF6EE; color: #3D2E1F; padding: 40px 20px; text-align: center; }

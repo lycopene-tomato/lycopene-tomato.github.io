@@ -5,6 +5,11 @@
 <title>Privacy Policy — Lyco App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Lyco App Privacy Policy" />
+<!-- JS なし環境 (App Store のレビュー自動チェッカー / 検索クローラ等) でも
+     必ず実ページに着地させるフォールバック。JS が動く環境では下の
+     location.replace が先に発火し、言語判定を維持したまま遷移する。
+     相対パスにすることで複数デプロイ環境に対応 (= /privacy-policy/en-US/)。 -->
+<meta http-equiv="refresh" content="0;url=en-US/" />
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
