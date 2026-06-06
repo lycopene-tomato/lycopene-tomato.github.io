@@ -14,6 +14,23 @@
       "description": "Lyco App 的 App 裡放了不少獎勵跟遊戲性的設計。「沒獎勵就不動的小孩，會不會被養成?」── 從 ADHD 的多巴胺研究跟習慣養成的角度回答這個擔心。"
     },
     {
+      "_comment": "TroubleNote (slug: trouble, SKU: TroubleNote) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-trouble.md 起点。学校から繰り返し電話がかかる → 1 件あたり覚える情報 (相手の子・親・経緯・謝罪状況) が多すぎる → 半年で記憶がぐにゃぐにゃ → 授業参観で誰の親に謝るか分からない → トラブルノート = 親専用、子供向け機能ゼロ、整理に振り切ったアプリ → 友達別集計・カレンダー・場所別・ペアレントゲートで親メモを子から隠す → アドバイス機能は意図的に入れていない → 担任に客観数字で伝えると話が早い → 末尾: 記録すれば手が出る回数が減ってる子供の成長も見える = 親の気持ちを落ち着かせるための可視化機能でもある。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は parent-self-image / cognitive-bias (自分を責めてる親 + 外圧で苦しむ親の両セグメント、adhd-related は My-Life ルール上回避)。色はニュートラル (深刻トーンに合わせて淡々と)。Log 系 = アプリ群初の親専用記録カテゴリ。比喩は『記憶ではなく台帳』+『ゴールが見えると堪えられる』(成長可視化)。",
+      "slug": "app-trouble",
+      "date": "2026-06-06",
+      "tags": [
+        "parent-self-image",
+        "cognitive-bias"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "trouble-note",
+      "title": "「學校又打來了」── 看到號碼就喘不過氣",
+      "description": "當父母好累。學校的電話一直來,半年下來,誰是誰、誰被誰怎樣、跟哪個家長道過歉,記憶全糊在一起。TroubleNote 是家長自己用的糾紛筆記,按朋友、日期、地點分開排,不下建議、不評斷對錯,只是把事情整齊地排出來。記錄久了會看到 ── 其實孩子是有在進步的。",
+      "app_badge": "TroubleNote"
+    },
+    {
       "_comment": "PlanetLoopTimer (slug: timer, SKU: PlanetLoopTimer) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-timer.md 起点。「あと5分」が終わらない/タイマーが鳴った後の方が長い → 普通のタイマー = 自分が動かしてない時計に追い立てられる理不尽 → PlanetLoopTimer は休憩時間を子が自分で惑星を打ち上げて作る → 太陽の重力で螺旋を描いて吸い込まれる『段階が見える』終わり方 → 水星〜海王星で距離=時間/冥王星は∞チャレンジ → 声かけが『もう時間』から『水星でいく?海王星でいく?』に変わった。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は koe-kake (下書きの cognitive-bias はユーザー指示で外した)。色は実用ガイド (下書きは『エンジニア集中』だったが、直前の app-bank が同色のため連投回避で変更)。Timer 系 = Todo 系と違うカテゴリ。比喩は『自分で打ち上げる時間』+『太陽の重力で吸い込まれる=段階が見える終わり』。",
       "slug": "app-timer",
       "date": "2026-06-06",

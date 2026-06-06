@@ -506,6 +506,42 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/" />
   </url>
   <url>
+    <loc>https://lycoapp.com/ja/blog/posts/app-trouble.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/app-trouble.html" />
+  </url>
+  <url>
+    <loc>https://lycoapp.com/en-US/blog/posts/app-trouble.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/app-trouble.html" />
+  </url>
+  <url>
+    <loc>https://lycoapp.com/zh-Hant/blog/posts/app-trouble.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/app-trouble.html" />
+  </url>
+  <url>
+    <loc>https://lycoapp.com/ko/blog/posts/app-trouble.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/blog/posts/app-trouble.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/app-trouble.html" />
+  </url>
+  <url>
     <loc>https://lycoapp.com/ja/blog/posts/app-timer.html</loc>
     <lastmod>2026-06-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/posts/app-timer.html" />
@@ -1191,7 +1227,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/ja/blog/tag/cognitive-bias.html</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/cognitive-bias.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/cognitive-bias.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/cognitive-bias.html" />
@@ -1200,7 +1236,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/en-US/blog/tag/cognitive-bias.html</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/cognitive-bias.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/cognitive-bias.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/cognitive-bias.html" />
@@ -1209,7 +1245,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/zh-Hant/blog/tag/cognitive-bias.html</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/cognitive-bias.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/cognitive-bias.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/cognitive-bias.html" />
@@ -1218,7 +1254,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/ko/blog/tag/cognitive-bias.html</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/cognitive-bias.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/cognitive-bias.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/cognitive-bias.html" />
@@ -1299,7 +1335,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/ja/blog/tag/parent-self-image.html</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/parent-self-image.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/parent-self-image.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/parent-self-image.html" />
@@ -1308,7 +1344,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/en-US/blog/tag/parent-self-image.html</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/parent-self-image.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/parent-self-image.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/parent-self-image.html" />
@@ -1317,7 +1353,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/zh-Hant/blog/tag/parent-self-image.html</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/parent-self-image.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/parent-self-image.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/parent-self-image.html" />
@@ -1326,7 +1362,7 @@
   </url>
   <url>
     <loc>https://lycoapp.com/ko/blog/tag/parent-self-image.html</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/tag/parent-self-image.html" />
     <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/tag/parent-self-image.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/tag/parent-self-image.html" />
