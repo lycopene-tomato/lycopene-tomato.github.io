@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<title>一設定計時器,就一定吵架 — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="計時器響之後那一段,永遠比響之前還長。PlanetLoopTimer 把休息時間變成小孩「自己發射」的東西 ── 行星繞著太陽轉,不是一個數字自顧自地往下掉,所以結束的時候,他是有份的。我的口頭禪從「時間到了」變成「要水星還是海王星?」" />
+<link rel="canonical" href="https://lycoapp.com/zh-Hant/blog/posts/app-timer.html" />
+<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/app-timer.html" />
+<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/app-timer.html" />
+<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/app-timer.html" />
+<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/app-timer.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/app-timer.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="一設定計時器,就一定吵架" />
+<meta property="og:description" content="計時器響之後那一段,永遠比響之前還長。PlanetLoopTimer 把休息時間變成小孩「自己發射」的東西,行星繞著太陽轉,所以結束的時候他是有份的。" />
+<meta property="og:url" content="https://lycoapp.com/zh-Hant/blog/posts/app-timer.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="zh_TW" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="一設定計時器,就一定吵架" />
+<meta name="twitter:description" content="計時器響之後那一段,永遠比響之前還長。PlanetLoopTimer 把休息時間變成小孩「自己發射」的東西,行星繞著太陽轉,所以結束的時候他是有份的。" />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<style>
+  body { margin:0; font-family: system-ui,"PingFang TC","Microsoft JhengHei",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  .app-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.5px; color:#fff; background:#3F8C7E; padding:3px 10px; border-radius:999px; margin-bottom:10px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #3F8C7E; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #C9EBE0 60%); padding: 0 2px; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #3F8C7E; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.7; }
+  .body ol, .body ul { margin: 0 0 1.4em; padding-left: 22px; }
+  .body li { margin-bottom: 6px; }
+  .app-link { display: inline-block; margin-top: 24px; padding: 12px 22px; background: #3F8C7E; color: #fff; text-decoration: none; border-radius: 999px; font-weight: 800; font-size: 14px; transition: transform .15s ease, box-shadow .15s ease; }
+  .app-link:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(63,140,126,.3); }
+  .refs { margin-top: 40px; padding-top: 18px; border-top: 1px dashed #D6C9B5; font-size: 12px; color:#5C4936; }
+  .refs ol { padding-left: 18px; margin: 0; }
+  .refs li { margin-bottom: 6px; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+.post-tldr { border-top: 1px solid #C9B79A; border-bottom: 1px solid #C9B79A; padding: 14px 0; margin: 0 0 20px; font-size: 15px; line-height: 1.75; color: #3D2E1F; }
+  /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← 目前"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 20px 0 0; padding: 10px 0 0; border-top: 1px solid #D6C9B5; opacity: .7; }
+  .post-byline-text { margin: 0 0 4px; font-size: 12px; line-height: 1.6; color: #5C4936; }
+  .post-byline-links { margin: 0; font-size: 12px; line-height: 1.6; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
+  /* END blog-extension-styles */
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "一設定計時器,就一定吵架",
+  "description": "計時器響之後那一段,永遠比響之前還長。PlanetLoopTimer 把休息時間變成小孩「自己發射」的東西 ── 行星繞著太陽轉,不是一個數字自顧自地往下掉,所以結束的時候,他是有份的。我的口頭禪從「時間到了」變成「要水星還是海王星?」",
+  "datePublished": "2026-06-06",
+  "dateModified": "2026-06-06",
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/zh-Hant/about/#lyco", "name": "Lyco" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/zh-Hant/blog/posts/app-timer.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
+  "inLanguage": "zh-Hant"
+}
+</script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首頁",
+      "item": "https://lycoapp.com/zh-Hant/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "專欄",
+      "item": "https://lycoapp.com/zh-Hant/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "一設定計時器,就一定吵架"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
+</head>
+<body>
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← 專欄列表</a>
+  <span class="app-badge">PlanetLoopTimer</span>
+  <h1>一設定計時器,就一定吵架</h1>
+  <div class="meta">2026-06-06</div>
+  <!-- BEGIN series-box -->
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">標籤:</span>
+    <a class="post-tag" href="../tag/koe-kake.html">對孩子說話</a>
+  </div>
+  <!-- END tags -->
+  <div class="body">
+
+<p id="tldr" class="post-tldr">我們家的計時器,響之後那一段永遠比響之前還長。PlanetLoopTimer 把休息時間變成小孩「自己發射」的東西 ── 行星繞著太陽轉,不是一個數字自顧自往下掉,所以要結束的時候,他是有份的、比較願意接受。我的口頭禪也從「時間到了」變成「要水星還是海王星?」,然後就不太吵了。</p>
+
+<p>「再玩 5 分鐘就好」</p>
+
+<p>「已經過 5 分鐘了喔」</p>
+
+<p>「現在不能存檔啦」</p>
+
+<p>「那存檔了就停」</p>
+
+<p>(過了 15 分鐘)</p>
+
+<p>「存好了嗎?去睡覺了」</p>
+
+<p>「再一隻王,真的最後一隻王」</p>
+
+<p>這套對話,在我們家已經完全變成固定劇本了。</p>
+
+<p>「我設好計時器了,響了你自己停喔」── 一開始我是真的相信這句的,結果根本不會停。響完之後那一段,比響之前還長。響之前很安靜,響的那一秒開始討價還價。這個「響完比較長」,懂的人應該懂。</p>
+
+<p>有一天我突然想到,這孩子其實是<strong>對計時器上面那個數字不服氣</strong>。</p>
+
+<h2>一般的計時器,是一個自己往下掉的裝置</h2>
+
+<p>計時器仔細想想,就是這樣一個東西。</p>
+
+<ul>
+  <li>爸媽(或小孩)按下一個按鈕</li>
+  <li>從那一秒開始,數字跟他的意願無關,自己往下掉</li>
+  <li>歸零之後,鬧鈴自己響</li>
+  <li>響的時候,他的感覺是「蛤,就這樣?」</li>
+</ul>
+
+<p>從小孩的角度看,這是<strong>被一個自己沒在開的時鐘追著跑</strong>。在「有沒有毅力、能不能忍」之前,先有一段「不是我當主角」的時間在流。會有點不爽,其實也滿合理的。</p>
+
+<p>反過來看,小孩「再 5 分鐘」的拖延,就是想把自己對時間的主導權搶回來。</p>
+
+<p>想通這個之後,「把鬧鈴弄大聲一點」顯然不是解法,要換一種做法。</p>
+
+<h2>那麼,時間「自己發射」如何?</h2>
+
+<p>我們家做的 PlanetLoopTimer,就是從這裡長出來的 App。</p>
+
+<p>休息時間,讓小孩<strong>自己把行星發射出去</strong>來決定。</p>
+
+<p>發射畫面上,有輔助線顯示角度跟力道。抓一個「就是這裡」的時機發射,行星就開始繞著太陽轉。</p>
+
+<p>發射得好,轉得久。失手,就很快掉進太陽,休息變短。也就是說,休息多長,不是交給鬧鈴,而是看自己的手。</p>
+
+<p>光是這樣,小孩心裡的接受度就不一樣了。不是「5 分鐘計時器響了」,而是<strong>「我發射的行星,被太陽吸進去了」</strong>。同樣是「結束」,後面這個比較容易接受。</p>
+
+<h2>太陽的重力,是一種呈現方式</h2>
+
+<p>行星在快到目標時間的時候,會被太陽的重力慢慢拉過去,畫著螺旋掉下去。</p>
+
+<p>所以不是「嗶嗶嗶」,而是「啊,快被吸進去了」這種、在畫面上看得到、提前來的訊號。這點意外地有效。</p>
+
+<p>一般計時器是 5 分鐘一直「還很多」,最後 1 秒突然「結束」。這對大腦是偷襲,而人(小孩跟大人都一樣)很怕偷襲。行星這邊,是減速、進入螺旋、被吸進去,階段看得到,可以做心理準備。</p>
+
+<p>其實做的事情,只是把一個單純的倒數,換成「距離在縮短」的看法而已。但光是這樣換,體感就不一樣了。</p>
+
+<h2>水星到海王星,距離決定時間</h2>
+
+<p>每顆行星軌道大小不同,所以可以調休息時間的長短。</p>
+
+<ul>
+  <li>水星:短(大概 3〜5 分鐘)</li>
+  <li>地球:中等</li>
+  <li>海王星:長(大概 15〜20 分鐘)</li>
+</ul>
+
+<p>「喘口氣」就水星,「看一章書」就火星,看用途選行星。</p>
+
+<p>奇妙的是,在他心裡,「水星」比「5 分鐘計時器」感覺輕鬆,就算長度一樣。大概是因為他是把時間<strong>當成一個東西在看,不是當成數字</strong>。</p>
+
+<h2>只有冥王星是 ∞ 挑戰</h2>
+
+<p>附帶一個彩蛋,只有冥王星的重力調得很弱,只要軌道對了,就會一直一直轉。</p>
+
+<p>與其說是休息,不如說是純粹挑戰「最長紀錄」的遊戲模式。</p>
+
+<p>有這個之後,「打開計時器 App」這件事本身就有點好玩。普通休息之後,小孩會自己問「我可以挑戰冥王星嗎?」,所以我不用講「去設計時器」,他自己就來開了。</p>
+
+<p>休息的最後用一個小小的發射遊戲收尾,接下來切換去寫功課也比較順,算是一個副作用。</p>
+
+<h2>「發射」取代「不要再玩了」</h2>
+
+<p>一般的叮嚀,容易變成這樣。</p>
+
+<p>「時間到了」「快點結束」「你說只要再一分鐘的」</p>
+
+<p>我們家也是,每天在講。講了兩邊都累。</p>
+
+<p>換成 PlanetLoopTimer 之後,我嘴巴講出來的話變了。</p>
+
+<p>「要水星,還是海王星?」</p>
+
+<p>就這樣,沒什麼好吵的。他自己選、自己發射、用自己的手決定時間。會吵的點,差不多就消失了。</p>
+
+<p>只是換了個計時器,家裡的空氣就輕了一點。沒有很戲劇化啦,但這是每天的事,所以。啊就這樣。</p>
+
+<p><a class="app-link" href="../../apps/timer.html">看看 PlanetLoopTimer →</a></p>
+
+  </div>
+  <!-- BEGIN related-posts -->
+  <!-- END related-posts -->
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="rewards-and-dopamine.html"><span class="post-nav-label">← 上一篇</span><span class="post-nav-title">沒有獎勵，小孩就不會做事嗎？</span></a>
+    <a class="post-nav-next" href="app-bank.html"><span class="post-nav-label">下一篇 →</span><span class="post-nav-title">「你說 10 次就可以打電動啊」── 我有說嗎?好像有,又好像沒有<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+  </nav>
+  <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — 育兒中的工程師。</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ 關於</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ 聯絡</a>
+  </p>
+</div>
+<!-- END byline -->
+  </div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/ja/common.js"></script>
+<script src="../../../content/ja/todo.js"></script>
+<script src="../../../content/ja/record.js"></script>
+<script src="../../../content/ja/tool.js"></script>
+<script src="../../../content/ja/other.js"></script>
+<script src="../../../content/en-US/common.js"></script>
+<script src="../../../content/en-US/todo.js"></script>
+<script src="../../../content/en-US/record.js"></script>
+<script src="../../../content/en-US/tool.js"></script>
+<script src="../../../content/en-US/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
+<script defer src="../../../shared/analytics.js"></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="育兒辛苦了。一起加油吧 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

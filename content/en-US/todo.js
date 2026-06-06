@@ -140,5 +140,31 @@ window.__CONTENT__["en-US"].categories.todo = {
         { title: "Let it wilt, then start over", desc: "On a lazy day the plant wilts, then revives when you come back. “Quit and restarted” gets logged too, which makes it easier to keep going." },
       ],
     },
+    {
+      id: "bank",
+      name: "TodoBank",
+      tag: "Saving up",
+      appstore_url: "",
+      hero_image: "images/apps/bank.jpeg",
+      pricing: "Free",
+      formula_a: "Savings book",
+      formula_b: "Tasks",
+      formula_c: "It banks, the wobble smooths out",
+      concept: "Savings book × Tasks = Keep going through the wobble",
+      call: [
+        "Want to bank today’s bit?",
+        "Let’s see how many more till the reward.",
+      ],
+      trick: [
+        "Bank extra on good days, then withdraw on a zero-page day so the total still moves. Not done-or-not-done — the balance carries you.",
+        "Write the reward deal in the notes (10 pages = a snack, 30 chores = game time) so the distance to the reward stays visible.",
+        "Set a deposit password so the balance can’t be inflated. Forget it and a simple mental-math problem lets you in — no full lockout.",
+      ],
+      setupSteps: [
+        { title: "Open a savings book", desc: "We made three — kanji drills, dishes, 100-point tests. One book per task makes it easy to see what’s adding up." },
+        { title: "Deposit what got done", desc: "Deposit on a good day, withdraw from savings on an off day. A zero day is fine as long as the total keeps growing." },
+        { title: "Note the reward", desc: "Jot the deal in the notes — “10 pages = a snack.” It stays in the book even when the parent forgets, and the kid sees “how many more.”" },
+      ],
+    },
   ],
 };

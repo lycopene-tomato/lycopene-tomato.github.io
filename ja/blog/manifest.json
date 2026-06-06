@@ -14,6 +14,39 @@
       "description": "Lyco App はご褒美やゲーム性を多く組み込んでいます。「ご褒美が無いと動かない子を作るのでは?」という疑問に、ADHD 研究のドーパミン特性と習慣化の視点からお答えします。"
     },
     {
+      "_comment": "PlanetLoopTimer (slug: timer, SKU: PlanetLoopTimer) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-timer.md 起点。「あと5分」が終わらない/タイマーが鳴った後の方が長い → 普通のタイマー = 自分が動かしてない時計に追い立てられる理不尽 → PlanetLoopTimer は休憩時間を子が自分で惑星を打ち上げて作る → 太陽の重力で螺旋を描いて吸い込まれる『段階が見える』終わり方 → 水星〜海王星で距離=時間/冥王星は∞チャレンジ → 声かけが『もう時間』から『水星でいく?海王星でいく?』に変わった。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は koe-kake (下書きの cognitive-bias はユーザー指示で外した)。色は実用ガイド (下書きは『エンジニア集中』だったが、直前の app-bank が同色のため連投回避で変更)。Timer 系 = Todo 系と違うカテゴリ。比喩は『自分で打ち上げる時間』+『太陽の重力で吸い込まれる=段階が見える終わり』。",
+      "slug": "app-timer",
+      "date": "2026-06-06",
+      "tags": [
+        "koe-kake"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "planet-loop-timer",
+      "title": "タイマーをかけると、必ず喧嘩になる",
+      "description": "「あと5分」が終わらない、タイマーが鳴った後の方が長い、といううちの話。PlanetLoopTimer は休憩時間を、子が自分で惑星を打ち上げて作るタイマー。勝手に減る数字の理不尽さがなく、終わりを自分で決めた納得感で切り替えられる。声かけが「水星でいく?」に変わった話。",
+      "app_badge": "PlanetLoopTimer"
+    },
+    {
+      "_comment": "TodoBank (slug: bank, SKU: TodoBank) のアプリ別コラム (0-B)。「10 回でゲームって言ったよ」── 約束を覚えてないのは親のほうだと気付いた話 → 約束を親の記憶じゃなく通帳に貯金する → 「あと何回」が残高で見えて言った言わないが消える → やる気のない日は引き出す (波の平準化) → 通帳があると貯めたくなって先取りが始まる = WBS と前倒し / WBS なしのプロジェクト = デスマーチ → 注意点 (パスワード / 金利なし / マイナス可 / やらせすぎ NG)。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は koe-kake / parent-self-image。色はエンジニア集中 (WBS / デスマーチ / スケジュール管理 / タスク前倒し)。比喩は『約束は記憶じゃなく通帳に貯金』+『WBS なしのプロジェクト = デスマーチ』。",
+      "slug": "app-bank",
+      "date": "2026-06-05",
+      "tags": [
+        "koe-kake",
+        "parent-self-image"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-bank",
+      "title": "「10回でゲームって言ったよ」。言った気も、言ってない気もする。",
+      "description": "子に「10回でゲームって言ったよ」と言われ、約束を覚えてないのは親のほうだと気付いた話。TodoBank はご褒美の約束を、親の記憶じゃなく通帳に貯金していくアプリ。やる気のない日は引き出す、貯まると先取りしたくなる、WBS なしのデスマーチの話まで。",
+      "app_badge": "TodoBank"
+    },
+    {
       "_comment": "Todoすごろく (slug: sugoroku, SKU: TodoLadders) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-sugoroku.md 起点。「あと何個?」「次なに?」と朝じゅう聞かれる → 子は『1 日の地図』が頭に描けてないだけ → 今日のやる事をすごろく盤面にして先を見える化 / ごほうびマス = 休憩所 / 最初のマスは 30 秒で終わる簡単なやつ。後半で『もう 1 つの使い方』= 1 つのタスクをさらに細かいマスに割る (「勉強しなさい」を 問題集出す→座る→ノート開く→1 問解く の 4 マスに分解、ストッパー『鉛筆ない→ぐだー』を先に潰す)。視覚支援/TEACCH は『絵が見えるだけ』と平易化。tags は morning-routine / koe-kake。色は父親ワンオペ視点。JA のみ公開、多言語派生 (en-US/zh-Hant/ko) は未生成。TodoBingo との差別化: Bingo=自己決定 / Sugoroku=見通し。",
       "slug": "app-sugoroku",
       "date": "2026-06-04",

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>"10 번 하면 게임이라고 했잖아." 했나? 한 거 같기도, 안 한 거 같기도 — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="일요일 오후, 아이가 문제집 풀다 말고 "10 번이면 게임이지, 3 번 남았어" 라고 했어요. 제가 그렇게 말했나, 한 거 같기도 안 한 거 같기도. TodoBank 는 아이와의 약속을 부모의 기억이 아니라 통장에 저축해 두는 앱이라, "몇 번 남았는지" 가 잔액으로 보여요. 의욕 없는 날엔 잔액에서 인출도 가능합니다." />
+<link rel="canonical" href="https://lycoapp.com/ko/blog/posts/app-bank.html" />
+<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/app-bank.html" />
+<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/app-bank.html" />
+<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/app-bank.html" />
+<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/app-bank.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/app-bank.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="&quot;10 번 하면 게임이라고 했잖아.&quot; 했나? 한 거 같기도, 안 한 거 같기도" />
+<meta property="og:description" content="일요일 오후, 아이가 "10 번이면 게임이지, 3 번 남았어" 라고 했어요. 한 거 같기도, 안 한 거 같기도. TodoBank 는 아이와의 약속을 부모의 기억이 아니라 통장에 저축해 두는 앱입니다." />
+<meta property="og:url" content="https://lycoapp.com/ko/blog/posts/app-bank.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="&quot;10 번 하면 게임이라고 했잖아.&quot; 했나? 한 거 같기도, 안 한 거 같기도" />
+<meta name="twitter:description" content="일요일 오후, 아이가 "10 번이면 게임이지, 3 번 남았어" 라고 했어요. 한 거 같기도, 안 한 거 같기도. TodoBank 는 약속을 부모 기억이 아니라 통장에 저축." />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<style>
+  body { margin:0; font-family: system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  .app-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.5px; color:#fff; background:#3F8C7E; padding:3px 10px; border-radius:999px; margin-bottom:10px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #3F8C7E; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #C9EBE0 60%); padding: 0 2px; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #3F8C7E; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.7; }
+  .body ol, .body ul { margin: 0 0 1.4em; padding-left: 22px; }
+  .body li { margin-bottom: 6px; }
+  .app-link { display: inline-block; margin-top: 24px; padding: 12px 22px; background: #3F8C7E; color: #fff; text-decoration: none; border-radius: 999px; font-weight: 800; font-size: 14px; transition: transform .15s ease, box-shadow .15s ease; }
+  .app-link:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(63,140,126,.3); }
+  .refs { margin-top: 40px; padding-top: 18px; border-top: 1px dashed #D6C9B5; font-size: 12px; color:#5C4936; }
+  .refs ol { padding-left: 18px; margin: 0; }
+  .refs li { margin-bottom: 6px; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+.post-tldr { border-top: 1px solid #C9B79A; border-bottom: 1px solid #C9B79A; padding: 14px 0; margin: 0 0 20px; font-size: 15px; line-height: 1.75; color: #3D2E1F; }
+  /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← 현재"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 20px 0 0; padding: 10px 0 0; border-top: 1px solid #D6C9B5; opacity: .7; }
+  .post-byline-text { margin: 0 0 4px; font-size: 12px; line-height: 1.6; color: #5C4936; }
+  .post-byline-links { margin: 0; font-size: 12px; line-height: 1.6; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
+  /* END blog-extension-styles */
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "\"10 번 하면 게임이라고 했잖아.\" 했나? 한 거 같기도, 안 한 거 같기도",
+  "description": "일요일 오후, 아이가 문제집 풀다 말고 \"10 번이면 게임이지, 3 번 남았어\" 라고 했어요. 제가 그렇게 말했나, 한 거 같기도 안 한 거 같기도. TodoBank 는 아이와의 약속을 부모의 기억이 아니라 통장에 저축해 두는 앱이라, \"몇 번 남았는지\" 가 잔액으로 보여요. 의욕 없는 날엔 잔액에서 인출도 가능합니다.",
+  "datePublished": "2026-06-05",
+  "dateModified": "2026-06-05",
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/ko/about/#lyco", "name": "Lyco" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/ko/blog/posts/app-bank.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
+  "inLanguage": "ko"
+}
+</script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "홈",
+      "item": "https://lycoapp.com/ko/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "칼럼",
+      "item": "https://lycoapp.com/ko/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "\"10 번 하면 게임이라고 했잖아.\" 했나? 한 거 같기도, 안 한 거 같기도"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
+</head>
+<body>
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← 칼럼 목록</a>
+  <span class="app-badge">TodoBank</span>
+  <h1>"10 번 하면 게임이라고 했잖아." 했나? 한 거 같기도, 안 한 거 같기도</h1>
+  <div class="meta">2026-06-05</div>
+  <!-- BEGIN series-box -->
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">태그:</span>
+    <a class="post-tag" href="../tag/koe-kake.html">말 거는 법</a>
+    <a class="post-tag" href="../tag/parent-self-image.html">부모의 마음</a>
+  </div>
+  <!-- END tags -->
+  <div class="body">
+
+<p id="tldr" class="post-tldr">일요일 오후, 아이가 문제집 한 페이지 풀고 저를 보며 "10 번이면 게임이지, 3 번 남았어" 라고 했어요. 제가 진짜로 그렇게 말했는지, 한 거 같기도 안 한 거 같기도. 우리 집만 그런 줄 알았는데 아마 아니겠죠. TodoBank 는 아이와의 약속을 부모의 기억이 아니라 통장에 저축해 두는 앱이라, "몇 번 남았는지" 가 잔액으로 보여요. 의욕 없는 날은 잔액에서 인출하고, 전체적으로는 그래도 앞으로 갑니다.</p>
+
+<p>일요일 오후. 아이가 문제집 한 페이지를 풀고 저를 보면서 말합니다.</p>
+
+<blockquote>"이거 10 번 하면 게임 하기로 했잖아. 3 번 남았어"</blockquote>
+
+<p>…그런 약속, 한 적 있나.</p>
+
+<p>한 거 같기도 해요. 10 번이었는지 5 번이었는지, 게임이었는지 간식이었는지, 이제 기억도 안 납니다. 그런데 아이 안에서는 이미 사인된 계약이에요.</p>
+
+<p>여기서 "그런 약속 한 적 없어" 라고 하면 거짓말쟁이 취급당하면서 폭발합니다. "아 맞다 맞다" 라고 넘기면, 조건이 조금씩 아이한테 유리한 쪽으로 다시 써져 가요. 어느 쪽으로 굴러도 제가 불리합니다.</p>
+
+<p>우리 집만 그런 줄 알았는데, 의외로 흔한 모양이에요.</p>
+
+<h2>약속을 기억 못 하는 건, 보통 부모 쪽</h2>
+
+<p>아이는 자기한테 유리한 약속을 놀랄 만큼 정확히 기억합니다. 부모는 그 순간의 분위기로 "10 번 하면 알았어" 라고 던지고, 3 초 뒤에는 잊고 있어요. <strong>기억력 시합에서, 그냥 지고 있는 거죠</strong>.</p>
+
+<p>게다가 "했네 안 했네" 상황이 되면 부모는 이미 게임 끝입니다. 증거가 없으니까. 아이가 "했잖아" 라고 하면, 저는 "한 거… 같지 않은데… 모르겠네…" 정도밖에 못 합니다. 약해요.</p>
+
+<h2>어른도 똑같이 하고 있어요</h2>
+
+<p>포인트 카드의 "몇 개 더 사면 하나 무료", 본인이 지금 몇 개까지 채웠는지 기억하세요? 저는 못 합니다. 계산대에서 "2,000 원만 더 사시면 도장 찍어드려요" 라고 들어야 그제서야 떠올라요. 마일리지, 술자리의 말로 한 약속, 다 비슷합니다.</p>
+
+<p>사람은 "보상까지 몇 번 남았는지" 를 머리 안에만 두면 관리를 못 해요. 그래서 가게가 카드에 대신 적어주고 있는 거죠.</p>
+
+<p>그걸 아이한테는 "네가 알아서 기억해" 라고 요구하는 셈이라, 솔직히 좀 무리한 부탁입니다.</p>
+
+<h2>약속은, 기억 말고 통장에 저축한다</h2>
+
+<p>우리 집에서 만들고 있는 TodoBank 는, 그 "보상 약속" 을 <strong>부모의 기억이 아니라 통장에 저축해 두는 앱</strong>이에요.</p>
+
+<p>하는 건 간단합니다. 통장 하나 만들고, 메모란에 약속을 적어둬요. "10 페이지에 좋아하는 간식" 이런 식으로. 아이가 한 페이지 풀 때마다 통장에 "예치" 하고요. 한 만큼이 잔액으로 쌓입니다.</p>
+
+<p>"3 번 남았어" 가 부모의 흐릿한 기억이 아니라 잔액으로 보이는 거예요. 아이도 부모도 같은 숫자를 봅니다. "했네 안 했네" 가 안 생겨요. 통장에 적혀 있으니까.</p>
+
+<h2>의욕 없는 날은, 잔액에서 "인출"</h2>
+
+<p>우리 집 아이는, 기복이 있어요. 의욕 있는 날엔 5 페이지씩 막 하고, 안 되는 날엔 진짜로 한 페이지도 손 안 댑니다. 0 아니면 100.</p>
+
+<p>그런 날은 잔액에서 "인출" 합니다. 어제 더 한 만큼에서 오늘 분량을 빼두는 거죠. 오늘 0 페이지여도, 잔액만 줄 뿐 전체적으로는 앞으로 갑니다. 0/1 의 체크리스트면 "안 한 날" 은 통째로 적자가 되는데, 저금이랑 상쇄가 되면 오늘은 쉬어도 한 주가 무너지진 않아요.</p>
+
+<p>솔직히 부모 입장에선 매일 꾸준히 해주는 게 고맙죠. 근데 기복 있는 아이한테 "매일 같은 양" 을 요구하는 건, 제 사정이지 아이 사정은 아닌 거 같아서요. 전체적으로 가고 있으면 일단 OK 로 하고 있습니다.</p>
+
+<h2>왠지, 더 모아두고 싶어 하더라고요</h2>
+
+<p>이게 재밌는 건, 통장이 있으니까 왠지 잔액을 좀 키우고 싶어 하는 거 같아요. 의욕 있는 날엔 정해진 양보다 조금 더 "예치" 하기 시작했습니다. "내일은 아무것도 안 하고 놀 거니까 오늘 미리 저장해 둘게" ── 제가 시킨 게 아니라, 본인이 먼저 말해요.</p>
+
+<p>그거 스케줄 관리잖아요, 라고 생각했어요.</p>
+
+<p>일로 치면 <strong>WBS 같은 거</strong>예요. "다음 주는 회의가 꽉 차니까 이번 주에 미리 땡겨두자" 랑 구조가 같습니다. WBS 가 없는 프로젝트는 매주 같은 양을 꾸역꾸역 안 하면 안 굴러가서, 안에서 보면 데스마치 같죠. 끝이 안 보이는데 매일 똑같은 거 반복, 진짜 디게 피곤한 느낌입니다.</p>
+
+<p>제대로 된 스케줄 관리는 아이한테 아직 이르지만, "할 일은 미리 땡길 수 있구나" 를 몸으로 익히는 그 정도는 괜찮은 거 같아요. 의욕 있는 날에 많이 해두고 내일은 논다. 이거, 어른 되고도 한참 쓰는 기술이거든요.</p>
+
+<h2>주의할 거 몇 가지</h2>
+
+<p>겸사겸사 몇 가지.</p>
+
+<p>아이가 "예치" 를 막 눌러서 잔액을 부풀리는 꼼수는 당연히 시도합니다. 그래서 예치에 비밀번호 걸 수 있어요. 안 걸어도 됩니다. 잊었거나 안 걸었어도 간단한 암산 문제로 통과되니까 아이가 완전히 잠기진 않아요.</p>
+
+<p>이자는 안 붙습니다. 진짜 은행이랑 다르게 저축해도 안 늘어요. 대신 줄지도 않아요. 어제의 노력이 오늘로 이어진다는 거죠. 그것만으로 우리 집은 충분합니다.</p>
+
+<p>계좌는 마이너스도 됩니다. "다음 주 분 미리 당겨오기" 같은 용법은 가능하지만, 마이너스 전제로 굴리면 결국 그 "다음 주" 가 힘들어지니까 적당히.</p>
+
+<p>덤으로 부모 쪽 얘기. 아이가 저축에 재미 붙이면 부모도 신나서 "더 해보자!" 하고 자꾸 떠밀고 싶어지는데요, 너무 시키면 아이 의욕이 뚝 부러집니다 (경험담). 이것도 적당히.</p>
+
+<h2>뭐, 언젠가는 안 쓰게 되겠죠</h2>
+
+<p>이 앱이 평생 필요한 건 아니에요. 약속을 본인이 기억할 수 있는 나이가 되면 이런 앱은 안 써도 됩니다. 그때까지 부모 기억력을 받쳐주는 지팡이 같은 거예요.</p>
+
+<p>(겸사겸사 제 기억력도 받쳐줬으면 좋겠는데, 그건 아마 다른 앱이 필요할 거 같고요)</p>
+
+<p>그래서 오늘도 아이한테 "통장에 3 번 남았다고 적혀 있네" 라고 화면 보여주고, 제가 잊고 있던 약속을 슬쩍 이행하고 있습니다. 부모의 권위, 전혀 없어요. 뭐, 그런 거죠.</p>
+
+<p><a class="app-link" href="../../apps/bank.html">TodoBank 보러 가기 →</a></p>
+
+  </div>
+  <!-- BEGIN related-posts -->
+  <!-- END related-posts -->
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="app-timer.html"><span class="post-nav-label">← 이전 글</span><span class="post-nav-title">타이머만 맞추면, 꼭 싸움이 나요<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+    <a class="post-nav-next" href="app-sugoroku.html"><span class="post-nav-label">다음 글 →</span><span class="post-nav-title">&quot;몇 개 남았어?&quot; &quot;아직 멀었어?&quot; 가 매일 아침의 인사가 됐어요<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+  </nav>
+  <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — 육아 중인 엔지니어.</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ 소개</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ 연락</a>
+  </p>
+</div>
+<!-- END byline -->
+  </div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/ja/common.js"></script>
+<script src="../../../content/ja/todo.js"></script>
+<script src="../../../content/ja/record.js"></script>
+<script src="../../../content/ja/tool.js"></script>
+<script src="../../../content/ja/other.js"></script>
+<script src="../../../content/en-US/common.js"></script>
+<script src="../../../content/en-US/todo.js"></script>
+<script src="../../../content/en-US/record.js"></script>
+<script src="../../../content/en-US/tool.js"></script>
+<script src="../../../content/en-US/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
+<script defer src="../../../shared/analytics.js"></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="육아 정말 힘들죠. 함께 힘내요 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>
