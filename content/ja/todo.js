@@ -150,7 +150,7 @@ window.__CONTENT__.ja.categories.todo = {
       id: "bank",
       name: "TodoBank",
       tag: "貯金",
-      appstore_url: "",
+      appstore_url: "https://apps.apple.com/app/id6774645425",
       hero_image: "images/apps/bank.jpeg",
       pricing: "無料",
       formula_a: "通帳",

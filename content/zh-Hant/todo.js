@@ -144,7 +144,7 @@ window.__CONTENT__["zh-Hant"].categories.todo = {
       id: "bank",
       name: "TodoBank",
       tag: "存錢",
-      appstore_url: "",
+      appstore_url: "https://apps.apple.com/app/id6774645425",
       hero_image: "images/apps/bank.jpeg",
       pricing: "免費",
       formula_a: "存摺",

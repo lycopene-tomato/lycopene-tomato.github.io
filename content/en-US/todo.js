@@ -144,7 +144,7 @@ window.__CONTENT__["en-US"].categories.todo = {
       id: "bank",
       name: "TodoBank",
       tag: "Saving up",
-      appstore_url: "",
+      appstore_url: "https://apps.apple.com/app/id6774645425",
       hero_image: "images/apps/bank.jpeg",
       pricing: "Free",
       formula_a: "Savings book",

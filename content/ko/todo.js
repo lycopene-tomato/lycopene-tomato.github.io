@@ -144,7 +144,7 @@ window.__CONTENT__.ko.categories.todo = {
       id: "bank",
       name: "TodoBank",
       tag: "저축",
-      appstore_url: "",
+      appstore_url: "https://apps.apple.com/app/id6774645425",
       hero_image: "images/apps/bank.jpeg",
       pricing: "무료",
       formula_a: "통장",
