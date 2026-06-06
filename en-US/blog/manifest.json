@@ -14,54 +14,37 @@
       "description": "The Lyco App apps lean on rewards and game mechanics. So this concern comes up: are we raising a kid who won't move without a prize? Our answer, anchored in ADHD dopamine research and how habits actually form."
     },
     {
-      "_comment": "TroubleNote (slug: trouble, SKU: TroubleNote) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-trouble.md 起点。学校から繰り返し電話がかかる → 1 件あたり覚える情報 (相手の子・親・経緯・謝罪状況) が多すぎる → 半年で記憶がぐにゃぐにゃ → 授業参観で誰の親に謝るか分からない → トラブルノート = 親専用、子供向け機能ゼロ、整理に振り切ったアプリ → 友達別集計・カレンダー・場所別・ペアレントゲートで親メモを子から隠す → アドバイス機能は意図的に入れていない → 担任に客観数字で伝えると話が早い → 末尾: 記録すれば手が出る回数が減ってる子供の成長も見える = 親の気持ちを落ち着かせるための可視化機能でもある。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は parent-self-image / cognitive-bias (自分を責めてる親 + 外圧で苦しむ親の両セグメント、adhd-related は My-Life ルール上回避)。色はニュートラル (深刻トーンに合わせて淡々と)。Log 系 = アプリ群初の親専用記録カテゴリ。比喩は『記憶ではなく台帳』+『ゴールが見えると堪えられる』(成長可視化)。",
-      "slug": "app-trouble",
-      "date": "2026-06-06",
+      "slug": "app-gacha",
+      "date": "2026-05-04",
       "tags": [
-        "parent-self-image",
-        "cognitive-bias"
-      ],
-      "series_id": null,
-      "series_order": null,
-      "section": "apps",
-      "pinned": false,
-      "app_badge_key": "trouble-note",
-      "title": "\"The school's calling again.\" Chest tightens, every time.",
-      "description": "When the school keeps calling, six months in your memory is mush — who was that kid, what happened, did I apologize to that parent? TroubleNote is a parent-only log for incidents, organized by friend, by date, by place. No advice. Just lays it out. And when the data shows your kid is actually hitting less than last year, you breathe a little.",
-      "app_badge": "TroubleNote"
-    },
-    {
-      "_comment": "PlanetLoopTimer (slug: timer, SKU: PlanetLoopTimer) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-timer.md 起点。「あと5分」が終わらない/タイマーが鳴った後の方が長い → 普通のタイマー = 自分が動かしてない時計に追い立てられる理不尽 → PlanetLoopTimer は休憩時間を子が自分で惑星を打ち上げて作る → 太陽の重力で螺旋を描いて吸い込まれる『段階が見える』終わり方 → 水星〜海王星で距離=時間/冥王星は∞チャレンジ → 声かけが『もう時間』から『水星でいく?海王星でいく?』に変わった。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は koe-kake (下書きの cognitive-bias はユーザー指示で外した)。色は実用ガイド (下書きは『エンジニア集中』だったが、直前の app-bank が同色のため連投回避で変更)。Timer 系 = Todo 系と違うカテゴリ。比喩は『自分で打ち上げる時間』+『太陽の重力で吸い込まれる=段階が見える終わり』。",
-      "slug": "app-timer",
-      "date": "2026-06-06",
-      "tags": [
+        "morning-routine",
         "koe-kake"
       ],
       "series_id": null,
       "series_order": null,
       "section": "apps",
       "pinned": false,
-      "app_badge_key": "planet-loop-timer",
-      "title": "Set a timer, start a fight. Every time.",
-      "description": "The longest part of any timer in our house is after it goes off. PlanetLoopTimer makes the break something the kid launches himself — a planet around the sun, no number ticking down against his will — so the end is one he actually agreed to. My script went from 'time's up' to 'Mercury or Neptune?'",
-      "app_badge": "PlanetLoopTimer"
+      "app_badge_key": "todo-gacha",
+      "title": "\"Hurry up\" had become my whole morning vocabulary",
+      "description": "Three rounds of 'hurry up!' before 7:45 every morning. When the morning routine isn't moving, TodoGatya lets the kid draw the next task themselves — and the self-determination piece cuts the nagging in half.",
+      "app_badge": "TodoGacha"
     },
     {
-      "_comment": "TodoBank (slug: bank, SKU: TodoBank) のアプリ別コラム (0-B)。「10 回でゲームって言ったよ」── 約束を覚えてないのは親のほうだと気付いた話 → 約束を親の記憶じゃなく通帳に貯金する → 「あと何回」が残高で見えて言った言わないが消える → やる気のない日は引き出す (波の平準化) → 通帳があると貯めたくなって先取りが始まる = WBS と前倒し / WBS なしのプロジェクト = デスマーチ → 注意点 (パスワード / 金利なし / マイナス可 / やらせすぎ NG)。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は koe-kake / parent-self-image。色はエンジニア集中 (WBS / デスマーチ / スケジュール管理 / タスク前倒し)。比喩は『約束は記憶じゃなく通帳に貯金』+『WBS なしのプロジェクト = デスマーチ』。",
-      "slug": "app-bank",
-      "date": "2026-06-05",
+      "_comment": "TodoBingo (slug: bingo, SKU: TodoBingo) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-bingo.md 起点。「自分でやるから言わないで」vs「言わないと動かない」のジレンマ → やる事をビンゴ盤に置いて子が順番を選ぶ。真ん中マス戦略・カレンダービンゴ (夏休み宿題)・Zeigarnik 効果。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は morning-routine / koe-kake。色は実用ガイド。",
+      "slug": "app-bingo",
+      "date": "2026-06-02",
       "tags": [
-        "koe-kake",
-        "parent-self-image"
+        "morning-routine",
+        "koe-kake"
       ],
       "series_id": null,
       "series_order": null,
       "section": "apps",
       "pinned": false,
-      "app_badge_key": "todo-bank",
-      "title": "\"You said ten times for game time.\" Did I, though?",
-      "description": "My kid hits me with 'ten worksheets for game time, remember?' and I genuinely cannot remember if I said it. TodoBank parks the deal in a passbook instead of my memory, so 'three more to go' shows up as a balance — and on a low-energy day, the balance covers it.",
-      "app_badge": "TodoBank"
+      "app_badge_key": "todo-bingo",
+      "title": "\"I've got it, stop telling me\" — but nothing moves until I do",
+      "description": "My kid won't get ready in the morning, but the second I say anything it's 'I've got it, stop telling me.' Todo Bingo puts the tasks on a board and lets him pick the order. How we use the center square and a summer-homework calendar, from our actual house.",
+      "app_badge": "TodoBingo"
     },
     {
       "_comment": "Todoすごろく (slug: sugoroku, SKU: TodoLadders) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-sugoroku.md 起点。「あと何個?」「次なに?」と朝じゅう聞かれる → 子は『1 日の地図』が頭に描けてないだけ → 今日のやる事をすごろく盤面にして先を見える化 / ごほうびマス = 休憩所 / 最初のマスは 30 秒で終わる簡単なやつ。後半で『もう 1 つの使い方』= 1 つのタスクをさらに細かいマスに割る (「勉強しなさい」を 問題集出す→座る→ノート開く→1 問解く の 4 マスに分解、ストッパー『鉛筆ない→ぐだー』を先に潰す)。視覚支援/TEACCH は『絵が見えるだけ』と平易化。tags は morning-routine / koe-kake。色は父親ワンオペ視点。JA のみ公開、多言語派生 (en-US/zh-Hant/ko) は未生成。TodoBingo との差別化: Bingo=自己決定 / Sugoroku=見通し。",
@@ -98,21 +81,54 @@
       "app_badge": "TodoFarm"
     },
     {
-      "_comment": "TodoBingo (slug: bingo, SKU: TodoBingo) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-bingo.md 起点。「自分でやるから言わないで」vs「言わないと動かない」のジレンマ → やる事をビンゴ盤に置いて子が順番を選ぶ。真ん中マス戦略・カレンダービンゴ (夏休み宿題)・Zeigarnik 効果。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は morning-routine / koe-kake。色は実用ガイド。",
-      "slug": "app-bingo",
-      "date": "2026-06-02",
+      "_comment": "TodoBank (slug: bank, SKU: TodoBank) のアプリ別コラム (0-B)。「10 回でゲームって言ったよ」── 約束を覚えてないのは親のほうだと気付いた話 → 約束を親の記憶じゃなく通帳に貯金する → 「あと何回」が残高で見えて言った言わないが消える → やる気のない日は引き出す (波の平準化) → 通帳があると貯めたくなって先取りが始まる = WBS と前倒し / WBS なしのプロジェクト = デスマーチ → 注意点 (パスワード / 金利なし / マイナス可 / やらせすぎ NG)。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は koe-kake / parent-self-image。色はエンジニア集中 (WBS / デスマーチ / スケジュール管理 / タスク前倒し)。比喩は『約束は記憶じゃなく通帳に貯金』+『WBS なしのプロジェクト = デスマーチ』。",
+      "slug": "app-bank",
+      "date": "2026-06-05",
       "tags": [
-        "morning-routine",
+        "koe-kake",
+        "parent-self-image"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "todo-bank",
+      "title": "\"You said ten times for game time.\" Did I, though?",
+      "description": "My kid hits me with 'ten worksheets for game time, remember?' and I genuinely cannot remember if I said it. TodoBank parks the deal in a passbook instead of my memory, so 'three more to go' shows up as a balance — and on a low-energy day, the balance covers it.",
+      "app_badge": "TodoBank"
+    },
+    {
+      "_comment": "TroubleNote (slug: trouble, SKU: TroubleNote) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-trouble.md 起点。学校から繰り返し電話がかかる → 1 件あたり覚える情報 (相手の子・親・経緯・謝罪状況) が多すぎる → 半年で記憶がぐにゃぐにゃ → 授業参観で誰の親に謝るか分からない → トラブルノート = 親専用、子供向け機能ゼロ、整理に振り切ったアプリ → 友達別集計・カレンダー・場所別・ペアレントゲートで親メモを子から隠す → アドバイス機能は意図的に入れていない → 担任に客観数字で伝えると話が早い → 末尾: 記録すれば手が出る回数が減ってる子供の成長も見える = 親の気持ちを落ち着かせるための可視化機能でもある。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は parent-self-image / cognitive-bias (自分を責めてる親 + 外圧で苦しむ親の両セグメント、adhd-related は My-Life ルール上回避)。色はニュートラル (深刻トーンに合わせて淡々と)。Log 系 = アプリ群初の親専用記録カテゴリ。比喩は『記憶ではなく台帳』+『ゴールが見えると堪えられる』(成長可視化)。",
+      "slug": "app-trouble",
+      "date": "2026-06-06",
+      "tags": [
+        "parent-self-image",
+        "cognitive-bias"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "trouble-note",
+      "title": "\"The school's calling again.\" Chest tightens, every time.",
+      "description": "When the school keeps calling, six months in your memory is mush — who was that kid, what happened, did I apologize to that parent? TroubleNote is a parent-only log for incidents, organized by friend, by date, by place. No advice. Just lays it out. And when the data shows your kid is actually hitting less than last year, you breathe a little.",
+      "app_badge": "TroubleNote"
+    },
+    {
+      "_comment": "PlanetLoopTimer (slug: timer, SKU: PlanetLoopTimer) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/app-timer.md 起点。「あと5分」が終わらない/タイマーが鳴った後の方が長い → 普通のタイマー = 自分が動かしてない時計に追い立てられる理不尽 → PlanetLoopTimer は休憩時間を子が自分で惑星を打ち上げて作る → 太陽の重力で螺旋を描いて吸い込まれる『段階が見える』終わり方 → 水星〜海王星で距離=時間/冥王星は∞チャレンジ → 声かけが『もう時間』から『水星でいく?海王星でいく?』に変わった。4 言語派生 (ja/en-US/zh-Hant/ko)。tags は koe-kake (下書きの cognitive-bias はユーザー指示で外した)。色は実用ガイド (下書きは『エンジニア集中』だったが、直前の app-bank が同色のため連投回避で変更)。Timer 系 = Todo 系と違うカテゴリ。比喩は『自分で打ち上げる時間』+『太陽の重力で吸い込まれる=段階が見える終わり』。",
+      "slug": "app-timer",
+      "date": "2026-06-06",
+      "tags": [
         "koe-kake"
       ],
       "series_id": null,
       "series_order": null,
       "section": "apps",
       "pinned": false,
-      "app_badge_key": "todo-bingo",
-      "title": "\"I've got it, stop telling me\" — but nothing moves until I do",
-      "description": "My kid won't get ready in the morning, but the second I say anything it's 'I've got it, stop telling me.' Todo Bingo puts the tasks on a board and lets him pick the order. How we use the center square and a summer-homework calendar, from our actual house.",
-      "app_badge": "TodoBingo"
+      "app_badge_key": "planet-loop-timer",
+      "title": "Set a timer, start a fight. Every time.",
+      "description": "The longest part of any timer in our house is after it goes off. PlanetLoopTimer makes the break something the kid launches himself — a planet around the sun, no number ticking down against his will — so the end is one he actually agreed to. My script went from 'time's up' to 'Mercury or Neptune?'",
+      "app_badge": "PlanetLoopTimer"
     },
     {
       "_comment": "Receive No.1 (PC-9801 N88-BASIC テニスゲーム移植) の開発記。意図的に off-topic (育児テーマ外)、ターゲットは日本のレトロ PC 好きで被リンク獲得目的。pin なし、tags は retro-pc 1 つだけ (育児系タグは付けない)。**2026-06-03 に 4 言語派生** (en-US / zh-Hant / ko) ── アプリ紹介記事として『日本にベーマガという雑誌があってね』フレーミングで dev-log + 文化導入として翻案。BASIC コード抜粋は universal で全 4 言語同一。JA の hreflang ブロックも 4 言語 + x-default=en-US に拡張済、言語スイッチャー (langs.js) からの 404 解消。",
@@ -129,22 +145,6 @@
       "title": "Bēmaga, 30 years later — porting a 100-line BASIC game to iPhone",
       "description": "There was an 80s Japanese hobby-programming magazine called Microcomputer BASIC Magazine (everyone called it Bēmaga). I took a tennis game printed in it, originally for PC-9801 in N88-BASIC, and ported the whole 100 lines to iPhone — same physics, same trig table, plus a Genetic Algorithm CPU opponent.",
       "app_badge": "Receive No.1"
-    },
-    {
-      "slug": "app-gacha",
-      "date": "2026-05-04",
-      "tags": [
-        "morning-routine",
-        "koe-kake"
-      ],
-      "series_id": null,
-      "series_order": null,
-      "section": "apps",
-      "pinned": false,
-      "app_badge_key": "todo-gacha",
-      "title": "\"Hurry up\" had become my whole morning vocabulary",
-      "description": "Three rounds of 'hurry up!' before 7:45 every morning. When the morning routine isn't moving, TodoGatya lets the kid draw the next task themselves — and the self-determination piece cuts the nagging in half.",
-      "app_badge": "TodoGacha"
     },
     {
       "_comment": "韓国の諺『우는 아이 떡 하나 더 준다 (泣く子は餅を一つ多くもらえる)』を入口に、我が家ではごね得 (泣き叫んで通す) だけは絶対に通さない / でも『これ苦手、少しでいい?』みたいな騒がずの交渉は全部聞く、というルールを夕飯の癇癪エピソードから書いた 0-C 一般コラム。間欠強化 (Ferster & Skinner 1957) を『アプリ設計の参考にしてるエンジニアの癖』スタンスで 1 本だけ引用。ODD で『何を言われたか』でなく『誰に言われたか』で反抗してくる現実 + ADHD 育児ブログを読んで『大変』を超えた疲れ + アプリ群は試行錯誤の残骸でうちの子に効かなくても他の子に届けば、で締め。tag は kansai-everyday (愚痴・応援したい層 → BMC 寄付導線)。色はニュートラル。4 言語派生 (ja/en-US/zh-Hant/ko): en-US は 'squeaky wheel gets the grease' / zh-Hant は『會吵的孩子有糖吃』を自国の諺として並べ、韓国諺は Hangul のまま尊重して残す。ko は自国の諺なので『韓国の諺で』前置きなし、諺をそのまま投下し『ごね得』相当の別語は出さない (諺自体がそれ)。",
