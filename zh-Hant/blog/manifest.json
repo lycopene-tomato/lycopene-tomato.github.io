@@ -147,6 +147,21 @@
       "app_badge": "Receive No.1"
     },
     {
+      "_comment": "「育児フレームワーク」新シリーズ第一弾 (0-C 一般)。LP/BLOG_DRAFTS/parenting-frameworks.md 起点。フック: ○○駆動開発 (TDD/FDD/BDD/MDD/DDD/TiDD/CDD/AIDD) 多すぎ問題 → フレームワーク = 先人の英知の缶詰、何も考えず乗っかった方が手戻り少ない (ITIL/PMBOK 資格取得) → ビジネスメンバーは「めんどくさい/必要ない」と言うけど、ITIL も「カスタマイズして使え」と書いてある → 育児にも同じ構造、エンジニア語彙で「育児 TDD/BDD/DDD」と整理してみる思考実験 → ペアプロとしての親子 (XP 精神を育児に輸入)。アブリーブ表記ルール:初出 () + JA フルスペル、2 回目以降は略号のみ。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆 (翻訳ではない)。tags は dev-methods (エンジニア父・母ニッチ)。色はエンジニア×育児。シリーズ id = parenting-frameworks (新規)、role: index。比喩は『先人の英知の缶詰』+『料理のレシピ』。",
+      "slug": "parenting-frameworks",
+      "date": "2026-06-07",
+      "tags": [
+        "dev-methods"
+      ],
+      "series_id": "parenting-frameworks",
+      "series_order": 1,
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "工程師爸爸認真把「育兒框架」當回事(系列開頭)",
+      "description": "軟體開發的「○○驅動開發」實在太多了。可是每個框架都是前人智慧的罐頭,跟著走通常少走彎路。同樣的思路想試試育兒 ── 把 TDD、BDD、DDD、XP 翻成「育兒框架」的系列,從這篇開始。"
+    },
+    {
       "_comment": "韓国の諺『우는 아이 떡 하나 더 준다 (泣く子は餅を一つ多くもらえる)』を入口に、我が家ではごね得 (泣き叫んで通す) だけは絶対に通さない / でも『これ苦手、少しでいい?』みたいな騒がずの交渉は全部聞く、というルールを夕飯の癇癪エピソードから書いた 0-C 一般コラム。間欠強化 (Ferster & Skinner 1957) を『アプリ設計の参考にしてるエンジニアの癖』スタンスで 1 本だけ引用。ODD で『何を言われたか』でなく『誰に言われたか』で反抗してくる現実 + ADHD 育児ブログを読んで『大変』を超えた疲れ + アプリ群は試行錯誤の残骸でうちの子に効かなくても他の子に届けば、で締め。tag は kansai-everyday (愚痴・応援したい層 → BMC 寄付導線)。色はニュートラル。4 言語派生 (ja/en-US/zh-Hant/ko): en-US は 'squeaky wheel gets the grease' / zh-Hant は『會吵的孩子有糖吃』を自国の諺として並べ、韓国諺は Hangul のまま尊重して残す。ko は自国の諺なので『韓国の諺で』前置きなし、諺をそのまま投下し『ごね得』相当の別語は出さない (諺自体がそれ)。",
       "slug": "crying-child-rice-cake",
       "date": "2026-06-03",

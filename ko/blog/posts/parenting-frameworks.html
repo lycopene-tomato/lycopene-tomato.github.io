@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작) — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="소프트웨어 개발의 「○○ 주도 개발」, 좀 많아요. 근데 프레임워크는 선배들 지혜의 통조림이고, 거기에 얹히면 보통 시행착오가 줄어요. 같은 발상을 육아에 ── TDD・BDD・DDD・XP 를 「육아 프레임워크」로 옮겨 보는 시리즈, 여기서 시작합니다." />
+<link rel="canonical" href="https://lycoapp.com/ko/blog/posts/parenting-frameworks.html" />
+<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/parenting-frameworks.html" />
+<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/parenting-frameworks.html" />
+<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/parenting-frameworks.html" />
+<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/parenting-frameworks.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/parenting-frameworks.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작)" />
+<meta property="og:description" content="소프트웨어 개발의 「○○ 주도 개발」, 좀 많아요. 근데 프레임워크는 선배들 지혜의 통조림이고, 거기에 얹히면 보통 시행착오가 줄어요. 같은 발상을 육아에 옮겨 보는 시리즈 시작." />
+<meta property="og:url" content="https://lycoapp.com/ko/blog/posts/parenting-frameworks.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작)" />
+<meta name="twitter:description" content="소프트웨어 방법론을 육아에 옮겨 보는 시리즈, 여기서 시작합니다." />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<style>
+  body { margin:0; font-family: system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #8B7355; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #FFE9B0 60%); padding: 0 2px; }
+  .body code { background: #F3EBD9; padding: 1px 6px; border-radius: 4px; font-size: 90%; }
+  .related-apps { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-apps .related-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; display: block; }
+  .related-apps .related-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+  .related-apps .related-list a { display: inline-block; padding: 6px 14px; background: #FBF6EE; border: 1px solid #E8E0CC; border-radius: 999px; text-decoration: none; color: #5C4936; font-size: 13px; font-weight: 600; transition: background .15s ease; }
+  .related-apps .related-list a:hover { background: #FFE9B0; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+.post-tldr { border-top: 1px solid #C9B79A; border-bottom: 1px solid #C9B79A; padding: 14px 0; margin: 0 0 20px; font-size: 15px; line-height: 1.75; color: #3D2E1F; }
+  /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← 현재"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 20px 0 0; padding: 10px 0 0; border-top: 1px solid #D6C9B5; opacity: .7; }
+  .post-byline-text { margin: 0 0 4px; font-size: 12px; line-height: 1.6; color: #5C4936; }
+  .post-byline-links { margin: 0; font-size: 12px; line-height: 1.6; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
+  /* END blog-extension-styles */
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작)",
+  "description": "소프트웨어 개발의 「○○ 주도 개발」, 좀 많아요. 근데 프레임워크는 선배들 지혜의 통조림이고, 거기에 얹히면 보통 시행착오가 줄어요. 같은 발상을 육아에 ── TDD・BDD・DDD・XP 를 「육아 프레임워크」로 옮겨 보는 시리즈, 여기서 시작합니다.",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07",
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/ko/about/#lyco", "name": "Lyco" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/ko/blog/posts/parenting-frameworks.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
+  "inLanguage": "ko"
+}
+</script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "홈",
+      "item": "https://lycoapp.com/ko/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "칼럼",
+      "item": "https://lycoapp.com/ko/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작)"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
+</head>
+<body>
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← 칼럼 목록</a>
+  <h1>개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작)</h1>
+  <div class="meta">2026-06-07</div>
+  <!-- BEGIN series-box -->
+  <aside class="series-box" data-series-id="parenting-frameworks">
+    <div class="series-label">육아 프레임워크 시리즈 — 1편</div>
+    <ol>
+      <li class="current">개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작)</li>
+    </ol>
+  </aside>
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">태그:</span>
+    <a class="post-tag" href="../tag/dev-methods.html">xx 주도 양육</a>
+  </div>
+  <!-- END tags -->
+  <div class="body">
+
+<p id="tldr" class="post-tldr">소프트웨어 개발의 「○○ 주도 개발」, 좀 많아요. 근데 프레임워크는 선배들 지혜의 통조림이고, 거기 얹히면 보통 시행착오가 줄어요. 같은 발상을 육아에 옮겨 보는 시리즈 ── TDD・BDD・DDD・XP 를 「육아 프레임워크」로 다시 쓰는 작업, 여기서 시작합니다.</p>
+
+<p>○○ 주도 개발, 좀 많지 않아요?</p>
+
+<p>TDD (테스트 주도 개발), FDD (기능 주도 개발), BDD (행동 주도 개발), MDD (모델 주도 개발), DDD (도메인 주도 설계), TiDD (티켓 주도 개발), CDD (컴포넌트 주도 개발), 요즘은 AIDD (AI 주도 개발) 까지 나왔어요.</p>
+
+<p>하고 싶은 말은 다 알아요.</p>
+
+<p>저도 기본적으로 항상 TDD 로 가고 싶은 사람이에요. 테스트 시나리오부터 먼저 적어 두고 싶어요. 코드 들어가기 전에 「뭐가 됐다 상태인지」 부터 정해 두고 싶어요.<br />
+MVP (Minimum Viable Product) 마무리할 때는 FDD 로 가고 싶고. 기능 단위로 잘게 쪼개서 하나씩 Done 으로 떨어뜨리고 싶어요.</p>
+
+<p>… 그건 알아요. 아는데, 그래도 ○○ 주도 개발, 좀 많아요.</p>
+
+<h2>프레임워크는 선배들 지혜의 통조림 같은 거</h2>
+
+<p>소프트웨어 개발에서 프레임워크 (framework / 방법론) 라는 거, <strong>선배들의 지혜랑 경험이 거의 다 담겨 있는 통조림</strong> 같은 거예요.</p>
+
+<p>아무 생각 없이 프레임워크에 얹혀서 가는 게 보통 잘 풀려요. 시행착오 줄고, 판단 횟수 줄고, 코드 리뷰도 편해요.</p>
+
+<p>티켓 관리도, ITIL (IT 서비스 관리 모범 사례 모음) 도, PMBOK (프로젝트 관리 지식 체계) 도, 예전에 한 번씩 읽었어요. 자격증도 땄고요. 읽으면서 대부분 「맞지, 맞지」 하고 끄덕이고 있었어요. 당연한 걸 당연하게 하는 게 결국 제일 빠른 길이라는 거, 대충 이거예요.</p>
+
+<p>우리 집 얘기로 바꿔 보면, 레시피랑 똑같아요.<br />
+프로가 쓴 레시피대로 하면 일단 적당히 맛있어요. 응용은 「레시피대로 세 번 만들고 나서」, 그런 법칙이 적용돼요.</p>
+
+<h2>근데 개발자 아닌 분들한테는 안 먹혀요</h2>
+
+<p>이걸 개발팀 밖에 도입하려고 하면, 디게 안 먹혀요.</p>
+
+<p>「귀찮아요」「우리 케이스에는 필요 없어요」「이렇게 빡빡하게 안 해도 잘 돌아가는데요」.<br />
+속으로는, <strong>야 이거 얼마나 많은 선배들 지혜가 들어 있는 건지 아냐</strong>, 그러고 있는데.</p>
+
+<p>근데 솔직히 반은 맞는 말이에요.</p>
+
+<p>ITIL 도 자세히 읽어 보면 「이대로 하라」고 한마디도 안 적혀 있어요. 오히려 케이스별로, 조직별로, 성숙도별로 커스텀해서 쓰라고 적혀 있어요.<br />
+○○ 주도 개발도 똑같아요. 프로젝트 규모, 단계, 팀원 숙련도에 맞춰서 골라서 커스텀해서 쓰는 거. 매번 풀세트로 풀파워 가는 게 그 도구의 사용법이 아니에요.</p>
+
+<p>그런 의미에서 비개발자 분들 「우리는 이거 필요 없어요」 도, 절반은 맞아요. 나머지 절반은, 그냥 통조림 라벨을 아직 못 본 거고요.</p>
+
+<h2>육아도 그런 거 아닌가요</h2>
+
+<p>여기서부터가 본론이에요.</p>
+
+<p>육아도 아마 같은 구조일 거예요.<br />
+선배들 지혜 ── 육아 책, 어린이집 선생님 말씀, 아동심리학 연구, 옆 동 할머니가 던지고 가신 한 마디. 형태는 다 다른데, 전부 「방법론의 통조림」이에요.</p>
+
+<p>다만, 아무도 「<strong>육아 TDD 같은 사고방식</strong>」이나 「<strong>육아 DDD 로 4 살 도메인을 존중</strong>」 식으로 정리해 주진 않았어요. 개발자 어휘로 보면, 육아의 지혜는 아직 별로 안 정리돼 있다는 게 솔직한 말이에요.</p>
+
+<p>그래서 이 시리즈에요.<br />
+개발자이기도 하고 부모이기도 한 사람의 어휘로, 선배들 지혜를 「육아 프레임워크」로 다시 줄세워 보면 뭐가 보일까, 라는 사고 실험이에요.</p>
+
+<p>TDD 라면, 작게 한번 실패시키고 거기서 배우게 하는 「<strong>실패 확인 주도</strong>」 정도로 옮길 수 있을지도 몰라요.<br />
+BDD 라면, Given / When / Then 으로 「이 시간, 이 상황, 아이가 X 하면 → 이렇게 반응한다」고 가설을 세우는 「<strong>관찰 주도</strong>」 일지도.<br />
+DDD 라면, 4 살의 도메인 (공룡은 지금도 어딘가 있다, 엘리베이터는 살아 있다) 을 존중하면서 어른 세계 단어로 설득하지 않는 「<strong>아이 세계관 주도</strong>」 일지도.</p>
+
+<p>적다 보니 알겠는데, 이거 꽤 튀는 사고 실험이에요.<br />
+잘 맞는 회차도 있을 거고, 전혀 안 맞는 회차도 있을 거예요. 안 맞을 땐 「왜 안 맞았는지」도 같이 적을게요. 그것도 선배들 지혜를 쓰는 방법의 하나라고 치고 싶어요.</p>
+
+<h2>페어 프로그래밍 같은 부모 자식</h2>
+
+<p>한 가지만 더, 시리즈의 척추가 될 만한 얘기를 둘게요.</p>
+
+<p>쇼핑할 때 아내가 「이 옷이랑 저 옷 어느 게 더 나아?」 하고 물을 때, 「아무거나 다 좋아」「둘 다 잘 어울려」 하고 답하기보다, 같이 고민해 주는 게 쇼핑 시간이 짧아진다는 얘기가 있어요. (출처는 까먹었어요. 어디 연구 같은 데서 본 거 같기도 하고.)</p>
+
+<p>이거, 소프트웨어 개발의 페어 프로그래밍 (pair programming) 이랑, XP (익스트림 프로그래밍) 정신 그대로네요.<br />
+혼자 끌어안고 끙끙대는 것보다 옆에서 같이 끙끙대 주는 사람이 있으면 판단이 빨라요. 결과물도, 살짝 더 나아지고, 만족감이 올라가는 느낌이 있어요.</p>
+
+<p>육아도 아마 똑같을 거예요.<br />
+「혼자 생각해」 라고 던지는 것도 물론 하나의 방법이에요. 근데 옆에서 같이 고민해 주는 부모가 있는 쪽이, 아이 판단 속도를 올려 주는 거 아닐까, 요즘 그런 생각을 자주 해요.<br />
+부모도 아이랑 같이 고민하면서 업데이트 돼요. 일방통행 교육이 아니라, 페어 프로그래밍이에요.</p>
+
+<p>XP 처럼, 아이랑 부모가 같이 고민하고 같이 자라는 ─ 그런 「육아 프레임워크」를, 소프트웨어 개발 방법론에서 수입해 보는. 그게 이 시리즈 전체 테마예요.</p>
+
+  </div>
+
+  <div class="related-apps">
+    <span class="related-label">이런 앱이 있어요</span>
+    <ul class="related-list">
+      <li><a href="../../apps/category-tool.html">Timer 계 →</a></li>
+    </ul>
+  </div>
+  <!-- BEGIN related-posts -->
+  <!-- END related-posts -->
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="receive-no1.html"><span class="post-nav-label">← 이전 글</span><span class="post-nav-title">베마가, 30 년 뒤 ── 100 줄짜리 BASIC 게임을 iPhone 으로 옮겼습니다</span></a>
+    <a class="post-nav-next" href="crying-child-rice-cake.html"><span class="post-nav-label">다음 글 →</span><span class="post-nav-title">&quot;내가 생각한 밥이 아니야&quot;, 그 한 마디로 식탁이 뒤집힙니다<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+  </nav>
+  <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — 육아 중인 엔지니어.</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ 소개</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ 연락</a>
+  </p>
+</div>
+<!-- END byline -->
+  </div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/ko/common.js"></script>
+<script src="../../../content/ko/todo.js"></script>
+<script src="../../../content/ko/record.js"></script>
+<script src="../../../content/ko/tool.js"></script>
+<script src="../../../content/ko/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
+<script defer src="../../../shared/analytics.js"></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="육아 정말 힘들죠. 함께 힘내요 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>
