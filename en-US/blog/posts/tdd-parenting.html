@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<title>The workbook was running TDD on us the whole time — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Three red X's stacked on a math sheet used to send me into hint-mode. Then it clicked — workbooks are basically a test suite. Wrong answers aren't bad. They're the point. Calling this Failure-Confirmation-Driven Parenting (parenting frameworks, Part 2)." />
+<link rel="canonical" href="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The workbook was running TDD on us the whole time" />
+<meta property="og:description" content="Three red X's stacked on a math sheet used to send me into hint-mode. Then it clicked — workbooks are basically a test suite. Failure-Confirmation-Driven Parenting." />
+<meta property="og:url" content="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The workbook was running TDD on us the whole time" />
+<meta name="twitter:description" content="Three red X's stacked on a math sheet used to send me into hint-mode. Then it clicked — workbooks are basically a test suite. Failure-Confirmation-Driven Parenting." />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<style>
+  body { margin:0; font-family: system-ui,-apple-system,"Segoe UI",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.75; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.35; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #8B7355; line-height:1.4; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #FFE9B0 60%); padding: 0 2px; }
+  .body code { background: #F3EBD9; padding: 1px 6px; border-radius: 4px; font-size: 90%; }
+  .body pre { background: #2D2419; color: #E8DCC4; padding: 14px 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; line-height: 1.6; margin: 0 0 1.4em; }
+  .body pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #8B7355; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.65; }
+  .body blockquote p { margin: 0 0 .4em; }
+  .body blockquote p:last-child { margin-bottom: 0; }
+  .body ol, .body ul { margin: 0 0 1.4em; padding-left: 22px; }
+  .body li { margin-bottom: 6px; }
+  .related-apps { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-apps .related-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; display: block; }
+  .related-apps .related-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+  .related-apps .related-list a { display: inline-block; padding: 6px 14px; background: #FBF6EE; border: 1px solid #E8E0CC; border-radius: 999px; text-decoration: none; color: #5C4936; font-size: 13px; font-weight: 600; transition: background .15s ease; }
+  .related-apps .related-list a:hover { background: #FFE9B0; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+  .post-tldr { border-top: 1px solid #C9B79A; border-bottom: 1px solid #C9B79A; padding: 14px 0; margin: 0 0 20px; font-size: 15px; line-height: 1.65; color: #3D2E1F; }
+  /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← you are here"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 20px 0 0; padding: 10px 0 0; border-top: 1px solid #D6C9B5; opacity: .7; }
+  .post-byline-text { margin: 0 0 4px; font-size: 12px; line-height: 1.6; color: #5C4936; }
+  .post-byline-links { margin: 0; font-size: 12px; line-height: 1.6; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
+  /* END blog-extension-styles */
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The workbook was running TDD on us the whole time",
+  "description": "Three red X's stacked on a math sheet used to send me into hint-mode. Then it clicked — workbooks are basically a test suite. Failure-Confirmation-Driven Parenting (Part 2 of the parenting frameworks series).",
+  "datePublished": "2026-06-08",
+  "dateModified": "2026-06-08",
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/en-US/about/#lyco", "name": "Lyco" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/en-US/blog/posts/tdd-parenting.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
+  "inLanguage": "en-US"
+}
+</script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lycoapp.com/en-US/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Column",
+      "item": "https://lycoapp.com/en-US/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The workbook was running TDD on us the whole time"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
+</head>
+<body>
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← All posts</a>
+  <h1>The workbook was running TDD on us the whole time</h1>
+  <div class="meta">2026-06-08</div>
+  <!-- BEGIN series-box -->
+  <aside class="series-box" data-series-id="parenting-frameworks">
+    <div class="series-label">Parenting Frameworks Series — Part 2</div>
+    <ol>
+      <li><a href="parenting-frameworks.html">An engineer dad takes &quot;parenting frameworks&quot; way too seriously (series intro)</a></li>
+      <li class="current">The workbook was running TDD on us the whole time</li>
+    </ol>
+  </aside>
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">Tags:</span>
+    <a class="post-tag" href="../tag/dev-methods.html">xx-Driven Parenting</a>
+  </div>
+  <!-- END tags -->
+  <div class="body">
+
+<p id="tldr" class="post-tldr">Three red X's stacked on a math sheet used to send me into hint-mode. Then it clicked — the workbook is basically a test suite. The X's aren't bad, they're the whole point. Calling this Failure-Confirmation-Driven Parenting. Parenting frameworks series, Part 2.</p>
+
+<blockquote>
+<p>"Got 'em wrong AGAIN."</p>
+<p>Three red X's stacked at the top of his math sheet. Mouth in a hard line. Mad at the paper.</p>
+</blockquote>
+
+<p>Me from a year ago would've gone "oof," and slid a hint under the next problem. Just a little nudge.</p>
+
+<p>I wrote about that habit in <a href="productive-failure.html">I was grabbing his failures before he could feel them</a> — and writing it down didn't kill the habit. Three X's in a row still makes my hand twitch toward his pencil.</p>
+
+<p>It's getting a little quieter, though. I want to write down why.</p>
+
+<h2>First — getting things wrong isn't actually bad</h2>
+
+<p>I think most parents know this in their head. Then you look at the actual grade on the page and that knowledge evaporates. I'm not above that one.</p>
+
+<p>But when I look back at my own school years, the stuff I actually remember is the stuff I got <strong>wrong</strong>. The problems I breezed through, gone. The ones I face-planted on, still right there.</p>
+
+<h2>What was "studying" even supposed to be</h2>
+
+<p>Let me write down my working definition (just mine, not gospel).</p>
+
+<ul>
+<li>Solve the problem</li>
+<li>Check the answer</li>
+<li><strong>Sit with why I got it wrong, and remember it</strong></li>
+</ul>
+
+<p>Step 3 is where studying actually starts, in my head.</p>
+
+<p>Just solving the problem? Not studying yet.</p>
+
+<p>Solving plus checking? Still not studying.</p>
+
+<p>If the workbook ends at "graded, X's and checks counted," the score moves but the learning doesn't. The thing that moves the score later is remembering the X spots. That's the part.</p>
+
+<p>(Also: I was 100% the kid who stopped at "graded" and felt fine about it, so I'm not preaching from a mountain here.)</p>
+
+<h2>Bug curves, and the "zero defects" thing</h2>
+
+<p>Different angle for a second, sorry.</p>
+
+<p>In software shops there's this thing called a defect curve (nobody really plots them out loud anymore, but the instinct is still in there). You're tracking how many bugs QA finds over time.</p>
+
+<p>Weird part: if a test cycle comes back with "zero defects found," the room doesn't celebrate. The room raises an eyebrow. Something's off.</p>
+
+<p>Why? Because the whole shop runs on the assumption that <strong>people screw up</strong>. Code reviews, tests, CI ── the entire stack is built around catching mistakes humans definitely made.</p>
+
+<p>Zero defects isn't the goal. Zero defects usually means the tests aren't sharp enough. The bugs are still in there, just hiding.</p>
+
+<h2>Once you say "people," the wiring carries</h2>
+
+<p>This is the part I most wanted to write.</p>
+
+<p>The minute the assumption is "people screw up," that piece of wisdom stops belonging to dev shops, right? It's just about people.</p>
+
+<p>People. Meaning kids, and me.</p>
+
+<p>A system built around the assumption that humans miss things probably ports straight over to studying. We don't aim for "no bugs in production." We probably shouldn't aim for "no X's on the page" either.</p>
+
+<h2>Hold on, isn't a workbook basically TDD?</h2>
+
+<p>Quick recap if you don't write code for a living. TDD (Test-Driven Development) goes:</p>
+
+<pre><code>def test_add():
+    assert add(1, 2) == 3   # ← write the expected answer first (currently fails = Red)
+
+def add(a, b):              # ← then write the function
+    return a + b            # ← if the test passes, you're Green
+</code></pre>
+
+<p>Write the "this is what success looks like" check first. Start from broken (Red). Patch the implementation until the check passes (Green). Loop.</p>
+
+<p>And the workbook? The workbook is literally already that.</p>
+
+<ul>
+<li>Problem = test scenario</li>
+<li>Answer key = expected output</li>
+<li>Shipped together in one binding</li>
+</ul>
+
+<p>Kid is the implementation, and the implementation is currently red. He works the problem. He gets one wrong (still red). He looks at the answer, internalizes why it landed there, and next time a problem of that shape shows up, the test passes (green).</p>
+
+<p>Doing a workbook isn't about solving the problems in front of you.</p>
+
+<p><strong>It's about turning yourself green.</strong></p>
+
+<p>Once I started seeing it that way, my disappointment when an X showed up started to feel weirdly off. The X is just Red. It's a test result. It's the workbook telling you exactly where to patch the implementation.</p>
+
+<h2>Calling it Failure-Confirmation-Driven</h2>
+
+<p>What this lands on, if I had to name it: <strong>Failure-Confirmation-Driven Parenting</strong>.</p>
+
+<ul>
+<li>Keep failures at <strong>workbook scale</strong> — small, scoped, cheap to fix</li>
+<li>Treat the wrong answers as "things to patch," not "things to mourn"</li>
+<li>The parent is a code reviewer. Help the test pass. Don't rewrite the test.</li>
+</ul>
+
+<p>Reads obvious when I write it out. But running the TDD vocabulary across it actually made it easier to explain to myself why I don't panic when I see X's piling up on his sheet.</p>
+
+<p>What I tell my kid, roughly:</p>
+
+<p>"Solving the problems isn't the actual job. As many X's as you want. Understanding the X's is the job. So actually — the X's are where you found out what to grow into. Pretty good news, kinda."</p>
+
+<p>Got a hard side-eye for that one. So I tried a demo.</p>
+
+<p>1+1=?, 1+2=?, 1+3=?</p>
+
+<p>He answered all three immediately. Of course.</p>
+
+<p>"Did you grow?"</p>
+
+<p>"Nope. I already knew."</p>
+
+<p>"Right. So if everything's a check mark, doing the workbook is pointless. You're doing it to find the X's. Find an X, that's a place you can grow."</p>
+
+<p>Maybe that's the whole thing.</p>
+
+<p>It also kinda changes what homework is. If the workbook is the test suite, maybe the smart move is to skim the material first, then sit down with the problems. The problem set is the spec, after all.</p>
+
+  </div>
+
+  <div class="related-apps">
+    <span class="related-label">Apps in this space</span>
+    <ul class="related-list">
+      <li><a href="../../apps/category-tool.html">Timer →</a></li>
+    </ul>
+  </div>
+  <!-- BEGIN related-posts -->
+  <aside class="related-posts">
+    <div class="related-posts-label">Related posts</div>
+    <ul>
+      <li><a href="productive-failure.html">I was grabbing his failures before he could feel them</a></li>
+    </ul>
+  </aside>
+  <!-- END related-posts -->
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="receive-no1.html"><span class="post-nav-label">← Previous</span><span class="post-nav-title">Bēmaga, 30 years later — porting a 100-line BASIC game to iPhone</span></a>
+    <a class="post-nav-next" href="parenting-frameworks.html"><span class="post-nav-label">Next →</span><span class="post-nav-title">An engineer dad takes &quot;parenting frameworks&quot; way too seriously (series intro)<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+  </nav>
+  <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — An engineer parent.</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ About</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ contact</a>
+  </p>
+</div>
+<!-- END byline -->
+  </div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/en-US/common.js"></script>
+<script src="../../../content/en-US/todo.js"></script>
+<script src="../../../content/en-US/record.js"></script>
+<script src="../../../content/en-US/tool.js"></script>
+<script src="../../../content/en-US/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
+<script defer src="../../../shared/analytics.js"></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Parenting is hard. We're in this together ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

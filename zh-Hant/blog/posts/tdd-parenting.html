@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<title>習題本根本就是 TDD ── 紅叉就是「該長大的地方」 — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="評量上連續三個紅叉,以前我會湊過去給提示。後來想通:習題本根本就是測試案例,紅叉是『該長大的地方』在告訴你。把這套思路帶進育兒,叫它『失敗確認驅動』。育兒框架系列 第 2 篇。" />
+<link rel="canonical" href="https://lycoapp.com/zh-Hant/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="習題本根本就是 TDD ── 紅叉就是「該長大的地方」" />
+<meta property="og:description" content="評量上連續三個紅叉,以前我會湊過去給提示。後來想通:習題本根本就是測試案例,紅叉是『該長大的地方』。育兒框架系列 第 2 篇。" />
+<meta property="og:url" content="https://lycoapp.com/zh-Hant/blog/posts/tdd-parenting.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="zh_TW" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="習題本根本就是 TDD ── 紅叉就是「該長大的地方」" />
+<meta name="twitter:description" content="評量上連續三個紅叉,以前我會湊過去給提示。後來想通:習題本根本就是測試案例。失敗確認驅動,育兒框架系列 第 2 篇。" />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<style>
+  body { margin:0; font-family: system-ui,"PingFang TC","Microsoft JhengHei",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #8B7355; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #FFE9B0 60%); padding: 0 2px; }
+  .body code { background: #F3EBD9; padding: 1px 6px; border-radius: 4px; font-size: 90%; }
+  .body pre { background: #2D2419; color: #E8DCC4; padding: 14px 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; line-height: 1.7; margin: 0 0 1.4em; }
+  .body pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #8B7355; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.7; }
+  .body blockquote p { margin: 0 0 .4em; }
+  .body blockquote p:last-child { margin-bottom: 0; }
+  .body ol, .body ul { margin: 0 0 1.4em; padding-left: 22px; }
+  .body li { margin-bottom: 6px; }
+  .related-apps { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-apps .related-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; display: block; }
+  .related-apps .related-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+  .related-apps .related-list a { display: inline-block; padding: 6px 14px; background: #FBF6EE; border: 1px solid #E8E0CC; border-radius: 999px; text-decoration: none; color: #5C4936; font-size: 13px; font-weight: 600; transition: background .15s ease; }
+  .related-apps .related-list a:hover { background: #FFE9B0; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+  .post-tldr { border-top: 1px solid #C9B79A; border-bottom: 1px solid #C9B79A; padding: 14px 0; margin: 0 0 20px; font-size: 15px; line-height: 1.75; color: #3D2E1F; }
+  /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← 目前"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 20px 0 0; padding: 10px 0 0; border-top: 1px solid #D6C9B5; opacity: .7; }
+  .post-byline-text { margin: 0 0 4px; font-size: 12px; line-height: 1.6; color: #5C4936; }
+  .post-byline-links { margin: 0; font-size: 12px; line-height: 1.6; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
+  /* END blog-extension-styles */
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "習題本根本就是 TDD ── 紅叉就是「該長大的地方」",
+  "description": "評量上連續三個紅叉,以前我會湊過去給提示。後來想通:習題本根本就是測試案例,紅叉是『該長大的地方』。育兒框架系列 第 2 篇。",
+  "datePublished": "2026-06-08",
+  "dateModified": "2026-06-08",
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/zh-Hant/about/#lyco", "name": "Lyco" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/zh-Hant/blog/posts/tdd-parenting.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
+  "inLanguage": "zh-Hant"
+}
+</script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首頁",
+      "item": "https://lycoapp.com/zh-Hant/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "專欄",
+      "item": "https://lycoapp.com/zh-Hant/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "習題本根本就是 TDD ── 紅叉就是「該長大的地方」"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
+</head>
+<body>
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← 全部文章</a>
+  <h1>習題本根本就是 TDD ── 紅叉就是「該長大的地方」</h1>
+  <div class="meta">2026-06-08</div>
+  <!-- BEGIN series-box -->
+  <aside class="series-box" data-series-id="parenting-frameworks">
+    <div class="series-label">育兒框架系列 — 第 2 篇</div>
+    <ol>
+      <li><a href="parenting-frameworks.html">工程師爸爸認真把「育兒框架」當回事(系列開頭)</a></li>
+      <li class="current">習題本根本就是 TDD ── 紅叉就是「該長大的地方」</li>
+    </ol>
+  </aside>
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">標籤:</span>
+    <a class="post-tag" href="../tag/dev-methods.html">xx 驅動育兒</a>
+  </div>
+  <!-- END tags -->
+  <div class="body">
+
+<p id="tldr" class="post-tldr">看到小孩連續三題紅叉,以前我會馬上湊過去給提示。後來想通:習題本根本就是測試案例的集合,紅叉不是壞事,是「該長大的地方」在告訴你。把這套思路帶進育兒,叫它『失敗確認驅動』。育兒框架系列 第 2 篇。</p>
+
+<blockquote>
+<p>「又錯了啦。」</p>
+<p>數學評量,前三題連續紅叉。小孩在那邊嘟嘴,瞪著紙。</p>
+</blockquote>
+
+<p>說真的,一年前的我大概會「欸唷」一聲,順手在下一題旁邊偷偷寫個小提示。就那麼一下。</p>
+
+<p>之前寫過 <a href="productive-failure.html">小孩跌一下,我就先把他撈起來了</a>,結果寫完了,習慣也沒那麼快戒掉。一看到一排紅叉,手就會自己先伸出去。</p>
+
+<p>不過最近,我有比較安靜一點點。想把理由整理一下。</p>
+
+<h2>先講,錯本來就不是壞事</h2>
+
+<p>道理大家都懂啦。但實際看到自家小孩考卷分數的瞬間,理智就掉到地上了。我也常常這樣。</p>
+
+<p>不過自己想一想,長大之後還記得的,大部分都是 <strong>當年寫錯的地方</strong>。順順寫完的題目,早就忘了。</p>
+
+<h2>「念書」到底是什麼</h2>
+
+<p>先寫一下我自己的定義 (只是我家這樣想啦)。</p>
+
+<ul>
+<li>把題目解出來</li>
+<li>對答案</li>
+<li><strong>想一下為什麼錯,然後記起來</strong></li>
+</ul>
+
+<p>到第三步才算開始念書,在我心裡是這樣劃的。</p>
+
+<p>只把題目解完,還不是念書。</p>
+
+<p>解完加上對答案,也還不是念書。</p>
+
+<p>到「打分數,看幾個圈圈幾個叉叉」就停,然後為對的多錯的多開心或失落 ── 那樣分數其實不會動。會動的關鍵,是把叉叉那邊真的弄懂。</p>
+
+<p>… 寫完還是要承認,小時候我也是「打完分數就放生」那一派的,所以也沒什麼立場唸別人。</p>
+
+<h2>軟體開發那邊的「Bug 曲線」</h2>
+
+<p>切到工程師頻道一下。</p>
+
+<p>軟體開發現場有個東西叫「Bug 曲線」 (現在大家比較少特別提了)。把測試階段抓到的 bug 數量,沿著時間軸畫出來。</p>
+
+<p>有趣的地方是:測完一輪,回報「都沒抓到 bug」,現場通常不會歡呼。反而會皺眉一下,<strong>真假?</strong> 那種反應。</p>
+
+<p>為什麼?因為開發現場的前提就是 <strong>人會出錯</strong>。Code review、測試、CI,整套都是建在「人會手滑」這個假設上。</p>
+
+<p>沒抓到 bug 不等於沒 bug。常常代表「測試太鬆」,bug 還在裡面只是沒被翻出來。</p>
+
+<h2>講到「人」的瞬間,不就是同一件事嗎</h2>
+
+<p>這篇我最想講的應該是這段。</p>
+
+<p>明明在講開發的事,可是一講到「人會出錯」這個前提的瞬間,這個 know-how 其實沒理由只關在開發圈裡面對吧?</p>
+
+<p>講「人」嘛。那「人」就包括小孩,也包括我。</p>
+
+<p>建立在「人會出錯」前提之上的那些做法,大概都可以原樣搬到念書這邊。我們不會把「production 上零 bug」當成理想,所以我們也沒有理由把「考卷上零紅叉」當成理想。</p>
+
+<h2>那麼,習題本不就是 TDD 嗎?</h2>
+
+<p>給沒寫過 code 的人快速說明一下,TDD (測試驅動開發) 大概是這樣:</p>
+
+<pre><code>def test_add():
+    assert add(1, 2) == 3   # ← 先把「正確答案」寫下來 (現在跑會壞掉 = Red)
+
+def add(a, b):              # ← 然後才寫實作
+    return a + b            # ← 跑得過測試就是 Green
+</code></pre>
+
+<p>先寫「應該長這樣」的測試 (答案),從壞掉的狀態 (Red) 開始,把實作慢慢修到測試會通 (Green)。一直循環。</p>
+
+<p>寫到這邊我自己也才想到 ── <strong>習題本</strong>,根本就是這個東西。</p>
+
+<ul>
+<li>題目 = 測試案例</li>
+<li>解答 = 期望輸出</li>
+<li>而且一本就湊齊了</li>
+</ul>
+
+<p>小孩 (= 那個要被實作出來的本體) 現在還是紅的。所以就解題。解錯了 (Red 留在那邊)。看解答,把「為什麼」吸收進來。下次遇到同類型題,通了 (Green)。</p>
+
+<p>寫習題本的目的,不是把眼前這幾題寫完。</p>
+
+<p><strong>是把自己變成 Green。</strong></p>
+
+<p>從這個角度去看,看到紅叉就垮下來那個反應,好像就有點不太對。紅叉就是 Red,就是一個測試結果,而且還很貼心地指了路:「下次要修這裡喔。」</p>
+
+<h2>叫它「失敗確認驅動」</h2>
+
+<p>講白了就是 <strong>失敗確認驅動 (Failure Confirmation Driven)</strong> 育兒。</p>
+
+<ul>
+<li>把失敗的規模控制在 <strong>一本習題本大小</strong> ── 小、可收拾、改起來不痛</li>
+<li>錯的地方當「該修的東西」處理,不要停在「就是錯了」這層</li>
+<li>家長 (= reviewer) 是幫小孩把測試通過的那一邊,不是把測試改掉的那一邊</li>
+</ul>
+
+<p>寫出來真的也沒什麼了不起。可是套上 TDD 的詞彙之後,我自己比較講得清楚:為什麼最近看到小孩一排紅叉,我可以不立刻緊張。</p>
+
+<p>我跟小孩,大概是這樣講的:</p>
+
+<p>「寫題目本身不是念書喔。紅叉幾個都沒關係。把紅叉那邊弄懂,才是念書。倒過來想,就是 ── 你又知道一個『該長大的地方』在哪邊了。其實還不錯欸。」</p>
+
+<p>看他一臉不買單。我就現場出題試試看。</p>
+
+<p>1+1=?、1+2=?、1+3=?</p>
+
+<p>當然秒答。</p>
+
+<p>「有變強嗎?」</p>
+
+<p>「沒有啊,我本來就會。」</p>
+
+<p>「對嘛。全部都圈圈,那寫這本就沒意義了。本來就是要把叉叉挖出來。找到叉叉,等於找到一個可以長大的地方。」</p>
+
+<p>這應該是很普通的事啦。可是我自己也是寫到這邊才比較講得出口。</p>
+
+<p>順著這條線想,寫作業這件事的意義也變了一下。先預習一下、再來做題目,好像也不錯。題目就是測試案例嘛。</p>
+
+  </div>
+
+  <div class="related-apps">
+    <span class="related-label">有這類 App</span>
+    <ul class="related-list">
+      <li><a href="../../apps/category-tool.html">Timer 類 →</a></li>
+    </ul>
+  </div>
+  <!-- BEGIN related-posts -->
+  <aside class="related-posts">
+    <div class="related-posts-label">相關文章</div>
+    <ul>
+      <li><a href="productive-failure.html">小孩的失敗，我都先撿走了</a></li>
+    </ul>
+  </aside>
+  <!-- END related-posts -->
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="receive-no1.html"><span class="post-nav-label">← 上一篇</span><span class="post-nav-title">ベーマガ、30 年後 ── 把 100 行 BASIC 遊戲移植到 iPhone</span></a>
+    <a class="post-nav-next" href="parenting-frameworks.html"><span class="post-nav-label">下一篇 →</span><span class="post-nav-title">工程師爸爸認真把「育兒框架」當回事(系列開頭)<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+  </nav>
+  <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — 育兒中的工程師。</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ 關於</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ 聯絡</a>
+  </p>
+</div>
+<!-- END byline -->
+  </div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/zh-Hant/common.js"></script>
+<script src="../../../content/zh-Hant/todo.js"></script>
+<script src="../../../content/zh-Hant/record.js"></script>
+<script src="../../../content/zh-Hant/tool.js"></script>
+<script src="../../../content/zh-Hant/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
+<script defer src="../../../shared/analytics.js"></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="育兒辛苦了。一起加油吧 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

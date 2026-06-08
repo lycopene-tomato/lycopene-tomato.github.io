@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>問題集って、実は TDD だったんじゃないか — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="算数のプリントに 3 連続バツ。前はヒントを出してた。問題集こそ TDD、目的は『自分をグリーンにする事』── 失敗確認駆動で考えてみた育児フレームワーク 第 2 回。" />
+<link rel="canonical" href="https://lycoapp.com/ja/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="問題集って、実は TDD だったんじゃないか" />
+<meta property="og:description" content="算数のプリントに 3 連続バツ。前はヒントを出してた。問題集こそ TDD、目的は『自分をグリーンにする事』── 失敗確認駆動で考えてみた育児フレームワーク 第 2 回。" />
+<meta property="og:url" content="https://lycoapp.com/ja/blog/posts/tdd-parenting.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="ja_JP" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="問題集って、実は TDD だったんじゃないか" />
+<meta name="twitter:description" content="バツが並んでも、先に手を出さなくなった理由。問題集はテストシナリオ、目的は『自分をグリーンにする事』。失敗確認駆動として整理した育児フレームワーク 第 2 回。" />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<style>
+  body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #8B7355; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #FFE9B0 60%); padding: 0 2px; }
+  .body code { background: #F3EBD9; padding: 1px 6px; border-radius: 4px; font-size: 90%; }
+  .body pre { background: #2D2419; color: #E8DCC4; padding: 14px 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; line-height: 1.7; margin: 0 0 1.4em; }
+  .body pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #8B7355; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.7; }
+  .body blockquote p { margin: 0 0 .4em; }
+  .body blockquote p:last-child { margin-bottom: 0; }
+  .body ol, .body ul { margin: 0 0 1.4em; padding-left: 22px; }
+  .body li { margin-bottom: 6px; }
+  .related-apps { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-apps .related-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; display: block; }
+  .related-apps .related-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+  .related-apps .related-list a { display: inline-block; padding: 6px 14px; background: #FBF6EE; border: 1px solid #E8E0CC; border-radius: 999px; text-decoration: none; color: #5C4936; font-size: 13px; font-weight: 600; transition: background .15s ease; }
+  .related-apps .related-list a:hover { background: #FFE9B0; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+  .post-tldr { border-top: 1px solid #C9B79A; border-bottom: 1px solid #C9B79A; padding: 14px 0; margin: 0 0 20px; font-size: 15px; line-height: 1.75; color: #3D2E1F; }
+  /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← 今ココ"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 20px 0 0; padding: 10px 0 0; border-top: 1px solid #D6C9B5; opacity: .7; }
+  .post-byline-text { margin: 0 0 4px; font-size: 12px; line-height: 1.6; color: #5C4936; }
+  .post-byline-links { margin: 0; font-size: 12px; line-height: 1.6; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
+  /* END blog-extension-styles */
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "問題集って、実は TDD だったんじゃないか",
+  "description": "算数のプリントに 3 連続バツ。前はヒントを出してた。問題集こそ TDD、目的は『自分をグリーンにする事』── 失敗確認駆動で考えてみた育児フレームワーク 第 2 回。",
+  "datePublished": "2026-06-08",
+  "dateModified": "2026-06-08",
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/ja/about/#lyco", "name": "Lyco" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/ja/blog/posts/tdd-parenting.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
+  "inLanguage": "ja"
+}
+</script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "トップ",
+      "item": "https://lycoapp.com/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://lycoapp.com/ja/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "問題集って、実は TDD だったんじゃないか"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
+</head>
+<body>
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← コラム一覧</a>
+  <h1>問題集って、実は TDD だったんじゃないか</h1>
+  <div class="meta">2026-06-08</div>
+  <!-- BEGIN series-box -->
+  <aside class="series-box" data-series-id="parenting-frameworks">
+    <div class="series-label">育児フレームワーク シリーズ — 第 2 回</div>
+    <ol>
+      <li><a href="parenting-frameworks.html">エンジニア父が「育児 フレームワーク」を真面目に考えてみる(シリーズはじめに)</a></li>
+      <li class="current">問題集って、実は TDD だったんじゃないか</li>
+    </ol>
+  </aside>
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">タグ:</span>
+    <a class="post-tag" href="../tag/dev-methods.html">xx駆動育児</a>
+  </div>
+  <!-- END tags -->
+  <div class="body">
+
+<p id="tldr" class="post-tldr">バツを見て先に手が出る癖を、TDD の語彙で言い直してみた話。問題集はテストシナリオで、目的は問題を解く事じゃなく『自分をグリーンにする事』。失敗確認駆動として育児に持ち込んでみた、育児フレームワーク 第 2 回。</p>
+
+<blockquote>
+<p>「またバツや」</p>
+<p>算数のプリント、上から 3 問連続で赤ペン。子が口を尖らせている。</p>
+</blockquote>
+
+<p>正直、ちょっと前の私なら「あ〜あ」と言って、次の問題のヒントをそっと出していたと思う。</p>
+
+<p>前に <a href="productive-failure.html">子どもの失敗、勝手に拾ってた</a> というのを書いたんですが、あれを書いてからも、染み付いた癖はそんなに簡単には抜けなくて。バツが並んでるのを見ると、つい先に手が出る。</p>
+
+<p>ただ、最近は、もう少しだけ黙って見ていられるようになりました。理由を言語化してみたいと思う。</p>
+
+<h2>まず、失敗する事って、悪くない</h2>
+
+<p>これ、頭では分かってる人多いと思うんですが、いざ我が子のテストの点数を見るとそうもいかない。私もそうです。</p>
+
+<p>ただ、自分が大人になって振り返ってみると、覚えてるのって、だいたい <strong>間違えた所</strong> なんですよね。スラスラ解けた問題の方は、もう覚えてない。</p>
+
+<h2>そもそも「勉強」って何だったか</h2>
+
+<p>ここで一度、自分の中の定義を書いておきたい。</p>
+
+<ul>
+<li>問題を解く</li>
+<li>答え合わせをする</li>
+<li><strong>なぜ間違ったのか考える/覚える</strong></li>
+</ul>
+
+<p>この 3 段目までやって、はじめて勉強だと、私は思っています。</p>
+
+<p>問題を解くだけ、では勉強じゃない。</p>
+
+<p>答え合わせまで、でもまだ勉強じゃない。</p>
+
+<p>採点して終わり、丸が多い少ないで一喜一憂して終わり、だと、学力は上がらない。間違えた所を覚えるから、学力が上がる。そこが一番大事。</p>
+
+<p>…と書いておいて、自分も子供の頃は採点で終わってた側なので、偉そうなことは言えないんですが。</p>
+
+<h2>システム開発側にある「バグ曲線」という考え方</h2>
+
+<p>ソフトウェア開発の現場には (最近はあまり聞かなくなったけど)「バグ曲線」という物があります。テスト工程でどれくらいバグが見つかったかを時系列でプロットするやつ。</p>
+
+<p>面白いのは、現場の感覚として「テストしてバグが 1 つも出ませんでした」と言われると、逆に <strong>大丈夫か?</strong> という空気になることです。</p>
+
+<p>なんでかと言うと、開発の現場は <strong>人はミスする</strong> という前提に立ってるから。</p>
+
+<p>ミスが出ない方が異常で、出てない時はテストの方を疑う。0 件はゴールじゃなくて、たいてい「テストが甘い」のサイン。</p>
+
+<h2>「人は」と言った瞬間に、同じでは?</h2>
+
+<p>ここがこの記事で一番言いたい所かもしれません。</p>
+
+<p>開発の世界の話なのに、「人はミスする前提」って言った瞬間に、その知見、別に開発の中で閉じてなくないか、と。</p>
+
+<p>人は、つまり、子も、私も。</p>
+
+<p>人がミスする前提で組まれた仕組みは、たぶん勉強にもそのまま流用できる。バグが出ない状態を理想にしないのと同じで、バツが出ない状態を理想にしなくていい。</p>
+
+<h2>問題集って TDD じゃない?</h2>
+
+<p>知らない人向けに、ざっくり TDD (テスト駆動開発) というのは、</p>
+
+<pre><code>def test_add():
+    assert add(1, 2) == 3   # ← 先に「答え」を書く (今は落ちる = Red)
+
+def add(a, b):              # ← 後から本体を書く
+    return a + b            # ← テストが通れば Green
+</code></pre>
+
+<p>先に「こうなるべき」というテスト (答え) を書いて、落ちる状態 (Red) から始めて、通るように実装を直していく。そのループです。</p>
+
+<p>これ、書きながら思ったんですが、<strong>問題集</strong> って、もう完全にこれ。</p>
+
+<ul>
+<li>問題 = テストシナリオ</li>
+<li>解答 = 期待される出力</li>
+<li>セットで用意されてる</li>
+</ul>
+
+<p>そして子 (= 実装される本体) はまだ赤い。だから解く。間違える (Red のままになる)。答えを見て、なぜそうなるかを取り込む。次に似た問題が出た時、通る (Green)。</p>
+
+<p>問題集を解く目的は、目の前の問題を解く事じゃない。</p>
+
+<p><strong>自分をグリーンにする事。</strong></p>
+
+<p>そう捉えると、バツがついた瞬間にがっかりするのも、ちょっと違う気がしてきた。バツは Red、ただのテスト結果で、これから直すべきポイントの場所を教えてくれてる、という意味でしかない。</p>
+
+<h2>「失敗確認駆動」</h2>
+
+<p>「失敗確認駆動 (Failure Confirmation Driven)」、内容としてはここに着地。</p>
+
+<ul>
+<li>失敗のスケールを <strong>問題集サイズ</strong> に小さく保つ</li>
+<li>失敗した所を「直す事柄」として扱う (答え合わせで終わらせない)</li>
+<li>親 (= レビュアー) は、テストを通すのを手伝う側であって、テストを書き換える側じゃない</li>
+</ul>
+
+<p>書いてみると当たり前のことしか言ってないんですが、TDD の語彙を当てると、自分がなぜ子のバツを見て焦らないようにしてるのか、ちょっと説明しやすくなった気がしてます。</p>
+
+<p>子供には、こう言ってる。</p>
+
+<p>「問題を解くのが勉強じゃない。バツはいくらあったって良い。バツを理解する事が勉強だから。逆に何を理解すれば伸びるのかが分かって良かったね」と。</p>
+
+<p>納得出来ない顔をしていたから、問題を出してみた。</p>
+
+<p>1+1=?、1+2=?、1+3=?</p>
+
+<p>もちろん、すぐ答えられる。</p>
+
+<p>「成長した?」</p>
+
+<p>「しない。だって分かってるもん」</p>
+
+<p>「全部マルだったら、やる意味ないでしょ。バツを見つける為にやってるから。バツを見つけたら、成長できるのを見つけられたと思って」</p>
+
+<p>当たり前の事なのかも知れないが。</p>
+
+<p>そう思うと、宿題の問題を解く意味も変わってくる。先に予習してから、問題を解くのも良いんじゃないかな。問題はテストシナリオなんだから。</p>
+
+  </div>
+
+  <div class="related-apps">
+    <span class="related-label">こんなアプリがあります</span>
+    <ul class="related-list">
+      <li><a href="../../apps/category-tool.html">Timer 系 →</a></li>
+    </ul>
+  </div>
+  <!-- BEGIN related-posts -->
+  <aside class="related-posts">
+    <div class="related-posts-label">関連する記事</div>
+    <ul>
+      <li><a href="productive-failure.html">子どもの失敗、勝手に拾ってた</a></li>
+    </ul>
+  </aside>
+  <!-- END related-posts -->
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="receive-no1.html"><span class="post-nav-label">← 前の記事</span><span class="post-nav-title">レシーブ No.1</span></a>
+    <a class="post-nav-next" href="parenting-frameworks.html"><span class="post-nav-label">次の記事 →</span><span class="post-nav-title">エンジニア父が「育児 フレームワーク」を真面目に考えてみる(シリーズはじめに)<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+  </nav>
+  <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — 育児奮闘中のエンジニア。</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ About</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ contact</a>
+  </p>
+</div>
+<!-- END byline -->
+  </div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/ja/common.js"></script>
+<script src="../../../content/ja/todo.js"></script>
+<script src="../../../content/ja/record.js"></script>
+<script src="../../../content/ja/tool.js"></script>
+<script src="../../../content/ja/other.js"></script>
+<script src="../../../content/en-US/common.js"></script>
+<script src="../../../content/en-US/todo.js"></script>
+<script src="../../../content/en-US/record.js"></script>
+<script src="../../../content/en-US/tool.js"></script>
+<script src="../../../content/en-US/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
+<script defer src="../../../shared/analytics.js"></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="子育てお疲れさまです。一緒に頑張りましょう ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

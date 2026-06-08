@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」 — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="수학 학습지에 빨간 X 가 줄줄이. 예전엔 곧장 힌트 모드였는데, 어느 순간 보였어요 ── 문제집은 그냥 테스트 묶음이고, 빨간 X 는 「자라야 할 자리」를 가르쳐 주는 거더라고요. 실패 확인 주도로 풀어 본 육아 프레임워크 시리즈 2 편." />
+<link rel="canonical" href="https://lycoapp.com/ko/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/tdd-parenting.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」" />
+<meta property="og:description" content="문제집의 빨간 X 가 무서웠던 건, 그게 「틀린 자리」가 아니라 「자라야 할 자리」라는 걸 몰라서. 실패 확인 주도로 푼 육아 프레임워크 시리즈 2 편." />
+<meta property="og:url" content="https://lycoapp.com/ko/blog/posts/tdd-parenting.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」" />
+<meta name="twitter:description" content="문제집의 빨간 X 는 「틀린 자리」가 아니라 「자라야 할 자리」. 실패 확인 주도로 풀어 본 육아 프레임워크 시리즈 2 편." />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<style>
+  body { margin:0; font-family: system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #8B7355; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #FFE9B0 60%); padding: 0 2px; }
+  .body code { background: #F3EBD9; padding: 1px 6px; border-radius: 4px; font-size: 90%; }
+  .body pre { background: #2D2419; color: #E8DCC4; padding: 14px 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; line-height: 1.7; margin: 0 0 1.4em; }
+  .body pre code { background: transparent; padding: 0; color: inherit; font-size: inherit; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #8B7355; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.7; }
+  .body blockquote p { margin: 0 0 .4em; }
+  .body blockquote p:last-child { margin-bottom: 0; }
+  .body ol, .body ul { margin: 0 0 1.4em; padding-left: 22px; }
+  .body li { margin-bottom: 6px; }
+  .related-apps { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-apps .related-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; display: block; }
+  .related-apps .related-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+  .related-apps .related-list a { display: inline-block; padding: 6px 14px; background: #FBF6EE; border: 1px solid #E8E0CC; border-radius: 999px; text-decoration: none; color: #5C4936; font-size: 13px; font-weight: 600; transition: background .15s ease; }
+  .related-apps .related-list a:hover { background: #FFE9B0; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+  .post-tldr { border-top: 1px solid #C9B79A; border-bottom: 1px solid #C9B79A; padding: 14px 0; margin: 0 0 20px; font-size: 15px; line-height: 1.75; color: #3D2E1F; }
+  /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← 현재"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 20px 0 0; padding: 10px 0 0; border-top: 1px solid #D6C9B5; opacity: .7; }
+  .post-byline-text { margin: 0 0 4px; font-size: 12px; line-height: 1.6; color: #5C4936; }
+  .post-byline-links { margin: 0; font-size: 12px; line-height: 1.6; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
+  /* END blog-extension-styles */
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」",
+  "description": "수학 학습지에 빨간 X 가 줄줄이. 예전엔 곧장 힌트 모드였는데, 어느 순간 보였어요 ── 문제집은 그냥 테스트 묶음이고, 빨간 X 는 「자라야 할 자리」를 가르쳐 주는 거더라고요. 실패 확인 주도로 풀어 본 육아 프레임워크 시리즈 2 편.",
+  "datePublished": "2026-06-08",
+  "dateModified": "2026-06-08",
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/ko/about/#lyco", "name": "Lyco" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/ko/blog/posts/tdd-parenting.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
+  "inLanguage": "ko"
+}
+</script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "홈",
+      "item": "https://lycoapp.com/ko/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "칼럼",
+      "item": "https://lycoapp.com/ko/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
+</head>
+<body>
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← 칼럼 목록</a>
+  <h1>문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」</h1>
+  <div class="meta">2026-06-08</div>
+  <!-- BEGIN series-box -->
+  <aside class="series-box" data-series-id="parenting-frameworks">
+    <div class="series-label">육아 프레임워크 시리즈 — 2편</div>
+    <ol>
+      <li><a href="parenting-frameworks.html">개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작)</a></li>
+      <li class="current">문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」</li>
+    </ol>
+  </aside>
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">태그:</span>
+    <a class="post-tag" href="../tag/dev-methods.html">xx 주도 양육</a>
+  </div>
+  <!-- END tags -->
+  <div class="body">
+
+<p id="tldr" class="post-tldr">학습지에 빨간 X 가 줄줄이 나오면 예전엔 곧장 힌트 모드였는데, 어느 순간 보였어요 ── 문제집은 그냥 테스트 묶음이고, 빨간 X 는 「자라야 할 자리」를 가르쳐 주는 거더라고요. 그 사고방식을 육아로 옮긴 게 「실패 확인 주도」. 육아 프레임워크 시리즈 2 편.</p>
+
+<blockquote>
+<p>「또 틀렸어.」</p>
+<p>수학 학습지, 위에서 세 문제 연속 빨간 X. 입을 삐죽이고 종이를 째려보고 있어요.</p>
+</blockquote>
+
+<p>솔직히 좀 전의 저였으면 「에이」 하면서 다음 문제 옆에 슬쩍 힌트를 흘렸을 거예요.</p>
+
+<p>예전에 <a href="productive-failure.html">아이 실수, 제가 먼저 주워 담고 있었어요</a> 라는 글을 쓴 적이 있는데, 글로 적어 놨다고 습관이 그리 쉽게 빠지진 않더라고요. 빨간 X 가 줄을 서 있으면 손이 먼저 나갑니다.</p>
+
+<p>그래도 요즘은, 조금은 더 가만히 보고 있을 수 있게 됐어요. 그 이유를 한번 풀어 보고 싶었어요.</p>
+
+<h2>일단, 틀리는 거 자체는 나쁜 거 아니에요</h2>
+
+<p>머리로는 다들 아는 얘기지요. 근데 막상 우리 아이 점수 보면 그 지식은 바닥에 떨어져요. 저도 똑같아요.</p>
+
+<p>다만 어른이 된 지금 돌아보면, 머리에 남아 있는 건 거의 다 <strong>그때 틀렸던 자리</strong>들이에요. 술술 푼 문제는 다 까먹었어요.</p>
+
+<h2>그러니까 「공부」가 뭐였을까</h2>
+
+<p>여기서 제 정의를 한번 적어 둘게요 (우리 집은 이렇게 본다, 정도).</p>
+
+<ul>
+<li>문제를 푼다</li>
+<li>답을 맞춰 본다</li>
+<li><strong>왜 틀렸는지 생각해 보고, 외운다</strong></li>
+</ul>
+
+<p>이 3 단계까지 가야 비로소 공부, 라고 저는 생각해요.</p>
+
+<p>그냥 문제를 풀기만 하면, 아직 공부 아니에요.</p>
+
+<p>답까지 맞춰 봤어도, 아직 공부 아니에요.</p>
+
+<p>채점하고 끝, 동그라미 X 갯수에 기뻐하고 슬퍼하면 끝. 그러면 실력은 안 올라가요. 틀린 자리를 다시 봐서 외우니까 실력이 올라가요. 그게 제일 중요한 자리.</p>
+
+<p>… 라고 적어 두긴 했는데, 저도 어릴 땐 채점에서 끝나던 쪽이라, 솔직히 큰소리는 못 칩니다.</p>
+
+<h2>소프트웨어 쪽엔 「Bug 곡선」이라는 게 있어요</h2>
+
+<p>잠깐 개발자 모드로 갈게요.</p>
+
+<p>소프트웨어 개발 현장엔 (요즘은 별로 입에 안 올리지만) 「Bug 곡선」이라는 게 있어요. 테스트 단계에서 시간에 따라 bug 가 몇 개 잡혔는지를 그려 보는 거예요.</p>
+
+<p>재밌는 건, 테스트 한 사이클 돌리고 「bug 0 건이요」 하고 보고가 올라오면, 현장은 환호하지 않아요. 오히려 한쪽 눈썹이 올라가요. <strong>… 진짜?</strong> 그런 분위기.</p>
+
+<p>왜냐면 개발 현장은 <strong>사람은 실수한다</strong> 는 전제 위에서 굴러가거든요. 코드 리뷰도, 테스트도, CI 도, 전부 「사람이 어디선가 실수했을 거다」 를 잡으려고 깔아 둔 것들이에요.</p>
+
+<p>0 건은 목표가 아니에요. 0 건은 보통 「테스트가 헐겁다」는 신호예요. 버그는 안에 있고, 그냥 못 잡힌 거.</p>
+
+<h2>「사람은」 하고 말한 순간, 같은 얘기 아닌가?</h2>
+
+<p>이 글에서 제일 하고 싶었던 얘기는 아마 이 부분이에요.</p>
+
+<p>개발 얘기 하다가, 「사람은 실수한다」고 입에 올린 순간 ── 그 노하우, 굳이 개발 안에만 가둘 이유 없는 거 아닌가, 싶었어요.</p>
+
+<p>「사람은」, 그러면 아이도, 저도요.</p>
+
+<p>사람이 실수한다는 전제로 짜인 구조는, 공부 쪽에도 그대로 가져다 쓸 수 있을 거예요. production 에 bug 0 을 이상향으로 안 잡듯, 학습지에 빨간 X 0 을 이상향으로 잡을 필요도 없어요.</p>
+
+<h2>그럼 문제집은, 사실 TDD 아니에요?</h2>
+
+<p>코드 안 짜는 분들 위해 가볍게 ── TDD (테스트 주도 개발) 는 대충 이런 모양이에요.</p>
+
+<pre><code>def test_add():
+    assert add(1, 2) == 3   # ← 「정답」을 먼저 적어 둠 (지금은 깨짐 = Red)
+
+def add(a, b):              # ← 그러고 나서 본체를 적음
+    return a + b            # ← 테스트 통과하면 = Green
+</code></pre>
+
+<p>「이렇게 돼야 한다」는 테스트 (정답) 를 먼저 적어 두고, 깨진 상태 (Red) 에서 시작해서, 테스트가 통과되도록 구현을 다듬어 가는 거. 그 루프예요.</p>
+
+<p>적다 보니 깨달았는데, <strong>문제집</strong> 이거 거의 그대로네요.</p>
+
+<ul>
+<li>문제 = 테스트 시나리오</li>
+<li>해답 = 기대되는 출력</li>
+<li>한 권에 세트로 들어 있음</li>
+</ul>
+
+<p>아이 (= 구현되는 본체) 는 아직 빨간 상태. 그래서 풀어요. 틀려요 (Red 가 유지됨). 답을 보고, 왜 그렇게 되는지 흡수해요. 다음에 비슷한 문제가 나오면, 통과 (Green).</p>
+
+<p>문제집을 푸는 목적은, 눈앞의 문제를 푸는 게 아니에요.</p>
+
+<p><strong>자기 자신을 Green 으로 만드는 거.</strong></p>
+
+<p>그렇게 보면, X 가 찍힌 순간에 실망하는 것도 좀 빗나간 반응 같더라고요. X 는 Red. 그냥 테스트 결과. 「이 자리 고치면 돼」 라고 위치까지 친절하게 알려 주는 신호일 뿐이에요.</p>
+
+<h2>「실패 확인 주도」</h2>
+
+<p>이걸 이름 붙이자면 <strong>실패 확인 주도 (Failure Confirmation Driven)</strong> 양육.</p>
+
+<ul>
+<li>실패의 규모를 <strong>문제집 사이즈</strong> 로 작게 유지</li>
+<li>틀린 자리를 「고칠 대상」으로 다룸 (채점에서 멈추지 않음)</li>
+<li>부모 (= 리뷰어) 는 테스트가 통과되도록 도와주는 쪽이지, 테스트 자체를 고쳐 쓰는 쪽이 아님</li>
+</ul>
+
+<p>적어 놓고 보면 당연한 얘기들뿐이긴 한데, TDD 어휘를 입혀 보니까, 왜 요즘 아이 X 표시를 보고 안 흔들리려고 하는지가 저한테 조금 설명되더라고요.</p>
+
+<p>아이한테는 대충 이렇게 얘기해요.</p>
+
+<p>「문제 푸는 게 공부가 아니야. X 표시 몇 개든 괜찮아. X 자리를 이해하는 게 공부니까. 거꾸로 말하면, 뭘 이해하면 실력이 올라가는지 알게 된 거잖아. 좋은 거지.」</p>
+
+<p>표정이 영 안 풀려서, 그 자리에서 문제를 내 봤어요.</p>
+
+<p>1+1=?, 1+2=?, 1+3=?</p>
+
+<p>당연히 즉답.</p>
+
+<p>「자랐어?」</p>
+
+<p>「안 자랐어. 원래 알았는데, 뭘.」</p>
+
+<p>「그치. 전부 동그라미면, 그 문제집 풀 이유가 없잖아. X 자리를 찾으려고 푸는 거야. X 찾았으면, 자랄 자리 하나 찾은 거지.」</p>
+
+<p>당연한 얘기일지도 모르겠어요.</p>
+
+<p>그렇게 보면 숙제 푸는 의미도 좀 달라져요. 먼저 예습을 한 번 하고 문제를 풀어 봐도 괜찮을지도. 문제 자체가 테스트 시나리오니까.</p>
+
+  </div>
+
+  <div class="related-apps">
+    <span class="related-label">이런 앱이 있어요</span>
+    <ul class="related-list">
+      <li><a href="../../apps/category-tool.html">Timer 계 →</a></li>
+    </ul>
+  </div>
+  <!-- BEGIN related-posts -->
+  <aside class="related-posts">
+    <div class="related-posts-label">관련 글</div>
+    <ul>
+      <li><a href="productive-failure.html">아이 실패는, 제가 먼저 주워가고 있었어요</a></li>
+    </ul>
+  </aside>
+  <!-- END related-posts -->
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="receive-no1.html"><span class="post-nav-label">← 이전 글</span><span class="post-nav-title">베마가, 30 년 뒤 ── 100 줄짜리 BASIC 게임을 iPhone 으로 옮겼습니다</span></a>
+    <a class="post-nav-next" href="parenting-frameworks.html"><span class="post-nav-label">다음 글 →</span><span class="post-nav-title">개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작)<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+  </nav>
+  <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — 육아 중인 엔지니어.</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ 소개</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ 연락</a>
+  </p>
+</div>
+<!-- END byline -->
+  </div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/ko/common.js"></script>
+<script src="../../../content/ko/todo.js"></script>
+<script src="../../../content/ko/record.js"></script>
+<script src="../../../content/ko/tool.js"></script>
+<script src="../../../content/ko/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
+<script defer src="../../../shared/analytics.js"></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="육아 정말 힘들죠. 함께 힘내요 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

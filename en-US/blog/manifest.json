@@ -147,6 +147,24 @@
       "app_badge": "Receive No.1"
     },
     {
+      "_comment": "「育児フレームワーク」シリーズ 第 2 回 (0-C 一般)。LP/BLOG_DRAFTS/tdd-parenting.md 起点。フック: 算数プリント上から 3 連続バツ → 前なら『あ〜あ』とヒント出してた癖 (productive-failure 参照) → 失敗そのものは悪くない (覚えてるのは間違えた所) → 勉強の本質は 3 段目 (解く・答え合わせ・なぜ間違ったかを覚える) → システム開発の『バグ曲線』『人はミスする前提』 → 『人は』と言った瞬間に学習にも流用できる → 問題集こそ TDD (問題 = テストシナリオ / 解答 = 期待出力 / セットで用意) → 目的は問題を解く事じゃなく『自分をグリーンにする事』 → 失敗確認駆動 (Failure Confirmation Driven) 着地 → 子との問答 (1+1=?, 1+2=?, 1+3=?: 分かってる問題やっても成長しない、バツ = 自ら自分を伸ばせる場所) → 予習してから問題集を解く reframe で締め。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆。tags は dev-methods (エンジニア父・母ニッチ)。色はエンジニア×育児。related_slugs: productive-failure (parenting-paradox シリーズなのでクロスシリーズ参照)。",
+      "slug": "tdd-parenting",
+      "date": "2026-06-08",
+      "tags": [
+        "dev-methods"
+      ],
+      "series_id": "parenting-frameworks",
+      "series_order": 2,
+      "related_slugs": [
+        "productive-failure"
+      ],
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "The workbook was running TDD on us the whole time",
+      "description": "Three red X's stacked on a math sheet used to send me into hint-mode. Then it clicked — workbooks are basically a test suite. Wrong answers aren't bad. They're the point. Calling this Failure-Confirmation-Driven Parenting (parenting frameworks, Part 2)."
+    },
+    {
       "_comment": "「育児フレームワーク」新シリーズ第一弾 (0-C 一般)。LP/BLOG_DRAFTS/parenting-frameworks.md 起点。フック: ○○駆動開発 (TDD/FDD/BDD/MDD/DDD/TiDD/CDD/AIDD) 多すぎ問題 → フレームワーク = 先人の英知の缶詰、何も考えず乗っかった方が手戻り少ない (ITIL/PMBOK 資格取得) → ビジネスメンバーは「めんどくさい/必要ない」と言うけど、ITIL も「カスタマイズして使え」と書いてある → 育児にも同じ構造、エンジニア語彙で「育児 TDD/BDD/DDD」と整理してみる思考実験 → ペアプロとしての親子 (XP 精神を育児に輸入)。アブリーブ表記ルール:初出 () + JA フルスペル、2 回目以降は略号のみ。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆 (翻訳ではない)。tags は dev-methods (エンジニア父・母ニッチ)。色はエンジニア×育児。シリーズ id = parenting-frameworks (新規)、role: index。比喩は『先人の英知の缶詰』+『料理のレシピ』。",
       "slug": "parenting-frameworks",
       "date": "2026-06-07",
