@@ -92,6 +92,15 @@
       gap: 8
     } }, /* @__PURE__ */ React.createElement("span", { style: { fontWeight: l.code === lang ? 700 : 500 } }, l.native), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 10, opacity: 0.5 } }, l.code === "en-US" ? "en" : l.code))))));
   };
+  window.WaveDivider = ({ color = "#fff", background = "transparent", height = 40 }) => /* @__PURE__ */ React.createElement("div", { "aria-hidden": "true", style: { lineHeight: 0, background, marginBottom: -1 } }, /* @__PURE__ */ React.createElement(
+    "svg",
+    {
+      viewBox: "0 0 1440 48",
+      preserveAspectRatio: "none",
+      style: { display: "block", width: "100%", height }
+    },
+    /* @__PURE__ */ React.createElement("path", { d: "M0,26 C240,50 480,2 720,18 C960,34 1200,6 1440,24 L1440,48 L0,48 Z", fill: color })
+  ));
   window.categoryHref = function(catId, pathPrefix = "") {
     if (catId === "todo") return `${pathPrefix}index.html`;
     return `${pathPrefix}apps/category-${catId}.html`;
@@ -102,7 +111,7 @@
     const [menuOpen, setMenuOpen] = React.useState(false);
     const headerBg = "#2C2218";
     const headerBorder = "#1B130C";
-    return /* @__PURE__ */ React.createElement("header", { style: {
+    return /* @__PURE__ */ React.createElement("header", { className: "site-header", style: {
       background: headerBg,
       borderBottom: `1px solid ${headerBorder}33`
     } }, /* @__PURE__ */ React.createElement("div", { className: "site-header-inner" }, /* @__PURE__ */ React.createElement("a", { href: `${pathPrefix}index.html`, style: {
@@ -112,6 +121,7 @@
       textDecoration: "none",
       color: "#FBF6EE",
       whiteSpace: "nowrap",
+      fontFamily: "var(--font-display, inherit)",
       display: "inline-flex",
       alignItems: "center",
       gap: 8
@@ -126,11 +136,12 @@
       }
     ), /* @__PURE__ */ React.createElement("span", null, "Lyco App")), /* @__PURE__ */ React.createElement("nav", { className: "site-nav", style: { display: "flex", gap: 8, fontSize: 13, alignItems: "center" } }, t.categories.map((c) => {
       const active = c.id === currentCategoryId;
-      return /* @__PURE__ */ React.createElement("a", { key: c.id, href: window.categoryHref(c.id, pathPrefix), style: {
+      return /* @__PURE__ */ React.createElement("a", { key: c.id, className: "nav-pill", href: window.categoryHref(c.id, pathPrefix), style: {
         textDecoration: "none",
         padding: "6px 14px",
         borderRadius: 999,
         fontWeight: 700,
+        fontFamily: "var(--font-display, inherit)",
         color: active ? "#2C2218" : "#FBF6EE",
         background: active ? c.accent.c : "transparent",
         border: `1px solid ${active ? c.accent.c : "rgba(251,246,238,0.25)"}`,
@@ -144,11 +155,12 @@
         borderRadius: "50%",
         background: active ? "#2C2218" : c.accent.c
       } }), c.name);
-    }), /* @__PURE__ */ React.createElement("a", { href: `${pathPrefix}blog/index.html`, style: {
+    }), /* @__PURE__ */ React.createElement("a", { className: "nav-pill", href: `${pathPrefix}blog/index.html`, style: {
       textDecoration: "none",
       padding: "6px 14px",
       borderRadius: 999,
       fontWeight: 700,
+      fontFamily: "var(--font-display, inherit)",
       color: "#FBF6EE",
       background: "transparent",
       border: "1px solid rgba(251,246,238,0.25)",
@@ -191,7 +203,7 @@
     const t = window.I18N[lang] || window.I18N[window.LANG_FALLBACK];
     const f = t.footer || {};
     const accentC = "#8B7355";
-    return /* @__PURE__ */ React.createElement("footer", { style: {
+    return /* @__PURE__ */ React.createElement("footer", { className: "site-footer", style: {
       background: "#2C2218",
       color: "#FBF6EE",
       padding: "10px 20px 8px",
@@ -254,7 +266,7 @@
     const allTitle = t.allapps && t.allapps.title || "";
     const allSub = t.allapps && t.allapps.sub || "";
     const inProgressLabel = t.allapps && t.allapps.in_progress || "";
-    return /* @__PURE__ */ React.createElement("section", { id: "lineup", className: "reveal", "data-snap": true, style: { padding: "clamp(48px, 7vw, 72px) 24px", borderTop: "1px solid rgba(189,153,108,0.15)", background: "#fff" } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 880, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginBottom: 36 } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginBottom: 8 } }, "\u2014 ", allHeading, " \u2014"), /* @__PURE__ */ React.createElement("h2", { style: { fontSize: 22, fontWeight: 900, margin: "0 0 8px", color: "#3D2E1F" } }, allTitle), allSub && /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, color: "#8B7355", margin: 0, lineHeight: 1.6 } }, allSub)), t.categories.map((c) => {
+    return /* @__PURE__ */ React.createElement("section", { id: "lineup", className: "reveal", "data-snap": true, style: { padding: "clamp(48px, 7vw, 72px) 24px", borderTop: "1px solid rgba(189,153,108,0.15)", background: "#fff" } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 880, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginBottom: 36 } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: "#8B7355", marginBottom: 8 } }, "\u2014 ", allHeading, " \u2014"), /* @__PURE__ */ React.createElement("h2", { style: { fontSize: 22, fontWeight: 900, margin: "0 0 8px", color: "#3D2E1F", fontFamily: "var(--font-display, inherit)" } }, allTitle), allSub && /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, color: "#8B7355", margin: 0, lineHeight: 1.6 } }, allSub)), t.categories.map((c) => {
       const isCurrent = currentCategoryId && c.id === currentCategoryId;
       return /* @__PURE__ */ React.createElement("div", { key: c.id, style: { marginBottom: 32 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 14 } }, /* @__PURE__ */ React.createElement("span", { style: { width: 8, height: 8, borderRadius: "50%", background: c.accent.c } }), /* @__PURE__ */ React.createElement("a", { href: isCurrent ? "#lineup" : window.categoryHref(c.id, pathPrefix), style: {
         fontSize: 14,
@@ -358,7 +370,7 @@
     const linkProps = isComingSoon ? {} : { href, target: "_blank", rel: "noopener" };
     const appleSvg = /* @__PURE__ */ React.createElement("svg", { viewBox: "0 0 24 24", width: "22", height: "22", fill: "currentColor", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: "M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" }));
     const playSvg = /* @__PURE__ */ React.createElement("svg", { viewBox: "0 0 24 24", width: "22", height: "22", fill: "currentColor", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("path", { d: "M3 3v18l15-9L3 3z" }));
-    return /* @__PURE__ */ React.createElement(Tag, { ...linkProps, style: {
+    return /* @__PURE__ */ React.createElement(Tag, { ...linkProps, ...isComingSoon ? {} : { className: "store-btn" }, style: {
       display: "inline-flex",
       alignItems: "center",
       gap: 10,
@@ -402,6 +414,7 @@
       textDecoration: "none",
       color: "inherit",
       border: `2px solid ${theme.c}`,
+      "--card-accent": theme.c,
       display: "flex",
       flexDirection: "column",
       gap: 14,
@@ -435,7 +448,7 @@
       borderRadius: 999,
       fontWeight: 700,
       whiteSpace: "nowrap"
-    } }, app.tag)), /* @__PURE__ */ React.createElement("div", { style: { aspectRatio: "16 / 9", overflow: "hidden", borderRadius: 12 } }, /* @__PURE__ */ React.createElement(window.HeroImage, { app, theme, pathPrefix, radius: 12 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 18, fontWeight: 700, color: "#3D2E1F", marginBottom: 6 } }, app.name), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 13, color: "#8B7355", lineHeight: 1.6, marginBottom: 12 } }, /* @__PURE__ */ React.createElement("span", { style: { color: theme.deep, fontWeight: 700 } }, app.formula_a), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 4px" } }, "\xD7"), /* @__PURE__ */ React.createElement("span", { style: { fontWeight: 700 } }, app.formula_b), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 4px" } }, "="), /* @__PURE__ */ React.createElement("span", null, app.formula_c)), /* @__PURE__ */ React.createElement("div", { style: {
+    } }, app.tag)), /* @__PURE__ */ React.createElement("div", { className: "app-card-media", style: { aspectRatio: "16 / 9", overflow: "hidden", borderRadius: 12 } }, /* @__PURE__ */ React.createElement(window.HeroImage, { app, theme, pathPrefix, radius: 12 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 18, fontWeight: 700, color: "#3D2E1F", marginBottom: 6, fontFamily: "var(--font-display, inherit)" } }, app.name), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 13, color: "#8B7355", lineHeight: 1.6, marginBottom: 12 } }, /* @__PURE__ */ React.createElement("span", { style: { color: theme.deep, fontWeight: 700 } }, app.formula_a), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 4px" } }, "\xD7"), /* @__PURE__ */ React.createElement("span", { style: { fontWeight: 700 } }, app.formula_b), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 4px" } }, "="), /* @__PURE__ */ React.createElement("span", null, app.formula_c)), /* @__PURE__ */ React.createElement("div", { style: {
       position: "relative",
       background: theme.soft,
       border: `1.5px solid ${theme.c}`,
@@ -471,6 +484,6 @@
       borderTop: `1.5px solid ${theme.c}`,
       borderLeft: `1.5px solid ${theme.c}`,
       transform: "rotate(45deg)"
-    } }), /* @__PURE__ */ React.createElement("span", { style: { fontWeight: 500 } }, app.call && app.call[0]))), !inProgress && /* @__PURE__ */ React.createElement("div", { style: { marginTop: "auto", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12, color: theme.deep, fontWeight: 700 } }, /* @__PURE__ */ React.createElement("span", null, t.lineup.view_detail), /* @__PURE__ */ React.createElement("span", null, "\u2192")));
+    } }), /* @__PURE__ */ React.createElement("span", { style: { fontWeight: 500 } }, app.call && app.call[0]))), !inProgress && /* @__PURE__ */ React.createElement("div", { style: { marginTop: "auto", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12, color: theme.deep, fontWeight: 700 } }, /* @__PURE__ */ React.createElement("span", null, t.lineup.view_detail), /* @__PURE__ */ React.createElement("span", { className: "app-card-arrow" }, "\u2192")));
   };
 })();

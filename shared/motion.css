@@ -2,6 +2,19 @@
  * motion.css — モダンなスクロール演出（軽量・スマホ前提）
  * ============================================================ */
 
+/* ---------- ディスプレイフォント（丸ゴシック系） ----------
+ * Quicksand = 欧文 / Zen Maru Gothic = 和文 (unicode-range サブセット配信)。
+ * ko / zh-Hant はカバー外のためシステムフォントへフォールバック。
+ * 本文は従来どおりシステムフォント。見出し・ナビ等にだけ
+ * var(--font-display) を JSX 側の fontFamily で指定する。
+ * ---------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap");
+
+:root {
+  --font-display: "Quicksand", "Zen Maru Gothic", "Hiragino Maru Gothic ProN",
+                  "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+}
+
   /* ---------- スクロールスナップ proximity ---------- */
   /* スマホでは強制感が出るので無効化。デスクトップのみ控えめに */
   @media (min-width: 1024px) and (hover: hover) {
@@ -30,7 +43,8 @@
 .reveal,
 .reveal-stagger > * {
   transition: opacity .7s cubic-bezier(.2,.7,.2,1),
-              transform .7s cubic-bezier(.2,.7,.2,1);
+              transform .7s cubic-bezier(.2,.7,.2,1),
+              filter .7s cubic-bezier(.2,.7,.2,1);
   will-change: opacity, transform;
 }
 /* JS が「これからアニメーションする要素」とマーキングした時だけ隠す */
@@ -38,6 +52,7 @@
 .reveal-stagger.reveal-staged > * {
   opacity: 0;
   transform: translateY(28px) scale(0.985);
+  filter: blur(6px);
 }
 /* viewport に入ったら表示 */
 .reveal.is-in,
@@ -46,6 +61,7 @@
 .reveal-stagger.visible > * {
   opacity: 1;
   transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 /* stagger: 子要素を順番に遅らせて出す */
 .reveal-stagger.is-in > *:nth-child(1),
@@ -66,6 +82,7 @@
 .motion-off .reveal-stagger > * {
   opacity: 1 !important;
   transform: none !important;
+  filter: none !important;
   animation: none !important;
 }
 .motion-off html {
@@ -85,9 +102,9 @@
 }
 
 /* ---------- スクロール進捗バー ---------- */
-/* 画面上端に細いバー。視覚的ノイズになるため現状非表示。 */
+/* 画面上端の細いバー。セクションのアクセント色に連動して色が変わる。 */
 .scroll-progress {
-  display: none;
+  display: block;
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 3px;
@@ -199,3 +216,171 @@
 .all-apps-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
 @media (min-width: 600px) { .all-apps-grid { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 960px) { .all-apps-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ============================================================
+ * リッチ化レイヤー — 奥行き (影) / マイクロインタラクション /
+ * ヒーロー装飾 / 戻るボタン。:hover 系は (hover:hover) 限定で
+ * タッチ端末の sticky hover を避ける。
+ * ============================================================ */
+
+/* ---------- ヘッダー: sticky + 半透明ブラー ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(44, 34, 24, 0.92) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 16px rgba(27, 19, 12, 0.25);
+}
+@media (hover: hover) {
+  .nav-pill { transition: background-color .18s ease, border-color .18s ease, transform .18s ease; }
+  .nav-pill:hover {
+    background-color: rgba(251, 246, 238, 0.14) !important;
+    border-color: rgba(251, 246, 238, 0.5) !important;
+  }
+}
+
+/* ---------- AppCard: ソフトシャドウ + ホバーリフト ---------- */
+.app-card {
+  box-shadow: 0 2px 12px rgba(61, 46, 31, 0.06);
+}
+.app-card .app-card-media img,
+.app-card .app-card-media > div {
+  transition: transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.app-card .app-card-arrow {
+  transition: transform .25s cubic-bezier(.2,.7,.2,1);
+}
+@media (hover: hover) {
+  a.app-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 16px 32px color-mix(in srgb, var(--card-accent, #BDA68C) 28%, transparent),
+      0 4px 10px rgba(61, 46, 31, 0.08);
+  }
+  a.app-card:hover .app-card-media img,
+  a.app-card:hover .app-card-media > div {
+    transform: scale(1.06);
+  }
+  a.app-card:hover .app-card-arrow {
+    transform: translateX(5px);
+  }
+}
+
+/* ---------- 全アプリ一覧カード / 前後ナビカード ---------- */
+@media (hover: hover) {
+  .all-app-card[href] { transition: transform .2s ease, box-shadow .2s ease; }
+  .all-app-card[href]:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(61, 46, 31, 0.12);
+  }
+  .prevnext-card { transition: transform .2s ease, box-shadow .2s ease; }
+  .prevnext-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(61, 46, 31, 0.12) !important;
+  }
+}
+
+/* ---------- カテゴリナビ (cat-square): ホバーリフト ---------- */
+@media (hover: hover) {
+  a.cat-square { transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease; }
+  a.cat-square:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 28px rgba(61, 46, 31, 0.16);
+  }
+}
+
+/* ---------- ストアボタン ---------- */
+@media (hover: hover) {
+  a.store-btn { transition: transform .2s ease, box-shadow .2s ease, opacity .2s; }
+  a.store-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  }
+}
+
+/* ---------- ヒーロー装飾: ゆっくり漂う色ブロブ ---------- */
+.hero-deco {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(44px);
+  opacity: 0.35;
+  pointer-events: none;
+  will-change: transform;
+}
+.hero-deco--1 {
+  width: 280px; height: 280px;
+  top: -90px; left: -70px;
+  animation: deco-float-a 14s ease-in-out infinite;
+}
+.hero-deco--2 {
+  width: 220px; height: 220px;
+  bottom: -80px; right: -50px;
+  animation: deco-float-b 18s ease-in-out infinite;
+}
+@keyframes deco-float-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(24px, 18px) scale(1.08); }
+}
+@keyframes deco-float-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-20px, -16px) scale(1.1); }
+}
+.motion-off .hero-deco { animation: none !important; }
+
+/* ---------- スクショ: ホバーで軽くズーム ---------- */
+@media (hover: hover) {
+  .screenshot-img { transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
+  .screenshot-img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16) !important;
+  }
+}
+
+/* ---------- フッター: 上端にカテゴリカラーのヘアライン ---------- */
+.site-footer { position: relative; }
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    #E89A3D 0%, #F5A8C0 30%, #7BAE74 55%, #A8B0BC 78%, #E89A3D 100%);
+  opacity: 0.85;
+}
+
+/* ---------- トップへ戻るボタン (motion.js が生成) ---------- */
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(251, 246, 238, 0.25);
+  background: rgba(44, 34, 24, 0.88);
+  color: #FBF6EE;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(27, 19, 12, 0.3);
+  opacity: 0;
+  transform: translateY(14px) scale(0.9);
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s cubic-bezier(.2,.7,.2,1);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+@media (hover: hover) {
+  .back-to-top:hover { background: rgba(61, 46, 31, 0.96); transform: translateY(-2px) scale(1.04); }
+}
+.motion-off .back-to-top { display: none !important; }

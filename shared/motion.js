@@ -159,6 +159,35 @@
   else document.addEventListener("DOMContentLoaded", setupProgressBar);
 
   // ============================================================
+  // トップへ戻るボタン（600px 以上スクロールで出現）
+  // ============================================================
+  function setupBackToTop() {
+    if (document.querySelector(".back-to-top")) return;
+    const btn = document.createElement("button");
+    btn.className = "back-to-top";
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Back to top");
+    btn.textContent = "↑";
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    document.body.appendChild(btn);
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      btn.classList.toggle("is-visible", window.scrollY > 600);
+    };
+    window.addEventListener("scroll", () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    }, { passive: true });
+    update();
+  }
+
+  if (document.readyState !== "loading") setupBackToTop();
+  else document.addEventListener("DOMContentLoaded", setupBackToTop);
+
+  // ============================================================
   // View Transitions（ページ間遷移）
   // ============================================================
   // 同一オリジン・通常クリック・対応ブラウザのみ

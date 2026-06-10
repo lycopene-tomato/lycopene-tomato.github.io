@@ -44,8 +44,19 @@
         className: "hero",
         "data-snap": true,
         "data-progress-color": accent.c,
-        style: { position: "relative", background: accent.soft, padding: "32px 18px", textAlign: "center", color: accent.deep }
+        style: {
+          position: "relative",
+          overflow: "hidden",
+          background: `radial-gradient(520px 260px at 10% -10%, ${accent.c}2E, transparent 70%),
+                       radial-gradient(460px 240px at 92% 110%, ${accent.c}24, transparent 70%),
+                       ${accent.soft}`,
+          padding: "36px 18px",
+          textAlign: "center",
+          color: accent.deep
+        }
       },
+      /* @__PURE__ */ React.createElement("div", { className: "hero-deco hero-deco--1", style: { background: accent.c } }),
+      /* @__PURE__ */ React.createElement("div", { className: "hero-deco hero-deco--2", style: { background: accent.c } }),
       app.pricing && /* @__PURE__ */ React.createElement("div", { style: {
         position: "absolute",
         top: 10,
@@ -59,14 +70,14 @@
         color: accent.deep,
         opacity: 0.65
       } }, app.pricing),
-      /* @__PURE__ */ React.createElement("h1", { style: { fontSize: 28, fontWeight: 900, margin: "0 0 6px" } }, app.name),
-      /* @__PURE__ */ React.createElement("div", { style: { marginTop: 18, padding: "16px 14px", background: "#fff", borderRadius: 14, color: "#333" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 11, letterSpacing: 2, fontWeight: 800, color: accent.deep, marginBottom: 6 } }, t.detail.label_concept), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 17, fontWeight: 800 } }, /* @__PURE__ */ React.createElement("span", { style: { color: accent.c } }, app.formula_a), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .35em", opacity: 0.5 } }, "\xD7"), /* @__PURE__ */ React.createElement("span", null, app.formula_b), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .35em", opacity: 0.5 } }, "="), /* @__PURE__ */ React.createElement("span", { style: { color: accent.c } }, app.formula_c))),
+      /* @__PURE__ */ React.createElement("h1", { style: { fontSize: 28, fontWeight: 900, margin: "0 0 6px", position: "relative", fontFamily: "var(--font-display, inherit)" } }, app.name),
+      /* @__PURE__ */ React.createElement("div", { style: { marginTop: 18, padding: "16px 14px", background: "#fff", borderRadius: 14, color: "#333", position: "relative", boxShadow: "0 6px 20px rgba(61,46,31,0.08)" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 11, letterSpacing: 2, fontWeight: 800, color: accent.deep, marginBottom: 6 } }, t.detail.label_concept), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 17, fontWeight: 800 } }, /* @__PURE__ */ React.createElement("span", { style: { color: accent.c } }, app.formula_a), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .35em", opacity: 0.5 } }, "\xD7"), /* @__PURE__ */ React.createElement("span", null, app.formula_b), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .35em", opacity: 0.5 } }, "="), /* @__PURE__ */ React.createElement("span", { style: { color: accent.c } }, app.formula_c))),
       app.hero_image && /* @__PURE__ */ React.createElement(
         "img",
         {
           src: window.resolveHeroImage(app, prefix),
           alt: app.name,
-          style: { display: "block", maxWidth: 360, width: "100%", margin: "20px auto 0", borderRadius: 14 }
+          style: { display: "block", maxWidth: 360, width: "100%", margin: "20px auto 0", borderRadius: 14, position: "relative", boxShadow: "0 12px 32px rgba(61,46,31,0.18)" }
         }
       )
     ), app.call && app.call.length > 0 && /* @__PURE__ */ React.createElement(
@@ -203,7 +214,7 @@
         justifyContent: "center",
         flexWrap: "wrap"
       } }, /* @__PURE__ */ React.createElement(window.StoreButton, { platform: "apple", href: app.appstore_url }), /* @__PURE__ */ React.createElement(window.StoreButton, { platform: "google", comingSoon: true }))
-    ), /* @__PURE__ */ React.createElement("section", { style: { padding: "32px 18px 16px", maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 12, textAlign: "center" } }, t.detail.label_same_category), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 } }, /* @__PURE__ */ React.createElement("a", { href: `${prefix}apps/${prev.id}.html`, style: {
+    ), /* @__PURE__ */ React.createElement("section", { style: { padding: "32px 18px 16px", maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 12, textAlign: "center" } }, t.detail.label_same_category), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 } }, /* @__PURE__ */ React.createElement("a", { className: "prevnext-card", href: `${prefix}apps/${prev.id}.html`, style: {
       textDecoration: "none",
       color: "inherit",
       padding: "12px 14px",
@@ -212,7 +223,7 @@
       borderLeft: `4px solid ${accent.c}`,
       borderRadius: 10,
       boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
-    } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 11, color: accent.deep, opacity: 0.7, marginBottom: 4 } }, "\u2190 ", t.detail.prev), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 14, fontWeight: 700, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" } }, prev.name)), /* @__PURE__ */ React.createElement("a", { href: `${prefix}apps/${next.id}.html`, style: {
+    } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 11, color: accent.deep, opacity: 0.7, marginBottom: 4 } }, "\u2190 ", t.detail.prev), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 14, fontWeight: 700, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" } }, prev.name)), /* @__PURE__ */ React.createElement("a", { className: "prevnext-card", href: `${prefix}apps/${next.id}.html`, style: {
       textAlign: "right",
       textDecoration: "none",
       color: "inherit",
@@ -289,6 +300,6 @@
       gap: 12,
       maxWidth: 420,
       margin: "0 auto"
-    } }, imgs.map((im, i) => /* @__PURE__ */ React.createElement("img", { key: i, src: im.url, alt: `${appName || appId} screenshot ${i + 1}`, style: { width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" } })))));
+    } }, imgs.map((im, i) => /* @__PURE__ */ React.createElement("img", { key: i, className: "screenshot-img", src: im.url, alt: `${appName || appId} screenshot ${i + 1}`, style: { width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" } })))));
   };
 })();
