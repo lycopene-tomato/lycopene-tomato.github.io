@@ -11,7 +11,7 @@
  * blog→motion→fonts の 3 段直列チェーンを 2 段並列に短縮する
  * (同一 URL なのでブラウザ側で重複フェッチされない)。
  * ============================================================ */
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Quicksand:wght@500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap");
 @import url("motion.css");
 
 /* ---------- ヘッダー固定 (ブログ) ----------
@@ -25,13 +25,35 @@ body > #site-header {
   z-index: 60;
 }
 
-/* ---------- 見出しにディスプレイフォント ---------- */
+/* ---------- 見出しにディスプレイフォント ----------
+ * font-weight は埋め込み CSS で 900/800 が当たっているが、Zen Maru Gothic
+ * / Quicksand / Nunito bold で潰れて読みにくいため 700 まで下げる
+ * (DESIGN_GUIDE §3)。letter-spacing で空気感を補う。
+ * ---------------------------------------------------------- */
 body h1,
 body h2,
 body .post .title,
 body .pin-badge,
 body .section-label {
   font-family: var(--font-display, inherit);
+}
+body h1,
+body h2 {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- strong マーカー末尾の欠け対策 ----------
+ * 埋め込み CSS の `.body strong { padding: 0 2px }` で末尾の文字に
+ * 右 2px の余白が空き、ハイライト (linear-gradient) が文字の右端に
+ * かからず「最後の文字だけマーカーされてない」ように見える。
+ * padding を半減し、box-decoration-break で折り返し時も両端パディングが
+ * 各行にクローンされるようにする。
+ * ---------------------------------------------------------- */
+body .body strong {
+  padding: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* ---------- h1: アクセントの下線バー ---------- */
@@ -122,14 +144,20 @@ body .body img {
  * acc クラスが無いページ/要素は一切影響を受けない。
  * 色の正本はメインサイトのカテゴリ accent (content/<lang>/*.js)。
  * ============================================================ */
-.acc-todo   { --pa-c: #F5A8C0; --pa-deep: #B85575; --pa-marker: #FFD9E6; }
-.acc-record { --pa-c: #A8B0BC; --pa-deep: #5B6470; --pa-marker: #DDE2E8; }
-.acc-tool   { --pa-c: #7BAE74; --pa-deep: #3F7239; --pa-marker: #D3E8CE; }
-.acc-other  { --pa-c: #A480B8; --pa-deep: #5B3F70; --pa-marker: #E8DDF0; }
+.acc-todo   { --pa-c: #F5A8C0; --pa-deep: #B85575; --pa-soft: #FFF0F4; --pa-marker: #FFD9E6; }
+.acc-record { --pa-c: #A8B0BC; --pa-deep: #5B6470; --pa-soft: #EEF0F2; --pa-marker: #DDE2E8; }
+.acc-tool   { --pa-c: #7BAE74; --pa-deep: #3F7239; --pa-soft: #EAF3E5; --pa-marker: #D3E8CE; }
+.acc-other  { --pa-c: #A480B8; --pa-deep: #5B3F70; --pa-soft: #F0E8F5; --pa-marker: #E8DDF0; }
 
-/* 記事ページ (body に acc-*) */
+/* 記事ページ (body に acc-*)
+ * バッジはメイン LP の CategoryBadge と同型 (soft 面 × 濃色文字 × c 枠)。
+ * deep ベタ塗り × 白文字はどぎつくなるので使わない (DESIGN_GUIDE §1.5)。
+ * 文字色は AA 確保のため deep を 15% 黒に寄せる (color-mix 非対応なら deep)。 */
 body[class*="acc-"] .app-badge {
-  background: var(--pa-deep);
+  background: var(--pa-soft);
+  color: var(--pa-deep);
+  color: color-mix(in srgb, var(--pa-deep) 85%, #000);
+  border: 1px solid var(--pa-c);
 }
 body[class*="acc-"] .body h2 {
   border-left-color: var(--pa-c);
@@ -141,24 +169,46 @@ body[class*="acc-"] .body blockquote {
   border-left-color: var(--pa-c);
 }
 
-/* CTA ボタン (body 単位 or ボタン単体のどちらでも) */
+/* CTA ボタン (body 単位 or ボタン単体のどちらでも)
+ * ヘッダーのアクティブピルと同型: c 面 × 墨文字 (やわらかいが AA は確保)。 */
 body[class*="acc-"] .app-link,
 body .app-link[class*="acc-"] {
-  background: var(--pa-deep);
+  background: var(--pa-c);
+  color: #2C2218;
 }
 @media (hover: hover) {
   body[class*="acc-"] .app-link:hover,
   body .app-link[class*="acc-"]:hover {
-    box-shadow: 0 6px 18px color-mix(in srgb, var(--pa-deep) 40%, transparent);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--pa-c) 50%, transparent);
   }
 }
 
-/* ブログ index のアプリ別カード */
+/* ブログ index のアプリ別カード (バッジは記事ページと同型のソフトトーン) */
 body .post[class*="acc-"] .app-badge {
-  background: var(--pa-deep);
+  background: var(--pa-soft);
+  color: var(--pa-deep);
+  color: color-mix(in srgb, var(--pa-deep) 85%, #000);
+  border: 1px solid var(--pa-c);
 }
 body .post.app-post[class*="acc-"] {
   border-left-color: var(--pa-c);
+}
+
+/* ---------- BMC コーヒー吹き出しのフォント縮小 (DESIGN_GUIDE §7) ----------
+ * BMC widget は外部スクリプトが描画するため CSS 上書きの的中は不確実。
+ * 命中しなければ既定 (前と同じ見た目) のままで害は無いので、考えられる
+ * セレクタを列挙して保険的に当てる。確認は実機 DevTools で行う。
+ * ---------------------------------------------------------- */
+#bmc-wbtn-message,
+#bmc-wbtn-message-wrapper,
+#bmc-wbtn-message-wrapper *,
+.bmc-btn-text,
+.bmc-message,
+[id^="bmc-wbtn-"] [class*="message"],
+[class*="bmc"] [class*="message"] {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  font-family: var(--font-display, system-ui, sans-serif) !important;
 }
 
 /* ---------- 前後記事ナビ / 関連記事カードのホバー ---------- */

@@ -2,17 +2,39 @@
  * motion.css — モダンなスクロール演出（軽量・スマホ前提）
  * ============================================================ */
 
-/* ---------- ディスプレイフォント（丸ゴシック系） ----------
- * Quicksand = 欧文 / Zen Maru Gothic = 和文 (unicode-range サブセット配信)。
- * ko / zh-Hant はカバー外のためシステムフォントへフォールバック。
- * 本文は従来どおりシステムフォント。見出し・ナビ等にだけ
- * var(--font-display) を JSX 側の fontFamily で指定する。
+/* ---------- ディスプレイフォント（言語別、見出し用） ----------
+ * 「やわらかい + 太字で潰れない」を言語ごとに最適化。
+ * 詳細は DESIGN_GUIDE.md §3。
+ *   ja:      OS の Hiragino Maru Gothic ProN を最優先 (iOS/macOS で最も美しい)
+ *   en/en-*: Nunito (Quicksand bold より字幅広く潰れにくい)
+ *   zh-Hant: PingFang TC / Microsoft JhengHei の "やわらかい黒体"
+ *   ko:      Apple SD Gothic Neo / Pretendard
+ * font-weight: 900 は使わない (どのフォントでも潰れる)。最大 700 まで。
  * ---------------------------------------------------------- */
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Quicksand:wght@500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap");
 
 :root {
-  --font-display: "Quicksand", "Zen Maru Gothic", "Hiragino Maru Gothic ProN",
-                  "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  /* デフォルト = 日本語想定 */
+  --font-display: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro",
+                  "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic Medium",
+                  "Yu Gothic", system-ui, sans-serif;
+}
+
+/* en-US (HTML の lang 属性は "en" or "en-US" のどちらか) */
+html[lang="en"] , html[lang^="en-"] {
+  --font-display: "Nunito", "Quicksand", system-ui, sans-serif;
+}
+
+/* zh-Hant */
+html[lang^="zh"] {
+  --font-display: "PingFang TC", "Hiragino Sans CNS", "Microsoft JhengHei",
+                  "Heiti TC", system-ui, sans-serif;
+}
+
+/* ko */
+html[lang="ko"] , html[lang^="ko-"] {
+  --font-display: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR",
+                  "Malgun Gothic", system-ui, sans-serif;
 }
 
   /* ---------- スクロールスナップ proximity ---------- */

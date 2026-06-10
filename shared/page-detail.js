@@ -70,7 +70,7 @@
         color: accent.deep,
         opacity: 0.65
       } }, app.pricing),
-      /* @__PURE__ */ React.createElement("h1", { style: { fontSize: 28, fontWeight: 900, margin: "0 0 6px", position: "relative", fontFamily: "var(--font-display, inherit)" } }, app.name),
+      /* @__PURE__ */ React.createElement("h1", { style: { fontSize: 28, fontWeight: 700, margin: "0 0 6px", position: "relative", fontFamily: "var(--font-display, inherit)", letterSpacing: "0.01em" } }, app.name),
       /* @__PURE__ */ React.createElement("div", { style: { marginTop: 18, padding: "16px 14px", background: "#fff", borderRadius: 14, color: "#333", position: "relative", boxShadow: "0 6px 20px rgba(61,46,31,0.08)" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 11, letterSpacing: 2, fontWeight: 800, color: accent.deep, marginBottom: 6 } }, t.detail.label_concept), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 17, fontWeight: 800 } }, /* @__PURE__ */ React.createElement("span", { style: { color: accent.c } }, app.formula_a), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .35em", opacity: 0.5 } }, "\xD7"), /* @__PURE__ */ React.createElement("span", null, app.formula_b), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .35em", opacity: 0.5 } }, "="), /* @__PURE__ */ React.createElement("span", { style: { color: accent.c } }, app.formula_c))),
       app.hero_image && /* @__PURE__ */ React.createElement(
         "img",
