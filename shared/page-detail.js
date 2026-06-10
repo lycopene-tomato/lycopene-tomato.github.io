@@ -239,35 +239,33 @@
     const [imgs, setImgs] = React.useState([]);
     React.useEffect(() => {
       let alive = true;
-      (async () => {
-        const base = `${pathPrefix}../`;
-        const candidates = [];
-        for (let i = 1; i <= 6; i++) {
-          candidates.push([
-            `${base}images/screenshots/${lang}/${appId}-${i}.jpeg`,
-            `${base}images/screenshots/${lang}/${appId}-${i}.png`,
-            `${base}images/screenshots/${appId}-${i}.jpeg`,
-            `${base}images/screenshots/${appId}-${i}.png`
-          ]);
-        }
-        const found = [];
-        for (const list of candidates) {
-          const ok = await new Promise((res) => {
-            let i = 0;
-            const tryNext = () => {
-              if (i >= list.length) return res(null);
-              const url = list[i++];
-              const img = new Image();
-              img.onload = () => res({ url, landscape: img.naturalWidth > img.naturalHeight });
-              img.onerror = tryNext;
-              img.src = url;
-            };
-            tryNext();
-          });
-          if (ok) found.push(ok);
-        }
-        if (alive) setImgs(found);
-      })();
+      const base = `${pathPrefix}../`;
+      const probeSlot = (i) => new Promise((res) => {
+        const list = [
+          `${base}images/screenshots/${lang}/${appId}-${i}.jpeg`,
+          `${base}images/screenshots/${lang}/${appId}-${i}.png`,
+          `${base}images/screenshots/${appId}-${i}.jpeg`,
+          `${base}images/screenshots/${appId}-${i}.png`
+        ];
+        let k = 0;
+        const tryNext = () => {
+          if (k >= list.length) return res(null);
+          const url = list[k++];
+          const img = new Image();
+          img.onload = () => res({ url, landscape: img.naturalWidth > img.naturalHeight });
+          img.onerror = tryNext;
+          img.src = url;
+        };
+        tryNext();
+      });
+      const results = new Array(6).fill(null);
+      for (let i = 1; i <= 6; i++) {
+        probeSlot(i).then((ok) => {
+          if (!alive || !ok) return;
+          results[i - 1] = ok;
+          setImgs(results.filter(Boolean));
+        });
+      }
       return () => {
         alive = false;
       };
@@ -300,6 +298,6 @@
       gap: 12,
       maxWidth: 420,
       margin: "0 auto"
-    } }, imgs.map((im, i) => /* @__PURE__ */ React.createElement("img", { key: i, className: "screenshot-img", src: im.url, alt: `${appName || appId} screenshot ${i + 1}`, style: { width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" } })))));
+    } }, imgs.map((im, i) => /* @__PURE__ */ React.createElement("img", { key: im.url, className: "screenshot-img", src: im.url, decoding: "async", alt: `${appName || appId} screenshot ${i + 1}`, style: { width: "100%", borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,.08)" } })))));
   };
 })();
