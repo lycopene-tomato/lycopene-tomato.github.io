@@ -92,15 +92,40 @@
       gap: 8
     } }, /* @__PURE__ */ React.createElement("span", { style: { fontWeight: l.code === lang ? 700 : 500 } }, l.native), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 10, opacity: 0.5 } }, l.code === "en-US" ? "en" : l.code))))));
   };
-  window.WaveDivider = ({ color = "#fff", background = "transparent", height = 40 }) => /* @__PURE__ */ React.createElement("div", { "aria-hidden": "true", style: { lineHeight: 0, background, marginBottom: -1 } }, /* @__PURE__ */ React.createElement(
+  window.WaveStack = ({ accentC = "#000", topColor = "#fff", height = 64 }) => /* @__PURE__ */ React.createElement("div", { "aria-hidden": "true", style: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height,
+    pointerEvents: "none",
+    lineHeight: 0
+  } }, /* @__PURE__ */ React.createElement(
     "svg",
     {
-      viewBox: "0 0 1440 48",
+      viewBox: "0 0 1440 64",
       preserveAspectRatio: "none",
-      style: { display: "block", width: "100%", height }
+      style: { position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.22 }
     },
-    /* @__PURE__ */ React.createElement("path", { d: "M0,26 C240,50 480,2 720,18 C960,34 1200,6 1440,24 L1440,48 L0,48 Z", fill: color })
+    /* @__PURE__ */ React.createElement("path", { d: "M0,36 C240,56 480,16 720,30 C960,44 1200,18 1440,32 L1440,64 L0,64 Z", fill: accentC })
+  ), /* @__PURE__ */ React.createElement(
+    "svg",
+    {
+      viewBox: "0 0 1440 64",
+      preserveAspectRatio: "none",
+      style: { position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.4 }
+    },
+    /* @__PURE__ */ React.createElement("path", { d: "M0,44 C200,22 520,58 780,38 C1020,20 1240,52 1440,40 L1440,64 L0,64 Z", fill: accentC })
+  ), /* @__PURE__ */ React.createElement(
+    "svg",
+    {
+      viewBox: "0 0 1440 64",
+      preserveAspectRatio: "none",
+      style: { position: "absolute", inset: 0, width: "100%", height: "100%" }
+    },
+    /* @__PURE__ */ React.createElement("path", { d: "M0,50 C260,72 540,28 800,48 C1060,68 1240,38 1440,52 L1440,64 L0,64 Z", fill: topColor })
   ));
+  window.WaveDivider = window.WaveStack;
   window.categoryHref = function(catId, pathPrefix = "") {
     if (catId === "todo") return `${pathPrefix}index.html`;
     return `${pathPrefix}apps/category-${catId}.html`;

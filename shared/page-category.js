@@ -40,27 +40,31 @@
     const formula = category.formula || {};
     const story = category.story || {};
     const empathy = story.empathy || {};
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(window.SiteHeader, { pathPrefix: prefix, currentCategoryId: categoryId }), /* @__PURE__ */ React.createElement("div", { style: { background: accent.soft, minHeight: "100vh" } }, /* @__PURE__ */ React.createElement(
-      "section",
-      {
-        className: "hero reveal",
-        "data-snap": true,
-        "data-progress-color": accent.c,
-        style: {
-          background: `radial-gradient(560px 280px at 12% -10%, ${accent.c}2E, transparent 70%),
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(window.SiteHeader, { pathPrefix: prefix, currentCategoryId: categoryId }), /* @__PURE__ */ React.createElement("div", { style: { background: accent.soft, minHeight: "100vh" } }, (() => {
+      const nextBg = empathy.lines ? "#fff" : accent.soft;
+      return /* @__PURE__ */ React.createElement(
+        "section",
+        {
+          className: "hero reveal",
+          "data-snap": true,
+          "data-progress-color": accent.c,
+          style: {
+            background: `radial-gradient(560px 280px at 12% -10%, ${accent.c}2E, transparent 70%),
                        radial-gradient(480px 260px at 92% 110%, ${accent.c}24, transparent 70%),
                        ${accent.soft}`,
-          padding: "40px 16px 36px",
-          textAlign: "center",
-          color: accent.deep,
-          position: "relative",
-          overflow: "hidden"
-        }
-      },
-      /* @__PURE__ */ React.createElement("div", { className: "hero-deco hero-deco--1", style: { background: accent.c } }),
-      /* @__PURE__ */ React.createElement("div", { className: "hero-deco hero-deco--2", style: { background: accent.c } }),
-      /* @__PURE__ */ React.createElement("div", { style: { position: "relative" } }, /* @__PURE__ */ React.createElement("div", { className: "hero-formula", style: { display: "flex", flexDirection: "column", gap: 4, alignItems: "center", marginBottom: 16 } }, /* @__PURE__ */ React.createElement("div", { className: "hero-formula__line", style: { whiteSpace: "nowrap", fontWeight: 900, lineHeight: 1.1, fontFamily: "var(--font-display, inherit)", textShadow: "0 2px 14px rgba(255,255,255,0.6)" } }, /* @__PURE__ */ React.createElement("span", { style: { color: accent.c } }, formula.a), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .15em", opacity: 0.55 } }, "\xD7"), /* @__PURE__ */ React.createElement("span", null, formula.b)), /* @__PURE__ */ React.createElement("div", { className: "hero-formula__line", style: { whiteSpace: "nowrap", fontWeight: 900, lineHeight: 1.1, fontFamily: "var(--font-display, inherit)", textShadow: "0 2px 14px rgba(255,255,255,0.6)" } }, /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .15em", opacity: 0.55 } }, "="), /* @__PURE__ */ React.createElement("span", { style: { color: accent.c } }, formula.c))), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 16, fontWeight: 700, marginBottom: 8, fontFamily: "var(--font-display, inherit)" } }, story.tagline), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 13, opacity: 0.85, whiteSpace: "pre-line" } }, story.intro))
-    ), /* @__PURE__ */ React.createElement(window.WaveDivider, { color: empathy.lines ? "#fff" : accent.soft, background: accent.soft }), empathy.lines && /* @__PURE__ */ React.createElement("section", { id: "empathy", className: "reveal", "data-snap": true, "data-progress-color": accent.c, style: { padding: "clamp(60px, 8vw, 80px) 24px", background: "#fff", scrollMarginTop: 80 } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 13, color: "#8B7355", letterSpacing: 3, textAlign: "center", marginBottom: 12 } }, "\u2014 ", empathy.label, " \u2014"), /* @__PURE__ */ React.createElement("div", { style: {
+            padding: "40px 16px 88px",
+            textAlign: "center",
+            color: accent.deep,
+            position: "relative",
+            overflow: "hidden"
+          }
+        },
+        /* @__PURE__ */ React.createElement("div", { className: "hero-deco hero-deco--1", style: { background: accent.c } }),
+        /* @__PURE__ */ React.createElement("div", { className: "hero-deco hero-deco--2", style: { background: accent.c } }),
+        /* @__PURE__ */ React.createElement("div", { style: { position: "relative" } }, /* @__PURE__ */ React.createElement("div", { className: "hero-formula", style: { display: "flex", flexDirection: "column", gap: 4, alignItems: "center", marginBottom: 16 } }, /* @__PURE__ */ React.createElement("div", { className: "hero-formula__line", style: { whiteSpace: "nowrap", fontWeight: 700, lineHeight: 1.1, fontFamily: "var(--font-display, inherit)", letterSpacing: "0.02em" } }, /* @__PURE__ */ React.createElement("span", { style: { color: accent.deep } }, formula.a), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .15em", opacity: 0.55 } }, "\xD7"), /* @__PURE__ */ React.createElement("span", null, formula.b)), /* @__PURE__ */ React.createElement("div", { className: "hero-formula__line", style: { whiteSpace: "nowrap", fontWeight: 700, lineHeight: 1.1, fontFamily: "var(--font-display, inherit)", letterSpacing: "0.02em" } }, /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .15em", opacity: 0.55 } }, "="), /* @__PURE__ */ React.createElement("span", { style: { color: accent.deep } }, formula.c))), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 16, fontWeight: 700, marginBottom: 8, fontFamily: "var(--font-display, inherit)" } }, story.tagline), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 13, opacity: 0.85, whiteSpace: "pre-line" } }, story.intro)),
+        /* @__PURE__ */ React.createElement(window.WaveStack, { accentC: accent.c, topColor: nextBg, height: 64 })
+      );
+    })(), empathy.lines && /* @__PURE__ */ React.createElement("section", { id: "empathy", className: "reveal", "data-snap": true, "data-progress-color": accent.c, style: { padding: "clamp(60px, 8vw, 80px) 24px", background: "#fff", scrollMarginTop: 80 } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 13, color: "#8B7355", letterSpacing: 3, textAlign: "center", marginBottom: 12 } }, "\u2014 ", empathy.label, " \u2014"), /* @__PURE__ */ React.createElement("div", { style: {
       background: "#FBF6EE",
       border: "2px dashed #D8C5A8",
       borderRadius: 16,
