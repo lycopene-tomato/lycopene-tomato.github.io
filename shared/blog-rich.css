@@ -7,8 +7,23 @@
  * motion.css を import することで、フォント / sticky ヘッダー /
  * ナビホバー / フッターヘアライン / タップフィードバックを
  * メイン LP と共有する。
+ * フォントの @import は motion.css 内にもあるが、ここに直接書く事で
+ * blog→motion→fonts の 3 段直列チェーンを 2 段並列に短縮する
+ * (同一 URL なのでブラウザ側で重複フェッチされない)。
  * ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap");
 @import url("motion.css");
+
+/* ---------- ヘッダー固定 (ブログ) ----------
+ * ブログは <body> 直下の #site-header ラッパーに React がヘッダーを
+ * 描画する。内側の <header>.site-header の sticky は親 (高さ=ヘッダー分)
+ * に拘束されて効かないため、ラッパー側を sticky にする (DESIGN_GUIDE §7)。
+ * ---------------------------------------------------------- */
+body > #site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+}
 
 /* ---------- 見出しにディスプレイフォント ---------- */
 body h1,
@@ -96,6 +111,54 @@ body .body img {
   @media (prefers-reduced-motion: reduce) {
     body::before { display: none; }
   }
+}
+
+/* ============================================================
+ * アプリ別テーマカラー (acc クラス) — DESIGN_GUIDE §1-2
+ * ============================================================
+ * アプリ紹介コラム: <body class="acc-<cat>">
+ * エッセイの CTA のみ: <a class="app-link acc-<cat>">
+ * ブログ index のカード: <a class="post slim app-post acc-<cat>">
+ * acc クラスが無いページ/要素は一切影響を受けない。
+ * 色の正本はメインサイトのカテゴリ accent (content/<lang>/*.js)。
+ * ============================================================ */
+.acc-todo   { --pa-c: #F5A8C0; --pa-deep: #B85575; --pa-marker: #FFD9E6; }
+.acc-record { --pa-c: #A8B0BC; --pa-deep: #5B6470; --pa-marker: #DDE2E8; }
+.acc-tool   { --pa-c: #7BAE74; --pa-deep: #3F7239; --pa-marker: #D3E8CE; }
+.acc-other  { --pa-c: #A480B8; --pa-deep: #5B3F70; --pa-marker: #E8DDF0; }
+
+/* 記事ページ (body に acc-*) */
+body[class*="acc-"] .app-badge {
+  background: var(--pa-deep);
+}
+body[class*="acc-"] .body h2 {
+  border-left-color: var(--pa-c);
+}
+body[class*="acc-"] .body strong {
+  background: linear-gradient(transparent 60%, var(--pa-marker) 60%);
+}
+body[class*="acc-"] .body blockquote {
+  border-left-color: var(--pa-c);
+}
+
+/* CTA ボタン (body 単位 or ボタン単体のどちらでも) */
+body[class*="acc-"] .app-link,
+body .app-link[class*="acc-"] {
+  background: var(--pa-deep);
+}
+@media (hover: hover) {
+  body[class*="acc-"] .app-link:hover,
+  body .app-link[class*="acc-"]:hover {
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--pa-deep) 40%, transparent);
+  }
+}
+
+/* ブログ index のアプリ別カード */
+body .post[class*="acc-"] .app-badge {
+  background: var(--pa-deep);
+}
+body .post.app-post[class*="acc-"] {
+  border-left-color: var(--pa-c);
 }
 
 /* ---------- 前後記事ナビ / 関連記事カードのホバー ---------- */

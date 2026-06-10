@@ -44,7 +44,10 @@
           }
           io.unobserve(el);
         }
-      }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" })
+        // threshold は 0 固定 (DESIGN_GUIDE §5)。0.15 等にすると背の高い
+        // セクションが「要素の 15% が見えるまで」丸ごと opacity:0 のままに
+        // なり、スクロール中に大きな空白として見える。
+      }, { threshold: 0, rootMargin: "0px 0px -10% 0px" })
     : null;
 
   function runCountUp(el, target) {
