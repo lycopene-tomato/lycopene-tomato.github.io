@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<title>“They grow up so fast,” the grandma in the checkout line said — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="7 p.m. on a Tuesday, kid on the floor at Trader Joe's, and the grandma behind us smiles and says “they grow up so fast.” Same cliché as “things were better back then,” I think. So I went home and did the math. We're past 50% already. LastDays is the app I built so I'd see that number on my phone every day." />
+<link rel="canonical" href="https://lycoapp.com/en-US/blog/posts/app-lastdays.html" />
+<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/app-lastdays.html" />
+<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/app-lastdays.html" />
+<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/app-lastdays.html" />
+<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/app-lastdays.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/app-lastdays.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="“They grow up so fast,” the grandma in the checkout line said" />
+<meta property="og:description" content="The Trader Joe's checkout line, the “goes by so fast,” and the math I did when I got home. We're past 50% already." />
+<meta property="og:url" content="https://lycoapp.com/en-US/blog/posts/app-lastdays.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="“They grow up so fast,” the grandma in the checkout line said" />
+<meta name="twitter:description" content="The Trader Joe's checkout line, the “goes by so fast,” and the math I did when I got home. We're past 50% already." />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<link rel="stylesheet" href="/shared/blog-rich.css" />
+<style>
+  body { margin:0; font-family: system-ui,"Helvetica Neue","Segoe UI",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  .app-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.5px; color:#fff; background:#3F8C7E; padding:3px 10px; border-radius:999px; margin-bottom:10px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #3F8C7E; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #C9EBE0 60%); padding: 0 2px; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #3F8C7E; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.7; }
+  .body ol, .body ul { margin: 0 0 1.4em; padding-left: 22px; }
+  .body li { margin-bottom: 6px; }
+  .app-link { display: inline-block; margin-top: 24px; padding: 12px 22px; background: #3F8C7E; color: #fff; text-decoration: none; border-radius: 999px; font-weight: 800; font-size: 14px; transition: transform .15s ease, box-shadow .15s ease; }
+  .app-link:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(63,140,126,.3); }
+  .refs { margin-top: 40px; padding-top: 18px; border-top: 1px dashed #D6C9B5; font-size: 12px; color:#5C4936; }
+  .refs ol { padding-left: 18px; margin: 0; }
+  .refs li { margin-bottom: 6px; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+.post-tldr { border-top: 1px solid #C9B79A; border-bottom: 1px solid #C9B79A; padding: 14px 0; margin: 0 0 20px; font-size: 15px; line-height: 1.75; color: #3D2E1F; }
+  /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← you are here"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 20px 0 0; padding: 10px 0 0; border-top: 1px solid #D6C9B5; opacity: .7; }
+  .post-byline-text { margin: 0 0 4px; font-size: 12px; line-height: 1.6; color: #5C4936; }
+  .post-byline-links { margin: 0; font-size: 12px; line-height: 1.6; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
+  /* END blog-extension-styles */
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "“They grow up so fast,” the grandma in the checkout line said",
+  "description": "Tuesday evening at Trader Joe's, kid on the floor, the well-meaning grandma cliché. I went home and did the math on how many days we have left. LastDays is the app I built so I'd see that number every day.",
+  "datePublished": "2026-06-13",
+  "dateModified": "2026-06-13",
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/en-US/about/#lyco", "name": "Lyco" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/en-US/blog/posts/app-lastdays.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
+  "inLanguage": "en-US"
+}
+</script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lycoapp.com/en-US/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Column",
+      "item": "https://lycoapp.com/en-US/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "“They grow up so fast,” the grandma in the checkout line said"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
+</head>
+<body class="acc-tool">
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← All columns</a>
+  <span class="app-badge">LastDays</span>
+  <h1>“They grow up so fast,” the grandma in the checkout line said</h1>
+  <div class="meta">2026-06-13</div>
+  <!-- BEGIN series-box -->
+  <aside class="series-box" data-series-id="parenting-paradox">
+    <div class="series-label">The Parenting Paradox Trilogy — Part 4</div>
+    <ol>
+      <li><a href="productive-failure.html">I was grabbing his failures before he could feel them</a></li>
+      <li><a href="bismarck-experience.html">Just listen, kid. It&#x27;s easier.</a></li>
+      <li><a href="doublethink.html">He won&#x27;t listen, but I want him happy</a></li>
+      <li class="current">“They grow up so fast,” the grandma in the checkout line said</li>
+    </ol>
+  </aside>
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">Tags:</span>
+    <a class="post-tag" href="../tag/quote-essay.html">Thoughts</a>
+    <a class="post-tag" href="../tag/parent-self-image.html">The parent&#x27;s feelings</a>
+  </div>
+  <!-- END tags -->
+  <div class="body">
+
+<p id="tldr" class="post-tldr">7 p.m. on a Tuesday, kid on the floor at Trader Joe's, and the grandma behind us smiles and says “they grow up so fast.” Same shape as “things were better back then,” I think on the drive home. So I sat down and actually did the math. We're past the halfway mark already. LastDays is the app I built so I'd see that number on my phone every day.</p>
+
+<p>Trader Joe's checkout line, Tuesday around 7 p.m. The kid is on the floor, doing the “but I want the gummy snacks” thing. We are not buying the gummy snacks tonight.</p>
+
+<blockquote>“Aww, he's cute. They grow up so fast. Cherish every minute.”</blockquote>
+
+<p>Grandma in line behind us. Warm smile. She didn't mean anything by it. I smiled back. I think.</p>
+
+<p>And then I couldn't shake the line all the way home.</p>
+
+<h2>You know the feeling I mean</h2>
+
+<p>If you're a parent, you know it. The half-second twinge that happens before the polite “thank you” — that little flinch. I thought it was just our house. Apparently it's not.</p>
+
+<p>So why does it land that way? I was thinking about it on the drive back.</p>
+
+<p>There's a concept in Orwell's <em>Nineteen Eighty-Four</em> called <strong>doublethink</strong>. The short version goes:</p>
+
+<blockquote>The capacity to hold two contradictory beliefs in one's mind simultaneously, and to accept both of them.</blockquote>
+
+<p>A lot of well-meaning lines parents get from strangers are built on this, I think.</p>
+
+<h2>The “things were better back then” lie</h2>
+
+<p>People love saying things were better back then.</p>
+
+<p>Were they though? No smartphone. No on-demand anything. No NPR podcast for the commute. You wanted to know something, you drove to the library or you called your one friend who knew, and that friend would tack a small lecture onto the answer.</p>
+
+<p>Want to go back? You'd have to give up tech and live in the woods. (Maybe a little extreme, but you see the shape.)</p>
+
+<p>“Things were better back then” is mostly <strong>a memory edit the person fully believes in</strong>. The inconvenient stuff drops out. The good fragments stay. Nostalgia, basically. It's how we work.</p>
+
+<p>And we can say “those days were great” and “those days were a pain” in the same breath, and mean both. That's doublethink, hiding in plain sight.</p>
+
+<h2>“They grow up so fast” has the same shape</h2>
+
+<p>I think “they grow up so fast” works the same way.</p>
+
+<p>Someone on the other side, looking back at compressed memory. From there, it really does look like a second. From here? It does not.</p>
+
+<p>7:30 a.m., me saying “it's seven thirty, go go go,” three times. Same kid making the same mistake on the same worksheet. Homework taking thirty minutes to start. Bath taking thirty minutes to start. Bedtime, another thirty.</p>
+
+<p>Then the next day. Then the week after. The month after looks identical from here.</p>
+
+<p>It is not fast. It is long. Some days I want to say <em>are you sure your kids were not just the easy kind</em>. I don't. But the thought shows up.</p>
+
+<h2>OK, but is it actually fast? Let's do the math</h2>
+
+<p>Fine. End of doublethink. Engineer-brain on.</p>
+
+<p>You can argue feelings about “fast” all day and not get anywhere. Numbers, though, you can put on a screen.</p>
+
+<p>People can endure something hard when two things are true:</p>
+
+<ol>
+  <li>There's an endpoint.</li>
+  <li>There's a reward on the other side of it.</li>
+</ol>
+
+<p>Diets break in the plateau, when the endpoint disappears. College applications work because there's a date on the calendar and a thing on the other side. “I'll get my certification eventually” — that <em>eventually</em> never arrives.</p>
+
+<p>Framing parenting in those terms feels a little cold. Fair. But for the version of me who's drowning in the same Tuesday loop, <strong>just being able to see where the endpoint is helps</strong>. Some, at least. Honestly.</p>
+
+<h2>So I built the app that shows the endpoint</h2>
+
+<p>That's what <strong>LastDays</strong> is. You enter your kid's birthday. It adds up how much in-person time you've got left with them, year by year, until 18.</p>
+
+<p>The math is rough on purpose. Daycare or stay-at-home, public school or homeschool, summer break length — you tap your situation once in the settings. It does the addition.</p>
+
+<p>At age 0, you're with them 24 hours. By elementary school, you're not for the six hours they're in class. By high school, they're barely home. The time we have together <strong>drops a lot faster than the calendar suggests</strong>. You don't really see that until somebody draws the slope.</p>
+
+<p>For us, the total said we were past 50% already. The first time the screen loaded that number, I had to put the phone down for a second.</p>
+
+<h2>“Almost there” actually helps</h2>
+
+<p>After I saw “about half left,” the 7:30 a.m. <em>go go go</em> got a tiny bit easier. Not gone. Easier. Same way knowing finals are in three weeks makes the all-nighter not feel infinite.</p>
+
+<p>The app also breaks the number down by thing. How many more bedtime stories. How many more piggy-back rides (somewhere in there is a quiet <em>oof, my back</em>). How many more times he'll ask to take a bath with me.</p>
+
+<p>Piggy-backs are heavy. I'll be honest, I have skipped a few. But the app saying <em>about 300 left</em> makes one more, tonight, feel doable. Some nights. Not all of them.</p>
+
+<p>Bedtime stories were the one that got me. Apparently we're closer to the end of those than I thought. He's almost out of the read-to-me window. I knew that. I did not know it on the calendar.</p>
+
+<h2>The share image, because of course there's a share image</h2>
+
+<p>You tap any number and it turns into a clean watercolor image you can post. Instagram, X, Threads, Bluesky, whatever.</p>
+
+<p>The image doesn't include your kid's name or birthday. Just the number. “300 more piggy-backs.” “12 more summers.” The personal stuff stays on your phone.</p>
+
+<p>The reason I put share in there is small: I want the other parents who are also half-mad on a Tuesday at 7 p.m. to see the number. I think there are a lot of us. Sharing the feeling without sharing the kid is the goal.</p>
+
+<p>(Also, if you do share it, the link goes to <a href="https://lycoapp.com/lastdays">lycoapp.com/lastdays</a>, and that's the page where people can grab the app. Honest plug. I make these things.)</p>
+
+<h2>Back to the grocery line</h2>
+
+<p>The grandma was being kind. I'm sure of that. I'll take it.</p>
+
+<p>But the half-second flinch isn't wrong either. The person living the long version is allowed to feel it as long. <em>Compressed-memory fast</em> and <em>real-time slow</em> can both be true. They are. That's the doublethink.</p>
+
+<p>What I want is to carry the “half left” number with me at the same time. Not as guilt. As a small weight that says, OK, the loop is long, and also the loop is finite. Both. At once.</p>
+
+<p>Someday I'll be on the other side and I'll say “oh it was nothing, a blink.” Until then, I'll keep saying <em>it's seven thirty</em> three mornings in a row. And I'll count the piggy-backs. Probably out loud, in my head, a little bit of both.</p>
+
+<p><a class="app-link" href="../../apps/lastdays.html">See LastDays →</a></p>
+
+<!-- BEGIN related-posts -->
+  <aside class="related-posts">
+    <div class="related-posts-label">Related posts</div>
+    <ul>
+      <li><a href="doublethink.html">He won&#x27;t listen, but I want him happy</a></li>
+      <li><a href="crying-child-rice-cake.html">Wrong dinner. End of the world. Again.</a></li>
+    </ul>
+  </aside>
+  <!-- END related-posts -->
+  <div class="refs">
+  <ol>
+    <li>George Orwell, <em>Nineteen Eighty-Four</em>, Secker &amp; Warburg, 1949. (Source of the “doublethink” concept.)</li>
+    <li>Tim Urban, <a href="https://waitbutwhy.com/2015/12/the-tail-end.html" target="_blank" rel="noopener">“The Tail End”</a>, Wait But Why, 2015. (The 93% observation — by age 18, the great majority of in-person time you'll ever get with your kid is already gone. The math behind LastDays draws from this.)</li>
+  </ol>
+</div>
+
+  </div>
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="receive-no1.html"><span class="post-nav-label">← Previous</span><span class="post-nav-title">Bēmaga, 30 years later — porting a 100-line BASIC game to iPhone</span></a>
+    <a class="post-nav-next" href="tdd-parenting.html"><span class="post-nav-label">Next →</span><span class="post-nav-title">The workbook was running TDD on us the whole time<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+  </nav>
+  <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — An engineer parent.</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ About</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ contact</a>
+  </p>
+</div>
+<!-- END byline -->
+  </div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/en-US/common.js"></script>
+<script src="../../../content/en-US/todo.js"></script>
+<script src="../../../content/en-US/record.js"></script>
+<script src="../../../content/en-US/tool.js"></script>
+<script src="../../../content/en-US/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
+<script defer src="../../../shared/analytics.js"></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Parenting is hard. We're in this together ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

@@ -147,6 +147,27 @@
       "app_badge": "Receive No.1"
     },
     {
+      "_comment": "LastDays (slug: lastdays, SKU: lastdays) のアプリ別コラム (0-B)。既存 draft nostalgia-doublethink を改稿して LastDays 紹介で締める形に転換 (ユーザー提示)。parenting-paradox 三部作の第 4 回として接続 (データ上のみ、本文ではメタ言及なし、ユーザー指示)。前半: スーパーレジ前のおばあちゃん『子育てなんて一瞬よ』→ ダブルシンク (Orwell 1984) → 『昔は良かった』ノスタルジー詐欺。後半: エンジニア視点で数字化 → セルフコントロール 2 条件 (期限+報酬) → LastDays で年齢別カウントダウン (Tim Urban The Tail End の 93% 観察を refs に) → SNS シェアで他親への共感拡散。tags は quote-essay (引用文化層 = Orwell + Tim Urban) と parent-self-image (自分を責めてる親)。色は『共感+静かな怒り → エンジニア視点で着地』。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆 (翻訳ではない)。en-US は Trader Joe's / zh-Hant は 全聯 / 阿嬤 / ko は 마트 / 할머니 で各文化圏のスーパーシーンに置換。app_badge_key は kebab-case 規則どおり last-days。related_slugs: doublethink (parenting-paradox 3/3、同じスーパーシーンの正典) + crying-child-rice-cake (ユーザー指示)。",
+      "slug": "app-lastdays",
+      "date": "2026-06-13",
+      "tags": [
+        "quote-essay",
+        "parent-self-image"
+      ],
+      "series_id": "parenting-paradox",
+      "series_order": 4,
+      "related_slugs": [
+        "doublethink",
+        "crying-child-rice-cake"
+      ],
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "last-days",
+      "title": "「애 키우는 거 진짜 금방이야」, 마트 계산대에서 할머니가 그러더라고요",
+      "description": "화요일 저녁 7시, 마트 계산대 앞에서 아이가 바닥에 누워 「과자 사줘」를 하고 있었어요. 뒷줄 할머니가 웃으면서 「애 키우는 거 진짜 금방이야」라고. 집에 와서 아이와 같이 보낼 수 있는 시간을 나이별로 진짜 더해 봤습니다. 이미 절반이 넘게 지나갔더라고요. LastDays 는 그 남은 숫자를 매일 홈 화면에 보여주는 앱이에요.",
+      "app_badge": "last-days"
+    },
+    {
       "_comment": "「育児フレームワーク」シリーズ 第 2 回 (0-C 一般)。LP/BLOG_DRAFTS/tdd-parenting.md 起点。フック: 算数プリント上から 3 連続バツ → 前なら『あ〜あ』とヒント出してた癖 (productive-failure 参照) → 失敗そのものは悪くない (覚えてるのは間違えた所) → 勉強の本質は 3 段目 (解く・答え合わせ・なぜ間違ったかを覚える) → システム開発の『バグ曲線』『人はミスする前提』 → 『人は』と言った瞬間に学習にも流用できる → 問題集こそ TDD (問題 = テストシナリオ / 解答 = 期待出力 / セットで用意) → 目的は問題を解く事じゃなく『自分をグリーンにする事』 → 失敗確認駆動 (Failure Confirmation Driven) 着地 → 子との問答 (1+1=?, 1+2=?, 1+3=?: 分かってる問題やっても成長しない、バツ = 自ら自分を伸ばせる場所) → 予習してから問題集を解く reframe で締め。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆。tags は dev-methods (エンジニア父・母ニッチ)。色はエンジニア×育児。related_slugs: productive-failure (parenting-paradox シリーズなのでクロスシリーズ参照)。",
       "slug": "tdd-parenting",
       "date": "2026-06-08",

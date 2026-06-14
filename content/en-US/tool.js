@@ -63,5 +63,31 @@ window.__CONTENT__["en-US"].categories.tool = {
         { title: "When it comes back, choose “one more?”", desc: "Since the break was their choice, the end of it doesn’t turn into a fight. Pluto, with no gravity, is where the longest-record runs happen." },
       ],
     },
+    {
+      id: "lastdays",
+      name: "LastDays",
+      tag: "Time remaining",
+      appstore_url: "https://apps.apple.com/app/id6779920918",
+      hero_image: "images/apps/lastdays.jpeg",
+      pricing: "Free",
+      formula_a: "Age",
+      formula_b: "Goodbye",
+      formula_c: "Time together",
+      concept: "Age × Goodbye = Time together",
+      call: [
+        "How many more?",
+        "What did we do together today?",
+      ],
+      trick: [
+        "Just enter their birth date and gender. 13 indicators turn into “how many more” and “how many days left.”",
+        "Tim Urban’s “The Tail End”: by age 18, about 93% of the total time you’ll ever spend with your child is already over. The vague becomes a number.",
+        "Tap any number and it becomes a share image you’d actually post. Their name and birthday never appear in the image — share without worry.",
+      ],
+      setupSteps: [
+        { title: "Enter birth date and gender", desc: "Thirty seconds. From here, 13 indicators start counting down. Nothing at home has to change." },
+        { title: "Tap the easy settings", desc: "Dual income / daycare / preschool / after-school care — match your life and the numbers feel real. Fine-tune later if you want." },
+        { title: "Tap an indicator you care about", desc: "“X more hugs,” “X more bedtime stories” turn into a clean share image. Your child’s name and birthday never show up." },
+      ],
+    },
   ],
 };

@@ -63,5 +63,31 @@ window.__CONTENT__["zh-Hant"].categories.tool = {
         { title: "回來之後選「再來一次？」", desc: "因為是自己選的休息，結束時不會吵起來。最長紀錄通常都在沒有重力的冥王星刷新。" },
       ],
     },
+    {
+      id: "lastdays",
+      name: "LastDays",
+      tag: "剩餘時間",
+      appstore_url: "https://apps.apple.com/app/id6779920918",
+      hero_image: "images/apps/lastdays.jpeg",
+      pricing: "免費",
+      formula_a: "年齡",
+      formula_b: "畢業",
+      formula_c: "一起的時間",
+      concept: "年齡 × 畢業 = 一起的時間",
+      call: [
+        "還剩幾次？",
+        "今天，跟孩子做了什麼？",
+      ],
+      trick: [
+        "只要輸入生日和性別。13 個指標就會變成「還剩幾次」「還剩幾天」。",
+        "Tim Urban 的 \"The Tail End\"。孩子滿 18 歲前，跟孩子相處的總時間大約 93% 就已經結束。模糊變成具體的數字。",
+        "點任何一個數字 → 變成可分享到社群的圖。孩子的名字和生日不會出現在圖上，安心分享。",
+      ],
+      setupSteps: [
+        { title: "輸入生日和性別", desc: "開啟 App 約 30 秒。13 個指標就開始倒數。家裡什麼都不用改變。" },
+        { title: "點選簡單設定", desc: "雙薪 / 托嬰 / 幼兒園 / 課後照顧…貼合自家生活，數字才會貼近現實。後面也能微調。" },
+        { title: "點任意指標", desc: "「還剩 ◯ 次」「還剩 ◯ 天」會變成乾淨的分享圖。孩子的名字和生日不會出現在圖上。" },
+      ],
+    },
   ],
 };
