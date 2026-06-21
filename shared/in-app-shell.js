@@ -25,7 +25,7 @@
       color: "#5C4936"
     } }, "Lyco App")), /* @__PURE__ */ React.createElement("main", { style: { maxWidth: 720, margin: "0 auto", padding: "28px 18px 60px" } }, /* @__PURE__ */ React.createElement("h1", { style: { fontSize: 22, fontWeight: 900, margin: "0 0 10px", lineHeight: 1.4 } }, inApp.title || "Other apps"), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, opacity: 0.75, lineHeight: 1.7, margin: "0 0 24px" } }, inApp.lead || ""), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gap: 12 } }, otherApps.map((app) => {
       const theme = window.getTheme(app.id, app._category) || { soft: "#FFF0F4" };
-      const heroSrc = window.resolveHeroImage(app, "../");
+      const iconSrc = "../../images/icons/" + app.id + ".png";
       const detailHref = (app.appstore_url || "") + ctSuffix;
       return /* @__PURE__ */ React.createElement(
         "a",
@@ -46,10 +46,10 @@
             color: "inherit"
           }
         },
-        heroSrc && /* @__PURE__ */ React.createElement(
+        /* @__PURE__ */ React.createElement(
           "img",
           {
-            src: heroSrc,
+            src: iconSrc,
             alt: "",
             loading: "lazy",
             style: {
@@ -79,6 +79,46 @@
           paddingLeft: 8
         } }, "\u2192")
       );
-    }))));
+    }), /* @__PURE__ */ React.createElement(
+      "a",
+      {
+        href: "https://lycoapp.com/?ct=in-app-home-from-" + (fromApp || "unknown"),
+        target: "_blank",
+        rel: "noopener",
+        style: {
+          display: "flex",
+          alignItems: "center",
+          gap: 14,
+          padding: "16px 16px",
+          background: "linear-gradient(135deg, #FFF6E4 0%, #FFE9D2 100%)",
+          border: "1px solid #F2D9B5",
+          borderRadius: 14,
+          textDecoration: "none",
+          color: "inherit",
+          marginTop: 8
+        }
+      },
+      /* @__PURE__ */ React.createElement(
+        "img",
+        {
+          src: "../../images/logo-puzzle.png",
+          alt: "",
+          loading: "lazy",
+          style: {
+            width: 56,
+            height: 56,
+            flexShrink: 0,
+            objectFit: "contain"
+          }
+        }
+      ),
+      /* @__PURE__ */ React.createElement("div", { style: { flex: 1, minWidth: 0 } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 16, fontWeight: 900, marginBottom: 3, color: "#3D2E1F" } }, inApp.cta_title || "Own Your Day!"), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, color: "#8B7355", lineHeight: 1.5 } }, inApp.cta_sub || "Start with One Step")),
+      /* @__PURE__ */ React.createElement("span", { style: {
+        fontSize: 11,
+        color: "#8B7355",
+        flexShrink: 0,
+        paddingLeft: 8
+      } }, "\u2192")
+    ))));
   };
 })();

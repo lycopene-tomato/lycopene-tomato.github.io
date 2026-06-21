@@ -151,18 +151,23 @@
   .footer-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     color: var(--amber);
     text-decoration: none;
     font-size: 13px;
     font-weight: 700;
-    padding: 6px 14px;
+    padding: 6px 14px 6px 8px;
     border: 1px solid rgba(232, 154, 61, 0.4);
     border-radius: 999px;
     background: rgba(255, 252, 246, 0.7);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     transition: background .15s ease, transform .15s ease;
+  }
+  .footer-link img {
+    width: 22px;
+    height: 22px;
+    display: block;
   }
   .footer-link:hover {
     background: rgba(255, 246, 224, 0.95);
@@ -221,7 +226,8 @@
 
     <div class="footer">
       <a class="footer-link" href="https://lycoapp.com/" aria-label="Visit lycoapp.com">
-        <span>→ lycoapp.com</span>
+        <img src="/images/logo-puzzle.png" alt="" aria-hidden="true" />
+        <span>lycoapp.com</span>
       </a>
       <span class="copy">© 2026 Lyco App</span>
     </div>

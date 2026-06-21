@@ -67,5 +67,7 @@ window.__CONTENT__.ja.common = {
     lead: "Lyco App は、子育てを少しラクにする小さなアプリ集です。",
     current_badge: "いま使用中",
     view_detail: "くわしく見る",
+    cta_title: "今日を、自分のものに。",
+    cta_sub: "ひと手間からはじめよう",
   },
 };
