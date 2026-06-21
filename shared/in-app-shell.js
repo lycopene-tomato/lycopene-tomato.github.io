@@ -89,9 +89,9 @@
           display: "flex",
           alignItems: "center",
           gap: 14,
-          padding: "16px 16px",
-          background: "linear-gradient(135deg, #FFF6E4 0%, #FFE9D2 100%)",
-          border: "1px solid #F2D9B5",
+          padding: "14px 16px",
+          background: "#fff",
+          border: "1px solid #eee",
           borderRadius: 14,
           textDecoration: "none",
           color: "inherit",
@@ -99,20 +99,39 @@
         }
       },
       /* @__PURE__ */ React.createElement(
-        "img",
+        "div",
         {
-          src: "../../images/logo-puzzle.png",
-          alt: "",
-          loading: "lazy",
           style: {
             width: 56,
             height: 56,
+            borderRadius: 12,
             flexShrink: 0,
-            objectFit: "contain"
+            background: "#FFE2EA",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
           }
-        }
+        },
+        /* @__PURE__ */ React.createElement(
+          "img",
+          {
+            src: "../../images/logo-puzzle.png",
+            alt: "",
+            loading: "lazy",
+            style: {
+              width: 38,
+              height: 38,
+              objectFit: "contain",
+              display: "block"
+            }
+          }
+        )
       ),
-      /* @__PURE__ */ React.createElement("div", { style: { flex: 1, minWidth: 0 } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 16, fontWeight: 900, marginBottom: 3, color: "#3D2E1F" } }, inApp.cta_title || "Own Your Day!"), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, color: "#8B7355", lineHeight: 1.5 } }, inApp.cta_sub || "Start with One Step")),
+      /* @__PURE__ */ React.createElement("div", { style: { flex: 1, minWidth: 0 } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 15, fontWeight: 800, marginBottom: 4 } }, "Own Your Day!"), /* @__PURE__ */ React.createElement("div", { style: {
+        fontSize: 12,
+        opacity: 0.75,
+        lineHeight: 1.5
+      } }, "Start with One Step")),
       /* @__PURE__ */ React.createElement("span", { style: {
         fontSize: 11,
         color: "#8B7355",

@@ -64,7 +64,5 @@ window.__CONTENT__["zh-Hant"].common = {
     lead: "Lyco App 是一系列讓育兒輕鬆一點的小型應用程式集合。",
     current_badge: "目前使用中",
     view_detail: "查看詳細",
-    cta_title: "今天，由你掌握。",
-    cta_sub: "從一小步開始",
   },
 };

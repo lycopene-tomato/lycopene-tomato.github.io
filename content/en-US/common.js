@@ -67,7 +67,5 @@ window.__CONTENT__["en-US"].common = {
     lead: "Lyco App is a collection of small apps that make parenting a little easier.",
     current_badge: "Currently in use",
     view_detail: "See details",
-    cta_title: "Own Your Day!",
-    cta_sub: "Start with One Step",
   },
 };

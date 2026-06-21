@@ -64,7 +64,5 @@ window.__CONTENT__.ko.common = {
     lead: "Lyco App은 양육을 조금 더 편하게 해주는 작은 앱들의 모음입니다.",
     current_badge: "지금 사용 중",
     view_detail: "자세히 보기",
-    cta_title: "오늘을, 내 것으로.",
-    cta_sub: "작은 한 걸음부터",
   },
 };
