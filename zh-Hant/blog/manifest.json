@@ -168,6 +168,26 @@
       "app_badge": "last-days"
     },
     {
+      "_comment": "0-C 一般コラム。LP/BLOG_DRAFTS/paradox-of-choice.md 起点。フック: 朝の『何着る?』に子が 3 分固まる → Iyengar & Lepper (2000) ジャム実験 (24 種 vs 6 種、購買率 10 倍差) → 子も 24 種ジャムの大人と同じ過負荷 → 2 択にしたら 3 秒で決まる → Lyco App の Todo 系 (TodoGatya / TodoBingo) も同じ『選択肢を絞る』設計だった → 仕事の要件定義でも『選択できる不自由』として実践している (エンジニア視点で着地) → 締めに親自身の『何でも良いよ』というロールリバーサルでオチ。tags は koe-kake (ハウツー検索の親に『2 択にする』言葉がけ訴求) / cognitive-bias (パラドックスで外圧の理由を言語化、自分を責めなくていい)。色は『真面目分析』。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆。シーン細部のローカル置換 (en-US: mac and cheese / grilled cheese / chicken nuggets / zh-Hant: 咖哩飯 / 炒飯 / 飯糰 / ko: 카레 / 우동 / 주먹밥) で各 locale の親に届くように。",
+      "slug": "paradox-of-choice",
+      "date": "2026-06-22",
+      "tags": [
+        "koe-kake",
+        "cognitive-bias"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "related_slugs": [
+        "tdd-parenting",
+        "productive-failure"
+      ],
+      "section": "latest",
+      "pinned": false,
+      "app_badge": null,
+      "title": "「你自己挑啦」結果是我最殘忍的一句",
+      "description": "早上衣櫃打開，小孩盯著裡面 3 分鐘不動。Iyengar &amp; Lepper (2000) 的果醬實驗 (24 種 vs 6 種) 解釋了那個畫面。把選項砍到 2 個之後，他 3 秒就決定。同樣的邏輯，藏在 Lyco App 的 Todo 系列，也藏在我寫工作需求的時候。"
+    },
+    {
       "_comment": "「育児フレームワーク」シリーズ 第 2 回 (0-C 一般)。LP/BLOG_DRAFTS/tdd-parenting.md 起点。フック: 算数プリント上から 3 連続バツ → 前なら『あ〜あ』とヒント出してた癖 (productive-failure 参照) → 失敗そのものは悪くない (覚えてるのは間違えた所) → 勉強の本質は 3 段目 (解く・答え合わせ・なぜ間違ったかを覚える) → システム開発の『バグ曲線』『人はミスする前提』 → 『人は』と言った瞬間に学習にも流用できる → 問題集こそ TDD (問題 = テストシナリオ / 解答 = 期待出力 / セットで用意) → 目的は問題を解く事じゃなく『自分をグリーンにする事』 → 失敗確認駆動 (Failure Confirmation Driven) 着地 → 子との問答 (1+1=?, 1+2=?, 1+3=?: 分かってる問題やっても成長しない、バツ = 自ら自分を伸ばせる場所) → 予習してから問題集を解く reframe で締め。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆。tags は dev-methods (エンジニア父・母ニッチ)。色はエンジニア×育児。related_slugs: productive-failure (parenting-paradox シリーズなのでクロスシリーズ参照)。",
       "slug": "tdd-parenting",
       "date": "2026-06-08",
