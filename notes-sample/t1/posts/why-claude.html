@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex" />
+<title>なぜ Claude を選んだのか — Architecture Notes</title>
+<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<div class="wrap">
+<article>
+  <p class="a-meta">どう作るのか · 2026.06.20</p>
+  <h1>なぜ Claude を選んだのか</h1>
+  <p>コードを書く相棒を選ぶとき、補完がどれだけ速いかは最後に見た。先に見たのは、長い設計判断を投げても筋を見失わないか、だった。</p>
+  <h2>速さより、文脈</h2>
+  <p>個人開発の作業は途切れる。子どもが起きれば中断するし、翌日には頭がリセットされている。だから「昨日の続き」を保ってくれる相手の価値が、補完の速度より重い。</p>
+  <blockquote>ツールは増える。でも、考える主体は一人。</blockquote>
+  <p>選定の基準を雑に書くと、こうなる。</p>
+  <pre><span class="c"># 重み付け (個人の主観)</span>
+context_retention  = 0.45
+edit_reliability   = 0.30
+speed              = 0.15
+cost               = 0.10</pre>
+  <p>「自分の頭の延長」になるものを選ぶ。それだけ。</p>
+  <a class="back" href="../index.html">← ツリーに戻る</a>
+</article>
+<footer>tree design T1 — placeholder content.</footer>
+</div>
+</body>
+</html>
