@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex" />
+<title>Architecture Notes — L1 (Layer stack)</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Layered architecture</p>
+    <h1 class="title">体験から基盤まで、<br>層で積み上げる。</h1>
+    <p class="lead">上の層ほどユーザーに近く、下の層ほど土台。各層の構成要素のうち、色付きが「なぜそうしたか」の記事です。</p>
+  </header>
+
+  <div class="stack">
+    <div class="layer" style="--c:#f0883e">
+      <div class="meta"><div class="lno">LAYER 4</div><div class="lname">体験 / Product</div><div class="lsub">ユーザーが触る面</div></div>
+      <div class="body">
+        <span class="chip">アプリ群 (7 apps)<span class="sub">TodoGatya 他</span></span>
+        <a class="chip art" href="posts/why-adhd.html">なぜ ADHD なのか<span class="tg">記事</span></a>
+        <span class="chip">多言語 UI</span>
+      </div>
+    </div>
+
+    <div class="layer" style="--c:#3fb950">
+      <div class="meta"><div class="lno">LAYER 3</div><div class="lname">グロース / Growth</div><div class="lsub">どう広がるか</div></div>
+      <div class="body">
+        <a class="chip art" href="posts/viral-loop.html">バイラルループ<span class="tg">記事</span></a>
+        <span class="chip">SEO / ASO / GEO</span>
+        <span class="chip">多言語 (4 langs)</span>
+      </div>
+    </div>
+
+    <div class="layer" style="--c:#a371f7">
+      <div class="meta"><div class="lno">LAYER 2</div><div class="lname">マネタイズ / Monetize</div><div class="lsub">どう回収するか</div></div>
+      <div class="body">
+        <span class="chip">AdMob</span>
+        <span class="chip">Buy Me a Coffee</span>
+        <span class="chip">アフィリエイト<span class="sub">Amazon</span></span>
+      </div>
+    </div>
+
+    <div class="layer" style="--c:#7fa6ff">
+      <div class="meta"><div class="lno">LAYER 1</div><div class="lname">開発基盤 / Platform</div><div class="lsub">土台・自動化</div></div>
+      <div class="body">
+        <a class="chip art" href="posts/why-github.html">ソース管理: GitHub<span class="tg">記事</span></a>
+        <span class="chip">CI/CD: Actions<span class="sub">deploy / screenshots</span></span>
+        <a class="chip art" href="posts/why-claude.html">AI開発支援: Claude Code<span class="tg">記事</span></a>
+        <span class="chip">ホスティング: Pages</span>
+        <a class="chip art" href="posts/throw-away.html">設計方針: 捨てる技術<span class="tg">記事</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>Architecture Notes — design L1. placeholder content.</footer>
+</div>
+</body>
+</html>

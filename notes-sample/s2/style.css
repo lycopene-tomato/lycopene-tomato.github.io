@@ -1,0 +1,56 @@
+/* ============================================================
+   S2 — 折りたたみフォルダツリー (IDE / ファイルエクスプローラ風)
+   <details>/<summary> で実際に開閉。深い階層を畳める。
+   ============================================================ */
+:root{
+  --bg:#10151c; --panel:#161d27; --ink:#dde4ee; --sub:#9aa6b6;
+  --muted:#6b7787; --line:#27313f;
+  --folder:#e0b257; --file:#7fa6ff; --file-bg:rgba(127,166,255,.12);
+  --accent:#7fa6ff; --accent-bg:rgba(127,166,255,.12);
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:740px;margin:0 auto;padding:0 24px}
+header.hero{padding:60px 0 6px}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--file);font-weight:700;margin:0 0 12px}
+h1.title{font-size:32px;line-height:1.18;margin:0 0 12px;font-weight:800;letter-spacing:-.02em}
+.lead{color:var(--sub);font-size:16px;margin:0;max-width:34em}
+
+/* explorer */
+.explorer{margin:36px 0 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 8px;font-family:var(--mono);font-size:13.5px}
+details{margin:0}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:7px;color:var(--ink)}
+summary::-webkit-details-marker{display:none}
+summary:hover{background:rgba(255,255,255,.04)}
+.tw{display:inline-block;width:.8em;color:var(--muted);transition:transform .12s}
+details[open]>summary .tw{transform:rotate(90deg)}
+.ic{width:1.1em;text-align:center}
+.ic.dir{color:var(--folder)}
+.fname{color:var(--ink)}
+.fcount{color:var(--muted);font-size:11.5px;margin-left:4px}
+details ul,details .leaf-wrap{list-style:none;margin:0;padding-left:20px;border-left:1px solid var(--line);margin-left:14px}
+a.file{display:flex;align-items:center;gap:8px;text-decoration:none;padding:6px 8px;border-radius:7px;color:var(--file);background:var(--file-bg);margin:3px 0}
+a.file:hover{background:rgba(127,166,255,.2)}
+a.file .ic{color:var(--file)}
+a.file .ext{color:var(--muted);font-size:11px;margin-left:auto}
+.leaf{display:flex;align-items:center;gap:8px;padding:6px 8px;color:var(--sub)}
+.leaf .ic{color:var(--muted)}
+
+footer{border-top:1px solid var(--line);margin-top:56px;padding:22px 0 70px;color:var(--muted);font-size:13px}
+
+/* breadcrumb (共通クラス) */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;font-family:var(--mono);color:var(--muted);padding:22px 0 0}
+.crumbs a{color:var(--file);text-decoration:none}.crumbs a:hover{text-decoration:underline}
+.crumbs .sep{color:var(--line)}.crumbs b{color:var(--ink);font-weight:700}
+/* article (共通クラス) */
+article{padding:14px 0 80px}
+article h1{font-size:30px;line-height:1.22;margin:14px 0 22px;font-weight:800;letter-spacing:-.02em}
+article h2{font-size:19px;margin:32px 0 12px;font-weight:700}
+article p{margin:15px 0;color:#c6cedb}
+article ul.body{color:#c6cedb;padding-left:22px}article ul.body li{margin:6px 0}article ul.body li::marker{color:var(--file)}
+blockquote{margin:22px 0;padding:13px 20px;border-left:4px solid var(--file);background:var(--accent-bg);border-radius:0 10px 10px 0;font-weight:700;font-size:17px;color:#fff}
+pre{background:#0a0e14;border:1px solid var(--line);color:#c6cedb;border-radius:10px;padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:13px}pre .c{color:var(--muted)}
+.back{display:inline-block;margin-top:38px;color:var(--file);text-decoration:none;font-weight:600}.back:hover{text-decoration:underline}
+a{color:var(--file)}
