@@ -16,19 +16,22 @@
     <p>ユーザーが実際に触るアプリ群。なぜこの題材を選んだのかが、すべての判断の出発点になる。</p>
     <p class="pg-end">（本文はプレースホルダ）</p>
   </article>
-  <nav class="pager">
-    <p class="pg-h">さらに掘る</p>
-    <a class="pg-card" data-nav="down" href="adhd.html"><span class="pg-t">なぜ ADHD なのか</span><span class="pg-x">→</span></a>
-    <div class="pg-foot">
-      <a class="pg-up" data-nav="up" href="../index.html">↑ 全体マップへ</a>
-      <a class="pg-map" href="../index.html#product">⤺ 地図の「プロダクト」に戻る</a>
-    </div>
+  <nav class="treenav">
+    <p class="tn-h">このカテゴリの中の現在地 ／ 次に読む</p>
+    <ul class="tn">
+      <li><details open>
+        <summary class="cur"><span class="caret">▸</span><a href="product.html"><span class="num">2</span>プロダクト / Product</a></summary>
+        <ul>
+          <li><a href="adhd.html"><span class="num">2.1</span>なぜ ADHD なのか</a></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../index.html#product">⤺ 全体マップに戻る</a>
   </nav>
 </main>
 <footer class="site-footer"><div class="bar"><span>Architecture Notes</span><span class="fmeta">design sample E1 · placeholder</span></div></footer>
 <script>
-(function(){var b=document.getElementById('progress-bar');if(b)addEventListener('scroll',function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;b.style.width=(m>0?h.scrollTop/m*100:0)+'%'},{passive:true});
-addEventListener('keydown',function(e){if(/input|textarea/i.test(e.target.tagName))return;var s=e.key==='ArrowRight'||e.key==='j'?'[data-nav=down]':(e.key==='ArrowLeft'||e.key==='k'?'[data-nav=up]':null);if(s){var a=document.querySelector(s);if(a)location.href=a.getAttribute('href')}});})();
+(function(){var b=document.getElementById('progress-bar');if(b)addEventListener('scroll',function(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;b.style.width=(m>0?h.scrollTop/m*100:0)+'%'},{passive:true});})();
 </script>
 </body>
 </html>
