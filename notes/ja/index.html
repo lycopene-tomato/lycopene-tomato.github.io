@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#fcfcfa" />
+<title>Architecture Notes — スマホだけの個人アプリ開発、意思決定の記録 | Lyco App</title>
+<meta name="description" content="手元に Mac も PC も置かず、iPhone と Claude・GitHub・EAS だけで iOS アプリを開発・公開・運用する。lycoapp.com を一人で作る中での意思決定を ADR (MADR × SCQA) として残す開発ログ。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Architecture Notes — スマホだけの個人アプリ開発、意思決定の記録" />
+<meta property="og:description" content="iPhone と Claude・GitHub・EAS だけで iOS アプリを開発・公開・運用する。個人開発の意思決定を ADR として残す開発ログ。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Architecture Notes — スマホだけの個人アプリ開発、意思決定の記録" />
+<meta name="twitter:description" content="iPhone と Claude・GitHub・EAS だけで iOS アプリを開発・公開・運用する。個人開発の意思決定を ADR として残す開発ログ。" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../shared/notes.css" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<!-- JSON-LD: WebSite (本家サイトの一部として宣言し、著者は About の Person に接続) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Architecture Notes",
+  "url": "https://lycoapp.com/notes/ja/",
+  "inLanguage": "ja",
+  "description": "スマホだけで iOS アプリを開発・公開・運用する個人開発の意思決定記録 (ADR)",
+  "isPartOf": { "@type": "WebSite", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" }
+}
+</script>
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Lyco App", "item": "https://lycoapp.com/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" }
+  ]
+}
+</script>
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "このサイトは何ですか?",
+      "acceptedAnswer": { "@type": "Answer", "text": "lycoapp.com のアプリ群を一人で作る中での意思決定を ADR (Architecture Decision Record) として残した開発ログです。手順書ではなく「なぜそう決めたか」を書いています。" }
+    },
+    {
+      "@type": "Question",
+      "name": "誰が書いていますか?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Lyco App の開発者本人です。フルタイムで働きながら、育児の隙間時間にスマホだけで開発しています。プロフィールは lycoapp.com/ja/about/ にあります。" }
+    },
+    {
+      "@type": "Question",
+      "name": "詳細な手順は載っていますか?",
+      "acceptedAnswer": { "@type": "Answer", "text": "載せていません。ADR なので、判断の理由と構成が主です。再現したい場合は、記事を AI に渡して手順を聞くのが早いです。" }
+    },
+    {
+      "@type": "Question",
+      "name": "本家 lycoapp.com との関係は?",
+      "acceptedAnswer": { "@type": "Answer", "text": "同じ開発者・同じドメインです。本家は子どもの習慣づくりアプリの世界、こちらはその開発の裏側です。読者が違うので、デザインを意図的に分けています。" }
+    }
+  ]
+}
+</script>
+<!-- 対応ブラウザのみ: ツリーのリンクを hover で事前レンダリング -->
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".outline a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="./"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a class="lang" href="../en/" hreflang="en" lang="en">EN</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <header class="hero">
+    <p class="kicker">A solo developer's decision log</p>
+    <h1 class="title">スマホだけで、アプリを<br>作って、届けて、運用する。</h1>
+    <p class="lead">手元に Mac も PC もありません。iPhone と、クラウドの向こうの Claude・GitHub・EAS。<a href="https://lycoapp.com/">lycoapp.com</a> のアプリ群を一人で作る中の意思決定を、ADR (Architecture Decision Record) として残しています。</p>
+  </header>
+
+  <aside class="tldr" aria-label="要約">
+    <p class="tl-h">TL;DR</p>
+    <ul>
+      <li>lycoapp.com の全アプリは <b>iPhone だけ</b>で開発している (手元に Mac なし)</li>
+      <li>構成は Claude Code on Web + GitHub + EAS。固定費は Claude Pro $20/月 と Apple Developer Program $99/年</li>
+      <li>各記事は ADR。MADR × SCQA 形式で「なぜそう決めたか」だけを書く</li>
+      <li>このサイトは個人情報を収集しない。広告もない</li>
+    </ul>
+  </aside>
+
+  <h2 class="sec-h" id="policy">Policy — このサイトの方針</h2>
+  <div class="policy">
+    <div class="pol"><b>個人情報を集めない</b><span>アクセス解析なし。cookie バナーなし。フォームなし。読むだけのサイトです。</span></div>
+    <div class="pol"><b>広告を貼らない</b><span>記事に広告は載せません。支援は Buy Me a Coffee の1本だけ。</span></div>
+    <div class="pol"><b>一人 + AI で作る</b><span>開発もこのサイトも、一人の開発者と AI の協働で作っています。</span></div>
+    <div class="pol"><b>実際に動いた構成だけ</b><span>構築して運用まで通ったものだけを ADR として残します。机上の比較記事は書きません。</span></div>
+  </div>
+
+  <h2 class="sec-h" id="map">Map — 意思決定の全体図</h2>
+  <p style="color:var(--sub);font-size:14.5px;margin:0 0 4px">番号は設計書の章立てと同じ 10 進です。色はカテゴリ。リンクになっている項が公開済みの記事です。</p>
+
+  <nav class="outline" aria-label="意思決定ツリー">
+    <a class="row l1 cat-poc" id="poc" href="posts/poc.html"><span class="n">0</span><span class="t">始める前に PoC をしてみた</span><span class="go">→</span></a>
+
+    <a class="row l1 cat-dev" id="dev" href="posts/dev.html"><span class="n">1</span><span class="t">開発基盤 / Dev Platform</span><span class="go">→</span></a>
+    <a class="row l2 cat-dev" id="env" href="posts/env.html"><span class="n">1.1</span><span class="t">開発環境</span><span class="go">→</span></a>
+    <a class="row l3 cat-dev" id="mobile-dev" href="posts/mobile-dev.html"><span class="n">1.1.1</span><span class="t">スマホだけで iPhone アプリを開発する</span><span class="go">→</span></a>
+    <a class="row l3 cat-dev" id="cloud-build" href="posts/cloud-build.html"><span class="n">1.1.2</span><span class="t">Mac なしで build する</span><span class="go">→</span></a>
+    <span class="row l2 cat-dev wip" id="i18n"><span class="n">1.2</span><span class="t">多言語対応 (50 ロケール)</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-dev wip" id="store-docs"><span class="n">1.2.1</span><span class="t">申請ドキュメントの自動化</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-dev wip" id="store-shots"><span class="n">1.2.2</span><span class="t">スクリーンショットの自動生成</span><span class="wip-badge">作成中</span></span>
+
+    <span class="row l1 cat-web wip" id="web"><span class="n">2</span><span class="t">Web ページ作成</span><span class="wip-badge">作成中</span></span>
+    <span class="row l2 cat-web wip" id="domain"><span class="n">2.1</span><span class="t">ドメイン</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-web wip" id="dns-a"><span class="n">2.1.1</span><span class="t">A レコード / CNAME</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-web wip" id="dns-mx"><span class="n">2.1.2</span><span class="t">MX レコード — メール転送</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-web wip" id="dns-txt"><span class="n">2.1.3</span><span class="t">TXT レコード — サーチ登録</span><span class="wip-badge">作成中</span></span>
+    <span class="row l2 cat-web wip" id="site-structure"><span class="n">2.2</span><span class="t">サイト構成</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-web wip" id="site-map"><span class="n">2.2.1</span><span class="t">サイトマップ</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-web wip" id="site-ogp"><span class="n">2.2.2</span><span class="t">OGP</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-web wip" id="site-seo"><span class="n">2.2.3</span><span class="t">SEO</span><span class="wip-badge">作成中</span></span>
+    <span class="row l2 cat-web wip" id="analytics"><span class="n">2.3</span><span class="t">Web 解析</span><span class="wip-badge">作成中</span></span>
+
+    <span class="row l1 cat-growth wip" id="growth"><span class="n">3</span><span class="t">マーケティング</span><span class="wip-badge">作成中</span></span>
+    <span class="row l2 cat-growth wip" id="targeting"><span class="n">3.1</span><span class="t">ターゲティング</span><span class="wip-badge">作成中</span></span>
+    <span class="row l2 cat-growth wip" id="funnel"><span class="n">3.2</span><span class="t">動線設計</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-growth wip" id="funnel-seo"><span class="n">3.2.1</span><span class="t">SEO 動線</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-growth wip" id="funnel-app"><span class="n">3.2.2</span><span class="t">アプリ流入動線</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-growth wip" id="funnel-sns"><span class="n">3.2.3</span><span class="t">SNS 動線</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-growth wip" id="funnel-store"><span class="n">3.2.4</span><span class="t">ストア動線</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-growth wip" id="house-ads"><span class="n">3.2.5</span><span class="t">ハウス広告</span><span class="wip-badge">作成中</span></span>
+    <span class="row l2 cat-growth wip" id="aisas"><span class="n">3.3</span><span class="t">AISAS モデル</span><span class="wip-badge">作成中</span></span>
+    <span class="row l3 cat-growth wip" id="viral-loop"><span class="n">3.3.1</span><span class="t">バイラルループ</span><span class="wip-badge">作成中</span></span>
+
+    <span class="row l1 cat-monetize wip" id="monetize"><span class="n">4</span><span class="t">マネタイズ</span><span class="wip-badge">作成中</span></span>
+    <span class="row l2 cat-monetize wip" id="admob"><span class="n">4.1</span><span class="t">AdMob</span><span class="wip-badge">作成中</span></span>
+    <span class="row l2 cat-monetize wip" id="bmc"><span class="n">4.2</span><span class="t">Buy Me a Coffee</span><span class="wip-badge">作成中</span></span>
+    <span class="row l2 cat-monetize wip" id="affiliate"><span class="n">4.3</span><span class="t">アフィリエイト</span><span class="wip-badge">作成中</span></span>
+
+    <span class="row l1 cat-tips wip" id="tips"><span class="n">5</span><span class="t">開発テクニック</span><span class="wip-badge">作成中</span></span>
+    <span class="row l2 cat-tips wip" id="ai-progress"><span class="n">5.1</span><span class="t">AI に進捗を書き出させる</span><span class="wip-badge">作成中</span></span>
+  </nav>
+
+  <h2 class="sec-h" id="faq">FAQ</h2>
+  <div class="faq">
+    <details>
+      <summary>このサイトは何ですか?</summary>
+      <p class="a">lycoapp.com のアプリ群を一人で作る中での意思決定を ADR (Architecture Decision Record) として残した開発ログです。手順書ではなく「なぜそう決めたか」を書いています。</p>
+    </details>
+    <details>
+      <summary>誰が書いていますか?</summary>
+      <p class="a">Lyco App の開発者本人です。フルタイムで働きながら、育児の隙間時間にスマホだけで開発しています。プロフィールは <a href="https://lycoapp.com/ja/about/">About</a> にあります。</p>
+    </details>
+    <details>
+      <summary>詳細な手順は載っていますか?</summary>
+      <p class="a">載せていません。ADR なので、判断の理由と構成が主です。再現したい場合は、記事を AI に渡して手順を聞くのが早いです。実際に動いた構成であることは確認済みです。</p>
+    </details>
+    <details>
+      <summary>本家 lycoapp.com との関係は?</summary>
+      <p class="a">同じ開発者・同じドメインです。<a href="https://lycoapp.com/">本家</a>は子どもの習慣づくりアプリの世界、こちらはその開発の裏側です。読者が違うので、デザインを意図的に分けています。</p>
+    </details>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

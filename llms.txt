@@ -30,6 +30,20 @@ All blog posts have Japanese / English / Traditional Chinese / Korean siblings, 
 - [Why I built TodoGatya around a gacha](https://lycoapp.com/en-US/blog/posts/app-gacha.html): The rationale behind making the gacha animation a real reward, not just decoration.
 - [Why kids forget the to-do list](https://lycoapp.com/en-US/blog/posts/remember-to-remember.html): Working memory research used as input for the app's external-memory design.
 
+## Architecture Notes (developer decision log)
+
+Separate section of this domain, aimed at engineers rather than parents. Japanese first, English edition follows.
+
+- [Architecture Notes (Japanese)](https://lycoapp.com/notes/ja/): ADR-style decision log of how this site's apps are built — smartphone-only iOS development using Claude Code on Web, GitHub, and EAS (Expo Application Services). No Mac at hand.
+- [Architecture Notes (English)](https://lycoapp.com/notes/en/): English edition (articles in progress).
+- [0: A PoC before starting anything](https://lycoapp.com/notes/ja/posts/poc.html): Asking Claude's chat for a Swift game as a Zip — it ran on a real iPhone. Cost: zero.
+- [1: Dev platform overview](https://lycoapp.com/notes/ja/posts/dev.html): Hardware (iPhone + iPad + one browser session on any PC) and fixed costs (Claude Pro $20/mo, Apple Developer Program $99/yr).
+- [1.1: Development environment](https://lycoapp.com/notes/ja/posts/env.html): Requirements for developing only in the gaps of full-time work and parenting; the answer is iPhone + Claude on Web + EAS + GitHub.
+- [1.1.1: Developing iPhone apps on a phone alone](https://lycoapp.com/notes/ja/posts/mobile-dev.html): The build-free dev loop — commit to main, GitHub Actions runs EAS Update, Expo Go refreshes on the phone in minutes.
+- [1.1.2: Building without a Mac](https://lycoapp.com/notes/ja/posts/cloud-build.html): Certificates once via GitHub Codespaces, then iPhone-triggered EAS build/submit to TestFlight; free-tier limits and --no-wait.
+- Articles follow MADR × SCQA structure (Situation / Complication / Question / Criteria / Answer / Reason / Options / Good / Bad / Follow-up).
+- The Notes section collects no personal data and serves no ads.
+
 ## Editorial stance
 
 - This is **My-Life content** — one engineer dad sharing his own parenting and app development experience. Not Your-Life advice.

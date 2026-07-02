@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Architecture Notes — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="A solo developer's decision log: smartphone-only iOS app development with Claude, GitHub, and EAS." />
+<!-- JS なし環境 (クローラ等) でも必ず実ページに着地させるフォールバック。
+     JS が動く環境では下の location.replace が先に発火する。 -->
+<meta http-equiv="refresh" content="0;url=/notes/en/" />
+<link rel="canonical" href="https://lycoapp.com/notes/en/" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<style>
+  body { font-family: system-ui, sans-serif; background: #fcfcfa; color: #1a1d21; padding: 40px 20px; text-align: center; }
+  a { color: #345d80; }
+</style>
+</head>
+<body>
+
+<!--
+  ============================================================
+   /notes/ — 言語判定リダイレクタ
+  ============================================================
+   - notes は ja / en の 2 言語のみ (本家の 4 言語とは独立)
+   - ブラウザ言語が日本語なら /notes/ja/ 、それ以外は /notes/en/
+   - 本家の langs.js には依存しない (言語集合が異なるため)
+  ============================================================
+-->
+
+<noscript>
+  <p><a href="/notes/ja/">日本語</a> / <a href="/notes/en/">English</a></p>
+</noscript>
+
+<p id="msg">Redirecting…</p>
+
+<script>
+(function () {
+  var langs = navigator.languages ? navigator.languages.join(",") : (navigator.language || "");
+  var target = /(^|[^a-z])ja/i.test(langs) ? "ja" : "en";
+  location.replace("/notes/" + target + "/");
+})();
+</script>
+
+</body>
+</html>

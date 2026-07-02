@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#fcfcfa" />
+<title>Architecture Notes — a smartphone-only indie iOS dev decision log | Lyco App</title>
+<meta name="description" content="No Mac, no PC at hand. Building, shipping, and running iOS apps with just an iPhone plus Claude, GitHub, and EAS. The decision log (ADR, MADR × SCQA) behind lycoapp.com." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Architecture Notes — a smartphone-only indie iOS dev decision log" />
+<meta property="og:description" content="Building, shipping, and running iOS apps with just an iPhone plus Claude, GitHub, and EAS. The decision log behind lycoapp.com." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Architecture Notes — a smartphone-only indie iOS dev decision log" />
+<meta name="twitter:description" content="Building, shipping, and running iOS apps with just an iPhone plus Claude, GitHub, and EAS." />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../shared/notes.css" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<!-- JSON-LD: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Architecture Notes",
+  "url": "https://lycoapp.com/notes/en/",
+  "inLanguage": "en",
+  "description": "A smartphone-only indie iOS development decision log (ADR) behind lycoapp.com",
+  "isPartOf": { "@type": "WebSite", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" }
+}
+</script>
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Lyco App", "item": "https://lycoapp.com/en-US/" },
+    { "@type": "ListItem", "position": 2, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" }
+  ]
+}
+</script>
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is this site?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A development log of the decisions behind lycoapp.com, kept as ADRs (Architecture Decision Records). It records why each choice was made — it is not a step-by-step tutorial." }
+    },
+    {
+      "@type": "Question",
+      "name": "Who writes it?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The developer of Lyco App. Working full-time, developing in the gaps of parenting — entirely on a smartphone. Profile: lycoapp.com/en-US/about/." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are detailed instructions included?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. These are ADRs, so the focus is reasoning and architecture. If you want to reproduce a setup, handing an article to an AI assistant and asking for steps works well. Every setup documented here actually ran in production." }
+    },
+    {
+      "@type": "Question",
+      "name": "How does this relate to lycoapp.com?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Same developer, same domain. The main site is a world of habit-building apps for kids; this is the engineering behind it. The two designs are intentionally separate because the audiences differ." }
+    }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".outline a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="./"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a class="lang" href="../ja/" hreflang="ja" lang="ja">日本語</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <header class="hero">
+    <p class="kicker">A solo developer's decision log</p>
+    <h1 class="title">Build, ship, and run apps —<br>from a phone.</h1>
+    <p class="lead">No Mac, no PC at hand. Just an iPhone, with Claude, GitHub, and EAS on the other side of the cloud. This is the decision log — ADRs (Architecture Decision Records) — behind the apps at <a href="https://lycoapp.com/">lycoapp.com</a>.</p>
+  </header>
+
+  <aside class="tldr" aria-label="Summary">
+    <p class="tl-h">TL;DR</p>
+    <ul>
+      <li>Every app on lycoapp.com is developed <b>entirely on an iPhone</b> (no Mac at hand)</li>
+      <li>The stack: Claude Code on Web + GitHub + EAS. Fixed cost: Claude Pro $20/mo and Apple Developer Program $99/yr</li>
+      <li>Each article is an ADR in MADR × SCQA form — only the "why" behind each decision</li>
+      <li>This site collects no personal data and serves no ads</li>
+    </ul>
+  </aside>
+
+  <h2 class="sec-h" id="policy">Policy</h2>
+  <div class="policy">
+    <div class="pol"><b>No personal data</b><span>No analytics, no cookie banners, no forms. This site is read-only.</span></div>
+    <div class="pol"><b>No ads</b><span>Articles carry no advertising. Support happens through Buy Me a Coffee, nothing else.</span></div>
+    <div class="pol"><b>One human + AI</b><span>Both the apps and this site are built by one developer working with AI.</span></div>
+    <div class="pol"><b>Only what actually ran</b><span>Every ADR documents a setup that was built and operated for real. No armchair comparisons.</span></div>
+  </div>
+
+  <h2 class="sec-h" id="map">Map — the decision tree</h2>
+  <p style="color:var(--sub);font-size:14.5px;margin:0 0 4px">Numbers follow spec-document decimal numbering. Colors are categories. Linked rows are published articles. Japanese articles come first; English editions follow.</p>
+
+  <nav class="outline" aria-label="Decision tree">
+    <span class="row l1 cat-poc wip" id="poc"><span class="n">0</span><span class="t">A PoC before starting anything</span><span class="wip-badge">in progress</span></span>
+
+    <span class="row l1 cat-dev wip" id="dev"><span class="n">1</span><span class="t">Dev Platform</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-dev wip" id="env"><span class="n">1.1</span><span class="t">Development environment</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-dev wip" id="mobile-dev"><span class="n">1.1.1</span><span class="t">Developing iPhone apps on a phone alone</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-dev wip" id="cloud-build"><span class="n">1.1.2</span><span class="t">Building without a Mac</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-dev wip" id="i18n"><span class="n">1.2</span><span class="t">Localization (50 locales)</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-dev wip" id="store-docs"><span class="n">1.2.1</span><span class="t">Automating store metadata</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-dev wip" id="store-shots"><span class="n">1.2.2</span><span class="t">Automating screenshots</span><span class="wip-badge">in progress</span></span>
+
+    <span class="row l1 cat-web wip" id="web"><span class="n">2</span><span class="t">Web site</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-web wip" id="domain"><span class="n">2.1</span><span class="t">Domain</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-web wip" id="dns-a"><span class="n">2.1.1</span><span class="t">A records / CNAME</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-web wip" id="dns-mx"><span class="n">2.1.2</span><span class="t">MX records — mail forwarding</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-web wip" id="dns-txt"><span class="n">2.1.3</span><span class="t">TXT records — search consoles</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-web wip" id="site-structure"><span class="n">2.2</span><span class="t">Site structure</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-web wip" id="site-map"><span class="n">2.2.1</span><span class="t">Sitemap</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-web wip" id="site-ogp"><span class="n">2.2.2</span><span class="t">OGP</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-web wip" id="site-seo"><span class="n">2.2.3</span><span class="t">SEO</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-web wip" id="analytics"><span class="n">2.3</span><span class="t">Web analytics</span><span class="wip-badge">in progress</span></span>
+
+    <span class="row l1 cat-growth wip" id="growth"><span class="n">3</span><span class="t">Marketing</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-growth wip" id="targeting"><span class="n">3.1</span><span class="t">Targeting</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-growth wip" id="funnel"><span class="n">3.2</span><span class="t">Funnel design</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-growth wip" id="funnel-seo"><span class="n">3.2.1</span><span class="t">SEO funnel</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-growth wip" id="funnel-app"><span class="n">3.2.2</span><span class="t">In-app funnel</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-growth wip" id="funnel-sns"><span class="n">3.2.3</span><span class="t">Social funnel</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-growth wip" id="funnel-store"><span class="n">3.2.4</span><span class="t">Store funnel</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-growth wip" id="house-ads"><span class="n">3.2.5</span><span class="t">House ads</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-growth wip" id="aisas"><span class="n">3.3</span><span class="t">AISAS model</span><span class="wip-badge">in progress</span></span>
+    <span class="row l3 cat-growth wip" id="viral-loop"><span class="n">3.3.1</span><span class="t">Viral loop</span><span class="wip-badge">in progress</span></span>
+
+    <span class="row l1 cat-monetize wip" id="monetize"><span class="n">4</span><span class="t">Monetization</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-monetize wip" id="admob"><span class="n">4.1</span><span class="t">AdMob</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-monetize wip" id="bmc"><span class="n">4.2</span><span class="t">Buy Me a Coffee</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-monetize wip" id="affiliate"><span class="n">4.3</span><span class="t">Affiliate</span><span class="wip-badge">in progress</span></span>
+
+    <span class="row l1 cat-tips wip" id="tips"><span class="n">5</span><span class="t">Techniques</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-tips wip" id="ai-progress"><span class="n">5.1</span><span class="t">Making AI write its own progress log</span><span class="wip-badge">in progress</span></span>
+  </nav>
+
+  <h2 class="sec-h" id="faq">FAQ</h2>
+  <div class="faq">
+    <details>
+      <summary>What is this site?</summary>
+      <p class="a">A development log of the decisions behind lycoapp.com, kept as ADRs (Architecture Decision Records). It records why each choice was made — it is not a step-by-step tutorial.</p>
+    </details>
+    <details>
+      <summary>Who writes it?</summary>
+      <p class="a">The developer of Lyco App — working full-time, developing in the gaps of parenting, entirely on a smartphone. Profile on the <a href="https://lycoapp.com/en-US/about/">About</a> page.</p>
+    </details>
+    <details>
+      <summary>Are detailed instructions included?</summary>
+      <p class="a">No. These are ADRs, so the focus is reasoning and architecture. If you want to reproduce a setup, handing an article to an AI assistant and asking for the steps works well. Every setup documented here actually ran.</p>
+    </details>
+    <details>
+      <summary>How does this relate to lycoapp.com?</summary>
+      <p class="a">Same developer, same domain. The <a href="https://lycoapp.com/">main site</a> is a world of habit-building apps for kids; this is the engineering behind it. The designs are intentionally separate because the audiences differ.</p>
+    </details>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

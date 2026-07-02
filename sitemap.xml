@@ -1665,4 +1665,40 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/blog/all.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/all.html" />
   </url>
+  <!-- Architecture Notes (/notes/ — ja/en の 2 言語のみ) -->
+  <url>
+    <loc>https://lycoapp.com/notes/ja/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/" />
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/en/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/" />
+  </url>
+  <!-- Architecture Notes 記事 (ja のみ。en 版公開時に hreflang を追加) -->
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/poc.html</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/dev.html</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/env.html</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/mobile-dev.html</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/cloud-build.html</loc>
+    <lastmod>2026-07-02</lastmod>
+  </url>
 </urlset>

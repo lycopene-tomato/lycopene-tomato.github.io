@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Architecture Notes — Lyco App</title>
+  <subtitle>A solo developer's decision log: smartphone-only iOS app development.</subtitle>
+  <id>https://lycoapp.com/notes/</id>
+  <link href="https://lycoapp.com/notes/ja/" />
+  <link rel="self" href="https://lycoapp.com/notes/feed.xml" />
+  <updated>2026-07-02T00:00:00+09:00</updated>
+  <author>
+    <name>Lyco</name>
+    <uri>https://lycoapp.com/ja/about/</uri>
+  </author>
+  <!-- 記事公開時にここへ <entry> を追加する (新しいものを上に) -->
+  <entry>
+    <title>Mac なしで build する — EAS と GitHub Codespaces で App Store まで</title>
+    <id>https://lycoapp.com/notes/ja/posts/cloud-build.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/cloud-build.html" />
+    <updated>2026-07-02T00:00:00+09:00</updated>
+    <summary>build に Mac は必須。でも所有する必要はない。初回だけ Codespaces、以降は iPhone から Actions 経由で EAS build → submit → TestFlight。無料枠の落とし穴と --no-wait。</summary>
+  </entry>
+  <entry>
+    <title>スマホだけで iPhone アプリを開発する — Claude Code on Web + GitHub + EAS</title>
+    <id>https://lycoapp.com/notes/ja/posts/mobile-dev.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/mobile-dev.html" />
+    <updated>2026-07-02T00:00:00+09:00</updated>
+    <summary>コミットするだけで手元のアプリが数分後に変わる、build 不要の開発ループ。sandbox だから安心して任せられる。</summary>
+  </entry>
+  <entry>
+    <title>開発環境 — 隙間時間だけでプロダクトは作れるか</title>
+    <id>https://lycoapp.com/notes/ja/posts/env.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/env.html" />
+    <updated>2026-07-02T00:00:00+09:00</updated>
+    <summary>まとまった開発時間は存在しない。Intel Mac はサポート切れ。それでも開発をあきらめないための要件定義と答え。</summary>
+  </entry>
+  <entry>
+    <title>開発基盤 — iPhone だけの開発環境と CI/CD の全体像</title>
+    <id>https://lycoapp.com/notes/ja/posts/dev.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/dev.html" />
+    <updated>2026-07-02T00:00:00+09:00</updated>
+    <summary>機材は iPhone と iPad と 1 回だけのブラウザ用 PC。固定費は Claude Pro 20 ドル/月と Apple Developer Program 99 ドル/年。</summary>
+  </entry>
+  <entry>
+    <title>始める前に PoC をしてみた — 生成 AI だけで iPhone アプリは作れるのか</title>
+    <id>https://lycoapp.com/notes/ja/posts/poc.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/poc.html" />
+    <updated>2026-07-02T00:00:00+09:00</updated>
+    <summary>費用 0 円。Claude のチャットに「Swift でゲームを作って」と頼んだら数分で Zip が返ってきて、実機で動いた。3 か月の個人開発の始まり。</summary>
+  </entry>
+</feed>
