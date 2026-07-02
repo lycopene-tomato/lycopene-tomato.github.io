@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>ちゃんと帰ってきた飛行機ばっかり、見てた — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="SNS の育児術もママ友の成功談も、生き残った側しか見えない生存者バイアス。叱ったら直ったように見えるのは平均への回帰。子育てで両方やってた話と、子の成長を移動平均のトレンドで見るアプリ・成長ノートを作った話。" />
+<link rel="canonical" href="https://lycoapp.com/ja/blog/posts/survivorship-bias.html" />
+<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/survivorship-bias.html" />
+<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/survivorship-bias.html" />
+<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/survivorship-bias.html" />
+<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/survivorship-bias.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/survivorship-bias.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="ちゃんと帰ってきた飛行機ばっかり、見てた" />
+<meta property="og:description" content="SNS の育児術もママ友の成功談も、生き残った側しか見えない生存者バイアス。叱ったら直ったように見えるのは平均への回帰。子育てで両方やってた話。" />
+<meta property="og:url" content="https://lycoapp.com/ja/blog/posts/survivorship-bias.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="ja_JP" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ちゃんと帰ってきた飛行機ばっかり、見てた" />
+<meta name="twitter:description" content="SNS の育児術もママ友の成功談も、生き残った側しか見えない生存者バイアス。叱ったら直ったように見えるのは平均への回帰。" />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<link rel="stylesheet" href="/shared/blog-rich.css" />
+<style>
+  body { margin:0; font-family: system-ui,"Hiragino Sans","Yu Gothic",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  .app-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.5px; color:#fff; background:#3F8C7E; padding:3px 10px; border-radius:999px; margin-bottom:10px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #3F8C7E; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #C9EBE0 60%); padding: 0 2px; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #3F8C7E; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.7; }
+  .body ol, .body ul { margin: 0 0 1.4em; padding-left: 22px; }
+  .body li { margin-bottom: 6px; }
+  .app-link { display: inline-block; margin-top: 24px; padding: 12px 22px; background: #3F8C7E; color: #fff; text-decoration: none; border-radius: 999px; font-weight: 800; font-size: 14px; transition: transform .15s ease, box-shadow .15s ease; }
+  .app-link:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(63,140,126,.3); }
+  .refs { margin-top: 40px; padding-top: 18px; border-top: 1px dashed #D6C9B5; font-size: 12px; color:#5C4936; }
+  .refs ol { padding-left: 18px; margin: 0; }
+  .refs li { margin-bottom: 6px; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+.post-tldr { border-top: 1px solid #C9B79A; border-bottom: 1px solid #C9B79A; padding: 14px 0; margin: 0 0 20px; font-size: 15px; line-height: 1.75; color: #3D2E1F; }
+  /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← 今ココ"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 20px 0 0; padding: 10px 0 0; border-top: 1px solid #D6C9B5; opacity: .7; }
+  .post-byline-text { margin: 0 0 4px; font-size: 12px; line-height: 1.6; color: #5C4936; }
+  .post-byline-links { margin: 0; font-size: 12px; line-height: 1.6; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
+  /* END blog-extension-styles */
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ちゃんと帰ってきた飛行機ばっかり、見てた",
+  "description": "SNS の育児術もママ友の成功談も、生き残った側しか見えない生存者バイアス。叱ったら直ったように見えるのは平均への回帰。子育てで両方やってた話と、子の成長を移動平均のトレンドで見るアプリ・成長ノートを作った話。",
+  "datePublished": "2026-07-02",
+  "dateModified": "2026-07-02",
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/ja/about/#lyco", "name": "Lyco" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/ja/blog/posts/survivorship-bias.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
+  "inLanguage": "ja"
+}
+</script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "トップ",
+      "item": "https://lycoapp.com/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "コラム",
+      "item": "https://lycoapp.com/ja/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "ちゃんと帰ってきた飛行機ばっかり、見てた"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
+</head>
+<body class="acc-record">
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← コラム一覧</a>
+  <span class="app-badge">成長ノート</span>
+  <h1>ちゃんと帰ってきた飛行機ばっかり、見てた</h1>
+  <div class="meta">2026-07-02</div>
+  <!-- BEGIN series-box -->
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">タグ:</span>
+    <a class="post-tag" href="../tag/cognitive-bias.html">認知バイアス</a>
+  </div>
+  <!-- END tags -->
+  <div class="body">
+
+<p id="tldr" class="post-tldr">SNS の育児術も、ママ友の成功談も、子の「大丈夫」も、生き残った側しか見えてない。おまけに、たまたま上手くいった日の翌日は平均に戻るだけなのに、叱ったから直ったと錯覚する。分かってても、そう見えるのが認知バイアス。だから、子の成長を移動平均のグラフにして目に見える形で置くことにした話です。</p>
+
+<p>第二次大戦中、軍が困ってた問題があった。</p>
+
+<p>戦地から帰ってきた爆撃機の機体に、ぽつぽつと弾痕がある。翼に、胴体の端に、尾翼に。「じゃあ、その部分に装甲を足そう」って話になった。当然っぽい話で。</p>
+
+<p>ところが、エイブラハム・ウォルドっていう数学者がストップかけた<sup>1</sup>。</p>
+
+<p>「逆だよ。<strong>弾痕が無い場所</strong>に装甲を足すべき」って。</p>
+
+<p>だって、穴が空いてても帰って来られたんでしょ。つまり、弾痕がある場所は、撃たれても飛べる場所。帰ってきた機体に弾痕が無い場所 = そこを撃たれたら帰れない場所、ってこと。帰ってこられなかった機体が、その場所を撃たれてる。</p>
+
+<p>サンプルから「生き残った人」しか見えてないと、間違った結論を出しちゃう。これがいわゆる <strong>生存者バイアス</strong>。</p>
+
+<h2>オレ、めっちゃやってた</h2>
+
+<p>これ、子育てでバリバリやってる自分に気付いた。</p>
+
+<p>X 開く → うまく行ってる育児術が流れてくる。バズってる「私が試したらこれが良かった!」シリーズ。「わかる、それ、わかる」ってなって、自分も試す。</p>
+
+<p>でも待って。<strong>ダメだった人は、ポストしてない</strong>。</p>
+
+<p>「これ試したらマジで悪化した」って投稿する親、ほぼ居ない。失敗投稿はバズらないし、人にも刺さらない。</p>
+
+<p>つまり SNS で見えてるのは、<strong>装甲が要る場所じゃない弾痕の地図</strong>。帰ってきた爆撃機ばっかり眺めて、装甲を足す場所を決めてる。</p>
+
+<h2>「うまく行ってる家の親」に、聞きすぎてた</h2>
+
+<p>ママ友のあのお宅、子がちゃんと宿題して、習い事も続いてる。</p>
+
+<p>「すごい、どうやってるんですか?」って聞いて、その家の方法を真似する。</p>
+
+<p>うまく行かない。むしろ親子で険悪に。</p>
+
+<p>ここで止まらないんですよ。「他の家ではうまく行ってるのに、なんで自分の家は…」って凹む。</p>
+
+<p>これ、めっちゃ生存者バイアス。</p>
+
+<p>そのママ友、<strong>100 個試して 99 個ダメだった末に、たまたま残った 1 個</strong>を語ってるのかもしれない。あるいは<strong>子のキャラとたまたま噛み合っただけ</strong>かもしれない。装甲する場所が違うんだよな、たぶん。</p>
+
+<h2>「大丈夫」って言うときの、ウチの子</h2>
+
+<p>家庭内でも、同じことやってる。</p>
+
+<p>子に「学校どう?」って聞いて、「大丈夫」って返ってくる。</p>
+
+<p>「OK、楽しくやってるんだな」って安心する。</p>
+
+<p>これ。<strong>「大丈夫」って返せた日</strong>だけ見て、安心してる。</p>
+
+<p>返せなかった日。「大丈夫」のあとに視線が泳いだ日。いつもより早く部屋に戻った日。</p>
+
+<p>それが<strong>装甲が要る場所の弾痕</strong>。返してこなかったから、見えてないだけ。</p>
+
+<h2>暫定的にやってること</h2>
+
+<p>解決策は無い。バイアスはバイアスなので、認識した時点で消えるものでもない。</p>
+
+<p>ただ、自分が意識してることは:</p>
+
+<ul>
+<li><strong>うまく行ってない他の親</strong>の話を、ちゃんと聞きにいく (失敗談を集める)</li>
+<li>子の「大丈夫」を、額面で受けない。<strong>話してない時間</strong>に注意する</li>
+<li>うちで試した方法を、<strong>ダメだった理由ごとに残す</strong> (見えない弾痕の地図を作る)</li>
+</ul>
+
+<p>3 つ目だけ、うちのトラブルノートにメモってる。半年溜まると、ダメだった日のパターンが見えてくる。</p>
+
+<h2>もう一つ、飛行機ネタがある</h2>
+
+<p>飛行機つながりで、もう一つ。今度はイスラエル空軍の話。</p>
+
+<p>ノーベル経済学賞を受賞したダニエル・カーネマンが、若い頃、空軍の訓練教官たちに講義をした。「失敗を叱るより、上達を褒めるほうが訓練の効果は上がる」という内容で<sup>2</sup>。</p>
+
+<p>(はい、分かってますよ。現代の教育学では褒めて伸ばすんだと。分かってますって。でも、褒めてもやらねーんだよなー。)</p>
+
+<p>そしたら、ベテランの教官が反論した。</p>
+
+<blockquote>アクロバット飛行がうまく出来たときに褒めると、次の飛行は下手になる。逆に、下手くそだったときに怒鳴りつけると、次は良くなる。だから褒めるとダメになるし、叱ると効く。</blockquote>
+
+<p>現場の実感がこもってて、説得力がある。でもこれ、褒める / 叱る、関係ないんですよ。</p>
+
+<p>いつもの平均よりうまく飛べた日の次は、だいたい平均に戻る。つまり、さっきより悪くなる。いつもより下手だった日の次も、だいたい平均に戻る。つまり、さっきより良くなる。それだけのこと。</p>
+
+<p>褒めたから下手になったんじゃない。叱ったから上手くなったんでもない。どっちにしても、次は平均が出てた。</p>
+
+<p><strong>「平均への回帰」</strong>っていう名前がついてる。もともとはフランシス・ゴルトンが親子の身長データで見つけた現象<sup>3</sup>。</p>
+
+<h2>言われてみればその通り。でも、そう見えない</h2>
+
+<p>うちに置き換えると、こう。</p>
+
+<p>宿題がすらすら進んだ日の翌日、ぐだぐだになる。「昨日は出来てたのに、なんで今日できないの!?」って言いそうになる。いや、言ってる。</p>
+
+<p>でも、昨日が平均より上だっただけ。今日は平均に戻っただけ。しかも子どもは成長してるから、その平均自体は、ちょっとずつ上がってるかもしれない。</p>
+
+<p>さっきより悪く見えても、叱る理由にはならない。……はずなんですけど、目の前のぐだぐだを見ると、そうは見えない。認知バイアスって、知ってても消えないから認知バイアスなんですよね。</p>
+
+<p>ちなみに「褒め方」については、能力そのものを褒めると子は挑戦を避けやすくなって、努力を褒めると難しい課題を選びやすくなる、というキャロル・ドゥエックの研究がある<sup>4</sup>。平均への回帰とは別のメカニズムなので、これはまた別の機会に整理したい。(分かってますって、いたる所に書いてあるから。でも、褒めてもやらねーんだって。)</p>
+
+<p>ADHD の研究をアプリ作りの参考に読んでいると、叱られる経験が積み重なると自己肯定感が下がって、褒められても「褒められた」と受け取りにくくなる、という話も出てくる。成功体験の積み上げが大事なのは、分かってる。分かってるんですけど。</p>
+
+<p>(論文のリンクを置くのはエンジニアの癖みたいなもので、医療の主張がしたいわけではないです。)</p>
+
+<h2>で、アプリにした</h2>
+
+<p>まとめると、こうなる。</p>
+
+<ul>
+<li>失敗談に目を向けましょう</li>
+<li>叱らないでください</li>
+<li>褒めましょう</li>
+</ul>
+
+<p>……でも、うまくいかないんですよね。バイアスは、分かってても、そう見えるんだもん。目の錯覚と同じで、「知る」だけじゃ消えない。</p>
+
+<p>だから、目に見える形で置いておくことにした。</p>
+
+<p>日々の「やった」を記録して、移動平均のグラフにして、トレンドで表示する。その日その日の点は上下にばらつく。それが波。その上に 7 日移動平均の線を走らせると、波があっても、線はゆるやかに右肩上がりのはず。はず?</p>
+
+<p>線が上を向いてたら、怒らなくてよくなるじゃないですか。「まー、今日はしょうがない」って言える材料が、画面に 1 本ある。</p>
+
+<p><strong>成長ノート</strong>っていう名前にした。これは、褒めるためというより、<strong>怒らないため</strong>。子の成長をトレンドで見て、自分の認知バイアスを打ち消して、親 (自分) の平穏を手に入れるためのアプリです。</p>
+
+<p><a class="app-link" href="../../apps/growthtrend.html">成長ノートを見る →</a></p>
+  <!-- BEGIN related-posts -->
+  <aside class="related-posts">
+    <div class="related-posts-label">関連する記事</div>
+    <ul>
+      <li><a href="app-trouble.html">「学校からまた電話」、息が詰まる</a></li>
+      <li><a href="paradox-of-choice.html">「なんでも好きなの選んでいいよ」が、いちばん酷だった</a></li>
+    </ul>
+  </aside>
+  <!-- END related-posts -->
+  <div class="refs">
+<ol>
+<li>Wald, A. (1943; reprinted 1980). <a href="https://archive.org/details/DTIC_ADA091073" target="_blank" rel="noopener"><em>A Method of Estimating Plane Vulnerability Based on Damage of Survivors</em></a>. Statistical Research Group, Columbia University (CRC reprint).</li>
+<li>Kahneman, D., &amp; Tversky, A. (1973). <a href="https://doi.org/10.1037/h0034747" target="_blank" rel="noopener"><em>On the psychology of prediction</em></a>. Psychological Review, 80(4), 237–251.</li>
+<li>Galton, F. (1886). <a href="https://doi.org/10.2307/2841583" target="_blank" rel="noopener"><em>Regression towards Mediocrity in Hereditary Stature</em></a>. The Journal of the Anthropological Institute of Great Britain and Ireland, 15, 246–263.</li>
+<li>Mueller, C. M., &amp; Dweck, C. S. (1998). <a href="https://pubmed.ncbi.nlm.nih.gov/9686450/" target="_blank" rel="noopener"><em>Praise for intelligence can undermine children's motivation and performance</em></a>. Journal of Personality and Social Psychology, 75(1), 33–52.</li>
+</ol>
+</div>
+
+  </div>
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="receive-no1.html"><span class="post-nav-label">← 前の記事</span><span class="post-nav-title">レシーブ No.1</span></a>
+    <a class="post-nav-next" href="app-lastdays.html"><span class="post-nav-label">次の記事 →</span><span class="post-nav-title">「子育てなんて一瞬よ」と言われて、笑えなかった話</span></a>
+  </nav>
+  <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — 育児奮闘中のエンジニア。</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ About</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ contact</a>
+  </p>
+</div>
+<!-- END byline -->
+  </div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/ja/common.js"></script>
+<script src="../../../content/ja/todo.js"></script>
+<script src="../../../content/ja/record.js"></script>
+<script src="../../../content/ja/tool.js"></script>
+<script src="../../../content/ja/other.js"></script>
+<script src="../../../content/en-US/common.js"></script>
+<script src="../../../content/en-US/todo.js"></script>
+<script src="../../../content/en-US/record.js"></script>
+<script src="../../../content/en-US/tool.js"></script>
+<script src="../../../content/en-US/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
+<script defer src="../../../shared/analytics.js"></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="子育てお疲れさまです。一緒に頑張りましょう ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

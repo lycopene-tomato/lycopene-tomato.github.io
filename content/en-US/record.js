@@ -64,5 +64,31 @@ window.__CONTENT__["en-US"].categories.record = {
         { title: "Lock parent-only notes behind the gate", desc: "Contacts, personality notes — opened only by solving a quick mental-math problem. The kid won’t see them if they grab the phone." },
       ],
     },
+    {
+      id: "growthtrend",
+      name: "GrowthTrend",
+      tag: "Growth chart",
+      appstore_url: "https://apps.apple.com/app/id6782609505",
+      hero_image: "images/apps/growthtrend.jpeg",
+      pricing: "Free",
+      formula_a: "Daily waves",
+      formula_b: "Logs",
+      formula_c: "A trend you can see",
+      concept: "Daily waves × Logs = A trend you can see",
+      call: [
+        "Yesterday they did it. Why not today?",
+        "I shouldn’t have snapped…",
+      ],
+      trick: [
+        "One tap logs teeth-brushing, homework and the rest. A 7-day moving average runs above the daily dots — the waves swing, the line climbs gently.",
+        "Tasks sort into three categories (essentials / must-do / nice-to-have) with three levels: done, tried, skipped. One tap for the child’s mood, and a bulk button for rushed mornings.",
+        "Skipped days carry yesterday’s score forward, so a once-a-week lesson counts fairly across the week. A short comment, read from the data, sits above the chart.",
+      ],
+      setupSteps: [
+        { title: "Sort tasks into three categories", desc: "Essentials (teeth, bath), must-do (homework, prep for tomorrow), nice-to-have (reading, free study). Just this sorting, to start." },
+        { title: "Tap one of three levels each day", desc: "Done (green), tried (yellow), skipped (red). The day’s total becomes one dot on the chart." },
+        { title: "Read the moving-average line, not the dot", desc: "Even on a “today was terrible” day, the 7-day line points up. One glance at the line, before the scolding." },
+      ],
+    },
   ],
 };

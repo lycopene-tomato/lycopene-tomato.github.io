@@ -147,6 +147,26 @@
       "app_badge": "Receive No.1"
     },
     {
+      "_comment": "成長ノート (slug: growthtrend, SKU: growthtrend) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/survivorship-bias.md (元 0-C) をユーザーが書き直し、成長ノートで着地する 0-B に転換 (2026-07-02、アプリリリースに合わせて公開)。前半: Wald の帰還爆撃機 → 生存者バイアス → 3 応用 (SNS 育児術 / ママ友の成功談 / 子の「大丈夫」) → 見えない弾痕の地図 (TroubleNote 内部言及)。後半: イスラエル空軍のカーネマン vs 教官 → 平均への回帰 (Galton) → 「昨日は出来てたのに」の錯覚 → Dweck (能力褒め vs 努力褒め) は別記事予告 → 認知バイアスは知っても消えない → 移動平均のトレンドで見る = 怒らないため・親の平穏のためのアプリ、で成長ノート着地。tags は cognitive-bias (外圧で苦しむ親)。色は『短文自虐 + 軽い分析』。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆 (翻訳ではない)。locale 置換: en-US = Instagram / r/Parenting / mom at pickup、zh-Hant = FB 媽媽社團 / 同學的媽媽、ko = 맘카페 / 같은 반 엄마。引用 4 本 (Wald 1943 / Kahneman & Tversky 1973 / Galton 1886 / Mueller & Dweck 1998) は 4 言語共通、全てソースリンク付き。",
+      "slug": "survivorship-bias",
+      "date": "2026-07-02",
+      "tags": [
+        "cognitive-bias"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "related_slugs": [
+        "app-trouble",
+        "paradox-of-choice"
+      ],
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "growth-note",
+      "title": "무사히 돌아온 비행기만 보고 있었어요",
+      "description": "맘카페의 성공담도, 잘되는 집 방법도, 아이의 「괜찮아」도 전부 살아남은 쪽만 보이는 생존자 편향. 게다가 혼낸 다음 날 나아지는 건 평균 회귀일 뿐. 그래서 아이의 하루하루를 이동 평균 그래프의 트렌드로 보는 앱, 성장 노트를 만든 이야기.",
+      "app_badge": "성장 노트"
+    },
+    {
       "_comment": "LastDays (slug: lastdays, SKU: lastdays) のアプリ別コラム (0-B)。既存 draft nostalgia-doublethink を改稿して LastDays 紹介で締める形に転換 (ユーザー提示)。parenting-paradox 三部作の第 4 回として接続 (データ上のみ、本文ではメタ言及なし、ユーザー指示)。前半: スーパーレジ前のおばあちゃん『子育てなんて一瞬よ』→ ダブルシンク (Orwell 1984) → 『昔は良かった』ノスタルジー詐欺。後半: エンジニア視点で数字化 → セルフコントロール 2 条件 (期限+報酬) → LastDays で年齢別カウントダウン (Tim Urban The Tail End の 93% 観察を refs に) → SNS シェアで他親への共感拡散。tags は quote-essay (引用文化層 = Orwell + Tim Urban) と parent-self-image (自分を責めてる親)。色は『共感+静かな怒り → エンジニア視点で着地』。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆 (翻訳ではない)。en-US は Trader Joe's / zh-Hant は 全聯 / 阿嬤 / ko は 마트 / 할머니 で各文化圏のスーパーシーンに置換。app_badge_key は kebab-case 規則どおり last-days。related_slugs: doublethink (parenting-paradox 3/3、同じスーパーシーンの正典) + crying-child-rice-cake (ユーザー指示)。",
       "slug": "app-lastdays",
       "date": "2026-06-13",

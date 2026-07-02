@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>무사히 돌아온 비행기만 보고 있었어요 — Lyco App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="맘카페의 성공담도, 잘되는 집 방법도, 아이의 「괜찮아」도 전부 살아남은 쪽만 보이는 생존자 편향. 게다가 혼낸 다음 날 나아지는 건 평균 회귀일 뿐. 그래서 아이의 하루하루를 이동 평균 그래프의 트렌드로 보는 앱, 성장 노트를 만든 이야기." />
+<link rel="canonical" href="https://lycoapp.com/ko/blog/posts/survivorship-bias.html" />
+<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/survivorship-bias.html" />
+<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/survivorship-bias.html" />
+<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/survivorship-bias.html" />
+<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/survivorship-bias.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/survivorship-bias.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="무사히 돌아온 비행기만 보고 있었어요" />
+<meta property="og:description" content="맘카페의 성공담도, 잘되는 집 방법도, 아이의 「괜찮아」도 전부 살아남은 쪽만 보이는 생존자 편향. 혼낸 다음 날 나아지는 건 평균 회귀일 뿐." />
+<meta property="og:url" content="https://lycoapp.com/ko/blog/posts/survivorship-bias.html" />
+<meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="무사히 돌아온 비행기만 보고 있었어요" />
+<meta name="twitter:description" content="생존자 편향과 평균 회귀, 그리고 아이의 성장을 트렌드로 보기 위해 앱을 만든 이야기." />
+<meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
+<link rel="stylesheet" href="/shared/blog-rich.css" />
+<style>
+  body { margin:0; font-family: system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; background:#FBF6EE; color:#3D2E1F; line-height:1.85; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 60px; }
+  .back { font-size: 12px; color:#8B7355; text-decoration:none; display:inline-block; margin-bottom:18px; }
+  .app-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.5px; color:#fff; background:#3F8C7E; padding:3px 10px; border-radius:999px; margin-bottom:10px; }
+  h1 { font-size: 24px; font-weight:900; margin:0 0 6px; line-height:1.5; }
+  h2 { font-size: 18px; font-weight:800; margin: 2em 0 .6em; color:#3D2E1F; padding-left: 10px; border-left: 4px solid #3F8C7E; line-height:1.5; }
+  .meta { font-size: 11px; opacity:.55; letter-spacing:1px; margin-bottom: 28px; font-variant-numeric:tabular-nums; }
+  .body { font-size: 15px; }
+  .body p { margin: 0 0 1.4em; }
+  .body strong { background: linear-gradient(transparent 60%, #C9EBE0 60%); padding: 0 2px; }
+  .body blockquote { margin: 1.4em 0; padding: 12px 16px; background:#fff; border-left: 4px solid #3F8C7E; border-radius: 6px; color:#5C4936; font-size: 14px; line-height: 1.7; }
+  .body ol, .body ul { margin: 0 0 1.4em; padding-left: 22px; }
+  .body li { margin-bottom: 6px; }
+  .app-link { display: inline-block; margin-top: 24px; padding: 12px 22px; background: #3F8C7E; color: #fff; text-decoration: none; border-radius: 999px; font-weight: 800; font-size: 14px; transition: transform .15s ease, box-shadow .15s ease; }
+  .app-link:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(63,140,126,.3); }
+  .refs { margin-top: 40px; padding-top: 18px; border-top: 1px dashed #D6C9B5; font-size: 12px; color:#5C4936; }
+  .refs ol { padding-left: 18px; margin: 0; }
+  .refs li { margin-bottom: 6px; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  .site-nav { flex: 1; justify-content: center; }
+  @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
+.post-tldr { border-top: 1px solid #C9B79A; border-bottom: 1px solid #C9B79A; padding: 14px 0; margin: 0 0 20px; font-size: 15px; line-height: 1.75; color: #3D2E1F; }
+  /* BEGIN blog-extension-styles */
+  .post-tags { margin: 14px 0 4px; font-size: 12px; }
+  .post-tags-label { opacity: .55; margin-right: 8px; letter-spacing: 1px; }
+  .post-tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: #fff; border: 1px solid #E8E0CC; border-radius: 999px; color: #5C4936; text-decoration: none; font-size: 12px; font-weight: 600; }
+  .post-tag:hover { background: #FFE9B0; }
+  .series-box { margin: 14px 0 24px; padding: 14px 16px; background: #fff; border: 1px solid #E8E0CC; border-radius: 10px; font-size: 13px; }
+  .series-box .series-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin-bottom: 8px; }
+  .series-box ol { padding-left: 20px; margin: 0; }
+  .series-box li { margin-bottom: 4px; line-height: 1.6; }
+  .series-box li.current { font-weight: 700; }
+  .series-box li.current::after { content: " ← 현재"; font-size: 10px; color: #E89A3D; font-weight: 600; }
+  .series-box li .muted { opacity: .45; }
+  .series-box a { color: #5C4936; text-decoration: none; }
+  .series-box a:hover { text-decoration: underline; }
+  .related-posts { margin-top: 32px; padding: 14px 16px; background: #fff; border: 1px solid #eee; border-radius: 10px; }
+  .related-posts-label { font-size: 11px; letter-spacing: 1.5px; color: #8B7355; font-weight: 700; margin: 0 0 10px; }
+  .related-posts ul { padding-left: 18px; margin: 0; }
+  .related-posts li { margin-bottom: 6px; font-size: 13px; line-height: 1.5; }
+  .related-posts a { color: #5C4936; text-decoration: none; }
+  .related-posts a:hover { text-decoration: underline; }
+  .post-nav { display: flex; gap: 12px; margin-top: 32px; padding-top: 18px; border-top: 1px dashed #D6C9B5; }
+  .post-nav-prev, .post-nav-next { flex: 1; padding: 12px 14px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-nav-prev.empty, .post-nav-next.empty { background: transparent; border: none; }
+  .post-nav-next { text-align: right; }
+  .post-nav-label { font-size: 11px; letter-spacing: 1px; color: #8B7355; font-weight: 700; }
+  .post-nav-title { font-size: 13px; font-weight: 700; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; }
+  .post-byline { margin: 20px 0 0; padding: 10px 0 0; border-top: 1px solid #D6C9B5; opacity: .7; }
+  .post-byline-text { margin: 0 0 4px; font-size: 12px; line-height: 1.6; color: #5C4936; }
+  .post-byline-links { margin: 0; font-size: 12px; line-height: 1.6; }
+  .post-byline-links a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
+  .post-byline-links a:hover { text-decoration: underline; }
+  .post-byline-sep { margin: 0 8px; opacity: .4; }
+  /* END blog-extension-styles */
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "무사히 돌아온 비행기만 보고 있었어요",
+  "description": "맘카페의 성공담도, 잘되는 집 방법도, 아이의 「괜찮아」도 전부 살아남은 쪽만 보이는 생존자 편향. 게다가 혼낸 다음 날 나아지는 건 평균 회귀일 뿐. 그래서 아이의 하루하루를 이동 평균 그래프의 트렌드로 보는 앱, 성장 노트를 만든 이야기.",
+  "datePublished": "2026-07-02",
+  "dateModified": "2026-07-02",
+  "author": { "@type": "Person", "@id": "https://lycoapp.com/ko/about/#lyco", "name": "Lyco" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lyco App",
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+  },
+  "mainEntityOfPage": "https://lycoapp.com/ko/blog/posts/survivorship-bias.html",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
+  "inLanguage": "ko"
+}
+</script>
+<!-- BEGIN breadcrumb-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "홈",
+      "item": "https://lycoapp.com/ko/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "칼럼",
+      "item": "https://lycoapp.com/ko/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "무사히 돌아온 비행기만 보고 있었어요"
+    }
+  ]
+}
+</script>
+<!-- END breadcrumb-jsonld -->
+</head>
+<body class="acc-record">
+<div id="site-header"></div>
+<div class="wrap">
+  <a class="back" href="../index.html">← 전체 글</a>
+  <span class="app-badge">성장 노트</span>
+  <h1>무사히 돌아온 비행기만 보고 있었어요</h1>
+  <div class="meta">2026-07-02</div>
+  <!-- BEGIN series-box -->
+  <!-- END series-box -->
+  <!-- BEGIN tags -->
+  <div class="post-tags">
+    <span class="post-tags-label">태그:</span>
+    <a class="post-tag" href="../tag/cognitive-bias.html">인지편향</a>
+  </div>
+  <!-- END tags -->
+  <div class="body">
+
+<p id="tldr" class="post-tldr">맘카페의 성공담도, 잘되는 집의 방법도, 아이의 「괜찮아」도 전부 살아남은 쪽의 데이터입니다. 게다가 잘된 날의 다음 날은 평균으로 돌아올 뿐인데, 혼내서 고쳐졌다고 착각합니다. 알아도 그렇게 보이는 게 인지 편향이라서, 아이의 하루하루를 이동 평균 그래프로 그려서 눈에 보이게 두기로 한 이야기예요.</p>
+
+<p>2차 대전 때, 군이 골치 아파하던 문제가 있었습니다.</p>
+
+<p>전장에서 돌아온 폭격기 기체에 총알구멍이 점점이 나 있어요. 날개에, 동체 가장자리에, 꼬리날개에. 「그럼 그 부분에 장갑을 덧대자」는 얘기가 나왔습니다. 당연해 보이는 얘기죠.</p>
+
+<p>그런데 에이브러햄 왈드라는 수학자가 제동을 걸었습니다<sup>1</sup>.</p>
+
+<p>「반대예요. <strong>구멍이 없는 자리</strong>에 장갑을 대야 합니다.」</p>
+
+<p>왜냐면, 구멍이 나고도 돌아왔잖아요. 즉 구멍이 있는 자리는 맞아도 날 수 있는 자리. 돌아온 기체에 구멍이 없는 자리 = 거길 맞으면 못 돌아오는 자리라는 것. 거길 맞은 비행기는 바다에 가라앉아서, 애초에 데이터에 안 들어옵니다.</p>
+
+<p>표본에서 「살아남은 쪽」만 보고 있으면, 정확히 틀린 결론을 냅니다. 이게 이른바 <strong>생존자 편향</strong>.</p>
+
+<h2>저, 매일 하고 있었습니다</h2>
+
+<p>어느 날 문득, 육아에서 이걸 제대로 하고 있는 저를 발견했어요.</p>
+
+<p>인스타 열고, 맘카페 열고. 잘 굴러가는 육아법이 흘러나옵니다. 「이거 해봤더니 진짜 좋았어요!」 시리즈. 저도 똑같아요, 하면서 따라 해 봅니다.</p>
+
+<p>그런데 잠깐. <strong>안 됐던 사람은 글을 안 올립니다.</strong></p>
+
+<p>「이거 해봤더니 진짜로 악화됐어요」라고 쓰는 부모, 거의 없어요. 실패담은 공감도 안 눌리고, 퍼지지도 않고.</p>
+
+<p>그러니까 맘카페에서 보이는 건, <strong>장갑이 필요 없는 자리의 총알구멍 지도</strong>. 돌아온 폭격기만 쳐다보면서, 우리 집에 장갑 댈 자리를 정하고 있었던 겁니다.</p>
+
+<h2>「잘되는 집 엄마」한테 너무 물어봤다</h2>
+
+<p>같은 반 엄마네 집, 아이가 숙제도 알아서 하고 피아노 학원도 계속 다닙니다.</p>
+
+<p>「대단하네요, 어떻게 하세요?」 물어보고, 그 집 방법을 따라 합니다.</p>
+
+<p>안 됩니다. 오히려 아이랑 사이만 험악해지고.</p>
+
+<p>여기서 안 멈추는 게 문제예요. 「다른 집은 되는데 왜 우리 집은…」 하고 가라앉습니다. 우리 집만 그런 줄 알았어요, 그 기분으로 보고 있으니까 더 꽂히고.</p>
+
+<p>이거, 완전히 생존자 편향입니다.</p>
+
+<p>그 엄마, <strong>100개 시도해서 99개 망하고 우연히 남은 1개</strong>를 얘기하고 있는 걸지도 모릅니다. 아니면 <strong>그 집 아이 성격이랑 우연히 맞아떨어졌을 뿐</strong>일지도. 장갑 댈 자리가 집집마다 다른 거죠, 아마.</p>
+
+<h2>「괜찮아」라고 할 때의, 우리 아이</h2>
+
+<p>집 안에서도 같은 짓을 하고 있습니다.</p>
+
+<p>아이한테 「학교 어때?」 물으면 「괜찮아」가 돌아옵니다.</p>
+
+<p>「OK, 잘 지내는구나」 하고 안심합니다.</p>
+
+<p>이거요. <strong>「괜찮아」라고 답할 수 있었던 날</strong>만 보고 안심하고 있는 겁니다.</p>
+
+<p>답 못 한 날. 「괜찮아」 뒤에 시선이 흔들린 날. 평소보다 일찍 방에 들어가 버린 날.</p>
+
+<p>그게 <strong>장갑이 필요한 자리의 총알구멍</strong>. 보고를 안 했으니까, 안 보였을 뿐이고.</p>
+
+<h2>일단 지금 하고 있는 것</h2>
+
+<p>해결책은 없습니다. 편향은 편향이라서, 알아차린 순간 사라지는 것도 아니고. 다만 제가 의식적으로 하는 건:</p>
+
+<ul>
+<li><strong>잘 안 풀리는 다른 부모</strong>의 이야기를 일부러 들으러 간다 (실패담을 모은다)</li>
+<li>아이의 「괜찮아」를 액면 그대로 받지 않는다. <strong>말하지 않는 시간</strong>에 주의한다</li>
+<li>우리 집에서 시도한 방법을 <strong>안 됐던 이유와 같이 남긴다</strong> (안 보이는 총알구멍 지도를 만든다)</li>
+</ul>
+
+<p>세 번째만, 우리 집 TroubleNote 에 적고 있습니다. 반년 쌓이면 망한 날의 패턴이 보이기 시작해요.</p>
+
+<h2>비행기 얘기, 하나 더 있습니다</h2>
+
+<p>비행기가 나온 김에 하나 더. 이번엔 이스라엘 공군입니다.</p>
+
+<p>나중에 노벨 경제학상을 받는 대니얼 카너먼이, 젊은 시절 공군 훈련 교관들에게 강의를 했습니다. 「실패를 혼내는 것보다 향상을 칭찬하는 쪽이 훈련 효과가 좋다」는 내용으로<sup>2</sup>.</p>
+
+<p>(네, 압니다. 요즘 교육학은 칭찬으로 키우라고 하죠. 안다니까요. 근데 칭찬해도 안 하잖아요…)</p>
+
+<p>그러자 베테랑 교관이 반박했습니다.</p>
+
+<blockquote>곡예비행을 깔끔하게 해냈을 때 칭찬하면, 다음 비행은 망가진다. 반대로 엉망이었을 때 호통을 치면, 다음 비행은 좋아진다. 그러니까 칭찬하면 못하게 되고, 혼내면 잘하게 된다.</blockquote>
+
+<p>현장 데이터고, 실감도 담겨 있고, 설득력 있어 보입니다. 근데 이거, 칭찬 / 혼내기랑 관계가 없어요.</p>
+
+<p>평소 평균보다 잘 날았던 날의 다음은 대체로 평균으로 돌아옵니다. 즉 아까보다 나빠져요. 평소보다 못 날았던 날의 다음도 대체로 평균으로 돌아옵니다. 즉 아까보다 좋아져요. 그게 전부.</p>
+
+<p>칭찬해서 못하게 된 게 아니고, 혼내서 잘하게 된 것도 아니고. 어느 쪽이든 다음번엔 평균이 나오고 있었던 겁니다.</p>
+
+<p><strong>「평균으로의 회귀」</strong>라는 이름이 붙어 있습니다. 원래는 프랜시스 골턴이 부모 자식의 키 데이터에서 발견한 현상이에요<sup>3</sup>.</p>
+
+<h2>듣고 보면 그 말이 맞다. 근데 그렇게 안 보인다</h2>
+
+<p>우리 집으로 바꿔 보면 이렇습니다.</p>
+
+<p>숙제가 술술 풀린 날의 다음 날, 흐물흐물 무너집니다. 「어제는 했는데, 왜 오늘은 안 될까!?」 말이 나오려고 합니다. 아니, 이미 하고 있죠.</p>
+
+<p>근데 어제가 평균보다 위였을 뿐이고, 오늘은 평균으로 돌아왔을 뿐입니다. 게다가 아이는 자라고 있으니까, 그 평균 자체는 조금씩 올라가고 있을지도 모르는데.</p>
+
+<p>아까보다 나빠 보여도 혼낼 이유는 안 됩니다. ……라는 걸 아는데도, 눈앞에서 흐물흐물하는 걸 보면 그렇게 안 보여요. 속으로 『마, 우짜라고』 소리가 절로 나옵니다. 인지 편향은 알아도 그렇게 보이니까 인지 편향인 거고요.</p>
+
+<p>참고로 「칭찬하는 법」에는 다른 연구가 있습니다. 캐럴 드웩이, 능력 자체를 칭찬하면 아이가 도전을 피하게 되고, 노력을 칭찬하면 어려운 문제를 고르게 된다는 걸 보여줬어요<sup>4</sup>. 평균 회귀와는 다른 메커니즘이라, 이건 다음 기회에 따로 정리하려고요. (안다니까요, 여기저기 다 쓰여 있으니까. 근데 칭찬해도 안 한다니까요.)</p>
+
+<p>앱 만들 때 참고하려고 ADHD 연구를 읽다 보면, 혼나는 경험이 쌓이면 자기긍정감이 낮아져서, 칭찬을 받아도 「칭찬받았다」고 잘 못 받아들이게 된다는 이야기도 나옵니다. 성공 경험을 쌓는 게 중요한 건 압니다. 아는데요…</p>
+
+<p>(논문 링크를 붙이는 건 개발자의 직업병 같은 거고, 의학적인 주장을 하려는 게 아닙니다.)</p>
+
+<h2>그래서, 앱으로 만들었습니다</h2>
+
+<p>정리하면 이렇게 됩니다.</p>
+
+<ul>
+<li>실패담에 눈을 돌리자</li>
+<li>혼내지 말자</li>
+<li>칭찬하자</li>
+</ul>
+
+<p>……근데 잘 안 되잖아요. 편향은 알아도 그렇게 보이는걸요. 착시랑 같아서, 「안다」는 것만으로는 안 사라집니다.</p>
+
+<p>그래서 눈에 보이는 형태로 두기로 했습니다.</p>
+
+<p>매일의 「했다」를 기록해서, 이동 평균 그래프로 만들어서, 트렌드로 표시합니다. 하루하루의 점은 위아래로 흔들려요. 그게 파도. 그 위에 7일 이동 평균 선을 달리게 하면, 파도가 있어도 선은 천천히 우상향일 겁니다. 일 걸요?</p>
+
+<p>선이 위를 향하고 있으면, 화 안 내도 되잖아요. 「뭐, 오늘은 어쩔 수 없지」라고 말할 근거가 화면에 한 줄 있는 거니까.</p>
+
+<p><strong>성장 노트</strong>라는 이름을 붙였습니다. 칭찬하기 위해서라기보다 <strong>혼내지 않기 위해서</strong>. 아이의 성장을 트렌드로 보고, 제 인지 편향을 상쇄하고, 부모 (저) 의 평온을 손에 넣기 위한 앱이에요.</p>
+
+<p><a class="app-link" href="../../apps/growthtrend.html">성장 노트 보러 가기 →</a></p>
+  <!-- BEGIN related-posts -->
+  <aside class="related-posts">
+    <div class="related-posts-label">관련 글</div>
+    <ul>
+      <li><a href="app-trouble.html">&quot;학교에서 또 전화&quot; ── 번호만 떠도 숨이 막혀요</a></li>
+      <li><a href="paradox-of-choice.html">「알아서 골라」가, 제일 잔인한 말이었어요</a></li>
+    </ul>
+  </aside>
+  <!-- END related-posts -->
+  <div class="refs">
+<ol>
+<li>Wald, A. (1943; reprinted 1980). <a href="https://archive.org/details/DTIC_ADA091073" target="_blank" rel="noopener"><em>A Method of Estimating Plane Vulnerability Based on Damage of Survivors</em></a>. Statistical Research Group, Columbia University (CRC reprint).</li>
+<li>Kahneman, D., &amp; Tversky, A. (1973). <a href="https://doi.org/10.1037/h0034747" target="_blank" rel="noopener"><em>On the psychology of prediction</em></a>. Psychological Review, 80(4), 237–251.</li>
+<li>Galton, F. (1886). <a href="https://doi.org/10.2307/2841583" target="_blank" rel="noopener"><em>Regression towards Mediocrity in Hereditary Stature</em></a>. The Journal of the Anthropological Institute of Great Britain and Ireland, 15, 246–263.</li>
+<li>Mueller, C. M., &amp; Dweck, C. S. (1998). <a href="https://pubmed.ncbi.nlm.nih.gov/9686450/" target="_blank" rel="noopener"><em>Praise for intelligence can undermine children's motivation and performance</em></a>. Journal of Personality and Social Psychology, 75(1), 33–52.</li>
+</ol>
+</div>
+
+  </div>
+  <!-- BEGIN post-nav -->
+  <nav class="post-nav">
+    <a class="post-nav-prev" href="receive-no1.html"><span class="post-nav-label">← 이전 글</span><span class="post-nav-title">베마가, 30 년 뒤 ── 100 줄짜리 BASIC 게임을 iPhone 으로 옮겼습니다</span></a>
+    <a class="post-nav-next" href="app-lastdays.html"><span class="post-nav-label">다음 글 →</span><span class="post-nav-title">「애 키우는 거 진짜 금방이야」, 마트 계산대에서 할머니가 그러더라고요</span></a>
+  </nav>
+  <!-- END post-nav -->
+  <!-- BEGIN byline -->
+<div class="post-byline">
+  <p class="post-byline-text">Written by <strong>Lyco</strong> — 육아 중인 엔지니어.</p>
+  <p class="post-byline-links">
+    <a href="../../about/">→ 소개</a>
+    <span class="post-byline-sep">·</span>
+    <a href="mailto:contact@lycoapp.com">✉️ 연락</a>
+  </p>
+</div>
+<!-- END byline -->
+  </div>
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../../shared/langs.js"></script>
+<script src="../../../content/ja/common.js"></script>
+<script src="../../../content/ja/todo.js"></script>
+<script src="../../../content/ja/record.js"></script>
+<script src="../../../content/ja/tool.js"></script>
+<script src="../../../content/ja/other.js"></script>
+<script src="../../../content/en-US/common.js"></script>
+<script src="../../../content/en-US/todo.js"></script>
+<script src="../../../content/en-US/record.js"></script>
+<script src="../../../content/en-US/tool.js"></script>
+<script src="../../../content/en-US/other.js"></script>
+<script src="../../../shared/i18n-loader.js"></script>
+<script src="../../../shared/site-shared.js"></script>
+<script src="../../../shared/blog-shell.js" data-path-prefix="../../"></script>
+<script defer src="../../../shared/analytics.js"></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="육아 정말 힘들죠. 함께 힘내요 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>
