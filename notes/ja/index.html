@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#fcfcfa" />
-<title>Architecture Notes — スマホだけの個人アプリ開発、意思決定の記録 | Lyco App</title>
-<meta name="description" content="手元に Mac も PC も置かず、iPhone と Claude・GitHub・EAS だけで iOS アプリを開発・公開・運用する。lycoapp.com を一人で作る中での意思決定を ADR (MADR × SCQA) として残す開発ログ。" />
+<title>Architecture Notes — 軌跡は、誰かの地図に。個人開発の ADR ケーススタディ集 | Lyco App</title>
+<meta name="description" content="プロダクト開発は、アプリを作って公開して終わりではない。届けて、改善を繰り返し、届け続ける。lycoapp.com の個人開発で実際に行った意思決定を ADR (Architecture Decision Records) の形で残す、実践のケーススタディ集。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/" />
 <link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/" />
 <link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/" />
@@ -13,8 +13,8 @@
 <link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Architecture Notes — スマホだけの個人アプリ開発、意思決定の記録" />
-<meta property="og:description" content="iPhone と Claude・GitHub・EAS だけで iOS アプリを開発・公開・運用する。個人開発の意思決定を ADR として残す開発ログ。" />
+<meta property="og:title" content="Architecture Notes — 軌跡は、誰かの地図に。" />
+<meta property="og:description" content="プロダクト開発の歩み、あなたの道と交差する場所。個人開発で実際に行った意思決定を ADR の形で残す、実践のケーススタディ集。" />
 <meta property="og:url" content="https://lycoapp.com/notes/ja/" />
 <meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
 <meta property="og:image:width" content="1200" />
@@ -23,8 +23,8 @@
 <meta property="og:locale" content="ja_JP" />
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Architecture Notes — スマホだけの個人アプリ開発、意思決定の記録" />
-<meta name="twitter:description" content="iPhone と Claude・GitHub・EAS だけで iOS アプリを開発・公開・運用する。個人開発の意思決定を ADR として残す開発ログ。" />
+<meta name="twitter:title" content="Architecture Notes — 軌跡は、誰かの地図に。" />
+<meta name="twitter:description" content="プロダクト開発の歩み、あなたの道と交差する場所。個人開発の意思決定を ADR の形で残す実践ケーススタディ集。" />
 <meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
 <link rel="stylesheet" href="../shared/notes.css" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -38,7 +38,7 @@
   "name": "Architecture Notes",
   "url": "https://lycoapp.com/notes/ja/",
   "inLanguage": "ja",
-  "description": "スマホだけで iOS アプリを開発・公開・運用する個人開発の意思決定記録 (ADR)",
+  "description": "個人開発のプロダクト開発の意思決定を ADR (Architecture Decision Records) として残す実践ケーススタディ集",
   "isPartOf": { "@type": "WebSite", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" }
 }
@@ -103,30 +103,42 @@
 <main class="wrap" id="main">
   <header class="hero">
     <p class="kicker">A solo developer's decision log</p>
-    <h1 class="title">スマホだけで、アプリを<br>作って、届けて、運用する。</h1>
-    <p class="lead">手元に Mac も PC もありません。iPhone と、クラウドの向こうの Claude・GitHub・EAS。<a href="https://lycoapp.com/">lycoapp.com</a> のアプリ群を一人で作る中の意思決定を、ADR (Architecture Decision Record) として残しています。</p>
+    <h1 class="title">軌跡は、誰かの地図に。</h1>
+    <p class="lead">プロダクト開発の歩み、あなたの道と交差する場所。</p>
+    <p class="lead" style="margin-top:14px">プロダクト開発は、アプリを作って、Web サイトを公開して、それで終われません。困っている人へサービスを届け、改善を繰り返し、届け続けること。</p>
+    <p style="color:var(--muted);font-size:14.5px;line-height:2;margin:20px 0 0;font-family:var(--mono)">点と点は、線となり届く。<br>線は、円を描き、<br>動き出したその軌跡は、誰かの道しるべに。</p>
   </header>
 
-  <aside class="tldr" aria-label="要約">
-    <p class="tl-h">TL;DR</p>
-    <ul>
-      <li>lycoapp.com の全アプリは <b>iPhone だけ</b>で開発している (手元に Mac なし)</li>
-      <li>構成は Claude Code on Web + GitHub + EAS。固定費は Claude Pro $20/月 と Apple Developer Program $99/年</li>
-      <li>各記事は ADR。MADR × SCQA 形式で「なぜそう決めたか」だけを書く</li>
-      <li>このサイトは個人情報を収集しない。広告もない</li>
-    </ul>
-  </aside>
+  <h2 class="sec-h" id="about-site">About — このサイトについて</h2>
+  <p>LycoApp Notes は、<a href="https://lycoapp.com/">本家 Lyco App</a> の個人開発で実際に行っている、プロダクト開発の記録です。その過程を、ADR (Architecture Decision Records) の形で整理しています。</p>
+  <p>ここでの記録は、設計手法の解説ではありません。</p>
+  <ul style="color:var(--sub);padding-left:22px">
+    <li>なぜ、その判断をしたのか</li>
+    <li>結果はどうなったのか ── やってみて良かった事、悪かった事</li>
+    <li>改善ポイントと、気を付ける事</li>
+  </ul>
+  <p>を、各セクションに分けて記載しています。実践のケーススタディ集です。</p>
 
-  <h2 class="sec-h" id="policy">Policy — このサイトの方針</h2>
-  <div class="policy">
-    <div class="pol"><b>個人情報を集めない</b><span>アクセス解析なし。cookie バナーなし。フォームなし。読むだけのサイトです。</span></div>
-    <div class="pol"><b>広告を貼らない</b><span>記事に広告は載せません。支援は Buy Me a Coffee の1本だけ。</span></div>
-    <div class="pol"><b>一人 + AI で作る</b><span>開発もこのサイトも、一人の開発者と AI の協働で作っています。</span></div>
-    <div class="pol"><b>実際に動いた構成だけ</b><span>構築して運用まで通ったものだけを ADR として残します。机上の比較記事は書きません。</span></div>
-  </div>
+  <h2 class="sec-h" id="for-you">For You — こんな方へ</h2>
+  <p>このサイトは、例えばこんな方を対象にしています。</p>
+  <ul style="color:var(--sub);padding-left:22px">
+    <li>個人開発を始めたい</li>
+    <li>スマートフォンだけでアプリ開発をしてみたい</li>
+    <li>CI/CD 環境を作りたい</li>
+    <li>PoC からサービスへ育てていきたい</li>
+    <li>ADR を書いてみたい</li>
+    <li>Web サイトを作ってみたい</li>
+    <li>SEO をしてみたい</li>
+    <li>マーケティングやマネタイズまで考えたい</li>
+    <li>アプリを作った後、次に何をしようかな</li>
+  </ul>
+  <p>すべてを一度に読む必要はありません。必要になった所だけ読んでいただければと思います。実際にやってみた結果 ── フィージビリティスタディの結果集だと思ってもらえれば幸いです。</p>
 
-  <h2 class="sec-h" id="map">Map — 意思決定の全体図</h2>
-  <p style="color:var(--sub);font-size:14.5px;margin:0 0 4px">番号は設計書の章立てと同じ 10 進です。色はカテゴリ。リンクになっている項が公開済みの記事です。</p>
+  <h2 class="sec-h" id="goal">Goal — このサイトが目指していること</h2>
+  <p>包括的な、実践結果の記録。<br>私自身が歩いてきた道を、そのまま残すことで、誰かの失敗の回避に。意思決定に。<br>道しるべになれば。</p>
+
+  <h2 class="sec-h" id="map">Map — Architecture Decision Records</h2>
+  <p style="color:var(--sub);font-size:14.5px;margin:0 0 4px">番号は章立てにしてあります。色はカテゴリ。リンクになっている項が公開済みの記事です。</p>
 
   <nav class="outline" aria-label="意思決定ツリー">
     <a class="row l1 cat-poc" id="poc" href="posts/poc.html"><span class="n">0</span><span class="t">始める前に PoC をしてみた</span><span class="go">→</span></a>
