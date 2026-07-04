@@ -185,6 +185,59 @@ table.cmp td:first-child{font-weight:600;white-space:nowrap;color:var(--sub)}
 .tn-map{display:inline-block;margin-top:18px;font-family:var(--mono);font-size:13px;color:var(--sub);text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:9px 14px}
 .tn-map:hover{border-color:var(--cat);color:var(--cat)}
 
+/* ============================================================
+   TOP エディトリアル刷新 (2026-07) — /notes/<lang>/index.html 専用
+   タイポと余白とリズムで見せる (図なし・詰め気味・小さめ+太字)。
+   記事ページには使わない。設計意図は LP/NOTES_GUIDE.md §2.2。
+   ============================================================ */
+/* hero */
+.ed{padding:46px 0 30px}
+.ed .kicker{display:flex;align-items:center;gap:12px;margin:0 0 18px}
+.ed .kicker::after{content:"";flex:1;height:1px;background:var(--line)}
+.ed h1{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  font-size:clamp(27px,6.4vw,38px);line-height:1.34;margin:0 0 10px;font-weight:700;letter-spacing:.02em}
+.ed h1 em{font-style:normal;position:relative;white-space:nowrap}
+.ed h1 em::after{content:"";position:absolute;left:1px;right:1px;bottom:2px;height:1px;background:var(--accent);opacity:.65}
+.ed .sub{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  font-size:15px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:.04em}
+.ed .desc{color:var(--sub);font-size:13.5px;line-height:1.85;margin:0;max-width:36em}
+.ed .poem{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  font-size:13px;letter-spacing:.08em;line-height:2.05;color:var(--muted);
+  margin:20px 0 0;padding-left:16px;border-left:2px solid var(--accent)}
+.ed .poem b{font-weight:600;color:var(--sub)}
+/* セクション見出し: 番号 + 和文 + 英ラベル + 罫 */
+.sec-h2{display:flex;align-items:baseline;gap:12px;margin:44px 0 14px}
+.sec-h2 .no{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--accent)}
+.sec-h2 .en{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.sec-h2 .jp{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:.03em}
+.sec-h2::after{content:"";flex:1;height:1px;background:var(--line);align-self:center}
+/* About: 本文 + 記録 3 項目 (罫区切り) */
+.about p{color:var(--sub);font-size:13.5px;line-height:1.85;margin:0 0 9px;max-width:38em}
+.about .hl{background:linear-gradient(transparent 74%,rgba(52,93,128,.16) 74%);padding:0 2px;color:var(--ink)}
+.rec{margin:14px 0 0;border-top:1px solid var(--line)}
+.rec .r{display:flex;gap:14px;align-items:baseline;padding:8px 4px;border-bottom:1px solid var(--line)}
+.rec .n{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--accent);flex:none;width:1.6em}
+.rec .t{font-size:13.5px;font-weight:700;color:var(--ink);flex:none;min-width:12em}
+.rec .d{font-size:12px;color:var(--muted);line-height:1.7}
+@media(max-width:560px){.rec .r{flex-wrap:wrap;gap:3px 12px}.rec .t{min-width:0}.rec .d{width:100%;padding-left:calc(11px + 12px)}}
+.about .case{margin:12px 0 0;font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:13.5px;font-weight:600;color:var(--ink);letter-spacing:.03em}
+/* For You: 2 カラムの静かなリスト */
+.who{margin:6px 0 0}
+.who p{color:var(--sub);font-size:13.5px;margin:0 0 10px}
+.who ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+@media(max-width:560px){.who ul{grid-template-columns:1fr}}
+.who li{position:relative;padding:5px 0 5px 20px;font-size:13px;font-weight:600;color:var(--sub);border-bottom:1px dashed var(--line)}
+.who li::before{content:"—";position:absolute;left:0;color:var(--accent);font-family:var(--mono)}
+.who .note{margin:12px 0 0;font-size:12px;color:var(--muted);line-height:1.8}
+/* Goal: 淡い色面の帯 (TOP 唯一の囲い) */
+.goal{margin:14px 0 0;background:linear-gradient(135deg,#f2f0e9 0%,#eef1f0 100%);border-radius:12px;padding:20px 24px}
+@media(max-width:560px){.goal{padding:16px 18px}}
+.goal p{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  font-size:14px;font-weight:600;line-height:2.05;color:var(--ink);letter-spacing:.05em;margin:0}
+.goal .quiet{color:var(--sub);font-size:12.5px;font-weight:500}
+/* Map 説明行 */
+.map-note{color:var(--muted);font-size:12px;margin:0 0 6px;font-family:var(--mono);letter-spacing:.02em}
+
 /* --- 印刷: ADR は紙/PDF でも読まれる想定 --- */
 @media print{
   .site-header,.site-footer,.treenav,.progress,.skip,.crumbs .sep:last-of-type{display:none!important}

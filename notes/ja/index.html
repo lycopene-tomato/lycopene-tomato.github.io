@@ -101,44 +101,50 @@
 </div></header>
 
 <main class="wrap" id="main">
-  <header class="hero">
+  <header class="ed">
     <p class="kicker">A solo developer's decision log</p>
-    <h1 class="title">軌跡は、誰かの地図に。</h1>
-    <p class="lead">プロダクト開発の歩み、あなたの道と交差する場所。</p>
-    <p class="lead" style="margin-top:14px">プロダクト開発は、アプリを作って、Web サイトを公開して、それで終われません。困っている人へサービスを届け、改善を繰り返し、届け続けること。</p>
-    <p style="color:var(--muted);font-size:14.5px;line-height:2;margin:20px 0 0;font-family:var(--mono)">点と点は、線となり届く。<br>線は、円を描き、<br>動き出したその軌跡は、誰かの道しるべに。</p>
+    <h1>軌跡は、<em>誰かの地図</em>に。</h1>
+    <p class="sub">プロダクト開発の歩み、あなたの道と交差する場所。</p>
+    <p class="desc">プロダクト開発は、アプリを作って、Web サイトを公開して、それで終われません。困っている人へサービスを届け、改善を繰り返し、届け続けること。</p>
+    <p class="poem">点と点は、線となり届く。<br>線は、円を描き、<br><b>動き出したその軌跡は、誰かの道しるべに。</b></p>
   </header>
 
-  <h2 class="sec-h" id="about-site">About — このサイトについて</h2>
-  <p>LycoApp Notes は、<a href="https://lycoapp.com/">本家 Lyco App</a> の個人開発で実際に行っている、プロダクト開発の記録です。その過程を、ADR (Architecture Decision Records) の形で整理しています。</p>
-  <p>ここでの記録は、設計手法の解説ではありません。</p>
-  <ul style="color:var(--sub);padding-left:22px">
-    <li>なぜ、その判断をしたのか</li>
-    <li>結果はどうなったのか ── やってみて良かった事、悪かった事</li>
-    <li>改善ポイントと、気を付ける事</li>
-  </ul>
-  <p>を、各セクションに分けて記載しています。実践のケーススタディ集です。</p>
+  <h2 class="sec-h2" id="about-site"><span class="no">01</span><span class="jp">このサイトについて</span><span class="en">About</span></h2>
+  <div class="about">
+    <p>LycoApp Notes は、<a href="https://lycoapp.com/">本家 Lyco App</a> の個人開発で実際に行っている、プロダクト開発の記録です。その過程を、<span class="hl">ADR (Architecture Decision Records)</span> の形で整理しています。</p>
+    <p>ここでの記録は、設計手法の解説ではありません。</p>
+    <div class="rec">
+      <div class="r"><span class="n">i</span><span class="t">なぜ、その判断をしたのか</span><span class="d">前提と制約。当時の選択肢。</span></div>
+      <div class="r"><span class="n">ii</span><span class="t">結果はどうなったのか</span><span class="d">やってみて良かった事、悪かった事。</span></div>
+      <div class="r"><span class="n">iii</span><span class="t">改善ポイントと、気を付ける事</span><span class="d">次にやるなら、どこを変えるか。</span></div>
+    </div>
+    <p class="case">を、各セクションに分けて記載する ── 実践のケーススタディ集です。</p>
+  </div>
 
-  <h2 class="sec-h" id="for-you">For You — こんな方へ</h2>
-  <p>このサイトは、例えばこんな方を対象にしています。</p>
-  <ul style="color:var(--sub);padding-left:22px">
-    <li>個人開発を始めたい</li>
-    <li>スマートフォンだけでアプリ開発をしてみたい</li>
-    <li>CI/CD 環境を作りたい</li>
-    <li>PoC からサービスへ育てていきたい</li>
-    <li>ADR を書いてみたい</li>
-    <li>Web サイトを作ってみたい</li>
-    <li>SEO をしてみたい</li>
-    <li>マーケティングやマネタイズまで考えたい</li>
-    <li>アプリを作った後、次に何をしようかな</li>
-  </ul>
-  <p>すべてを一度に読む必要はありません。必要になった所だけ読んでいただければと思います。実際にやってみた結果 ── フィージビリティスタディの結果集だと思ってもらえれば幸いです。</p>
+  <h2 class="sec-h2" id="for-you"><span class="no">02</span><span class="jp">こんな方へ</span><span class="en">For You</span></h2>
+  <div class="who">
+    <p>このサイトは、例えばこんな方を対象にしています。</p>
+    <ul>
+      <li>個人開発を始めたい</li>
+      <li>スマートフォンだけでアプリ開発をしてみたい</li>
+      <li>CI/CD 環境を作りたい</li>
+      <li>PoC からサービスへ育てていきたい</li>
+      <li>ADR を書いてみたい</li>
+      <li>Web サイトを作ってみたい</li>
+      <li>SEO をしてみたい</li>
+      <li>マーケティングやマネタイズまで考えたい</li>
+      <li>アプリを作った後、次に何をしようかな</li>
+    </ul>
+    <p class="note">すべてを一度に読む必要はありません。必要になった所だけ読んでいただければと思います。実際にやってみた結果 ── フィージビリティスタディの結果集だと思ってもらえれば幸いです。</p>
+  </div>
 
-  <h2 class="sec-h" id="goal">Goal — このサイトが目指していること</h2>
-  <p>包括的な、実践結果の記録。<br>私自身が歩いてきた道を、そのまま残すことで、誰かの失敗の回避に。意思決定に。<br>道しるべになれば。</p>
+  <h2 class="sec-h2" id="goal"><span class="no">03</span><span class="jp">このサイトが目指していること</span><span class="en">Goal</span></h2>
+  <div class="goal">
+    <p>包括的な、実践結果の記録。<br><span class="quiet">私自身が歩いてきた道を、そのまま残すことで、誰かの失敗の回避に。意思決定に。</span><br>道しるべになれば。</p>
+  </div>
 
-  <h2 class="sec-h" id="map">Map — Architecture Decision Records</h2>
-  <p style="color:var(--sub);font-size:14.5px;margin:0 0 4px">番号は章立てにしてあります。色はカテゴリ。リンクになっている項が公開済みの記事です。</p>
+  <h2 class="sec-h2" id="map"><span class="no">04</span><span class="jp">Architecture Decision Records</span><span class="en">Map</span></h2>
+  <p class="map-note">番号は章立てにしてあります。色はカテゴリ。リンクになっている項が公開済みの記事です。</p>
 
   <nav class="outline" aria-label="意思決定ツリー">
     <a class="row l1 cat-poc" id="poc" href="posts/poc.html"><span class="n">0</span><span class="t">始める前に PoC をしてみた</span><span class="go">→</span></a>
@@ -182,7 +188,7 @@
     <span class="row l2 cat-tips wip" id="ai-progress"><span class="n">5.1</span><span class="t">AI に進捗を書き出させる</span><span class="wip-badge">作成中</span></span>
   </nav>
 
-  <h2 class="sec-h" id="faq">FAQ</h2>
+  <h2 class="sec-h2" id="faq"><span class="no">05</span><span class="jp">よくある質問</span><span class="en">FAQ</span></h2>
   <div class="faq">
     <details>
       <summary>このサイトは何ですか?</summary>
