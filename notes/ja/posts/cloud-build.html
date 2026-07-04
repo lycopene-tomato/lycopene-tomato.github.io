@@ -126,8 +126,8 @@ iPhone → GitHub → GitHub Actions → EAS (submit)
     <p>無料枠の組み合わせには制約がある。執筆時点の値で:</p>
     <table class="cmp">
       <tr><th>サービス</th><th>無料枠</th><th>備考</th></tr>
-      <tr><td>EAS build</td><td>iOS 15 回/月 (+ Android 15 回/月)</td><td>build エラーでも回数を消費する</td></tr>
-      <tr><td>GitHub Actions</td><td>2,000 分/月</td><td>Free プランの private リポジトリの場合</td></tr>
+      <tr><td>EAS build</td><td data-label="無料枠">iOS 15 回/月 (+ Android 15 回/月)</td><td data-label="備考">build エラーでも回数を消費する</td></tr>
+      <tr><td>GitHub Actions</td><td data-label="無料枠">2,000 分/月</td><td data-label="備考">Free プランの private リポジトリの場合</td></tr>
     </table>
     <p>通常の開発でこの上限を超えることはまずない。ただし、ネイティブまわりの動作確認でバグが出て build を繰り返すと、一気に持っていかれる。特に痛いのが、<b>build エラーでも回数がカウントされる</b>こと。設定ミスで 3 連続エラー、などとやると月の 2 割が消える。</p>
 
