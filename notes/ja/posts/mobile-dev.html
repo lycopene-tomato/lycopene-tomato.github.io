@@ -74,28 +74,31 @@
     <h1>スマホだけで iPhone アプリを開発する</h1>
     <p class="a-meta"><span>2026.07.02</span><span>約8分</span></p>
 
-    <section class="blk">
+    <section class="blk b-sum">
       <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
-      <aside class="tldr" aria-label="要約">
-        <p class="tl-h">TL;DR</p>
-        <ul>
-          <li>パイプラインは iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone</li>
-          <li>Claude Code on Web はクラウドの sandbox (使い捨ての Ubuntu) で動くので、手元の資産に触れさせずに任せられる</li>
-          <li>EXPO なら開発中は build 不要。main に merge されると数分で手元の Expo Go アプリが自動更新される</li>
-          <li>弱点は 3 つのクラウドを直列につないでいること。どこか 1 つ落ちるとループが止まる</li>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p class="tl-h">TL;DR</p>
+          <ul>
+            <li>パイプラインは iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone</li>
+            <li>Claude Code on Web はクラウドの sandbox (使い捨ての Ubuntu) で動くので、手元の資産に触れさせずに任せられる</li>
+            <li>EXPO なら開発中は build 不要。main に merge されると数分で手元の Expo Go アプリが自動更新される</li>
+            <li>弱点は 3 つのクラウドを直列につないでいること。どこか 1 つ落ちるとループが止まる</li>
+          </ul>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="使う物">
+          <li><b>iPhone</b><span class="use">開発の主端末</span><span class="cost">手持ち</span></li>
+          <li><b>Claude Pro</b><span class="use">Claude Code on Web</span><span class="cost">20 ドル/月</span></li>
+          <li><b>GitHub</b><span class="use">ソース管理 + Actions</span><span class="cost">Free</span></li>
+          <li><b>EAS + Expo Go</b><span class="use">配信と実機確認</span><span class="cost">Free</span></li>
         </ul>
-      </aside>
-      <ul class="kit" aria-label="使う物">
-        <li><b>iPhone</b><span class="use">開発の主端末</span><span class="cost">手持ち</span></li>
-        <li><b>Claude Pro</b><span class="use">Claude Code on Web</span><span class="cost">20 ドル/月</span></li>
-        <li><b>GitHub</b><span class="use">ソース管理 + Actions</span><span class="cost">Free</span></li>
-        <li><b>EAS + Expo Go</b><span class="use">配信と実機確認</span><span class="cost">Free</span></li>
-      </ul>
+      </div>
     </section>
 
-    <section class="blk">
+    <section class="blk b-story">
       <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
-      <div class="story">
+      <div class="bd">
         <h2>Situation</h2>
         <p><a href="env.html">1.1 開発環境</a> で書いたとおり、日常で PC を開く時間はなく、開発は隙間時間しかない。</p>
 
@@ -107,23 +110,23 @@
       </div>
     </section>
 
-    <section class="blk">
+    <section class="blk b-solve">
       <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>スマホだけで iPhone アプリを作れること</li>
+          <li>Mac がなくても成立すること</li>
+          <li>セキュリティが担保されていること — AI に手元の資産を触らせない</li>
+        </ul>
 
-      <h2>Criteria</h2>
-      <ul class="crit">
-        <li>スマホだけで iPhone アプリを作れること</li>
-        <li>Mac がなくても成立すること</li>
-        <li>セキュリティが担保されていること — AI に手元の資産を触らせない</li>
-      </ul>
-
-      <h2>Answer</h2>
-      <pre><span class="c"># 開発ループの全体 (右端でまた iPhone に戻る)</span>
+        <h2>Answer</h2>
+        <pre><span class="c"># 開発ループの全体 (右端でまた iPhone に戻る)</span>
 iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone</pre>
-      <p>iPhone の Claude アプリから依頼を出すと、コーディングから手元のアプリの更新までが自動で流れ、数分後に同じ iPhone の Expo Go で動作確認できる。開発中に build は一度も要らない。</p>
+        <p>iPhone の Claude アプリから依頼を出すと、コーディングから手元のアプリの更新までが自動で流れ、数分後に同じ iPhone の Expo Go で動作確認できる。開発中に build は一度も要らない。</p>
 
-      <div class="sub">
-        <h3>Reason</h3>
+        <div class="sub">
+          <h3>Reason</h3>
         <p><b>Claude Code on Web を選んだ理由は、sandbox である。</b> Claude Code on Web は、依頼のたびにクラウド上へ一時的な Ubuntu 環境を立ち上げ、その中で Claude Code (AI コーディングエージェント) を動かす仕組みになっている。</p>
         <p>通常の Claude Code は PC にインストールして PC 上で動かす。するとローカルのファイルにアクセスできてしまうし、作業に必要なツールを (承認は取ってくるものの) 次々インストールし始める。自分の PC の中を AI が自由に見て回れる状態は、率直に気持ちが悪い。— というより、そもそもサポート切れの Intel Mac には Claude Code をまともに入れられないのだが、仮に入れられたとしても選ばなかったと思う。</p>
         <p>On Web なら、AI が何をしようと使い捨ての Ubuntu の中の話で、こちらの資産には届かない。安心して丸投げできる。この「任せきれる」感覚が、隙間時間開発では効いてくる。依頼したら閉じて、育児に戻れるからである。</p>
@@ -140,27 +143,32 @@ iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go 
         <p>依頼から確認まで、体感は数分。隙間時間に複数の依頼をまとめて投げ、次の隙間時間に確認してまた依頼する。このループを回すことで、まとまった時間ゼロのまま開発が進む。</p>
         <p>最後に、EXPO が React Native ベースであることは iOS / Android 両対応の要件もそのまま満たす。実機の Android を持っていなくても、Android 側の動作確認までできる。</p>
 
-        <h3>Options</h3>
-        <ul class="body">
-          <li><b>Codex (OpenAI)</b> — 試した時点 (2026 年春) では iPhone アプリから使えず、ブラウザ操作になった。片手スマホの UX として成立しなかったため見送り。なお 2026 年 5 月に ChatGPT アプリへ Codex が搭載されたので、いま選定するなら再評価の余地がある。</li>
-          <li><b>Flutter</b> — クロスプラットフォームのフレームワークとして検討はした。ただ EXPO の PoC (Proof of Concept) の時点で要件をすべて満たしてしまったので、Flutter の PoC は行っていない。比較して負けたのではなく、比較する必要がなくなった、が正確なところ。</li>
-        </ul>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Codex (OpenAI)</b> — 試した時点 (2026 年春) では iPhone アプリから使えず、ブラウザ操作になった。片手スマホの UX として成立しなかったため見送り。なお 2026 年 5 月に ChatGPT アプリへ Codex が搭載されたので、いま選定するなら再評価の余地がある。</li>
+            <li><b>Flutter</b> — クロスプラットフォームのフレームワークとして検討はした。ただ EXPO の PoC (Proof of Concept) の時点で要件をすべて満たしてしまったので、Flutter の PoC は行っていない。比較して負けたのではなく、比較する必要がなくなった、が正確なところ。</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="blk result">
+    <section class="blk result b-result">
       <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>iPhone の Claude アプリで依頼して、同じ iPhone の Expo Go で確認する。この体験はかなり快適である。Claude が考えて実装し、EAS へ update が届くまで数分、長いと 10 分くらいかかるが、依頼して放置すればいいだけなので苦にならない。断片的な隙間時間で開発を進める CI/CD 環境としては、現状これが最強ではないかと感じている。</p>
+        <p>コストも良い。EXPO も GitHub も Free 枠で十分足りるので、この開発ループ自体の追加費用はゼロである。</p>
 
-      <h2 class="g">Good</h2>
-      <p>iPhone の Claude アプリで依頼して、同じ iPhone の Expo Go で確認する。この体験はかなり快適である。Claude が考えて実装し、EAS へ update が届くまで数分、長いと 10 分くらいかかるが、依頼して放置すればいいだけなので苦にならない。断片的な隙間時間で開発を進める CI/CD 環境としては、現状これが最強ではないかと感じている。</p>
-      <p>コストも良い。EXPO も GitHub も Free 枠で十分足りるので、この開発ループ自体の追加費用はゼロである。</p>
+        <h2 class="b">Bad</h2>
+        <p>Claude・GitHub・EAS という 3 つのクラウドにまたがってパイプラインを自動で繋げているため、<b>どこか 1 か所で障害が起きるとループ全体が止まる</b>。</p>
+        <p>実害として、こんなハマり方をした。バグを直したはずなのに直っていない。おかしいな、と修正サイクルを何周か回したら、実は EAS 側の障害で update が反映されていなかった — というオチである。シビアな納期で開発しているわけではないので障害自体は気長に待てばいいのだが、<b>「挙動がおかしい」と思ったら、まず各クラウドのステータスページを確認する</b>ことをおすすめする。自分のコードを疑う前に、インフラを疑う日が月に一度くらいはある。</p>
 
-      <h2 class="b">Bad</h2>
-      <p>Claude・GitHub・EAS という 3 つのクラウドにまたがってパイプラインを自動で繋げているため、<b>どこか 1 か所で障害が起きるとループ全体が止まる</b>。</p>
-      <p>実害として、こんなハマり方をした。バグを直したはずなのに直っていない。おかしいな、と修正サイクルを何周か回したら、実は EAS 側の障害で update が反映されていなかった — というオチである。シビアな納期で開発しているわけではないので障害自体は気長に待てばいいのだが、<b>「挙動がおかしい」と思ったら、まず各クラウドのステータスページを確認する</b>ことをおすすめする。自分のコードを疑う前に、インフラを疑う日が月に一度くらいはある。</p>
-
-      <h2 class="f">Follow-up</h2>
-      <p>このループで作れるのは「開発中のアプリ」まで。App Store に出すには build と submit が必要で、そこで Mac 問題が再登場する。続きは <a href="cloud-build.html">1.1.2 Mac なしで build する</a>。</p>
+        <h2 class="f">Follow-up</h2>
+        <p>このループで作れるのは「開発中のアプリ」まで。App Store に出すには build と submit が必要で、そこで Mac 問題が再登場する。続きは <a href="cloud-build.html">1.1.2 Mac なしで build する</a>。</p>
+      </div>
     </section>
   </article>
 

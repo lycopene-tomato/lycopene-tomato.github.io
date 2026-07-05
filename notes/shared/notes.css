@@ -262,49 +262,61 @@ table.cmp td:first-child{font-weight:600;white-space:nowrap;color:var(--sub)}
 .map-note{color:var(--muted);font-size:12px;margin:0 0 6px;font-family:var(--mono);letter-spacing:.02em}
 
 /* ============================================================
-   記事ブロック (SCQA 視覚化) — 2026-07
+   記事ブロック (SCQA 視覚化) v2 — 2026-07
    長い記事で「今どこを読んでいるか」を示す 4 ブロック様式
-   (00 要約 / 01 物語 / 02 解決 / 03 結果)。.blk 配下スコープなので
-   マークアップを移行した記事だけに効く。mobile-dev.html で先行適用し、
-   確認後に env / cloud-build へ横展開する。設計意図は LP/NOTES_GUIDE.md §5。
+   (00 要約 / 01 物語 / 02 解決 / 03 結果)。全ブロック共通の構成 =
+   blk-h (番号 + 和文 + 英ラベル + 罫) + 縦レール .bd (mono 小ラベル + 本文)。
+   線色はブロックごとに変える (要約 グレー / 物語 青 / 解決 ピンク / 結果 黄)。
+   .blk 配下スコープなのでマークアップを移行した記事だけに効く。
+   mobile-dev.html で先行適用し、確認後に env / cloud-build へ横展開する。
+   設計意図は LP/NOTES_GUIDE.md §5。
    ============================================================ */
-.blk{margin:46px 0 0}
-article .blk:first-of-type{margin-top:26px}
+.blk{margin:40px 0 0}
+article .blk:first-of-type{margin-top:24px}
+.b-sum{--blk:#8b929c}     /* 00 要約 グレー   */
+.b-story{--blk:#2f6fed}   /* 01 物語 青       */
+.b-solve{--blk:#d15c8e}   /* 02 解決 ピンク   */
+.b-result{--blk:#dfa719}  /* 03 結果 黄       */
 .blk-h{display:flex;align-items:baseline;gap:12px;margin:0 0 4px}
-.blk-h .no{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--cat,var(--accent))}
+.blk-h .no{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--blk,var(--cat,var(--accent)))}
 .blk-h .jp{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:.03em}
 .blk-h .en{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .blk-h::after{content:"";flex:1;height:1px;background:var(--line);align-self:center}
-.blk .tldr{margin:14px 0 0}
 
-/* 00 要約: 使う物 (機材・サービスと費用。罫線区切りのコンパクトなリスト) */
-.kit{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--line)}
-.kit li{display:flex;align-items:baseline;gap:12px;padding:7px 4px;border-bottom:1px solid var(--line);font-size:13.5px}
+/* 縦レール本体。中の h2 と .lbl は mono 小ラベルに統一 */
+.bd{border-left:2px solid var(--blk,var(--cat,var(--accent)));padding-left:18px;margin:12px 0 0}
+.bd h2,.bd .lbl{font-size:11.5px;font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blk,var(--cat,var(--accent)));border:0;padding:0;margin:26px 0 0}
+.bd>h2:first-child,.bd>.lbl:first-child{margin-top:4px}
+.bd p{margin:7px 0 0}
+.bd p+p{margin-top:12px}
+.bd blockquote{border:0;margin:10px 0 4px;padding:0;font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:20px;font-weight:600;letter-spacing:.02em}
+
+/* 00 要約: TL;DR は囲いを外してレール内の 1 要素に (aside タグは GEO シグナルとして残す) */
+.bd .tldr{border:0;border-radius:0;background:none;padding:0;margin:4px 0 0}
+.bd .tldr .tl-h{color:var(--blk);font-size:11.5px;letter-spacing:.14em;margin:0}
+.bd .tldr ul{margin:7px 0 0;padding-left:20px}
+/* 使う物: 横罫は最初と最後の 2 本だけ (1 要素ごとの線は引かない) */
+.kit{list-style:none;margin:8px 0 0;padding:2px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kit li{display:flex;align-items:baseline;gap:12px;padding:5px 2px;font-size:13.5px}
 .kit b{font-weight:700;color:var(--ink);flex:none}
 .kit .use{color:var(--muted);font-size:12px}
-.kit .cost{margin-left:auto;flex:none;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--cat,var(--accent))}
+.kit .cost{margin-left:auto;flex:none;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--sub)}
 
-/* 01 物語: 縦レール 1 本で Situation → Complication → Question をつなぐ */
-.story{border-left:2px solid var(--cat,var(--accent));padding-left:18px;margin:18px 0 0}
-.story h2{font-size:11.5px;font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cat,var(--accent));border:0;padding:0;margin:26px 0 0}
-.story h2:first-child{margin-top:4px}
-.story p{margin:7px 0 0}
-.story blockquote{border:0;margin:10px 0 4px;padding:0;font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:20px;font-weight:600;letter-spacing:.02em}
-
-/* 02 解決: Criteria は枠付きチェックリスト、Reason / Options は Answer の従属 (字下げ) */
-.crit{list-style:none;border:1px solid var(--line-strong);border-radius:10px;background:var(--paper);padding:12px 16px;margin:14px 0 0}
-.crit li{position:relative;padding:6px 0 6px 22px;margin:0;border-bottom:1px dashed var(--line);font-size:14.5px;color:#2a2d31}
-.crit li:last-child{border-bottom:0}
-.crit li::before{content:"—";position:absolute;left:2px;color:var(--cat,var(--accent));font-family:var(--mono);font-weight:700}
-.sub{margin:28px 0 0 6px;padding-left:18px;border-left:1px solid var(--line-strong)}
-.sub h3{font-size:11.5px;font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin:26px 0 0}
-.sub h3:first-child{margin-top:0}
-.sub p{font-size:14.5px;color:var(--sub);margin:10px 0}
-.sub ul.body{font-size:14.5px;color:var(--sub)}
+/* 02 解決: Criteria は素のリスト。Reason / Options は .sub で字下げ従属し、
+   .sub を分けることで内側の線が Reason と Options の間で 1 回切れる */
+.crit{list-style:none;margin:8px 0 0;padding:0}
+.crit li{position:relative;padding:4px 0 4px 22px;margin:0;font-size:14.5px;color:#2a2d31}
+.crit li::before{content:"—";position:absolute;left:2px;color:var(--blk,var(--cat,var(--accent)));font-family:var(--mono);font-weight:700}
+.sub{margin:26px 0 0 6px;padding-left:18px;border-left:1px solid var(--line-strong)}
+.sub+.sub{margin-top:20px}
+.sub h3{font-size:11.5px;font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);border:0;padding:0;margin:0}
+.sub p{font-size:14.5px;color:var(--sub);margin:10px 0 0}
+.sub ul.body{font-size:14.5px;color:var(--sub);margin:10px 0 0}
 .sub pre{font-size:13px}
 
 /* 03 結果: Good / Bad / Follow-up は並列の小チップ見出し (## より控えめな格) */
-.result h2{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:0;border-radius:5px;padding:3px 10px;margin:28px 0 0}
+.result .bd>h2{display:inline-block;font-size:11px;letter-spacing:.12em;border-radius:5px;padding:3px 10px;margin:22px 0 0}
+.result .bd>h2:first-child{margin-top:2px}
 .result h2.g{background:#e7f7f1;color:#0f9d76}
 .result h2.b{background:#fbece8;color:#b8503c}
 .result h2.f{background:#e6f5f8;color:#0e8fa3}
