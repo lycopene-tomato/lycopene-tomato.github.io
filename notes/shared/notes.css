@@ -273,10 +273,15 @@ table.cmp td:first-child{font-weight:600;white-space:nowrap;color:var(--sub)}
    ============================================================ */
 .blk{margin:40px 0 0}
 article .blk:first-of-type{margin-top:24px}
-.b-sum{--blk:#8b929c}     /* 00 要約 グレー   */
+.b-sum{--blk:#8b929c}     /* 00 要約 グレー (ADR / 序破急 共通) */
+/* ADR テンプレ (SCQA) 用 */
 .b-story{--blk:#2f6fed}   /* 01 物語 青       */
 .b-solve{--blk:#d15c8e}   /* 02 解決 ピンク   */
 .b-result{--blk:#dfa719}  /* 03 結果 黄       */
+/* 序破急テンプレ (章の頭記事・導入) 用 — ADR とは意味が違うため別色。熱量が上がる藍→紫→緋 */
+.b-jo{--blk:#46639b}      /* 01 序 藍 (静かな導入)    */
+.b-ha{--blk:#7d5ba6}      /* 02 破 紫 (転調・揺さぶり) */
+.b-kyu{--blk:#c65840}     /* 03 急 緋 (畳みかけ・決着) */
 .blk-h{display:flex;align-items:baseline;gap:12px;margin:0 0 4px}
 .blk-h .no{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--blk,var(--cat,var(--accent)))}
 .blk-h .jp{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:.03em}
@@ -291,10 +296,10 @@ article .blk:first-of-type{margin-top:24px}
 .bd p+p{margin-top:12px}
 .bd blockquote{border:0;margin:10px 0 4px;padding:0;font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:20px;font-weight:600;letter-spacing:.02em}
 
-/* 00 要約: TL;DR は囲いを外してレール内の 1 要素に (aside タグは GEO シグナルとして残す) */
-.bd .tldr{border:0;border-radius:0;background:none;padding:0;margin:4px 0 0}
-.bd .tldr .tl-h{color:var(--blk);font-size:11.5px;letter-spacing:.14em;margin:0}
-.bd .tldr ul{margin:7px 0 0;padding-left:20px}
+/* 00 要約: TL;DR は囲いを外してレール内の 1 要素に (aside タグは GEO シグナルとして残す)。
+   「TL;DR」のラベル文字はブロック見出し「00 要約」と重複するため書かない (ADR テンプレ規約)。 */
+.bd .tldr{border:0;border-radius:0;background:none;padding:0;margin:2px 0 0}
+.bd .tldr ul{margin:0;padding-left:20px}
 /* 使う物: 横罫は最初と最後の 2 本だけ (1 要素ごとの線は引かない) */
 .kit{list-style:none;margin:8px 0 0;padding:2px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .kit li{display:flex;align-items:baseline;gap:12px;padding:5px 2px;font-size:13.5px}

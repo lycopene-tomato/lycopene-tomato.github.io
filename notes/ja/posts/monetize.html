@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#b8503c" />
+<title>マネタイズ — プロダクトの持続可能性の設計 | Architecture Notes</title>
+<meta name="description" content="マネタイズは金儲けのテクニックではなく、プロダクトを死なせないための生存戦略。援助業界の「依存」の病理と HDP ネクサス、お金 = 感謝の循環という捉え方から、個人開発が広告やアフィリエイトを実装する前に置くべき前提を書く。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/monetize.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="マネタイズ — プロダクトの持続可能性の設計" />
+<meta property="og:description" content="マネタイズは金儲けのテクニックではなく、プロダクトを死なせないための生存戦略。広告やアフィリエイトの前に置くべき前提。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/monetize.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="マネタイズ — プロダクトの持続可能性の設計" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "マネタイズ — プロダクトの持続可能性の設計",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-05",
+  "dateModified": "2026-07-05",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/monetize.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "マネタイズ", "item": "https://lycoapp.com/notes/ja/posts/monetize.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-monetize">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><b>4 マネタイズ</b></nav>
+
+  <article>
+    <span class="cat-tag">4 · マネタイズ</span>
+    <h1>マネタイズ — プロダクトの持続可能性の設計</h1>
+    <p class="a-meta"><span>2026.07.05</span><span>約5分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <ul>
+            <li>この 4 系は AdMob・Buy Me a Coffee・アフィリエイトの実装を扱う。各論の前に「何のためのマネタイズか」を先に置く</li>
+            <li>個人開発のマネタイズは金儲けのテクニックではなく、プロダクトを死なせないための生存戦略</li>
+            <li>無償の支援は依存を生む — 援助業界が長年向き合ってきた病理。収益 (自立) のない支援はいつか共倒れになる</li>
+            <li>お金は感謝の代替物。1 日数円でも、誰かの役に立った実感が開発を続ける燃料になる</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-jo">
+      <p class="blk-h"><span class="no">01</span><span class="jp">序</span><span class="en">Jo</span></p>
+      <div class="bd">
+        <p>この 4 系では、AdMob・Buy Me a Coffee・アフィリエイトといった、マネタイズの具体的な実装を扱う。ただ、各論に入る前に、ひとつ手前の問いを置いておきたい。マネタイズは、何のためにするのか。</p>
+        <p>辞書を引けば、無料のコンテンツを現金化すること。有り体に言えば金儲けである。しかし個人開発においては、まったく別の側面を見せる。単なる収益化の手段ではなく —</p>
+        <blockquote>プロダクトを死なせないための、生存戦略である。</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-ha">
+      <p class="blk-h"><span class="no">02</span><span class="jp">破</span><span class="en">Ha</span></p>
+      <div class="bd">
+        <h2>Dependency</h2>
+        <p>国連のフォーラムで講演を聴かせてもらったときに、感じたことがある。「自分はボランティアでいい、無料でみんなを助けたい」— その志は立派である。しかし、国際支援のプロフェッショナルである国連の世界では違った。<b>無償の支援は人を依存させ、自立を奪う</b>。これは「依存 (dependency) の問題」と呼ばれ、援助業界で最も根深い病理のひとつとして長年議論されてきたのだという。</p>
+        <p>中国の諺に「授人以魚 不如授人以漁」— 魚を与えるのではなく、釣り方を教えよ — とある。国連はこれをさらに進めて、<b>HDP ネクサス</b> (Humanitarian-Development-Peace Nexus: 人道・開発・平和の連携) と呼ぶ枠組みで、3 つを同時に行うことが大切だとしている。命が危ない緊急期には食料や医薬品を配る (人道)。同時進行で、その人たちが自分で稼げるようになるための能力構築を始める (開発)。そして、そもそも紛争が再発しないよう法制度と社会の安定を作る (平和)。この 3 つを「順番」ではなく「同時」にやるからこそ、依存が生まれず、自立に至る — というのが UNDP (国連開発計画) の主張である。</p>
+        <p>エンジニアとして唸ったのは、ビル・ゲイツ氏が 2016 年に 10 万羽のニワトリを寄付した話である。卵が今日の飢えをしのぎ、卵を売ればビジネスになり、栄養価も高い。しかも放し飼いで勝手に育つから、持続性まである。人道と開発を 1 羽に積んだ、見事なソリューションだと思った。</p>
+        <p>開発者にとってのマネタイズも、同じ構図である。後から「おまけ」で考えるものではなく、最初から仕組みに組み込んでおくもの。自立 (収益) のない支援は、いつか限界が来て共倒れになるからである。</p>
+
+        <h2>Gratitude</h2>
+        <p>そもそも、お金とは何か。強制通用力 (法的な決済手段) という機能で捉えると、本質を見失う気がしている。概念としてのお金は、現代社会における「感謝」という感情の代替物であり、循環していくもの — 私はそう考えている。</p>
+        <p>産業革命以前、価値は汗 (肉体労働) に直結していた。現代のお金は「創作や労働に対する敬意の表明」へと、その本質を移している。チップという文化が象徴するように、それは「あなたの仕事に助けられた」という感謝の可視化である。</p>
+        <p>私のプロダクトは、年間 350 ドル以上という安くないライセンス費用を払いながら、生み出す収益は 1 日数円である (3 か月経過の現在)。経済合理性だけで測れば、完全な失敗だろう。しかし、その 1 円が計上された瞬間の充足感は、何物にも代えがたい。その 1 円は、世界のどこかにいる誰かが私のプロダクトに価値を見出し、「ありがとう」と呟いた瞬間だからである。</p>
+        <p><b>誰かの役に立ったという実感</b>こそが、開発を続ける最大の燃料になる。1 円稼げたときの喜びは、金額以上の肯定感をくれる。それが、エンジニアを目指した原動力でもあったからだ。</p>
+      </div>
+    </section>
+
+    <section class="blk b-kyu">
+      <p class="blk-h"><span class="no">03</span><span class="jp">急</span><span class="en">Kyu</span></p>
+      <div class="bd">
+        <h2>Responsibility</h2>
+        <p>マネタイズの設計を疎かにしたままサービスを始めると、どうなるか。ユーザーが大切なデータを預けてくれたのに、赤字が続いてサーバー代が払えなくなり、「辛いから辞めます」とサービスを閉じる。それは、ユーザーのデータを消去し、信頼を裏切る行為である。</p>
+        <p>管理維持費を利益と連動させ、無理なく運営し続ける仕組みを作ること。それは<b>ユーザーに対する開発者の責任</b>であり、倫理である。</p>
+
+        <h2>Stance</h2>
+        <p>個人開発のマネタイズとは、金儲けのテクニックではない。<b>倫理と経済の統合。憐れみと尊厳の両立。優しさと厳しさの共存。</b>自分のプロダクトを、自身の手で持続させるための設計図である。</p>
+        <p>だから、この章では次のような話はしない。</p>
+        <ul class="body">
+          <li>こうしたら金儲けできる</li>
+          <li>AI 自動化で不労所得、アーリーリタイア</li>
+          <li>誰でも毎月 5 万円</li>
+        </ul>
+        <p>する話は「プロダクトの持続性の仕組み」である。この前提の上で、広告 (4.1 AdMob)・寄付 (4.2 Buy Me a Coffee)・アフィリエイト (4.3) の実装を各論で書いていく。いずれも作成中。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary class="cur"><span class="caret">▸</span><a href="monetize.html" aria-current="page"><span class="num">4</span>マネタイズ</a></summary>
+        <ul>
+          <li><span class="tn-wip"><span class="num">4.1</span>AdMob</span></li>
+          <li><span class="tn-wip"><span class="num">4.2</span>Buy Me a Coffee</span></li>
+          <li><span class="tn-wip"><span class="num">4.3</span>アフィリエイト</span></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#monetize">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

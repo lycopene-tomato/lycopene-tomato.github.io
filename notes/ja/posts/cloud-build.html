@@ -72,69 +72,99 @@
   <article>
     <span class="cat-tag">1.1.2 · 開発基盤</span>
     <h1>Mac なしで build する</h1>
-    <p class="a-meta"><span>2026.07.02</span><span>約7分</span><span>Apple Developer Program 99ドル/年</span></p>
+    <p class="a-meta"><span>2026.07.02</span><span>約7分</span></p>
 
-    <aside class="tldr" aria-label="要約">
-      <p class="tl-h">TL;DR</p>
-      <ul>
-        <li>iPhone アプリの build に Mac は必須。ただし所有する必要はなく、クラウド (EAS) にあればいい</li>
-        <li>初回だけ証明書作成の対話操作があり、そこだけ GitHub Codespaces を PC ブラウザで使った</li>
-        <li>2 回目以降は iPhone から GitHub Actions を叩くだけで build → submit → TestFlight まで届く</li>
-        <li>無料枠は EAS が iOS build 15 回/月、Actions が 2,000 分/月。<code>--no-wait</code> を付けないと Actions の分数を待ち時間で溶かす</li>
-      </ul>
-    </aside>
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <ul>
+            <li>iPhone アプリの build に Mac は必須。ただし所有する必要はなく、クラウド (EAS) にあればいい</li>
+            <li>初回だけ証明書作成の対話操作があり、そこだけ GitHub Codespaces を PC ブラウザで使った</li>
+            <li>2 回目以降は iPhone から GitHub Actions を叩くだけで build → submit → TestFlight まで届く</li>
+            <li>無料枠は EAS が iOS build 15 回/月、Actions が 2,000 分/月。<code>--no-wait</code> を付けないと Actions の分数を待ち時間で溶かす</li>
+          </ul>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="使う物">
+          <li><b>Apple Developer Program</b><span class="use">App Store 申請</span><span class="cost">99 ドル/年</span></li>
+          <li><b>EAS build</b><span class="use">クラウド macOS で build</span><span class="cost">Free</span></li>
+          <li><b>GitHub Codespaces</b><span class="use">初回の証明書操作</span><span class="cost">Free</span></li>
+          <li><b>PC (何でも可)</b><span class="use">初回のみブラウザ</span><span class="cost">手持ち</span></li>
+        </ul>
+      </div>
+    </section>
 
-    <h2>Situation</h2>
-    <p><a href="mobile-dev.html">1.1.1</a> の開発ループで、Expo Go による動作確認と修正のサイクルは回るようになった。開発中は build なしで進む。</p>
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="mobile-dev.html">1.1.1</a> の開発ループで、Expo Go による動作確認と修正のサイクルは回るようになった。開発中は build なしで進む。</p>
 
-    <h2>Complication</h2>
-    <p>ただし、App Store に出すとなると話が変わる。Apple に申請するには、アプリを build して submit しなければならない。そして iPhone アプリの build には Mac が必要 — これは Apple のエコシステム上、避けて通れない事実である。</p>
+        <h2>Complication</h2>
+        <p>ただし、App Store に出すとなると話が変わる。Apple に申請するには、アプリを build して submit しなければならない。そして iPhone アプリの build には Mac が必要 — これは Apple のエコシステム上、避けて通れない事実である。</p>
 
-    <h2>Question</h2>
-    <blockquote>build には Mac が必要。Mac を持たずに、どうやって App Store まで届けるか?</blockquote>
+        <h2>Question</h2>
+        <blockquote>build には Mac が必要。Mac を持たずに、どうやって App Store まで届けるか?</blockquote>
+      </div>
+    </section>
 
-    <h2>Criteria</h2>
-    <ul class="body">
-      <li>Mac を所有していなくても成立すること (買わない・借りない・置かない)</li>
-    </ul>
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Mac を所有していなくても成立すること (買わない・借りない・置かない)</li>
+        </ul>
 
-    <h2>Answer</h2>
-    <pre><span class="c"># 初回のみ (証明書作成)</span>
+        <h2>Answer</h2>
+        <pre><span class="c"># 初回のみ (証明書作成)</span>
 PC ブラウザ → GitHub → GitHub Codespaces → EAS (build)
 
 <span class="c"># 2 回目以降 (すべて iPhone から)</span>
 iPhone → GitHub → GitHub Actions → EAS (build)
 iPhone → GitHub → GitHub Actions → EAS (submit)
         → App Store Connect → TestFlight → iPhone</pre>
-    <p>鍵は、<b>Mac は「クラウドの中」にあればいい</b>という点である。EAS (Expo Application Services) の build サービスは、クラウド側の macOS 環境で iPhone アプリを build してくれる。手元に必要なのは、コマンドを投げる端末だけ。それは iPhone で足りる。</p>
+        <p>鍵は、<b>Mac は「クラウドの中」にあればいい</b>という点である。EAS (Expo Application Services) の build サービスは、クラウド側の macOS 環境で iPhone アプリを build してくれる。手元に必要なのは、コマンドを投げる端末だけ。それは iPhone で足りる。</p>
 
-    <h3>Reason</h3>
-    <p><b>初回だけ PC ブラウザを使ったのは、対話操作のためである。</b> 初回 build では署名用の証明書 (App Store 用の credentials) を作る必要があり、その過程で Y/N を聞かれる対話式の入力が発生する。基本は Y を答えるだけなのだが、これを GitHub Actions で自動化しようとすると、応答のタイミング合わせのような面倒なコーディングが必要になる。年に数回あるかどうかの操作を自動化する価値はないと判断して、初回だけ手動にした。</p>
-    <p>その手動操作も、Mac は要らない。GitHub Codespaces — GitHub がブラウザ上に用意してくれる VS Code 環境 — を開けば、そこからコマンドを叩ける。個人アカウントの無料枠 (120 コア時間/月) で十分足りる。理屈の上ではスマホのブラウザでも可能だが、ターミナル操作にはさすがに画面が小さすぎたので、ここだけ PC のブラウザを使った。繰り返すが、PC であって Mac である必要はない。</p>
-    <p>2 回目以降は対話が不要になるので、iPhone から GitHub Actions の workflow を実行するだけで build が走る。build が成功したら、同じく Actions から submit すると、App Store Connect に上がり、TestFlight で実機に降ってくる。申請の直前まで、すべて iPhone で完結する。</p>
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>初回だけ PC ブラウザを使ったのは、対話操作のためである。</b> 初回 build では署名用の証明書 (App Store 用の credentials) を作る必要があり、その過程で Y/N を聞かれる対話式の入力が発生する。基本は Y を答えるだけなのだが、これを GitHub Actions で自動化しようとすると、応答のタイミング合わせのような面倒なコーディングが必要になる。年に数回あるかどうかの操作を自動化する価値はないと判断して、初回だけ手動にした。</p>
+          <p>その手動操作も、Mac は要らない。GitHub Codespaces — GitHub がブラウザ上に用意してくれる VS Code 環境 — を開けば、そこからコマンドを叩ける。個人アカウントの無料枠 (120 コア時間/月) で十分足りる。理屈の上ではスマホのブラウザでも可能だが、ターミナル操作にはさすがに画面が小さすぎたので、ここだけ PC のブラウザを使った。繰り返すが、PC であって Mac である必要はない。</p>
+          <p>2 回目以降は対話が不要になるので、iPhone から GitHub Actions の workflow を実行するだけで build が走る。build が成功したら、同じく Actions から submit すると、App Store Connect に上がり、TestFlight で実機に降ってくる。申請の直前まで、すべて iPhone で完結する。</p>
+        </div>
 
-    <h3>Options</h3>
-    <ul class="body">
-      <li><b>Xcode Cloud</b> — Apple 純正の CI/CD。ただし初回のセットアップに Xcode つまり Mac が必要で、「Mac を所有しない」という Criteria と矛盾するため見送り。アプリを EXPO で実装している以上、EAS との親和性が高いことも決め手になった。</li>
-      <li><b>GitHub Actions の macOS ランナー</b> — Actions 上で直接 macOS を立ち上げて build する手もある。ただし macOS ランナーの利用は Linux の <b>10 倍</b>の分数消費で課金される。無料枠 2,000 分/月がみるみる溶けるので、チャレンジしていない。</li>
-    </ul>
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Xcode Cloud</b> — Apple 純正の CI/CD。ただし初回のセットアップに Xcode つまり Mac が必要で、「Mac を所有しない」という Criteria と矛盾するため見送り。アプリを EXPO で実装している以上、EAS との親和性が高いことも決め手になった。</li>
+            <li><b>GitHub Actions の macOS ランナー</b> — Actions 上で直接 macOS を立ち上げて build する手もある。ただし macOS ランナーの利用は Linux の <b>10 倍</b>の分数消費で課金される。無料枠 2,000 分/月がみるみる溶けるので、チャレンジしていない。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <h2>Good</h2>
-    <p>build も submit も EAS に集約されたので、管理が一元化された。EXPO での開発 (1.1.1) と地続きのまま、申請直前の工程までスマホで届く。「Mac が要る」という iPhone アプリ開発最大の参入障壁が、実は「Mac を持つ必要」ではなかったと分かったのは収穫だった。</p>
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>build も submit も EAS に集約されたので、管理が一元化された。EXPO での開発 (1.1.1) と地続きのまま、申請直前の工程までスマホで届く。「Mac が要る」という iPhone アプリ開発最大の参入障壁が、実は「Mac を持つ必要」ではなかったと分かったのは収穫だった。</p>
 
-    <h2>Bad</h2>
-    <p>無料枠の組み合わせには制約がある。執筆時点の値で:</p>
-    <table class="cmp">
-      <tr><th>サービス</th><th>無料枠</th><th>備考</th></tr>
-      <tr><td>EAS build</td><td data-label="無料枠">iOS 15 回/月 (+ Android 15 回/月)</td><td data-label="備考">build エラーでも回数を消費する</td></tr>
-      <tr><td>GitHub Actions</td><td data-label="無料枠">2,000 分/月</td><td data-label="備考">Free プランの private リポジトリの場合</td></tr>
-    </table>
-    <p>通常の開発でこの上限を超えることはまずない。ただし、ネイティブまわりの動作確認でバグが出て build を繰り返すと、一気に持っていかれる。特に痛いのが、<b>build エラーでも回数がカウントされる</b>こと。設定ミスで 3 連続エラー、などとやると月の 2 割が消える。</p>
+        <h2 class="b">Bad</h2>
+        <p>無料枠の組み合わせには制約がある。執筆時点の値で:</p>
+        <table class="cmp">
+          <tr><th>サービス</th><th>無料枠</th><th>備考</th></tr>
+          <tr><td>EAS build</td><td data-label="無料枠">iOS 15 回/月 (+ Android 15 回/月)</td><td data-label="備考">build エラーでも回数を消費する</td></tr>
+          <tr><td>GitHub Actions</td><td data-label="無料枠">2,000 分/月</td><td data-label="備考">Free プランの private リポジトリの場合</td></tr>
+        </table>
+        <p>通常の開発でこの上限を超えることはまずない。ただし、ネイティブまわりの動作確認でバグが出て build を繰り返すと、一気に持っていかれる。特に痛いのが、<b>build エラーでも回数がカウントされる</b>こと。設定ミスで 3 連続エラー、などとやると月の 2 割が消える。</p>
 
-    <h2>Follow-up</h2>
-    <p>EAS の無料枠 build は優先度が低く、キュー待ちが異様に長いことがある。気長に待てばいいのだが、ここに落とし穴がある。<b>Actions 上で build の完了を待っていると、その待ち時間が Actions の 2,000 分/月からも消費されていく</b>。待っても待たなくても build の結果は同じなので、<code>eas build</code> には <code>--no-wait</code> を付けて、trigger したら workflow を即終了させるのが正解である。</p>
-    <p>その代わり build と submit が 1 本の workflow で繋がらなくなるので、EAS のダッシュボードで build の成功を確認してから、Actions で submit を実行する、という 2 段運用にしている。submit 側も同様に <code>--no-wait</code> が使える。</p>
-    <p>ここまでで「作って届ける」の縦の線が通った。次は横に広げる話 — 多言語対応 (1.2) に続く。(作成中)</p>
+        <h2 class="f">Follow-up</h2>
+        <p>EAS の無料枠 build は優先度が低く、キュー待ちが異様に長いことがある。気長に待てばいいのだが、ここに落とし穴がある。<b>Actions 上で build の完了を待っていると、その待ち時間が Actions の 2,000 分/月からも消費されていく</b>。待っても待たなくても build の結果は同じなので、<code>eas build</code> には <code>--no-wait</code> を付けて、trigger したら workflow を即終了させるのが正解である。</p>
+        <p>その代わり build と submit が 1 本の workflow で繋がらなくなるので、EAS のダッシュボードで build の成功を確認してから、Actions で submit を実行する、という 2 段運用にしている。submit 側も同様に <code>--no-wait</code> が使える。</p>
+        <p>ここまでで「作って届ける」の縦の線が通った。次は横に広げる話 — 多言語対応 (1.2) に続く。(作成中)</p>
+      </div>
+    </section>
   </article>
 
   <nav class="treenav" aria-label="サイトマップ">

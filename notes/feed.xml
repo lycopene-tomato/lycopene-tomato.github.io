@@ -5,12 +5,19 @@
   <id>https://lycoapp.com/notes/</id>
   <link href="https://lycoapp.com/notes/ja/" />
   <link rel="self" href="https://lycoapp.com/notes/feed.xml" />
-  <updated>2026-07-02T00:00:00+09:00</updated>
+  <updated>2026-07-05T00:00:00+09:00</updated>
   <author>
     <name>Lyco</name>
     <uri>https://lycoapp.com/ja/about/</uri>
   </author>
   <!-- 記事公開時にここへ <entry> を追加する (新しいものを上に) -->
+  <entry>
+    <title>マネタイズ — プロダクトの持続可能性の設計</title>
+    <id>https://lycoapp.com/notes/ja/posts/monetize.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/monetize.html" />
+    <updated>2026-07-05T00:00:00+09:00</updated>
+    <summary>マネタイズは金儲けのテクニックではなく、プロダクトを死なせないための生存戦略。援助業界の「依存」の病理と HDP ネクサス、お金 = 感謝の循環から、広告やアフィリエイトの前に置くべき前提を書く。</summary>
+  </entry>
   <entry>
     <title>Mac なしで build する — EAS と GitHub Codespaces で App Store まで</title>
     <id>https://lycoapp.com/notes/ja/posts/cloud-build.html</id>
