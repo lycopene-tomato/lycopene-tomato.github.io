@@ -95,7 +95,8 @@
     <section class="blk b-jo">
       <p class="blk-h"><span class="no">01</span><span class="jp">序</span><span class="en">Jo</span></p>
       <div class="bd">
-        <p>個人開発を始めたい。でも、日常で PC を開く時間がない。机に向かえるまとまった時間も、実はない。— この 1 系は、そういう人のための開発基盤の話である。</p>
+        <p>個人開発を、始めたい。けれど、フルタイムの仕事に、家事に、育児に — 日常で PC を開く時間はない。机に向かえるまとまった時間も、実はない。使えるのは、寝かしつけと、通勤と、昼休みの隙間だけ。おまけに手元の Mac は、サポートが切れた。</p>
+        <p>それでも、作りたい。</p>
         <p>AI がコードを書く時代、開発のかたちは変わった。必要なのは高性能な開発マシンではなく、AI に依頼して、結果を確認して、判断すること。それなら、手の中の 1 台で足りる。</p>
         <blockquote>個人開発こそ、AI 駆動スマホ開発である。</blockquote>
       </div>
@@ -105,8 +106,8 @@
       <p class="blk-h"><span class="no">02</span><span class="jp">破</span><span class="en">Ha</span></p>
       <div class="bd">
         <h2>Shift</h2>
-        <p>なぜスマホだけで成立するのか。従来 PC が担っていた役割 — コードを書く (IDE)、build する、配信する — を、クラウドが肩代わりできるようになったからである。コードは Claude Code on Web がクラウドの sandbox で書く。build は EAS (Expo Application Services) がクラウドの macOS でやる。配信も EAS と App Store Connect がクラウドで受け持つ。手元に残る仕事は、依頼と、確認と、判断。それは iPhone で足りる。</p>
-        <p>機材の実像は Tools のとおり。iPad は、ストア申請でタブレット対応にするときのスクリーンショット撮影にだけ使う (スマホのみの対応にすれば不要)。PC は初回に 1 度だけブラウザ操作に使うが、Mac である必要もスペックも要らない (<a href="cloud-build.html">1.1.2</a> で詳述)。</p>
+        <p>なぜスマホだけで成立するのか。従来 PC が担っていた 3 つの役割 — コードを書く (IDE)、build する、配信する — が、すべてクラウドに置けるようになったからである。AI がクラウドの中でコードを書き、クラウドの中の Mac が build し、配信もクラウドが受け持つ。手元に残る仕事は、依頼と、確認と、判断。それは iPhone で足りる。</p>
+        <p>機材の実像は Tools のとおり。iPad は、ストア申請でタブレット対応にするときのスクリーンショット撮影にだけ使う (スマホのみの対応にすれば不要)。PC は初回に 1 度だけブラウザ操作に使うが、Mac である必要もスペックも要らない。</p>
 
         <h2>Cost</h2>
         <p>月々の固定費は実質 Claude Pro の 20 ドルだけで、年に一度 Apple Developer Program の 99 ドルが乗る。GitHub も EAS も Flow も無料枠で回る。無料枠の中身と制約 (どこで詰まるか) は各記事で書く。</p>
@@ -116,7 +117,7 @@
     <section class="blk b-kyu">
       <p class="blk-h"><span class="no">03</span><span class="jp">急</span><span class="en">Kyu</span></p>
       <div class="bd">
-        <p>よって、この 1 系は「iPhone を入口に、クラウドを直列につないだ開発基盤」という観点で語っていく。なぜこの環境にしたのか、どうやって実装し、どうやって build するのか — の順である。</p>
+        <p>よって、この 1 系は「iPhone を入口に、クラウドを直列につないだ開発基盤」という観点で語っていく。まず、なぜこの環境にしたのか — 妥協できなかった要件から。次に、どう実装するのか。そして、どう App Store まで届けるのか — の順である。</p>
         <ul class="body">
           <li><a href="env.html">1.1 iPhone だけでアプリ開発環境を構築する方法</a> — なぜ「スマホだけ」を要件にしたのか。判断基準の全体</li>
           <li><a href="mobile-dev.html">1.1.1 iPhone だけでアプリを実装する方法</a> — Claude Code on Web → GitHub → EAS の build なしループ</li>
