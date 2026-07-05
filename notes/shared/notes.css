@@ -106,7 +106,16 @@ a.row:hover .go{opacity:.7}
 .l2{margin-left:26px} .l2 .n{width:3.2em}
 .l3{margin-left:54px} .l3 .n{width:4.2em} .l3 .t{font-weight:500;color:var(--sub)}
 .l4{margin-left:82px} .l4 .n{width:5.2em} .l4 .t{font-weight:400;color:var(--sub);font-size:15px}
-@media(max-width:560px){.l2{margin-left:14px}.l3{margin-left:30px}.l4{margin-left:46px}}
+/* モバイル: 字下げを浅くし、行の余白も詰める (縦画面で間延びして見えるため) */
+@media(max-width:560px){
+  .l2{margin-left:14px}.l3{margin-left:30px}.l4{margin-left:46px}
+  .row{padding:6px 8px;gap:10px}
+  .row .t{line-height:1.55}
+  .l1{margin-top:10px}
+  .l1 .t{font-size:16px}
+  .l3 .t{font-size:15px}
+  .wip-badge{padding:0 6px;font-size:10px}
+}
 /* 記事から戻った時の現在地ハイライト */
 .row:target{background:var(--cat-bg);box-shadow:inset 0 0 0 2px var(--cat);animation:flash 1.4s ease}
 @keyframes flash{0%,40%{background:var(--cat)}100%{}}
@@ -117,13 +126,16 @@ a.row:hover .go{opacity:.7}
 .row.wip .n{color:var(--muted)}
 .wip-badge{margin-left:auto;flex:none;font-family:var(--mono);font-size:10.5px;color:var(--muted);border:1px dashed var(--line-strong);border-radius:5px;padding:1px 8px;align-self:center}
 
-/* --- FAQ --- */
+/* --- FAQ (罫線区切りのアコーディオン。右端 +/− は本家 About と同パターン) --- */
 .faq{margin:6px 0 0}
-.faq details{border:1px solid var(--line);border-radius:10px;background:var(--paper);margin:10px 0;padding:0}
-.faq summary{list-style:none;cursor:pointer;padding:14px 18px;font-weight:700;font-size:15px;display:flex;gap:10px;align-items:baseline}
+.faq details{border-top:1px solid var(--line);margin:0;padding:0}
+.faq details:first-of-type{border-top:0}
+.faq summary{list-style:none;cursor:pointer;padding:14px 32px 14px 4px;font-weight:700;font-size:15px;display:flex;gap:10px;align-items:baseline;position:relative}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::before{content:"Q.";font-family:var(--mono);color:var(--accent);font-weight:700}
-.faq .a{padding:0 18px 14px 44px;color:var(--sub);font-size:14.5px}
+.faq summary::after{content:"+";position:absolute;right:6px;top:13px;font-size:20px;font-weight:400;color:var(--accent);line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq .a{padding:0 4px 16px 30px;margin:0;color:var(--sub);font-size:14.5px}
 
 /* --- パンくず --- */
 .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;font-family:var(--mono);color:var(--muted);padding:22px 0 0}
@@ -222,6 +234,7 @@ table.cmp td:first-child{font-weight:600;white-space:nowrap;color:var(--sub)}
 .sec-h2 .en{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .sec-h2 .jp{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:.03em}
 .sec-h2::after{content:"";flex:1;height:1px;background:var(--line);align-self:center}
+@media(max-width:560px){.sec-h2{margin:34px 0 12px}}
 /* About: 本文 + 記録 3 項目 (罫区切り) */
 .about p{color:var(--sub);font-size:13.5px;line-height:1.85;margin:0 0 9px;max-width:38em}
 .about .hl{background:linear-gradient(transparent 74%,rgba(52,93,128,.16) 74%);padding:0 2px;color:var(--ink)}
@@ -240,14 +253,62 @@ table.cmp td:first-child{font-weight:600;white-space:nowrap;color:var(--sub)}
 .who li{position:relative;padding:5px 0 5px 20px;font-size:13px;font-weight:600;color:var(--sub);border-bottom:1px dashed var(--line)}
 .who li::before{content:"—";position:absolute;left:0;color:var(--accent);font-family:var(--mono)}
 .who .note{margin:12px 0 0;font-size:12px;color:var(--muted);line-height:1.8}
-/* Goal: 淡い色面の帯 (TOP 唯一の囲い) */
-.goal{margin:14px 0 0;background:linear-gradient(135deg,#f2f0e9 0%,#eef1f0 100%);border-radius:12px;padding:20px 24px}
-@media(max-width:560px){.goal{padding:16px 18px}}
+/* Goal: hero の詩と同じ縦棒スタイル (色面の囲いは使わない) */
+.goal{margin:14px 0 0;padding:2px 0 2px 18px;border-left:2px solid var(--accent)}
 .goal p{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
   font-size:14px;font-weight:600;line-height:2.05;color:var(--ink);letter-spacing:.05em;margin:0}
 .goal .quiet{color:var(--sub);font-size:12.5px;font-weight:500}
 /* Map 説明行 */
 .map-note{color:var(--muted);font-size:12px;margin:0 0 6px;font-family:var(--mono);letter-spacing:.02em}
+
+/* ============================================================
+   記事ブロック (SCQA 視覚化) — 2026-07
+   長い記事で「今どこを読んでいるか」を示す 4 ブロック様式
+   (00 要約 / 01 物語 / 02 解決 / 03 結果)。.blk 配下スコープなので
+   マークアップを移行した記事だけに効く。mobile-dev.html で先行適用し、
+   確認後に env / cloud-build へ横展開する。設計意図は LP/NOTES_GUIDE.md §5。
+   ============================================================ */
+.blk{margin:46px 0 0}
+article .blk:first-of-type{margin-top:26px}
+.blk-h{display:flex;align-items:baseline;gap:12px;margin:0 0 4px}
+.blk-h .no{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--cat,var(--accent))}
+.blk-h .jp{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:.03em}
+.blk-h .en{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.blk-h::after{content:"";flex:1;height:1px;background:var(--line);align-self:center}
+.blk .tldr{margin:14px 0 0}
+
+/* 00 要約: 使う物 (機材・サービスと費用。罫線区切りのコンパクトなリスト) */
+.kit{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--line)}
+.kit li{display:flex;align-items:baseline;gap:12px;padding:7px 4px;border-bottom:1px solid var(--line);font-size:13.5px}
+.kit b{font-weight:700;color:var(--ink);flex:none}
+.kit .use{color:var(--muted);font-size:12px}
+.kit .cost{margin-left:auto;flex:none;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--cat,var(--accent))}
+
+/* 01 物語: 縦レール 1 本で Situation → Complication → Question をつなぐ */
+.story{border-left:2px solid var(--cat,var(--accent));padding-left:18px;margin:18px 0 0}
+.story h2{font-size:11.5px;font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cat,var(--accent));border:0;padding:0;margin:26px 0 0}
+.story h2:first-child{margin-top:4px}
+.story p{margin:7px 0 0}
+.story blockquote{border:0;margin:10px 0 4px;padding:0;font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:20px;font-weight:600;letter-spacing:.02em}
+
+/* 02 解決: Criteria は枠付きチェックリスト、Reason / Options は Answer の従属 (字下げ) */
+.crit{list-style:none;border:1px solid var(--line-strong);border-radius:10px;background:var(--paper);padding:12px 16px;margin:14px 0 0}
+.crit li{position:relative;padding:6px 0 6px 22px;margin:0;border-bottom:1px dashed var(--line);font-size:14.5px;color:#2a2d31}
+.crit li:last-child{border-bottom:0}
+.crit li::before{content:"—";position:absolute;left:2px;color:var(--cat,var(--accent));font-family:var(--mono);font-weight:700}
+.sub{margin:28px 0 0 6px;padding-left:18px;border-left:1px solid var(--line-strong)}
+.sub h3{font-size:11.5px;font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin:26px 0 0}
+.sub h3:first-child{margin-top:0}
+.sub p{font-size:14.5px;color:var(--sub);margin:10px 0}
+.sub ul.body{font-size:14.5px;color:var(--sub)}
+.sub pre{font-size:13px}
+
+/* 03 結果: Good / Bad / Follow-up は並列の小チップ見出し (## より控えめな格) */
+.result h2{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:0;border-radius:5px;padding:3px 10px;margin:28px 0 0}
+.result h2.g{background:#e7f7f1;color:#0f9d76}
+.result h2.b{background:#fbece8;color:#b8503c}
+.result h2.f{background:#e6f5f8;color:#0e8fa3}
+.result h2+p{margin-top:8px}
 
 /* --- 印刷: ADR は紙/PDF でも読まれる想定 --- */
 @media print{
