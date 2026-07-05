@@ -278,10 +278,14 @@ article .blk:first-of-type{margin-top:24px}
 .b-story{--blk:#2f6fed}   /* 01 物語 青       */
 .b-solve{--blk:#d15c8e}   /* 02 解決 ピンク   */
 .b-result{--blk:#dfa719}  /* 03 結果 黄       */
-/* 序破急テンプレ (章の頭記事・導入) 用 — ADR とは意味が違うため別色。熱量が上がる藍→紫→緋 */
+/* 序破急テンプレ (X 階層 = 章の頭記事・導入) 用 — ADR とは意味が違うため別色。熱量が上がる藍→紫→緋 */
 .b-jo{--blk:#46639b}      /* 01 序 藍 (静かな導入)    */
 .b-ha{--blk:#7d5ba6}      /* 02 破 紫 (転調・揺さぶり) */
 .b-kyu{--blk:#c65840}     /* 03 急 緋 (畳みかけ・決着) */
+/* ゴールデンサークルテンプレ (X.Y 階層 = グループ親) 用 — Why→How→What。核心から価値へ */
+.b-why{--blk:#8e3b55}     /* 01 動機 ワイン (胸の内の動機) */
+.b-how{--blk:#3f5573}     /* 02 方法 鉄紺 (手段・機構)     */
+.b-what{--blk:#a9821e}    /* 03 価値 金 (届く価値)         */
 .blk-h{display:flex;align-items:baseline;gap:12px;margin:0 0 4px}
 .blk-h .no{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--blk,var(--cat,var(--accent)))}
 .blk-h .jp{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:.03em}

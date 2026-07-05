@@ -26,28 +26,28 @@
     <summary>マネタイズは金儲けのテクニックではなく、プロダクトを死なせないための生存戦略。援助業界の「依存」の病理と HDP ネクサス、お金 = 感謝の循環から、広告やアフィリエイトの前に置くべき前提を書く。</summary>
   </entry>
   <entry>
-    <title>Mac なしで build する — EAS と GitHub Codespaces で App Store まで</title>
+    <title>Mac なしで iPhone アプリを build する方法 — EAS + GitHub Codespaces</title>
     <id>https://lycoapp.com/notes/ja/posts/cloud-build.html</id>
     <link href="https://lycoapp.com/notes/ja/posts/cloud-build.html" />
     <updated>2026-07-02T00:00:00+09:00</updated>
     <summary>build に Mac は必須。でも所有する必要はない。初回だけ Codespaces、以降は iPhone から Actions 経由で EAS build → submit → TestFlight。無料枠の落とし穴と --no-wait。</summary>
   </entry>
   <entry>
-    <title>スマホだけで iPhone アプリを開発する — Claude Code on Web + GitHub + EAS</title>
+    <title>iPhone だけでアプリを実装する方法 — build なしの開発ループ</title>
     <id>https://lycoapp.com/notes/ja/posts/mobile-dev.html</id>
     <link href="https://lycoapp.com/notes/ja/posts/mobile-dev.html" />
     <updated>2026-07-02T00:00:00+09:00</updated>
     <summary>コミットするだけで手元のアプリが数分後に変わる、build 不要の開発ループ。sandbox だから安心して任せられる。</summary>
   </entry>
   <entry>
-    <title>開発環境 — 隙間時間だけでプロダクトは作れるか</title>
+    <title>iPhone だけでアプリ開発環境を構築する方法 — Mac なし・隙間時間で</title>
     <id>https://lycoapp.com/notes/ja/posts/env.html</id>
     <link href="https://lycoapp.com/notes/ja/posts/env.html" />
     <updated>2026-07-02T00:00:00+09:00</updated>
     <summary>まとまった開発時間は存在しない。Intel Mac はサポート切れ。それでも開発をあきらめないための要件定義と答え。</summary>
   </entry>
   <entry>
-    <title>開発基盤 — iPhone だけの開発環境と CI/CD の全体像</title>
+    <title>AI 駆動スマホ開発 — iPhone だけの開発基盤</title>
     <id>https://lycoapp.com/notes/ja/posts/dev.html</id>
     <link href="https://lycoapp.com/notes/ja/posts/dev.html" />
     <updated>2026-07-02T00:00:00+09:00</updated>

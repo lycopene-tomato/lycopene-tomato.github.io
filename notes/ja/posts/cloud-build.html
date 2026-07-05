@@ -4,11 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#2f6fed" />
-<title>Mac なしで build する — EAS と GitHub Codespaces で App Store まで | Architecture Notes</title>
+<title>Mac なしで iPhone アプリを build する方法 — EAS + GitHub Codespaces | Architecture Notes</title>
 <meta name="description" content="iPhone アプリの build に Mac は必須。でも所有する必要はない。初回だけ Codespaces で証明書を作り、以降は iPhone から GitHub Actions 経由で EAS build → submit → TestFlight。無料枠の落とし穴と --no-wait の話。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/cloud-build.html" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Mac なしで build する — EAS と GitHub Codespaces で App Store まで" />
+<meta property="og:title" content="Mac なしで iPhone アプリを build する方法 — EAS + GitHub Codespaces" />
 <meta property="og:description" content="build に Mac は必須。でも所有する必要はない。無料枠の落とし穴と --no-wait の話。" />
 <meta property="og:url" content="https://lycoapp.com/notes/ja/posts/cloud-build.html" />
 <meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Architecture Notes — Lyco App" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Mac なしで build する — EAS と GitHub Codespaces で App Store まで" />
+<meta name="twitter:title" content="Mac なしで iPhone アプリを build する方法 — EAS + GitHub Codespaces" />
 <meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
 <link rel="stylesheet" href="../../shared/notes.css" />
 <link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
@@ -28,10 +28,10 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Mac なしで build する — EAS と GitHub Codespaces で App Store まで",
+  "headline": "Mac なしで iPhone アプリを build する方法 — EAS + GitHub Codespaces",
   "inLanguage": "ja",
   "datePublished": "2026-07-02",
-  "dateModified": "2026-07-02",
+  "dateModified": "2026-07-05",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/cloud-build.html",
@@ -44,8 +44,8 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
-    { "@type": "ListItem", "position": 2, "name": "開発基盤", "item": "https://lycoapp.com/notes/ja/posts/dev.html" },
-    { "@type": "ListItem", "position": 3, "name": "開発環境", "item": "https://lycoapp.com/notes/ja/posts/env.html" },
+    { "@type": "ListItem", "position": 2, "name": "AI 駆動スマホ開発", "item": "https://lycoapp.com/notes/ja/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "iPhone だけの開発環境構築", "item": "https://lycoapp.com/notes/ja/posts/env.html" },
     { "@type": "ListItem", "position": 4, "name": "Mac なしで build する", "item": "https://lycoapp.com/notes/ja/posts/cloud-build.html" }
   ]
 }
@@ -67,23 +67,18 @@
 </div></header>
 
 <main class="wrap" id="main">
-  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="dev.html">1 開発基盤</a><span class="sep">›</span><a href="env.html">1.1 開発環境</a><span class="sep">›</span><b>1.1.2 Mac なしで build する</b></nav>
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="dev.html">1 AI 駆動スマホ開発</a><span class="sep">›</span><a href="env.html">1.1 開発環境構築</a><span class="sep">›</span><b>1.1.2 Mac なしで build する</b></nav>
 
   <article>
     <span class="cat-tag">1.1.2 · 開発基盤</span>
-    <h1>Mac なしで build する</h1>
+    <h1>Mac なしで iPhone アプリを build する方法</h1>
     <p class="a-meta"><span>2026.07.02</span><span>約7分</span></p>
 
     <section class="blk b-sum">
       <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
       <div class="bd">
         <aside class="tldr" aria-label="要約">
-          <ul>
-            <li>iPhone アプリの build に Mac は必須。ただし所有する必要はなく、クラウド (EAS) にあればいい</li>
-            <li>初回だけ証明書作成の対話操作があり、そこだけ GitHub Codespaces を PC ブラウザで使った</li>
-            <li>2 回目以降は iPhone から GitHub Actions を叩くだけで build → submit → TestFlight まで届く</li>
-            <li>無料枠は EAS が iOS build 15 回/月、Actions が 2,000 分/月。<code>--no-wait</code> を付けないと Actions の分数を待ち時間で溶かす</li>
-          </ul>
+          <p>iPhone アプリの build に Mac は必須だが、所有する必要はない — クラウド (EAS) にあればいい。初回だけ証明書作成の対話操作を GitHub Codespaces (PC ブラウザ) でやれば、2 回目以降は iPhone から GitHub Actions を叩くだけで build → submit → TestFlight まで届く。無料枠は EAS が iOS build 15 回/月、Actions が 2,000 分/月 — <code>--no-wait</code> を付けないと待ち時間で溶ける。</p>
         </aside>
         <p class="lbl">Tools</p>
         <ul class="kit" aria-label="使う物">
@@ -171,12 +166,12 @@ iPhone → GitHub → GitHub Actions → EAS (submit)
     <p class="tn-h">サイトマップ</p>
     <ul class="tn">
       <li><details open>
-        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>開発基盤 / Dev Platform</a></summary>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI 駆動スマホ開発 / Dev Platform</a></summary>
         <ul>
           <li><details open>
-            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>開発環境</a></summary>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>iPhone だけの開発環境構築</a></summary>
             <ul>
-              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>スマホだけで iPhone アプリを開発する</a></li>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>iPhone だけでアプリを実装する</a></li>
               <li><a class="cur" href="cloud-build.html" aria-current="page"><span class="num">1.1.2</span>Mac なしで build する</a></li>
             </ul>
           </details></li>

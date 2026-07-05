@@ -4,11 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#2f6fed" />
-<title>スマホだけで iPhone アプリを開発する — Claude Code on Web + GitHub + EAS | Architecture Notes</title>
+<title>iPhone だけでアプリを実装する方法 — build なしの開発ループ | Architecture Notes</title>
 <meta name="description" content="iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone。コミットするだけで手元のアプリが数分後に変わる、build 不要の開発ループ。sandbox だから安心して任せられる。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/mobile-dev.html" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="スマホだけで iPhone アプリを開発する — Claude Code on Web + GitHub + EAS" />
+<meta property="og:title" content="iPhone だけでアプリを実装する方法 — build なしの開発ループ" />
 <meta property="og:description" content="コミットするだけで手元のアプリが数分後に変わる、build 不要の開発ループ。" />
 <meta property="og:url" content="https://lycoapp.com/notes/ja/posts/mobile-dev.html" />
 <meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Architecture Notes — Lyco App" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="スマホだけで iPhone アプリを開発する — Claude Code on Web + GitHub + EAS" />
+<meta name="twitter:title" content="iPhone だけでアプリを実装する方法 — build なしの開発ループ" />
 <meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
 <link rel="stylesheet" href="../../shared/notes.css" />
 <link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
@@ -28,10 +28,10 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "スマホだけで iPhone アプリを開発する — Claude Code on Web + GitHub + EAS",
+  "headline": "iPhone だけでアプリを実装する方法 — build なしの開発ループ",
   "inLanguage": "ja",
   "datePublished": "2026-07-02",
-  "dateModified": "2026-07-02",
+  "dateModified": "2026-07-05",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/mobile-dev.html",
@@ -44,9 +44,9 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
-    { "@type": "ListItem", "position": 2, "name": "開発基盤", "item": "https://lycoapp.com/notes/ja/posts/dev.html" },
-    { "@type": "ListItem", "position": 3, "name": "開発環境", "item": "https://lycoapp.com/notes/ja/posts/env.html" },
-    { "@type": "ListItem", "position": 4, "name": "スマホだけで iPhone アプリを開発する", "item": "https://lycoapp.com/notes/ja/posts/mobile-dev.html" }
+    { "@type": "ListItem", "position": 2, "name": "AI 駆動スマホ開発", "item": "https://lycoapp.com/notes/ja/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "iPhone だけの開発環境構築", "item": "https://lycoapp.com/notes/ja/posts/env.html" },
+    { "@type": "ListItem", "position": 4, "name": "iPhone だけでアプリを実装する", "item": "https://lycoapp.com/notes/ja/posts/mobile-dev.html" }
   ]
 }
 </script>
@@ -67,23 +67,18 @@
 </div></header>
 
 <main class="wrap" id="main">
-  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="dev.html">1 開発基盤</a><span class="sep">›</span><a href="env.html">1.1 開発環境</a><span class="sep">›</span><b>1.1.1 スマホだけで iPhone アプリを開発する</b></nav>
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="dev.html">1 AI 駆動スマホ開発</a><span class="sep">›</span><a href="env.html">1.1 開発環境構築</a><span class="sep">›</span><b>1.1.1 iPhone だけでアプリを実装する</b></nav>
 
   <article>
     <span class="cat-tag">1.1.1 · 開発基盤</span>
-    <h1>スマホだけで iPhone アプリを開発する</h1>
+    <h1>iPhone だけでアプリを実装する方法</h1>
     <p class="a-meta"><span>2026.07.02</span><span>約8分</span></p>
 
     <section class="blk b-sum">
       <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
       <div class="bd">
         <aside class="tldr" aria-label="要約">
-          <ul>
-            <li>パイプラインは iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone</li>
-            <li>Claude Code on Web はクラウドの sandbox (使い捨ての Ubuntu) で動くので、手元の資産に触れさせずに任せられる</li>
-            <li>EXPO なら開発中は build 不要。main に merge されると数分で手元の Expo Go アプリが自動更新される</li>
-            <li>弱点は 3 つのクラウドを直列につないでいること。どこか 1 つ落ちるとループが止まる</li>
-          </ul>
+          <p>パイプラインは iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone。AI はクラウドの使い捨て sandbox の中で動くので、手元の資産に触れさせずに丸投げできる。main に merge されると数分で手元の Expo Go アプリが自動更新され、開発中に build は一度も要らない。弱点は 3 つのクラウドの直列 — どこか 1 つ落ちるとループが止まる。</p>
         </aside>
         <p class="lbl">Tools</p>
         <ul class="kit" aria-label="使う物">
@@ -99,7 +94,7 @@
       <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
       <div class="bd">
         <h2>Situation</h2>
-        <p><a href="env.html">1.1 開発環境</a> で書いたとおり、日常で PC を開く時間はなく、開発は隙間時間しかない。</p>
+        <p><a href="env.html">1.1 開発環境構築</a> で書いたとおり、日常で PC を開く時間はなく、開発は隙間時間しかない。</p>
 
         <h2>Complication</h2>
         <p>その隙間時間にできることは、スマホをいじる程度である。ソファで、寝かしつけの布団の中で、電車で。片手でスマホ。それがすべての前提になる。</p>
@@ -166,7 +161,7 @@ iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go 
         <p>実害として、こんなハマり方をした。バグを直したはずなのに直っていない。おかしいな、と修正サイクルを何周か回したら、実は EAS 側の障害で update が反映されていなかった — というオチである。シビアな納期で開発しているわけではないので障害自体は気長に待てばいいのだが、<b>「挙動がおかしい」と思ったら、まず各クラウドのステータスページを確認する</b>ことをおすすめする。自分のコードを疑う前に、インフラを疑う日が月に一度くらいはある。</p>
 
         <h2 class="f">Follow-up</h2>
-        <p>このループで作れるのは「開発中のアプリ」まで。App Store に出すには build と submit が必要で、そこで Mac 問題が再登場する。続きは <a href="cloud-build.html">1.1.2 Mac なしで build する</a>。</p>
+        <p>このループで作れるのは「開発中のアプリ」まで。App Store に出すには build と submit が必要で、そこで Mac 問題が再登場する。続きは <a href="cloud-build.html">1.1.2 Mac なしで iPhone アプリを build する方法</a>。</p>
       </div>
     </section>
   </article>
@@ -175,12 +170,12 @@ iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go 
     <p class="tn-h">サイトマップ</p>
     <ul class="tn">
       <li><details open>
-        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>開発基盤 / Dev Platform</a></summary>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI 駆動スマホ開発 / Dev Platform</a></summary>
         <ul>
           <li><details open>
-            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>開発環境</a></summary>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>iPhone だけの開発環境構築</a></summary>
             <ul>
-              <li><a class="cur" href="mobile-dev.html" aria-current="page"><span class="num">1.1.1</span>スマホだけで iPhone アプリを開発する</a></li>
+              <li><a class="cur" href="mobile-dev.html" aria-current="page"><span class="num">1.1.1</span>iPhone だけでアプリを実装する</a></li>
               <li><a href="cloud-build.html"><span class="num">1.1.2</span>Mac なしで build する</a></li>
             </ul>
           </details></li>
