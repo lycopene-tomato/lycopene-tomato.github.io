@@ -12,6 +12,13 @@
   </author>
   <!-- 記事公開時にここへ <entry> を追加する (新しいものを上に) -->
   <entry>
+    <title>マーケティング — すべてを繋げるもの</title>
+    <id>https://lycoapp.com/notes/ja/posts/growth.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/growth.html" />
+    <updated>2026-07-05T00:00:00+09:00</updated>
+    <summary>マーケティングは売り方ではなく「何を作るか」から始まる。ドリルの穴の話を要件定義と機能要件のギャップとして読み直し、開発基盤・Web・マネタイズの点をすべて繋げるスタートラインを引く。</summary>
+  </entry>
+  <entry>
     <title>マネタイズ — プロダクトの持続可能性の設計</title>
     <id>https://lycoapp.com/notes/ja/posts/monetize.html</id>
     <link href="https://lycoapp.com/notes/ja/posts/monetize.html" />
