@@ -31,7 +31,7 @@
   "headline": "始める前に PoC をしてみた — 生成 AI だけで iPhone アプリは作れるのか",
   "inLanguage": "ja",
   "datePublished": "2026-07-02",
-  "dateModified": "2026-07-02",
+  "dateModified": "2026-07-05",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/poc.html",
@@ -70,43 +70,58 @@
   <article>
     <span class="cat-tag">0 · PoC</span>
     <h1>始める前に PoC をしてみた</h1>
-    <p class="a-meta"><span>2026.07.02</span><span>約4分</span><span>費用: 0円</span></p>
+    <p class="a-meta"><span>2026.07.02</span><span>約4分</span></p>
 
-    <aside class="tldr" aria-label="要約">
-      <p class="tl-h">TL;DR</p>
-      <ul>
-        <li>Claude のチャットに「iPhone の Swift ゲームを作って。Zip で出力して」と頼んだら、数分でプロジェクト一式が返ってきた</li>
-        <li>Xcode に展開して USB 接続の iPhone に入れたら、そのまま動いた。費用 0 円</li>
-        <li>この体験を起点に、生成 AI 主体の個人開発を 3 か月やってみた記録がこのサイト</li>
-        <li>採用技術はすべて初見。「使ったことがあるから」ではなくフラットに選定した</li>
-      </ul>
-    </aside>
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>Claude のチャットに「iPhone の Swift ゲームを作って。Zip で出力して」と頼んだら、数分でプロジェクト一式が返ってきて、実機でそのまま動いた。費用 0 円。この体験を起点に、生成 AI 主体の個人開発を 3 か月やってみた記録がこのサイトである。採用技術はすべて初見 — 「使ったことがあるから」ではなく、フラットに選定した。</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="使う物">
+          <li><b>iPhone</b><span class="use">実機での動作確認</span><span class="cost">手持ち</span></li>
+          <li><b>Mac (Intel・サポート切れ)</b><span class="use">Xcode 展開、PoC のみ</span><span class="cost">手持ち</span></li>
+          <li><b>Claude</b><span class="use">生成 AI (Free プラン)</span><span class="cost">0 円</span></li>
+        </ul>
+      </div>
+    </section>
 
-    <h2>使ったもの</h2>
-    <table class="cmp">
-      <tr><th>項目</th><th>内容</th></tr>
-      <tr><td>費用</td><td>0 円</td></tr>
-      <tr><td>機材</td><td>iPhone、Mac (Intel・サポート終了済み)</td></tr>
-      <tr><td>サービス</td><td>Claude (Free プラン)</td></tr>
-    </table>
+    <section class="blk b-jo">
+      <p class="blk-h"><span class="no">01</span><span class="jp">序</span><span class="en">Jo</span></p>
+      <div class="bd">
+        <p>生成 AI が流行っている。それは知っている。でも、実際どこまでできるのか。仕事で触れる情報と、世の中の宣伝文句の間には、たいてい距離がある。</p>
+        <p>だから何かを始める前に、いちばん安い方法で確かめることにした。PoC (Proof of Concept) というやつである。問いは、これだけ。</p>
+        <blockquote>生成 AI だけで、iPhone アプリは作れるのか?</blockquote>
+      </div>
+    </section>
 
-    <h2>数分で Zip が返ってきた</h2>
-    <p>生成 AI が流行っている。それは知っている。でも、実際どこまでできるのか。仕事で触れる情報と、世の中の宣伝文句の間には、たいてい距離がある。だから最初に、いちばん安い方法で試すことにした。PoC (Proof of Concept) というやつである。</p>
-    <p>やったことは単純で、Claude のチャット (claude.ai) にこう頼んだだけだった。</p>
-    <blockquote>iPhone のアプリで、Swift でゲームを作って。Zip ファイルで出力して。</blockquote>
-    <p>数分後、Zip ファイルが出力された。ダウンロードして、手元のサポート切れ Intel Mac の Xcode に展開する。USB で iPhone をつないで、アプリをインストールする。</p>
-    <p>動いた。</p>
-    <p>雑に頼んだゲームが、雑に動いた。品質の話ではない。「プログラミング言語を書かずに、チャットの依頼文だけで、実機で動く iPhone アプリが手に入った」という事実に、時代が変わった瞬間を見た気がした。</p>
+    <section class="blk b-ha">
+      <p class="blk-h"><span class="no">02</span><span class="jp">破</span><span class="en">Ha</span></p>
+      <div class="bd">
+        <h2>Zip</h2>
+        <p>やったことは単純で、Claude のチャット (claude.ai) にこう頼んだだけだった。</p>
+        <blockquote>iPhone のアプリで、Swift でゲームを作って。<br>Zip ファイルで出力して。</blockquote>
+        <p>数分後、Zip ファイルが出力された。ダウンロードして、手元のサポート切れ Intel Mac の Xcode に展開する。USB で iPhone をつないで、アプリをインストールする。</p>
+        <p>動いた。</p>
+        <p>雑に頼んだゲームが、雑に動いた。品質の話ではない。「プログラミング言語を書かずに、チャットの依頼文だけで、実機で動く iPhone アプリが手に入った」という事実に、時代が変わった瞬間を見た気がした。</p>
 
-    <h2>この体験を、記録に残すことにした</h2>
-    <p>PoC が通ったので、本番をやることにした。生成 AI の可能性がどこまであるのか、実際にプロダクトを作って確かめる。それが <a href="https://lycoapp.com/">lycoapp.com</a> のアプリ群で、この Architecture Notes はその 3 か月の記録である。</p>
-    <p>進め方は OODA ループ (Observe / Orient / Decide / Act — 観察・状況判断・意思決定・行動) に寄せた。計画を固めてから作る PDCA ではなく、まず観察して、その場で判断して、動く。生成 AI との開発は状況が毎週変わるので、この回し方が合っていた。</p>
-    <p>ひとつ強調しておきたいのは、このプロダクトで使った技術は<b>すべて初見</b>だということ。似た技術を仕事で使った経験はあるが、「自分が使ったことがあるから」という理由では選んでいない。要件に対してフラットに検討して構築した。だから各記事は、しがらみのない選定記録として読めるはずである。</p>
+        <h2>Product</h2>
+        <p>PoC が通ったので、本番をやることにした。生成 AI の可能性がどこまであるのか、実際にプロダクトを作って確かめる。それが <a href="https://lycoapp.com/">lycoapp.com</a> のアプリ群で、この Architecture Notes はその 3 か月の記録である。</p>
+        <p>進め方は OODA ループ (Observe / Orient / Decide / Act — 観察・状況判断・意思決定・行動) に寄せた。計画を固めてから作る PDCA ではなく、まず観察して、その場で判断して、動く。生成 AI との開発は状況が毎週変わるので、この回し方が合っていた。</p>
+        <p>ひとつ強調しておきたいのは、このプロダクトで使った技術は<b>すべて初見</b>だということ。似た技術を仕事で使った経験はあるが、「自分が使ったことがあるから」という理由では選んでいない。要件に対してフラットに検討して構築した。だから各記事は、しがらみのない選定記録として読めるはずである。</p>
+      </div>
+    </section>
 
-    <h2>記録の形式</h2>
-    <p>検討結果は ADR (Architecture Decision Record — 意思決定の記録) として残す。記述形式は MADR (Markdown Any Decision Records) に、SCQA フレームワーク (Situation / Complication / Question / Answer) の流れを重ねた。状況から問いを立て、判断基準を並べ、答えと理由、没にした案、やってみた振り返りまでを 1 本の話として書く。ちなみにこの形式も初見である。</p>
-    <p>手順書は書かない。理由は 2 つある。第一に、ADR の主役は「なぜそう決めたか」であって手順ではない。第二に、手順は AI に聞くのがいちばん早い。ここに書いた構成は実際に動いているので、記事ごと AI に渡して「これを再現して」と頼めば、たいてい上手くやってくれる。</p>
-    <p>次の <a href="dev.html">1 AI 駆動スマホ開発</a> から、具体的な意思決定に入る。</p>
+    <section class="blk b-kyu">
+      <p class="blk-h"><span class="no">03</span><span class="jp">急</span><span class="en">Kyu</span></p>
+      <div class="bd">
+        <h2>ADR</h2>
+        <p>検討結果は ADR (Architecture Decision Record — 意思決定の記録) として残す。記述形式は MADR (Markdown Any Decision Records) に、SCQA フレームワーク (Situation / Complication / Question / Answer) の流れを重ねた。状況から問いを立て、判断基準を並べ、答えと理由、没にした案、やってみた振り返りまでを 1 本の話として書く。ちなみにこの形式も初見である。</p>
+        <p>手順書は書かない。理由は 2 つある。第一に、ADR の主役は「なぜそう決めたか」であって手順ではない。第二に、手順は AI に聞くのがいちばん早い。ここに書いた構成は実際に動いているので、記事ごと AI に渡して「これを再現して」と頼めば、たいてい上手くやってくれる。</p>
+        <p>よって、このサイトは「何をしたか」ではなく「なぜそう決めたか」の記録として読んでほしい。次の <a href="dev.html">1 AI 駆動スマホ開発</a> から、具体的な意思決定に入る。</p>
+      </div>
+    </section>
   </article>
 
   <nav class="treenav" aria-label="サイトマップ">
