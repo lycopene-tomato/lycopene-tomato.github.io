@@ -10,8 +10,8 @@
       "section": "pinned",
       "pinned": true,
       "app_badge": null,
-      "title": "Will the rewards make my kid lazy?",
-      "description": "The Lyco App apps lean on rewards and game mechanics. So this concern comes up: are we raising a kid who won't move without a prize? Our answer, anchored in ADHD dopamine research and how habits actually form."
+      "title": "Will rewards make my kid lazy? What dopamine research says about reward systems for kids",
+      "description": "Will rewards make my kid lazy? Why a reward system for kids can work as a starter switch instead of a bribe — a dad's answer, anchored in ADHD dopamine research and how habits actually form."
     },
     {
       "slug": "app-gacha",
@@ -25,8 +25,8 @@
       "section": "apps",
       "pinned": false,
       "app_badge_key": "todo-gacha",
-      "title": "\"Hurry up\" had become my whole morning vocabulary",
-      "description": "Three rounds of 'hurry up!' before 7:45 every morning. When the morning routine isn't moving, TodoGatya lets the kid draw the next task themselves — and the self-determination piece cuts the nagging in half.",
+      "title": "Kid won't get ready in the morning? We stopped nagging and put the routine in a gacha",
+      "description": "When your kid won't get ready in the morning and you're on your third 'hurry up!' before 7:45 — TodoGatya lets the kid draw the next task in the morning routine themselves, and the self-determination piece cuts the nagging in half.",
       "app_badge": "TodoGacha"
     },
     {
@@ -42,7 +42,7 @@
       "section": "apps",
       "pinned": false,
       "app_badge_key": "todo-bingo",
-      "title": "\"I've got it, stop telling me\" — but nothing moves until I do",
+      "title": "\"I've got it, stop telling me\" — a to-do bingo board for the kid who refuses to be told",
       "description": "My kid won't get ready in the morning, but the second I say anything it's 'I've got it, stop telling me.' Todo Bingo puts the tasks on a board and lets him pick the order. How we use the center square and a summer-homework calendar, from our actual house.",
       "app_badge": "TodoBingo"
     },
@@ -59,8 +59,8 @@
       "section": "apps",
       "pinned": false,
       "app_badge_key": "todo-sugoroku",
-      "title": "\"How many more?\" — the morning sentence I'm tired of answering",
-      "description": "My kid asks 'how many more?' every 30 seconds all morning. TodoLadders puts the day on a board so he can see what's ahead — plus a way to break 'do your homework' into squares small enough that nothing stalls out.",
+      "title": "\"How many more?\" — a visual schedule board for the kid who can't see the day ahead",
+      "description": "My kid asks 'how many more?' every 30 seconds all morning. TodoLadders turns the day into a visual schedule board he can read himself — plus a way to break 'do your homework' into steps small enough that nothing stalls out.",
       "app_badge": "TodoLadders"
     },
     {
@@ -76,8 +76,8 @@
       "section": "apps",
       "pinned": false,
       "app_badge_key": "todo-farm",
-      "title": "\"I already missed this week, I'll start fresh Monday\" — every Monday",
-      "description": "Piano, math sheets, sight words. My kid skips a couple days and tries to throw the whole streak out. TodoFarm logs what he actually did, not a yes/no — 5 minutes counts as 5 minutes, and a zero day doesn't erase the past. Notes from our house on dropping the 0/1 mindset.",
+      "title": "\"I'll start fresh Monday\" — a habit tracker for kids who quit after missing one day",
+      "description": "Piano, math sheets, sight words. My kid skips a couple days and tries to throw the whole streak out. TodoFarm logs what he actually did, not a yes/no — 5 minutes counts as 5 minutes, and a zero day doesn't erase the past. A habit tracker for kids built to break the all-or-nothing mindset.",
       "app_badge": "TodoFarm"
     },
     {
@@ -93,8 +93,8 @@
       "section": "apps",
       "pinned": false,
       "app_badge_key": "todo-bank",
-      "title": "\"You said ten times for game time.\" Did I, though?",
-      "description": "My kid hits me with 'ten worksheets for game time, remember?' and I genuinely cannot remember if I said it. TodoBank parks the deal in a passbook instead of my memory, so 'three more to go' shows up as a balance — and on a low-energy day, the balance covers it.",
+      "title": "\"You said ten times for game time\" — a reward-tracking passbook app for kids",
+      "description": "My kid hits me with 'ten worksheets for game time, remember?' and I genuinely cannot remember if I said it. TodoBank is a reward-tracking app for kids: the deal lives in a passbook instead of my memory, 'three more to go' shows up as a balance, and on a low-energy day the balance covers it.",
       "app_badge": "TodoBank"
     },
     {
@@ -110,8 +110,8 @@
       "section": "apps",
       "pinned": false,
       "app_badge_key": "trouble-note",
-      "title": "\"The school's calling again.\" Chest tightens, every time.",
-      "description": "When the school keeps calling, six months in your memory is mush — who was that kid, what happened, did I apologize to that parent? TroubleNote is a parent-only log for incidents, organized by friend, by date, by place. No advice. Just lays it out. And when the data shows your kid is actually hitting less than last year, you breathe a little.",
+      "title": "The school keeps calling about my kid — so I built a behavior incident log for parents",
+      "description": "When the school keeps calling, six months in your memory is mush — who was that kid, what happened, did I apologize to that parent? TroubleNote is a parent-only behavior incident log, organized by friend, by date, by place. No advice. Just lays it out. And when the data shows your kid is actually hitting less than last year, you breathe a little.",
       "app_badge": "TroubleNote"
     },
     {
@@ -126,8 +126,8 @@
       "section": "apps",
       "pinned": false,
       "app_badge_key": "planet-loop-timer",
-      "title": "Set a timer, start a fight. Every time.",
-      "description": "The longest part of any timer in our house is after it goes off. PlanetLoopTimer makes the break something the kid launches himself — a planet around the sun, no number ticking down against his will — so the end is one he actually agreed to. My script went from 'time's up' to 'Mercury or Neptune?'",
+      "title": "Set a timer, start a fight — a visual timer for kids who melt down when time's up",
+      "description": "The longest part of any timer in our house is after it goes off. PlanetLoopTimer is a visual timer for kids where the break is something the kid launches himself — a planet around the sun, no number ticking down against his will — so the end is one he actually agreed to. My script went from 'time's up' to 'Mercury or Neptune?'",
       "app_badge": "PlanetLoopTimer"
     },
     {
@@ -142,7 +142,7 @@
       "section": "apps",
       "pinned": false,
       "app_badge_key": "receive",
-      "title": "Bēmaga, 30 years later — porting a 100-line BASIC game to iPhone",
+      "title": "Porting a PC-9801 N88-BASIC game to iPhone — a 100-line Bēmaga tennis game, 30 years later",
       "description": "There was an 80s Japanese hobby-programming magazine called Microcomputer BASIC Magazine (everyone called it Bēmaga). I took a tennis game printed in it, originally for PC-9801 in N88-BASIC, and ported the whole 100 lines to iPhone — same physics, same trig table, plus a Genetic Algorithm CPU opponent.",
       "app_badge": "Receive No.1"
     },
@@ -162,7 +162,7 @@
       "section": "apps",
       "pinned": false,
       "app_badge_key": "growth-note",
-      "title": "I was only looking at the planes that made it back",
+      "title": "Survivorship bias in parenting — I was only looking at the planes that made it back",
       "description": "Survivorship bias in parenting: Instagram wins, the mom who has it figured out, my kid's 'I'm fine' — all survivor data. And regression to the mean makes yelling look like it works. So I put my kid's days on a moving-average chart. That app is GrowthTrend.",
       "app_badge": "GrowthTrend"
     },
@@ -183,8 +183,8 @@
       "section": "apps",
       "pinned": false,
       "app_badge_key": "last-days",
-      "title": "“They grow up so fast,” the grandma in the checkout line said",
-      "description": "7 p.m. on a Tuesday, kid on the floor at Trader Joe's, and the grandma behind us smiles and says “they grow up so fast.” Same cliché as “things were better back then,” I think. So I went home and did the math. We're past 50% already. LastDays is the app I built so I'd see that number on my phone every day.",
+      "title": "“They grow up so fast” — so I did the math on how much time I have left with my kid",
+      "description": "7 p.m. on a Tuesday, kid on the floor at Trader Joe's, and the grandma behind us smiles and says “they grow up so fast.” Same cliché as “things were better back then,” I think. So I went home and did the math. We're past 50% already. LastDays is a countdown of the days left with your kid — the app I built so I'd see that number on my phone every day.",
       "app_badge": "last-days"
     },
     {
@@ -204,7 +204,7 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "\"Pick whatever you want\" was the cruelest thing I'd been saying",
+      "title": "The paradox of choice in parenting — why \"pick whatever you want\" froze my kid",
       "description": ""
     },
     {
@@ -222,8 +222,8 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "The workbook was running TDD on us the whole time",
-      "description": "Three red X's stacked on a math sheet used to send me into hint-mode. Then it clicked — workbooks are basically a test suite. Wrong answers aren't bad. They're the point. Calling this Failure-Confirmation-Driven Parenting (parenting frameworks, Part 2)."
+      "title": "TDD parenting — the workbook was running a test suite on us the whole time",
+      "description": "Three red X's stacked on a math sheet used to send me into hint-mode. Then it clicked — workbooks are basically a test suite. Wrong answers aren't bad. They're the point. TDD parenting, or Failure-Confirmation-Driven Parenting (engineer-dad frameworks series, Part 2)."
     },
     {
       "_comment": "「育児フレームワーク」新シリーズ第一弾 (0-C 一般)。LP/BLOG_DRAFTS/parenting-frameworks.md 起点。フック: ○○駆動開発 (TDD/FDD/BDD/MDD/DDD/TiDD/CDD/AIDD) 多すぎ問題 → フレームワーク = 先人の英知の缶詰、何も考えず乗っかった方が手戻り少ない (ITIL/PMBOK 資格取得) → ビジネスメンバーは「めんどくさい/必要ない」と言うけど、ITIL も「カスタマイズして使え」と書いてある → 育児にも同じ構造、エンジニア語彙で「育児 TDD/BDD/DDD」と整理してみる思考実験 → ペアプロとしての親子 (XP 精神を育児に輸入)。アブリーブ表記ルール:初出 () + JA フルスペル、2 回目以降は略号のみ。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆 (翻訳ではない)。tags は dev-methods (エンジニア父・母ニッチ)。色はエンジニア×育児。シリーズ id = parenting-frameworks (新規)、role: index。比喩は『先人の英知の缶詰』+『料理のレシピ』。",
@@ -237,7 +237,7 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "An engineer dad takes \"parenting frameworks\" way too seriously (series intro)",
+      "title": "Engineer dad parenting: applying TDD, BDD and DDD to raising kids (series intro)",
       "description": "Software has too many *-Driven Developments. But every framework is a can of inherited wisdom, and leaning on one usually saves rework. I'm going to try the same trick on parenting — TDD, BDD, DDD, XP, all retranslated for raising my kids."
     },
     {
@@ -252,8 +252,8 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "Wrong dinner. End of the world. Again.",
-      "description": "There's a Korean saying — 우는 아이 떡 하나 더 준다 — the kid who cries gets one more rice cake. Same energy as our 'squeaky wheel gets the grease.' Not at our house. You can negotiate, you cannot yell your way to a different dinner."
+      "title": "Not giving in to tantrums (but always taking the deal) — our one dinner-table rule",
+      "description": "There's a Korean saying — 우는 아이 떡 하나 더 준다 — the kid who cries gets one more rice cake. Same energy as our 'squeaky wheel gets the grease.' Not at our house: we don't give in to tantrums, but calm negotiation always gets heard. You can deal, you cannot yell your way to a different dinner."
     },
     {
       "_comment": "parenting-paradox 三部作の Article 3 (recognition、最終回)。冒頭で 1984 三大スローガン + わが家版を並列、Article 1 (productive-failure) と Article 2 (bismarck-experience) を自己引用して『両方俺や』で回収。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語版で 1984 のスローガンは公式翻訳 (ja: 高橋和久訳, en: 原文, zh-Hant: 徐立妍訳, ko: 정회성 옮김) を使用。",
@@ -268,7 +268,7 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "He won't listen, but I want him happy",
+      "title": "Orwell's doublethink, but it's parenting — he won't listen, and I want him happy",
       "description": "WAR IS PEACE. FREEDOM IS SLAVERY. IGNORANCE IS STRENGTH. And my kid won't listen, but I want him happy. I lined up the 1984 slogans next to my own, and turns out I'm running doublethink in my living room every day. Nobody made me do it."
     },
     {
@@ -284,8 +284,8 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "Just listen, kid. It's easier.",
-      "description": "Same kanji, same wrong stroke, third time this week. I already hit this wall 30 years ago. I'm trying to hand him the history. He's not taking it. A note on Bismarck, Piaget, and a parent's late-night plea: please, just be the wise one."
+      "title": "\"Fools learn from experience\" — Bismarck, Piaget, and a kid who won't take my shortcuts",
+      "description": "Same kanji, same wrong stroke, third time this week. I already hit this wall 30 years ago. I'm trying to hand him the history. He's not taking it. Bismarck's "
     },
     {
       "_comment": "親のイライラ = 思い通りにならない / 結果責任 vs プロセス責任 / 一人の人間として認める = 親の精神安定のため。4 言語派生 (ja/en-US/zh-Hant/ko)。LP/BLOG_DRAFTS/parent-process-responsibility.md 起点。tag は parent-self-image 1 つ。",
@@ -299,8 +299,8 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "Quit testing my patience, kid",
-      "description": "My kid brought home a 60. I felt the lecture rising and stopped it — barely. Turns out the rage isn't about the score. It's about him not doing what I want, when I want. A note on parent burnout, process vs. outcome, and why treating your kid as a separate person is mostly for your own sanity."
+      "title": "Losing patience with my kid over a test score — until I split process from outcome",
+      "description": "My kid brought home a 60. I felt the lecture rising and stopped it — barely. Turns out the rage isn't about the score. It's about him not doing what I want, when I want. On losing patience with your kid, process vs. outcome responsibility, and why treating your kid as a separate person is mostly for your own sanity."
     },
     {
       "_comment": "自己効力感 / リングが屋上にある = 届く気がしないとやらない。4 言語派生済 (ja/en-US/zh-Hant/ko)。LP/BLOG_DRAFTS/ring-on-the-rooftop.md 起点。tag は parent-self-image 1 つ (自分を責める親セグメント)。",
@@ -314,8 +314,8 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "Nobody shoots at a hoop on the roof",
-      "description": "Half the stuff my kid won't even try isn't about skill — he's decided it's out of reach, like a hoop bolted to a roof. On lowering the rim instead of cheering louder, and self-doubt as a parent."
+      "title": "Why my kid won't even try — nobody shoots at a hoop bolted to the roof",
+      "description": "When your kid won't even try, it's often not about skill — he's decided it's out of reach, like a hoop bolted to a roof. On self-efficacy, lowering the rim instead of cheering louder, and self-doubt as a parent."
     },
     {
       "_comment": "失敗を奪わない / Productive Failure。4 言語派生済。parenting-paradox 三部作の Article 1 (thesis)。Article 2 = bismarck-experience (2026-05-30) / Article 3 = doublethink (未公開) で回収。2026-05-29 までは単体記事として扱われていたが、bismarck-experience 公開と同時に series 化。",
@@ -329,8 +329,8 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "I was grabbing his failures before he could feel them",
-      "description": "7:14 AM. Backpack on, homework still on the counter. Almost said 'grab it' — caught myself. Productive failure (Kapur 2008) and the 3-second pause we're trying at home."
+      "title": "Letting kids fail: I was grabbing his failures before he could feel them",
+      "description": "7:14 AM. Backpack on, homework still on the counter. Almost said 'grab it' — caught myself. Letting kids fail on purpose — productive failure (Kapur 2008) — and the 3-second pause we're trying at home."
     },
     {
       "slug": "remember-to-remember",
@@ -344,8 +344,8 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "Remembering to remember",
-      "description": "Wrote a to-do list for the kid. The kid forgets to look at the list. A note on workplace schedulers, presupposition questions, and working memory research — and what's actually going on with kid memory."
+      "title": "My kid forgets to even look at the list — working memory and remembering to remember",
+      "description": "My kid forgets to even look at the to-do list I wrote for him. A note on workplace schedulers, presupposition questions, and working memory research — and what's actually going on with kid memory."
     },
     {
       "slug": "done-vs-achieved",
@@ -359,7 +359,7 @@
       "section": "latest",
       "pinned": false,
       "app_badge": null,
-      "title": "\"Did it\" and \"done\" are not the same thing",
+      "title": "My kid says \"I did it\" when he didn't — \"did it\" and \"done\" are different things",
       "description": "'Brush your teeth' — 'I did it' — 'you're literally just holding the toothbrush in your mouth.' The kid's 'I did it' and the parent's 'done' are different things. Same structure as a requirements-vs-implementation gap at work."
     }
   ]

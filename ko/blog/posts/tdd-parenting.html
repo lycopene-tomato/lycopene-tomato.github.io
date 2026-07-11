@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
-<title>문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」 — Lyco App</title>
+<title>TDD 육아──문제집은 사실 테스트 주도 개발이었다, 빨간 X 는 「자라야 할 자리」 — Lyco App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="수학 학습지에 빨간 X 가 줄줄이. 예전엔 곧장 힌트 모드였는데, 어느 순간 보였어요 ── 문제집은 그냥 테스트 묶음이고, 빨간 X 는 「자라야 할 자리」를 가르쳐 주는 거더라고요. 실패 확인 주도로 풀어 본 육아 프레임워크 시리즈 2 편." />
 <link rel="canonical" href="https://lycoapp.com/ko/blog/posts/tdd-parenting.html" />
@@ -12,14 +12,14 @@
 <link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/tdd-parenting.html" />
 <link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/tdd-parenting.html" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」" />
+<meta property="og:title" content="TDD 육아──문제집은 사실 테스트 주도 개발이었다, 빨간 X 는 「자라야 할 자리」" />
 <meta property="og:description" content="문제집의 빨간 X 가 무서웠던 건, 그게 「틀린 자리」가 아니라 「자라야 할 자리」라는 걸 몰라서. 실패 확인 주도로 푼 육아 프레임워크 시리즈 2 편." />
 <meta property="og:url" content="https://lycoapp.com/ko/blog/posts/tdd-parenting.html" />
 <meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
 <meta property="og:locale" content="ko_KR" />
 <meta property="og:site_name" content="Lyco App" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」" />
+<meta name="twitter:title" content="TDD 육아──문제집은 사실 테스트 주도 개발이었다, 빨간 X 는 「자라야 할 자리」" />
 <meta name="twitter:description" content="문제집의 빨간 X 는 「틀린 자리」가 아니라 「자라야 할 자리」. 실패 확인 주도로 풀어 본 육아 프레임워크 시리즈 2 편." />
 <meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
 <link rel="stylesheet" href="/shared/blog-rich.css" />
@@ -91,10 +91,10 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」",
+  "headline": "TDD 육아──문제집은 사실 테스트 주도 개발이었다, 빨간 X 는 「자라야 할 자리」",
   "description": "수학 학습지에 빨간 X 가 줄줄이. 예전엔 곧장 힌트 모드였는데, 어느 순간 보였어요 ── 문제집은 그냥 테스트 묶음이고, 빨간 X 는 「자라야 할 자리」를 가르쳐 주는 거더라고요. 실패 확인 주도로 풀어 본 육아 프레임워크 시리즈 2 편.",
   "datePublished": "2026-06-08",
-  "dateModified": "2026-06-08",
+  "dateModified": "2026-07-11",
   "author": { "@type": "Person", "@id": "https://lycoapp.com/ko/about/#lyco", "name": "Lyco" },
   "publisher": {
     "@type": "Organization",
@@ -127,7 +127,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」"
+      "name": "TDD 육아──문제집은 사실 테스트 주도 개발이었다, 빨간 X 는 「자라야 할 자리」"
     }
   ]
 }
@@ -138,14 +138,14 @@
 <div id="site-header"></div>
 <div class="wrap">
   <a class="back" href="../index.html">← 칼럼 목록</a>
-  <h1>문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」</h1>
+  <h1>TDD 육아──문제집은 사실 테스트 주도 개발이었다, 빨간 X 는 「자라야 할 자리」</h1>
   <div class="meta">2026-06-08</div>
   <!-- BEGIN series-box -->
   <aside class="series-box" data-series-id="parenting-frameworks">
     <div class="series-label">육아 프레임워크 시리즈 — 2편</div>
     <ol>
       <li><a href="parenting-frameworks.html">개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작)</a></li>
-      <li class="current">문제집은 사실 TDD 였다 ── 빨간 X 는 「자라야 할 자리」</li>
+      <li class="current">TDD 육아──문제집은 사실 테스트 주도 개발이었다, 빨간 X 는 「자라야 할 자리」</li>
     </ol>
   </aside>
   <!-- END series-box -->
@@ -291,13 +291,13 @@ def add(a, b):              # ← 그러고 나서 본체를 적음
   <aside class="related-posts">
     <div class="related-posts-label">관련 글</div>
     <ul>
-      <li><a href="productive-failure.html">아이 실패는, 제가 먼저 주워가고 있었어요</a></li>
+      <li><a href="productive-failure.html">아이에게 실패할 기회 주기──실패를 제가 먼저 주워가고 있었어요</a></li>
     </ul>
   </aside>
   <!-- END related-posts -->
   <!-- BEGIN post-nav -->
   <nav class="post-nav">
-    <a class="post-nav-prev" href="paradox-of-choice.html"><span class="post-nav-label">← 이전 글</span><span class="post-nav-title">「알아서 골라」가, 제일 잔인한 말이었어요<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+    <a class="post-nav-prev" href="paradox-of-choice.html"><span class="post-nav-label">← 이전 글</span><span class="post-nav-title">선택의 역설과 육아──「알아서 골라」에 아이가 얼어붙는 이유</span></a>
     <a class="post-nav-next" href="parenting-frameworks.html"><span class="post-nav-label">다음 글 →</span><span class="post-nav-title">개발자 아빠가 「육아 프레임워크」를 진지하게 생각해 봤습니다 (시리즈 시작)</span></a>
   </nav>
   <!-- END post-nav -->
