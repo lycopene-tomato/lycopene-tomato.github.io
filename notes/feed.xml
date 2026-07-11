@@ -5,12 +5,54 @@
   <id>https://lycoapp.com/notes/</id>
   <link href="https://lycoapp.com/notes/ja/" />
   <link rel="self" href="https://lycoapp.com/notes/feed.xml" />
-  <updated>2026-07-05T00:00:00+09:00</updated>
+  <updated>2026-07-07T00:00:00+09:00</updated>
   <author>
     <name>Lyco</name>
     <uri>https://lycoapp.com/ja/about/</uri>
   </author>
   <!-- 記事公開時にここへ <entry> を追加する (新しいものを上に) -->
+  <entry>
+    <title>アプリのマネタイズ設計 — コスト構造から収益モデルを選ぶ</title>
+    <id>https://lycoapp.com/notes/ja/posts/monetize-app.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/monetize-app.html" />
+    <updated>2026-07-07T00:00:00+09:00</updated>
+    <summary>アプリのマネタイズは稼ぐためではなくプロダクトを生かし続けるための設計。コスト構造を理解し、コストと利益を連動させ、精神的な設計まで含めて収益モデルを選ぶ。</summary>
+  </entry>
+  <entry>
+    <title>AdMob を個人開発アプリに導入する — 体験を壊さない控えめ配置</title>
+    <id>https://lycoapp.com/notes/ja/posts/admob.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/admob.html" />
+    <updated>2026-07-07T00:00:00+09:00</updated>
+    <summary>AdMob のバナーを分析画面と設定画面の 2 か所だけに置き、体験の最中には出さない。全画面広告を見送った控えめ配置の設計判断。</summary>
+  </entry>
+  <entry>
+    <title>Web サイトのマネタイズ — コンテンツを支える仕組み</title>
+    <id>https://lycoapp.com/notes/ja/posts/monetize-web.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/monetize-web.html" />
+    <updated>2026-07-07T00:00:00+09:00</updated>
+    <summary>Web サイトは稼ぐためではなく、アプリだけでは届けられない価値を届けるためにある。ドメインだけは自分で持ち、本当に役立つときだけ紹介する。</summary>
+  </entry>
+  <entry>
+    <title>Amazon アソシエイトの使い方 — 本当に役立つときだけ紹介する</title>
+    <id>https://lycoapp.com/notes/ja/posts/amazon-associates.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/amazon-associates.html" />
+    <updated>2026-07-07T00:00:00+09:00</updated>
+    <summary>アフィリエイト目的の記事は信頼を損なう。Amazon アソシエイトを本当に役立つときだけ・PR 表記を明示して使う設計判断。</summary>
+  </entry>
+  <entry>
+    <title>個人開発の活動支援 — プロジェクトを支える仕組み</title>
+    <id>https://lycoapp.com/notes/ja/posts/monetize-support.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/monetize-support.html" />
+    <updated>2026-07-07T00:00:00+09:00</updated>
+    <summary>広告 (広く支える) と Buy Me a Coffee (深く支える) は補完関係。応援には上限がなく、一人の応援は数字以上の価値を持つ。</summary>
+  </entry>
+  <entry>
+    <title>Buy Me a Coffee で活動を支えてもらう — 応援を受け取る仕組み</title>
+    <id>https://lycoapp.com/notes/ja/posts/bmc.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/bmc.html" />
+    <updated>2026-07-07T00:00:00+09:00</updated>
+    <summary>応援したい気持ちも、受け皿がなければ届かない。BMC を全ページに置き、ログイン不要・単発で支援できるようにした設計判断。</summary>
+  </entry>
   <entry>
     <title>マーケティング — すべてを繋げるもの</title>
     <id>https://lycoapp.com/notes/ja/posts/growth.html</id>
@@ -22,7 +64,7 @@
     <title>マネタイズ — プロダクトの持続可能性の設計</title>
     <id>https://lycoapp.com/notes/ja/posts/monetize.html</id>
     <link href="https://lycoapp.com/notes/ja/posts/monetize.html" />
-    <updated>2026-07-05T00:00:00+09:00</updated>
+    <updated>2026-07-07T00:00:00+09:00</updated>
     <summary>マネタイズは金儲けのテクニックではなく、プロダクトを死なせないための生存戦略。援助業界の「依存」の病理と HDP ネクサス、お金 = 感謝の循環から、広告やアフィリエイトの前に置くべき前提を書く。</summary>
   </entry>
   <entry>

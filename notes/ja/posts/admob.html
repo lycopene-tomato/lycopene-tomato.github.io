@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#b8503c" />
+<title>AdMob を個人開発アプリに導入する — 体験を壊さない控えめ配置 | Architecture Notes</title>
+<meta name="description" content="無料で広く届けたいアプリに、体験を壊さず広告を入れるには。AdMob のバナーを分析画面と設定画面の 2 か所だけに置き、操作や体験の最中には出さない。全画面広告を見送った理由と、控えめ配置という設計判断の記録。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/admob.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AdMob を個人開発アプリに導入する — 体験を壊さない控えめ配置" />
+<meta property="og:description" content="AdMob のバナーを分析画面と設定画面の 2 か所だけに。体験を壊さない控えめ配置の設計判断。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/admob.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AdMob を個人開発アプリに導入する — 体験を壊さない控えめ配置" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AdMob を個人開発アプリに導入する — 体験を壊さない控えめ配置",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-07",
+  "dateModified": "2026-07-07",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/admob.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "マネタイズ", "item": "https://lycoapp.com/notes/ja/posts/monetize.html" },
+    { "@type": "ListItem", "position": 3, "name": "アプリのマネタイズ", "item": "https://lycoapp.com/notes/ja/posts/monetize-app.html" },
+    { "@type": "ListItem", "position": 4, "name": "AdMob", "item": "https://lycoapp.com/notes/ja/posts/admob.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-monetize">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="monetize.html">4 マネタイズ</a><span class="sep">›</span><a href="monetize-app.html">4.1 アプリのマネタイズ</a><span class="sep">›</span><b>4.1.1 AdMob</b></nav>
+
+  <article>
+    <span class="cat-tag">4.1.1 · マネタイズ</span>
+    <h1>AdMob を個人開発アプリに導入する</h1>
+    <p class="a-meta"><span>2026.07.07</span><span>約5分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>無料で広く届けたいアプリに、体験を壊さず広告を入れる方法の記録である。AdMob のバナーを、分析画面と設定画面の 2 か所だけに置いた。ゲームや入力の最中には出さない。全画面広告 (インタースティシャル) は体験を分断するので見送った。まず使われることを優先し、収益は後から育てる。</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="使う物">
+          <li><b>AdMob</b><span class="use">バナー広告の配信</span><span class="cost">Free</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="monetize-app.html">4.1 アプリのマネタイズ</a> で、最初は広告も課金も控えめにして、まず使われることを優先すると決めた。無料で広く届けたいアプリでは、広告が現実的な選択肢になる。</p>
+
+        <h2>Complication</h2>
+        <p>しかし、広告を入れすぎると体験が壊れる。操作のたびに全画面広告が出るアプリは、二度と開きたくない。無料で届けたいのに、届けた体験で嫌われては本末転倒である。</p>
+
+        <h2>Question</h2>
+        <blockquote>体験を壊さずに、どこに、どれだけ広告を置くか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>ユーザー体験を最優先にできること</li>
+          <li>実装が軽く、スマホだけの開発で完結すること</li>
+          <li>無料で始められること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>AdMob のバナー広告を、<mark>分析画面と設定画面の 2 か所だけ</mark>に置いた。ホームや、記録・ゲームの最中には出さない。ユーザーが「一区切りついた」場所にだけ、静かに置く。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>AdMob を選んだのは、無料で軽いからである。</b> Google の広告 SDK で、EXPO からも組み込める。個人開発でサーバーを持たない構成 (<a href="dev.html">1 AI 駆動スマホ開発</a>) と相性が良く、審査も個人で通る。</p>
+          <p><b>2 か所だけにしたのは、体験を守るためである。</b> 分析画面と設定画面は、ユーザーが操作を終えて一息つく場所である。そこにバナーが 1 枚あっても、体験は途切れない。逆に、記録中やゲーム中に広告を挟むと、アプリの目的そのものを邪魔してしまう。まず使われることを優先する、という 4.1 の方針を、配置に落とすとこうなる。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>インタースティシャル (全画面広告)</b> — 単価は高い。しかし画面を占有して体験を分断するので、控えめ配置の方針と矛盾する。見送った。</li>
+            <li><b>リワード広告 (視聴で報酬)</b> — ゲーム性の強いアプリには合う。今回のアプリの性質には馴染まなかったので採用していない。相性が合えば有力な選択肢である。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>体験を保ったまま、サーバーレス構成のわずかな固定費を少しずつ相殺できるようになった。「広告があるから使わない」という声は、今のところ届いていない。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>収益は 1 日数円である。広告単価は自分では動かせないので、伸ばすにはユーザー数を増やすしかない。ただ、それは 4.1 で決めた順番どおり — まず使われること、収益は後から、である。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>使われる場面が増えてきたら、配置を丁寧に見直す。広く支える広告に対して、深く支えてもらう導線は <a href="bmc.html">4.3.1 Buy Me a Coffee</a> で用意している。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="monetize.html"><span class="num">4</span>マネタイズ / Monetization</a></summary>
+        <ul>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="monetize-app.html"><span class="num">4.1</span>アプリのマネタイズ</a></summary>
+            <ul><li><a class="cur" href="admob.html" aria-current="page"><span class="num">4.1.1</span>AdMob</a></li></ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-web.html"><span class="num">4.2</span>Web サイトのマネタイズ</a></summary>
+            <ul><li><a href="amazon-associates.html"><span class="num">4.2.1</span>Amazon アソシエイト</a></li></ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-support.html"><span class="num">4.3</span>活動の支援</a></summary>
+            <ul><li><a href="bmc.html"><span class="num">4.3.1</span>Buy Me a Coffee</a></li></ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#monetize">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

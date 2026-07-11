@@ -43,6 +43,12 @@ Separate section of this domain, aimed at engineers rather than parents. Japanes
 - [1.1.2: How to build iPhone apps without a Mac](https://lycoapp.com/notes/ja/posts/cloud-build.html): Certificates once via GitHub Codespaces, then iPhone-triggered EAS build/submit to TestFlight; free-tier limits and --no-wait.
 - [3: Marketing — what connects everything](https://lycoapp.com/notes/ja/posts/growth.html): Marketing starts with "what to build," not "how to sell" — Levitt's quarter-inch hole as the requirements-vs-specs gap, and market + ing as the starting line.
 - [4: Monetization — sustainability by design](https://lycoapp.com/notes/ja/posts/monetize.html): Why monetization is a survival strategy for a product, not a get-rich technique — aid-industry dependency, the HDP Nexus, and money as circulating gratitude.
+- [4.1: App monetization — choosing a revenue model from cost structure](https://lycoapp.com/notes/ja/posts/monetize-app.html): Understand cost structure, tie revenue to it, and design psychologically; paid / IAP / subscription / AdMob are chosen to fit, not to maximize.
+- [4.1.1: Adding AdMob without breaking the experience](https://lycoapp.com/notes/ja/posts/admob.html): Banner ads on only the analytics and settings screens, never mid-experience; why interstitials were declined.
+- [4.2: Website monetization — supporting content](https://lycoapp.com/notes/ja/posts/monetize-web.html): A site exists to deliver what an app can't; own the domain from day one, recommend only when genuinely useful, measure "it reached them" not PV.
+- [4.2.1: Using Amazon Associates — recommend only when genuinely useful](https://lycoapp.com/notes/ja/posts/amazon-associates.html): Affiliate-driven articles erode trust; link only when it truly helps, disclose PR, never blanket the page with banners.
+- [4.3: Supporting the project — sustaining the activity](https://lycoapp.com/notes/ja/posts/monetize-support.html): Ads support broadly, Buy Me a Coffee supports deeply; they are complementary, support has no ceiling, and one supporter is worth more than a number.
+- [4.3.1: Receiving support via Buy Me a Coffee](https://lycoapp.com/notes/ja/posts/bmc.html): A login-free, one-off support widget on every page; why GitHub Sponsors and Patreon were declined for now.
 - Articles follow MADR × SCQA structure (Situation / Complication / Question / Criteria / Answer / Reason / Options / Good / Bad / Follow-up).
 - The Notes section collects no personal data and serves no ads.
 

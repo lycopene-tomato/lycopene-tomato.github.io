@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#b8503c" />
+<title>個人開発の活動支援 — プロジェクトを支える仕組み | Architecture Notes</title>
+<meta name="description" content="プロジェクトとは一つのアプリでも記事でもなく、価値を届け続ける活動そのもの。広告 (広く支える) と Buy Me a Coffee (深く支える) は補完関係。応援には上限がなく、一人の応援は数字以上の価値を持つ。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/monetize-support.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="個人開発の活動支援 — プロジェクトを支える仕組み" />
+<meta property="og:description" content="広告は広く支え、Buy Me a Coffee は深く支える。応援には上限がなく、一人の応援は数字以上の価値を持つ。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/monetize-support.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="個人開発の活動支援 — プロジェクトを支える仕組み" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "個人開発の活動支援 — プロジェクトを支える仕組み",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-07",
+  "dateModified": "2026-07-07",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/monetize-support.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "マネタイズ", "item": "https://lycoapp.com/notes/ja/posts/monetize.html" },
+    { "@type": "ListItem", "position": 3, "name": "活動の支援", "item": "https://lycoapp.com/notes/ja/posts/monetize-support.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-monetize">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="monetize.html">4 マネタイズ</a><span class="sep">›</span><b>4.3 活動の支援</b></nav>
+
+  <article>
+    <span class="cat-tag">4.3 · マネタイズ</span>
+    <h1>個人開発の活動支援 — プロジェクトを支える仕組み</h1>
+    <p class="a-meta"><span>2026.07.07</span><span>約5分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>プロジェクトとは、一つのアプリでも一つの記事でもなく、価値を届け続ける活動そのものである。だからプロダクトやコンテンツだけでなく、活動そのものを支える仕組みも要る。広告は広く支える仕組み、Buy Me a Coffee は深く支える仕組みで、この二つは競合ではなく補い合う。応援には相場も上限もない。そして一人の応援は、金額以上の価値を持つ。</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="使う物">
+          <li><b>Buy Me a Coffee</b><span class="use">活動支援の受け皿 (4.3.1)</span><span class="cost">手数料 5%</span></li>
+          <li><b>AdMob</b><span class="use">広く支える広告 (4.1.1 と補完)</span><span class="cost">Free</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk b-why">
+      <p class="blk-h"><span class="no">01</span><span class="jp">動機</span><span class="en">Why</span></p>
+      <div class="bd">
+        <p>プロジェクトとは、一つのアプリでも、一つの記事でもない。価値を届け続ける活動そのものである。</p>
+        <p>一つのアプリだけで解決できることには限界がある。一つの記事だけで伝えられることにも限界がある。だから私は、アプリを作り、記事を書き、また次のプロダクトを作る。その積み重ねによって、より多くの人へ価値を届けたいと思っている。だから、プロダクトやコンテンツだけではなく、活動そのものを支える仕組みも必要だと考えている。</p>
+      </div>
+    </section>
+
+    <section class="blk b-how">
+      <p class="blk-h"><span class="no">02</span><span class="jp">方法</span><span class="en">How</span></p>
+      <div class="bd">
+        <p>支え方は 3 つの観点で考える。</p>
+        <p><b>① 広告と応援は、補完関係にある。</b> 広告収入と Buy Me a Coffee は、どちらか一方を選ぶものではない。むしろ相性が良い。<mark>広告は「広く支える」仕組み、Buy Me a Coffee は「深く支える」仕組みである。</mark>広告だけでは届かない支援があり、活動支援だけでは届かない利用者もいる。両方あることで、プロジェクトはより持続しやすくなる。広告 (広く) の詳細は <a href="admob.html">4.1.1 AdMob</a>、応援 (深く) の詳細は <a href="bmc.html">4.3.1 Buy Me a Coffee</a> で書く。</p>
+        <p><b>② 応援には上限がない。</b> 広告収入には相場があるが、活動への支援には相場がない。100 円でも、1,000 円でも、もっとでも良い。一見「お金のある人だけが優遇される仕組み」に見えるかもしれないが、私はむしろ逆だと思っている。劇場の VIP 席も、飛行機のファーストクラスも、余裕のある人が多く支えることで、より多くの人へ手頃な価格で価値を届けるための仕組みである (経済学ではクロスサブシディと呼ぶ)。個人開発も同じで、<mark>応援してくださる方がいるから、広告を増やさず、無料のまま、課金できない子どもたちにも届け続けられる。</mark>その支援は、私だけでなく、まだ支援できない誰かを支えることにも繋がっている。</p>
+        <p><b>③ 一人の応援は、数字以上の価値がある。</b> 友達が 100 人いたら楽しい。でも、本当に信頼できる親友が一人いる人生も、十分に幸せではないだろうか。つながりは、人数だけでは測れない。何万人もの利用者がいなくても、たった一人でも「応援しています」「これからも続けてください」と言ってくださる方がいる。その存在は、収益やダウンロード数では測れない価値を持ち、次のアプリを作る理由に、次の記事を書く理由になる。だから私は、支援の金額よりも、「応援している」という気持ちの方が嬉しい。</p>
+      </div>
+    </section>
+
+    <section class="blk b-what">
+      <p class="blk-h"><span class="no">03</span><span class="jp">価値</span><span class="en">What</span></p>
+      <div class="bd">
+        <blockquote>活動の支援とは、利益を最大化する仕組みではない。<br>未来のプロダクトを、コンテンツを、利用者を、育てるための仕組みである。</blockquote>
+        <p>プロジェクトを支える方法には、Buy Me a Coffee、Patreon、GitHub Sponsors、寄付など様々ある。どのサービスを使うかは重要ではない。重要なのは、「応援したい」という気持ちを受け取れる仕組みを用意しておくことである。応援したいと思っても、その方法がなければ、気持ちは届かない。だから私は、活動を支援する仕組みを用意している。これからも誰かへ価値を届け続けるために。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="monetize.html"><span class="num">4</span>マネタイズ / Monetization</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-app.html"><span class="num">4.1</span>アプリのマネタイズ</a></summary>
+            <ul><li><a href="admob.html"><span class="num">4.1.1</span>AdMob</a></li></ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-web.html"><span class="num">4.2</span>Web サイトのマネタイズ</a></summary>
+            <ul><li><a href="amazon-associates.html"><span class="num">4.2.1</span>Amazon アソシエイト</a></li></ul>
+          </details></li>
+          <li><details open>
+            <summary class="cur"><span class="caret">▸</span><a href="monetize-support.html" aria-current="page"><span class="num">4.3</span>活動の支援</a></summary>
+            <ul><li><a href="bmc.html"><span class="num">4.3.1</span>Buy Me a Coffee</a></li></ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#monetize">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>
