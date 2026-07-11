@@ -5,12 +5,96 @@
   <id>https://lycoapp.com/notes/</id>
   <link href="https://lycoapp.com/notes/ja/" />
   <link rel="self" href="https://lycoapp.com/notes/feed.xml" />
-  <updated>2026-07-07T00:00:00+09:00</updated>
+  <updated>2026-07-11T00:00:00+09:00</updated>
   <author>
     <name>Lyco</name>
     <uri>https://lycoapp.com/ja/about/</uri>
   </author>
   <!-- 記事公開時にここへ <entry> を追加する (新しいものを上に) -->
+  <entry>
+    <title>マーケティング戦略プロセス — 作る前に Research と STP で価値を決める</title>
+    <id>https://lycoapp.com/notes/ja/posts/strategy-process.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/strategy-process.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>戦略プロセスは、作る前に「何を作るか」を決める工程。良いものを作れば売れる時代は終わり、売れるものを考えてから作る時代になった。製品ではなく提供価値から考え、Research と STP を往復して「誰に何の価値を届けるか」を決める。</summary>
+  </entry>
+  <entry>
+    <title>個人開発の市場リサーチ — 自分という市場を理解する</title>
+    <id>https://lycoapp.com/notes/ja/posts/research.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/research.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>個人開発では市場調査・アンケート・ヒアリングのコストは現実的でない。そこで市場を「自分」と定義し、Research の対象を自分という市場へ置き換えた。自分に「なぜ?」を繰り返す、マーケティングコストを極限まで下げるリサーチの記録。</summary>
+  </entry>
+  <entry>
+    <title>個人開発の STP 分析 — 自分という市場に狙いを定める</title>
+    <id>https://lycoapp.com/notes/ja/posts/stp.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/stp.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>Research の結果を整理し意思決定する STP を、自分という市場に対して行う。Positioning で見えた市場規模 — 1 国では 0.1‰ でも世界なら十分 — が、最初からグローバル言語対応をしている理由になった。</summary>
+  </entry>
+  <entry>
+    <title>マーケティングミックス — 4C から 4P へ、要件から設計へ</title>
+    <id>https://lycoapp.com/notes/ja/posts/marketing-mix.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/marketing-mix.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>マーケティングミックスは、作るときに考えること。戦略プロセスで決めた価値を、届けられる形へ組み立てる。顧客視点の 4C から提供者視点の 4P へ翻訳する。システム開発でいう、要件から設計への変化である。</summary>
+  </entry>
+  <entry>
+    <title>4C 分析 — 顧客の欲求から組み立てる</title>
+    <id>https://lycoapp.com/notes/ja/posts/four-c.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/four-c.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>マーケティングミックスは 4P から語られることが多い。しかし提供者の打ち手より先に、顧客の欲求 (4C) を固めるべきだと考えている。要件を固めずに設計を始めれば手戻りが出る。4C を「顧客としての自分」に問うた記録。</summary>
+  </entry>
+  <entry>
+    <title>4P 分析 — 顧客の欲求を提供者の打ち手へ翻訳する</title>
+    <id>https://lycoapp.com/notes/ja/posts/four-p.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/four-p.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>4C で顧客の欲求を掴んだら、それを提供者の打ち手である 4P へ翻訳する。Product・Price・Place・Promotion を、4C と一対一で対応させる。要件から設計への変換。個人開発で実際に組んだ 4P の記録。</summary>
+  </entry>
+  <entry>
+    <title>マーケティングマネジメント — 広告費ゼロで「探してもらう」DECAX</title>
+    <id>https://lycoapp.com/notes/ja/posts/marketing-management.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/marketing-management.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>マーケティングマネジメントは、作ったあとに考えること。広告を打つ資金がないなら、探してもらう。DECAX モデルを軸に、発見される・信頼される・ファンになる、の 3 段階でプロダクトを育てる設計。</summary>
+  </entry>
+  <entry>
+    <title>発見される — 広告を打たず、SEO で探してもらう</title>
+    <id>https://lycoapp.com/notes/ja/posts/discovery.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/discovery.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>広告を打つ資金がないなら、探してもらう。SNS は流れが速く蓄積できないので、Web サイトとブログを作り SEO をした。同じ課題を持つ人が検索した瞬間に見つかる、プル型の発見の仕組みを記録する。</summary>
+  </entry>
+  <entry>
+    <title>信頼される — 共感と誠実さで、Engage と Check を越える</title>
+    <id>https://lycoapp.com/notes/ja/posts/engage-check.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/engage-check.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>発見されても、知らない個人のアプリはすぐには使われない。個人にはブランドの後ろ盾がない。だから記事で共感を生み (Engage)、検証に耐える誠実さ (Check) で信頼を積む。盛らず、役立つことだけを書いた記録。</summary>
+  </entry>
+  <entry>
+    <title>ファンになる — 体験がシェアを生み、バイラルループが回る</title>
+    <id>https://lycoapp.com/notes/ja/posts/fandom.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/fandom.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>信頼して使ってくれた人に、広がりの担い手になってもらう。良い体験がシェアを生み、シェアが次の発見を生む。バイラルループとクロスセルで、広告費ゼロのまま拡散する仕組みを記録する。</summary>
+  </entry>
+  <entry>
+    <title>改善のループ — OODA で回した結果を観測して直す</title>
+    <id>https://lycoapp.com/notes/ja/posts/improvement-loop.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/improvement-loop.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>マーケティングは一周回して終わりではない。回した結果を見て、直して、また回す。OODA ループの起点は観測。観測できないものは改善できない。ただし初期は数字も動かない。数字に一喜一憂しすぎない、という改善の構えを書く。</summary>
+  </entry>
+  <entry>
+    <title>観測環境 — 無料の計器を揃え、事実で判断する</title>
+    <id>https://lycoapp.com/notes/ja/posts/observability.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/observability.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>OODA の起点は Observe。観測できないものは改善できない。Google Search Console・AdMob・Cloudflare・アプリレビューという無料の計器を揃え、数字と言葉で判断する。ただし初期は数字が動かない。ゼロに一喜一憂しない構えを記録する。</summary>
+  </entry>
   <entry>
     <title>アプリのマネタイズ設計 — コスト構造から収益モデルを選ぶ</title>
     <id>https://lycoapp.com/notes/ja/posts/monetize-app.html</id>
@@ -57,7 +141,7 @@
     <title>マーケティング — すべてを繋げるもの</title>
     <id>https://lycoapp.com/notes/ja/posts/growth.html</id>
     <link href="https://lycoapp.com/notes/ja/posts/growth.html" />
-    <updated>2026-07-05T00:00:00+09:00</updated>
+    <updated>2026-07-11T00:00:00+09:00</updated>
     <summary>マーケティングは売り方ではなく「何を作るか」から始まる。ドリルの穴の話を要件定義と機能要件のギャップとして読み直し、開発基盤・Web・マネタイズの点をすべて繋げるスタートラインを引く。</summary>
   </entry>
   <entry>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#d4831f" />
+<title>個人開発の STP 分析 — 自分というペルソナで市場を定める | Architecture Notes</title>
+<meta name="description" content="Research の結果を整理し意思決定する STP を、自分という市場に対して行う。「自分が欲しいもの」ではなく「顧客としての自分が欲しいもの」。Positioning で見えた市場規模 — 1 国では 0.1‰ でも世界なら十分 — が、グローバル言語対応の理由になった。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/stp.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="個人開発の STP 分析 — 自分というペルソナで市場を定める" />
+<meta property="og:description" content="Research の結果を整理し意思決定する STP を、自分という市場に対して行う。「自分が欲しいもの」ではなく「顧客としての自分が欲しいもの」。Positioning で見えた市場規模 — 1 国では 0.1‰ でも世界なら十分 — が、グローバル言語対応の理由になった。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/stp.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="個人開発の STP 分析 — 自分というペルソナで市場を定める" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "個人開発の STP 分析 — 自分というペルソナで市場を定める",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/stp.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "マーケティング", "item": "https://lycoapp.com/notes/ja/posts/growth.html" },
+    { "@type": "ListItem", "position": 3, "name": "戦略プロセス", "item": "https://lycoapp.com/notes/ja/posts/strategy-process.html" },
+    { "@type": "ListItem", "position": 4, "name": "STP", "item": "https://lycoapp.com/notes/ja/posts/stp.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-growth">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="growth.html">マーケティング</a><span class="sep">›</span><a href="strategy-process.html">戦略プロセス</a><span class="sep">›</span><b>STP</b></nav>
+
+  <article>
+    <span class="cat-tag">3.1.2 · マーケティング</span>
+    <h1>STP — 自分というペルソナで狙いを定める</h1>
+    <p class="a-meta"><span>2026.07.11</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>Research の結果を整理し、意思決定する工程が STP (Segmentation / Targeting / Positioning) である。これも自分という市場に対して行う。ただし「自分が欲しいもの」ではなく「顧客としての自分が欲しいもの」を分析する。Positioning で見えた市場規模 — 1 国では 0.1‰ でも、世界なら十分な市場になる — が、最初からグローバル言語対応をしている理由である。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="research.html">3.1.1 Research</a> で自分という市場を理解した。しかし Research だけでは、何を作ればいいかは決まらない。結果を整理し、意思決定する工程が STP (Segmentation / Targeting / Positioning) である。企業は市場全体に STP を行う。</p>
+
+        <h2>Complication</h2>
+        <p>ここで注意がある。「自分が欲しいものを作る」と「自分というペルソナが欲しいものを作る」は違う。開発者としての自分ではなく、顧客としての自分を分析しなければ、ただの自己満足になってしまう。</p>
+
+        <h2>Question</h2>
+        <blockquote>自分という市場を、どう分析して狙いを定めるか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>開発者ではなく、顧客としての自分を分析すること</li>
+          <li>一人で完結できること</li>
+          <li>市場規模の見立てまで出せること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>自分という市場に、Segmentation・Targeting・Positioning を行う。STP も価値提案も、すべて「自分という一人の顧客」に対して行う。ターゲットは <mark>自分と同じ課題を持つ人</mark>、市場は <mark>世界</mark> — これが答えだった。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>Positioning で見えてくるのが、市場規模だからである。</b> 自分と同じ課題を持つ人は、1 国だけで見ると 0.1‰ しかいないかもしれない。しかし <mark>世界で見れば、0.1‰ でも十分な市場になる。</mark>だから最初からグローバル言語対応をしている。狭いニッチでも、母集団を世界にすれば成立する。ターゲットの深さと、市場の広さ。この 2 つを同時に取るのが、個人開発の Positioning である。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>1 国だけをターゲットにする</b> — 運用も翻訳もシンプルになる。ただしニッチな課題では母数が小さすぎて成立しにくい。だから世界を市場にした。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>確実に理解できる市場が、少なくとも一つある。それが自分である。一人の顧客は、必ず満足させられる。そこから、同じ課題を持つ人へ少しずつ価値を届けていける。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>それでも 100% 売れるわけではない。同じ課題を持つ人が世界に何人いるかは、届けてみるまで分からない。ここは確率の勝負である。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>誰に、どんな価値を届けるかが決まったら、それを設計へ落とす。続きは <a href="marketing-mix.html">3.2 マーケティングミックス</a>。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="growth.html"><span class="num">3</span>マーケティング / Marketing</a></summary>
+        <ul>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="strategy-process.html"><span class="num">3.1</span>戦略プロセス</a></summary>
+            <ul>
+              <li><a href="research.html"><span class="num">3.1.1</span>Research</a></li>
+              <li><a class="cur" href="stp.html" aria-current="page"><span class="num">3.1.2</span>STP</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-mix.html"><span class="num">3.2</span>マーケティングミックス</a></summary>
+            <ul>
+              <li><a href="four-c.html"><span class="num">3.2.1</span>4C</a></li>
+              <li><a href="four-p.html"><span class="num">3.2.2</span>4P</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-management.html"><span class="num">3.3</span>マーケティングマネジメント</a></summary>
+            <ul>
+              <li><a href="discovery.html"><span class="num">3.3.1</span>発見される</a></li>
+              <li><a href="engage-check.html"><span class="num">3.3.2</span>信頼される</a></li>
+              <li><a href="fandom.html"><span class="num">3.3.3</span>ファンになる</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="improvement-loop.html"><span class="num">3.4</span>改善のループ</a></summary>
+            <ul>
+              <li><a href="observability.html"><span class="num">3.4.1</span>観測環境</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#growth">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

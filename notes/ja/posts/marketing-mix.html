@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#d4831f" />
+<title>マーケティングミックス — 4C から 4P へ、要件から設計へ | Architecture Notes</title>
+<meta name="description" content="マーケティングミックスは、作るときに考えること。戦略プロセスで決めた価値を、届けられる形へ組み立てる工程。顧客視点の 4C から提供者視点の 4P へ翻訳する。システム開発でいう、要件から設計への変化である。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/marketing-mix.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="マーケティングミックス — 4C から 4P へ、要件から設計へ" />
+<meta property="og:description" content="マーケティングミックスは、作るときに考えること。戦略プロセスで決めた価値を、届けられる形へ組み立てる工程。顧客視点の 4C から提供者視点の 4P へ翻訳する。システム開発でいう、要件から設計への変化である。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/marketing-mix.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="マーケティングミックス — 4C から 4P へ、要件から設計へ" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "マーケティングミックス — 4C から 4P へ、要件から設計へ",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/marketing-mix.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "マーケティング", "item": "https://lycoapp.com/notes/ja/posts/growth.html" },
+    { "@type": "ListItem", "position": 3, "name": "マーケティングミックス", "item": "https://lycoapp.com/notes/ja/posts/marketing-mix.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-growth">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="growth.html">マーケティング</a><span class="sep">›</span><b>マーケティングミックス</b></nav>
+
+  <article>
+    <span class="cat-tag">3.2 · マーケティング</span>
+    <h1>マーケティングミックス — 作るときに考えること</h1>
+    <p class="a-meta"><span>2026.07.11</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>マーケティングミックスは、作るときに考えることである。戦略プロセスで決めた「誰に、どんな価値を」を、実際に届けられる形へ組み立てる。鍵は、順番。顧客視点の 4C を先に固め、それを提供者視点の 4P へ翻訳する。システム開発でいう、要件から設計への変化である。要件がずれれば設計もずれる。だから 4C から始める。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-why">
+      <p class="blk-h"><span class="no">01</span><span class="jp">動機</span><span class="en">Why</span></p>
+      <div class="bd">
+        <p>戦略プロセスで、「何を作るか」は決まった。誰を助け、どんな価値を届けるか。しかし、価値が決まっただけでは、まだ何も届かない。それを形にする工程が要る。</p>
+        <p>マーケティングミックスとは、価値を市場に届けるための要素を組み合わせることである。何を (製品)、いくらで (価格)、どこで (流通)、どう伝えるか (販促)。この 4 つを、バラバラにではなく、ひとつの狙いに向けて噛み合わせる。だから「ミックス」と呼ぶ。ここが、作るときに考えることの中心になる。</p>
+      </div>
+    </section>
+
+    <section class="blk b-how">
+      <p class="blk-h"><span class="no">02</span><span class="jp">方法</span><span class="en">How</span></p>
+      <div class="bd">
+        <p>組み立てには、2 つの視点がある。顧客から見た 4C と、提供者から見た 4P である。</p>
+        <ul class="body">
+          <li><b>4C</b> (顧客視点) — Customer Value / Cost / Convenience / Communication。顧客が何を求め、いくら払い、どう手に入れ、どう知るか。</li>
+          <li><b>4P</b> (提供者視点) — Product / Price / Place / Promotion。提供者が何を作り、いくらで売り、どこに置き、どう伝えるか。</li>
+        </ul>
+        <p>4P から語られることも多い。しかし私は、<mark>4C から始めるべきだと考えている。</mark>4C は顧客の欲求 (要件) であり、4P は提供者の打ち手 (設計) だからである。システム開発で、要件を固めずに設計から始めれば、必ず手戻りが出る。マーケティングも同じで、顧客が何を求めるか (4C) を先に決めてから、それを自分の打ち手 (4P) へ翻訳する。</p>
+        <pre><span class="c"># 作るときのフェーズ</span>
+4C (要件・顧客の欲求)  →  4P (設計・提供者の打ち手)</pre>
+        <p>顧客の欲求を書く 4C が <a href="four-c.html">3.2.1</a>、それを打ち手に落とす 4P が <a href="four-p.html">3.2.2</a>。</p>
+      </div>
+    </section>
+
+    <section class="blk b-what">
+      <p class="blk-h"><span class="no">03</span><span class="jp">価値</span><span class="en">What</span></p>
+      <div class="bd">
+        <blockquote>ミックスの成果物は、機能一覧ではない。<br>顧客の欲求と、提供者の打ち手が噛み合った設計である。</blockquote>
+        <p>4C と 4P が一対一で対応していれば、作るものはぶれない。顧客が求める価値が Product に、払えるコストが Price に、手に入れやすさが Place に、伝わり方が Promotion に、それぞれ写っている。要件から設計へ、きれいに橋が架かった状態。ここまで来て、ようやく実装に入れる。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="growth.html"><span class="num">3</span>マーケティング / Marketing</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="strategy-process.html"><span class="num">3.1</span>戦略プロセス</a></summary>
+            <ul>
+              <li><a href="research.html"><span class="num">3.1.1</span>Research</a></li>
+              <li><a href="stp.html"><span class="num">3.1.2</span>STP</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary class="cur"><span class="caret">▸</span><a href="marketing-mix.html" aria-current="page"><span class="num">3.2</span>マーケティングミックス</a></summary>
+            <ul>
+              <li><a href="four-c.html"><span class="num">3.2.1</span>4C</a></li>
+              <li><a href="four-p.html"><span class="num">3.2.2</span>4P</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-management.html"><span class="num">3.3</span>マーケティングマネジメント</a></summary>
+            <ul>
+              <li><a href="discovery.html"><span class="num">3.3.1</span>発見される</a></li>
+              <li><a href="engage-check.html"><span class="num">3.3.2</span>信頼される</a></li>
+              <li><a href="fandom.html"><span class="num">3.3.3</span>ファンになる</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="improvement-loop.html"><span class="num">3.4</span>改善のループ</a></summary>
+            <ul>
+              <li><a href="observability.html"><span class="num">3.4.1</span>観測環境</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#growth">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

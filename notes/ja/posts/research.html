@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#d4831f" />
+<title>個人開発の市場リサーチ — 自分という市場を理解する | Architecture Notes</title>
+<meta name="description" content="個人開発では市場調査・アンケート・ヒアリングのコストは現実的でない。そこで市場を「自分」と定義し、Research の対象を自分という市場へ置き換えた。自分に「なぜ?」を繰り返す、マーケティングコストを極限まで下げるリサーチの記録。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/research.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="個人開発の市場リサーチ — 自分という市場を理解する" />
+<meta property="og:description" content="個人開発では市場調査・アンケート・ヒアリングのコストは現実的でない。そこで市場を「自分」と定義し、Research の対象を自分という市場へ置き換えた。自分に「なぜ?」を繰り返す、マーケティングコストを極限まで下げるリサーチの記録。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/research.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="個人開発の市場リサーチ — 自分という市場を理解する" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "個人開発の市場リサーチ — 自分という市場を理解する",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/research.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "マーケティング", "item": "https://lycoapp.com/notes/ja/posts/growth.html" },
+    { "@type": "ListItem", "position": 3, "name": "戦略プロセス", "item": "https://lycoapp.com/notes/ja/posts/strategy-process.html" },
+    { "@type": "ListItem", "position": 4, "name": "Research", "item": "https://lycoapp.com/notes/ja/posts/research.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-growth">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="growth.html">マーケティング</a><span class="sep">›</span><a href="strategy-process.html">戦略プロセス</a><span class="sep">›</span><b>Research</b></nav>
+
+  <article>
+    <span class="cat-tag">3.1.1 · マーケティング</span>
+    <h1>Research — 自分という市場を理解する</h1>
+    <p class="a-meta"><span>2026.07.11</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>戦略プロセスの最初にある Research は、市場を理解する工程である。企業なら市場調査・アンケート・ヒアリングを行うが、個人開発ではそのコストは現実的でない。そこで市場を「自分」と定義し、Research の対象を自分という市場へ置き換えた。自分に「なぜ?」を繰り返す。マーケティングを省略したのではなく、コストを極限まで下げたのである。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="strategy-process.html">3.1 戦略プロセス</a> で、まず市場を理解する Research が要ると書いた。企業なら市場調査・アンケート・ヒアリング・競合分析を行う。</p>
+
+        <h2>Complication</h2>
+        <p>しかし個人開発で、そこまでのコストをかけるのは現実的でない。時間も、お金も、人手も足りない。</p>
+
+        <h2>Question</h2>
+        <blockquote>個人開発で、どうやって市場を理解するか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>ヒアリングやアンケートのコストをかけないこと</li>
+          <li>一人でも回せること</li>
+          <li>それでも市場理解として成立すること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>市場を「自分」と定義した。マーケティングをやめたのではない。<mark>Research の対象を、自分という市場へ置き換えた。</mark>そして自分に対して、何度も「なぜ?」を繰り返す。なぜ困っているのか。なぜその機能が欲しいのか。なぜ既存サービスでは満足できないのか。なぜその行動を取るのか。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>自分は、一番理解しているようで、実はそうでもないからである。</b> 好きな食べ物は答えられても、「なぜ好きなのか」と聞かれると、意外と言葉にできない。つまり自分もまた、分析の対象である。だから Research が要る。Research とは、他人へのヒアリングである前に、自分との対話である。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>企業型の市場調査</b> — アンケート、ヒアリング、集計、統計分析。精度は上がるが、個人開発のコストには見合わない。時間もお金も人手も足りないので採らなかった。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>ヒアリング・アンケート・集計・インタビューのコストがゼロになった。分析はすべて頭の中で完結する。<mark>マーケティングを省略したのではなく、マーケティングコストを極限まで下げた</mark>のである。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>残る不確実性がひとつある。自分と同じ課題を持つ人が、世界に何人いるのか。それは Research だけでは分からない。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>その不確実性に向き合い、狙いを定めるのが、市場を分析する <a href="stp.html">3.1.2 STP</a> である。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="growth.html"><span class="num">3</span>マーケティング / Marketing</a></summary>
+        <ul>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="strategy-process.html"><span class="num">3.1</span>戦略プロセス</a></summary>
+            <ul>
+              <li><a class="cur" href="research.html" aria-current="page"><span class="num">3.1.1</span>Research</a></li>
+              <li><a href="stp.html"><span class="num">3.1.2</span>STP</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-mix.html"><span class="num">3.2</span>マーケティングミックス</a></summary>
+            <ul>
+              <li><a href="four-c.html"><span class="num">3.2.1</span>4C</a></li>
+              <li><a href="four-p.html"><span class="num">3.2.2</span>4P</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-management.html"><span class="num">3.3</span>マーケティングマネジメント</a></summary>
+            <ul>
+              <li><a href="discovery.html"><span class="num">3.3.1</span>発見される</a></li>
+              <li><a href="engage-check.html"><span class="num">3.3.2</span>信頼される</a></li>
+              <li><a href="fandom.html"><span class="num">3.3.3</span>ファンになる</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="improvement-loop.html"><span class="num">3.4</span>改善のループ</a></summary>
+            <ul>
+              <li><a href="observability.html"><span class="num">3.4.1</span>観測環境</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#growth">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#d4831f" />
+<title>改善のループ — OODA で回した結果を観測して直す | Architecture Notes</title>
+<meta name="description" content="マーケティングは一周回して終わりではない。回した結果を見て、直して、また回す。OODA ループの起点は観測。観測できないものは改善できない。ただし初期は母数が小さく数字も動かない。数字に一喜一憂しすぎない、という改善の構えを書く。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/improvement-loop.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="改善のループ — OODA で回した結果を観測して直す" />
+<meta property="og:description" content="マーケティングは一周回して終わりではない。回した結果を見て、直して、また回す。OODA ループの起点は観測。観測できないものは改善できない。ただし初期は母数が小さく数字も動かない。数字に一喜一憂しすぎない、という改善の構えを書く。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/improvement-loop.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="改善のループ — OODA で回した結果を観測して直す" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "改善のループ — OODA で回した結果を観測して直す",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/improvement-loop.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "マーケティング", "item": "https://lycoapp.com/notes/ja/posts/growth.html" },
+    { "@type": "ListItem", "position": 3, "name": "改善のループ", "item": "https://lycoapp.com/notes/ja/posts/improvement-loop.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-growth">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="growth.html">マーケティング</a><span class="sep">›</span><b>改善のループ</b></nav>
+
+  <article>
+    <span class="cat-tag">3.4 · マーケティング</span>
+    <h1>改善のループ — 観測して直す OODA</h1>
+    <p class="a-meta"><span>2026.07.11</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>マーケティングは、一周回して終わりではない。回した結果を見て、直して、また回す。使うのは OODA ループ (Observe → Orient → Decide → Act)。起点は観測である。観測できないものは、改善できない。まず計器を付け、事実で判断する。ただし初期は母数が小さく、数字はほとんど動かない。だから序盤は、数字に一喜一憂しすぎない。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-why">
+      <p class="blk-h"><span class="no">01</span><span class="jp">動機</span><span class="en">Why</span></p>
+      <div class="bd">
+        <p><a href="marketing-management.html">3.3</a> で、発見・信頼・ファンのループを一周させた。しかし、回しただけでは良くなっていかない。どこで人が離れ、何が効いたのか。それを見て直さなければ、二周目も一周目と同じ結果になる。</p>
+        <p>改善には、回った結果を受け取る仕組みが要る。勘や気合いで直すのではなく、<mark>起きたことを観測して、次の一手を決める。</mark>この構えを、OODA ループと呼ぶ。</p>
+      </div>
+    </section>
+
+    <section class="blk b-how">
+      <p class="blk-h"><span class="no">02</span><span class="jp">方法</span><span class="en">How</span></p>
+      <div class="bd">
+        <p>OODA は Observe (観測) → Orient (状況判断) → Decide (意思決定) → Act (実行) の 4 段階を回す考え方である。ここで決定的に大事なのは、最初の Observe である。</p>
+        <p>観測できなければ、後の 3 つは成り立たない。何人来たかも、どこで離れたかも、何が刺さったかも分からなければ、状況判断は当てずっぽうになり、意思決定は勘になり、実行は空回りする。だから、まず観測できる状態を作る。Google Search Console (検索での発見)、AdMob (広告収益)、Cloudflare (サイトのアクセス)、アプリストアのレビュー (利用者の生の声) — 無料で使える計器を揃え、数字と言葉の両方を見る。</p>
+        <pre><span class="c"># 改善のループ</span>
+Observe → Orient → Decide → Act → (また Observe)</pre>
+        <p>観測できる状態を、どう作るか。その最初の一歩を <a href="observability.html">3.4.1 観測環境</a> で書く。</p>
+      </div>
+    </section>
+
+    <section class="blk b-what">
+      <p class="blk-h"><span class="no">03</span><span class="jp">価値</span><span class="en">What</span></p>
+      <div class="bd">
+        <blockquote>推測ではなく、観測で直す。<br>それを繰り返せる状態が、改善のループである。</blockquote>
+        <p>計器が揃えば、二周目からは事実に基づいて手を打てる。効いたかどうかも数字で分かるので、改善が積み上がっていく。ただし、ひとつ心構えがある。初期は母数が小さく、数字はほとんど動かない。ゼロが並ぶ画面を見続けると、途中で悲しくなる。それは拡散がまだ届いていないだけで、失敗ではない。だから序盤は、数字に一喜一憂しすぎず、淡々とループを回し続けることが、いちばんの改善になる。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="growth.html"><span class="num">3</span>マーケティング / Marketing</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="strategy-process.html"><span class="num">3.1</span>戦略プロセス</a></summary>
+            <ul>
+              <li><a href="research.html"><span class="num">3.1.1</span>Research</a></li>
+              <li><a href="stp.html"><span class="num">3.1.2</span>STP</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-mix.html"><span class="num">3.2</span>マーケティングミックス</a></summary>
+            <ul>
+              <li><a href="four-c.html"><span class="num">3.2.1</span>4C</a></li>
+              <li><a href="four-p.html"><span class="num">3.2.2</span>4P</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-management.html"><span class="num">3.3</span>マーケティングマネジメント</a></summary>
+            <ul>
+              <li><a href="discovery.html"><span class="num">3.3.1</span>発見される</a></li>
+              <li><a href="engage-check.html"><span class="num">3.3.2</span>信頼される</a></li>
+              <li><a href="fandom.html"><span class="num">3.3.3</span>ファンになる</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary class="cur"><span class="caret">▸</span><a href="improvement-loop.html" aria-current="page"><span class="num">3.4</span>改善のループ</a></summary>
+            <ul>
+              <li><a href="observability.html"><span class="num">3.4.1</span>観測環境</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#growth">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

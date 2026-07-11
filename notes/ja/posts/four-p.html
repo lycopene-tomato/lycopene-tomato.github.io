@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#d4831f" />
+<title>4P 分析 — 顧客の欲求を提供者の打ち手へ翻訳する | Architecture Notes</title>
+<meta name="description" content="4C で顧客の欲求を掴んだら、それを提供者の打ち手である 4P へ翻訳する。Product・Price・Place・Promotion を、4C と一対一で対応させる。要件から設計への変換。個人開発で実際に組んだ 4P の記録。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/four-p.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="4P 分析 — 顧客の欲求を提供者の打ち手へ翻訳する" />
+<meta property="og:description" content="4C で顧客の欲求を掴んだら、それを提供者の打ち手である 4P へ翻訳する。Product・Price・Place・Promotion を、4C と一対一で対応させる。要件から設計への変換。個人開発で実際に組んだ 4P の記録。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/four-p.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="4P 分析 — 顧客の欲求を提供者の打ち手へ翻訳する" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "4P 分析 — 顧客の欲求を提供者の打ち手へ翻訳する",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/four-p.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "マーケティング", "item": "https://lycoapp.com/notes/ja/posts/growth.html" },
+    { "@type": "ListItem", "position": 3, "name": "マーケティングミックス", "item": "https://lycoapp.com/notes/ja/posts/marketing-mix.html" },
+    { "@type": "ListItem", "position": 4, "name": "4P", "item": "https://lycoapp.com/notes/ja/posts/four-p.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-growth">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="growth.html">マーケティング</a><span class="sep">›</span><a href="marketing-mix.html">マーケティングミックス</a><span class="sep">›</span><b>4P</b></nav>
+
+  <article>
+    <span class="cat-tag">3.2.2 · マーケティング</span>
+    <h1>4P — 顧客の欲求を打ち手へ翻訳する</h1>
+    <p class="a-meta"><span>2026.07.11</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>4C で顧客の欲求を掴んだら、それを提供者の打ち手である 4P へ翻訳する。Product・Price・Place・Promotion を、4C と一対一で対応させる。要件から設計への変換である。対応が取れていれば、作るものはぶれない。個人開発で実際に組んだ 4P を記録する。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="four-c.html">3.2.1 4C</a> で、顧客としての自分が何を求めるかを言葉にした。価値・コスト・利便性・コミュニケーション。要件は揃った。</p>
+
+        <h2>Complication</h2>
+        <p>しかし要件は、そのままでは実装できない。「学習コストの低さが欲しい」という欲求は、そのままでは製品にならない。提供者が動ける形 — 何を作り、いくらで、どこに置き、どう伝えるか — に落とさなければならない。</p>
+
+        <h2>Question</h2>
+        <blockquote>顧客の欲求を、提供者の打ち手へどう翻訳するか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>4C の 4 要素と一対一で対応が取れること</li>
+          <li>個人開発の身の丈で実行できること</li>
+          <li>4C で決めた狙いから、ぶれないこと</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>4C を 4P へ、<mark>一対一で翻訳する。</mark>欲求を打ち手へ写す作業である。</p>
+        <ul class="body">
+          <li><b>Product</b> ← Customer Value — 「同じ課題の解決」を、必要十分な機能に絞った製品にした。ドリルの穴だけを、まっすぐ提供する。</li>
+          <li><b>Price</b> ← Customer Cost — 基本無料 + 少額課金 / 控えめな広告。学習コストを下げるため、UI もできる限り簡素にした。</li>
+          <li><b>Place</b> ← Convenience — アプリストアで配布し、Web サイトで発見できるようにした。</li>
+          <li><b>Promotion</b> ← Communication — 広告を打つ資金はない。だから記事を書き、共感と信頼で知ってもらう道を選んだ。</li>
+        </ul>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>要件 (4C) から設計 (4P) への変換だからである。</b> 4C で「顧客が何を求めるか」を決めてあるので、4P は発明ではなく翻訳になる。一対一の対応が取れていれば、どの打ち手も顧客の欲求に根拠を持つ。逆に、対応しない 4P が出てきたら、それは提供者の都合が紛れ込んだ合図である。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>潤沢な広告予算で Promotion を組む</b> — 資金があれば最短で届く。しかし個人開発にその原資はない。だから Communication に根ざした、記事による発見へ振り替えた。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>顧客の欲求 (4C) と提供者の打ち手 (4P) が、一対一で噛み合った。作るもの・売り方・届け方が、すべて同じ狙いを向いている。実装に進んでも、判断に迷ったら 4C に立ち返れる。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>ここまでは、あくまで「作るとき」の設計である。作ったものが実際に届くか、届いた後どう育てるかは、まだ分からない。市場に出してみなければ答え合わせはできない。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>作ったものを市場に届け、育てていく工程が <a href="marketing-management.html">3.3 マーケティングマネジメント</a> である。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="growth.html"><span class="num">3</span>マーケティング / Marketing</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="strategy-process.html"><span class="num">3.1</span>戦略プロセス</a></summary>
+            <ul>
+              <li><a href="research.html"><span class="num">3.1.1</span>Research</a></li>
+              <li><a href="stp.html"><span class="num">3.1.2</span>STP</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="marketing-mix.html"><span class="num">3.2</span>マーケティングミックス</a></summary>
+            <ul>
+              <li><a href="four-c.html"><span class="num">3.2.1</span>4C</a></li>
+              <li><a class="cur" href="four-p.html" aria-current="page"><span class="num">3.2.2</span>4P</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-management.html"><span class="num">3.3</span>マーケティングマネジメント</a></summary>
+            <ul>
+              <li><a href="discovery.html"><span class="num">3.3.1</span>発見される</a></li>
+              <li><a href="engage-check.html"><span class="num">3.3.2</span>信頼される</a></li>
+              <li><a href="fandom.html"><span class="num">3.3.3</span>ファンになる</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="improvement-loop.html"><span class="num">3.4</span>改善のループ</a></summary>
+            <ul>
+              <li><a href="observability.html"><span class="num">3.4.1</span>観測環境</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#growth">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

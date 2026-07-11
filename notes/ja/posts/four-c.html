@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#d4831f" />
+<title>4C 分析 — 顧客の欲求から組み立てる | Architecture Notes</title>
+<meta name="description" content="マーケティングミックスは 4P から語られることが多い。しかし提供者の打ち手より先に、顧客の欲求 (4C) を固めるべきだと考えている。要件を固めずに設計を始めれば手戻りが出る。個人開発で 4C を「顧客としての自分」に問うた記録。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/four-c.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="4C 分析 — 顧客の欲求から組み立てる" />
+<meta property="og:description" content="マーケティングミックスは 4P から語られることが多い。しかし提供者の打ち手より先に、顧客の欲求 (4C) を固めるべきだと考えている。要件を固めずに設計を始めれば手戻りが出る。個人開発で 4C を「顧客としての自分」に問うた記録。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/four-c.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="4C 分析 — 顧客の欲求から組み立てる" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "4C 分析 — 顧客の欲求から組み立てる",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/four-c.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "マーケティング", "item": "https://lycoapp.com/notes/ja/posts/growth.html" },
+    { "@type": "ListItem", "position": 3, "name": "マーケティングミックス", "item": "https://lycoapp.com/notes/ja/posts/marketing-mix.html" },
+    { "@type": "ListItem", "position": 4, "name": "4C", "item": "https://lycoapp.com/notes/ja/posts/four-c.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-growth">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="growth.html">マーケティング</a><span class="sep">›</span><a href="marketing-mix.html">マーケティングミックス</a><span class="sep">›</span><b>4C</b></nav>
+
+  <article>
+    <span class="cat-tag">3.2.1 · マーケティング</span>
+    <h1>4C — 顧客の欲求から組み立てる</h1>
+    <p class="a-meta"><span>2026.07.11</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>マーケティングミックスは 4P から語られることが多い。しかし提供者の打ち手より先に、顧客の欲求である 4C を固めるべきだと考えている。要件を固めずに設計を始めれば、手戻りが出るからである。4C とは Customer Value・Cost・Convenience・Communication。個人開発では、これを「顧客としての自分」に問うた。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="marketing-mix.html">3.2 マーケティングミックス</a> で、価値を届ける形に組み立てる工程に入った。要素は 4 つ — 何を、いくらで、どこで、どう伝えるか。</p>
+
+        <h2>Complication</h2>
+        <p>多くの教科書は、これを 4P (Product / Price / Place / Promotion) から説明する。しかし 4P は提供者の都合である。提供者の都合から始めると、「作れるもの」「売りたいもの」に寄ってしまい、顧客が本当に求めているものから離れていく。</p>
+
+        <h2>Question</h2>
+        <blockquote>提供者の打ち手より先に、顧客の欲求をどう掴むか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>提供者の都合ではなく、顧客の言葉で書けること</li>
+          <li>一人で、顧客としての自分に問えること</li>
+          <li>次の 4P へそのまま翻訳できる形であること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>4P の前に、<mark>4C から書く。</mark>4C は、すべてを顧客の視点に置き換えた 4 要素である。</p>
+        <ul class="body">
+          <li><b>Customer Value</b> (顧客価値) — 顧客は何を求めているか。私の場合は「自分と同じ課題が解決されること」。ドリルではなく、穴。</li>
+          <li><b>Customer Cost</b> (顧客コスト) — 顧客が払う総コスト。お金だけでなく、学習の手間や時間も含む。だから基本無料 + 少額で、学習コストの低い UI にした。</li>
+          <li><b>Convenience</b> (利便性) — どう手に入れるか。アプリストアで入れ、Web で見つけられること。</li>
+          <li><b>Communication</b> (コミュニケーション) — どう知り、どう関わるか。一方的な広告ではなく、記事を通じた対話にした。</li>
+        </ul>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>4C は要件、4P は設計だからである。</b> システム開発で、要件を固めずに設計から始めれば、必ず手戻りが出る。マーケティングも同じで、顧客が何を求めるか (4C) を先に決めなければ、提供者の打ち手 (4P) はずれる。要件定義を飛ばさない。それが 4C から始める理由である。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>4P から始める</b> — 作れるもの・売りたいものから発想が湧きやすい。ただし顧客の欲求とずれたまま設計が進むと、後で大きな手戻りになる。だから採らなかった。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>顧客としての自分の輪郭が、はっきりした。何を求め、いくらまでなら払い、どこで出会い、どう関わりたいか。提供者の打ち手を考える前に、届けるべき相手の姿が言葉になった。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>4C はあくまで欲求であって、まだ打ち手ではない。これだけでは製品も価格も決まらない。翻訳の工程が要る。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>この 4 つの欲求を、提供者の打ち手へ翻訳するのが <a href="four-p.html">3.2.2 4P</a> である。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="growth.html"><span class="num">3</span>マーケティング / Marketing</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="strategy-process.html"><span class="num">3.1</span>戦略プロセス</a></summary>
+            <ul>
+              <li><a href="research.html"><span class="num">3.1.1</span>Research</a></li>
+              <li><a href="stp.html"><span class="num">3.1.2</span>STP</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="marketing-mix.html"><span class="num">3.2</span>マーケティングミックス</a></summary>
+            <ul>
+              <li><a class="cur" href="four-c.html" aria-current="page"><span class="num">3.2.1</span>4C</a></li>
+              <li><a href="four-p.html"><span class="num">3.2.2</span>4P</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-management.html"><span class="num">3.3</span>マーケティングマネジメント</a></summary>
+            <ul>
+              <li><a href="discovery.html"><span class="num">3.3.1</span>発見される</a></li>
+              <li><a href="engage-check.html"><span class="num">3.3.2</span>信頼される</a></li>
+              <li><a href="fandom.html"><span class="num">3.3.3</span>ファンになる</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="improvement-loop.html"><span class="num">3.4</span>改善のループ</a></summary>
+            <ul>
+              <li><a href="observability.html"><span class="num">3.4.1</span>観測環境</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#growth">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

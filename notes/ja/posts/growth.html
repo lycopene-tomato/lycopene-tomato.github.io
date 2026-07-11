@@ -31,7 +31,7 @@
   "headline": "マーケティング — すべてを繋げるもの",
   "inLanguage": "ja",
   "datePublished": "2026-07-05",
-  "dateModified": "2026-07-05",
+  "dateModified": "2026-07-11",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/growth.html",
@@ -76,7 +76,7 @@
       <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
       <div class="bd">
         <aside class="tldr" aria-label="要約">
-          <p>この 3 系はターゲティング・動線設計・AISAS モデルを扱うが、その前提をここに置く。マーケティングは売り方の話ではなく「何を作るか」から始まる、開発基盤・Web・マネタイズという点をすべて繋げるものである。ドリルの穴の話は要件定義と機能要件のギャップの話そのもので、目的で語らないと UAT で悲惨なことが起きる。マーケティング = Market + ing。「何作ろっかな」と思った瞬間、すでに始まっている。</p>
+          <p>マーケティングとは「どのような価値を提供するか」から始まり、ビジネス要件、設計、開発、テスト、評価を経て利用者へ繋げ届ける事である。売り方や広告は、マーケティングの一部でしかない。ひとつひとつの点 (技術) がすべて線で繋がり、利用者へ届く — その全体がマーケティングであり、マーケティングの観点から見ると、すべてを繋げる事ができる。</p>
         </aside>
       </div>
     </section>
@@ -84,10 +84,9 @@
     <section class="blk b-jo">
       <p class="blk-h"><span class="no">01</span><span class="jp">序</span><span class="en">Jo</span></p>
       <div class="bd">
-        <p>この 3 系では、マーケティングを整理していく。最初に、マーケティングとは何か。私はこう捉えている。</p>
-        <blockquote>すべてを、繋げるもの。<br>そして、無意識に誰もがやっているもの。</blockquote>
-        <p>すべてを繋げるとは、どういうことか。無意識にやっているとは — 私も、やっているのか?</p>
-        <p>マーケティングというと売り方の話をされることが多い。だが実際は、その手前。<b>何を作るか</b>、から始まっている。順に見ていく。</p>
+        <p>マーケティングとは何か。私はこう捉えている。</p>
+        <blockquote>すべてを、繋げるもの。</blockquote>
+        <p>マーケティングは、売り方の話をされることが多い。だが実際は、「何を作るか」<b>の前から</b>始まっている。</p>
       </div>
     </section>
 
@@ -98,18 +97,19 @@
         <p>マーケティングの話でよく取り上げられる、ドリルの穴の話がある。ハーバードビジネススクール教授の Theodore Levitt 氏が著書で紹介したことで広まったとされる一節である。</p>
         <blockquote lang="en">People don't want to buy a quarter-inch drill. They want a quarter-inch hole!</blockquote>
         <p>人は 1/4 インチのドリルが欲しいのではない。1/4 インチの穴を開けたいのだ — という指摘である。</p>
-        <p>これは、<b>要件定義と機能要件のギャップ</b>の話そのものである。要件定義は「穴を開けたい」。機能要件は「電動ドリルを作る」。ここを取り違えると、UAT (受け入れテスト) で悲惨なことが待っている。心当たりのある人は多いはずだ。</p>
-        <p>気づきはもうひとつある。機能要件としては電動ドリルだが、穴が開くなら手動ドリルでも良いわけである。実装が大変になったとき、立ち返る場所はいつも目的になる。なんで電動なんだっけ。電動である必要はあるんだっけ。そもそもアタッチメントの拡張性は要るんだっけ。あ、バッテリーがなくて有線だ — これ、どこで誰が使うんだっけ。</p>
+        <p>これは我々エンジニアにとって、<mark>要件定義と機能要件のギャップ</mark>の話そのものである。要件定義は「穴を開けたい」。機能要件は「電動ドリルを作る」。ここを取り違えると、UAT (受け入れテスト) で悲惨なことが待っている。</p>
+        <p>機能要件としては電動ドリルだが、穴が開くなら手動ドリルでも良いわけである。計画がビハインドしているとき、立ち返る場所はいつも提供する価値になる。なんで電動なんだっけ。電動である必要はあるんだっけ。そもそもアタッチメントの拡張性は要るんだっけ。あ、バッテリーじゃなくて有線だ — これ、誰がどこで使うんだ?</p>
 
         <h2>Dialogue</h2>
-        <p>仕事でビジネスメンバーと話すとき、機能スペックの話をしていないだろうか。「バッテリーは 2000mA でいいですか?」と聞いても、相手は「何を言っているの?」となる。会話にならない。</p>
+        <p>仕事でビジネスメンバーと話すとき、機能スペックの話をしていると話が噛み合わない。「バッテリーは 2000mA でいいですか?」と聞いても、相手は「何を言っているの?」となる。</p>
         <p>目的に対して聞くと、こうなる。</p>
         <ul class="body">
-          <li>1/4 インチの穴を開ける相手は、硬い素材ですか? 手動だと厳しくて、電動のパワーが要りますか?</li>
+          <li>穴を開ける物は、硬い素材ですか?</li>
+          <li>手動だと厳しくて、電動である必要がありますか?</li>
           <li>使う場所は固定ですか? 移動しますか?</li>
           <li>1 時間くらい連続で動けば、足りますか?</li>
         </ul>
-        <p>分かりました、では連続稼働 1 時間 (2000mA) で設計します — これで初めて会話になる。<b>常に目的に対して語らないと、大きく外す</b>。マーケティングは、システム開発においてそれだけ重要なファクターである。</p>
+        <p>分かりました、では連続稼働 1 時間 (2000mA) で設計します — これで初めて会話になる。<b>常に提供する価値に対して語らないと、会話にならず、設計を大きく外すことがある</b>。マーケティングは、システム開発においても重要なファクターである。</p>
       </div>
     </section>
 
@@ -117,13 +117,10 @@
       <p class="blk-h"><span class="no">03</span><span class="jp">急</span><span class="en">Kyu</span></p>
       <div class="bd">
         <h2>Market + ing</h2>
-        <p>では、マーケティングとは何だったか。Marketing とは、市場 (Market) に現在進行形 (ing) を組み合わせた言葉である。だから、マーケティングの前に、まずマーケット (市場) を決めなければならない。</p>
-        <p>そして、ここが肝心なところで — 開発基盤ができて「何作ろっかなー」と思ったその瞬間、あなたはすでにマーケティングを始めている。出来上がったものをどう売るかがスコープにされがちだが、マーケティングは「何を作ろう」から始まっているのである。</p>
+        <p>マーケティングで始めにやる事は何か。Marketing とは、市場 (Market) に現在進行形 (ing) を組み合わせた言葉である。だからマーケティングの前に、まずマーケット (市場) を決めなければならない。</p>
 
         <h2>Connect</h2>
-        <p><a href="dev.html">1 AI 駆動スマホ開発 (開発基盤)</a>も、2 Web ページ作成 (作成中) も、<a href="monetize.html">4 マネタイズ</a>も、それぞれは仕組みであり、点である。これらを含む、すべてを繋げるもの — それがマーケティングだと思っている。</p>
-        <p>プロダクトとは、困っている人にサービスを届けて (繋げて)、助けるものである。だから、点を作って終わりにはできない。繋げるところまでが、作ることの続きにある。</p>
-        <p>では、初めにマーケットの定義から決めていきたい。続きは 3.1 ターゲティング (作成中)。さぁ、始めよう。</p>
+        <p>本セクションでは、個人開発においてのマーケティングを考えていきたいと思う。</p>
       </div>
     </section>
   </article>
@@ -132,11 +129,34 @@
     <p class="tn-h">サイトマップ</p>
     <ul class="tn">
       <li><details open>
-        <summary class="cur"><span class="caret">▸</span><a href="growth.html" aria-current="page"><span class="num">3</span>マーケティング</a></summary>
+        <summary class="cur"><span class="caret">▸</span><a href="growth.html" aria-current="page"><span class="num">3</span>マーケティング / Marketing</a></summary>
         <ul>
-          <li><span class="tn-wip"><span class="num">3.1</span>ターゲティング</span></li>
-          <li><span class="tn-wip"><span class="num">3.2</span>動線設計</span></li>
-          <li><span class="tn-wip"><span class="num">3.3</span>AISAS モデル</span></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="strategy-process.html"><span class="num">3.1</span>戦略プロセス</a></summary>
+            <ul>
+              <li><a href="research.html"><span class="num">3.1.1</span>Research</a></li>
+              <li><a href="stp.html"><span class="num">3.1.2</span>STP</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-mix.html"><span class="num">3.2</span>マーケティングミックス</a></summary>
+            <ul>
+              <li><a href="four-c.html"><span class="num">3.2.1</span>4C</a></li>
+              <li><a href="four-p.html"><span class="num">3.2.2</span>4P</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-management.html"><span class="num">3.3</span>マーケティングマネジメント</a></summary>
+            <ul>
+              <li><a href="discovery.html"><span class="num">3.3.1</span>発見される</a></li>
+              <li><a href="engage-check.html"><span class="num">3.3.2</span>信頼される</a></li>
+              <li><a href="fandom.html"><span class="num">3.3.3</span>ファンになる</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="improvement-loop.html"><span class="num">3.4</span>改善のループ</a></summary>
+            <ul><li><a href="observability.html"><span class="num">3.4.1</span>観測環境</a></li></ul>
+          </details></li>
         </ul>
       </details></li>
     </ul>
