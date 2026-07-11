@@ -157,7 +157,7 @@ iPhone → GitHub → GitHub Actions → EAS (submit)
         <h2 class="f">Follow-up</h2>
         <p>EAS の無料枠 build は優先度が低く、キュー待ちが異様に長いことがある。気長に待てばいいのだが、ここに落とし穴がある。<b>Actions 上で build の完了を待っていると、その待ち時間が Actions の 2,000 分/月からも消費されていく</b>。待っても待たなくても build の結果は同じなので、<code>eas build</code> には <code>--no-wait</code> を付けて、trigger したら workflow を即終了させるのが正解である。</p>
         <p>その代わり build と submit が 1 本の workflow で繋がらなくなるので、EAS のダッシュボードで build の成功を確認してから、Actions で submit を実行する、という 2 段運用にしている。submit 側も同様に <code>--no-wait</code> が使える。</p>
-        <p>ここまでで「作って届ける」の縦の線が通った。次は横に広げる話 — 多言語対応 (1.2) に続く。(作成中)</p>
+        <p>ここまでで「作って届ける」の縦の線が通った。まずはこれでリリースできる。リリースが済んだら、OTA を安全に運用する設定 — 開発用と公開用の配信経路を分ける <a href="ota-channels.html">1.1.3 EAS Update の安全な運用</a> — を入れて、改修時の誤配信を防いでおきたい。次は横に広げる話、多言語対応 (1.2) に続く。(作成中)</p>
       </div>
     </section>
   </article>
@@ -173,6 +173,7 @@ iPhone → GitHub → GitHub Actions → EAS (submit)
             <ul>
               <li><a href="mobile-dev.html"><span class="num">1.1.1</span>iPhone だけでアプリを実装する</a></li>
               <li><a class="cur" href="cloud-build.html" aria-current="page"><span class="num">1.1.2</span>Mac なしで build する</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>OTA の安全な運用</a></li>
             </ul>
           </details></li>
           <li><span class="tn-wip"><span class="num">1.2</span>多言語対応 (50 ロケール)</span></li>

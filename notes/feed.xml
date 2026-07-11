@@ -12,6 +12,13 @@
   </author>
   <!-- 記事公開時にここへ <entry> を追加する (新しいものを上に) -->
   <entry>
+    <title>EAS Update の安全な運用 — stg / prd 分離で誤配信を防ぐ</title>
+    <id>https://lycoapp.com/notes/ja/posts/ota-channels.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/ota-channels.html" />
+    <updated>2026-07-11T00:00:00+09:00</updated>
+    <summary>OTA は便利だが、運用を誤ると開発中のコードが公開ユーザーへ配信される事故につながる。配信経路を stg (開発) と prd (公開) に分け、runtimeVersion を appVersion に固定する。OTA が届く条件「channel 一致 AND runtimeVersion 一致」で、誤配信とクラッシュを構造的に防ぐ運用の記録。</summary>
+  </entry>
+  <entry>
     <title>マーケティング戦略プロセス — 作る前に Research と STP で価値を決める</title>
     <id>https://lycoapp.com/notes/ja/posts/strategy-process.html</id>
     <link href="https://lycoapp.com/notes/ja/posts/strategy-process.html" />
