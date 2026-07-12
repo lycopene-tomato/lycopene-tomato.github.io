@@ -40,7 +40,27 @@
     const formula = category.formula || {};
     const story = category.story || {};
     const empathy = story.empathy || {};
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(window.SiteHeader, { pathPrefix: prefix, currentCategoryId: categoryId }), /* @__PURE__ */ React.createElement("div", { style: { background: accent.soft, minHeight: "100vh" } }, (() => {
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(window.SiteHeader, { pathPrefix: prefix, currentCategoryId: categoryId }), /* @__PURE__ */ React.createElement("div", { style: { background: accent.soft, minHeight: "100vh" } }, /* @__PURE__ */ React.createElement("style", null, `
+        .emp-lines p, .lineup-title { text-wrap: balance; }
+        :lang(ja) .emp-lines p, :lang(ja) .emp-tried span, :lang(ja) .emp-pivot, :lang(ja) .emp-idea-box, :lang(ja) .lineup-title,
+        :lang(ko) .emp-lines p, :lang(ko) .emp-tried span, :lang(ko) .emp-pivot, :lang(ko) .emp-idea-box, :lang(ko) .lineup-title {
+          word-break: keep-all;
+          overflow-wrap: anywhere;
+        }
+        :lang(ja) .emp-lines p, :lang(ja) .emp-tried span, :lang(ja) .emp-pivot, :lang(ja) .emp-idea-box, :lang(ja) .lineup-title {
+          word-break: auto-phrase;
+        }
+        @media (max-width: 480px) {
+          #empathy { padding-top: 48px !important; padding-bottom: 48px !important; }
+          .emp-box { padding: 24px 20px !important; }
+          .emp-lines p { line-height: 2 !important; }
+          .emp-tried { margin-top: 32px !important; }
+          .emp-pivot, .emp-idea-box { white-space: normal !important; text-wrap: balance; }
+          .emp-pivot { margin-top: 30px !important; line-height: 1.95 !important; }
+          .emp-idea { margin-top: 28px !important; }
+          .emp-idea-box { padding: 20px 16px !important; line-height: 1.9 !important; }
+        }
+      `), (() => {
       const nextBg = empathy.lines ? "#fff" : accent.soft;
       return /* @__PURE__ */ React.createElement(
         "section",
@@ -64,21 +84,7 @@
         /* @__PURE__ */ React.createElement("div", { style: { position: "relative" } }, /* @__PURE__ */ React.createElement("div", { className: "hero-formula", style: { display: "flex", flexDirection: "column", gap: 4, alignItems: "center", marginBottom: 16 } }, /* @__PURE__ */ React.createElement("div", { className: "hero-formula__line", style: { whiteSpace: "nowrap", fontWeight: 700, lineHeight: 1.1, fontFamily: "var(--font-display, inherit)", letterSpacing: "0.02em" } }, /* @__PURE__ */ React.createElement("span", { style: { color: accent.deep } }, formula.a), /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .15em", opacity: 0.55 } }, "\xD7"), /* @__PURE__ */ React.createElement("span", null, formula.b)), /* @__PURE__ */ React.createElement("div", { className: "hero-formula__line", style: { whiteSpace: "nowrap", fontWeight: 700, lineHeight: 1.1, fontFamily: "var(--font-display, inherit)", letterSpacing: "0.02em" } }, /* @__PURE__ */ React.createElement("span", { style: { margin: "0 .15em", opacity: 0.55 } }, "="), /* @__PURE__ */ React.createElement("span", { style: { color: accent.deep } }, formula.c))), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 16, fontWeight: 700, marginBottom: 8, fontFamily: "var(--font-display, inherit)" } }, story.tagline), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 13, opacity: 0.85, whiteSpace: "pre-line" } }, story.intro)),
         /* @__PURE__ */ React.createElement(window.WaveStack, { accentC: accent.c, topColor: nextBg, height: 64 })
       );
-    })(), empathy.lines && /* @__PURE__ */ React.createElement("section", { id: "empathy", className: "reveal", "data-snap": true, "data-progress-color": accent.c, style: { padding: "clamp(60px, 8vw, 80px) 24px", background: "#fff", scrollMarginTop: 80 } }, /* @__PURE__ */ React.createElement("style", null, `
-            .emp-lines p { text-wrap: balance; }
-            /* ja \u306E\u307F\u6709\u52B9: \u6587\u7BC0\u5358\u4F4D\u306E\u6298\u308A\u8FD4\u3057 (BudouX)\u3002\u975E\u5BFE\u5FDC\u30D6\u30E9\u30A6\u30B6\u30FB\u4ED6\u8A00\u8A9E\u3067\u306F\u5358\u306B\u7121\u8996\u3055\u308C\u308B */
-            .emp-lines p, .emp-tried span, .emp-pivot, .emp-idea-box { word-break: auto-phrase; }
-            @media (max-width: 480px) {
-              #empathy { padding-top: 48px !important; padding-bottom: 48px !important; }
-              .emp-box { padding: 24px 20px !important; }
-              .emp-lines p { line-height: 2 !important; }
-              .emp-tried { margin-top: 32px !important; }
-              .emp-pivot, .emp-idea-box { white-space: normal !important; text-wrap: balance; }
-              .emp-pivot { margin-top: 30px !important; line-height: 1.95 !important; }
-              .emp-idea { margin-top: 28px !important; }
-              .emp-idea-box { padding: 20px 16px !important; line-height: 1.9 !important; }
-            }
-          `), /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 13, color: "#8B7355", letterSpacing: 3, textAlign: "center", marginBottom: 12 } }, "\u2014 ", empathy.label, " \u2014"), /* @__PURE__ */ React.createElement("div", { className: "emp-box emp-lines", style: {
+    })(), empathy.lines && /* @__PURE__ */ React.createElement("section", { id: "empathy", className: "reveal", "data-snap": true, "data-progress-color": accent.c, style: { padding: "clamp(60px, 8vw, 80px) 24px", background: "#fff", scrollMarginTop: 80 } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 13, color: "#8B7355", letterSpacing: 3, textAlign: "center", marginBottom: 12 } }, "\u2014 ", empathy.label, " \u2014"), /* @__PURE__ */ React.createElement("div", { className: "emp-box emp-lines", style: {
       background: "#FBF6EE",
       border: "2px dashed #D8C5A8",
       borderRadius: 16,
@@ -105,6 +111,6 @@
       fontWeight: 700,
       whiteSpace: "pre-line",
       fontFamily: "var(--font-display, inherit)"
-    } }, empathy.idea)))), /* @__PURE__ */ React.createElement("section", { className: "reveal", "data-snap": true, "data-progress-color": accent.c, style: { padding: "32px 16px 40px", maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 4 } }, t.lineup && t.lineup.label || "LINEUP"), /* @__PURE__ */ React.createElement("h2", { style: { fontSize: 22, fontWeight: 700, margin: "0 0 16px", fontFamily: "var(--font-display, inherit)", letterSpacing: "0.01em" } }, category && category.lineup_title || t.lineup && t.lineup.title || ""), /* @__PURE__ */ React.createElement("div", { className: "lineup-grid", style: { display: "grid", gap: 16 } }, category.apps.map((app, i) => /* @__PURE__ */ React.createElement(window.AppCard, { key: app.id, app, idx: i, category, pathPrefix: prefix })))), t.categories && t.categories.length > 1 && /* @__PURE__ */ React.createElement(window.CatNavPatternE, { t, currentId: categoryId, prefix, accent }), /* @__PURE__ */ React.createElement(window.AllAppsList, { pathPrefix: prefix, currentCategoryId: categoryId })), /* @__PURE__ */ React.createElement(window.SiteFooter, { pathPrefix: prefix, currentCategoryId: categoryId }));
+    } }, empathy.idea)))), /* @__PURE__ */ React.createElement("section", { className: "reveal", "data-snap": true, "data-progress-color": accent.c, style: { padding: "32px 16px 40px", maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 4 } }, t.lineup && t.lineup.label || "LINEUP"), /* @__PURE__ */ React.createElement("h2", { className: "lineup-title", style: { fontSize: 22, fontWeight: 700, margin: "0 0 16px", fontFamily: "var(--font-display, inherit)", letterSpacing: "0.01em" } }, category && category.lineup_title || t.lineup && t.lineup.title || ""), /* @__PURE__ */ React.createElement("div", { className: "lineup-grid", style: { display: "grid", gap: 16 } }, category.apps.map((app, i) => /* @__PURE__ */ React.createElement(window.AppCard, { key: app.id, app, idx: i, category, pathPrefix: prefix })))), t.categories && t.categories.length > 1 && /* @__PURE__ */ React.createElement(window.CatNavPatternE, { t, currentId: categoryId, prefix, accent }), /* @__PURE__ */ React.createElement(window.AllAppsList, { pathPrefix: prefix, currentCategoryId: categoryId })), /* @__PURE__ */ React.createElement(window.SiteFooter, { pathPrefix: prefix, currentCategoryId: categoryId }));
   };
 })();
