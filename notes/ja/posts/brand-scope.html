@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>ブランド基盤はどこまで作るべきか — 名前・ロゴ・ドメインの 3 つ | Architecture Notes</title>
+<meta name="description" content="個人開発でブランドをどこまで作るか。採用したのはブランド名・ロゴ・独自ドメインの 3 つだけ。ブランド名を決めれば AI でロゴが作れ、そのままドメインも取れる。たった一度の意思決定で基盤の大部分が完成する。ブランドを支えるのは軌跡であり、軌跡だけは後から作れない。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/brand-scope.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="ブランド基盤はどこまで作るべきか — 名前・ロゴ・ドメインの 3 つ" />
+<meta property="og:description" content="個人開発でブランドをどこまで作るか。採用したのはブランド名・ロゴ・独自ドメインの 3 つだけ。ブランド名を決めれば AI でロゴが作れ、そのままドメインも取れる。たった一度の意思決定で基盤の大部分が完成する。ブランドを支えるのは軌跡であり、軌跡だけは後から作れない。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/brand-scope.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ブランド基盤はどこまで作るべきか — 名前・ロゴ・ドメインの 3 つ" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "ブランド基盤はどこまで作るべきか — 名前・ロゴ・ドメインの 3 つ",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/brand-scope.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "ブランド基盤", "item": "https://lycoapp.com/notes/ja/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "ブランドのメリット", "item": "https://lycoapp.com/notes/ja/posts/brand-merit.html" },
+    { "@type": "ListItem", "position": 4, "name": "どこまで作るか", "item": "https://lycoapp.com/notes/ja/posts/brand-scope.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="brand.html">ブランド基盤</a><span class="sep">›</span><a href="brand-merit.html">ブランドのメリット</a><span class="sep">›</span><b>どこまで作るか</b></nav>
+
+  <article>
+    <span class="cat-tag">2.1.1 · ブランド基盤</span>
+    <h1>ブランド基盤はどこまで作るべきか</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>個人開発でブランドをどこまで作るか。私が採用したのは、ブランド名・ロゴ・独自ドメインの 3 つだけである。ブランド名を決めれば AI でロゴが作れ、そのまま独自ドメインも取得できる。たった一度の意思決定で、ブランド基盤の大部分が完成する。ブランドを支えるのはロゴでも商標でもなく、積み重ねた軌跡であり、軌跡だけは後から作ることができない。だから、最低限の 3 つだけを最初に整えることにした。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="brand-merit.html">2.1</a> で、個人開発でもブランドを考えるメリットがあると書いた。意思決定がぶれず、作業が効率化され、軌跡が残る。</p>
+
+        <h2>Complication</h2>
+        <p>とはいえ、企業のようにフルセットで整えるのは無理がある。Vision・Mission・Value、何十ページものブランドガイドライン、商標登録。個人開発で最初からこれをやると、肝心のプロダクトに手が回らない。</p>
+
+        <h2>Question</h2>
+        <blockquote>個人開発で、ブランドはどこまで作れば十分なのか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>一度の意思決定で、基盤の大部分がまとまること</li>
+          <li>低コストで整えられること</li>
+          <li>後から足したり作り直したりできること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>採用したのは、<mark>ブランド名・ロゴ・独自ドメインの 3 つだけ</mark>である。それ以外 — ガイドラインも商標も — 最初はやらない。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>この 3 つは、一本の線でつながっているからである。</b> まずブランド名を決める。名前が決まれば、その世界観を AI に渡してロゴが作れる。ロゴまで決まれば、同じ名前で独自ドメインも取得できる。<mark>たった一度「名前を決める」という意思決定から、基盤の大部分が芋づる式に完成する。</mark>しかも、どれも AI と無料ツールで低コストに用意できる。</p>
+          <p>そして、もう一つ理由がある。ブランドを支えているのは、ロゴでも商標でもない。積み重ねた軌跡である。名前もロゴも後から変えられるが、<mark>軌跡だけは、後から作ることができない。</mark>だからこそ、軌跡を貯め始めるための最低限の器 — 名前・ロゴ・ドメイン — を、最初に用意しておく。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>企業型のフルセット (Vision/Mission/Value + ガイドライン + 商標)</b> — 精緻で強固だが、個人開発には過剰で、コストも時間もかかる。必要になったときに足せばよいと判断し、最初は採らなかった。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>3 つに絞ったことで、ブランド基盤が最小コストで立ち上がった。名前を一度決めるだけで、ロゴもドメインも連鎖的に決まっていく。プロダクト開発に使う時間を、ほとんど削らずに済む。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>3 つを揃えても、それ自体はまだ「器」でしかない。軌跡が貯まって信用に変わるまでには、時間がかかる。基盤を作った初日に効果が出るわけではない。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>では、その出発点になるブランド名を、どう決めるか。続きは <a href="brand-name.html">2.2 ブランド名を決める</a>。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>ブランド基盤 / Brand</a></summary>
+        <ul>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>ブランドのメリット</a></summary>
+            <ul>
+              <li><a class="cur" href="brand-scope.html" aria-current="page"><span class="num">2.1.1</span>どこまで作るか</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>ブランド名を決める</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>AI と名前を決める</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>ロゴを作る</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>AI でロゴを作る</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>独自ドメイン</a></summary>
+            <ul>
+              <li><a href="domain-register.html"><span class="num">2.4.1</span>ドメイン取得</a></li>
+              <li><a href="web-publish.html"><span class="num">2.4.2</span>Web サイト公開</a></li>
+              <li><a href="domain-email.html"><span class="num">2.4.3</span>独自メール</a></li>
+              <li><a href="admob-setup.html"><span class="num">2.4.4</span>AdMob 設定</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>検索へ登録</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

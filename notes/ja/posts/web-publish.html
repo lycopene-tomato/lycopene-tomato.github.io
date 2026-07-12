@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>Web サイトを公開する — GitHub Pages に独自ドメインをつなぐ | Architecture Notes</title>
+<meta name="description" content="取得した独自ドメインに Web サイトを載せる。選んだのは GitHub Pages + 静的サイト。A レコードと CNAME を設定するだけで独自ドメインにつながる。規模が耐えられなくなったら DNS の向き先を変えるだけで引っ越せるので、まずは静的で始めた。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/web-publish.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Web サイトを公開する — GitHub Pages に独自ドメインをつなぐ" />
+<meta property="og:description" content="取得した独自ドメインに Web サイトを載せる。選んだのは GitHub Pages + 静的サイト。A レコードと CNAME を設定するだけで独自ドメインにつながる。規模が耐えられなくなったら DNS の向き先を変えるだけで引っ越せるので、まずは静的で始めた。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/web-publish.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Web サイトを公開する — GitHub Pages に独自ドメインをつなぐ" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Web サイトを公開する — GitHub Pages に独自ドメインをつなぐ",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/web-publish.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "ブランド基盤", "item": "https://lycoapp.com/notes/ja/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "独自ドメイン", "item": "https://lycoapp.com/notes/ja/posts/domain.html" },
+    { "@type": "ListItem", "position": 4, "name": "Web サイト公開", "item": "https://lycoapp.com/notes/ja/posts/web-publish.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="brand.html">ブランド基盤</a><span class="sep">›</span><a href="domain.html">独自ドメイン</a><span class="sep">›</span><b>Web サイト公開</b></nav>
+
+  <article>
+    <span class="cat-tag">2.4.2 · ブランド基盤</span>
+    <h1>Web サイトを公開する</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>取得した独自ドメインに、Web サイトを載せる。選んだのは GitHub Pages に静的サイトを置く構成。DNS に A レコードと CNAME を設定するだけで、独自ドメインにつながる。設定は簡単で無料。将来 GitHub Pages で耐えられない規模になっても、DNS の向き先を変えるだけで引っ越せる。だから、まずは静的サイトで十分だと判断した。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="domain-register.html">2.4.1</a> で独自ドメインを取得した。次は、そこに実際の Web サイトを載せて公開する。</p>
+
+        <h2>Complication</h2>
+        <p>Web サイトのホスティング先は選択肢が多い。動的サイトにすればできることは増えるが、そのぶんサーバー管理やコストがのしかかる。個人開発の初期に、そこまで抱え込みたくない。</p>
+
+        <h2>Question</h2>
+        <blockquote>独自ドメインに、どうやって低コストで Web サイトを載せるか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>無料か、それに近い低コストで公開できること</li>
+          <li>独自ドメインに簡単につなげること</li>
+          <li>後から別のホスティングへ移せること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p><mark>GitHub Pages に静的サイトを置き、独自ドメインをつないだ。</mark>DNS に A レコード (ルートドメイン用) と CNAME を設定するだけで、独自ドメインで表示できる。設定はすぐ終わる。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>静的サイトは、速くて安全で、しかも安いからである。</b> サーバーサイドの処理がないぶん表示は速く、攻撃される面も小さく、GitHub Pages なら無料で公開できる。そして重要なのが移動のしやすさで、<mark>GitHub Pages で耐えられない規模になっても、DNS の向き先を変えるだけで別のホスティングへ引っ越せる。</mark>独自ドメインを自分で持っているからこそ、この身軽さが手に入る。だから、まずは静的ルーティングで始めて、動的にするかは後から考えることにした。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Vercel などで動的サイトにする</b> — できることは増えるが、初期には過剰。必要になってから移ればよく、独自ドメインがあるので移行も向き先の変更で済む。だから今は静的にした。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>独自ドメインで、無料の静的サイトが公開できた。表示は速く、運用の手間もほとんどない。ブランドの「顔」になる Web サイトが、コストをかけずに立ち上がった。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>静的サイトなので、サーバー側で動く処理はできない。フォーム送信やログインのような機能が必要になったら、その部分だけ別の仕組みを足すか、動的ホスティングへ移す判断が要る。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>サイトが公開できたら、同じドメインでもう一つ作れるものがある。独自メールアドレスである。続きは <a href="domain-email.html">2.4.3 独自メールを作る</a>。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>ブランド基盤 / Brand</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>ブランドのメリット</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>どこまで作るか</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>ブランド名を決める</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>AI と名前を決める</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>ロゴを作る</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>AI でロゴを作る</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>独自ドメイン</a></summary>
+            <ul>
+              <li><a href="domain-register.html"><span class="num">2.4.1</span>ドメイン取得</a></li>
+              <li><a class="cur" href="web-publish.html" aria-current="page"><span class="num">2.4.2</span>Web サイト公開</a></li>
+              <li><a href="domain-email.html"><span class="num">2.4.3</span>独自メール</a></li>
+              <li><a href="admob-setup.html"><span class="num">2.4.4</span>AdMob 設定</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>検索へ登録</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

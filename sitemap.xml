@@ -1750,6 +1750,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/" />
   </url>
   <url>
+    <loc>https://lycoapp.com/notes/ja/posts/admob-setup.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
     <loc>https://lycoapp.com/notes/ja/posts/admob.html</loc>
     <lastmod>2026-07-07</lastmod>
   </url>
@@ -1762,6 +1766,26 @@
     <lastmod>2026-07-07</lastmod>
   </url>
   <url>
+    <loc>https://lycoapp.com/notes/ja/posts/brand-merit.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/brand-name-ai.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/brand-name.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/brand-scope.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/brand.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
     <loc>https://lycoapp.com/notes/ja/posts/cloud-build.html</loc>
     <lastmod>2026-07-05</lastmod>
   </url>
@@ -1772,6 +1796,18 @@
   <url>
     <loc>https://lycoapp.com/notes/ja/posts/discovery.html</loc>
     <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/domain-email.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/domain-register.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/domain.html</loc>
+    <lastmod>2026-07-12</lastmod>
   </url>
   <url>
     <loc>https://lycoapp.com/notes/ja/posts/engage-check.html</loc>
@@ -1800,6 +1836,14 @@
   <url>
     <loc>https://lycoapp.com/notes/ja/posts/improvement-loop.html</loc>
     <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/logo-ai.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/logo.html</loc>
+    <lastmod>2026-07-12</lastmod>
   </url>
   <url>
     <loc>https://lycoapp.com/notes/ja/posts/marketing-management.html</loc>
@@ -1846,11 +1890,19 @@
     <lastmod>2026-07-11</lastmod>
   </url>
   <url>
+    <loc>https://lycoapp.com/notes/ja/posts/search-console.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
     <loc>https://lycoapp.com/notes/ja/posts/stp.html</loc>
     <lastmod>2026-07-11</lastmod>
   </url>
   <url>
     <loc>https://lycoapp.com/notes/ja/posts/strategy-process.html</loc>
     <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/notes/ja/posts/web-publish.html</loc>
+    <lastmod>2026-07-12</lastmod>
   </url>
 </urlset>

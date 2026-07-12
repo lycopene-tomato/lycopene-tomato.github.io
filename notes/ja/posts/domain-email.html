@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>独自メールを作る — ImprovMX で Gmail へ無料転送する | Architecture Notes</title>
+<meta name="description" content="独自ドメインのメールアドレスを、ImprovMX で用意した。MX レコードを追加すると、@ドメイン 宛のメールがすべて自分の Gmail へ無料で転送される。キャッチオール設定なので用途別アドレスを無限に作れる。まずは受信だけ整えた記録。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/domain-email.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="独自メールを作る — ImprovMX で Gmail へ無料転送する" />
+<meta property="og:description" content="独自ドメインのメールアドレスを、ImprovMX で用意した。MX レコードを追加すると、@ドメイン 宛のメールがすべて自分の Gmail へ無料で転送される。キャッチオール設定なので用途別アドレスを無限に作れる。まずは受信だけ整えた記録。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/domain-email.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="独自メールを作る — ImprovMX で Gmail へ無料転送する" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "独自メールを作る — ImprovMX で Gmail へ無料転送する",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/domain-email.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "ブランド基盤", "item": "https://lycoapp.com/notes/ja/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "独自ドメイン", "item": "https://lycoapp.com/notes/ja/posts/domain.html" },
+    { "@type": "ListItem", "position": 4, "name": "独自メール", "item": "https://lycoapp.com/notes/ja/posts/domain-email.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="brand.html">ブランド基盤</a><span class="sep">›</span><a href="domain.html">独自ドメイン</a><span class="sep">›</span><b>独自メール</b></nav>
+
+  <article>
+    <span class="cat-tag">2.4.3 · ブランド基盤</span>
+    <h1>独自メールを作る</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>独自ドメインのメールアドレスを用意した。使ったのは ImprovMX。DNS に MX レコードを追加すると、<mark>@ドメイン 宛のメールがすべて、自分の 1 つの Gmail へ無料で転送される</mark>。キャッチオール設定にしたので、contact@ でも hello@ でも、用途別のアドレスを無限に作れる。ドメインメールは信頼感があり、見た目にも締まる。まずは受信だけを整えた。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="web-publish.html">2.4.2</a> で Web サイトが独自ドメインで公開できた。同じドメインで、メールアドレスも作れる。</p>
+
+        <h2>Complication</h2>
+        <p>しかし、独自ドメインのメールサーバーを自前で立てるのは大げさで、運用も重い。かといって、問い合わせ先が個人の Gmail アドレスむき出しだと、ブランドとしては少し締まらない。</p>
+
+        <h2>Question</h2>
+        <blockquote>独自ドメインのメールを、低コストで、無理なく受け取るには?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>独自ドメインのアドレスで受信できること</li>
+          <li>サーバーを自前で持たず、低コストで運用できること</li>
+          <li>普段使いのメール環境で読めること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p><mark>ImprovMX を使って、独自ドメイン宛のメールを Gmail へ転送した。</mark>DNS に ImprovMX 用の MX レコードを追加するだけで、@ドメイン 宛のメールが、自分がいつも使っている 1 つの Gmail に届くようになる。しかもキャッチオール (すべて転送) 設定にしたので、任意の名前@ドメインが有効になり、用途ごとにアドレスを無限に作れる。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>独自ドメインのメールは、信頼と使い勝手を同時に満たすからである。</b> 問い合わせ先が独自ドメインのアドレスだと、それだけで受け手の安心感が違う。Web サイトの印象や SEO の観点でも、ドメインメールの方が好ましく、かっこいい。しかも ImprovMX の転送なら、メールサーバーを自前で持たずに済み、届いたメールは普段の Gmail でそのまま読める。<mark>独自ドメインを持っているからこそ、無料でこれができる。</mark></p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>メールサーバーを自前で構築する</b> — 自由度は高いが、運用も維持コストも重い。個人開発には過剰なので採らなかった。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>独自ドメインのアドレスで、メールを受け取れるようになった。用途別のアドレスを好きなだけ作れて、すべて 1 つの Gmail に集約される。ブランドの窓口が、コストゼロで整った。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>無料で整えたのは、あくまで「受信 (転送)」まで。独自ドメインのアドレスから送信するには、ImprovMX では有料プランになったり、別の送信手段を用意する必要がある。今回は、まず受け取れれば十分と考え、受信だけにした。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>Web とメールがドメインに乗った。次は、アプリ広告の信頼性を支える設定 — AdMob の認証にドメインを使う。続きは <a href="admob-setup.html">2.4.4 AdMob を設定する</a>。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>ブランド基盤 / Brand</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>ブランドのメリット</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>どこまで作るか</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>ブランド名を決める</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>AI と名前を決める</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>ロゴを作る</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>AI でロゴを作る</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>独自ドメイン</a></summary>
+            <ul>
+              <li><a href="domain-register.html"><span class="num">2.4.1</span>ドメイン取得</a></li>
+              <li><a href="web-publish.html"><span class="num">2.4.2</span>Web サイト公開</a></li>
+              <li><a class="cur" href="domain-email.html" aria-current="page"><span class="num">2.4.3</span>独自メール</a></li>
+              <li><a href="admob-setup.html"><span class="num">2.4.4</span>AdMob 設定</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>検索へ登録</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

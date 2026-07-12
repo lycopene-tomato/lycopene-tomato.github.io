@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>AdMob を設定する — app-ads.txt でドメインが広告を保証する | Architecture Notes</title>
+<meta name="description" content="アプリで AdMob 広告を出すために、独自ドメインのルートに app-ads.txt を置いてパブリッシャー認証を通した。app-ads.txt は IAB 標準の宣言ファイルで、なりすまし在庫を排除し収益の取りこぼしを防ぐ。独自ドメインを持っていることが、そのまま広告の信頼性になる。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/admob-setup.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AdMob を設定する — app-ads.txt でドメインが広告を保証する" />
+<meta property="og:description" content="アプリで AdMob 広告を出すために、独自ドメインのルートに app-ads.txt を置いてパブリッシャー認証を通した。app-ads.txt は IAB 標準の宣言ファイルで、なりすまし在庫を排除し収益の取りこぼしを防ぐ。独自ドメインを持っていることが、そのまま広告の信頼性になる。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/admob-setup.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AdMob を設定する — app-ads.txt でドメインが広告を保証する" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AdMob を設定する — app-ads.txt でドメインが広告を保証する",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/admob-setup.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "ブランド基盤", "item": "https://lycoapp.com/notes/ja/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "独自ドメイン", "item": "https://lycoapp.com/notes/ja/posts/domain.html" },
+    { "@type": "ListItem", "position": 4, "name": "AdMob 設定", "item": "https://lycoapp.com/notes/ja/posts/admob-setup.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="brand.html">ブランド基盤</a><span class="sep">›</span><a href="domain.html">独自ドメイン</a><span class="sep">›</span><b>AdMob 設定</b></nav>
+
+  <article>
+    <span class="cat-tag">2.4.4 · ブランド基盤</span>
+    <h1>AdMob を設定する</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>アプリで AdMob 広告を出すために、独自ドメインのルート直下に app-ads.txt を置き、パブリッシャー認証を通した。app-ads.txt は IAB 標準の宣言ファイルで、「このドメインの持ち主が、この広告アカウントの在庫を正規に販売する権利を認めている」ことを示す。なりすまし在庫を排除し、収益の取りこぼしを防ぐ。<mark>独自ドメインを持っていることが、そのまま広告の信頼性になる。</mark></p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="web-publish.html">2.4.2</a> で Web サイトが独自ドメインで公開できた。アプリ側では、AdMob で広告を出して収益化する。</p>
+
+        <h2>Complication</h2>
+        <p>しかし、広告在庫には「なりすまし」の問題がある。第三者が「自分がそのアプリの広告枠を売っている」と偽ると、広告主は不信感から出稿を控え、正規のパブリッシャーの収益が取りこぼされる。何もしないと、自分が正規の売り手だと証明できない。</p>
+
+        <h2>Question</h2>
+        <blockquote>自分が正規の広告在庫の持ち主だと、どう証明するか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>公式の仕組みで正規パブリッシャーだと認証されること</li>
+          <li>独自ドメインを使って証明できること</li>
+          <li>一度置けば済む、手間の少ない方法であること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p><mark>独自ドメインのルート直下に app-ads.txt を置いた。</mark>中身に AdMob のパブリッシャー ID を記載しておくと、「このドメインの持ち主が、この広告アカウントの在庫を正規に売っている」と宣言できる。ファイル 1 枚を置くだけである。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>app-ads.txt は、ドメインの所有者だけが置ける宣言だからである。</b> これは IAB (業界標準化団体) が定めた仕組みで、広告主やプラットフォームは、アプリに紐づくドメインの app-ads.txt を見て、売り手が正規かどうかを確認する。<mark>独自ドメインを自分で持っているからこそ、この認証が置ける。</mark>なりすまし在庫が排除され、広告主が安心して出稿でき、結果として収益の取りこぼしが防げる。ドメインという資産が、そのまま広告の信頼性を支えている。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>app-ads.txt を設定しない</b> — 手間はないが、正規パブリッシャーと認証されず、配信や収益で不利になる。独自ドメインがある以上、置かない理由がない。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>ドメイン直下の app-ads.txt 1 枚で、正規の広告在庫として認証されるようになった。独自ドメインを持っているという事実が、そのままアプリ広告の信頼性に変換された。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>app-ads.txt はクローラが拾って反映するまでにラグがある。また、記述を 1 文字でも間違えると認証が通らないので、パブリッシャー ID は正確に書く必要がある。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>ここで扱ったのは、ドメインが広告の「正当性」を保証する話である。広告を実際にアプリのどこへ、どれくらい控えめに置くか — その設計は <a href="admob.html">4.1.1 AdMob</a> で書く。ブランド基盤としては次へ進み、ドメインを検索エンジンに登録する。続きは <a href="search-console.html">2.4.5 Google 検索へ登録する</a>。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>ブランド基盤 / Brand</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>ブランドのメリット</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>どこまで作るか</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>ブランド名を決める</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>AI と名前を決める</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>ロゴを作る</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>AI でロゴを作る</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>独自ドメイン</a></summary>
+            <ul>
+              <li><a href="domain-register.html"><span class="num">2.4.1</span>ドメイン取得</a></li>
+              <li><a href="web-publish.html"><span class="num">2.4.2</span>Web サイト公開</a></li>
+              <li><a href="domain-email.html"><span class="num">2.4.3</span>独自メール</a></li>
+              <li><a class="cur" href="admob-setup.html" aria-current="page"><span class="num">2.4.4</span>AdMob 設定</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>検索へ登録</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

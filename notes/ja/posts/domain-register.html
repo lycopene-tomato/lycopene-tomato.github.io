@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>独自ドメインを取得する — お名前.com で取った、今なら Cloudflare も | Architecture Notes</title>
+<meta name="description" content="独自ドメインをどこで取得するか。当時の要件は「Whois 代行さえあればどこでもいい」だったので、お名前.com で取得した。今振り返ると、エッジ配信やアクセス解析まで一体で使える Cloudflare も有力だったと思う。規模が育ったら引っ越しも検討する。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/domain-register.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="独自ドメインを取得する — お名前.com で取った、今なら Cloudflare も" />
+<meta property="og:description" content="独自ドメインをどこで取得するか。当時の要件は「Whois 代行さえあればどこでもいい」だったので、お名前.com で取得した。今振り返ると、エッジ配信やアクセス解析まで一体で使える Cloudflare も有力だったと思う。規模が育ったら引っ越しも検討する。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/domain-register.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="独自ドメインを取得する — お名前.com で取った、今なら Cloudflare も" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "独自ドメインを取得する — お名前.com で取った、今なら Cloudflare も",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/domain-register.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "ブランド基盤", "item": "https://lycoapp.com/notes/ja/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "独自ドメイン", "item": "https://lycoapp.com/notes/ja/posts/domain.html" },
+    { "@type": "ListItem", "position": 4, "name": "ドメイン取得", "item": "https://lycoapp.com/notes/ja/posts/domain-register.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="brand.html">ブランド基盤</a><span class="sep">›</span><a href="domain.html">独自ドメイン</a><span class="sep">›</span><b>ドメイン取得</b></nav>
+
+  <article>
+    <span class="cat-tag">2.4.1 · ブランド基盤</span>
+    <h1>独自ドメインを取得する</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>独自ドメインをどこで取得するか。当時の要件は「Whois 代行さえしてくれれば、どこでもいい」だった。だからお名前.com で取得した。今振り返ると、エッジ配信も Web アクセス解析も一体で使える Cloudflare で取っておいてもよかったかもしれない。ドメインは後から引っ越せるので、規模が育ってきたら移管も検討している。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="domain.html">2.4</a> のとおり、独自ドメインはブランド基盤の中心になる。まずはどこかで取得する必要がある。</p>
+
+        <h2>Complication</h2>
+        <p>ドメインを取得できるレジストラは無数にある。価格も、付いてくる機能もバラバラで、どれを選べばいいのか、最初は判断基準すら曖昧だった。</p>
+
+        <h2>Question</h2>
+        <blockquote>数あるレジストラから、何を基準に選ぶか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Whois 代行 (登録者情報の代理公開) があること</li>
+          <li>個人開発で無理のない価格であること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>当時の要件はシンプルで、<mark>「Whois 代行さえしてくれれば、どこでもいい」</mark>だった。それを満たす手近な選択肢として、お名前.com で取得した。ドメイン名は、<a href="brand-name-ai.html">2.2.1</a> で決めた名前に合わせて lycoapp.com にした。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>取得時点では、レジストラに求める機能がそれ以上なかったからである。</b> Whois 代行で個人情報を隠せて、まっとうな価格で取れれば、それで足りた。過剰に比較して悩むより、要件を満たす所でさっと取って、先に進む方がよいと考えた。</p>
+          <p>ただ、今振り返ると考えが少し変わっている。<mark>同じ取るなら、Cloudflare で取ってもよかったかもしれない。</mark>Cloudflare ならエッジ配信 (世界中のサーバーからの高速配信) も、Web のアクセス解析も、ドメインと一体で使えるメリットがある。当時の自分には、そこまでの視点がなかった。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Cloudflare で取得する</b> — エッジ配信・解析まで一体化できる。今ならこちらも有力。取得当時は必要性を感じていなかったため選ばなかった。</li>
+            <li><b>その他のレジストラ</b> — 選択肢は多いが、Whois 代行という当時の唯一の要件を満たせば差は小さいと判断した。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>要件を満たすドメインを、迷わず低コストで取得できた。ブランドの中心になる住所が、これで手に入った。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>一点、後から効いてくる制約がある。ドメインも DNS の権威 (名前解決の大元) もお名前.com 側にあり、Cloudflare には zone がない。このため、Cloudflare の zone 単位の機能 (たとえば IndexNow による検索エンジンへの即時通知) が使えない。今のところ実害は小さいが、構成上の制約として頭に入れている。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>ドメインは後から引っ越せるので、規模が育ってきたら Cloudflare への移管も検討する。まずはこのドメインに、Web サイトを載せる。続きは <a href="web-publish.html">2.4.2 Web サイトを公開する</a>。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>ブランド基盤 / Brand</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>ブランドのメリット</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>どこまで作るか</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>ブランド名を決める</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>AI と名前を決める</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>ロゴを作る</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>AI でロゴを作る</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>独自ドメイン</a></summary>
+            <ul>
+              <li><a class="cur" href="domain-register.html" aria-current="page"><span class="num">2.4.1</span>ドメイン取得</a></li>
+              <li><a href="web-publish.html"><span class="num">2.4.2</span>Web サイト公開</a></li>
+              <li><a href="domain-email.html"><span class="num">2.4.3</span>独自メール</a></li>
+              <li><a href="admob-setup.html"><span class="num">2.4.4</span>AdMob 設定</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>検索へ登録</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

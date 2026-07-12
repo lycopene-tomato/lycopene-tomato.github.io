@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>AI でロゴを作る — 無料で大量に出して、選んで、詰める | Architecture Notes</title>
+<meta name="description" content="ロゴを AI で作った記録。使ったのは Google の Flow。無料で一度に大量の候補が作れるので、その中から好きなものを選び、イメージを伝えて詰めていく。ツールは何でもよく、大事なのは「数を出して選ぶ」ことと、名前で決めた世界観を入力にすること。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/logo-ai.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI でロゴを作る — 無料で大量に出して、選んで、詰める" />
+<meta property="og:description" content="ロゴを AI で作った記録。使ったのは Google の Flow。無料で一度に大量の候補が作れるので、その中から好きなものを選び、イメージを伝えて詰めていく。ツールは何でもよく、大事なのは「数を出して選ぶ」ことと、名前で決めた世界観を入力にすること。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/logo-ai.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI でロゴを作る — 無料で大量に出して、選んで、詰める" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AI でロゴを作る — 無料で大量に出して、選んで、詰める",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/logo-ai.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "ブランド基盤", "item": "https://lycoapp.com/notes/ja/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "ロゴを作る", "item": "https://lycoapp.com/notes/ja/posts/logo.html" },
+    { "@type": "ListItem", "position": 4, "name": "AI でロゴを作る", "item": "https://lycoapp.com/notes/ja/posts/logo-ai.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="brand.html">ブランド基盤</a><span class="sep">›</span><a href="logo.html">ロゴを作る</a><span class="sep">›</span><b>AI でロゴを作る</b></nav>
+
+  <article>
+    <span class="cat-tag">2.3.1 · ブランド基盤</span>
+    <h1>AI でロゴを作る</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>ロゴを AI で作った。使ったのは Google の Flow。無料で一度にかなりの量の候補が作れるので、その中から好きなものを選び、イメージを伝えて詰めていくと、ロゴが仕上がる。ツール自体は何でもよく、大事なのは「数を出して選ぶ」やり方と、<a href="brand-name-ai.html">2.2.1</a> でまとめた世界観メモを入力に使うことである。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="logo.html">2.3</a> のとおり、ロゴは多用途に使える資産になる。名前も決まったので、次はロゴを用意したい。</p>
+
+        <h2>Complication</h2>
+        <p>とはいえ、デザイナーに発注すればコストと時間がかかるし、自分で一から描くスキルもない。個人開発の初期に、ロゴだけにそこまで割けない。</p>
+
+        <h2>Question</h2>
+        <blockquote>低コストで、資産として使えるロゴを、どうやって作るか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>低コスト (できれば無料) で作れること</li>
+          <li>ファビコン・OGP・アイコンなど多用途に耐えること</li>
+          <li>名前で決めた世界観と合っていること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>AI で作った。使ったのは <mark>Google の Flow</mark>。無料で、一度にかなりの量の候補を同時に生成できる。そこから好きなものを選び、「もう少しこういう雰囲気で」とイメージを伝えて詰めていくと、ロゴが完成する。入力には、<a href="brand-name-ai.html">2.2.1</a> でまとめた世界観メモを使った。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>ロゴ作りは「数を出して選ぶ」工程だからである。</b> ロゴは一度作れば、ファビコン・OGP・SNS・アプリアイコンへと展開して長く使う。それだけ重要な資産なので、1 案で決め打ちせず、たくさんの候補から吟味して選びたい。<mark>無料で大量に生成できるツールは、この「数打って選ぶ」に向いている。</mark>だから Flow を選んだが、ツール自体はこだわらない。無料で大量に出せるものなら、何でもいい。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>デザイナーに有料発注する</b> — 完成度は高い。しかし個人開発の初期に、まだ育つか分からないプロダクトのロゴへコストをかけるのは重い。軌道に乗ってから作り直す選択肢は残るので、最初は AI にした。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>1 枚のロゴから、ファビコン・OGP・アイコンをすべて派生できるようになった。以降、画像まわりで毎回悩むことがなくなり、ブランド全体に統一感が出た。コストはほぼゼロである。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>AI 生成は当たり外れがある。良い 1 枚に出会うまで、選ぶ手間と見る目は要る。また、生成物の商用利用の可否や権利まわりは、使うツールの規約を必ず確認しておく必要がある。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>名前とロゴが揃った。次は、それを載せる住所 — 独自ドメインを取得する。続きは <a href="domain.html">2.4 独自ドメインを取得する</a>。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>ブランド基盤 / Brand</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>ブランドのメリット</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>どこまで作るか</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>ブランド名を決める</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>AI と名前を決める</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>ロゴを作る</a></summary>
+            <ul>
+              <li><a class="cur" href="logo-ai.html" aria-current="page"><span class="num">2.3.1</span>AI でロゴを作る</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>独自ドメイン</a></summary>
+            <ul>
+              <li><a href="domain-register.html"><span class="num">2.4.1</span>ドメイン取得</a></li>
+              <li><a href="web-publish.html"><span class="num">2.4.2</span>Web サイト公開</a></li>
+              <li><a href="domain-email.html"><span class="num">2.4.3</span>独自メール</a></li>
+              <li><a href="admob-setup.html"><span class="num">2.4.4</span>AdMob 設定</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>検索へ登録</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>Google 検索へ登録する — DNS TXT で所有権を証明する | Architecture Notes</title>
+<meta name="description" content="Web サイトを検索に載せるため、Google Search Console に DNS TXT で所有権を登録し、sitemap を submit した。Bing は GSC からインポート、Naver は ko 向けに登録。独自ドメインがあれば TXT 一行でサブドメインまで一括で所有権を証明できる。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/search-console.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Google 検索へ登録する — DNS TXT で所有権を証明する" />
+<meta property="og:description" content="Web サイトを検索に載せるため、Google Search Console に DNS TXT で所有権を登録し、sitemap を submit した。Bing は GSC からインポート、Naver は ko 向けに登録。独自ドメインがあれば TXT 一行でサブドメインまで一括で所有権を証明できる。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/search-console.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Google 検索へ登録する — DNS TXT で所有権を証明する" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Google 検索へ登録する — DNS TXT で所有権を証明する",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/search-console.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "ブランド基盤", "item": "https://lycoapp.com/notes/ja/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "独自ドメイン", "item": "https://lycoapp.com/notes/ja/posts/domain.html" },
+    { "@type": "ListItem", "position": 4, "name": "検索へ登録", "item": "https://lycoapp.com/notes/ja/posts/search-console.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="brand.html">ブランド基盤</a><span class="sep">›</span><a href="domain.html">独自ドメイン</a><span class="sep">›</span><b>検索へ登録</b></nav>
+
+  <article>
+    <span class="cat-tag">2.4.5 · ブランド基盤</span>
+    <h1>Google 検索へ登録する</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>Web サイトを検索に載せるため、Google Search Console に DNS の TXT レコードで所有権を登録し、sitemap.xml を submit した。Bing は Search Console からインポートするだけ、Naver は ko ロケール向けに別途登録した。<mark>独自ドメインがあれば、TXT レコード一行でサブドメインまで含めて所有権を一括で証明できる。</mark>検索クエリやカバレッジが可視化され、新記事も能動的に登録依頼できるようになる。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="web-publish.html">2.4.2</a> で Web サイトを公開した。しかし、公開しただけでは、検索エンジンは能動的にはよくしてくれない。</p>
+
+        <h2>Complication</h2>
+        <p>所有権を申請しないままだと、sitemap を能動的に渡せず、どんなクエリで何回表示されクリックされたのかも一切見えない。新しい記事を「これを拾って」と登録依頼することもできない。構造化データが正しく認識されているかも確認できない。</p>
+
+        <h2>Question</h2>
+        <blockquote>自分のサイトだと検索エンジンに証明し、状況を可視化するには?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>所有権を確実に証明できること</li>
+          <li>sitemap を渡し、インデックス状況を可視化できること</li>
+          <li>手間が少ないこと</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>Google Search Console に、<mark>DNS の TXT レコードで所有権を登録した。</mark>表示された検証値を DNS に一行追加するだけで、ドメイン全体のプロパティが取得できる。続けて sitemap.xml を submit し、主要 URL はインデックス登録をリクエストした。Bing は Search Console からワンクリックでインポート。Naver は ko ロケール向けに、確認用 HTML ファイルを置いて登録した。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>独自ドメインなら、TXT 一行でサブドメインまで一括カバーできるからである。</b> HTML ファイルやメタタグでの確認は URL 単位でしか効かず、全ページの更新も要る。DNS TXT なら、ドメイン配下すべてを 1 つのプロパティで所有証明できて、最も手間が少ない。Bing を入れておくのは、<mark>Bing のインデックスが ChatGPT や Copilot の引用ソースになる</mark>からで、GSC から引き継げるので追加コストもほぼない。Naver は、韓国語のページを出している以上、韓国検索を押さえる価値があるので登録した。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>HTML ファイル / メタタグで所有権確認する</b> — 全ページ更新やファイル追加が要り、URL 単位でしか効かない。独自ドメインがある以上、DNS TXT の方が楽で確実だった。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>検索クエリ・インプレッション・クリック・カバレッジが可視化された。新記事を公開したら能動的に登録依頼でき、構造化データの認識状況も確認できる。独自ドメイン 1 つで、Google・Bing・Naver への所有権証明がすべて片付いた。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>登録しても、実際にインデックスされるまでには数日から 2 週間ほどかかる。即時通知の仕組み (IndexNow) を使えば短縮できるが、<a href="domain-register.html">2.4.1</a> のとおり DNS がお名前.com 側にあり Cloudflare の zone がないため、現状は使えない。ここは通常クロールを待つ形にしている。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>これで、ブランド基盤 — 名前・ロゴ・独自ドメイン、そしてその上に載る Web・メール・広告認証・検索登録 — が一通り揃った。土台の上で、次は「何を作るか」を考える <a href="growth.html">3 マーケティング</a>、そして「どう続けるか」を考える <a href="monetize.html">4 マネタイズ</a> へ進んでいく。ブランド基盤は、その先の意思決定を、静かに楽にし続けてくれる。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>ブランド基盤 / Brand</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>ブランドのメリット</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>どこまで作るか</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>ブランド名を決める</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>AI と名前を決める</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>ロゴを作る</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>AI でロゴを作る</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>独自ドメイン</a></summary>
+            <ul>
+              <li><a href="domain-register.html"><span class="num">2.4.1</span>ドメイン取得</a></li>
+              <li><a href="web-publish.html"><span class="num">2.4.2</span>Web サイト公開</a></li>
+              <li><a href="domain-email.html"><span class="num">2.4.3</span>独自メール</a></li>
+              <li><a href="admob-setup.html"><span class="num">2.4.4</span>AdMob 設定</a></li>
+              <li><a class="cur" href="search-console.html" aria-current="page"><span class="num">2.4.5</span>検索へ登録</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>AI とブランド名を決める — 壁打ちして、議論をまとめさせる | Architecture Notes</title>
+<meta name="description" content="ブランド名を AI との壁打ちで決めた記録。呼びやすさ・ドメインの空き・意味を込められること、を基準に候補を絞る。決め手は、壁打ちの議論を AI にまとめさせること。その世界観メモが、次のロゴ作成でそのまま入力になる。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/brand-name-ai.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI とブランド名を決める — 壁打ちして、議論をまとめさせる" />
+<meta property="og:description" content="ブランド名を AI との壁打ちで決めた記録。呼びやすさ・ドメインの空き・意味を込められること、を基準に候補を絞る。決め手は、壁打ちの議論を AI にまとめさせること。その世界観メモが、次のロゴ作成でそのまま入力になる。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/brand-name-ai.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI とブランド名を決める — 壁打ちして、議論をまとめさせる" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AI とブランド名を決める — 壁打ちして、議論をまとめさせる",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/brand-name-ai.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "ブランド基盤", "item": "https://lycoapp.com/notes/ja/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "ブランド名を決める", "item": "https://lycoapp.com/notes/ja/posts/brand-name.html" },
+    { "@type": "ListItem", "position": 4, "name": "AI と名前を決める", "item": "https://lycoapp.com/notes/ja/posts/brand-name-ai.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="brand.html">ブランド基盤</a><span class="sep">›</span><a href="brand-name.html">ブランド名を決める</a><span class="sep">›</span><b>AI と名前を決める</b></nav>
+
+  <article>
+    <span class="cat-tag">2.2.1 · ブランド基盤</span>
+    <h1>AI とブランド名を決める</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>ブランド名を、AI との壁打ちで決めた。呼びやすさ・独自ドメインの空き・意味を込められること、を基準に候補を出して絞り、Lyco App (lycoapp.com) に決めた。ここでの一番のコツは、名前を決めることそのものより、<mark>壁打ちで交わした「どんな価値を届けたいか」という議論を、AI にまとめさせておくこと</mark>である。その世界観メモが、次のロゴ作成で入力としてそのまま効いてくる。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="brand-name.html">2.2</a> のとおり、ブランド名はすべての起点になる。まずここを決めたい。</p>
+
+        <h2>Complication</h2>
+        <p>しかし、名前を一人でうんうん唸って決めるのは難しい。候補は無限にあるし、良し悪しの基準も曖昧になりがちで、しかも「その名前のドメインが空いているか」まで考え出すと、途端に手が止まる。</p>
+
+        <h2>Question</h2>
+        <blockquote>ブランド名を、どうやって効率よく、後の工程まで無駄なく決めるか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>呼びやすく、覚えやすいこと</li>
+          <li>独自ドメインが空いていること</li>
+          <li>意味や世界観を込められること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>AI と壁打ちしながら決めた。まず「こんな価値を届けたい」「こういう雰囲気にしたい」と伝え、候補を大量に出してもらう。そこから上の 3 つの基準で絞り込む。この往復を何度か回して、Lyco App に決めた。</p>
+        <p>そして、この工程の本当の狙いはもう一つある。<mark>壁打ちで言語化された議論を、AI に一度まとめさせておく。</mark>「誰に、何を、どんなトーンで届けるブランドか」という要約メモである。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>名前を決める過程は、そのままロゴの素材になるからである。</b> 名前だけを決めて壁打ちの中身を捨ててしまうと、次にロゴを作るとき、また一から世界観を説明し直すことになる。まとめメモを残しておけば、<a href="logo.html">2.3 ロゴを作る</a> でそれを AI にそのまま渡せる。名前とロゴのあいだで、世界観がぶれない。一度の議論を、二度使う。これが低コストでブランドを揃えるコツだと考えている。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>人気ランキングやネーミングツールから機械的に選ぶ</b> — 速いが、自分の届けたい価値との結びつきが弱く、世界観のメモも残らない。だから壁打ち方式にした。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>呼びやすく、ドメインも取れる名前が決まった。加えて、壁打ちのまとめメモという副産物が手に入り、次のロゴ作成の入力がすでに用意できている状態になった。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>AI は候補を出すのは得意だが、最終判断は自分でするしかない。「なんとなく良い」で決めると後で揺らぐので、3 つの基準に照らして選ぶ意識が要る。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>決まった名前と、まとめた世界観メモを持って、次はロゴを作る。続きは <a href="logo.html">2.3 ロゴを作る</a>。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>ブランド基盤 / Brand</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>ブランドのメリット</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>どこまで作るか</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>ブランド名を決める</a></summary>
+            <ul>
+              <li><a class="cur" href="brand-name-ai.html" aria-current="page"><span class="num">2.2.1</span>AI と名前を決める</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>ロゴを作る</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>AI でロゴを作る</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>独自ドメイン</a></summary>
+            <ul>
+              <li><a href="domain-register.html"><span class="num">2.4.1</span>ドメイン取得</a></li>
+              <li><a href="web-publish.html"><span class="num">2.4.2</span>Web サイト公開</a></li>
+              <li><a href="domain-email.html"><span class="num">2.4.3</span>独自メール</a></li>
+              <li><a href="admob-setup.html"><span class="num">2.4.4</span>AdMob 設定</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>検索へ登録</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

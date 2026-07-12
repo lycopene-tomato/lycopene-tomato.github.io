@@ -5,12 +5,103 @@
   <id>https://lycoapp.com/notes/</id>
   <link href="https://lycoapp.com/notes/ja/" />
   <link rel="self" href="https://lycoapp.com/notes/feed.xml" />
-  <updated>2026-07-11T00:00:00+09:00</updated>
+  <updated>2026-07-12T00:00:00+09:00</updated>
   <author>
     <name>Lyco</name>
     <uri>https://lycoapp.com/ja/about/</uri>
   </author>
   <!-- 記事公開時にここへ <entry> を追加する (新しいものを上に) -->
+  <entry>
+    <title>ブランド基盤 — 個人開発で「楽をする」ための土台</title>
+    <id>https://lycoapp.com/notes/ja/posts/brand.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/brand.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>ブランド基盤は、ロゴや Web サイトを作ることではない。「自分は何者で、誰にどんな価値を届けるのか」という軸を、プロダクトを育てる前に決めておくこと。名前・ロゴ・独自ドメインの 3 つだけ早めに整えると、後がとても楽になる。ブランドは、未来の自分を助ける「楽をする仕組み」である。</summary>
+  </entry>
+  <entry>
+    <title>個人開発でブランドを考えるメリット — 判断を楽にする土台</title>
+    <id>https://lycoapp.com/notes/ja/posts/brand-merit.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/brand-merit.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>ブランド戦略は大企業だけのものではない。個人開発でも、意思決定がぶれない・作業が効率化される・軌跡が残る、というメリットがある。ブランドは未来の自分を縛るものではなく、助けるための土台である。</summary>
+  </entry>
+  <entry>
+    <title>ブランド基盤はどこまで作るべきか — 名前・ロゴ・ドメインの 3 つ</title>
+    <id>https://lycoapp.com/notes/ja/posts/brand-scope.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/brand-scope.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>個人開発でブランドをどこまで作るか。採用したのは名前・ロゴ・独自ドメインの 3 つだけ。名前を決めれば AI でロゴが作れ、そのままドメインも取れる。たった一度の意思決定で基盤の大部分が完成する。ブランドを支えるのは軌跡であり、軌跡だけは後から作れない。</summary>
+  </entry>
+  <entry>
+    <title>ブランド名を決める — すべての起点を最初に置く</title>
+    <id>https://lycoapp.com/notes/ja/posts/brand-name.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/brand-name.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>ブランド名は、ブランド全体の起点になる。AI と壁打ちしながら決め、そのとき議論の内容を AI にまとめさせておくと、ロゴ作成でそのまま使える。名前が決まると、方向性が定まり、以降の意思決定が一貫する。</summary>
+  </entry>
+  <entry>
+    <title>AI とブランド名を決める — 壁打ちして、議論をまとめさせる</title>
+    <id>https://lycoapp.com/notes/ja/posts/brand-name-ai.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/brand-name-ai.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>ブランド名を AI との壁打ちで決めた記録。呼びやすさ・ドメインの空き・意味を込められること、を基準に候補を絞る。決め手は、壁打ちの議論を AI にまとめさせること。その世界観メモが、次のロゴ作成でそのまま入力になる。</summary>
+  </entry>
+  <entry>
+    <title>ロゴを作る — 1 枚が、あらゆる場面で働く資産になる</title>
+    <id>https://lycoapp.com/notes/ja/posts/logo.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/logo.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>ロゴはデザインではなく、ブランド資産である。ファビコン・OGP・SNS アイコン・アプリアイコンなど多くの場面で使い回せる。AI で 1 枚作っておけば、毎回画像を考える必要がなくなり、ブランド全体に統一感が生まれる。</summary>
+  </entry>
+  <entry>
+    <title>AI でロゴを作る — 無料で大量に出して、選んで、詰める</title>
+    <id>https://lycoapp.com/notes/ja/posts/logo-ai.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/logo-ai.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>ロゴを AI で作った記録。使ったのは Google の Flow。無料で一度に大量の候補が作れるので、好きなものを選び、イメージを伝えて詰めていく。ツールは何でもよく、大事なのは「数を出して選ぶ」ことと、名前で決めた世界観を入力にすること。</summary>
+  </entry>
+  <entry>
+    <title>独自ドメインを取得する — ブランドの中心になる資産</title>
+    <id>https://lycoapp.com/notes/ja/posts/domain.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/domain.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>独自ドメインは URL のためだけのものではない。Web サイト・独自メール・AdMob 認証・検索エンジン登録まで、ブランド全体の基盤になる資産である。ドメインを 1 つ持つだけで、その上にさまざまな仕組みを積み上げられる。</summary>
+  </entry>
+  <entry>
+    <title>独自ドメインを取得する — お名前.com で取った、今なら Cloudflare も</title>
+    <id>https://lycoapp.com/notes/ja/posts/domain-register.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/domain-register.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>独自ドメインをどこで取得するか。当時の要件は「Whois 代行さえあればどこでもいい」だったので、お名前.com で取得した。今振り返ると、エッジ配信やアクセス解析まで一体で使える Cloudflare も有力だった。規模が育ったら引っ越しも検討する。</summary>
+  </entry>
+  <entry>
+    <title>Web サイトを公開する — GitHub Pages に独自ドメインをつなぐ</title>
+    <id>https://lycoapp.com/notes/ja/posts/web-publish.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/web-publish.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>取得した独自ドメインに Web サイトを載せる。選んだのは GitHub Pages + 静的サイト。A レコードと CNAME を設定するだけで独自ドメインにつながる。規模が耐えられなくなったら DNS の向き先を変えるだけで引っ越せるので、まずは静的で始めた。</summary>
+  </entry>
+  <entry>
+    <title>独自メールを作る — ImprovMX で Gmail へ無料転送する</title>
+    <id>https://lycoapp.com/notes/ja/posts/domain-email.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/domain-email.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>独自ドメインのメールアドレスを ImprovMX で用意した。MX レコードを追加すると、@ドメイン 宛のメールがすべて自分の Gmail へ無料で転送される。キャッチオール設定なので用途別アドレスを無限に作れる。まずは受信だけ整えた記録。</summary>
+  </entry>
+  <entry>
+    <title>AdMob を設定する — app-ads.txt でドメインが広告を保証する</title>
+    <id>https://lycoapp.com/notes/ja/posts/admob-setup.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/admob-setup.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>アプリで AdMob 広告を出すために、独自ドメインのルートに app-ads.txt を置いてパブリッシャー認証を通した。app-ads.txt は IAB 標準の宣言ファイルで、なりすまし在庫を排除し収益の取りこぼしを防ぐ。独自ドメインを持っていることが、そのまま広告の信頼性になる。</summary>
+  </entry>
+  <entry>
+    <title>Google 検索へ登録する — DNS TXT で所有権を証明する</title>
+    <id>https://lycoapp.com/notes/ja/posts/search-console.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/search-console.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>Web サイトを検索に載せるため、Google Search Console に DNS TXT で所有権を登録し、sitemap を submit した。Bing は GSC からインポート、Naver は ko 向けに登録。独自ドメインがあれば TXT 一行でサブドメインまで一括で所有権を証明できる。</summary>
+  </entry>
   <entry>
     <title>EAS Update の安全な運用 — stg / prd 分離で誤配信を防ぐ</title>
     <id>https://lycoapp.com/notes/ja/posts/ota-channels.html</id>
