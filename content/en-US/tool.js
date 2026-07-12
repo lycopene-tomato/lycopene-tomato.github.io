@@ -33,6 +33,9 @@ window.__CONTENT__["en-US"].categories.tool = {
         "Even during the break, I have to keep calling out “three minutes,” “two minutes.”",
         "Take the screen away and they explode.",
       ],
+      pivot: "“Five more minutes” is always my call, never theirs.\nMaybe that’s why the ending never feels like theirs, either.",
+      idea_label: "So I thought —",
+      idea: "What if the child set the clock themselves?\nMaybe the end of “later” would finally feel fair.",
     },
   },
 

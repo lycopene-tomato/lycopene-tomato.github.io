@@ -34,6 +34,9 @@ window.__CONTENT__["en-US"].categories.record = {
         "Phone notes are hard to organize.",
         "“Wasn’t there something like this before?” — but I can’t check.",
       ],
+      pivot: "I watch this child closer than anyone.\nAnd still I can’t say how today differs from yesterday.",
+      idea_label: "So I thought —",
+      idea: "What if I stopped trusting memory, and started keeping a record?\nMaybe the small changes hiding inside “again” would come into view.",
     },
   },
 

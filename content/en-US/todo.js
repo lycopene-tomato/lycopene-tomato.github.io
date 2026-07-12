@@ -32,6 +32,9 @@ window.__CONTENT__["en-US"].categories.todo = {
         "Wrote the tasks on paper — they just say “I don’t want to.”",
         "Reward stickers worked, but they got bored after a while.",
       ],
+      pivot: "Play is the one thing they give everything to.\nIf only chores got half that energy.",
+      idea_label: "So I thought —",
+      idea: "What if the to-do list borrowed the rules of play?\nWould they start moving on their own?",
     },
   },
 
