@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>アプリを多言語対応しよう — 文字列を外に出し、AI に訳させる | Architecture Notes</title>
+<meta name="description" content="アプリ本体の多言語対応は、AI に最も任せやすい作業。表示文字列を言語ファイルとして外に出し、「この言語ファイルを○語に翻訳して」と依頼するだけでかなり進む。重要なのは翻訳技術ではなく、最初から多言語化しやすい構造で実装し、各文字列に文脈を残しておくこと。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/app-i18n.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="アプリを多言語対応しよう — 文字列を外に出し、AI に訳させる" />
+<meta property="og:description" content="アプリ本体の多言語対応は、AI に最も任せやすい作業。表示文字列を言語ファイルとして外に出し、「この言語ファイルを○語に翻訳して」と依頼するだけでかなり進む。重要なのは翻訳技術ではなく、最初から多言語化しやすい構造で実装し、各文字列に文脈を残しておくこと。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/app-i18n.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="アプリを多言語対応しよう — 文字列を外に出し、AI に訳させる" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "アプリを多言語対応しよう — 文字列を外に出し、AI に訳させる",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/app-i18n.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "AI 駆動スマホ開発", "item": "https://lycoapp.com/notes/ja/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "多言語対応", "item": "https://lycoapp.com/notes/ja/posts/i18n.html" },
+    { "@type": "ListItem", "position": 4, "name": "アプリを多言語化", "item": "https://lycoapp.com/notes/ja/posts/app-i18n.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="dev.html">1 AI 駆動スマホ開発</a><span class="sep">›</span><a href="i18n.html">1.2 多言語対応</a><span class="sep">›</span><b>1.2.1 アプリを多言語対応する</b></nav>
+
+  <article>
+    <span class="cat-tag">1.2.1 · 開発基盤</span>
+    <h1>アプリを多言語対応しよう</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約4分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>アプリ本体の多言語対応は、AI に最も任せやすい作業の一つである。表示文字列を言語ファイルとして外に出しておけば、「この言語ファイルをスペイン語・韓国語・繁体字中国語に翻訳して」と依頼するだけで、かなりのところまで作ってくれる。最終確認は要るが、人が一つひとつ訳す時代ではない。重要なのは翻訳技術ではなく、最初から多言語化しやすい構造で実装し、各文字列に文脈を残しておくことである。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="i18n.html">1.2</a> のとおり、まず 2 言語対応を目指す。最初に手をつけるのは、アプリ本体の表示文字列である。</p>
+
+        <h2>Complication</h2>
+        <p>しかし、画面のコードに文字列を直書きしていると、後から各言語へ置き換えるのは地獄になる。どこに何の文字列があるか探し回ることになり、言語を 1 つ足すたびに全画面を触ることになる。</p>
+
+        <h2>Question</h2>
+        <blockquote>アプリの表示文字列を、どうすれば低コストで多言語化できる構造にできるか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>表示文字列が一か所に集約されていること</li>
+          <li>翻訳を AI にまとめて任せられること</li>
+          <li>後から言語を足すのが容易なこと</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p><mark>表示文字列を「言語ファイル」として外に出す。</mark>コードからは文字列そのものではなくキーで参照し、実際の文言は言語ごとのファイルに持たせる。翻訳は、その言語ファイルを AI に渡して「この言語ファイルを○語に翻訳して」と頼むだけ。最終確認はするが、大部分は AI が仕上げてくれる。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>文字列が一か所に集約されていれば、翻訳も差し替えも一度で済むからである。</b> コードに散らばっていると、AI もどこを訳せばいいか分からず、言語追加のたびに全画面を触ることになる。言語ファイルにまとめておけば、AI がまとめて訳せて、言語を足すのもファイルを 1 枚増やすだけになる。<mark>大事なのは翻訳技術ではなく、多言語化しやすい構造で最初から実装しておくことだ。</mark></p>
+          <p>ただし、一つ落とし穴がある。キーと値だけを AI に渡すと、その単語がどの画面の何を指すのか分からず、誤訳する。「Home」が家なのか先頭画面なのか、AI には判断できない。だから各文字列に、<mark>「どの画面の、何のための言葉か」という文脈をコメントで添えておく。</mark>これが訳の精度を大きく左右する。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>画面に文字列を直書きする</b> — 最初は速いが、多言語化の段になって全画面を触る羽目になる。だから採らなかった。</li>
+            <li><b>機械翻訳 API を都度呼ぶ</b> — 文脈理解が弱く誤訳が増える上、運用コストもかかる。AI にファイルごと文脈つきで訳させる方が質が高い。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>構造さえ整えれば、2 言語対応がそのまま 5 言語・50 言語へスケールする。手順は同じで、増えるのは言語ファイルの枚数だけ。地味で膨大な翻訳を、AI に任せられるようになった。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>AI も、文脈がなければ誤訳する。特に専門用語や、言葉遊びを含む表現は要注意で、最終確認は欠かせない。構造と文脈を用意するのは、あくまで人の仕事である。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>アプリ本体が多言語化できたら、次はそれを世に出すためのストア申請情報を多言語化する。続きは <a href="store-i18n.html">1.2.2 アプリ申請を多言語対応しよう</a>。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI 駆動スマホ開発 / Dev Platform</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>iPhone だけの開発環境構築</a></summary>
+            <ul>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>iPhone だけでアプリを実装する</a></li>
+              <li><a href="cloud-build.html"><span class="num">1.1.2</span>Mac なしで build する</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>OTA の安全な運用</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="i18n.html"><span class="num">1.2</span>多言語対応</a></summary>
+            <ul>
+              <li><a class="cur" href="app-i18n.html" aria-current="page"><span class="num">1.2.1</span>アプリを多言語化</a></li>
+              <li><a href="store-i18n.html"><span class="num">1.2.2</span>申請を多言語化</a></li>
+              <li><a href="shots-i18n.html"><span class="num">1.2.3</span>スクショを多言語化</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#app-i18n">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

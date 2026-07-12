@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>スクリーンショットを多言語対応しよう — Mac なしで、4 つの手を全部使う | Architecture Notes</title>
+<meta name="description" content="一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した記録。最後の 1px 調整だけは人がやる。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/shots-i18n.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="スクリーンショットを多言語対応しよう — Mac なしで、4 つの手を全部使う" />
+<meta property="og:description" content="一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した記録。最後の 1px 調整だけは人がやる。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/shots-i18n.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="スクリーンショットを多言語対応しよう — Mac なしで、4 つの手を全部使う" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "スクリーンショットを多言語対応しよう — Mac なしで、4 つの手を全部使う",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/shots-i18n.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "AI 駆動スマホ開発", "item": "https://lycoapp.com/notes/ja/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "多言語対応", "item": "https://lycoapp.com/notes/ja/posts/i18n.html" },
+    { "@type": "ListItem", "position": 4, "name": "スクショを多言語化", "item": "https://lycoapp.com/notes/ja/posts/shots-i18n.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="dev.html">1 AI 駆動スマホ開発</a><span class="sep">›</span><a href="i18n.html">1.2 多言語対応</a><span class="sep">›</span><b>1.2.3 スクリーンショットを多言語対応する</b></nav>
+
+  <article>
+    <span class="cat-tag">1.2.3 · 開発基盤</span>
+    <h1>スクリーンショットを多言語対応しよう</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約5分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>一番苦労したのが、スクリーンショットの多言語対応だった。理想は Mac のエミュレーターで言語を切り替えながら自動撮影することだが、Mac がない。そこで、4 つの選択肢を「全部使う」ことにした。UI をできるだけ言語に依存しない設計にし、主要言語は実機で撮り、その他は AI (Flow) で一括変換し、英語版に説明を描き込んで他言語でも流用する。生成した画像は Git にまとめ、Claude で配置し、GitHub Actions からストアへ。最後の 1px 調整だけは、人が仕上げる。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="store-i18n.html">1.2.2</a> までで、テキスト (アプリ本体・申請情報) の多言語化は済んだ。残るのは、スクリーンショットである。</p>
+
+        <h2>Complication</h2>
+        <p>本来なら、Mac 上でエミュレーターを起動し、言語を切り替えながら自動で撮影するのが理想だ。しかし <a href="cloud-build.html">1.1.2</a> のとおり、手元に Mac はない。50 言語分のスクリーンショットを用意するのは、一つの手法だけでは不可能に見えた。</p>
+
+        <h2>Question</h2>
+        <blockquote>Mac なしで、大量の言語のスクリーンショットをどう用意するか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Mac を持たずに成立すること</li>
+          <li>大量の言語をカバーできること</li>
+          <li>Apple の厳密なサイズ要件を満たせること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>一つの手法で全部やろうとせず、<mark>4 つの選択肢を「全部使う」ことにした。</mark></p>
+        <ul class="body">
+          <li><b>UI をできるだけ言語に依存しない設計にする</b> — 画像内の文字を減らせば、そのぶん翻訳も生成も要らなくなる。</li>
+          <li><b>主要言語 (日本語・英語など) は実機で撮る</b> — 言語を切り替えて、実機のスクリーンショットを撮影する。</li>
+          <li><b>その他の言語は Flow で一括変換する</b> — 「この画像を○○語版にして」と指示し、まとめて生成する。</li>
+          <li><b>英語版に説明を描き込み、他言語でも流用する</b> — イラストや注釈を加えておけば、細部まで各言語で作り直さずに済む。</li>
+        </ul>
+        <p>生成した画像は ZIP でまとめて Git にアップロードし、Claude で展開・配置したうえで、GitHub Actions から App Store Connect へアップロードする (分割・トリミング・リサイズを通し、ストアの API 経由で送る)。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>組み合わせでしか、Mac なしの制約を越えられないからである。</b> 全部を実機で撮れば言語数分の手間で潰れ、全部を AI 生成にすれば細部が崩れてサイズ要件も外れる。<mark>どれか一つでは詰むが、組み合わせれば大量言語をカバーできる。</mark>とりわけ Flow は、一度に大量の画像を生成して ZIP でまとめて落とせるうえ、生成を待つ間に次の生成を指示できるので、作業効率がとても高い。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>全部を実機で撮影する</b> — 忠実だが、言語数だけ撮影の手間がかかり、現実的でない。</li>
+            <li><b>全部を AI で生成する</b> — 速いが、細部が崩れやすく、Apple の厳密なサイズ要件も満たせない。だから「全部使う」に落ち着いた。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>Mac なしで、多言語のスクリーンショットが用意できた。UI の言語非依存設計と英語版の説明流用のおかげで、生成すべき量そのものも抑えられた。地味に大量だった作業が、AI との組み合わせで回るようになった。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>Apple のスクリーンショットは、<mark>1px でもサイズが違うとアップロードできない。</mark>AI では吸収しきれないこの微調整だけは、最後に人が手で仕上げている。自動化できる部分と、できない部分の線引きが要る。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>これで、アプリ本体・申請情報・スクリーンショットの 3 つすべてが多言語化でき、世界公開の準備が整った。狭いニッチでも、世界を母集団にすれば市場になる — その狙いを定める話は <a href="stp.html">3.1.2 STP</a> に続く。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI 駆動スマホ開発 / Dev Platform</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>iPhone だけの開発環境構築</a></summary>
+            <ul>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>iPhone だけでアプリを実装する</a></li>
+              <li><a href="cloud-build.html"><span class="num">1.1.2</span>Mac なしで build する</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>OTA の安全な運用</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="i18n.html"><span class="num">1.2</span>多言語対応</a></summary>
+            <ul>
+              <li><a href="app-i18n.html"><span class="num">1.2.1</span>アプリを多言語化</a></li>
+              <li><a href="store-i18n.html"><span class="num">1.2.2</span>申請を多言語化</a></li>
+              <li><a class="cur" href="shots-i18n.html" aria-current="page"><span class="num">1.2.3</span>スクショを多言語化</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#shots-i18n">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

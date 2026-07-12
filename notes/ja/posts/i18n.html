@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>多言語対応 — ニッチだからこそ、市場を世界に広げる | Architecture Notes</title>
+<meta name="description" content="個人開発はニッチ戦略が基本。1 言語だと市場が小さすぎる。AI 時代に多言語対応のコストは大きく下がった。完璧な翻訳より「世界中に公開できること」の価値の方が大きい。まずは 2 言語から。ただし AI 翻訳は文脈がないと誤訳するので、設計に各画面の意味を残しておく。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/i18n.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="多言語対応 — ニッチだからこそ、市場を世界に広げる" />
+<meta property="og:description" content="個人開発はニッチ戦略が基本。1 言語だと市場が小さすぎる。AI 時代に多言語対応のコストは大きく下がった。完璧な翻訳より「世界中に公開できること」の価値の方が大きい。まずは 2 言語から。ただし AI 翻訳は文脈がないと誤訳するので、設計に各画面の意味を残しておく。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/i18n.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="多言語対応 — ニッチだからこそ、市場を世界に広げる" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "多言語対応 — ニッチだからこそ、市場を世界に広げる",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/i18n.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "AI 駆動スマホ開発", "item": "https://lycoapp.com/notes/ja/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "多言語対応", "item": "https://lycoapp.com/notes/ja/posts/i18n.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="dev.html">1 AI 駆動スマホ開発</a><span class="sep">›</span><b>1.2 多言語対応</b></nav>
+
+  <article>
+    <span class="cat-tag">1.2 · 開発基盤</span>
+    <h1>多言語対応 — 市場を世界に広げる</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約3分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>個人開発はニッチ戦略が基本で、1 言語だけだと市場が小さくなりすぎる。AI 時代になり、多言語対応のコストは大きく下がった。翻訳精度にまだ課題はあるが、個人開発では完璧な翻訳より「世界中に公開できること」の価値の方が大きい。多言語化するのは、アプリ本体・申請情報・スクリーンショットの 3 つ。まずは 2 言語から始める。ただし AI 翻訳は文脈がないと誤訳するので、設計に各画面の意味を残しておくことが要になる。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-why">
+      <p class="blk-h"><span class="no">01</span><span class="jp">動機</span><span class="en">Why</span></p>
+      <div class="bd">
+        <p>なぜ、多言語対応をするのか。個人開発は、そもそもニッチ戦略になる。大企業が狙わない狭い課題を拾うからこそ、個人でも戦える。しかしニッチは、1 つの国だけで見ると市場が小さくなりすぎる。<mark>日本では需要が少なくても、世界全体で見れば十分なユーザーがいることは珍しくない。</mark>(この「狭いニッチ × 世界」の考え方は <a href="stp.html">3.1.2 STP</a> で詳しく書く。)</p>
+        <p>そして今は、AI 時代である。翻訳という、地味で繰り返し発生する作業こそ、AI が最も力を発揮する領域だ。<mark>多言語対応のコストは、大きく下がった。</mark>翻訳精度にまだ課題はある。しかし個人開発では、完璧な翻訳を待つより、まず世界中に公開できることの価値の方がずっと大きい。できるなら、やっておいて損はない。</p>
+      </div>
+    </section>
+
+    <section class="blk b-how">
+      <p class="blk-h"><span class="no">02</span><span class="jp">方法</span><span class="en">How</span></p>
+      <div class="bd">
+        <p>多言語化する対象は、3 つある。<b>アプリ本体</b>の表示文字列、ストアの<b>申請情報</b>、そして<b>スクリーンショット</b>。それぞれの進め方は <a href="app-i18n.html">1.2.1</a>・<a href="store-i18n.html">1.2.2</a>・<a href="shots-i18n.html">1.2.3</a> で書く。</p>
+        <p>進め方には、2 つのコツがある。1 つは、<mark>まず 2 言語から始めること。</mark>1 言語だけで作る場合と、複数言語を前提に作る場合とでは、設計がまったく違う。しかし一度 2 言語に対応できれば、5 言語でも 50 言語でも、基本的な仕組みは変わらない。最初の 1 → 2 が、いちばん大きな段差である。</p>
+        <p>もう 1 つは、<mark>AI 翻訳を前提に「文脈」を残しておくこと。</mark>AI に単語だけを渡すと、それがどの画面の何を指すのか分からず、誤訳する。たとえば「Home」が家なのか先頭画面なのか、文脈がなければ判断できない。だから設計の段階で、各画面の説明・その言葉が何を意味するのかを書き残しておく。これが多言語対応の精度を左右する。</p>
+      </div>
+    </section>
+
+    <section class="blk b-what">
+      <p class="blk-h"><span class="no">03</span><span class="jp">価値</span><span class="en">What</span></p>
+      <div class="bd">
+        <blockquote>多言語対応とは、翻訳作業ではない。<br>ニッチな価値を、世界という母集団に届ける仕組みである。</blockquote>
+        <p>1 言語では小さすぎたニッチも、世界を母集団にすれば十分な市場になる。地味で膨大な翻訳作業は AI に任せ、自分は設計と最終確認に集中する。こうして、個人開発でも世界公開のドアを開けられる。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI 駆動スマホ開発 / Dev Platform</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>iPhone だけの開発環境構築</a></summary>
+            <ul>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>iPhone だけでアプリを実装する</a></li>
+              <li><a href="cloud-build.html"><span class="num">1.1.2</span>Mac なしで build する</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>OTA の安全な運用</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary class="cur"><span class="caret">▸</span><a href="i18n.html" aria-current="page"><span class="num">1.2</span>多言語対応</a></summary>
+            <ul>
+              <li><a href="app-i18n.html"><span class="num">1.2.1</span>アプリを多言語化</a></li>
+              <li><a href="store-i18n.html"><span class="num">1.2.2</span>申請を多言語化</a></li>
+              <li><a href="shots-i18n.html"><span class="num">1.2.3</span>スクショを多言語化</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#i18n">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

@@ -12,6 +12,34 @@
   </author>
   <!-- 記事公開時にここへ <entry> を追加する (新しいものを上に) -->
   <entry>
+    <title>多言語対応 — ニッチだからこそ、市場を世界に広げる</title>
+    <id>https://lycoapp.com/notes/ja/posts/i18n.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/i18n.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>個人開発はニッチ戦略が基本。1 言語だと市場が小さすぎる。AI 時代に多言語対応のコストは大きく下がった。完璧な翻訳より「世界中に公開できること」の価値の方が大きい。まずは 2 言語から。ただし AI 翻訳は文脈がないと誤訳するので、設計に各画面の意味を残しておく。</summary>
+  </entry>
+  <entry>
+    <title>アプリを多言語対応しよう — 文字列を外に出し、AI に訳させる</title>
+    <id>https://lycoapp.com/notes/ja/posts/app-i18n.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/app-i18n.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>アプリ本体の多言語対応は、AI に最も任せやすい作業。表示文字列を言語ファイルとして外に出し、「この言語ファイルを○語に翻訳して」と依頼するだけでかなり進む。重要なのは翻訳技術ではなく、最初から多言語化しやすい構造で実装し、各文字列に文脈を残しておくこと。</summary>
+  </entry>
+  <entry>
+    <title>アプリ申請を多言語対応しよう — 申請情報を Git で管理して自動登録する</title>
+    <id>https://lycoapp.com/notes/ja/posts/store-i18n.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/store-i18n.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>多言語対応が必要なのはアプリだけではない。App Store や Google Play の申請情報も各言語で登録が要る。1 言語なら手入力でいいが、50 言語では非現実的。だから申請情報も Git で管理し、AI で翻訳、GitHub Actions からストアへ自動登録する。</summary>
+  </entry>
+  <entry>
+    <title>スクリーンショットを多言語対応しよう — Mac なしで、4 つの手を全部使う</title>
+    <id>https://lycoapp.com/notes/ja/posts/shots-i18n.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/shots-i18n.html" />
+    <updated>2026-07-12T00:00:00+09:00</updated>
+    <summary>一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した記録。最後の 1px 調整だけは人がやる。</summary>
+  </entry>
+  <entry>
     <title>ブランド基盤 — 個人開発で「楽をする」ための土台</title>
     <id>https://lycoapp.com/notes/ja/posts/brand.html</id>
     <link href="https://lycoapp.com/notes/ja/posts/brand.html" />

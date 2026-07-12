@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>アプリ申請を多言語対応しよう — 申請情報を Git で管理して自動登録する | Architecture Notes</title>
+<meta name="description" content="多言語対応が必要なのはアプリだけではない。App Store や Google Play の申請情報も各言語で登録が要る。1 言語なら手入力でいいが、50 言語では非現実的。だから申請情報も Git で管理し、AI で翻訳、GitHub Actions からストアへ自動登録する。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/store-i18n.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="アプリ申請を多言語対応しよう — 申請情報を Git で管理して自動登録する" />
+<meta property="og:description" content="多言語対応が必要なのはアプリだけではない。App Store や Google Play の申請情報も各言語で登録が要る。1 言語なら手入力でいいが、50 言語では非現実的。だから申請情報も Git で管理し、AI で翻訳、GitHub Actions からストアへ自動登録する。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/store-i18n.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="アプリ申請を多言語対応しよう — 申請情報を Git で管理して自動登録する" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "アプリ申請を多言語対応しよう — 申請情報を Git で管理して自動登録する",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/store-i18n.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "AI 駆動スマホ開発", "item": "https://lycoapp.com/notes/ja/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "多言語対応", "item": "https://lycoapp.com/notes/ja/posts/i18n.html" },
+    { "@type": "ListItem", "position": 4, "name": "申請を多言語化", "item": "https://lycoapp.com/notes/ja/posts/store-i18n.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="dev.html">1 AI 駆動スマホ開発</a><span class="sep">›</span><a href="i18n.html">1.2 多言語対応</a><span class="sep">›</span><b>1.2.2 アプリ申請を多言語対応する</b></nav>
+
+  <article>
+    <span class="cat-tag">1.2.2 · 開発基盤</span>
+    <h1>アプリ申請を多言語対応しよう</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>約5分</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="要約">
+          <p>多言語対応が必要なのは、アプリ本体だけではない。App Store や Google Play の申請情報 (タイトル・説明・キーワード等) も、各言語で登録する必要がある。1 言語なら管理画面から手入力でいいが、5・10・50 言語となると手作業では現実的でなくなる。そこで申請情報も Git で管理し、AI で各言語へ翻訳し、GitHub Actions からストアへ自動登録する仕組みを作った。一度自動化すれば、言語を足すコストはほとんど変わらない。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="app-i18n.html">1.2.1</a> でアプリ本体を多言語化した。次は、それをストアに出すための申請情報 — タイトル、サブタイトル、説明文、キーワード — である。</p>
+
+        <h2>Complication</h2>
+        <p>これも各言語で登録が要る。1 言語だけなら、ストアの管理画面に手入力すればいい。しかし 50 言語となると、管理画面での手入力は現実的でない。しかもキーワードは、ただ訳すだけでなく、<mark>各国のローカル検索語に置き換えて ASO (アプリストア最適化) しないと効かない。</mark></p>
+
+        <h2>Question</h2>
+        <blockquote>大量の言語の申請情報を、どう管理し、どう登録するか?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>申請情報を Git で一元管理できること</li>
+          <li>AI が各言語の文化・検索語に合わせて翻訳できること</li>
+          <li>ストアへ自動で登録できること</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>申請メタデータを、<mark>アプリごとに 1 つの設定ファイル (<code>store.config.json.txt</code>) にまとめて Git で管理する。</mark>日本語を起点に、AI が意味を理解して 50 ロケールへ翻訳し (機械翻訳ではなく)、GitHub Actions から App Store Connect の API 経由で自動登録する。キーワードは各言語で 100 字の上限まで詰め、その国のローカル検索語に置き換えて ASO を最適化する。</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+          <p><b>申請情報も、ソースコードと同じく Git で管理できるからである。</b> ファイルにまとめておけば、履歴も差分も追え、Actions から自動で登録できる。手入力のミスも消える。文字数制限 (タイトル 30 / サブタイトル 30 / 説明 4000 / キーワード 100 など) の検証も、スクリプトで自動化できる。<mark>テキストである以上、コードと同じ流儀 — 一か所に集約して自動化する — が効く。</mark></p>
+          <p>もう一つ、翻訳を AI に任せる利点がある。単なる直訳では、文化に合わない表現や、検索されない語になってしまう。AI に意味を理解させて訳せば、各国のトーンやローカル検索語に合わせられる。センシティブな話題も、地域ごとに本文での触れ方を変えられる (検索流入のためキーワードには共通で残しつつ、本文の明記は国の受容度で調整する)。</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>各ストアの管理画面で手入力する</b> — 1〜2 言語なら問題ない。しかし言語が増えるほど手作業が破綻し、履歴も残らない。だから最初から Git 管理 + 自動登録にした。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>一度この仕組みを作れば、新しい言語の追加は「翻訳して、登録ワークフローを叩く」だけになる。<mark>50 言語でも、言語を 1 つ足すコストはほとんど変わらない。</mark>文字数オーバーやローカル検索語の最適化も、スクリプトと AI に載せられる。</p>
+
+        <h2 class="b">Bad</h2>
+        <p>自動化ゆえの事故もある。翻訳文にダブルクオートが混ざって設定ファイルの JSON が壊れたり、文字数が上限を超えたり。だから書き込みのたびに、JSON が壊れていないか (再読み込み) と文字数が制限内かを、必ず検証する工程を挟んでいる。</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>テキスト (本体・申請) の多言語化が済んだ。最後に残るのが、いちばん手強い画像 — スクリーンショットである。続きは <a href="shots-i18n.html">1.2.3 スクリーンショットを多言語対応しよう</a>。</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI 駆動スマホ開発 / Dev Platform</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>iPhone だけの開発環境構築</a></summary>
+            <ul>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>iPhone だけでアプリを実装する</a></li>
+              <li><a href="cloud-build.html"><span class="num">1.1.2</span>Mac なしで build する</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>OTA の安全な運用</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="i18n.html"><span class="num">1.2</span>多言語対応</a></summary>
+            <ul>
+              <li><a href="app-i18n.html"><span class="num">1.2.1</span>アプリを多言語化</a></li>
+              <li><a class="cur" href="store-i18n.html" aria-current="page"><span class="num">1.2.2</span>申請を多言語化</a></li>
+              <li><a href="shots-i18n.html"><span class="num">1.2.3</span>スクショを多言語化</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#store-i18n">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/ja/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. 個人情報は収集していません。広告もありません。</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="build は無料。カフェインは有料 ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>
