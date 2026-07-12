@@ -1,4 +1,32 @@
 (() => {
+  const __jaWrapCache = {};
+  function jaWrap(text) {
+    if (!text || typeof Intl === "undefined" || !Intl.Segmenter) return text;
+    if (__jaWrapCache[text] !== void 0) return __jaWrapCache[text];
+    let segs;
+    try {
+      segs = Array.from(new Intl.Segmenter("ja", { granularity: "word" }).segment(text), (x) => x.segment);
+    } catch (e) {
+      return text;
+    }
+    const chunks = [];
+    let pend = "";
+    for (const s of segs) {
+      if (/^[「『（]+$/.test(s)) {
+        pend += s;
+        continue;
+      }
+      const startsNew = pend !== "";
+      const t = pend + s;
+      pend = "";
+      const prev = chunks.length ? chunks[chunks.length - 1] : "";
+      const attach = /^[、。」』）！？!?…ー〜]+$/.test(s) || /^\s+$/.test(s) || /^[0-9０-９]+$/.test(s) || /[0-9０-９]$/.test(prev) || /^[ぁ-ん]+$/.test(s) && s.length <= 3;
+      if (chunks.length && attach && !startsNew) chunks[chunks.length - 1] += t;
+      else chunks.push(t);
+    }
+    if (pend) chunks.push(pend);
+    return __jaWrapCache[text] = chunks.join("\u200B");
+  }
   window.CategoryPage = function CategoryPage({ categoryId, pathPrefix }) {
     const prefix = pathPrefix || "";
     const lang = typeof window.useLang === "function" ? window.useLang() : window.getLang ? window.getLang() : "en";
@@ -36,6 +64,7 @@
         window.removeEventListener("resize", fit);
       };
     }, [categoryId, lang]);
+    const jw = lang === "ja" ? jaWrap : (s) => s;
     const accent = category.accent || { c: "#888", soft: "#eee", deep: "#444" };
     const formula = category.formula || {};
     const story = category.story || {};
@@ -45,10 +74,6 @@
         :lang(ja) .emp-lines p, :lang(ja) .emp-tried span, :lang(ja) .emp-pivot, :lang(ja) .emp-idea-box, :lang(ja) .lineup-title,
         :lang(ko) .emp-lines p, :lang(ko) .emp-tried span, :lang(ko) .emp-pivot, :lang(ko) .emp-idea-box, :lang(ko) .lineup-title {
           word-break: keep-all;
-          overflow-wrap: anywhere;
-        }
-        :lang(ja) .emp-lines p, :lang(ja) .emp-tried span, :lang(ja) .emp-pivot, :lang(ja) .emp-idea-box, :lang(ja) .lineup-title {
-          word-break: auto-phrase;
         }
         @media (max-width: 480px) {
           #empathy { padding-top: 48px !important; padding-bottom: 48px !important; }
@@ -99,7 +124,7 @@
       fontSize: 12,
       transform: "rotate(3deg)",
       boxShadow: "0 2px 6px rgba(0,0,0,0.1)"
-    } }, empathy.badge || t.empathy && t.empathy.badge || ""), empathy.lines.map((line, i) => /* @__PURE__ */ React.createElement("p", { key: i, style: { fontSize: "clamp(15px, 2.4vw, 17px)", lineHeight: 2.2, margin: 0, color: "#3D2E1F" } }, line))), empathy.tried && empathy.tried.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "emp-tried", style: { marginTop: 48 } }, empathy.tried_label && /* @__PURE__ */ React.createElement("div", { style: { fontSize: 14, color: "#8B7355", marginBottom: 12 } }, "\u270F\uFE0F ", empathy.tried_label), empathy.tried.map((line, i) => /* @__PURE__ */ React.createElement("div", { key: i, style: { display: "flex", alignItems: "flex-start", gap: 12, fontSize: "clamp(14px, 2.2vw, 16px)", lineHeight: 1.8, marginBottom: 8, color: "#5C4936" } }, /* @__PURE__ */ React.createElement("span", { style: { color: "#D26B8A", fontWeight: 700 } }, "\u2192"), /* @__PURE__ */ React.createElement("span", { style: { textDecoration: "line-through", textDecorationColor: "#D26B8A", textDecorationThickness: 2 } }, line)))), empathy.pivot && /* @__PURE__ */ React.createElement("div", { className: "emp-pivot", style: { marginTop: 44, textAlign: "center", fontSize: "clamp(15px, 2.4vw, 17px)", lineHeight: 2.1, color: "#3D2E1F", whiteSpace: "pre-line", fontFamily: "var(--font-display, inherit)", fontWeight: 600 } }, empathy.pivot), empathy.idea && /* @__PURE__ */ React.createElement("div", { className: "m-rise emp-idea", style: { marginTop: 40 } }, empathy.idea_label && /* @__PURE__ */ React.createElement("div", { style: { fontSize: 14, color: "#8B7355", marginBottom: 12, textAlign: "center" } }, "\u{1F4A1} ", empathy.idea_label), /* @__PURE__ */ React.createElement("div", { className: "emp-idea-box", style: {
+    } }, empathy.badge || t.empathy && t.empathy.badge || ""), empathy.lines.map((line, i) => /* @__PURE__ */ React.createElement("p", { key: i, style: { fontSize: "clamp(15px, 2.4vw, 17px)", lineHeight: 2.2, margin: 0, color: "#3D2E1F" } }, jw(line)))), empathy.tried && empathy.tried.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "emp-tried", style: { marginTop: 48 } }, empathy.tried_label && /* @__PURE__ */ React.createElement("div", { style: { fontSize: 14, color: "#8B7355", marginBottom: 12 } }, "\u270F\uFE0F ", empathy.tried_label), empathy.tried.map((line, i) => /* @__PURE__ */ React.createElement("div", { key: i, style: { display: "flex", alignItems: "flex-start", gap: 12, fontSize: "clamp(14px, 2.2vw, 16px)", lineHeight: 1.8, marginBottom: 8, color: "#5C4936" } }, /* @__PURE__ */ React.createElement("span", { style: { color: "#D26B8A", fontWeight: 700 } }, "\u2192"), /* @__PURE__ */ React.createElement("span", { style: { textDecoration: "line-through", textDecorationColor: "#D26B8A", textDecorationThickness: 2 } }, jw(line))))), empathy.pivot && /* @__PURE__ */ React.createElement("div", { className: "emp-pivot", style: { marginTop: 44, textAlign: "center", fontSize: "clamp(15px, 2.4vw, 17px)", lineHeight: 2.1, color: "#3D2E1F", whiteSpace: "pre-line", fontFamily: "var(--font-display, inherit)", fontWeight: 600 } }, jw(empathy.pivot)), empathy.idea && /* @__PURE__ */ React.createElement("div", { className: "m-rise emp-idea", style: { marginTop: 40 } }, empathy.idea_label && /* @__PURE__ */ React.createElement("div", { style: { fontSize: 14, color: "#8B7355", marginBottom: 12, textAlign: "center" } }, "\u{1F4A1} ", empathy.idea_label), /* @__PURE__ */ React.createElement("div", { className: "emp-idea-box", style: {
       background: accent.soft,
       border: `2px solid ${accent.c}`,
       borderRadius: 16,
@@ -111,6 +136,6 @@
       fontWeight: 700,
       whiteSpace: "pre-line",
       fontFamily: "var(--font-display, inherit)"
-    } }, empathy.idea)))), /* @__PURE__ */ React.createElement("section", { className: "reveal", "data-snap": true, "data-progress-color": accent.c, style: { padding: "32px 16px 40px", maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 4 } }, t.lineup && t.lineup.label || "LINEUP"), /* @__PURE__ */ React.createElement("h2", { className: "lineup-title", style: { fontSize: 22, fontWeight: 700, margin: "0 0 16px", fontFamily: "var(--font-display, inherit)", letterSpacing: "0.01em" } }, category && category.lineup_title || t.lineup && t.lineup.title || ""), /* @__PURE__ */ React.createElement("div", { className: "lineup-grid", style: { display: "grid", gap: 16 } }, category.apps.map((app, i) => /* @__PURE__ */ React.createElement(window.AppCard, { key: app.id, app, idx: i, category, pathPrefix: prefix })))), t.categories && t.categories.length > 1 && /* @__PURE__ */ React.createElement(window.CatNavPatternE, { t, currentId: categoryId, prefix, accent }), /* @__PURE__ */ React.createElement(window.AllAppsList, { pathPrefix: prefix, currentCategoryId: categoryId })), /* @__PURE__ */ React.createElement(window.SiteFooter, { pathPrefix: prefix, currentCategoryId: categoryId }));
+    } }, jw(empathy.idea))))), /* @__PURE__ */ React.createElement("section", { className: "reveal", "data-snap": true, "data-progress-color": accent.c, style: { padding: "32px 16px 40px", maxWidth: 720, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { style: { fontSize: 12, letterSpacing: 3, fontWeight: 800, color: accent.deep, marginBottom: 4 } }, t.lineup && t.lineup.label || "LINEUP"), /* @__PURE__ */ React.createElement("h2", { className: "lineup-title", style: { fontSize: 22, fontWeight: 700, margin: "0 0 16px", fontFamily: "var(--font-display, inherit)", letterSpacing: "0.01em" } }, jw(category && category.lineup_title || t.lineup && t.lineup.title || "")), /* @__PURE__ */ React.createElement("div", { className: "lineup-grid", style: { display: "grid", gap: 16 } }, category.apps.map((app, i) => /* @__PURE__ */ React.createElement(window.AppCard, { key: app.id, app, idx: i, category, pathPrefix: prefix })))), t.categories && t.categories.length > 1 && /* @__PURE__ */ React.createElement(window.CatNavPatternE, { t, currentId: categoryId, prefix, accent }), /* @__PURE__ */ React.createElement(window.AllAppsList, { pathPrefix: prefix, currentCategoryId: categoryId })), /* @__PURE__ */ React.createElement(window.SiteFooter, { pathPrefix: prefix, currentCategoryId: categoryId }));
   };
 })();
