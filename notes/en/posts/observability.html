@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#d4831f" />
+<title>Observability on a Zero Budget — Free Instruments, Honest Facts | Architecture Notes</title>
+<meta name="description" content="OODA starts at Observe: what can&#39;t be observed can&#39;t be improved. Google Search Console, AdMob, Cloudflare, and app reviews — free instruments covering numbers and voices. And a posture for the early days, when the numbers are all zeros." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/observability.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/observability.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/observability.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/observability.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Observability on a Zero Budget — Free Instruments, Honest Facts" />
+<meta property="og:description" content="Install the free instruments first: GSC, AdMob, Cloudflare, reviews. Facts before hunches — and patience before both." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/observability.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Observability on a Zero Budget — Free Instruments, Honest Facts" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Observability on a Zero Budget — Free Instruments, Honest Facts",
+  "inLanguage": "en",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/observability.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Marketing", "item": "https://lycoapp.com/notes/en/posts/growth.html" },
+    { "@type": "ListItem", "position": 3, "name": "Improvement loop", "item": "https://lycoapp.com/notes/en/posts/improvement-loop.html" },
+    { "@type": "ListItem", "position": 4, "name": "Observability", "item": "https://lycoapp.com/notes/en/posts/observability.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-growth">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="growth.html">Marketing</a><span class="sep">›</span><a href="improvement-loop.html">Improvement loop</a><span class="sep">›</span><b>Observability</b></nav>
+
+  <article>
+    <span class="cat-tag">3.4.1 · Marketing</span>
+    <h1>Observability on a Zero Budget — Free Instruments, Honest Facts</h1>
+    <p class="a-meta"><span>2026.07.11</span><span>~4 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>OODA begins at Observe. What cannot be observed cannot be improved — so the free instruments came first: Google Search Console, AdMob, Cloudflare, and the app stores' reviews. Judge from facts, in both numbers and words. But know that early on, the base is tiny and the numbers barely move. A posture of not letting zeros swing your mood was prepared along with the dashboards.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="improvement-loop.html">3.4 The improvement loop</a> committed to OODA. Its starting point is Observe.</p>
+        <h2>Complication</h2>
+        <p>Except — nothing is observable yet. How many came? Where did they leave? What did the ads pay? Which article landed? Blind, every judgment is a guess, and a guess-driven fix can't even tell you whether it worked.</p>
+        <h2>Question</h2>
+        <blockquote>In a solo project — what do you observe, and how?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Free, or nearly free, to install</li>
+          <li>Captures both numbers (quantitative) and raw voices (qualitative)</li>
+          <li>Small enough for one person to keep watching</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>Free instruments, one per doorway.</p>
+        <blockquote>Making things observable<br>is the first step of improvement.</blockquote>
+        <ul class="body">
+          <li><b>Google Search Console</b> — how search discovers you (the Discovery gauge)</li>
+          <li><b>AdMob</b> — what the ads earned (the monetization gauge)</li>
+          <li><b>Cloudflare</b> — who came to the site, and how many (the traffic gauge)</li>
+          <li><b>App store reviews</b> — users in their own words (the qualitative gauge)</li>
+        </ul>
+        <p>Numbers alone can't tell you <i>why</i>; voices alone can't tell you <i>how much</i>. So watch both.</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>Because what cannot be observed cannot be improved.</b> Fix by guesswork and you can't even score the fix; the effort spins in place. Instruments first. Only when the facts are visible do Orient, Decide, and Act mean anything. Observation is the ground the whole loop stands on.</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Paid, high-end analytics</b> — richer data, certainly. But oversized for a solo project's scale and budget. The free instruments are enough to start; not taken.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>Judgment now runs on facts, not guesses. Where people left, what worked — the numbers and the voices hand you the grounds for the next move. OODA can start turning.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>Early on, the base is small and the numbers barely move. Traffic and revenue show days of zeros in a row. Stare at that long enough and it stings. But it isn't failure — the spread simply hasn't arrived. <mark>Not letting the early numbers swing your mood is a legitimate part of the improvement posture.</mark></p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>The instruments are in; judgment runs on facts. With that, the full chain — strategy, mix, management, improvement — turns as one loop. From here it's laps: two, three, each a little sharper than the last.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="growth.html"><span class="num">3</span>Marketing</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="strategy-process.html"><span class="num">3.1</span>Strategy process</a></summary>
+            <ul>
+              <li><a href="research.html"><span class="num">3.1.1</span>Research</a></li>
+              <li><a href="stp.html"><span class="num">3.1.2</span>STP</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-mix.html"><span class="num">3.2</span>Marketing mix</a></summary>
+            <ul>
+              <li><a href="four-c.html"><span class="num">3.2.1</span>4C</a></li>
+              <li><a href="four-p.html"><span class="num">3.2.2</span>4P</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-management.html"><span class="num">3.3</span>Marketing management</a></summary>
+            <ul>
+              <li><a href="discovery.html"><span class="num">3.3.1</span>Getting discovered</a></li>
+              <li><a href="engage-check.html"><span class="num">3.3.2</span>Earning trust</a></li>
+              <li><a href="fandom.html"><span class="num">3.3.3</span>Becoming fans</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="improvement-loop.html"><span class="num">3.4</span>Improvement loop</a></summary>
+            <ul>
+              <li><a class="cur" href="observability.html" aria-current="page"><span class="num">3.4.1</span>Observability</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#growth">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

@@ -7,6 +7,9 @@
 <title>Buy Me a Coffee で活動を支えてもらう — 応援を受け取る仕組み | Architecture Notes</title>
 <meta name="description" content="応援したいと言ってくれる人がいても、受け皿がなければ気持ちは届かない。Buy Me a Coffee をフローティングウィジェットとフッターバッジで全ページに置き、ログイン不要・単発で支援できるようにした。GitHub Sponsors や Patreon を見送った理由の記録。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/bmc.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/bmc.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/bmc.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/bmc.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Buy Me a Coffee で活動を支えてもらう — 応援を受け取る仕組み" />
 <meta property="og:description" content="Buy Me a Coffee を全ページに置き、ログイン不要・単発で支援できるようにした。応援のハードルを最小にする設計判断。" />
@@ -31,7 +34,7 @@
   "headline": "Buy Me a Coffee で活動を支えてもらう — 応援を受け取る仕組み",
   "inLanguage": "ja",
   "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
+  "dateModified": "2026-07-12",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/bmc.html",
@@ -117,7 +120,9 @@
         <div class="sub">
           <h3>Reason</h3>
           <p><b>BMC を選んだのは、応援のハードルが一番低いからである。</b> アカウント登録が不要で、1 クリックで単発の支援ができる。月額のサブスクではないので、「今回だけ応援したい」という気持ちにそのまま応えられる。実装もスニペット 1 個で、スマホだけの運用に収まる。</p>
-          <p><b>全ページに置いたのは、どこからでも受け取るためである。</b> 記事を読んで心が動く瞬間は、どのページで訪れるか分からない。4.3 で書いたとおり、応援したいと思ったその場に受け皿がなければ、気持ちは届かない。だから特定のページではなく、全ページに静かに置いている。</p>
+          <p><b>全ページに置いたのは、どこからでも受け取るためである。</b> 記事を読んで心が動く瞬間は、どのページで訪れるか分からない。<a href="monetize-support.html">4.3 活動の支援</a> で書いたとおり、応援したいと思ったその場に受け皿がなければ、気持ちは届かない。</p>
+          <blockquote>心が動いた、その場所に。<br>受け皿を、静かに置いておく。</blockquote>
+          <p>だから特定のページではなく、全ページに置いている。</p>
         </div>
 
         <div class="sub">

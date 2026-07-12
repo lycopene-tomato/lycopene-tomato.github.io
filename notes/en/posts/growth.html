@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#d4831f" />
+<title>Marketing — the Thread That Connects Everything | Architecture Notes</title>
+<meta name="description" content="Marketing isn&#39;t about how to sell; it starts with what value to deliver. Reading the drill-and-hole story as the gap between requirements and features, and tracing the line from business requirements through design, development, and evaluation to the user — turning dots into a line." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/growth.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/growth.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/growth.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/growth.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Marketing — the Thread That Connects Everything" />
+<meta property="og:description" content="People don&#39;t want a drill; they want the hole. Marketing is the thread that connects every dot of a product to its user." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/growth.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Marketing — the Thread That Connects Everything" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Marketing — the Thread That Connects Everything",
+  "inLanguage": "en",
+  "datePublished": "2026-07-05",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/growth.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Marketing", "item": "https://lycoapp.com/notes/en/posts/growth.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-growth">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><b>3 Marketing</b></nav>
+
+  <article>
+    <span class="cat-tag">3 · Marketing</span>
+    <h1>Marketing — the Thread That Connects Everything</h1>
+    <p class="a-meta"><span>2026.07.05</span><span>~4 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>Marketing begins with "what value do we deliver," and runs through business requirements, design, development, testing, and evaluation until it reaches the user. Selling and advertising are only fragments of it. Every dot — every technique — joins into a line that arrives at a person. That whole is marketing; and seen from the marketing vantage point, everything connects.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-jo">
+      <p class="blk-h"><span class="no">01</span><span class="jp">序</span><span class="en">Opening</span></p>
+      <div class="bd">
+        <p>What is marketing? Here is how I hold it:</p>
+        <blockquote>The thread that connects everything.</blockquote>
+        <p>Marketing usually gets discussed as the art of selling. In truth, it starts <b>before</b> "what should we build?" is even asked.</p>
+      </div>
+    </section>
+
+    <section class="blk b-ha">
+      <p class="blk-h"><span class="no">02</span><span class="jp">破</span><span class="en">Turn</span></p>
+      <div class="bd">
+        <h2>The Drill</h2>
+        <p>There's a story marketing people never tire of: the drill and the hole. It spread through the writing of Harvard Business School's Theodore Levitt:</p>
+        <blockquote lang="en">People don't want to buy a quarter-inch drill. They want a quarter-inch hole!</blockquote>
+        <p>Nobody wants the drill. They want the hole it makes.</p>
+        <p>For us engineers, this is exactly <mark>the gap between requirements and functional specs</mark>. The requirement is "I want a hole." The functional spec is "build an electric drill." Confuse the two, and something grim is waiting for you at UAT (user acceptance testing).</p>
+        <p>The spec says electric drill — but if a hole is what's wanted, a hand drill delivers too. When the schedule slips, the place you return to is always the value being delivered. Wait — why electric? Does it need to be electric? Do we even need the attachment system? Oh no, it's corded, not battery — who is using this, and where?</p>
+
+        <h2>Dialogue</h2>
+        <p>Talk specs with business folks at work and the conversation never quite lands. Ask "is 2000mAh enough for the battery?" and you get back a puzzled "…what are you talking about?"</p>
+        <p>Ask toward the purpose instead, and it goes like this:</p>
+        <ul class="body">
+          <li>Is the material you're drilling hard?</li>
+          <li>Is hand-drilling too slow — does it need to be powered?</li>
+          <li>Will it be used in one place, or on the move?</li>
+          <li>Would an hour of continuous run time cover it?</li>
+        </ul>
+        <p>Understood — designing for one hour of continuous operation (2000mAh). Now it's a conversation. <b>Speak to the value being delivered, or the talk goes nowhere and the design can miss by a mile.</b> Marketing is a serious factor in systems work, too.</p>
+      </div>
+    </section>
+
+    <section class="blk b-kyu">
+      <p class="blk-h"><span class="no">03</span><span class="jp">急</span><span class="en">Finale</span></p>
+      <div class="bd">
+        <h2>Market + ing</h2>
+        <p>Where does marketing start? The word itself is Market plus the present progressive: -ing. So before any marketing, the market must be chosen. First, decide where you stand.</p>
+
+        <h2>Connect</h2>
+        <p>From here, we walk through marketing for solo development along the axis of time. Before building: decide what to build. While building: turn requirements into design. After building: deliver and grow. And after one full turn: observe and improve. Dot by dot, the line gets drawn all the way to the user.</p>
+        <ul class="body">
+          <li><a href="strategy-process.html">3.1 Marketing strategy process</a> — before building: Research and STP decide the value</li>
+          <li><a href="marketing-mix.html">3.2 Marketing mix</a> — while building: 4C to 4P, requirements to design</li>
+          <li><a href="marketing-management.html">3.3 Marketing management</a> — after building: getting found on a zero ad budget</li>
+          <li><a href="improvement-loop.html">3.4 The improvement loop</a> — after the turn: observe, then fix</li>
+        </ul>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary class="cur"><span class="caret">▸</span><a href="growth.html" aria-current="page"><span class="num">3</span>Marketing</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="strategy-process.html"><span class="num">3.1</span>Strategy process</a></summary>
+            <ul>
+              <li><a href="research.html"><span class="num">3.1.1</span>Research</a></li>
+              <li><a href="stp.html"><span class="num">3.1.2</span>STP</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-mix.html"><span class="num">3.2</span>Marketing mix</a></summary>
+            <ul>
+              <li><a href="four-c.html"><span class="num">3.2.1</span>4C</a></li>
+              <li><a href="four-p.html"><span class="num">3.2.2</span>4P</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="marketing-management.html"><span class="num">3.3</span>Marketing management</a></summary>
+            <ul>
+              <li><a href="discovery.html"><span class="num">3.3.1</span>Getting discovered</a></li>
+              <li><a href="engage-check.html"><span class="num">3.3.2</span>Earning trust</a></li>
+              <li><a href="fandom.html"><span class="num">3.3.3</span>Becoming fans</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="improvement-loop.html"><span class="num">3.4</span>Improvement loop</a></summary>
+            <ul><li><a href="observability.html"><span class="num">3.4.1</span>Observability</a></li></ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#growth">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

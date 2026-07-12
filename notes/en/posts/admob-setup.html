@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>Setting Up AdMob — app-ads.txt, Where Your Domain Vouches for Your Ads | Architecture Notes</title>
+<meta name="description" content="To serve AdMob ads, place app-ads.txt at the root of your custom domain and pass publisher verification. app-ads.txt is the IAB-standard declaration that shuts out counterfeit inventory and stops revenue leaking. Owning a domain is itself ad credibility." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/admob-setup.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/admob-setup.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/admob-setup.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/admob-setup.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Setting Up AdMob — app-ads.txt, Where Your Domain Vouches for Your Ads" />
+<meta property="og:description" content="One file at the domain root declares your ad inventory genuine. The domain you own becomes the trust behind your ads." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/admob-setup.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Setting Up AdMob — app-ads.txt, Where Your Domain Vouches for Your Ads" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Setting Up AdMob — app-ads.txt, Where Your Domain Vouches for Your Ads",
+  "inLanguage": "en",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/admob-setup.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Brand foundation", "item": "https://lycoapp.com/notes/en/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "Custom domain", "item": "https://lycoapp.com/notes/en/posts/domain.html" },
+    { "@type": "ListItem", "position": 4, "name": "AdMob setup", "item": "https://lycoapp.com/notes/en/posts/admob-setup.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="brand.html">Brand foundation</a><span class="sep">›</span><a href="domain.html">Custom domain</a><span class="sep">›</span><b>AdMob setup</b></nav>
+
+  <article>
+    <span class="cat-tag">2.4.4 · Brand</span>
+    <h1>Setting Up AdMob — app-ads.txt, Where Your Domain Vouches for Your Ads</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>~4 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>To serve AdMob ads in the app, app-ads.txt goes at the root of the custom domain, and publisher verification passes. app-ads.txt is an IAB-standard declaration file: "the owner of this domain authorizes this ad account to sell this inventory." It shuts out counterfeit inventory and stops revenue from leaking away. <mark>Owning a custom domain is, in itself, the credibility behind the ads.</mark></p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="web-publish.html">2.4.2</a> put the website on the custom domain. On the app side, AdMob ads carry the monetization.</p>
+        <h2>Complication</h2>
+        <p>Ad inventory has an impersonation problem. If a third party claims "I sell this app's ad space," advertisers grow wary and hold back — and the legitimate publisher's revenue leaks away. Do nothing, and you cannot prove you are the genuine seller.</p>
+        <h2>Question</h2>
+        <blockquote>How do you prove you are the rightful owner of your ad inventory?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Verified as a genuine publisher through an official mechanism</li>
+          <li>The proof rides on the custom domain</li>
+          <li>Place once, minimal upkeep</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p><mark>app-ads.txt, placed at the root of the custom domain.</mark> Write the AdMob publisher ID inside, and it declares: the owner of this domain sells this account's inventory, legitimately. One file. That's the whole move.</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>Because app-ads.txt is a declaration only the domain owner can make.</b> It's a mechanism defined by the IAB (the industry standards body): advertisers and platforms look up the app's associated domain, read its app-ads.txt, and confirm the seller is genuine.</p>
+        <blockquote>Owning the domain is, in itself,<br>the credibility behind the ads.</blockquote>
+        <p>Counterfeit inventory gets shut out, advertisers bid with confidence, and the revenue that should reach you, does. The domain — that quiet asset — is holding up the ads' trust.</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Skip app-ads.txt</b> — no effort, but no verification either, which costs you in delivery and revenue. With a domain already in hand, there is no reason not to place it.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>One app-ads.txt at the domain root, and the inventory is verified genuine. The plain fact of owning a domain converted directly into ad credibility.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>Crawlers take time to pick the file up, so verification lags. And a single wrong character voids it — copy the publisher ID exactly.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>This article covered the domain guaranteeing the ads' <i>legitimacy</i>. Where the ads actually sit inside the app — and how sparingly — is designed in <a href="admob.html">4.1.1 AdMob</a>. The brand-foundation track continues to search: <a href="search-console.html">2.4.5 Registering with Google Search</a>.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>Brand foundation</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>Why brand matters</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>How far to build</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>Choosing a brand name</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>Naming with AI</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>Making a logo</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>Logo with AI</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>Custom domain</a></summary>
+            <ul>
+              <li><a href="domain-register.html"><span class="num">2.4.1</span>Registering a domain</a></li>
+              <li><a href="web-publish.html"><span class="num">2.4.2</span>Publishing the site</a></li>
+              <li><a href="domain-email.html"><span class="num">2.4.3</span>Custom email</a></li>
+              <li><a class="cur" href="admob-setup.html" aria-current="page"><span class="num">2.4.4</span>AdMob setup</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>Search registration</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

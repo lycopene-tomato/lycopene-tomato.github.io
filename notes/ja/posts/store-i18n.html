@@ -7,6 +7,9 @@
 <title>アプリ申請を多言語対応しよう — 申請情報を Git で管理して自動登録する | Architecture Notes</title>
 <meta name="description" content="多言語対応が必要なのはアプリだけではない。App Store や Google Play の申請情報も各言語で登録が要る。1 言語なら手入力でいいが、50 言語では非現実的。だから申請情報も Git で管理し、AI で翻訳、GitHub Actions からストアへ自動登録する。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/store-i18n.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/store-i18n.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/store-i18n.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/store-i18n.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="アプリ申請を多言語対応しよう — 申請情報を Git で管理して自動登録する" />
 <meta property="og:description" content="多言語対応が必要なのはアプリだけではない。App Store や Google Play の申請情報も各言語で登録が要る。1 言語なら手入力でいいが、50 言語では非現実的。だから申請情報も Git で管理し、AI で翻訳、GitHub Actions からストアへ自動登録する。" />
@@ -112,7 +115,8 @@
 
         <div class="sub">
           <h3>Reason</h3>
-          <p><b>申請情報も、ソースコードと同じく Git で管理できるからである。</b> ファイルにまとめておけば、履歴も差分も追え、Actions から自動で登録できる。手入力のミスも消える。文字数制限 (タイトル 30 / サブタイトル 30 / 説明 4000 / キーワード 100 など) の検証も、スクリプトで自動化できる。<mark>テキストである以上、コードと同じ流儀 — 一か所に集約して自動化する — が効く。</mark></p>
+          <p><b>申請情報も、ソースコードと同じく Git で管理できるからである。</b> ファイルにまとめておけば、履歴も差分も追え、Actions から自動で登録できる。手入力のミスも消える。文字数制限 (タイトル 30 / サブタイトル 30 / 説明 4000 / キーワード 100 など) の検証も、スクリプトで自動化できる。</p>
+          <blockquote>テキストである以上、コードと同じ流儀が効く。<br>一か所に集約して、自動化する。</blockquote>
           <p>もう一つ、翻訳を AI に任せる利点がある。単なる直訳では、文化に合わない表現や、検索されない語になってしまう。AI に意味を理解させて訳せば、各国のトーンやローカル検索語に合わせられる。センシティブな話題も、地域ごとに本文での触れ方を変えられる (検索流入のためキーワードには共通で残しつつ、本文の明記は国の受容度で調整する)。</p>
         </div>
 

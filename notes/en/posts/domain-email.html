@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>Custom-Domain Email for Free — ImprovMX Forwarding to Gmail | Architecture Notes</title>
+<meta name="description" content="A custom-domain email address via ImprovMX: add MX records, and every message to @yourdomain forwards to your own Gmail, free. Catch-all means unlimited purpose-specific addresses. The record of setting up the receiving side first." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/domain-email.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/domain-email.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/domain-email.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/domain-email.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Custom-Domain Email for Free — ImprovMX Forwarding to Gmail" />
+<meta property="og:description" content="MX records + ImprovMX = every @yourdomain address lands in your Gmail. Free, and unlimited aliases." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/domain-email.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Custom-Domain Email for Free — ImprovMX Forwarding to Gmail" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Custom-Domain Email for Free — ImprovMX Forwarding to Gmail",
+  "inLanguage": "en",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/domain-email.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Brand foundation", "item": "https://lycoapp.com/notes/en/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "Custom domain", "item": "https://lycoapp.com/notes/en/posts/domain.html" },
+    { "@type": "ListItem", "position": 4, "name": "Custom email", "item": "https://lycoapp.com/notes/en/posts/domain-email.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="brand.html">Brand foundation</a><span class="sep">›</span><a href="domain.html">Custom domain</a><span class="sep">›</span><b>Custom email</b></nav>
+
+  <article>
+    <span class="cat-tag">2.4.3 · Brand</span>
+    <h1>Custom-Domain Email for Free — ImprovMX Forwarding to Gmail</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>~4 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>A custom-domain email address, set up with ImprovMX. Add its MX records to DNS, and <mark>every message sent to @yourdomain forwards, free, to the one Gmail you already read.</mark> With catch-all enabled, contact@, hello@ — any address you can dream up — just works, endlessly. A domain address reads as trustworthy and, frankly, looks sharp. Receiving-side first; that was the scope.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="web-publish.html">2.4.2</a> put the website on the custom domain. The same domain can carry an email address, too.</p>
+        <h2>Complication</h2>
+        <p>But running your own mail server is heavy overkill. And a bare personal Gmail as the public contact address — for a brand, it's just a little untucked.</p>
+        <h2>Question</h2>
+        <blockquote>How do you receive custom-domain email, cheaply and without strain?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Receives at custom-domain addresses</li>
+          <li>No self-hosted server; low running cost</li>
+          <li>Readable in the mail setup I already use</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p><mark>ImprovMX, forwarding custom-domain mail to Gmail.</mark> Add ImprovMX's MX records to DNS, and mail to @yourdomain lands in the Gmail you check every day. With catch-all (forward everything) enabled, any-name@yourdomain becomes valid — one address per purpose, as many as you like.</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>Because domain email delivers trust and convenience at once.</b> A custom-domain contact address changes how safe the sender feels writing to you; for the site's impression — and, honestly, for style — the domain address wins. And ImprovMX forwarding means no server of your own, with every message readable in plain old Gmail.</p>
+        <blockquote>Because you own the domain,<br>all of this comes free.</blockquote>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Self-host a mail server</b> — maximal freedom, heavyweight upkeep. Oversized for a solo project; not taken.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>Mail arrives at the custom-domain address. Purpose-specific aliases multiply freely, and everything funnels into one Gmail. The brand's front door, at zero cost.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>What free covers is receiving (forwarding). Sending from the domain address needs ImprovMX's paid tier or a separate sending setup. Receiving was enough for now, so receiving is what got built.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>Web and email now ride the domain. Next: the domain steps up to vouch for the app's ads — AdMob verification. Continued in <a href="admob-setup.html">2.4.4 Setting up AdMob</a>.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>Brand foundation</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>Why brand matters</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>How far to build</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>Choosing a brand name</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>Naming with AI</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>Making a logo</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>Logo with AI</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>Custom domain</a></summary>
+            <ul>
+              <li><a href="domain-register.html"><span class="num">2.4.1</span>Registering a domain</a></li>
+              <li><a href="web-publish.html"><span class="num">2.4.2</span>Publishing the site</a></li>
+              <li><a class="cur" href="domain-email.html" aria-current="page"><span class="num">2.4.3</span>Custom email</a></li>
+              <li><a href="admob-setup.html"><span class="num">2.4.4</span>AdMob setup</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>Search registration</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

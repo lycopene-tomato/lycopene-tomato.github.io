@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#b8503c" />
+<title>Using Amazon Associates — Recommend Only What Actually Helps | Architecture Notes</title>
+<meta name="description" content="There are moments a book or service deserves recommending — but affiliate-driven writing corrodes trust. So Amazon Associates is used only when something truly helps, with PR clearly disclosed, and never as wall-to-wall banners." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/amazon-associates.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/amazon-associates.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/amazon-associates.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/amazon-associates.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Using Amazon Associates — Recommend Only What Actually Helps" />
+<meta property="og:description" content="Links appear only where the recommendation is real, PR disclosed. The test: does it truly help the reader?" />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/amazon-associates.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Using Amazon Associates — Recommend Only What Actually Helps" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Using Amazon Associates — Recommend Only What Actually Helps",
+  "inLanguage": "en",
+  "datePublished": "2026-07-07",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/amazon-associates.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Monetization", "item": "https://lycoapp.com/notes/en/posts/monetize.html" },
+    { "@type": "ListItem", "position": 3, "name": "Website monetization", "item": "https://lycoapp.com/notes/en/posts/monetize-web.html" },
+    { "@type": "ListItem", "position": 4, "name": "Amazon Associates", "item": "https://lycoapp.com/notes/en/posts/amazon-associates.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-monetize">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="monetize.html">4 Monetization</a><span class="sep">›</span><a href="monetize-web.html">4.2 Website monetization</a><span class="sep">›</span><b>4.2.1 Amazon Associates</b></nav>
+
+  <article>
+    <span class="cat-tag">4.2.1 · Monetization</span>
+    <h1>Using Amazon Associates — Recommend Only What Actually Helps</h1>
+    <p class="a-meta"><span>2026.07.07</span><span>~5 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>Writing brings moments where a book or a service deserves a recommendation — but writing <i>for</i> the affiliate fee corrodes trust. So Amazon Associates gets used only when something truly helps, with the PR disclosure explicit. No wall-to-wall display banners. The test remains one question: does this genuinely help the reader?</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="Tools">
+          <li><b>Amazon Associates</b><span class="use">Book / product referral links</span><span class="cost">Free (with review)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="monetize-web.html">4.2 Website monetization</a> set the rule: recommend only when it truly helps. And writing really does produce such moments — "this book would help here," "this service could carry this person."</p>
+        <h2>Complication</h2>
+        <p>But make the affiliate the goal, and the writing clouds over fast. Content bends toward whatever sells, and readers smell it instantly. Every added recommendation subtracts trust.</p>
+        <h2>Question</h2>
+        <blockquote>How do you recommend — and keep the trust intact?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Recommendations happen only when truly helpful</li>
+          <li>Free to start</li>
+          <li>Advertising disclosure is unambiguous</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>Amazon Associates. A link appears <mark>only</mark> when a genuinely helpful book or product comes up, with PR clearly disclosed. If it isn't worth recommending, there is no link. And whether something has an affiliate program plays no part in whether it gets recommended.</p>
+        <blockquote>The test: does it truly help the reader?<br>Nothing else.</blockquote>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>Amazon, because the catalog is wide and individuals can join.</b> From books to household goods, the range means the "truly helpful thing" often happens to live on Amazon. The review passes for personal sites, and the links sit naturally in prose.</p>
+        <p><b>"Only when it helps," because the content's value comes first.</b> As <a href="monetize-web.html">4.2 Website monetization</a> put it, the purpose of writing is delivering value, not referral fees. When something helpful exists, mention it once, modestly. Keep that order, and affiliate links never cloud the writing.</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>CPC display ads</b> — paper the articles in banners and PV pays. But it corrodes the content's value, and contradicts 4.2's "measure what reached people, not PV." Not adopted.</li>
+            <li><b>Other affiliate networks</b> — good fits exist by product category. Amazon first; others considered when a recommendation isn't on Amazon.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>The writing keeps its value, and revenue attaches only to recommendations that were real. And a reader's "that book helped me" is worth far more than the referral fee that came with it.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>Amazon Associates expires your membership if no conversions occur within a set period. A policy of measuring "reached someone" over PV keeps the numbers small, so this clause stays on the watchlist.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>As recommendation-worthy things accumulate, other networks may join. But growing the list is not a goal. The test never changes: does it truly help?</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="monetize.html"><span class="num">4</span>Monetization</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-app.html"><span class="num">4.1</span>App monetization</a></summary>
+            <ul><li><a href="admob.html"><span class="num">4.1.1</span>AdMob</a></li></ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="monetize-web.html"><span class="num">4.2</span>Website monetization</a></summary>
+            <ul><li><a class="cur" href="amazon-associates.html" aria-current="page"><span class="num">4.2.1</span>Amazon Associates</a></li></ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-support.html"><span class="num">4.3</span>Supporting the work</a></summary>
+            <ul><li><a href="bmc.html"><span class="num">4.3.1</span>Buy Me a Coffee</a></li></ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#monetize">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

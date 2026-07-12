@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>How to Build iPhone Apps Without a Mac — EAS + GitHub Codespaces | Architecture Notes</title>
+<meta name="description" content="Building an iPhone app requires a Mac — but not owning one. Do the one-time certificate ceremony in GitHub Codespaces, and from then on trigger EAS build → submit → TestFlight from the iPhone via GitHub Actions. Free-tier pitfalls and the --no-wait trick included." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/cloud-build.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/cloud-build.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/cloud-build.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/cloud-build.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to Build iPhone Apps Without a Mac — EAS + GitHub Codespaces" />
+<meta property="og:description" content="A Mac is required. Owning one is not. One-time certificates via Codespaces, then iPhone-triggered builds to TestFlight." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/cloud-build.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to Build iPhone Apps Without a Mac — EAS + GitHub Codespaces" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Build iPhone Apps Without a Mac — EAS + GitHub Codespaces",
+  "inLanguage": "en",
+  "datePublished": "2026-07-02",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/cloud-build.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "AI-driven phone-only development", "item": "https://lycoapp.com/notes/en/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "Dev environment on an iPhone alone", "item": "https://lycoapp.com/notes/en/posts/env.html" },
+    { "@type": "ListItem", "position": 4, "name": "Building without a Mac", "item": "https://lycoapp.com/notes/en/posts/cloud-build.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="dev.html">1 AI-driven phone-only development</a><span class="sep">›</span><a href="env.html">1.1 Dev environment</a><span class="sep">›</span><b>1.1.2 Building without a Mac</b></nav>
+
+  <article>
+    <span class="cat-tag">1.1.2 · Dev Platform</span>
+    <h1>How to Build iPhone Apps Without a Mac — EAS + GitHub Codespaces</h1>
+    <p class="a-meta"><span>2026.07.02</span><span>~7 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>Building an iPhone app requires a Mac — but you don't need to own one; it only needs to exist in the cloud (EAS). Do the interactive certificate setup once in GitHub Codespaces (a PC browser), and from the second time on, everything runs from the iPhone: trigger GitHub Actions and it goes build → submit → TestFlight. Free tiers: 15 iOS builds/month on EAS and 2,000 Actions minutes/month — which melt away unless you use <code>--no-wait</code>.</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="Tools">
+          <li><b>Apple Developer Program</b><span class="use">App Store submission</span><span class="cost">$99/yr</span></li>
+          <li><b>EAS build</b><span class="use">Builds on cloud macOS</span><span class="cost">Free</span></li>
+          <li><b>GitHub Codespaces</b><span class="use">One-time certificate step</span><span class="cost">Free</span></li>
+          <li><b>PC (any)</b><span class="use">Browser, one time only</span><span class="cost">already owned</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p>With the dev loop from <a href="mobile-dev.html">1.1.1</a>, the check-and-fix cycle through Expo Go spins nicely. During development, no build is ever needed.</p>
+        <h2>Complication</h2>
+        <p>Shipping to the App Store is another story. Submitting to Apple means building the app, and building an iPhone app requires a Mac — an unavoidable fact of Apple's ecosystem.</p>
+        <h2>Question</h2>
+        <blockquote>A build needs a Mac. Without owning one, how do you reach the App Store?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Works without owning a Mac (don't buy one, don't borrow one, don't host one)</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <pre><span class="c"># First time only (creating certificates)</span>
+PC browser → GitHub → GitHub Codespaces → EAS (build)
+
+<span class="c"># From then on (everything from the iPhone)</span>
+iPhone → GitHub → GitHub Actions → EAS (build)
+iPhone → GitHub → GitHub Actions → EAS (submit)
+        → App Store Connect → TestFlight → iPhone</pre>
+        <blockquote>A Mac is required. It just has to live in the cloud.</blockquote>
+        <p>EAS (Expo Application Services) builds your iPhone app on macOS machines on their side. All you need at hand is a device that can fire the command — and an iPhone is enough.</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>The one-time PC browser session exists because of interactivity.</b> The first build creates the signing credentials for the App Store, and that process asks Y/N questions interactively. The answers are basically all Y, but automating them in GitHub Actions means writing tedious timing-sensitive response code. For an operation that happens a few times a year at most, automation isn't worth it — so the first time is manual.</p>
+        <p>Even that manual step needs no Mac. Open GitHub Codespaces — the VS Code environment GitHub gives you in a browser — and run the commands from there. The personal free tier (120 core-hours/month) is plenty. In theory a phone browser would work, but a terminal on a phone screen really is too small, so this one step used a PC browser. Again: a PC, not a Mac.</p>
+        <p>From the second time on, no interaction is needed: run the GitHub Actions workflow from the iPhone and the build rolls. When it succeeds, submit from Actions the same way, and the app lands in App Store Connect and comes down to your device through TestFlight. Right up to the moment of submission, everything completes on the iPhone.</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Xcode Cloud</b> — Apple's own CI/CD. But the initial setup needs Xcode, i.e., a Mac, which contradicts the "own no Mac" criterion. And since the app is built on EXPO, EAS's affinity settled it.</li>
+            <li><b>GitHub Actions macOS runners</b> — you can build directly on a macOS runner. But macOS minutes bill at <b>10×</b> the Linux rate, and the 2,000 free minutes/month evaporate. Never dared.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>Build and submit both live in EAS now, so management is unified. Development in EXPO (1.1.1) continues seamlessly right up to the doorstep of submission — all from a phone. The real find: "you need a Mac," the tallest barrier in iPhone development, turned out not to mean "you need to <i>own</i> a Mac."</p>
+
+        <h2 class="b">Bad</h2>
+        <p>The free tiers come with constraints. As of writing:</p>
+        <table class="cmp">
+          <thead><tr><th>Service</th><th>Free tier</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>EAS build</td><td data-label="Free tier">15 iOS builds/mo (+15 Android)</td><td data-label="Notes">Failed builds still count</td></tr>
+            <tr><td>GitHub Actions</td><td data-label="Free tier">2,000 min/mo</td><td data-label="Notes">Free plan, private repos</td></tr>
+          </tbody>
+        </table>
+        <p>Normal development never hits these ceilings. But debugging native issues with repeated builds eats them fast — and the painful part is that <b>failed builds still consume the count</b>. Three consecutive errors from a config mistake, and a fifth of your month is gone.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>Free-tier EAS builds sit at low priority, and the queue can get absurdly long. Waiting is fine — but here's the trap: <b>if Actions sits waiting for the build to finish, that waiting time also drains your 2,000 Actions minutes</b>. Waiting changes nothing about the result, so the right move is to run <code>eas build</code> with <code>--no-wait</code> and end the workflow the moment the trigger fires.</p>
+        <p>The trade-off is that build and submit no longer chain in one workflow. So it's a two-step routine: confirm the build succeeded on the EAS dashboard, then run submit from Actions. <code>--no-wait</code> works on submit too.</p>
+        <p>With this, the vertical line of "build it and deliver it" is connected — enough to release. Once released, add the safety layer that separates dev and production delivery — <a href="ota-channels.html">1.1.3 Safe EAS Update operation</a> — to prevent accidental releases during maintenance. Then the story widens sideways: <a href="i18n.html">1.2 Localization</a>.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI-driven phone-only development</a></summary>
+        <ul>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>Dev environment on an iPhone alone</a></summary>
+            <ul>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>Implementing apps on an iPhone alone</a></li>
+              <li><a class="cur" href="cloud-build.html" aria-current="page"><span class="num">1.1.2</span>Building without a Mac</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>Safe OTA operation</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="i18n.html"><span class="num">1.2</span>Localization</a></summary>
+            <ul>
+              <li><a href="app-i18n.html"><span class="num">1.2.1</span>Localizing the app</a></li>
+              <li><a href="store-i18n.html"><span class="num">1.2.2</span>Localizing the listing</a></li>
+              <li><a href="shots-i18n.html"><span class="num">1.2.3</span>Localizing screenshots</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#cloud-build">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

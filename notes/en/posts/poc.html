@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#7c3aed" />
+<title>The PoC I Ran Before Building Anything — Can Generative AI Alone Make an iPhone App? | Architecture Notes</title>
+<meta name="description" content="Budget: zero. Hardware: an iPhone and an out-of-support Intel Mac. I asked Claude&#39;s chat to build a Swift game and output it as a Zip — minutes later it ran on a real device. That moment started three months of solo development." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/poc.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/poc.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/poc.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/poc.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The PoC I Ran Before Building Anything — Can Generative AI Alone Make an iPhone App?" />
+<meta property="og:description" content="I asked Claude&#39;s chat for a Swift game as a Zip. It ran on a real iPhone. Cost: zero. Three months of solo development started there." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/poc.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The PoC I Ran Before Building Anything — Can Generative AI Alone Make an iPhone App?" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "The PoC I Ran Before Building Anything — Can Generative AI Alone Make an iPhone App?",
+  "inLanguage": "en",
+  "datePublished": "2026-07-02",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/poc.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "A PoC before starting anything", "item": "https://lycoapp.com/notes/en/posts/poc.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-poc">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><b>0 A PoC before starting anything</b></nav>
+
+  <article>
+    <span class="cat-tag">0 · PoC</span>
+    <h1>The PoC I Ran Before Building Anything — Can Generative AI Alone Make an iPhone App?</h1>
+    <p class="a-meta"><span>2026.07.02</span><span>~4 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>I asked Claude's chat to "build an iPhone game in Swift, output it as a Zip." A few minutes later a complete project came back, and it ran on a real device as-is. Total cost: zero. That experience became the starting point of three months of AI-first solo development, and this site is the record. Every technology adopted along the way was new to me — chosen flat on the merits, never because I happened to know it already.</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="Tools">
+          <li><b>iPhone</b><span class="use">Testing on a real device</span><span class="cost">already owned</span></li>
+          <li><b>Mac (Intel, out of support)</b><span class="use">Unpacking into Xcode, PoC only</span><span class="cost">already owned</span></li>
+          <li><b>Claude</b><span class="use">Generative AI (Free plan)</span><span class="cost">$0</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk b-jo">
+      <p class="blk-h"><span class="no">01</span><span class="jp">序</span><span class="en">Opening</span></p>
+      <div class="bd">
+        <p>Generative AI is everywhere. I knew that much. What I didn't know was how far it could actually go. Between what I touch at work and what the headlines promise, there is — as always — a gap.</p>
+        <p>So before starting anything, I decided to find out in the cheapest way possible. A PoC (Proof of Concept). The question fit in one line.</p>
+        <blockquote>Can generative AI, on its own, build an iPhone app?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-ha">
+      <p class="blk-h"><span class="no">02</span><span class="jp">破</span><span class="en">Turn</span></p>
+      <div class="bd">
+        <h2>Zip</h2>
+        <p>What I did was almost embarrassingly simple. I typed this into Claude's chat (claude.ai):</p>
+        <blockquote>Build an iPhone game in Swift.<br>Output it as a Zip file.</blockquote>
+        <p>A few minutes later, a Zip file came out. I downloaded it, unpacked it into Xcode on my out-of-support Intel Mac, plugged in the iPhone over USB, and installed the app.</p>
+        <p>It ran.</p>
+        <p>A carelessly requested game ran carelessly well. This is not a story about quality. The fact itself — a working iPhone app, on a real device, from nothing but a chat message, without writing a line of code — felt like watching an era change in front of me.</p>
+
+        <h2>Product</h2>
+        <p>The PoC passed, so I went for the real thing: build an actual product and see how far generative AI can carry it. That product became the apps at <a href="https://lycoapp.com/">lycoapp.com</a>, and this Architecture Notes is the record of those three months.</p>
+        <p>I ran the project on the OODA loop (Observe / Orient / Decide / Act) rather than plan-everything-first PDCA. With generative AI the landscape shifts every week, so observe first, judge on the spot, and move — that rhythm fit.</p>
+        <p>One thing I want to underline: every technology used in this product was <b>new to me</b>. I have used similar things at work, but nothing here was chosen because it was familiar. Each choice was weighed flat against the requirements. So each article should read as a selection record with no strings attached.</p>
+      </div>
+    </section>
+
+    <section class="blk b-kyu">
+      <p class="blk-h"><span class="no">03</span><span class="jp">急</span><span class="en">Finale</span></p>
+      <div class="bd">
+        <h2>ADR</h2>
+        <p>The results are kept as ADRs (Architecture Decision Records). The format layers the SCQA framework (Situation / Complication / Question / Answer) on top of MADR (Markdown Any Decision Records): start from the situation, raise the question, line up the criteria, then give the answer, the reasons, the options that lost, and an honest look back — all as one continuous story. This format, too, was new to me.</p>
+        <p>You won't find step-by-step instructions here, for two reasons. First, the heart of an ADR is "why we decided," not "how to do it." Second, asking an AI for the steps is simply faster. Everything documented here actually runs, so you can hand an article to an AI and say "reproduce this" — it will usually do a fine job.</p>
+        <p>One step further: this is not just about saving labor. If AI takes over the doing, and the human work shifts toward deciding, then the document worth keeping in product development may not be the design spec at all, but the record of why each decision was made. Watching that era begin through this PoC is what convinced me.</p>
+        <blockquote>Not the design docs — the record of decisions (ADR)<br>is becoming the heart of development documentation.</blockquote>
+        <p>So please read this site as a record of "why it was decided," not "what was done." The road runs like this: <a href="dev.html">1 AI-driven phone-only development</a> gets you building, <a href="brand.html">2 Brand foundation</a> prepares a vessel for the track record, <a href="growth.html">3 Marketing</a> decides what to build, and <a href="monetize.html">4 Monetization</a> keeps the product alive. From here, the actual decisions begin.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><a class="cur" href="poc.html" aria-current="page"><span class="num">0</span>A PoC before starting anything</a></li>
+      <li><a href="dev.html"><span class="num">1</span>AI-driven phone-only development</a></li>
+    </ul>
+    <a class="tn-map" href="../#poc">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

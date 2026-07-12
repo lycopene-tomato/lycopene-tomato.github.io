@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#b8503c" />
+<title>Monetization — Designing Your Product&#39;s Survival | Architecture Notes</title>
+<meta name="description" content="Monetization isn&#39;t a money-making trick; it&#39;s the survival strategy that keeps a product alive. From the aid world&#39;s dependency problem and the HDP nexus to money as circulating gratitude — the premises a solo developer should set before implementing ads or affiliates." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/monetize.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/monetize.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/monetize.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/monetize.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Monetization — Designing Your Product&#39;s Survival" />
+<meta property="og:description" content="Not a get-rich scheme — a survival strategy. Aid-world lessons on dependency, and money as the shape gratitude takes." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/monetize.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Monetization — Designing Your Product&#39;s Survival" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Monetization — Designing Your Product&#39;s Survival",
+  "inLanguage": "en",
+  "datePublished": "2026-07-05",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/monetize.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Monetization", "item": "https://lycoapp.com/notes/en/posts/monetize.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-monetize">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><b>4 Monetization</b></nav>
+
+  <article>
+    <span class="cat-tag">4 · Monetization</span>
+    <h1>Monetization — Designing Your Product&#39;s Survival</h1>
+    <p class="a-meta"><span>2026.07.05</span><span>~5 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>For a solo developer, monetization is not a money-making technique — it is <b>the survival strategy that keeps a product from dying</b>. Which means it isn't an afterthought: the running costs need to be tied to revenue from the start. And money itself is a stand-in for gratitude. Even a few cents a day, the felt proof that you helped someone is what keeps the work going. Close the line that reached your users into a circle, keep the cycle turning, make the product sustainable — that is monetization.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-jo">
+      <p class="blk-h"><span class="no">01</span><span class="jp">序</span><span class="en">Opening</span></p>
+      <div class="bd">
+        <p>What is monetization for? Open a dictionary: converting free content into cash. Bluntly, making money. But <b>in solo development, it shows an entirely different face.</b> Not a mere means of income —</p>
+        <blockquote>It is the survival strategy that keeps a product from dying.</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-ha">
+      <p class="blk-h"><span class="no">02</span><span class="jp">破</span><span class="en">Turn</span></p>
+      <div class="bd">
+        <h2>Dependency</h2>
+        <p>Something struck me once, listening to a talk at a United Nations forum. "I'll volunteer — I want to help people for free." A noble spirit. But among the professionals of international aid at the UN, the view was different: <b>unpaid support breeds dependency, and dependency takes away self-reliance.</b> This is known as the "dependency problem," and it has been argued for decades as one of the deepest pathologies in the aid world.</p>
+        <p>There's a Chinese proverb the field loves to quote: 授人以魚 不如授人以漁 — give a fish, and you feed a day; teach to fish, and you feed a lifetime. The UN pushes it further, with a framework called the <b>HDP nexus</b> (the Humanitarian-Development-Peace nexus): the three must be done <b>at the same time</b>. In the emergency, distribute food and medicine (humanitarian). In parallel, start building people's capacity to earn for themselves (development). And underneath, build the legal and social stability that keeps conflict from reigniting (peace). Doing the three <mark>"simultaneously" rather than "in sequence" is what prevents dependency and leads to self-reliance</mark> — that is UNDP's argument.</p>
+        <p>An engineer's mind jumps to Bill Gates donating 100,000 chickens in 2016. Eggs quiet today's hunger; sold, they become a business; they're nutritious; and chickens free-range and raise themselves, so the thing even sustains itself. Humanitarian and development, loaded onto one bird — I remember thinking it was a masterful piece of solution design.</p>
+        <p>A developer's monetization, I felt, has the same architecture. It isn't a garnish added at the end; it is built into the machine from day one — because <mark>support without self-reliance (revenue) eventually hits its limit, and everyone goes down together.</mark></p>
+
+        <h2>Gratitude</h2>
+        <p>Then what is money, really? Read it as legal tender — the thing with compulsory settlement power — and I think you lose sight of it. As a concept, <mark>money is modern society's stand-in for the emotion called gratitude</mark>, a thing meant to circulate — that is how I've come to hold it.</p>
+        <p>Before the industrial revolution, value tracked sweat — physical labor. Modern money has shifted its essence toward "a declaration of respect for creation and work." The culture of tipping says it plainly: money carries the visible form of "your work helped me."</p>
+        <p>Making these products costs upward of $350 a year in licenses — not cheap — while the revenue, three months in, is a few cents a day. On pure economics, a failed business. But the moment that first cent posted, the feeling was irreplaceable. That cent means somewhere in the world, someone found value in my product — someone, in effect, whispered "thanks."</p>
+        <p><b>The felt proof of having helped someone</b> is the strongest motivation there is to keep developing. The first cent's joy is worth far more than its amount. Making things that help people is <b>why I became an engineer in the first place</b> — and I suspect anyone who chose this profession carries some version of the same wish: to make something, for someone.</p>
+      </div>
+    </section>
+
+    <section class="blk b-kyu">
+      <p class="blk-h"><span class="no">03</span><span class="jp">急</span><span class="en">Finale</span></p>
+      <div class="bd">
+        <h2>Responsibility</h2>
+        <p>What happens if you launch a service with monetization left undesigned? Users entrust you with data that matters to them. The red ink piles up, the server bill stops being payable, and the service closes with a "sorry, this hurts too much to keep running." That erases users' data and betrays their trust.</p>
+        <p>Tying running costs to revenue and building something that can be operated without strain — that is <mark>a developer's responsibility to their users</mark>, and an ethical matter.</p>
+
+        <h2>Stance</h2>
+        <p><mark>Monetization for a solo developer is not</mark> a technique for making money. <b>It is ethics and economics integrated. Compassion and dignity held together. Kindness and rigor, coexisting.</b> It is <mark>the design by which your own hands keep your own product alive.</mark></p>
+        <p>Accordingly, there will be none of the following here:</p>
+        <ul class="body">
+          <li>Easy money hacks</li>
+          <li>AI-automated passive income, early retirement</li>
+          <li>"Anyone can make $500 a month"</li>
+        </ul>
+        <p>Instead, from here we examine <b>"the machinery of product sustainability"</b> through two lenses — the economic and the emotional — and record what was actually implemented.</p>
+        <ul class="body">
+          <li><a href="monetize-app.html">4.1 App monetization design</a> — choosing a revenue model from the cost structure</li>
+          <li><a href="monetize-web.html">4.2 Website monetization</a> — the machinery that sustains content</li>
+          <li><a href="monetize-support.html">4.3 Supporting the work</a> — ads that support broadly, and patronage that supports deeply</li>
+        </ul>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary class="cur"><span class="caret">▸</span><a href="monetize.html" aria-current="page"><span class="num">4</span>Monetization</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-app.html"><span class="num">4.1</span>App monetization</a></summary>
+            <ul><li><a href="admob.html"><span class="num">4.1.1</span>AdMob</a></li></ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-web.html"><span class="num">4.2</span>Website monetization</a></summary>
+            <ul><li><a href="amazon-associates.html"><span class="num">4.2.1</span>Amazon Associates</a></li></ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-support.html"><span class="num">4.3</span>Supporting the work</a></summary>
+            <ul><li><a href="bmc.html"><span class="num">4.3.1</span>Buy Me a Coffee</a></li></ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#monetize">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

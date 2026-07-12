@@ -7,6 +7,9 @@
 <title>iPhone だけでアプリを実装する方法 — build なしの開発ループ | Architecture Notes</title>
 <meta name="description" content="iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone。コミットするだけで手元のアプリが数分後に変わる、build 不要の開発ループ。sandbox だから安心して任せられる。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/mobile-dev.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/mobile-dev.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/mobile-dev.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/mobile-dev.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="iPhone だけでアプリを実装する方法 — build なしの開発ループ" />
 <meta property="og:description" content="コミットするだけで手元のアプリが数分後に変わる、build 不要の開発ループ。" />
@@ -31,7 +34,7 @@
   "headline": "iPhone だけでアプリを実装する方法 — build なしの開発ループ",
   "inLanguage": "ja",
   "datePublished": "2026-07-02",
-  "dateModified": "2026-07-05",
+  "dateModified": "2026-07-12",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/mobile-dev.html",
@@ -117,7 +120,8 @@
         <h2>Answer</h2>
         <pre><span class="c"># 開発ループの全体 (右端でまた iPhone に戻る)</span>
 iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone</pre>
-        <p>iPhone の Claude アプリから依頼を出すと、コーディングから手元のアプリの更新までが自動で流れ、数分後に同じ iPhone の Expo Go で動作確認できる。開発中に build は一度も要らない。</p>
+        <p>iPhone の Claude アプリから依頼を出すと、コーディングから手元のアプリの更新までが自動で流れ、数分後に同じ iPhone の Expo Go で動作確認できる。</p>
+        <blockquote>依頼も、確認も、手の中の iPhone だけ。<br>開発中に、build は一度も要らない。</blockquote>
 
         <div class="sub">
           <h3>Reason</h3>

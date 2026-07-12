@@ -7,6 +7,9 @@
 <title>Google 検索へ登録する — DNS TXT で所有権を証明する | Architecture Notes</title>
 <meta name="description" content="Web サイトを検索に載せるため、Google Search Console に DNS TXT で所有権を登録し、sitemap を submit した。Bing は GSC からインポート、Naver は ko 向けに登録。独自ドメインがあれば TXT 一行でサブドメインまで一括で所有権を証明できる。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/search-console.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/search-console.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/search-console.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/search-console.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Google 検索へ登録する — DNS TXT で所有権を証明する" />
 <meta property="og:description" content="Web サイトを検索に載せるため、Google Search Console に DNS TXT で所有権を登録し、sitemap を submit した。Bing は GSC からインポート、Naver は ko 向けに登録。独自ドメインがあれば TXT 一行でサブドメインまで一括で所有権を証明できる。" />
@@ -108,7 +111,9 @@
         </ul>
 
         <h2>Answer</h2>
-        <p>Google Search Console に、<mark>DNS の TXT レコードで所有権を登録した。</mark>表示された検証値を DNS に一行追加するだけで、ドメイン全体のプロパティが取得できる。続けて sitemap.xml を submit し、主要 URL はインデックス登録をリクエストした。Bing は Search Console からワンクリックでインポート。Naver は ko ロケール向けに、確認用 HTML ファイルを置いて登録した。</p>
+        <p>Google Search Console に、<mark>DNS の TXT レコードで所有権を登録した。</mark>表示された検証値を DNS に一行追加するだけで、ドメイン全体のプロパティが取得できる。</p>
+        <blockquote>DNS に TXT レコードを、一行。<br>それだけで、ドメイン全体の所有権を証明できる。</blockquote>
+        <p>続けて sitemap.xml を submit し、主要 URL はインデックス登録をリクエストした。Bing は Search Console からワンクリックでインポート。Naver は ko ロケール向けに、確認用 HTML ファイルを置いて登録した。</p>
 
         <div class="sub">
           <h3>Reason</h3>

@@ -7,6 +7,9 @@
 <title>Web サイトを公開する — GitHub Pages に独自ドメインをつなぐ | Architecture Notes</title>
 <meta name="description" content="取得した独自ドメインに Web サイトを載せる。選んだのは GitHub Pages + 静的サイト。A レコードと CNAME を設定するだけで独自ドメインにつながる。規模が耐えられなくなったら DNS の向き先を変えるだけで引っ越せるので、まずは静的で始めた。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/web-publish.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/web-publish.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/web-publish.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/web-publish.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Web サイトを公開する — GitHub Pages に独自ドメインをつなぐ" />
 <meta property="og:description" content="取得した独自ドメインに Web サイトを載せる。選んだのは GitHub Pages + 静的サイト。A レコードと CNAME を設定するだけで独自ドメインにつながる。規模が耐えられなくなったら DNS の向き先を変えるだけで引っ越せるので、まずは静的で始めた。" />
@@ -112,7 +115,9 @@
 
         <div class="sub">
           <h3>Reason</h3>
-          <p><b>静的サイトは、速くて安全で、しかも安いからである。</b> サーバーサイドの処理がないぶん表示は速く、攻撃される面も小さく、GitHub Pages なら無料で公開できる。そして重要なのが移動のしやすさで、<mark>GitHub Pages で耐えられない規模になっても、DNS の向き先を変えるだけで別のホスティングへ引っ越せる。</mark>独自ドメインを自分で持っているからこそ、この身軽さが手に入る。だから、まずは静的ルーティングで始めて、動的にするかは後から考えることにした。</p>
+          <p><b>静的サイトは、速くて安全で、しかも安いからである。</b> サーバーサイドの処理がないぶん表示は速く、攻撃される面も小さく、GitHub Pages なら無料で公開できる。そして重要なのが移動のしやすさで、GitHub Pages で耐えられない規模になっても、DNS の向き先を変えるだけで別のホスティングへ引っ越せる。</p>
+          <blockquote>住所を自分で持っているからこそ、<br>いつでも、身軽に引っ越せる。</blockquote>
+          <p>だから、まずは静的ルーティングで始めて、動的にするかは後から考えることにした。</p>
         </div>
 
         <div class="sub">

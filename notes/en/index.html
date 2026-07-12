@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#fcfcfa" />
-<title>Architecture Notes — a smartphone-only indie iOS dev decision log | Lyco App</title>
-<meta name="description" content="No Mac, no PC at hand. Building, shipping, and running iOS apps with just an iPhone plus Claude, GitHub, and EAS. The decision log (ADR, MADR × SCQA) behind lycoapp.com." />
+<title>Architecture Notes — A Trail Becomes Someone's Map. ADR Case Studies from Solo Development | Lyco App</title>
+<meta name="description" content="Building a product doesn't end at launch: you deliver it, improve it, and keep delivering. The decisions behind lycoapp.com — smartphone-only iOS development, brand, marketing, monetization — recorded as ADR (Architecture Decision Records) case studies." />
 <link rel="canonical" href="https://lycoapp.com/notes/en/" />
 <link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/" />
 <link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/" />
@@ -13,8 +13,8 @@
 <link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Architecture Notes — a smartphone-only indie iOS dev decision log" />
-<meta property="og:description" content="Building, shipping, and running iOS apps with just an iPhone plus Claude, GitHub, and EAS. The decision log behind lycoapp.com." />
+<meta property="og:title" content="Architecture Notes — A Trail Becomes Someone's Map" />
+<meta property="og:description" content="Where one product-building journey crosses your path. The decisions of a solo developer, recorded as ADR case studies." />
 <meta property="og:url" content="https://lycoapp.com/notes/en/" />
 <meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
 <meta property="og:image:width" content="1200" />
@@ -23,8 +23,8 @@
 <meta property="og:locale" content="en_US" />
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Architecture Notes — a smartphone-only indie iOS dev decision log" />
-<meta name="twitter:description" content="Building, shipping, and running iOS apps with just an iPhone plus Claude, GitHub, and EAS." />
+<meta name="twitter:title" content="Architecture Notes — A Trail Becomes Someone's Map" />
+<meta name="twitter:description" content="Where one product-building journey crosses your path. A solo developer's decisions, recorded as ADR case studies." />
 <meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
 <link rel="stylesheet" href="../shared/notes.css" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -38,7 +38,7 @@
   "name": "Architecture Notes",
   "url": "https://lycoapp.com/notes/en/",
   "inLanguage": "en",
-  "description": "A smartphone-only indie iOS development decision log (ADR) behind lycoapp.com",
+  "description": "The decisions of a solo product developer, kept as ADR (Architecture Decision Records) case studies",
   "isPartOf": { "@type": "WebSite", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" }
 }
@@ -63,7 +63,7 @@
     {
       "@type": "Question",
       "name": "What is this site?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A development log of the decisions behind lycoapp.com, kept as ADRs (Architecture Decision Records). It records why each choice was made — it is not a step-by-step tutorial." }
+      "acceptedAnswer": { "@type": "Answer", "text": "A development log of the decisions made while building the lycoapp.com apps single-handedly, kept as ADRs (Architecture Decision Records). It records why each choice was made — it is not a step-by-step tutorial." }
     },
     {
       "@type": "Question",
@@ -73,16 +73,32 @@
     {
       "@type": "Question",
       "name": "Are detailed instructions included?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. These are ADRs, so the focus is reasoning and architecture. If you want to reproduce a setup, handing an article to an AI assistant and asking for steps works well. Every setup documented here actually ran in production." }
+      "acceptedAnswer": { "@type": "Answer", "text": "No. These are ADRs, so the focus is reasoning and architecture. To reproduce a setup, hand an article to an AI assistant and ask for the steps. Every setup documented here actually ran." }
     },
     {
       "@type": "Question",
       "name": "How does this relate to lycoapp.com?",
       "acceptedAnswer": { "@type": "Answer", "text": "Same developer, same domain. The main site is a world of habit-building apps for kids; this is the engineering behind it. The two designs are intentionally separate because the audiences differ." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why ADRs instead of tutorials?",
+      "acceptedAnswer": { "@type": "Answer", "text": "In an era where AI can teach you the steps, the work left to humans is deciding. Which option, and why — that record stays useful far longer than any how-to." }
+    },
+    {
+      "@type": "Question",
+      "name": "In what order should I read?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The chapters connect vertically: PoC → dev platform → brand foundation → marketing → monetization. But every article stands on its own, so start wherever your interest lands." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does the development cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Fixed costs are Claude Pro at $20/month and the Apple Developer Program at $99/year; everything else runs on free tiers. The breakdown is in the article \"1 AI-driven development with only an iPhone.\"" }
     }
   ]
 }
 </script>
+<!-- Prerender tree links on hover (supported browsers only) -->
 <script type="speculationrules">
 { "prerender": [ { "where": { "selector_matches": ".outline a" }, "eagerness": "moderate" } ] }
 </script>
@@ -100,80 +116,110 @@
 </div></header>
 
 <main class="wrap" id="main">
-  <header class="hero">
+  <header class="ed">
     <p class="kicker">A solo developer's decision log</p>
-    <h1 class="title">Build, ship, and run apps —<br>from a phone.</h1>
-    <p class="lead">No Mac, no PC at hand. Just an iPhone, with Claude, GitHub, and EAS on the other side of the cloud. This is the decision log — ADRs (Architecture Decision Records) — behind the apps at <a href="https://lycoapp.com/">lycoapp.com</a>.</p>
+    <h1>A trail becomes <em>someone's map</em>.</h1>
+    <p class="sub">Where one product-building journey crosses your path.</p>
+    <p class="desc">Building a product doesn't end at "made an app, launched a website." It means delivering it to the people it can help, improving it, and keeping on delivering.</p>
+    <p class="poem">Dots join into a line, and the line reaches someone.<br>The line curves into a circle,<br><b>and the trail it leaves becomes someone's signpost.</b></p>
   </header>
 
-  <aside class="tldr" aria-label="Summary">
-    <p class="tl-h">TL;DR</p>
-    <ul>
-      <li>Every app on lycoapp.com is developed <b>entirely on an iPhone</b> (no Mac at hand)</li>
-      <li>The stack: Claude Code on Web + GitHub + EAS. Fixed cost: Claude Pro $20/mo and Apple Developer Program $99/yr</li>
-      <li>Each article is an ADR in MADR × SCQA form — only the "why" behind each decision</li>
-      <li>This site collects no personal data and serves no ads</li>
-    </ul>
-  </aside>
-
-  <h2 class="sec-h" id="policy">Policy</h2>
-  <div class="policy">
-    <div class="pol"><b>No personal data</b><span>No analytics, no cookie banners, no forms. This site is read-only.</span></div>
-    <div class="pol"><b>No ads</b><span>Articles carry no advertising. Support happens through Buy Me a Coffee, nothing else.</span></div>
-    <div class="pol"><b>One human + AI</b><span>Both the apps and this site are built by one developer working with AI.</span></div>
-    <div class="pol"><b>Only what actually ran</b><span>Every ADR documents a setup that was built and operated for real. No armchair comparisons.</span></div>
+  <h2 class="sec-h2" id="about-site"><span class="no">01</span><span class="jp">About this site</span><span class="en">About</span></h2>
+  <div class="about">
+    <p>LycoApp Notes is the working record of the solo product development behind <a href="https://lycoapp.com/">Lyco App</a>, organized as <span class="hl">ADRs (Architecture Decision Records)</span>.</p>
+    <p>These records are not a survey of design methods. They cover:</p>
+    <div class="rec">
+      <div class="r"><span class="n">i</span><span class="t">Why the decision was made</span><span class="d">Premises and constraints. The options on the table at the time.</span></div>
+      <div class="r"><span class="n">ii</span><span class="t">How it turned out</span><span class="d">What worked, and what didn't — from actually doing it.</span></div>
+      <div class="r"><span class="n">iii</span><span class="t">What to improve, what to watch for</span><span class="d">What I'd change if I did it again.</span></div>
+    </div>
+    <p class="case">— recorded section by section: a casebook of practice.</p>
+    <p>Why ADRs? Because in an era where AI takes over the doing and human work shifts toward deciding, I believe the document worth keeping in product development is no longer the design spec but the record of why each decision was made. That story starts at <a href="posts/poc.html">0 A PoC before starting anything</a>.</p>
   </div>
 
-  <h2 class="sec-h" id="map">Map — the decision tree</h2>
-  <p style="color:var(--sub);font-size:14.5px;margin:0 0 4px">Numbers follow spec-document decimal numbering. Colors are categories. Linked rows are published articles. Japanese articles come first; English editions follow.</p>
+  <h2 class="sec-h2" id="for-you"><span class="no">02</span><span class="jp">Who this is for</span><span class="en">For You</span></h2>
+  <div class="who">
+    <p>This site is for you if, for instance, you want to:</p>
+    <ul>
+      <li>Start solo development</li>
+      <li>Build apps with nothing but a smartphone</li>
+      <li>Set up a CI/CD pipeline</li>
+      <li>Grow a PoC into a real service</li>
+      <li>Write ADRs</li>
+      <li>Put up a website</li>
+      <li>Try SEO</li>
+      <li>Think marketing and monetization all the way through</li>
+      <li>Figure out what comes after shipping an app</li>
+    </ul>
+    <p class="note">There's no need to read everything at once. Take only the parts you need, when you need them. Think of it as a collection of feasibility-study results — things actually tried, with the outcomes attached.</p>
+  </div>
+
+  <h2 class="sec-h2" id="goal"><span class="no">03</span><span class="jp">What this site hopes for</span><span class="en">Goal</span></h2>
+  <div class="goal">
+    <p>A comprehensive record of practiced results.<br><span class="quiet">By leaving the road I walked exactly as it was — may it spare someone a failure, and inform a decision.</span><br>A signpost, if it can be one.</p>
+  </div>
+
+  <h2 class="sec-h2" id="map"><span class="no">04</span><span class="jp">Architecture Decision Records</span><span class="en">Map</span></h2>
+  <p class="map-note">Numbers mark the chapters. Colors are categories. Linked rows are published articles.</p>
 
   <nav class="outline" aria-label="Decision tree">
-    <span class="row l1 cat-poc wip" id="poc"><span class="n">0</span><span class="t">A PoC before starting anything</span><span class="wip-badge">in progress</span></span>
+    <a class="row l1 cat-poc" id="poc" href="posts/poc.html"><span class="n">0</span><span class="t">A PoC before starting anything</span><span class="go">→</span></a>
 
-    <span class="row l1 cat-dev wip" id="dev"><span class="n">1</span><span class="t">Dev Platform</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-dev wip" id="env"><span class="n">1.1</span><span class="t">Development environment</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-dev wip" id="mobile-dev"><span class="n">1.1.1</span><span class="t">Developing iPhone apps on a phone alone</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-dev wip" id="cloud-build"><span class="n">1.1.2</span><span class="t">Building without a Mac</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-dev wip" id="i18n"><span class="n">1.2</span><span class="t">Localization (50 locales)</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-dev wip" id="store-docs"><span class="n">1.2.1</span><span class="t">Automating store metadata</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-dev wip" id="store-shots"><span class="n">1.2.2</span><span class="t">Automating screenshots</span><span class="wip-badge">in progress</span></span>
+    <a class="row l1 cat-dev" id="dev" href="posts/dev.html"><span class="n">1</span><span class="t">AI-driven phone-only development / Dev Platform</span><span class="go">→</span></a>
+    <a class="row l2 cat-dev" id="env" href="posts/env.html"><span class="n">1.1</span><span class="t">Dev environment on an iPhone alone</span><span class="go">→</span></a>
+    <a class="row l3 cat-dev" id="mobile-dev" href="posts/mobile-dev.html"><span class="n">1.1.1</span><span class="t">Implementing apps on an iPhone alone</span><span class="go">→</span></a>
+    <a class="row l3 cat-dev" id="cloud-build" href="posts/cloud-build.html"><span class="n">1.1.2</span><span class="t">Building without a Mac</span><span class="go">→</span></a>
+    <a class="row l3 cat-dev" id="ota-channels" href="posts/ota-channels.html"><span class="n">1.1.3</span><span class="t">Safe OTA operation</span><span class="go">→</span></a>
+    <a class="row l2 cat-dev" id="i18n" href="posts/i18n.html"><span class="n">1.2</span><span class="t">Localization</span><span class="go">→</span></a>
+    <a class="row l3 cat-dev" id="app-i18n" href="posts/app-i18n.html"><span class="n">1.2.1</span><span class="t">Localizing the app</span><span class="go">→</span></a>
+    <a class="row l3 cat-dev" id="store-i18n" href="posts/store-i18n.html"><span class="n">1.2.2</span><span class="t">Localizing the listing</span><span class="go">→</span></a>
+    <a class="row l3 cat-dev" id="shots-i18n" href="posts/shots-i18n.html"><span class="n">1.2.3</span><span class="t">Localizing screenshots</span><span class="go">→</span></a>
 
-    <span class="row l1 cat-web wip" id="web"><span class="n">2</span><span class="t">Web site</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-web wip" id="domain"><span class="n">2.1</span><span class="t">Domain</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-web wip" id="dns-a"><span class="n">2.1.1</span><span class="t">A records / CNAME</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-web wip" id="dns-mx"><span class="n">2.1.2</span><span class="t">MX records — mail forwarding</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-web wip" id="dns-txt"><span class="n">2.1.3</span><span class="t">TXT records — search consoles</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-web wip" id="site-structure"><span class="n">2.2</span><span class="t">Site structure</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-web wip" id="site-map"><span class="n">2.2.1</span><span class="t">Sitemap</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-web wip" id="site-ogp"><span class="n">2.2.2</span><span class="t">OGP</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-web wip" id="site-seo"><span class="n">2.2.3</span><span class="t">SEO</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-web wip" id="analytics"><span class="n">2.3</span><span class="t">Web analytics</span><span class="wip-badge">in progress</span></span>
+    <a class="row l1 cat-web" id="brand" href="posts/brand.html"><span class="n">2</span><span class="t">Brand foundation</span><span class="go">→</span></a>
+    <a class="row l2 cat-web" id="brand-merit" href="posts/brand-merit.html"><span class="n">2.1</span><span class="t">Why brand matters</span><span class="go">→</span></a>
+    <a class="row l3 cat-web" id="brand-scope" href="posts/brand-scope.html"><span class="n">2.1.1</span><span class="t">How far to build</span><span class="go">→</span></a>
+    <a class="row l2 cat-web" id="brand-name" href="posts/brand-name.html"><span class="n">2.2</span><span class="t">Choosing a brand name</span><span class="go">→</span></a>
+    <a class="row l3 cat-web" id="brand-name-ai" href="posts/brand-name-ai.html"><span class="n">2.2.1</span><span class="t">Naming with AI</span><span class="go">→</span></a>
+    <a class="row l2 cat-web" id="logo" href="posts/logo.html"><span class="n">2.3</span><span class="t">Making a logo</span><span class="go">→</span></a>
+    <a class="row l3 cat-web" id="logo-ai" href="posts/logo-ai.html"><span class="n">2.3.1</span><span class="t">Logo with AI</span><span class="go">→</span></a>
+    <a class="row l2 cat-web" id="domain" href="posts/domain.html"><span class="n">2.4</span><span class="t">Custom domain</span><span class="go">→</span></a>
+    <a class="row l3 cat-web" id="domain-register" href="posts/domain-register.html"><span class="n">2.4.1</span><span class="t">Registering a domain</span><span class="go">→</span></a>
+    <a class="row l3 cat-web" id="web-publish" href="posts/web-publish.html"><span class="n">2.4.2</span><span class="t">Publishing the site</span><span class="go">→</span></a>
+    <a class="row l3 cat-web" id="domain-email" href="posts/domain-email.html"><span class="n">2.4.3</span><span class="t">Custom email</span><span class="go">→</span></a>
+    <a class="row l3 cat-web" id="admob-setup" href="posts/admob-setup.html"><span class="n">2.4.4</span><span class="t">AdMob setup</span><span class="go">→</span></a>
+    <a class="row l3 cat-web" id="search-console" href="posts/search-console.html"><span class="n">2.4.5</span><span class="t">Search registration</span><span class="go">→</span></a>
 
-    <span class="row l1 cat-growth wip" id="growth"><span class="n">3</span><span class="t">Marketing</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-growth wip" id="targeting"><span class="n">3.1</span><span class="t">Targeting</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-growth wip" id="funnel"><span class="n">3.2</span><span class="t">Funnel design</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-growth wip" id="funnel-seo"><span class="n">3.2.1</span><span class="t">SEO funnel</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-growth wip" id="funnel-app"><span class="n">3.2.2</span><span class="t">In-app funnel</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-growth wip" id="funnel-sns"><span class="n">3.2.3</span><span class="t">Social funnel</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-growth wip" id="funnel-store"><span class="n">3.2.4</span><span class="t">Store funnel</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-growth wip" id="house-ads"><span class="n">3.2.5</span><span class="t">House ads</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-growth wip" id="aisas"><span class="n">3.3</span><span class="t">AISAS model</span><span class="wip-badge">in progress</span></span>
-    <span class="row l3 cat-growth wip" id="viral-loop"><span class="n">3.3.1</span><span class="t">Viral loop</span><span class="wip-badge">in progress</span></span>
+    <a class="row l1 cat-growth" id="growth" href="posts/growth.html"><span class="n">3</span><span class="t">Marketing</span><span class="go">→</span></a>
+    <a class="row l2 cat-growth" id="strategy-process" href="posts/strategy-process.html"><span class="n">3.1</span><span class="t">Strategy process</span><span class="go">→</span></a>
+    <a class="row l3 cat-growth" id="research" href="posts/research.html"><span class="n">3.1.1</span><span class="t">Research</span><span class="go">→</span></a>
+    <a class="row l3 cat-growth" id="stp" href="posts/stp.html"><span class="n">3.1.2</span><span class="t">STP</span><span class="go">→</span></a>
+    <a class="row l2 cat-growth" id="marketing-mix" href="posts/marketing-mix.html"><span class="n">3.2</span><span class="t">Marketing mix</span><span class="go">→</span></a>
+    <a class="row l3 cat-growth" id="four-c" href="posts/four-c.html"><span class="n">3.2.1</span><span class="t">4C</span><span class="go">→</span></a>
+    <a class="row l3 cat-growth" id="four-p" href="posts/four-p.html"><span class="n">3.2.2</span><span class="t">4P</span><span class="go">→</span></a>
+    <a class="row l2 cat-growth" id="marketing-management" href="posts/marketing-management.html"><span class="n">3.3</span><span class="t">Marketing management</span><span class="go">→</span></a>
+    <a class="row l3 cat-growth" id="discovery" href="posts/discovery.html"><span class="n">3.3.1</span><span class="t">Getting discovered</span><span class="go">→</span></a>
+    <a class="row l3 cat-growth" id="engage-check" href="posts/engage-check.html"><span class="n">3.3.2</span><span class="t">Earning trust</span><span class="go">→</span></a>
+    <a class="row l3 cat-growth" id="fandom" href="posts/fandom.html"><span class="n">3.3.3</span><span class="t">Becoming fans</span><span class="go">→</span></a>
+    <a class="row l2 cat-growth" id="improvement-loop" href="posts/improvement-loop.html"><span class="n">3.4</span><span class="t">Improvement loop</span><span class="go">→</span></a>
+    <a class="row l3 cat-growth" id="observability" href="posts/observability.html"><span class="n">3.4.1</span><span class="t">Observability</span><span class="go">→</span></a>
 
-    <span class="row l1 cat-monetize wip" id="monetize"><span class="n">4</span><span class="t">Monetization</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-monetize wip" id="admob"><span class="n">4.1</span><span class="t">AdMob</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-monetize wip" id="bmc"><span class="n">4.2</span><span class="t">Buy Me a Coffee</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-monetize wip" id="affiliate"><span class="n">4.3</span><span class="t">Affiliate</span><span class="wip-badge">in progress</span></span>
+    <a class="row l1 cat-monetize" id="monetize" href="posts/monetize.html"><span class="n">4</span><span class="t">Monetization</span><span class="go">→</span></a>
+    <a class="row l2 cat-monetize" id="monetize-app" href="posts/monetize-app.html"><span class="n">4.1</span><span class="t">App monetization</span><span class="go">→</span></a>
+    <a class="row l3 cat-monetize" id="admob" href="posts/admob.html"><span class="n">4.1.1</span><span class="t">AdMob</span><span class="go">→</span></a>
+    <a class="row l2 cat-monetize" id="monetize-web" href="posts/monetize-web.html"><span class="n">4.2</span><span class="t">Website monetization</span><span class="go">→</span></a>
+    <a class="row l3 cat-monetize" id="amazon-associates" href="posts/amazon-associates.html"><span class="n">4.2.1</span><span class="t">Amazon Associates</span><span class="go">→</span></a>
+    <a class="row l2 cat-monetize" id="monetize-support" href="posts/monetize-support.html"><span class="n">4.3</span><span class="t">Supporting the work</span><span class="go">→</span></a>
+    <a class="row l3 cat-monetize" id="bmc" href="posts/bmc.html"><span class="n">4.3.1</span><span class="t">Buy Me a Coffee</span><span class="go">→</span></a>
 
-    <span class="row l1 cat-tips wip" id="tips"><span class="n">5</span><span class="t">Techniques</span><span class="wip-badge">in progress</span></span>
-    <span class="row l2 cat-tips wip" id="ai-progress"><span class="n">5.1</span><span class="t">Making AI write its own progress log</span><span class="wip-badge">in progress</span></span>
+    <span class="row l1 cat-tips wip" id="tips"><span class="n">5</span><span class="t">Dev techniques</span><span class="wip-badge">in progress</span></span>
+    <span class="row l2 cat-tips wip" id="ai-progress"><span class="n">5.1</span><span class="t">Having AI write its own progress log</span><span class="wip-badge">in progress</span></span>
   </nav>
 
-  <h2 class="sec-h" id="faq">FAQ</h2>
+  <h2 class="sec-h2" id="faq"><span class="no">05</span><span class="jp">Frequently asked questions</span><span class="en">FAQ</span></h2>
   <div class="faq">
     <details>
       <summary>What is this site?</summary>
-      <p class="a">A development log of the decisions behind lycoapp.com, kept as ADRs (Architecture Decision Records). It records why each choice was made — it is not a step-by-step tutorial.</p>
+      <p class="a">A development log of the decisions made while building the lycoapp.com apps single-handedly, kept as ADRs (Architecture Decision Records). It records why each choice was made — it is not a step-by-step tutorial.</p>
     </details>
     <details>
       <summary>Who writes it?</summary>
@@ -181,11 +227,23 @@
     </details>
     <details>
       <summary>Are detailed instructions included?</summary>
-      <p class="a">No. These are ADRs, so the focus is reasoning and architecture. If you want to reproduce a setup, handing an article to an AI assistant and asking for the steps works well. Every setup documented here actually ran.</p>
+      <p class="a">No. These are ADRs, so the focus is reasoning and architecture. To reproduce a setup, hand an article to an AI assistant and ask for the steps. Every setup documented here actually ran.</p>
     </details>
     <details>
       <summary>How does this relate to lycoapp.com?</summary>
       <p class="a">Same developer, same domain. The <a href="https://lycoapp.com/">main site</a> is a world of habit-building apps for kids; this is the engineering behind it. The designs are intentionally separate because the audiences differ.</p>
+    </details>
+    <details>
+      <summary>Why ADRs instead of tutorials?</summary>
+      <p class="a">In an era where AI can teach you the steps, the work left to humans is deciding. Which option, and why — that record stays useful far longer than any how-to.</p>
+    </details>
+    <details>
+      <summary>In what order should I read?</summary>
+      <p class="a">The chapters connect vertically: PoC → dev platform → brand foundation → marketing → monetization. But every article stands on its own, so start wherever your interest lands.</p>
+    </details>
+    <details>
+      <summary>How much does the development cost?</summary>
+      <p class="a">Fixed costs are Claude Pro at $20/month and the Apple Developer Program at $99/year; everything else runs on free tiers. The breakdown is in <a href="posts/dev.html">1 AI-driven development with only an iPhone</a>.</p>
     </details>
   </div>
 </main>

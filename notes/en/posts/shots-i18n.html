@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>How to Localize App Screenshots Without a Mac — Use Every Trick at Once | Architecture Notes</title>
+<meta name="description" content="The hardest localization job was screenshots. The ideal — an emulator on a Mac switching languages — wasn't available: no Mac. The record of solving it with all four moves at once: language-independent UI, real-device shots, Flow batch conversion, and annotated English reuse." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/shots-i18n.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/shots-i18n.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/shots-i18n.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/shots-i18n.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to Localize App Screenshots Without a Mac — Use Every Trick at Once" />
+<meta property="og:description" content="No Mac, fifty locales of screenshots. One method fails; four together work. The last 1px is still done by hand." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/shots-i18n.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to Localize App Screenshots Without a Mac — Use Every Trick at Once" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Localize App Screenshots Without a Mac — Use Every Trick at Once",
+  "inLanguage": "en",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/shots-i18n.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "AI-driven phone-only development", "item": "https://lycoapp.com/notes/en/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "Localization", "item": "https://lycoapp.com/notes/en/posts/i18n.html" },
+    { "@type": "ListItem", "position": 4, "name": "Localizing screenshots", "item": "https://lycoapp.com/notes/en/posts/shots-i18n.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="dev.html">1 AI-driven phone-only development</a><span class="sep">›</span><a href="i18n.html">1.2 Localization</a><span class="sep">›</span><b>1.2.3 Localizing the screenshots</b></nav>
+
+  <article>
+    <span class="cat-tag">1.2.3 · Dev Platform</span>
+    <h1>How to Localize App Screenshots Without a Mac — Use Every Trick at Once</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>~5 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>The hardest part of localization was the screenshots. The ideal is an emulator on a Mac, switching languages and shooting automatically — but there is no Mac. So the answer was to use all four available moves at once: design the UI to depend on language as little as possible, shoot major languages on the real device, batch-convert the rest with AI (Flow), and draw annotations onto the English set for reuse across languages. The generated images go into Git as a ZIP, Claude lays them out, and GitHub Actions uploads them to the store. Only the final 1px adjustment stays human.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p>By <a href="store-i18n.html">1.2.2</a>, all the text — app and listing — is localized. What remains is the screenshots.</p>
+        <h2>Complication</h2>
+        <p>Properly, you'd boot an emulator on a Mac and automate screenshots across language switches. But as <a href="cloud-build.html">1.1.2</a> established, there is no Mac at hand. Producing screenshots for fifty locales looked impossible through any single method.</p>
+        <h2>Question</h2>
+        <blockquote>Without a Mac, how do you produce screenshots in dozens of languages?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Works without owning a Mac</li>
+          <li>Covers a large number of languages</li>
+          <li>Meets Apple's strict size requirements</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>Instead of forcing one method to do everything, <mark>use all four at once:</mark></p>
+        <ul class="body">
+          <li><b>Design the UI to be as language-independent as possible</b> — every word removed from an image is a word that needs neither translating nor generating.</li>
+          <li><b>Shoot major languages (Japanese, English, …) on the real device</b> — switch the language, take real screenshots.</li>
+          <li><b>Batch-convert the rest with Flow</b> — "make this image the X-language version," in bulk.</li>
+          <li><b>Draw annotations onto the English set and reuse it</b> — with illustrations and callouts in place, the details don't need remaking per language.</li>
+        </ul>
+        <p>The generated images are zipped and uploaded to Git, unpacked and arranged by Claude, then sent to App Store Connect by GitHub Actions (split, crop, resize, and up through the store's API).</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>Because only a combination clears the no-Mac constraint.</b> Shoot everything on-device and the effort scales with the language count until it crushes you; generate everything with AI and the details smear while the size requirements slip.</p>
+        <blockquote>Any one method fails.<br>Together, they clear it.</blockquote>
+        <p>Flow deserves a special mention: it generates large batches at once, downloads them as a ZIP, and lets you queue the next batch while one is rendering. The throughput is a gift.</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Shoot everything on a real device</b> — faithful, but the effort scales with every language. Not realistic.</li>
+            <li><b>Generate everything with AI</b> — fast, but details break and Apple's strict sizes are missed. Hence: use everything.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>Multilingual screenshots, no Mac involved. The language-independent UI and the annotated-English reuse also shrank the sheer volume that needed generating. A mountain of dull work now turns over smoothly with AI in the mix.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>Apple's screenshots <mark>fail to upload if the size is off by a single pixel.</mark> That one adjustment sits beyond what AI absorbs, so a human finishes it by hand. Knowing where automation ends is part of the design.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>With app, listing, and screenshots all localized, the product is ready for a worldwide release. Where to aim it — the idea that a narrow niche becomes a market when the world is the denominator — continues in <a href="stp.html">3.1.2 STP</a>.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI-driven phone-only development</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>Dev environment on an iPhone alone</a></summary>
+            <ul>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>Implementing apps on an iPhone alone</a></li>
+              <li><a href="cloud-build.html"><span class="num">1.1.2</span>Building without a Mac</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>Safe OTA operation</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="i18n.html"><span class="num">1.2</span>Localization</a></summary>
+            <ul>
+              <li><a href="app-i18n.html"><span class="num">1.2.1</span>Localizing the app</a></li>
+              <li><a href="store-i18n.html"><span class="num">1.2.2</span>Localizing the listing</a></li>
+              <li><a class="cur" href="shots-i18n.html" aria-current="page"><span class="num">1.2.3</span>Localizing screenshots</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#shots-i18n">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

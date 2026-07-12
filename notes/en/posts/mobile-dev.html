@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>How to Implement iPhone Apps with Just an iPhone — a Build-Free Dev Loop | Architecture Notes</title>
+<meta name="description" content="iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone. Commit, and minutes later the app in your hand updates itself — no build in the loop. The sandbox is what makes it safe to delegate everything." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/mobile-dev.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/mobile-dev.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/mobile-dev.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/mobile-dev.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to Implement iPhone Apps with Just an iPhone — a Build-Free Dev Loop" />
+<meta property="og:description" content="Commit to main and the app in your hand updates minutes later — no build required. A sandboxed AI makes it safe to hand everything over." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/mobile-dev.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to Implement iPhone Apps with Just an iPhone — a Build-Free Dev Loop" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Implement iPhone Apps with Just an iPhone — a Build-Free Dev Loop",
+  "inLanguage": "en",
+  "datePublished": "2026-07-02",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/mobile-dev.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "AI-driven phone-only development", "item": "https://lycoapp.com/notes/en/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "Dev environment on an iPhone alone", "item": "https://lycoapp.com/notes/en/posts/env.html" },
+    { "@type": "ListItem", "position": 4, "name": "Implementing apps on an iPhone alone", "item": "https://lycoapp.com/notes/en/posts/mobile-dev.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="dev.html">1 AI-driven phone-only development</a><span class="sep">›</span><a href="env.html">1.1 Dev environment</a><span class="sep">›</span><b>1.1.1 Implementing apps on an iPhone alone</b></nav>
+
+  <article>
+    <span class="cat-tag">1.1.1 · Dev Platform</span>
+    <h1>How to Implement iPhone Apps with Just an iPhone — a Build-Free Dev Loop</h1>
+    <p class="a-meta"><span>2026.07.02</span><span>~8 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>The pipeline is iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone. The AI works inside a disposable cloud sandbox, so you can hand everything over without letting it near your own machines. Merge to main, and within minutes the Expo Go app in your hand updates itself — no build occurs anywhere in the development loop. The weak point: three clouds in series, so if any one goes down, the loop stops.</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="Tools">
+          <li><b>iPhone</b><span class="use">The main dev device</span><span class="cost">already owned</span></li>
+          <li><b>Claude Pro</b><span class="use">Claude Code on Web</span><span class="cost">$20/mo</span></li>
+          <li><b>GitHub</b><span class="use">Source control + Actions</span><span class="cost">Free</span></li>
+          <li><b>EAS + Expo Go</b><span class="use">Delivery and on-device checks</span><span class="cost">Free</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p>As laid out in <a href="env.html">1.1 the dev environment</a>, there is no time in my day to open a PC. Development happens in the gaps or not at all.</p>
+        <h2>Complication</h2>
+        <p>And what can you do in those gaps? About as much as fiddling with a phone. On the sofa, under the bedtime blanket, on the train. One hand, one phone. That is the entire premise.</p>
+        <h2>Question</h2>
+        <blockquote>Can you build an iPhone app with nothing but a phone?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>An iPhone app can be built from a phone alone</li>
+          <li>It works without owning a Mac</li>
+          <li>Security holds — the AI never touches my own assets</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <pre><span class="c"># The full dev loop (the right end circles back to the iPhone)</span>
+iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone</pre>
+        <p>Send a request from the Claude app on the iPhone, and everything from coding to updating the app in your hand flows automatically; minutes later you're checking the result in Expo Go on the same iPhone.</p>
+        <blockquote>Ask from the iPhone, check on the iPhone.<br>And in between, not a single build.</blockquote>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>I chose Claude Code on Web because of the sandbox.</b> On each request, Claude Code on Web spins up a temporary Ubuntu environment in the cloud and runs Claude Code (the AI coding agent) inside it.</p>
+        <p>The usual Claude Code installs on a PC and runs there. That gives it access to local files, and it starts installing whatever tools it needs (with approval, but still). An AI free to wander around my own machine is, frankly, an uncomfortable feeling. — Though to be fair, my out-of-support Intel Mac can't run Claude Code properly anyway; even if it could, I don't think I would have chosen that path.</p>
+        <p>On Web, whatever the AI does happens inside a disposable Ubuntu, and it can never reach my assets. I can hand the work over with a clear head. That feeling of being able to fully delegate is what matters in gap-time development: you send the request, close the app, and go back to the kids.</p>
+        <p><b>GitHub is the piece that patches over the sandbox's volatility.</b> A disposable environment loses its data when it ends, so the output needs somewhere else to live. That's GitHub: the home of the source and its history. On top of it, GitHub Actions — CI/CD that also spins up a temporary Linux box and runs your commands — takes over the automation downstream.</p>
+        <p><b>I chose EXPO because you can verify on a real device without building.</b> EXPO is a React Native-based framework with EAS (Expo Application Services), its cloud platform, and Expo Go, an app for on-device checks. Push the repository's contents to EAS (an "update"), and the app inside Expo Go on your phone swaps itself out. No App Store in between. Which means <b>there is no build anywhere in a development cycle</b>.</p>
+        <p>Actions triggers on merges to the main branch. Connect it all and it looks like this:</p>
+        <pre><span class="c"># One cycle</span>
+1. Ask Claude to do something (iPhone)
+2. Claude codes it and merges to main
+3. The merge triggers GitHub Actions
+4. Actions runs EAS Update
+5. The app inside Expo Go updates itself
+6. Check it on the iPhone → next request</pre>
+        <p>From request to check feels like a few minutes. Queue up several requests in one gap, check and re-ask in the next. Spin this loop, and development advances on zero blocks of free time.</p>
+        <p>Lastly, EXPO being React Native-based also covers the iOS / Android requirement as-is. You can even check the Android side without owning an Android device.</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Codex (OpenAI)</b> — when I tried it (spring 2026) it wasn't usable from the iPhone app, only through a browser, which failed the one-handed-phone UX test. Note that Codex landed in the ChatGPT app in May 2026, so it deserves a re-evaluation if you're choosing today.</li>
+            <li><b>Flutter</b> — considered as the cross-platform alternative. But EXPO's PoC (Proof of Concept) satisfied every requirement before Flutter's PoC ever ran. It didn't lose a comparison; the comparison became unnecessary — that's the accurate telling.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>Ask in the Claude app, verify in Expo Go, on one and the same iPhone. The experience is genuinely comfortable. Claude thinks, implements, and the update reaches EAS in a few minutes — ten at the worst — but since you just send the request and walk away, it never grates. As a CI/CD setup for developing in scattered fragments of time, I suspect this is currently as good as it gets.</p>
+        <p>Cost is kind too. EXPO and GitHub both fit comfortably in their free tiers, so the loop itself adds zero extra cost.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>The pipeline spans three clouds — Claude, GitHub, EAS — chained automatically, so <b>one outage anywhere stops the whole loop</b>.</p>
+        <p>A real example of how that bites: I fixed a bug, but it wasn't fixed. Strange. I went around the fix-check cycle a few times — and the punchline was an EAS-side outage; updates simply weren't being delivered. Without hard deadlines you can just wait these out, but <b>when behavior looks wrong, check each cloud's status page first</b>. About once a month, the right move is to suspect the infrastructure before your own code.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>This loop gets you as far as "an app in development." Reaching the App Store requires build and submit — and the Mac problem re-enters. Continued in <a href="cloud-build.html">1.1.2 How to build iPhone apps without a Mac</a>.</p>
+        <p>Also: if you keep using this OTA delivery in production as-is, in-development code can accidentally reach released users during maintenance. Once you've shipped, read <a href="ota-channels.html">1.1.3 Safe EAS Update operation</a> to split the delivery paths safely.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI-driven phone-only development</a></summary>
+        <ul>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>Dev environment on an iPhone alone</a></summary>
+            <ul>
+              <li><a class="cur" href="mobile-dev.html" aria-current="page"><span class="num">1.1.1</span>Implementing apps on an iPhone alone</a></li>
+              <li><a href="cloud-build.html"><span class="num">1.1.2</span>Building without a Mac</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>Safe OTA operation</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="i18n.html"><span class="num">1.2</span>Localization</a></summary>
+            <ul>
+              <li><a href="app-i18n.html"><span class="num">1.2.1</span>Localizing the app</a></li>
+              <li><a href="store-i18n.html"><span class="num">1.2.2</span>Localizing the listing</a></li>
+              <li><a href="shots-i18n.html"><span class="num">1.2.3</span>Localizing screenshots</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#mobile-dev">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

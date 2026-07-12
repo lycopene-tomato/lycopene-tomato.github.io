@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>How to Localize Your App — Externalize the Strings, Let AI Translate | Architecture Notes</title>
+<meta name="description" content="Localizing the app itself is the easiest job to hand to AI. Pull display strings out into language files, then ask: 'translate this file into Spanish, Korean, Traditional Chinese.' What matters is not translation skill but a structure built for localization from day one, with context on every string." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/app-i18n.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/app-i18n.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/app-i18n.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/app-i18n.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to Localize Your App — Externalize the Strings, Let AI Translate" />
+<meta property="og:description" content="Pull strings into language files and let AI translate them wholesale. The craft is in the structure and the context, not the translation." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/app-i18n.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to Localize Your App — Externalize the Strings, Let AI Translate" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Localize Your App — Externalize the Strings, Let AI Translate",
+  "inLanguage": "en",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/app-i18n.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "AI-driven phone-only development", "item": "https://lycoapp.com/notes/en/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "Localization", "item": "https://lycoapp.com/notes/en/posts/i18n.html" },
+    { "@type": "ListItem", "position": 4, "name": "Localizing the app", "item": "https://lycoapp.com/notes/en/posts/app-i18n.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="dev.html">1 AI-driven phone-only development</a><span class="sep">›</span><a href="i18n.html">1.2 Localization</a><span class="sep">›</span><b>1.2.1 Localizing the app</b></nav>
+
+  <article>
+    <span class="cat-tag">1.2.1 · Dev Platform</span>
+    <h1>How to Localize Your App — Externalize the Strings, Let AI Translate</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>~4 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>Localizing the app itself is among the easiest jobs to delegate to AI. Keep the display strings outside the code as language files, and a single request — "translate this language file into Spanish, Korean, and Traditional Chinese" — carries you most of the way. A final review is still yours, but the age of translating string by string is over. What matters is not translation technique: it is implementing a localization-friendly structure from the start, and leaving context on every string.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p>As set out in <a href="i18n.html">1.2</a>, the first goal is two languages. The first thing to touch is the app's display strings.</p>
+        <h2>Complication</h2>
+        <p>But if strings are hard-coded into every screen, replacing them per language later becomes hell. You end up hunting for text across the codebase, touching every screen for every language you add.</p>
+        <h2>Question</h2>
+        <blockquote>How do you structure display strings so localization stays cheap?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Display strings live in one place</li>
+          <li>AI can translate them wholesale</li>
+          <li>Adding a language later is easy</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p><mark>Pull the display strings out as "language files."</mark> Code references keys, not the strings themselves; the actual wording lives in per-language files. Translation then is just handing the file to AI: "translate this language file into X." You still do the final review, but AI finishes most of it.</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>Because when strings live in one place, translation and replacement happen once.</b> Scattered through the code, even AI can't tell what to translate, and every added language means touching every screen. Collected into a language file, AI translates in one pass, and adding a language means adding one file.</p>
+        <blockquote>What matters is not the translation technique.<br>It is implementing a localization-friendly structure from the start.</blockquote>
+        <p>One pitfall, though. Hand AI only keys and values, and it can't tell what screen a word lives on or what it means — is "Home" a house, or the first screen? So <mark>attach a comment to each string: which screen, and what for.</mark> That context decides most of the translation quality.</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Hard-code strings into screens</b> — fastest at first, but come localization day you touch every screen. So, not taken.</li>
+            <li><b>Call a machine-translation API each time</b> — weak on context, more mistranslations, and an ongoing cost. Having AI translate whole files with context wins on quality.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>Once the structure is right, two languages scale straight to five, or fifty. The steps stay the same; only the number of language files grows. The vast, unglamorous translating is now AI's job.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>AI, too, mistranslates without context. Domain terms and wordplay need special care, and the final review can't be skipped. Preparing structure and context remains human work.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>With the app localized, next comes the store listing that carries it into the world. Continued in <a href="store-i18n.html">1.2.2 How to localize your store listing</a>.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI-driven phone-only development</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>Dev environment on an iPhone alone</a></summary>
+            <ul>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>Implementing apps on an iPhone alone</a></li>
+              <li><a href="cloud-build.html"><span class="num">1.1.2</span>Building without a Mac</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>Safe OTA operation</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="i18n.html"><span class="num">1.2</span>Localization</a></summary>
+            <ul>
+              <li><a class="cur" href="app-i18n.html" aria-current="page"><span class="num">1.2.1</span>Localizing the app</a></li>
+              <li><a href="store-i18n.html"><span class="num">1.2.2</span>Localizing the listing</a></li>
+              <li><a href="shots-i18n.html"><span class="num">1.2.3</span>Localizing screenshots</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#app-i18n">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

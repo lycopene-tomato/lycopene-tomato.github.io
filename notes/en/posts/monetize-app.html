@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#b8503c" />
+<title>App Monetization Design — Choose a Revenue Model from Your Cost Structure | Architecture Notes</title>
+<meta name="description" content="App monetization isn&#39;t about earning; it&#39;s the machinery that keeps the product alive. Understand the cost structure, tie costs to revenue, and design the emotional side too. Paid, IAP, subscription, or AdMob — how to choose." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/monetize-app.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/monetize-app.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/monetize-app.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/monetize-app.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="App Monetization Design — Choose a Revenue Model from Your Cost Structure" />
+<meta property="og:description" content="No revenue model is 'the right one.' Match it honestly to your cost structure and your product&#39;s purpose." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/monetize-app.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="App Monetization Design — Choose a Revenue Model from Your Cost Structure" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "App Monetization Design — Choose a Revenue Model from Your Cost Structure",
+  "inLanguage": "en",
+  "datePublished": "2026-07-07",
+  "dateModified": "2026-07-07",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/monetize-app.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Monetization", "item": "https://lycoapp.com/notes/en/posts/monetize.html" },
+    { "@type": "ListItem", "position": 3, "name": "App monetization", "item": "https://lycoapp.com/notes/en/posts/monetize-app.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-monetize">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="monetize.html">4 Monetization</a><span class="sep">›</span><b>4.1 App monetization</b></nav>
+
+  <article>
+    <span class="cat-tag">4.1 · Monetization</span>
+    <h1>App Monetization Design — Choose a Revenue Model from Your Cost Structure</h1>
+    <p class="a-meta"><span>2026.07.07</span><span>~4 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>App monetization exists not to earn but to keep the product alive. First understand the cost structure, then choose the revenue model that matches it. Don't chase profit at the start — prioritize the felt proof that someone is using the thing. Paid app, in-app purchases, subscription, ads: none of them is "the correct one." Match the model honestly to the cost structure and the product's purpose.</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="Tools">
+          <li><b>AdMob</b><span class="use">In-app ads (4.1.1)</span><span class="cost">Free</span></li>
+          <li><b>App Store billing</b><span class="use">IAP / subscriptions</span><span class="cost">15–30% of revenue</span></li>
+          <li><b>Apple Developer Program</b><span class="use">Prerequisite for billing (see 4)</span><span class="cost">$99/yr</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk b-why">
+      <p class="blk-h"><span class="no">01</span><span class="jp">動機</span><span class="en">Why</span></p>
+      <div class="bd">
+        <p>App monetization is not about making money. It is the machinery that keeps a product from dying.</p>
+        <p>When development stops, users lose the value — and the trust goes with it. So the product gets a mechanism for staying alive, designed in from the start. Take the "survival strategy" of <a href="monetize.html">4 Monetization</a> and focus it down onto one app, and this is what it looks like.</p>
+      </div>
+    </section>
+
+    <section class="blk b-how">
+      <p class="blk-h"><span class="no">02</span><span class="jp">方法</span><span class="en">How</span></p>
+      <div class="bd">
+        <p>The thinking runs in three steps.</p>
+        <p><b>① Understand the cost structure.</b> Servers, AI APIs, licenses, spec churn, maintenance. Running cost is not just the monthly invoice — every dependency on an external service is a future maintenance cost in disguise. First, cut dependencies.</p>
+        <p><b>② Tie costs to revenue.</b> AI usage → subscription. Server usage → recurring billing. Fully offline → one-time purchase. Free and wide → ads. You don't pick a revenue model because it earns; you pick it because it matches the cost structure.</p>
+        <p><b>③ Design the emotional side.</b> One cent is enough at first. What matters early isn't profit but the felt proof that someone is using it. So keep both ads and billing restrained at the start, and put being used first. Grow the ads and the billing after the users arrive.</p>
+        <p>The concrete ad placement — where, and how sparingly — is in <a href="admob.html">4.1.1 AdMob</a>.</p>
+      </div>
+    </section>
+
+    <section class="blk b-what">
+      <p class="blk-h"><span class="no">03</span><span class="jp">価値</span><span class="en">What</span></p>
+      <div class="bd">
+        <blockquote>There is no single correct revenue model.<br>Match it, honestly, to your costs and your purpose.</blockquote>
+        <p>Paid app, in-app purchase, subscription, AdMob. None of them is the right answer. The one that fits your cost structure and your product's purpose is the answer — that is what monetization design that keeps an app alive means.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="monetize.html"><span class="num">4</span>Monetization</a></summary>
+        <ul>
+          <li><details open>
+            <summary class="cur"><span class="caret">▸</span><a href="monetize-app.html" aria-current="page"><span class="num">4.1</span>App monetization</a></summary>
+            <ul><li><a href="admob.html"><span class="num">4.1.1</span>AdMob</a></li></ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-web.html"><span class="num">4.2</span>Website monetization</a></summary>
+            <ul><li><a href="amazon-associates.html"><span class="num">4.2.1</span>Amazon Associates</a></li></ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-support.html"><span class="num">4.3</span>Supporting the work</a></summary>
+            <ul><li><a href="bmc.html"><span class="num">4.3.1</span>Buy Me a Coffee</a></li></ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#monetize">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

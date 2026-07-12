@@ -7,6 +7,9 @@
 <title>EAS Update の安全な運用 — stg / prd 分離で誤配信を防ぐ | Architecture Notes</title>
 <meta name="description" content="OTA は便利だが、運用を誤ると開発中のコードが公開ユーザーへ配信される事故につながる。配信経路を stg (開発) と prd (公開) に分け、runtimeVersion を appVersion に固定する。OTA が届く条件「channel 一致 AND runtimeVersion 一致」で、誤配信とクラッシュを構造的に防ぐ運用の記録。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/ota-channels.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/ota-channels.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/ota-channels.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/ota-channels.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="EAS Update の安全な運用 — stg / prd 分離で誤配信を防ぐ" />
 <meta property="og:description" content="OTA が届く条件「channel 一致 AND runtimeVersion 一致」で、開発中コードの誤配信とネイティブ非互換クラッシュを構造的に防ぐ。" />
@@ -31,7 +34,7 @@
   "headline": "EAS Update の安全な運用 — stg / prd 分離で誤配信を防ぐ",
   "inLanguage": "ja",
   "datePublished": "2026-07-11",
-  "dateModified": "2026-07-11",
+  "dateModified": "2026-07-12",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/ota-channels.html",
@@ -157,7 +160,9 @@ runtimeVersion が一致</pre>
 
         <div class="sub">
           <h3>Reason</h3>
-          <p><b>注意力ではなく、仕組みで防ぎたかったからである。</b> 「本番に間違って配信しないよう気をつける」という運用は、いつか必ず事故る。人はミスをする。だから OTA が届く条件そのものに手を入れた。channel をずらせば公開ユーザーには届かず、runtimeVersion をずらせば古いアプリには届かない。<mark>届く条件を握っておけば、届いてはいけないものは、そもそも届かない。</mark>これが一番安心して眠れる設計だと考えている。</p>
+          <p><b>注意力ではなく、仕組みで防ぎたかったからである。</b> 「本番に間違って配信しないよう気をつける」という運用は、いつか必ず事故る。人はミスをする。だから OTA が届く条件そのものに手を入れた。channel をずらせば公開ユーザーには届かず、runtimeVersion をずらせば古いアプリには届かない。</p>
+          <blockquote>届く条件を握っておけば、<br>届いてはいけないものは、そもそも届かない。</blockquote>
+          <p>これが一番安心して眠れる設計だと考えている。</p>
         </div>
 
         <div class="sub">

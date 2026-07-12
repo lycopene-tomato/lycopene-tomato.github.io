@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>Publishing a Website — GitHub Pages on a Custom Domain | Architecture Notes</title>
+<meta name="description" content="Putting a website on the newly registered domain. The choice: a static site on GitHub Pages. One A record and a CNAME, and the custom domain connects. If the project outgrows it, repointing DNS moves the whole site — so static first." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/web-publish.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/web-publish.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/web-publish.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/web-publish.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Publishing a Website — GitHub Pages on a Custom Domain" />
+<meta property="og:description" content="Static site, GitHub Pages, two DNS records. Fast, safe, free — and trivially movable later." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/web-publish.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Publishing a Website — GitHub Pages on a Custom Domain" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Publishing a Website — GitHub Pages on a Custom Domain",
+  "inLanguage": "en",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/web-publish.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Brand foundation", "item": "https://lycoapp.com/notes/en/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "Custom domain", "item": "https://lycoapp.com/notes/en/posts/domain.html" },
+    { "@type": "ListItem", "position": 4, "name": "Publishing the site", "item": "https://lycoapp.com/notes/en/posts/web-publish.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="brand.html">Brand foundation</a><span class="sep">›</span><a href="domain.html">Custom domain</a><span class="sep">›</span><b>Publishing the site</b></nav>
+
+  <article>
+    <span class="cat-tag">2.4.2 · Brand</span>
+    <h1>Publishing a Website — GitHub Pages on a Custom Domain</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>~4 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>Time to put an actual website on the registered domain. The choice was a static site hosted on GitHub Pages. Set an A record and a CNAME in DNS, and the custom domain connects — quick to set up, and free. And if the site ever outgrows GitHub Pages, repointing the DNS moves it wholesale. So: static first, and decide about dynamic later.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="domain-register.html">2.4.1</a> secured the custom domain. Next, an actual website has to live there, in public.</p>
+        <h2>Complication</h2>
+        <p>Hosting options are many. Go dynamic and the possibilities expand — along with server upkeep and costs. In the early days of a solo project, that's baggage I'd rather not carry.</p>
+        <h2>Question</h2>
+        <blockquote>How do you put a website on a custom domain, cheaply?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Publishable free, or close to it</li>
+          <li>Connects to the custom domain easily</li>
+          <li>Can move to different hosting later</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p><mark>A static site on GitHub Pages, connected to the custom domain.</mark> Set an A record (for the root domain) and a CNAME in DNS, and the site shows up under your own address. The setup is over quickly.</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>Because static sites are fast, safe — and cheap.</b> With no server-side processing, pages render fast and the attack surface stays small, and GitHub Pages hosts it all for free. And the property that matters most is movability: even if the project outgrows GitHub Pages, repointing the DNS relocates everything.</p>
+        <blockquote>Own the address yourself,<br>and you can always move house, lightly.</blockquote>
+        <p>So: start on static routing, and let "should this be dynamic?" be a later question.</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Dynamic hosting (Vercel and friends)</b> — more capability, but oversized at the start. Move when the need is real; with your own domain, migration is a pointer change. So, for now: static.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>A free static site, live on the custom domain. It renders fast, and upkeep is nearly nothing. The brand's public face went up without spending anything.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>Static means no server-side behavior. The day forms or login are needed, either bolt on a separate service for that piece, or make the call to move to dynamic hosting.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>With the site live, the same domain has one more gift to give: a custom email address. Continued in <a href="domain-email.html">2.4.3 Custom email</a>.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>Brand foundation</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>Why brand matters</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>How far to build</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>Choosing a brand name</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>Naming with AI</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>Making a logo</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>Logo with AI</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>Custom domain</a></summary>
+            <ul>
+              <li><a href="domain-register.html"><span class="num">2.4.1</span>Registering a domain</a></li>
+              <li><a class="cur" href="web-publish.html" aria-current="page"><span class="num">2.4.2</span>Publishing the site</a></li>
+              <li><a href="domain-email.html"><span class="num">2.4.3</span>Custom email</a></li>
+              <li><a href="admob-setup.html"><span class="num">2.4.4</span>AdMob setup</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>Search registration</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

@@ -7,6 +7,9 @@
 <title>独自ドメインを取得する — お名前.com で取った、今なら Cloudflare も | Architecture Notes</title>
 <meta name="description" content="独自ドメインをどこで取得するか。当時の要件は「Whois 代行さえあればどこでもいい」だったので、お名前.com で取得した。今振り返ると、エッジ配信やアクセス解析まで一体で使える Cloudflare も有力だったと思う。規模が育ったら引っ越しも検討する。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/domain-register.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/domain-register.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/domain-register.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/domain-register.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="独自ドメインを取得する — お名前.com で取った、今なら Cloudflare も" />
 <meta property="og:description" content="独自ドメインをどこで取得するか。当時の要件は「Whois 代行さえあればどこでもいい」だったので、お名前.com で取得した。今振り返ると、エッジ配信やアクセス解析まで一体で使える Cloudflare も有力だったと思う。規模が育ったら引っ越しも検討する。" />
@@ -111,7 +114,9 @@
 
         <div class="sub">
           <h3>Reason</h3>
-          <p><b>取得時点では、レジストラに求める機能がそれ以上なかったからである。</b> Whois 代行で個人情報を隠せて、まっとうな価格で取れれば、それで足りた。過剰に比較して悩むより、要件を満たす所でさっと取って、先に進む方がよいと考えた。</p>
+          <p><b>取得時点では、レジストラに求める機能がそれ以上なかったからである。</b> Whois 代行で個人情報を隠せて、まっとうな価格で取れれば、それで足りた。</p>
+          <blockquote>過剰に比較して悩むより、<br>要件を満たす所でさっと取って、先へ進む。</blockquote>
+          <p>ドメインは後から引っ越せる。だから、この身軽な決め方でいいと考えた。</p>
           <p>ただ、今振り返ると考えが少し変わっている。<mark>同じ取るなら、Cloudflare で取ってもよかったかもしれない。</mark>Cloudflare ならエッジ配信 (世界中のサーバーからの高速配信) も、Web のアクセス解析も、ドメインと一体で使えるメリットがある。当時の自分には、そこまでの視点がなかった。</p>
         </div>
 

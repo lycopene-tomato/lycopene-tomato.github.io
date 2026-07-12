@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>Going Multilingual — Niche Products Deserve a Worldwide Market | Architecture Notes</title>
+<meta name="description" content="Solo development is niche by nature, and one language makes the market too small. AI has slashed the cost of localization. Publishing worldwide beats waiting for perfect translation. Start with two languages — and leave per-screen context in your design so AI doesn't mistranslate." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/i18n.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/i18n.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/i18n.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/i18n.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Going Multilingual — Niche Products Deserve a Worldwide Market" />
+<meta property="og:description" content="A niche too small in one country becomes a market when the whole world is the denominator. AI made that affordable." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/i18n.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Going Multilingual — Niche Products Deserve a Worldwide Market" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Going Multilingual — Niche Products Deserve a Worldwide Market",
+  "inLanguage": "en",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/i18n.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "AI-driven phone-only development", "item": "https://lycoapp.com/notes/en/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "Localization", "item": "https://lycoapp.com/notes/en/posts/i18n.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="dev.html">1 AI-driven phone-only development</a><span class="sep">›</span><b>1.2 Localization</b></nav>
+
+  <article>
+    <span class="cat-tag">1.2 · Dev Platform</span>
+    <h1>Going Multilingual — Niche Products Deserve a Worldwide Market</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>~3 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>Solo development is niche strategy by nature, and a single language makes the market too small. The AI era has cut the cost of localization dramatically. Translation quality still has rough edges, but for a solo product, the value of being publishable worldwide outweighs waiting for perfection. Three things get localized: the app itself, the store listing, and the screenshots. Start with two languages — and since AI mistranslates without context, keep each screen's meaning written down in your design. That is the linchpin.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-why">
+      <p class="blk-h"><span class="no">01</span><span class="jp">動機</span><span class="en">Why</span></p>
+      <div class="bd">
+        <p>Why localize at all? Solo development is, by its nature, a niche strategy. You survive as an individual precisely by picking up the narrow problems that big companies don't chase. But a niche, viewed inside one country, is too small a market. <mark>Even when demand at home is thin, the world as a whole often holds more than enough users.</mark> (This "narrow niche × whole world" idea gets its full treatment in <a href="stp.html">3.1.2 STP</a>.)</p>
+        <p>And this is the AI era. Translation — that unglamorous, endlessly repeating chore — is exactly where AI shines brightest. <mark>The cost of going multilingual has fallen through the floor.</mark> Translation quality isn't perfect yet. But for a solo product, being out in the world today is worth far more than a perfect translation someday. If you can do it, there is no reason not to.</p>
+      </div>
+    </section>
+
+    <section class="blk b-how">
+      <p class="blk-h"><span class="no">02</span><span class="jp">方法</span><span class="en">How</span></p>
+      <div class="bd">
+        <p>Three things need localizing: the <b>app's</b> display strings, the store <b>listing</b>, and the <b>screenshots</b>. Each gets its own article: <a href="app-i18n.html">1.2.1</a>, <a href="store-i18n.html">1.2.2</a>, <a href="shots-i18n.html">1.2.3</a>.</p>
+        <p>Two tricks make the road smoother. First: <mark>start with two languages.</mark> An app built for one language and an app built with plural languages in mind are designed completely differently — but once you support two, the same machinery carries five, or fifty. The step from one to two is the tallest one.</p>
+        <p>Second: <mark>assume AI translation, and preserve context.</mark> Hand an AI a bare word and it can't tell what screen it lives on or what it points at — "Home" the house, or Home the first screen? So write down, at design time, what each screen is and what each word means. That habit decides the quality of the whole effort.</p>
+      </div>
+    </section>
+
+    <section class="blk b-what">
+      <p class="blk-h"><span class="no">03</span><span class="jp">価値</span><span class="en">What</span></p>
+      <div class="bd">
+        <blockquote>Localization is not translation work.<br>It is the mechanism that carries niche value to a worldwide audience.</blockquote>
+        <p>A niche too small in one language becomes a real market when the world is the denominator. Let AI shoulder the vast, unglamorous translation work, and keep your own hands on design and final review. That is how a solo developer opens the door to a worldwide release.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI-driven phone-only development</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>Dev environment on an iPhone alone</a></summary>
+            <ul>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>Implementing apps on an iPhone alone</a></li>
+              <li><a href="cloud-build.html"><span class="num">1.1.2</span>Building without a Mac</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>Safe OTA operation</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary class="cur"><span class="caret">▸</span><a href="i18n.html" aria-current="page"><span class="num">1.2</span>Localization</a></summary>
+            <ul>
+              <li><a href="app-i18n.html"><span class="num">1.2.1</span>Localizing the app</a></li>
+              <li><a href="store-i18n.html"><span class="num">1.2.2</span>Localizing the listing</a></li>
+              <li><a href="shots-i18n.html"><span class="num">1.2.3</span>Localizing screenshots</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#i18n">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

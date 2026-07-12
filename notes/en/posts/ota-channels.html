@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>Running EAS Update Safely — stg / prd Channels Against Accidental Releases | Architecture Notes</title>
+<meta name="description" content="OTA is convenient — and misused, it ships in-development code straight to released users. Split delivery into stg (dev) and prd (production) channels, pin runtimeVersion to appVersion, and let the delivery condition — channel match AND runtimeVersion match — prevent both accidents and crashes by design." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/ota-channels.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/ota-channels.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/ota-channels.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/ota-channels.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Running EAS Update Safely — stg / prd Channels Against Accidental Releases" />
+<meta property="og:description" content="An OTA update reaches a device only when channel AND runtimeVersion both match. Design those two, and accidental releases become structurally impossible." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/ota-channels.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Running EAS Update Safely — stg / prd Channels Against Accidental Releases" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Running EAS Update Safely — stg / prd Channels Against Accidental Releases",
+  "inLanguage": "en",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/ota-channels.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "AI-driven phone-only development", "item": "https://lycoapp.com/notes/en/posts/dev.html" },
+    { "@type": "ListItem", "position": 3, "name": "Dev environment on an iPhone alone", "item": "https://lycoapp.com/notes/en/posts/env.html" },
+    { "@type": "ListItem", "position": 4, "name": "Safe EAS Update operation", "item": "https://lycoapp.com/notes/en/posts/ota-channels.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="dev.html">1 AI-driven phone-only development</a><span class="sep">›</span><a href="env.html">1.1 Dev environment</a><span class="sep">›</span><b>1.1.3 Safe EAS Update operation</b></nav>
+
+  <article>
+    <span class="cat-tag">1.1.3 · Dev Platform</span>
+    <h1>Running EAS Update Safely — stg / prd Channels Against Accidental Releases</h1>
+    <p class="a-meta"><span>2026.07.11</span><span>~6 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>OTA (Over The Air Update) is convenient, but run carelessly it can ship in-development code straight to released users. So delivery is split into two channels — stg (dev), delivered automatically by GitHub Actions, and prd (production), delivered by hand — and runtimeVersion is pinned to appVersion, so bumping the app version whenever native code changes. An OTA reaches a device only when <mark>channel matches AND runtimeVersion matches</mark>. Design those two conditions, and both accidental releases and native-incompatibility crashes are prevented by the mechanism itself.</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="Tools">
+          <li><b>EAS Update</b><span class="use">OTA delivery</span><span class="cost">Free</span></li>
+          <li><b>GitHub Actions</b><span class="use">Auto-delivery to stg</span><span class="cost">Free</span></li>
+          <li><b>Expo Go</b><span class="use">On-device checks for stg</span><span class="cost">Free</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="mobile-dev.html">1.1.1</a> and <a href="cloud-build.html">1.1.2</a> established the dev loop and the release path. Merge to main, and an OTA goes out. Up to the first release, that setup is enough.</p>
+        <h2>Complication</h2>
+        <p>The problem is the maintenance phase after release. The common setup looks like this:</p>
+        <pre>merge to main
+      ↓
+  EAS Update
+      ↓
+released users</pre>
+        <p>In this shape, if debug code or a temporary fix slips into main by mistake, the OTA carries it straight to released users. Worse, OTAs can still be delivered after native code changes — and incompatible JavaScript landing on an old binary means crashes.</p>
+        <h2>Question</h2>
+        <blockquote>How do you make sure in-development code, or a native-incompatible update, never reaches released users by accident?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>In-development code never reaches released users</li>
+          <li>Native changes never crash old binaries</li>
+          <li>The Expo Go dev experience survives</li>
+          <li>Release timing stays in my own hands</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>The starting point is knowing exactly when an OTA is delivered. Delivery requires <b>two conditions at once</b>:</p>
+        <pre>channel matches
+      AND
+runtimeVersion matches</pre>
+        <ul class="body">
+          <li><b>channel</b> … the delivery destination (dev or production)</li>
+          <li><b>runtimeVersion</b> … native compatibility</li>
+        </ul>
+        <p>Only a device matching both receives the OTA. <mark>Flip it around: shift either one, and that device receives nothing.</mark> That property is what the two delivery paths are built on.</p>
+        <p><b>channel separates the destination.</b> LycoApp splits delivery into stg and prd:</p>
+        <table class="cmp">
+          <thead><tr><th>channel</th><th>Purpose</th><th>Delivery</th></tr></thead>
+          <tbody>
+            <tr><td>stg</td><td data-label="Purpose">Development / verification</td><td data-label="Delivery">Auto, via GitHub Actions</td></tr>
+            <tr><td>prd</td><td data-label="Purpose">Released users</td><td data-label="Delivery">Manual</td></tr>
+          </tbody>
+        </table>
+        <p>A merge to main auto-delivers only to stg; nothing goes to prd unless explicitly run. The path from in-development code to released users is now structurally sealed.</p>
+        <p><b>runtimeVersion guards native compatibility.</b> It uses the appVersion policy:</p>
+        <pre>{
+  "runtimeVersion": {
+    "policy": "appVersion"
+  }
+}</pre>
+        <p>Now an app at version 1.0.0 has runtimeVersion 1.0.0. Change native code, bump the version to 1.0.1, and runtimeVersion follows automatically — so 1.0.0 binaries never receive the 1.0.1 OTA. Native-incompatibility crashes are prevented by the most ordinary act in development: bumping the version.</p>
+        <p><b>Expo Go gets one exception.</b> Expo Go only understands <code>runtimeVersion = exposdk:&lt;SDK version&gt;</code>. So in GitHub Actions, <b>for stg deliveries only</b>, the policy is switched temporarily to sdkVersion:</p>
+        <pre>{
+  "runtimeVersion": {
+    "policy": "sdkVersion"
+  }
+}</pre>
+        <p>This rewrite happens <b>only inside CI</b> and is never committed to Git. Store builds and prd OTAs keep appVersion as usual. A small mechanism to hold both the dev experience (Expo Go) and production safety (appVersion) at once.</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>Because I wanted the mechanism, not my attention span, to do the protecting.</b> An operation that relies on "being careful not to deliver to production" will have its accident eventually. People make mistakes. So the delivery conditions themselves were changed: shift the channel and released users are unreachable; shift the runtimeVersion and old binaries are unreachable.</p>
+        <blockquote>Hold the conditions of delivery,<br>and what must not arrive, simply never arrives.</blockquote>
+        <p>That, I think, is the design that lets you sleep at night.</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Stay on a single channel</b> — main → EAS Update → released users, the plain setup. Simplest configuration, but it keeps carrying both the accidental-release risk and the native-crash risk. Fine up to the first release; separate before entering maintenance.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>The daily flow settled into this:</p>
+        <pre>fix
+ ↓
+merge to main
+ ↓
+GitHub Actions
+ ↓
+auto OTA to stg
+ ↓
+check in Expo Go</pre>
+        <p>Only when releasing do I run the prd EAS Update manually from GitHub Actions. The result: in-development code never reaches released users, native changes never crash anyone, the comfortable Expo Go loop survives, and release timing stays in my hands. All four criteria, standing.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>The price is one extra step and some opacity. prd is manual, so every release needs my own hands. And the CI-only runtimeVersion rewrite confuses anyone who doesn't know the trick — "why is the policy different only here?" This document exists partly to fill that gap.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>Once built, this stg / prd separation carries to every next app unchanged. So it became <mark>a Git template repository — new apps start as a copy</mark>. Ship the first release on the plain setup from <a href="mobile-dev.html">1.1.1</a> and <a href="cloud-build.html">1.1.2</a>, then fold in this separation and template it. Every app after that starts life on safe OTA rails.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="dev.html"><span class="num">1</span>AI-driven phone-only development</a></summary>
+        <ul>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>Dev environment on an iPhone alone</a></summary>
+            <ul>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>Implementing apps on an iPhone alone</a></li>
+              <li><a href="cloud-build.html"><span class="num">1.1.2</span>Building without a Mac</a></li>
+              <li><a class="cur" href="ota-channels.html" aria-current="page"><span class="num">1.1.3</span>Safe OTA operation</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="i18n.html"><span class="num">1.2</span>Localization</a></summary>
+            <ul>
+              <li><a href="app-i18n.html"><span class="num">1.2.1</span>Localizing the app</a></li>
+              <li><a href="store-i18n.html"><span class="num">1.2.2</span>Localizing the listing</a></li>
+              <li><a href="shots-i18n.html"><span class="num">1.2.3</span>Localizing screenshots</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#ota-channels">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

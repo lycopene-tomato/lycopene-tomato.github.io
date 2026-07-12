@@ -7,6 +7,9 @@
 <title>スクリーンショットを多言語対応しよう — Mac なしで、4 つの手を全部使う | Architecture Notes</title>
 <meta name="description" content="一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した記録。最後の 1px 調整だけは人がやる。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/shots-i18n.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/shots-i18n.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/shots-i18n.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/shots-i18n.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="スクリーンショットを多言語対応しよう — Mac なしで、4 つの手を全部使う" />
 <meta property="og:description" content="一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した記録。最後の 1px 調整だけは人がやる。" />
@@ -119,7 +122,9 @@
 
         <div class="sub">
           <h3>Reason</h3>
-          <p><b>組み合わせでしか、Mac なしの制約を越えられないからである。</b> 全部を実機で撮れば言語数分の手間で潰れ、全部を AI 生成にすれば細部が崩れてサイズ要件も外れる。<mark>どれか一つでは詰むが、組み合わせれば大量言語をカバーできる。</mark>とりわけ Flow は、一度に大量の画像を生成して ZIP でまとめて落とせるうえ、生成を待つ間に次の生成を指示できるので、作業効率がとても高い。</p>
+          <p><b>組み合わせでしか、Mac なしの制約を越えられないからである。</b> 全部を実機で撮れば言語数分の手間で潰れ、全部を AI 生成にすれば細部が崩れてサイズ要件も外れる。</p>
+          <blockquote>どれか一つでは詰む。<br>けれど、組み合わせれば越えられる。</blockquote>
+          <p>とりわけ Flow は、一度に大量の画像を生成して ZIP でまとめて落とせるうえ、生成を待つ間に次の生成を指示できるので、作業効率がとても高い。</p>
         </div>
 
         <div class="sub">

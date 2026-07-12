@@ -35,7 +35,7 @@ All blog posts have Japanese / English / Traditional Chinese / Korean siblings, 
 Separate section of this domain, aimed at engineers rather than parents. Japanese first, English edition follows.
 
 - [Architecture Notes (Japanese)](https://lycoapp.com/notes/ja/): ADR-style decision log of how this site's apps are built — smartphone-only iOS development using Claude Code on Web, GitHub, and EAS (Expo Application Services). No Mac at hand.
-- [Architecture Notes (English)](https://lycoapp.com/notes/en/): English edition (articles in progress).
+- [Architecture Notes (English)](https://lycoapp.com/notes/en/): English edition — all 43 articles available (same content, natively rewritten; swap /ja/ for /en/ in any article URL).
 - [0: A PoC before starting anything](https://lycoapp.com/notes/ja/posts/poc.html): Asking Claude's chat for a Swift game as a Zip — it ran on a real iPhone. Cost: zero.
 - [1: AI-driven smartphone-only development — the dev platform](https://lycoapp.com/notes/ja/posts/dev.html): Hardware (iPhone + iPad + one browser session on any PC) and fixed costs (Claude Pro $20/mo, Apple Developer Program $99/yr).
 - [1.1: How to build an app-dev environment with just an iPhone](https://lycoapp.com/notes/ja/posts/env.html): Requirements for developing only in the gaps of full-time work and parenting; the answer is iPhone + Claude on Web + EAS + GitHub.

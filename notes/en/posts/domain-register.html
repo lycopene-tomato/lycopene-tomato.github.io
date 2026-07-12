@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f9d76" />
+<title>Registering a Domain — What I Chose Then, and What I&#39;d Consider Now | Architecture Notes</title>
+<meta name="description" content="Where to register a custom domain? My requirement at the time was only &#39;Whois privacy, and a sane price&#39; — so I used a mainstream registrar. Looking back, Cloudflare — with edge delivery and analytics bundled — would also have been strong. Domains can move later, so I&#39;ll revisit as the project grows." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/domain-register.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/domain-register.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/domain-register.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/domain-register.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Registering a Domain — What I Chose Then, and What I&#39;d Consider Now" />
+<meta property="og:description" content="The requirement was just Whois privacy. Register quickly, move on — domains can always be moved later." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/domain-register.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Registering a Domain — What I Chose Then, and What I&#39;d Consider Now" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Registering a Domain — What I Chose Then, and What I&#39;d Consider Now",
+  "inLanguage": "en",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/domain-register.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Brand foundation", "item": "https://lycoapp.com/notes/en/posts/brand.html" },
+    { "@type": "ListItem", "position": 3, "name": "Custom domain", "item": "https://lycoapp.com/notes/en/posts/domain.html" },
+    { "@type": "ListItem", "position": 4, "name": "Registering a domain", "item": "https://lycoapp.com/notes/en/posts/domain-register.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-web">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="brand.html">Brand foundation</a><span class="sep">›</span><a href="domain.html">Custom domain</a><span class="sep">›</span><b>Registering a domain</b></nav>
+
+  <article>
+    <span class="cat-tag">2.4.1 · Brand</span>
+    <h1>Registering a Domain — What I Chose Then, and What I&#39;d Consider Now</h1>
+    <p class="a-meta"><span>2026.07.12</span><span>~4 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>Where to register the custom domain? My requirement at the time was exactly one line: "Whois privacy, and we're good." So I registered at a mainstream Japanese registrar (Onamae.com). Looking back now, registering with Cloudflare — where edge delivery and web analytics come bundled with the domain — might have been the smarter play. Domains can be transferred later, so a move is on the table as the project grows.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p>As <a href="domain.html">2.4</a> put it, the custom domain sits at the center of the brand foundation. It has to be registered somewhere.</p>
+        <h2>Complication</h2>
+        <p>Registrars are countless. Prices differ, bundled features differ, and at the start even the criteria for choosing are fuzzy.</p>
+        <h2>Question</h2>
+        <blockquote>Out of all the registrars — what do you actually choose on?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Whois privacy (proxy publication of registrant info)</li>
+          <li>A price that doesn't strain a solo budget</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>The requirement at the time was simple: <mark>"anyone with Whois privacy will do."</mark> The handy option that met it was Onamae.com, a mainstream registrar here. The domain itself followed the name from <a href="brand-name-ai.html">2.2.1</a>: lycoapp.com.</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>Because at registration time, I needed nothing more from a registrar.</b> Hide the personal details behind Whois privacy, pay a sane price — done.</p>
+        <blockquote>Rather than agonize over comparisons,<br>register where the requirements are met, and move on.</blockquote>
+        <p>Domains can be moved later. So this light-footed way of deciding is fine.</p>
+        <p>That said, my thinking has shifted a little since. <mark>Registering the same domain at Cloudflare might have been just as good.</mark> There, edge delivery (fast serving from servers worldwide) and web analytics come integrated with the domain. At the time, I simply didn't have that vantage point yet.</p>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>Register at Cloudflare</b> — edge delivery and analytics in one place. A strong pick today; at registration time the need just wasn't visible yet.</li>
+            <li><b>Other registrars</b> — plenty of choice, but once Whois privacy — the sole requirement — is met, the differences are small.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>A domain meeting the requirements, registered cheaply and without dithering. The brand's central address is in hand.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>One constraint surfaces later: both the domain and its DNS authority sit with the registrar, and Cloudflare holds no zone. That rules out Cloudflare's zone-level features — for instance IndexNow, the instant search-engine notification. Little practical harm so far, but it lives in my head as a known limitation of the setup.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>Domains can move, so a Cloudflare transfer stays on the list as the project grows. First, though: put a website on this domain. Continued in <a href="web-publish.html">2.4.2 Publishing a website</a>.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="brand.html"><span class="num">2</span>Brand foundation</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-merit.html"><span class="num">2.1</span>Why brand matters</a></summary>
+            <ul>
+              <li><a href="brand-scope.html"><span class="num">2.1.1</span>How far to build</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="brand-name.html"><span class="num">2.2</span>Choosing a brand name</a></summary>
+            <ul>
+              <li><a href="brand-name-ai.html"><span class="num">2.2.1</span>Naming with AI</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="logo.html"><span class="num">2.3</span>Making a logo</a></summary>
+            <ul>
+              <li><a href="logo-ai.html"><span class="num">2.3.1</span>Logo with AI</a></li>
+            </ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="domain.html"><span class="num">2.4</span>Custom domain</a></summary>
+            <ul>
+              <li><a class="cur" href="domain-register.html" aria-current="page"><span class="num">2.4.1</span>Registering a domain</a></li>
+              <li><a href="web-publish.html"><span class="num">2.4.2</span>Publishing the site</a></li>
+              <li><a href="domain-email.html"><span class="num">2.4.3</span>Custom email</a></li>
+              <li><a href="admob-setup.html"><span class="num">2.4.4</span>AdMob setup</a></li>
+              <li><a href="search-console.html"><span class="num">2.4.5</span>Search registration</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#brand">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

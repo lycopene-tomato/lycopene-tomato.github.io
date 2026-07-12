@@ -7,6 +7,9 @@
 <title>Mac なしで iPhone アプリを build する方法 — EAS + GitHub Codespaces | Architecture Notes</title>
 <meta name="description" content="iPhone アプリの build に Mac は必須。でも所有する必要はない。初回だけ Codespaces で証明書を作り、以降は iPhone から GitHub Actions 経由で EAS build → submit → TestFlight。無料枠の落とし穴と --no-wait の話。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/cloud-build.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/cloud-build.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/cloud-build.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/cloud-build.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Mac なしで iPhone アプリを build する方法 — EAS + GitHub Codespaces" />
 <meta property="og:description" content="build に Mac は必須。でも所有する必要はない。無料枠の落とし穴と --no-wait の話。" />
@@ -31,7 +34,7 @@
   "headline": "Mac なしで iPhone アプリを build する方法 — EAS + GitHub Codespaces",
   "inLanguage": "ja",
   "datePublished": "2026-07-02",
-  "dateModified": "2026-07-05",
+  "dateModified": "2026-07-12",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/cloud-build.html",
@@ -120,7 +123,8 @@ PC ブラウザ → GitHub → GitHub Codespaces → EAS (build)
 iPhone → GitHub → GitHub Actions → EAS (build)
 iPhone → GitHub → GitHub Actions → EAS (submit)
         → App Store Connect → TestFlight → iPhone</pre>
-        <p>鍵は、<b>Mac は「クラウドの中」にあればいい</b>という点である。EAS (Expo Application Services) の build サービスは、クラウド側の macOS 環境で iPhone アプリを build してくれる。手元に必要なのは、コマンドを投げる端末だけ。それは iPhone で足りる。</p>
+        <blockquote>Mac は必要である。ただし、クラウドの中にあればいい。</blockquote>
+        <p>EAS (Expo Application Services) の build サービスは、クラウド側の macOS 環境で iPhone アプリを build してくれる。手元に必要なのは、コマンドを投げる端末だけ。それは iPhone で足りる。</p>
 
         <div class="sub">
           <h3>Reason</h3>
@@ -157,7 +161,7 @@ iPhone → GitHub → GitHub Actions → EAS (submit)
         <h2 class="f">Follow-up</h2>
         <p>EAS の無料枠 build は優先度が低く、キュー待ちが異様に長いことがある。気長に待てばいいのだが、ここに落とし穴がある。<b>Actions 上で build の完了を待っていると、その待ち時間が Actions の 2,000 分/月からも消費されていく</b>。待っても待たなくても build の結果は同じなので、<code>eas build</code> には <code>--no-wait</code> を付けて、trigger したら workflow を即終了させるのが正解である。</p>
         <p>その代わり build と submit が 1 本の workflow で繋がらなくなるので、EAS のダッシュボードで build の成功を確認してから、Actions で submit を実行する、という 2 段運用にしている。submit 側も同様に <code>--no-wait</code> が使える。</p>
-        <p>ここまでで「作って届ける」の縦の線が通った。まずはこれでリリースできる。リリースが済んだら、OTA を安全に運用する設定 — 開発用と公開用の配信経路を分ける <a href="ota-channels.html">1.1.3 EAS Update の安全な運用</a> — を入れて、改修時の誤配信を防いでおきたい。次は横に広げる話、多言語対応 (1.2) に続く。(作成中)</p>
+        <p>ここまでで「作って届ける」の縦の線が通った。まずはこれでリリースできる。リリースが済んだら、OTA を安全に運用する設定 — 開発用と公開用の配信経路を分ける <a href="ota-channels.html">1.1.3 EAS Update の安全な運用</a> — を入れて、改修時の誤配信を防いでおきたい。次は横に広げる話、<a href="i18n.html">1.2 多言語対応</a> に続く。</p>
       </div>
     </section>
   </article>

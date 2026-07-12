@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#b8503c" />
+<title>Buy Me a Coffee — a Vessel for Receiving Support | Architecture Notes</title>
+<meta name="description" content="People say &#39;I&#39;m rooting for you&#39; — and without a vessel, the feeling has nowhere to land. Buy Me a Coffee rides every page as a floating widget and footer badge: no login, one-off support. Why GitHub Sponsors and Patreon were passed over." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/bmc.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/bmc.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/bmc.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/bmc.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Buy Me a Coffee — a Vessel for Receiving Support" />
+<meta property="og:description" content="No account, one tap, one coffee. The vessel sits quietly on every page, wherever the feeling strikes." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/bmc.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Buy Me a Coffee — a Vessel for Receiving Support" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Buy Me a Coffee — a Vessel for Receiving Support",
+  "inLanguage": "en",
+  "datePublished": "2026-07-07",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/bmc.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Monetization", "item": "https://lycoapp.com/notes/en/posts/monetize.html" },
+    { "@type": "ListItem", "position": 3, "name": "Supporting the work", "item": "https://lycoapp.com/notes/en/posts/monetize-support.html" },
+    { "@type": "ListItem", "position": 4, "name": "Buy Me a Coffee", "item": "https://lycoapp.com/notes/en/posts/bmc.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-monetize">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="monetize.html">4 Monetization</a><span class="sep">›</span><a href="monetize-support.html">4.3 Supporting the work</a><span class="sep">›</span><b>4.3.1 Buy Me a Coffee</b></nav>
+
+  <article>
+    <span class="cat-tag">4.3.1 · Monetization</span>
+    <h1>Buy Me a Coffee — a Vessel for Receiving Support</h1>
+    <p class="a-meta"><span>2026.07.07</span><span>~5 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>People do say "I'm rooting for you" — and without a vessel, the feeling has nowhere to land. So Buy Me a Coffee rides every page, as a floating widget and a footer badge. No login, one-off support, from the price of one coffee. Not Patreon with its monthly framing, not GitHub Sponsors with its developer walls — the lowest doorstep there is.</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="Tools">
+          <li><b>Buy Me a Coffee</b><span class="use">One-off support vessel</span><span class="cost">5% fee</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk b-story">
+      <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
+      <div class="bd">
+        <h2>Situation</h2>
+        <p><a href="monetize-support.html">4.3 Supporting the work</a> decided a vessel must exist for the feeling of wanting to support. And people really do say it: "I'm rooting for you." "Please keep going."</p>
+        <h2>Complication</h2>
+        <p>But feeling without a channel doesn't arrive. If there's no vessel at the moment someone wants to give, the moment simply evaporates. And demanding account signup and login as the price of supporting — that pours cold water on the warmest impulse.</p>
+        <h2>Question</h2>
+        <blockquote>How do you receive support — at zero burden to the supporter?</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-solve">
+      <p class="blk-h"><span class="no">02</span><span class="jp">解決</span><span class="en">Solution</span></p>
+      <div class="bd">
+        <h2>Criteria</h2>
+        <ul class="crit">
+          <li>Minimal effort for the supporter (no login if possible)</li>
+          <li>Light to install; runs within phone-only operation</li>
+          <li>Low fees</li>
+        </ul>
+
+        <h2>Answer</h2>
+        <p>Buy Me a Coffee, present on <mark>every page as a floating widget and a footer badge</mark>. A reader supports without logging in, one-off, from a single coffee's worth. Implementation is one pasted snippet.</p>
+
+        <div class="sub">
+          <h3>Reason</h3>
+        <p><b>BMC, because its doorstep is the lowest.</b> No account needed; one tap gives once. Not a monthly subscription, so "just this once" gets answered exactly as offered. And one snippet keeps it inside phone-only operations.</p>
+        <p><b>Every page, because you can't schedule the moment.</b> No one knows on which page a reader's heart will move. As <a href="monetize-support.html">4.3 Supporting the work</a> said — if the vessel isn't there at that moment, the feeling doesn't arrive.</p>
+        <blockquote>Wherever the heart happens to move,<br>let the vessel already be there, quietly.</blockquote>
+        </div>
+
+        <div class="sub">
+          <h3>Options</h3>
+          <ul class="body">
+            <li><b>GitHub Sponsors</b> — right for developer-to-developer support, but it presumes a GitHub account, a tall doorstep for general readers. Not this audience.</li>
+            <li><b>Patreon</b> — strong for running an ongoing community, but monthly by design: heavy for a one-time impulse. If recurring support demand grows, it can be added alongside.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk result b-result">
+      <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
+      <div class="bd">
+        <h2 class="g">Good</h2>
+        <p>One snippet, and a support channel runs through every page. One-off keeps the supporter's threshold low — and the feeling of "I'm rooting for you" arrives exactly as sent, whatever the amount.</p>
+
+        <h2 class="b">Bad</h2>
+        <p>Each payment carries a fee, and the count is still small. But as <a href="monetize-support.html">4.3</a> said: one supporter outweighs the number. This is not a place measured in money.</p>
+
+        <h2 class="f">Follow-up</h2>
+        <p>If voices asking for recurring support grow, Patreon or GitHub Sponsors can stand alongside. More vessels, same purpose — to keep the work going, and keep delivering value to someone.</p>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="monetize.html"><span class="num">4</span>Monetization</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-app.html"><span class="num">4.1</span>App monetization</a></summary>
+            <ul><li><a href="admob.html"><span class="num">4.1.1</span>AdMob</a></li></ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="monetize-web.html"><span class="num">4.2</span>Website monetization</a></summary>
+            <ul><li><a href="amazon-associates.html"><span class="num">4.2.1</span>Amazon Associates</a></li></ul>
+          </details></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="monetize-support.html"><span class="num">4.3</span>Supporting the work</a></summary>
+            <ul><li><a class="cur" href="bmc.html" aria-current="page"><span class="num">4.3.1</span>Buy Me a Coffee</a></li></ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#monetize">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>

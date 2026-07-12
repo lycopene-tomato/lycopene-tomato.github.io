@@ -7,6 +7,9 @@
 <title>アプリを多言語対応しよう — 文字列を外に出し、AI に訳させる | Architecture Notes</title>
 <meta name="description" content="アプリ本体の多言語対応は、AI に最も任せやすい作業。表示文字列を言語ファイルとして外に出し、「この言語ファイルを○語に翻訳して」と依頼するだけでかなり進む。重要なのは翻訳技術ではなく、最初から多言語化しやすい構造で実装し、各文字列に文脈を残しておくこと。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/app-i18n.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/app-i18n.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/app-i18n.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/app-i18n.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="アプリを多言語対応しよう — 文字列を外に出し、AI に訳させる" />
 <meta property="og:description" content="アプリ本体の多言語対応は、AI に最も任せやすい作業。表示文字列を言語ファイルとして外に出し、「この言語ファイルを○語に翻訳して」と依頼するだけでかなり進む。重要なのは翻訳技術ではなく、最初から多言語化しやすい構造で実装し、各文字列に文脈を残しておくこと。" />
@@ -112,7 +115,8 @@
 
         <div class="sub">
           <h3>Reason</h3>
-          <p><b>文字列が一か所に集約されていれば、翻訳も差し替えも一度で済むからである。</b> コードに散らばっていると、AI もどこを訳せばいいか分からず、言語追加のたびに全画面を触ることになる。言語ファイルにまとめておけば、AI がまとめて訳せて、言語を足すのもファイルを 1 枚増やすだけになる。<mark>大事なのは翻訳技術ではなく、多言語化しやすい構造で最初から実装しておくことだ。</mark></p>
+          <p><b>文字列が一か所に集約されていれば、翻訳も差し替えも一度で済むからである。</b> コードに散らばっていると、AI もどこを訳せばいいか分からず、言語追加のたびに全画面を触ることになる。言語ファイルにまとめておけば、AI がまとめて訳せて、言語を足すのもファイルを 1 枚増やすだけになる。</p>
+          <blockquote>大事なのは、翻訳の技術ではない。<br>多言語化しやすい構造で、最初から実装しておくことである。</blockquote>
           <p>ただし、一つ落とし穴がある。キーと値だけを AI に渡すと、その単語がどの画面の何を指すのか分からず、誤訳する。「Home」が家なのか先頭画面なのか、AI には判断できない。だから各文字列に、<mark>「どの画面の、何のための言葉か」という文脈をコメントで添えておく。</mark>これが訳の精度を大きく左右する。</p>
         </div>
 

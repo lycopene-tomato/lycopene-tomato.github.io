@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2f6fed" />
+<title>AI-Driven Development with Only an iPhone — the Whole Dev Platform | Architecture Notes</title>
+<meta name="description" content="For solo developers who never get to open a PC: an AI-driven, phone-only dev platform. An iPhone as the entry point, Claude, GitHub, and EAS chained in the cloud — full hardware list and fixed costs (Claude Pro $20/mo + Apple Developer Program $99/yr, the rest on free tiers)." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/dev.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/dev.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/dev.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/dev.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI-Driven Development with Only an iPhone — the Whole Dev Platform" />
+<meta property="og:description" content="No time to open a PC? An iPhone as the entry point, cloud services chained behind it. Fixed cost: $20/mo + $99/yr — and it reaches the App Store." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/dev.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI-Driven Development with Only an iPhone — the Whole Dev Platform" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AI-Driven Development with Only an iPhone — the Whole Dev Platform",
+  "inLanguage": "en",
+  "datePublished": "2026-07-02",
+  "dateModified": "2026-07-12",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/dev.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "AI-driven phone-only development", "item": "https://lycoapp.com/notes/en/posts/dev.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-dev">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><b>1 AI-driven phone-only development</b></nav>
+
+  <article>
+    <span class="cat-tag">1 · Dev Platform</span>
+    <h1>AI-Driven Development with Only an iPhone — the Whole Dev Platform</h1>
+    <p class="a-meta"><span>2026.07.02</span><span>~3 min</span></p>
+
+    <section class="blk b-sum">
+      <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
+      <div class="bd">
+        <aside class="tldr" aria-label="Summary">
+          <p>The foundations of development — the IDE and CI/CD (continuous integration / delivery) — can be assembled by simply chaining cloud services behind an iPhone. There is no Mac at hand. Fixed costs are Claude Pro at $20/month and the Apple Developer Program at $99/year; everything else runs on free tiers. And it still reaches the App Store.</p>
+        </aside>
+        <p class="lbl">Tools</p>
+        <ul class="kit" aria-label="Tools">
+          <li><b>iPhone</b><span class="use">The main dev device. Everything happens here</span><span class="cost">already owned</span></li>
+          <li><b>iPad</b><span class="use">Store screenshots (optional)</span><span class="cost">already owned</span></li>
+          <li><b>PC (any)</b><span class="use">One-time browser step (1.1.2)</span><span class="cost">already owned</span></li>
+          <li><b>Claude Pro</b><span class="use">AI development (1.1.1)</span><span class="cost">$20/mo</span></li>
+          <li><b>Apple Developer Program</b><span class="use">Store submission (1.1.2)</span><span class="cost">$99/yr</span></li>
+          <li><b>GitHub</b><span class="use">Source control + CI/CD</span><span class="cost">Free</span></li>
+          <li><b>EAS</b><span class="use">build / submit / delivery (1.1.1, 1.1.2)</span><span class="cost">Free</span></li>
+          <li><b>Flow</b><span class="use">Screenshot generation</span><span class="cost">Free</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk b-jo">
+      <p class="blk-h"><span class="no">01</span><span class="jp">序</span><span class="en">Opening</span></p>
+      <div class="bd">
+        <p>I want to build something of my own. But between a full-time job, housework, and a small child, there is no moment in the day to open a PC. No solid block of desk time, either — if I'm honest, none at all. What I have are the gaps: bedtime settling, the commute, lunch breaks. And to top it off, my Mac fell out of support.</p>
+        <p>Still, I want to build.</p>
+        <p>In the age where AI writes the code, the shape of development has changed. What you need is not a powerful dev machine but the ability to ask, check the result, and decide. And for that, the one device in your hand is enough.</p>
+        <blockquote>Solo development is exactly where AI-driven, phone-only development belongs.</blockquote>
+      </div>
+    </section>
+
+    <section class="blk b-ha">
+      <p class="blk-h"><span class="no">02</span><span class="jp">破</span><span class="en">Turn</span></p>
+      <div class="bd">
+        <h2>Shift</h2>
+        <p>Why does a phone alone work? Because the three jobs a PC used to hold — writing code (the IDE), building, and delivering — can now all live in the cloud. AI writes code inside the cloud, a Mac inside the cloud does the building, and delivery is cloud-side too. What remains in your hand is asking, checking, and deciding. An iPhone covers that.</p>
+        <p>The honest hardware picture is in the Tools list above. The iPad is used only for tablet screenshots when a store listing supports tablets (skip tablet support and you can skip the iPad). A PC is used exactly once, for a browser step — it does not need to be a Mac, and specs don't matter.</p>
+
+        <h2>Cost</h2>
+        <p>Monthly fixed cost is effectively just Claude Pro's $20, plus the Apple Developer Program's $99 once a year. GitHub, EAS, and Flow all fit inside their free tiers. What those free tiers contain — and where they pinch — is covered in the individual articles.</p>
+      </div>
+    </section>
+
+    <section class="blk b-kyu">
+      <p class="blk-h"><span class="no">03</span><span class="jp">急</span><span class="en">Finale</span></p>
+      <div class="bd">
+        <p>So from here, the story is told from one angle: "an iPhone as the entry point, with the cloud chained in series behind it." First, why this environment — the requirements I refused to compromise on. Then how to implement. Then how to reach the App Store.</p>
+        <ul class="body">
+          <li><a href="env.html">1.1 How to set up an app dev environment with just an iPhone</a> — why "phone-only" became a requirement; the full decision criteria</li>
+          <li><a href="mobile-dev.html">1.1.1 How to implement iPhone apps with just an iPhone</a> — the build-free loop: Claude Code on Web → GitHub → EAS</li>
+          <li><a href="cloud-build.html">1.1.2 How to build iPhone apps without a Mac</a> — certificates, the one-time exception, all the way to TestFlight</li>
+          <li><a href="ota-channels.html">1.1.3 Safe EAS Update operation</a> — stg / prd separation against accidental releases</li>
+          <li><a href="i18n.html">1.2 Localization</a> — carrying niche value to a worldwide audience</li>
+        </ul>
+      </div>
+    </section>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary class="cur"><span class="caret">▸</span><a href="dev.html" aria-current="page"><span class="num">1</span>AI-driven phone-only development</a></summary>
+        <ul>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="env.html"><span class="num">1.1</span>Dev environment on an iPhone alone</a></summary>
+            <ul>
+              <li><a href="mobile-dev.html"><span class="num">1.1.1</span>Implementing apps on an iPhone alone</a></li>
+              <li><a href="cloud-build.html"><span class="num">1.1.2</span>Building without a Mac</a></li>
+              <li><a href="ota-channels.html"><span class="num">1.1.3</span>Safe OTA operation</a></li>
+            </ul>
+          </details></li>
+          <li><details>
+            <summary><span class="caret">▸</span><a href="i18n.html"><span class="num">1.2</span>Localization</a></summary>
+            <ul>
+              <li><a href="app-i18n.html"><span class="num">1.2.1</span>Localizing the app</a></li>
+              <li><a href="store-i18n.html"><span class="num">1.2.2</span>Localizing the listing</a></li>
+              <li><a href="shots-i18n.html"><span class="num">1.2.3</span>Localizing screenshots</a></li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#dev">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/en-US/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes. No personal data collected. No ads.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Builds are free. Caffeine isn't ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+</body>
+</html>
