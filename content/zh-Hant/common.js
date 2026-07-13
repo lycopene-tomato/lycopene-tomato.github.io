@@ -53,6 +53,7 @@ window.__CONTENT__["zh-Hant"].common = {
     nav_home: "首頁",
     nav_apps: "應用程式",
     nav_blog: "Blog",
+    nav_notes: "Notes",
     nav_about: "關於",
     nav_privacy: "隱私權政策",
     support_label: "請我喝杯咖啡",

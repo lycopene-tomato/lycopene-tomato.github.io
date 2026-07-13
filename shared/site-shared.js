@@ -192,7 +192,46 @@
       display: "inline-flex",
       alignItems: "center",
       gap: 6
-    } }, t.footer && t.footer.nav_blog || "Blog")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 12 } }, /* @__PURE__ */ React.createElement(LangSwitcher, null), /* @__PURE__ */ React.createElement("button", { className: "site-menu-btn", onClick: () => setMenuOpen(!menuOpen), "aria-label": "menu", style: {
+    } }, /* @__PURE__ */ React.createElement("span", { style: {
+      width: 6,
+      height: 6,
+      borderRadius: "50%",
+      background: "#8B7355"
+    } }), t.footer && t.footer.nav_blog || "Blog"), /* @__PURE__ */ React.createElement("a", { className: "nav-pill", href: "/notes/", style: {
+      textDecoration: "none",
+      padding: "6px 14px",
+      borderRadius: 999,
+      fontWeight: 700,
+      fontFamily: "var(--font-display, inherit)",
+      color: "#FBF6EE",
+      background: "transparent",
+      border: "1px solid rgba(251,246,238,0.25)",
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 6
+    } }, /* @__PURE__ */ React.createElement("span", { style: {
+      width: 6,
+      height: 6,
+      borderRadius: "50%",
+      background: "#5B6470"
+    } }), t.footer && t.footer.nav_notes || "Notes"), /* @__PURE__ */ React.createElement("a", { className: "nav-pill", href: `${pathPrefix}about/`, style: {
+      textDecoration: "none",
+      padding: "6px 14px",
+      borderRadius: 999,
+      fontWeight: 700,
+      fontFamily: "var(--font-display, inherit)",
+      color: "#FBF6EE",
+      background: "transparent",
+      border: "1px solid rgba(251,246,238,0.25)",
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 6
+    } }, /* @__PURE__ */ React.createElement("span", { style: {
+      width: 6,
+      height: 6,
+      borderRadius: "50%",
+      background: "#8B7355"
+    } }), t.footer && t.footer.nav_about || "About")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 12 } }, /* @__PURE__ */ React.createElement(LangSwitcher, null), /* @__PURE__ */ React.createElement("button", { className: "site-menu-btn", onClick: () => setMenuOpen(!menuOpen), "aria-label": "menu", style: {
       display: "none",
       background: "transparent",
       border: "none",
@@ -220,8 +259,26 @@
       padding: "12px 0",
       color: "#FBF6EE",
       textDecoration: "none",
+      borderBottom: "1px dashed rgba(251,246,238,0.18)",
       fontWeight: 500
-    } }, /* @__PURE__ */ React.createElement("span", { style: { width: 10, height: 10, borderRadius: "50%", background: "#8B7355" } }), t.footer && t.footer.nav_blog || "Blog")));
+    } }, /* @__PURE__ */ React.createElement("span", { style: { width: 10, height: 10, borderRadius: "50%", background: "#8B7355" } }), t.footer && t.footer.nav_blog || "Blog"), /* @__PURE__ */ React.createElement("a", { href: "/notes/", onClick: () => setMenuOpen(false), style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 10,
+      padding: "12px 0",
+      color: "#FBF6EE",
+      textDecoration: "none",
+      borderBottom: "1px dashed rgba(251,246,238,0.18)",
+      fontWeight: 500
+    } }, /* @__PURE__ */ React.createElement("span", { style: { width: 10, height: 10, borderRadius: "50%", background: "#5B6470" } }), t.footer && t.footer.nav_notes || "Notes"), /* @__PURE__ */ React.createElement("a", { href: `${pathPrefix}about/`, onClick: () => setMenuOpen(false), style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 10,
+      padding: "12px 0",
+      color: "#FBF6EE",
+      textDecoration: "none",
+      fontWeight: 500
+    } }, /* @__PURE__ */ React.createElement("span", { style: { width: 10, height: 10, borderRadius: "50%", background: "#8B7355" } }), t.footer && t.footer.nav_about || "About")));
   };
   window.SiteFooter = ({ pathPrefix = "", currentCategoryId }) => {
     const lang = window.useLang();

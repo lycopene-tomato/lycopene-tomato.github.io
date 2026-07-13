@@ -56,6 +56,7 @@ window.__CONTENT__.ja.common = {
     nav_home: "トップ",
     nav_apps: "アプリ一覧",
     nav_blog: "Blog",
+    nav_notes: "Notes",
     nav_about: "About",
     nav_privacy: "プライバシーポリシー",
     support_label: "コーヒーをおごる",
