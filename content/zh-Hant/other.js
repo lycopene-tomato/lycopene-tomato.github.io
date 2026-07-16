@@ -9,6 +9,8 @@ window.__CONTENT__["zh-Hant"].categories.other = {
   id: "other",
   name: "Other",
   subtitle: "偏離「讓育兒輕鬆一些」主軸的附加區。遊戲、便利工具、喘口氣的小東西。",
+  seoTitle: "復古遊戲移植等等的附加作品",
+  seoDesc: "偏離「讓育兒輕鬆一些」主軸的附加區:移植到 iPhone 的 PC-9801 雜誌網球遊戲,還有一些小工具和喘口氣的小東西。",
   lineup_title: "附加的應用程式。",
   accent: { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },
   eyebrow: "附加",
@@ -40,6 +42,8 @@ window.__CONTENT__["zh-Hant"].categories.other = {
       formula_b: "智慧型手機",
       formula_c: "回憶",
       concept: "PC-98 × 智慧型手機 = 回憶",
+      seoTitle: "移植到 iPhone 的 PC-9801 網球遊戲",
+      seoDesc: "日本 80 年代雜誌 Bēmaga 上的 100 行打字輸入網球遊戲《Receive No.1》,連物理計算和三角函數表一起逐行移植到 iPhone,再加上當年硬體跑不動的遺傳演算法 CPU 對手。",
       call: [
         "BASIC 雜誌!?",
         "N88-BASIC",

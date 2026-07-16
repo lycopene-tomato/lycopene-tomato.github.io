@@ -9,6 +9,8 @@ window.__CONTENT__["en-US"].categories.record = {
   id: "record",
   name: "Log",
   subtitle: "Turn the daily “again?” into seeing the child grow and the parent breathe easier.",
+  seoTitle: "incident logs and growth trends for parents",
+  seoDesc: "Recording apps that turn the daily “again?” into visible growth and a calmer parent: a parent-only log for friend trouble at school, and a moving-average chart of how your kid is actually doing.",
   lineup_title: "An app to organize it, fitted to what you’re logging.",
   label_call: "That nagging feeling",
   accent: { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
@@ -52,6 +54,8 @@ window.__CONTENT__["en-US"].categories.record = {
       formula_b: "Logs",
       formula_c: "Organized so it’s visible",
       concept: "Trouble × Logs = Organized so it’s visible",
+      seoTitle: "a parent-only log for school behavior incidents",
+      seoDesc: "When the school keeps calling: log who, what, where, and whether you apologized — organized by friend, date, and place. No advice screens. A year of entries also shows your kid is hitting less than before.",
       call: [
         "Who’s ___ again?",
         "Same kid as last time’s fight?",
@@ -78,6 +82,8 @@ window.__CONTENT__["en-US"].categories.record = {
       formula_b: "Logs",
       formula_c: "A trend you can see",
       concept: "Daily waves × Logs = A trend you can see",
+      seoTitle: "see your kid’s growth as a moving-average trend",
+      seoDesc: "Chart daily records as a moving average and watch the trend instead of riding every good and bad day. Made for parents who only notice the planes that made it back — survivorship bias, in parenting form.",
       call: [
         "Yesterday they did it. Why not today?",
         "I shouldn’t have snapped…",

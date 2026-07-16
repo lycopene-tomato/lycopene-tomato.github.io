@@ -9,6 +9,8 @@ window.__CONTENT__.ko.categories.record = {
   id: "record",
   name: "Log",
   subtitle: "매일의 「또야」를, 아이의 성장과 부모의 안도로 바꾸는 기록 시리즈.",
+  seoTitle: "부모를 위한 트러블 기록과 성장 추세 앱",
+  seoDesc: "매일의 『또야』를 보이는 성장으로 바꾸는 기록 시리즈: 친구 문제를 정리하는 부모 전용 기록과, 이동평균으로 보는 아이 성장 그래프.",
   lineup_title: "내용에 맞춰, 정리용 앱.",
   label_call: "답답함",
   accent: { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
@@ -52,6 +54,8 @@ window.__CONTENT__.ko.categories.record = {
       formula_b: "기록",
       formula_c: "정리해서 보이게",
       concept: "트러블 × 기록 = 정리해서 보이게",
+      seoTitle: "아이 친구 문제를 정리하는 부모 전용 기록",
+      seoDesc: "학교에서 자꾸 전화가 올 때: 상대 아이, 경위, 사과했는지까지 친구별・날짜별・장소별로 정리하는 부모 전용 기록. 조언 화면은 없습니다. 1 년치가 쌓이면 아이가 자라고 있다는 것도 보여요.",
       call: [
         "○○이 누구더라?",
         "지난번 싸움이랑 같은 아이?",
@@ -78,6 +82,8 @@ window.__CONTENT__.ko.categories.record = {
       formula_b: "기록",
       formula_c: "트렌드로 보여요",
       concept: "매일의 파도 × 기록 = 트렌드로 보여요",
+      seoTitle: "이동평균 추세로 보는 아이 성장 기록",
+      seoDesc: "하루하루의 좋고 나쁨에 흔들리는 대신, 매일의 기록을 이동평균 그래프로 만들어 추세로 봅니다. 무사히 돌아온 비행기만 보게 되는 부모를 위한, 육아판 생존자 편향 대책.",
       call: [
         "어제는 했는데, 왜 오늘은 안 될까?",
         "내가 또 너무 심했나….",

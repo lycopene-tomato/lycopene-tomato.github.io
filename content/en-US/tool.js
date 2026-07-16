@@ -9,6 +9,8 @@ window.__CONTENT__["en-US"].categories.tool = {
   id: "tool",
   name: "Timer",
   subtitle: "Turn “later” into “now.” Timers built for the kid who keeps putting things off.",
+  seoTitle: "visual timers and countdowns for procrastinating kids",
+  seoDesc: "Timers that turn “later” into “now”: a planet-launch visual timer for kids who fight every countdown, and a countdown of the days you still have together.",
   lineup_title: "Countdowns that fit the moment.",
   accent: { c: "#7BAE74", soft: "#EAF3E5", deep: "#3F7239" },
   eyebrow: "Beat procrastination",
@@ -51,6 +53,8 @@ window.__CONTENT__["en-US"].categories.tool = {
       formula_b: "Later",
       formula_c: "One more launch to start",
       concept: "Launch × Later = One more launch to start",
+      seoTitle: "a visual timer for kids who melt down when time’s up",
+      seoDesc: "The kid launches a planet around the sun to start the break — no number draining against his will — so the end is one he agreed to. Mercury to Neptune, distance sets the length; Pluto is the ∞ challenge.",
       call: [
         "Take a little break?",
         "Want to launch one more?",
@@ -77,6 +81,8 @@ window.__CONTENT__["en-US"].categories.tool = {
       formula_b: "Goodbye",
       formula_c: "Time together",
       concept: "Age × Goodbye = Time together",
+      seoTitle: "a countdown of the time left with your kid",
+      seoDesc: "From ages and graduation dates it counts the days you still have together and puts the number on your home screen. 'They grow up so fast' lands differently as an actual number. Share image included.",
       call: [
         "How many more?",
         "What did we do together today?",

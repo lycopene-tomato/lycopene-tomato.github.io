@@ -50,6 +50,8 @@ window.__CONTENT__["en-US"].categories.todo = {
       formula_b: "Tasks",
       formula_c: "Move with surprise",
       concept: "Gacha × Tasks = Move with surprise",
+      seoTitle: "a task gacha that gets kids out the door without nagging",
+      seoDesc: "Kids draw the next task from a gacha themselves, so the morning routine moves without a third 'hurry up.' Mix rewards into the pool to keep them spinning — surprise does the starting, not the parent.",
       call: [
         "Wonder what we’ll get next?",
         "Want to draw one?",
@@ -75,6 +77,8 @@ window.__CONTENT__["en-US"].categories.todo = {
       formula_b: "Tasks",
       formula_c: "Decide their own order",
       concept: "Bingo × Tasks = Decide their own order",
+      seoTitle: "a to-do bingo board for kids who refuse to be told",
+      seoDesc: "Tasks go on a bingo board and the kid picks the order himself — center-square strategy, reward squares, and a calendar bingo that carries summer homework. Self-chosen order moves kids that instructions don’t.",
       call: [
         "Where do you want to start?",
         "One more square for bingo!",
@@ -102,6 +106,8 @@ window.__CONTENT__["en-US"].categories.todo = {
       formula_b: "Tasks",
       formula_c: "Move by visualizing",
       concept: "Board × Tasks = Move by visualizing",
+      seoTitle: "a visual schedule board for kids who can’t see the day ahead",
+      seoDesc: "Lay the day out as a board game so 'how many more?' answers itself — and split tasks that are too big, like 'do your homework,' into squares small enough that nothing stalls out.",
       call: [
         "How many spaces until the goal?",
         "Three more to the next reward.",
@@ -128,6 +134,8 @@ window.__CONTENT__["en-US"].categories.todo = {
       formula_b: "Tasks",
       formula_c: "Move and it adds up",
       concept: "Growing × Tasks = Move and it adds up",
+      seoTitle: "a habit tracker for kids that counts partial effort",
+      seoDesc: "Not a yes/no streak: 5 minutes of piano waters the plant 5 minutes’ worth, and a missed day doesn’t erase the past. Built for the perfectionist kid who wants to start fresh every Monday.",
       call: [
         "How much water are you giving today?",
         "Even five minutes grows the plant five minutes’ worth.",
@@ -154,6 +162,8 @@ window.__CONTENT__["en-US"].categories.todo = {
       formula_b: "Tasks",
       formula_c: "It banks, the wobble smooths out",
       concept: "Savings book × Tasks = Keep going through the wobble",
+      seoTitle: "a reward passbook that remembers promises to kids",
+      seoDesc: "Park deals like 'ten worksheets for game time' in a passbook instead of your memory. The balance shows how many are left, low-energy days can withdraw from savings, and he-said-she-said goes away.",
       call: [
         "Want to bank today’s bit?",
         "Let’s see how many more till the reward.",

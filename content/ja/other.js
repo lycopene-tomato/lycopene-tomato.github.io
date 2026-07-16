@@ -6,6 +6,8 @@ window.__CONTENT__.ja.categories.other = {
   id: "other",
   name: "Other",
   subtitle: "「育児を少しでも楽に」から外れる、おまけ枠。ゲーム・便利ツール・息抜きなど。",
+  seoTitle: "レトロゲーム移植などのおまけアプリ",
+  seoDesc: "「育児を少しでも楽に」から外れるおまけ枠。PC-9801のベーマガ掲載ゲームのiPhone移植など、ゲームや息抜きの小さなアプリを置いています。",
   lineup_title: "おまけのアプリ。",
   accent: { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },
   eyebrow: "おまけ",
@@ -37,6 +39,8 @@ window.__CONTENT__.ja.categories.other = {
       formula_b: "スマフォ",
       formula_c: "想い出",
       concept: "PC-98 × スマフォ = 想い出",
+      seoTitle: "PC-9801のベーマガ掲載テニスゲームをiPhoneに移植",
+      seoDesc: "マイコンBASICマガジン掲載の2人対戦テニスゲーム「レシーブNo.1」を、N88-BASIC 100行の物理計算ごとiPhoneに移植。当時は不可能だったCPU対戦を遺伝的アルゴリズムで実装したレトロゲームです。",
       call: [
         "ベーマガ!?",
         "N88-BASIC",

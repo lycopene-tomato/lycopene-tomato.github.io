@@ -9,6 +9,8 @@ window.__CONTENT__["en-US"].categories.other = {
   id: "other",
   name: "Other",
   subtitle: "Off the “make parenting easier” path — a bonus shelf. Games, handy tools, little breathers.",
+  seoTitle: "retro game ports and other side projects",
+  seoDesc: "The bonus shelf, off the make-parenting-easier path: a PC-9801 magazine tennis game ported to iPhone, and other small tools and breathers.",
   lineup_title: "Bonus apps.",
   accent: { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },
   eyebrow: "Bonus",
@@ -40,6 +42,8 @@ window.__CONTENT__["en-US"].categories.other = {
       formula_b: "Smartphone",
       formula_c: "Memories",
       concept: "PC-98 × Smartphone = Memories",
+      seoTitle: "a PC-9801 N88-BASIC tennis game ported to iPhone",
+      seoDesc: "Receive No.1, a 100-line type-in tennis game from the 80s Japanese magazine Bēmaga, ported line-for-line to iPhone — same physics, same trig table — plus a Genetic Algorithm CPU opponent the original hardware couldn’t run.",
       call: [
         "BASIC Magazine!?",
         "N88-BASIC",

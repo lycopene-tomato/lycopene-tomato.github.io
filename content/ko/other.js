@@ -9,6 +9,8 @@ window.__CONTENT__.ko.categories.other = {
   id: "other",
   name: "Other",
   subtitle: "「육아를 조금이라도 편하게」 축에서 벗어난, 보너스 칸. 게임・편리한 도구・숨돌리기 등.",
+  seoTitle: "레트로 게임 이식 등 보너스 앱",
+  seoDesc: "『육아를 조금이라도 편하게』 축에서 벗어난 보너스 칸: iPhone 으로 이식한 PC-9801 잡지 테니스 게임과 작은 도구들.",
   lineup_title: "보너스 앱.",
   accent: { c: "#A480B8", soft: "#F0E8F5", deep: "#5B3F70" },
   eyebrow: "보너스",
@@ -40,6 +42,8 @@ window.__CONTENT__.ko.categories.other = {
       formula_b: "스마트폰",
       formula_c: "추억",
       concept: "PC-98 × 스마트폰 = 추억",
+      seoTitle: "iPhone 으로 이식한 PC-9801 테니스 게임",
+      seoDesc: "일본 80 년대 잡지 베마가에 실린 100 줄짜리 테니스 게임 《Receive No.1》을 물리 계산과 삼각함수 테이블까지 그대로 iPhone 으로 이식. 당시 하드웨어로는 불가능했던 유전 알고리즘 CPU 대전도 넣었습니다.",
       call: [
         "BASIC 매거진!?",
         "N88-BASIC",

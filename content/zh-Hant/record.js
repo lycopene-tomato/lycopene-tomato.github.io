@@ -9,6 +9,8 @@ window.__CONTENT__["zh-Hant"].categories.record = {
   id: "record",
   name: "Log",
   subtitle: "把每天的「又來了」，化作看見孩子的成長，與父母的安心。",
+  seoTitle: "給家長的糾紛記錄與成長趨勢 App",
+  seoDesc: "把每天的「又來了」變成看得見的成長:同學糾紛的家長專用記錄,和用移動平均看孩子狀態的成長曲線。",
   lineup_title: "依內容不同，整理用的應用程式。",
   label_call: "煩躁",
   accent: { c: "#A8B0BC", soft: "#EEF0F2", deep: "#5B6470" },
@@ -52,6 +54,8 @@ window.__CONTENT__["zh-Hant"].categories.record = {
       formula_b: "記錄",
       formula_c: "整理過後變得清楚",
       concept: "麻煩事 × 記錄 = 整理過後變得清楚",
+      seoTitle: "整理小孩同學糾紛的家長專用記錄",
+      seoDesc: "學校又打來的時候:對方是誰、發生什麼、道歉了沒 ── 依朋友、日期、地點整理的家長專用記錄。沒有說教畫面。記滿一年,還會看到孩子其實在進步。",
       call: [
         "○○是誰來著？",
         "和上次吵架是同一個孩子嗎？",
@@ -78,6 +82,8 @@ window.__CONTENT__["zh-Hant"].categories.record = {
       formula_b: "記錄",
       formula_c: "看得見趨勢",
       concept: "每天的波浪 × 記錄 = 看得見趨勢",
+      seoTitle: "用移動平均看孩子成長趨勢的記錄",
+      seoDesc: "把每天的記錄畫成移動平均線,用趨勢看孩子的成長,不再被單日的好壞牽著走。給只盯著飛回來的飛機看的爸媽 ── 育兒版的倖存者偏差對策。",
       call: [
         "昨天還會，為什麼今天不會了？",
         "話又講重了……",
