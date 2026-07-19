@@ -365,6 +365,9 @@ article .blk:first-of-type{margin-top:24px}
 .cat-books .dh{display:flex;align-items:center;gap:9px;margin:16px 0 7px;padding:0;border:0;font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.03em}
 .cat-books .dh .m{width:6px;height:6px;background:var(--cat);flex:none}
 .cat-books .dh::after{content:"";flex:1;border-top:1px dashed var(--line-strong)}
+/* PREP 内の箇条書き (ul.body は ADR 用なので使わない) */
+.cat-books .pts{margin:6px 0 0;padding-left:22px}
+.cat-books .pts li{margin:5px 0;color:#2a2d31}
 /* 表紙ヒーロー (本ページ) */
 .cat-books .hero{display:flex;gap:16px;align-items:center;margin:16px 0 0;padding:16px;background:var(--cat-bg);border:1px solid #e6cfd9;border-left:3px solid var(--cat)}
 .cat-books .cover{width:90px;height:128px;flex:none;background:#fbfbf8;border:1px solid #e2ddcf;position:relative;overflow:hidden;font-family:var(--mono)}
