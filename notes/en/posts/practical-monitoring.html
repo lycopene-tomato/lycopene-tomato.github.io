@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#8a3d5b" />
+<title>Practical Monitoring — Monitor the Service, Not the Server | Architecture Notes</title>
+<meta name="description" content="A review of Practical Monitoring (Mike Julian, O'Reilly). What's wrong with 100% CPU if the service is fine? Monitor the service, not the server. Health checks that hit the database, alerts only when action is needed, on-call in rotation." />
+<link rel="canonical" href="https://lycoapp.com/notes/en/posts/practical-monitoring.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/practical-monitoring.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/practical-monitoring.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/practical-monitoring.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Practical Monitoring — Monitor the Service, Not the Server" />
+<meta property="og:description" content="A review of Practical Monitoring (Mike Julian, O'Reilly). What's wrong with 100% CPU if the service is fine? Monitor the service, not the server. Health checks that hit the database, alerts only when action is needed, on-call in rotation." />
+<meta property="og:url" content="https://lycoapp.com/notes/en/posts/practical-monitoring.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Practical Monitoring — Monitor the Service, Not the Server" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "name": "Practical Monitoring — Monitor the Service, Not the Server",
+  "inLanguage": "en",
+  "datePublished": "2026-07-19",
+  "dateModified": "2026-07-19",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/practical-monitoring.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png",
+  "itemReviewed": {
+    "@type": "Book",
+    "name": "Practical Monitoring: Effective Strategies for the Real World",
+    "author": { "@type": "Person", "name": "Mike Julian" },
+    "isbn": "9784873118642",
+    "publisher": { "@type": "Organization", "name": "O'Reilly Media" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Bookshelf", "item": "https://lycoapp.com/notes/en/posts/bookshelf.html" },
+    { "@type": "ListItem", "position": 3, "name": "Systems", "item": "https://lycoapp.com/notes/en/posts/for-systems.html" },
+    { "@type": "ListItem", "position": 4, "name": "Practical Monitoring", "item": "https://lycoapp.com/notes/en/posts/practical-monitoring.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-books">
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="Site links">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Map</a><span class="sep">›</span><a href="bookshelf.html">Bookshelf</a><span class="sep">›</span><a href="for-systems.html">Systems</a><span class="sep">›</span><b>Practical Monitoring</b></nav>
+
+  <article>
+    <span class="cat-tag">9.4.1 · Bookshelf / Systems</span>
+    <h1>Practical Monitoring</h1>
+    <p class="lead">Monitor the service, not the server.</p>
+    <p class="a-meta"><span>2026.07.19</span><span>~5 min</span></p>
+    <div class="hero">
+      <div class="cover"><div class="band0">O'REILLY</div><div class="tt" style="font-size:12px">Practical Monitoring</div><div class="an">— Mike Julian —</div></div>
+      <p class="verdict">If you run anything in production, read this once. It rewires how you think about monitoring.</p>
+    </div>
+    <div class="band"><span class="jp">Point</span></div>
+    <div class="body">
+      <p>If you touch operations or maintenance, read Practical Monitoring (Mike Julian, O'Reilly). It teaches the essence of <b>what to monitor</b>, in the language of people who have carried a pager.</p>
+    </div>
+    <div class="band"><span class="jp">Reason</span></div>
+    <div class="body">
+      <p class="dh"><span class="m"></span>Readable</p>
+      <p>O'Reilly books have a reputation: excellent but dense, easy to abandon halfway. This one is different — remarkably readable, and the more production experience you have, the harder its points land.</p>
+      <p class="dh"><span class="m"></span>The core line</p>
+      <p><mark>What's wrong with 100% CPU? If the service is healthy, nothing.</mark> Collect metrics in detail for diagnosis — but that is not what you monitor. Monitor whether the service is alive, not the server.</p>
+    </div>
+    <div class="band"><span class="jp">Example</span></div>
+    <div class="body">
+      <p class="dh"><span class="m"></span>See the service</p>
+      <ul class="body">
+        <li>100% CPU with normal responses and no user pain is not an incident</li>
+        <li>A health check should prove "queries reach the database and return correctly," not "the server process is up"</li>
+      </ul>
+      <p class="dh"><span class="m"></span>Keep operations humane</p>
+      <ul class="body">
+        <li>Alert only on things that need action — daily noise trains people to ignore alerts</li>
+        <li>Rotate on-call — a single permanent first responder burns out</li>
+      </ul>
+    </div>
+    <div class="band"><span class="jp">Point</span></div>
+    <div class="body">
+      <p>One step past "100% CPU means an incident," toward "is the service healthy for the user?" This book sharpened where the Observe of <a href="observability.html">3.4.1 Observability</a> should point.</p>
+      <p><i>Practical Monitoring: Effective Strategies for the Real World</i> — Mike Julian, O'Reilly Media. (Japanese edition: 『入門 監視』, O'Reilly Japan.)</p>
+    </div>
+  </article>
+
+  <nav class="treenav" aria-label="Sitemap">
+    <p class="tn-h">Sitemap</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="bookshelf.html"><span class="num">9</span>Bookshelf</a></summary>
+        <ul>
+          <li><a href="for-business.html"><span class="num">9.1</span>Business</a></li>
+          <li><a href="for-customers.html"><span class="num">9.2</span>Customers</a></li>
+          <li><a href="for-projects.html"><span class="num">9.3</span>Projects</a></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="for-systems.html"><span class="num">9.4</span>Systems</a></summary>
+            <ul><li><a class="cur" href="practical-monitoring.html" aria-current="page"><span class="num">9.4.1</span>Practical Monitoring</a></li></ul>
+          </details></li>
+          <li><a href="for-career.html"><span class="num">9.9</span>Career</a></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#books">⤺ Back to the map</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="Servers run on free tiers. The developer runs on caffeine ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+<script defer src="../../../shared/analytics.js"></script>
+</body>
+</html>

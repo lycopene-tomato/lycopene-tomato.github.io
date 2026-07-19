@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#8a3d5b" />
+<title>『入門 監視』書評 ― 監視の対象は、サーバーではなくサービス | Architecture Notes</title>
+<meta name="description" content="オライリー『入門 監視』の書評。CPU 100% で何が悪い? サービスが正常なら問題ない ― 監視対象と調査用メトリクスは別物。ヘルスチェックはサービスで見る、アラートは必要なものだけ、オンコールはローテーション。保守・運用に関わる人に薦める一冊。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/practical-monitoring.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/practical-monitoring.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/practical-monitoring.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/practical-monitoring.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="『入門 監視』書評 ― 監視の対象は、サーバーではなくサービス" />
+<meta property="og:description" content="オライリー『入門 監視』の書評。CPU 100% で何が悪い? サービスが正常なら問題ない ― 監視対象と調査用メトリクスは別物。ヘルスチェックはサービスで見る、アラートは必要なものだけ、オンコールはローテーション。保守・運用に関わる人に薦める一冊。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/practical-monitoring.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="『入門 監視』書評 ― 監視の対象は、サーバーではなくサービス" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "name": "『入門 監視』書評 ― 監視の対象は、サーバーではなくサービス",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-19",
+  "dateModified": "2026-07-19",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/practical-monitoring.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png",
+  "itemReviewed": {
+    "@type": "Book",
+    "name": "入門 監視 ―モダンなモニタリングのためのデザインパターン",
+    "author": { "@type": "Person", "name": "Mike Julian" },
+    "isbn": "9784873118642",
+    "publisher": { "@type": "Organization", "name": "オライリー・ジャパン" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "本棚", "item": "https://lycoapp.com/notes/ja/posts/bookshelf.html" },
+    { "@type": "ListItem", "position": 3, "name": "システム", "item": "https://lycoapp.com/notes/ja/posts/for-systems.html" },
+    { "@type": "ListItem", "position": 4, "name": "入門 監視", "item": "https://lycoapp.com/notes/ja/posts/practical-monitoring.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-books">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="bookshelf.html">本棚</a><span class="sep">›</span><a href="for-systems.html">システム</a><span class="sep">›</span><b>入門 監視</b></nav>
+
+  <article>
+    <span class="cat-tag">9.4.1 · 本棚 / システム</span>
+    <h1>『入門 監視』</h1>
+    <p class="lead">監視の対象は、サーバーではなくサービス。</p>
+    <p class="a-meta"><span>2026.07.19</span><span>約5分</span></p>
+    <p class="aff-note">※一部リンク ↗ はアフィリエイト広告を利用しています。</p>
+    <div class="hero">
+      <div class="cover"><div class="band0">O'REILLY</div><div class="tt">入門 監視</div><div class="an">— design patterns —</div></div>
+      <p class="verdict">運用に関わるなら、一度は読んでほしい。監視への向き合い方が、根っこから変わる一冊。</p>
+    </div>
+    <div class="band"><span class="jp">結論</span><span class="en">Point</span></div>
+    <div class="body">
+      <p>保守・運用に関わる人へ。オライリーの『入門 監視』を薦める。「何を監視すべきか」の本質を、現場の言葉で教えてくれる。</p>
+    </div>
+    <div class="band"><span class="jp">理由</span><span class="en">Reason</span></div>
+    <div class="body">
+      <p class="dh"><span class="m"></span>読みやすさ</p>
+      <p>オライリーというと「良いけど難しい」「読み切れない」という印象があると思う。私もそうだった。ところがこの本は驚くほど読みやすく、現場経験があるほど「確かにそうだよな」と刺さる。</p>
+      <p class="dh"><span class="m"></span>現場の核心</p>
+      <p><mark>CPU が 100% で何が悪い? サービスが正常なら問題ない。</mark> メトリクスは原因調査のため詳細に取るが、監視の対象は別 ― サーバーではなく、サービスが生きているかを見る。</p>
+    </div>
+    <div class="band"><span class="jp">具体</span><span class="en">Example</span></div>
+    <div class="body">
+      <p class="dh"><span class="m"></span>サービス目線で見る</p>
+      <ul class="body">
+        <li>CPU 100% でもレスポンスが返り、利用者が困っていなければ障害ではない</li>
+        <li>ヘルスチェックは「サーバー起動」ではなく「DB まで引いて正しく返せる」で見る</li>
+      </ul>
+      <p class="dh"><span class="m"></span>運用を回す</p>
+      <ul class="body">
+        <li>アラートは本当に必要なものだけ ― 毎日鳴ると、人は見なくなる</li>
+        <li>オンコールはローテーション ― ファーストコールが一人だと疲弊する</li>
+      </ul>
+    </div>
+    <div class="band"><span class="jp">だから</span><span class="en">Point</span></div>
+    <div class="body">
+      <p>「CPU が 100% だから障害」から一歩進んで、「利用者にとってサービスは正常か?」でシステムを見る。ここで書いた <a href="observability.html">3.4.1 観測環境</a> の Observe を、"何に向けるか"がはっきりする本だった。</p>
+      <div class="bookcard">
+<!-- START MoshimoAffiliateEasyLink -->
+<script type="text/javascript">
+(function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+c.getElementById(a)||(d=c.createElement(f),d.src=g,
+d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+(window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+msmaflink({"n":"入門 監視 ―モダンなモニタリングのためのデザインパターン","b":"オライリージャパン","t":"","d":"https:\/\/m.media-amazon.com","c_p":"","p":["\/images\/I\/41Jlj3e0CDL._SL500_.jpg"],"u":{"u":"https:\/\/www.amazon.co.jp\/dp\/4873118646","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/search.rakuten.co.jp\/search\/mall\/%E5%85%A5%E9%96%80%20%E7%9B%A3%E8%A6%96%20%E2%80%95%E3%83%A2%E3%83%80%E3%83%B3%E3%81%AA%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3\/","a_id":5691566,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1},{"id":2,"u_tx":"Yahoo!ショッピングで見る","u_bc":"#66a7ff","u_url":"https:\/\/shopping.yahoo.co.jp\/search?first=1&p=%E5%85%A5%E9%96%80%20%E7%9B%A3%E8%A6%96%20%E2%80%95%E3%83%A2%E3%83%80%E3%83%B3%E3%81%AA%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3","a_id":5691815,"p_id":1225,"pl_id":27061,"pc_id":1925,"s_n":"yahoo","u_so":2},{"id":3,"u_tx":"Amazonで見る","u_bc":"#f79256","u_url":"https:\/\/www.amazon.co.jp\/dp\/4873118646","a_id":5691816,"p_id":170,"pl_id":27060,"pc_id":185,"s_n":"amazon","u_so":3}],"eid":"hs5Yj","s":"s"});
+</script>
+<div id="msmaflink-hs5Yj">リンク</div>
+<!-- MoshimoAffiliateEasyLink END -->
+      </div>
+    </div>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="bookshelf.html"><span class="num">9</span>本棚 / Bookshelf</a></summary>
+        <ul>
+          <li><a href="for-business.html"><span class="num">9.1</span>事業</a></li>
+          <li><a href="for-customers.html"><span class="num">9.2</span>顧客</a></li>
+          <li><a href="for-projects.html"><span class="num">9.3</span>プロジェクト</a></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a href="for-systems.html"><span class="num">9.4</span>システム</a></summary>
+            <ul><li><a class="cur" href="practical-monitoring.html" aria-current="page"><span class="num">9.4.1</span>入門 監視</a></li></ul>
+          </details></li>
+          <li><a href="for-career.html"><span class="num">9.9</span>キャリア</a></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#books">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="サーバーは無料枠で動く。開発者はカフェインで動く ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+<script defer src="../../../shared/analytics.js"></script>
+</body>
+</html>

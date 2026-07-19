@@ -5,12 +5,61 @@
   <id>https://lycoapp.com/notes/</id>
   <link href="https://lycoapp.com/notes/ja/" />
   <link rel="self" href="https://lycoapp.com/notes/feed.xml" />
-  <updated>2026-07-12T00:00:00+09:00</updated>
+  <updated>2026-07-19T00:00:00+09:00</updated>
   <author>
     <name>Lyco</name>
     <uri>https://lycoapp.com/about/</uri>
   </author>
   <!-- 記事公開時にここへ <entry> を追加する (新しいものを上に) -->
+  <entry>
+    <title>本棚 ― 私は、誰のために仕事をしてきたか</title>
+    <id>https://lycoapp.com/notes/ja/posts/bookshelf.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/bookshelf.html" />
+    <updated>2026-07-19T00:00:00+09:00</updated>
+    <summary>ネットワーク専攻から製造業システム、エンタープライズアーキテクチャ、EC、クラウド、要件定義へ。転職せずに視点を広げてきたキャリアを「誰のために仕事をしてきたか」で棚に分けた。読んで本当に良かった本だけを並べる本棚の入口。</summary>
+  </entry>
+  <entry>
+    <title>For Business ― ビジネスとシステムは、同じものの別の見え方</title>
+    <id>https://lycoapp.com/notes/ja/posts/for-business.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/for-business.html" />
+    <updated>2026-07-19T00:00:00+09:00</updated>
+    <summary>ビジネスとシステムは対立しない。円錐を上から見れば円、横から見れば三角形。観測する方向が違うだけで、対象は同じである。相手のディメンションに合わせて言葉を翻訳することが、要件定義とアーキテクチャの出発点になる。</summary>
+  </entry>
+  <entry>
+    <title>For Customers ― システムは「世界」を作っている</title>
+    <id>https://lycoapp.com/notes/ja/posts/for-customers.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/for-customers.html" />
+    <updated>2026-07-19T00:00:00+09:00</updated>
+    <summary>システム開発とは世界を作ること。ユーザーは目的を持ってその世界に入ってくる。エラーで迷わせず、次に進める道を示す。画面の向こう側で信頼を守るカスタマーセンターの人たちのことも忘れない。顧客視点だけは譲れない。</summary>
+  </entry>
+  <entry>
+    <title>For Projects ― プロジェクトで最も大切なのは人</title>
+    <id>https://lycoapp.com/notes/ja/posts/for-projects.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/for-projects.html" />
+    <updated>2026-07-19T00:00:00+09:00</updated>
+    <summary>PMO・チームリード・オフショア開発を経て変わらない結論。プロジェクトで最も重要なのはシステムでもスケジュールでもなく、人である。心理的安全性を土台に、プロジェクト・チーム・個人の 3 つのゴールを揃え、人の成長に合わせて役割を設計する。</summary>
+  </entry>
+  <entry>
+    <title>For Systems ― 技術は変わっても、本質は変わらない</title>
+    <id>https://lycoapp.com/notes/ja/posts/for-systems.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/for-systems.html" />
+    <updated>2026-07-19T00:00:00+09:00</updated>
+    <summary>C・Java・Python、オンプレミスからクラウドまで経験して思うこと。言語もサービスも変わるが、ノイマン型という土台は変わらない。変わらない本質を理解していれば、新しい技術も AI も恐れる必要はない。この棚には『入門 監視』を置いた。</summary>
+  </entry>
+  <entry>
+    <title>『入門 監視』書評 ― 監視の対象は、サーバーではなくサービス</title>
+    <id>https://lycoapp.com/notes/ja/posts/practical-monitoring.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/practical-monitoring.html" />
+    <updated>2026-07-19T00:00:00+09:00</updated>
+    <summary>オライリー『入門 監視』の書評。CPU 100% で何が悪い? サービスが正常なら問題ない ― 監視対象と調査用メトリクスは別物。ヘルスチェックはサービスで見る、アラートは必要なものだけ、オンコールはローテーション。保守・運用に関わる人に薦める一冊。</summary>
+  </entry>
+  <entry>
+    <title>For Career ― 資格はゴールではなく、スタートライン</title>
+    <id>https://lycoapp.com/notes/ja/posts/for-career.html</id>
+    <link href="https://lycoapp.com/notes/ja/posts/for-career.html" />
+    <updated>2026-07-19T00:00:00+09:00</updated>
+    <summary>エンジニアに資格は必須ではない。それでも取るのは学習効率が良いから。体系的・網羅的に学べて知識の偏りを防ぎ、評価面談でも一言で伝わる。資格は目的ではなく、知識を整理する道具。キャリアを作るのは経験である。</summary>
+  </entry>
   <entry>
     <title>多言語対応 — ニッチだからこそ、市場を世界に広げる</title>
     <id>https://lycoapp.com/notes/ja/posts/i18n.html</id>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#8a3d5b" />
+<title>For Systems ― 技術は変わっても、本質は変わらない | Architecture Notes</title>
+<meta name="description" content="C・Java・Python、オンプレミスからクラウドまで経験して思うこと。言語もサービスも変わるが、ノイマン型という土台は変わらない。変わらない本質を理解していれば、新しい技術も AI も恐れる必要はない。この棚には『入門 監視』を置いた。" />
+<link rel="canonical" href="https://lycoapp.com/notes/ja/posts/for-systems.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/for-systems.html" />
+<link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/for-systems.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/for-systems.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="For Systems ― 技術は変わっても、本質は変わらない" />
+<meta property="og:description" content="C・Java・Python、オンプレミスからクラウドまで経験して思うこと。言語もサービスも変わるが、ノイマン型という土台は変わらない。変わらない本質を理解していれば、新しい技術も AI も恐れる必要はない。この棚には『入門 監視』を置いた。" />
+<meta property="og:url" content="https://lycoapp.com/notes/ja/posts/for-systems.html" />
+<meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Architecture Notes — Lyco App" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="For Systems ― 技術は変わっても、本質は変わらない" />
+<meta name="twitter:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
+<link rel="stylesheet" href="../../shared/notes.css" />
+<link rel="alternate" type="application/atom+xml" href="/notes/feed.xml" title="Architecture Notes" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "For Systems ― 技術は変わっても、本質は変わらない",
+  "description": "C・Java・Python、オンプレミスからクラウドまで経験して思うこと。言語もサービスも変わるが、ノイマン型という土台は変わらない。変わらない本質を理解していれば、新しい技術も AI も恐れる必要はない。この棚には『入門 監視』を置いた。",
+  "inLanguage": "ja",
+  "datePublished": "2026-07-19",
+  "dateModified": "2026-07-19",
+  "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
+  "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
+  "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/for-systems.html",
+  "image": "https://lycoapp.com/notes/assets/og-notes.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Architecture Notes", "item": "https://lycoapp.com/notes/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "本棚", "item": "https://lycoapp.com/notes/ja/posts/bookshelf.html" },
+    { "@type": "ListItem", "position": 3, "name": "システム", "item": "https://lycoapp.com/notes/ja/posts/for-systems.html" }
+  ]
+}
+</script>
+<script type="speculationrules">
+{ "prerender": [ { "where": { "selector_matches": ".treenav a, .crumbs a" }, "eagerness": "moderate" } ] }
+</script>
+</head>
+<body class="cat-books">
+<a class="skip" href="#main">本文へスキップ</a>
+<div class="progress"><span id="progress-bar"></span></div>
+
+<header class="site-header"><div class="bar">
+  <a class="brand" href="../"><img class="logo" src="/images/logo-puzzle.png" alt="" width="26" height="26" />Architecture Notes</a>
+  <nav class="site-nav" aria-label="サイト内リンク">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/about/">About</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <nav class="crumbs" aria-label="パンくず"><a href="../">全体マップ</a><span class="sep">›</span><a href="bookshelf.html">本棚</a><span class="sep">›</span><b>システム</b></nav>
+
+  <article>
+    <span class="cat-tag">9.4 · 本棚</span>
+    <h1>For Systems</h1>
+    <p class="lead">システムのために ― 技術は変わっても、本質は変わらない。</p>
+    <p class="a-meta"><span>2026.07.19</span><span>約3分</span></p>
+    <div class="band"><span class="jp">なぜ、この相手のために働くか</span><span class="en">Why</span></div>
+    <div class="body">
+      <p>オンプレミスからクラウドまで、C・Java・Python・SQL と複数の言語で開発してきて、強く感じることがある。<b>技術は進化しても、本質はあまり変わらない。</b>一つの言語をきちんと理解していれば、他の言語も比較的短期間で読み書きできるようになる。重要なのは言語そのものではなく、その背後にある考え方である。</p>
+    </div>
+    <div class="band"><span class="jp">どう向き合うか</span><span class="en">How</span></div>
+    <div class="body">
+      <p class="dh"><span class="m"></span>抽象化の下は変わっていない</p>
+      <p>クラウドで構築や運用は格段に楽になり、SaaS や PaaS で多くのことが短時間で実現できる。一方で、サービスの内部は見えにくくなった。それでも、土台は変わっていない。現在のコンピュータの多くは、ノイマン型の考え方の上で動いている。CPU が命令を実行し、メモリを読み書きし、ストレージやネットワークとデータをやり取りする。変わったのは、私たちが直接触れる範囲が抽象化されたことだ。</p>
+      <p class="dh"><span class="m"></span>「なぜそうなっているのか」を問う</p>
+      <p>新しい技術を学ぶことは大切だが、それ以上に重要なのは、変わらない本質を理解することだと思っている。基礎があれば、新しい言語もクラウドサービスも AI ツールも、違いを理解して応用できる。変化を恐れる必要はない。</p>
+    </div>
+    <div class="band"><span class="jp">この棚の本</span><span class="en">What</span></div>
+    <div class="body">
+      <p>システムのために読んで良かった本を、ここに置いていく。</p>
+      <ul class="bookrow">
+        <li><a href="practical-monitoring.html"><span class="mini"><i></i></span><span><b>入門 監視</b><span class="d">監視の対象は、サーバーではなくサービス</span></span><span class="go">→</span></a></li>
+      </ul>
+    </div>
+  </article>
+
+  <nav class="treenav" aria-label="サイトマップ">
+    <p class="tn-h">サイトマップ</p>
+    <ul class="tn">
+      <li><details open>
+        <summary><span class="caret">▸</span><a href="bookshelf.html"><span class="num">9</span>本棚 / Bookshelf</a></summary>
+        <ul>
+          <li><a href="for-business.html"><span class="num">9.1</span>事業</a></li>
+          <li><a href="for-customers.html"><span class="num">9.2</span>顧客</a></li>
+          <li><a href="for-projects.html"><span class="num">9.3</span>プロジェクト</a></li>
+          <li><details open>
+            <summary><span class="caret">▸</span><a class="cur" href="for-systems.html" aria-current="page"><span class="num">9.4</span>システム</a></summary>
+            <ul><li><a href="practical-monitoring.html"><span class="num">9.4.1</span>入門 監視</a></li></ul>
+          </details></li>
+          <li><a href="for-career.html"><span class="num">9.9</span>キャリア</a></li>
+        </ul>
+      </details></li>
+    </ul>
+    <a class="tn-map" href="../#books">⤺ 全体マップに戻る</a>
+  </nav>
+</main>
+
+<footer class="site-footer"><div class="bar">
+  <div class="cols">
+    <a href="https://lycoapp.com/">Lyco App</a>
+    <a href="https://lycoapp.com/about/">About</a>
+    <a href="../../feed.xml">RSS</a>
+    <a href="mailto:contact@lycoapp.com">contact@lycoapp.com</a>
+    <a class="bmc" href="https://buymeacoffee.com/lycoapp" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="145" height="32" /></a>
+  </div>
+  <p class="fine">© Lyco App — Architecture Notes.</p>
+</div></footer>
+
+<script src="../../shared/notes.js" defer></script>
+<!-- BMC floating widget -->
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="lycoapp"
+  data-description="Buy me a coffee"
+  data-message="サーバーは無料枠で動く。開発者はカフェインで動く ☕"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"></script>
+<script defer src="../../../shared/analytics.js"></script>
+</body>
+</html>
