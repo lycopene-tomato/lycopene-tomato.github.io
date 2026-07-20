@@ -1,4 +1,4 @@
-/* Architecture Notes — BMC widget 用 名言プール
+/* Architecture Notes — BMC widget 用 名言プール (rev 2026-07-20b: Pages ビルド再発火のための無害な版数コメント)
    形式 [source, en, ja]。source が "" のものは出典表示なし (現場のことわざ)。
    追加ルール: ソース込みで ja <= 48 字 / en <= 100 字 (吹き出し 3 行以内)。
    利用箇所: 各ページ末尾のインライン script (document.write で BMC タグを書き込む)。 */
