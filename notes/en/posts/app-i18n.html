@@ -185,7 +185,19 @@
 </div></footer>
 
 <script src="../../shared/notes.js" defer></script>
-<!-- BMC widget は notes.js が挿入 (名言をランダム表示) -->
+<!-- BMC widget (名言をランダム表示。document.write で静的タグと同じ実行タイミングを保証) -->
+<script src="../../shared/bmc-quotes.js"></script>
+<script>
+(function () {
+  var Q = window.BMC_QUOTES || [];
+  if (!Q.length) return;
+  var q = Q[Math.floor(Math.random() * Q.length)];
+  var m = (document.documentElement.lang === "ja" ? q[2] : q[1]) + (q[0] ? " ― " + q[0] : "");
+  m = m.replace(/"/g, "&quot;");
+  /* document.write = パーサー挿入。静的タグと同じタイミングで BMC が実行される (DCL 前保証) */
+  document.write('<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="lycoapp" data-description="Buy me a coffee" data-message="' + m + '" data-color="#FFDD00" data-position="Right" data-x_margin="18" data-y_margin="18"><\/script>');
+})();
+</script>
 <script defer src="../../../shared/analytics.js"></script>
 </body>
 </html>
