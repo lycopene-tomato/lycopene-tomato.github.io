@@ -137,6 +137,14 @@
     bmc.setAttribute("data-position", "Right");
     bmc.setAttribute("data-x_margin", "18");
     bmc.setAttribute("data-y_margin", "18");
+    /* BMC 本体は DOMContentLoaded を待ってからボタンを構築する。動的挿入だと
+       CDN スクリプトの実行が DCL 発火後になった場合にウィジェットが出ない
+       (出たり出なかったりの原因)。読込完了時に DCL を再ディスパッチして必ず起動させる。 */
+    bmc.addEventListener("load", function () {
+      if (document.readyState !== "loading") {
+        document.dispatchEvent(new Event("DOMContentLoaded"));
+      }
+    });
     document.body.appendChild(bmc);
   }
 })();

@@ -377,6 +377,10 @@ article .blk:first-of-type{margin-top:24px}
 .cat-books .verdict{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:16px;color:var(--ink);line-height:1.7;margin:0}
 /* 書籍リンクカード (もしも JS カードの外枠) */
 .cat-books .bookcard{border:1px solid var(--line-strong);border-top:2px solid var(--cat);padding:14px 16px;margin:16px 0 0;background:var(--paper)}
+.cat-books .bookcard .t{font-weight:700;color:var(--ink);font-size:14px}
+.cat-books .bookcard .b{color:var(--muted);font-size:12px;margin-top:2px}
+.cat-books .malls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.cat-books .malls a{flex:1 1 30%;text-align:center;padding:10px 6px;color:#fff;text-decoration:none;font-weight:700;font-size:13px}
 /* 棚一覧: 9 の Result = 横線区切りリスト / 9.x の What = 本カード */
 .cat-books .shelf{list-style:none;padding:0;margin:12px 0 0;border-top:1px solid var(--line-strong)}
 .cat-books .shelf a{display:flex;align-items:baseline;gap:12px;text-decoration:none;padding:12px 6px;border-bottom:1px solid var(--line);border-left:4px solid var(--cat)}
