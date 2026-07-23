@@ -35,7 +35,7 @@
   "description": "iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone. Commit, and minutes later the app in your hand updates itself — no build in the loop. The sandbox is what makes it safe to delegate everything.",
   "inLanguage": "en",
   "datePublished": "2026-07-02",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/mobile-dev.html",
@@ -82,7 +82,7 @@
       <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
       <div class="bd">
         <aside class="tldr" aria-label="Summary">
-          <p>The pipeline is iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone. The AI works inside a disposable cloud sandbox, so you can hand everything over without letting it near your own machines. Merge to main, and within minutes the Expo Go app in your hand updates itself — no build occurs anywhere in the development loop. The weak point: three clouds in series, so if any one goes down, the loop stops.</p>
+          <p>The pipeline is the Claude app on iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → the Expo Go app on iPhone. The AI works inside a disposable cloud sandbox, so you can hand everything over without letting it near your own machines. Merge to main, and within minutes the Expo Go app in your hand updates itself — no build occurs anywhere in the development loop.</p>
         </aside>
         <p class="lbl">Tools</p>
         <ul class="kit" aria-label="Tools">
@@ -98,7 +98,7 @@
       <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
       <div class="bd">
         <h2>Situation</h2>
-        <p>As laid out in <a href="env.html">1.1 the dev environment</a>, there is no time in my day to open a PC. Development happens in the gaps or not at all.</p>
+        <p>As laid out in <a href="env.html">1.1 the dev environment</a>, there is no time in my day to open a PC. There's no budget to replace the Mac, either. All I have is curiosity.</p>
         <h2>Complication</h2>
         <p>And what can you do in those gaps? About as much as fiddling with a phone. On the sofa, under the bedtime blanket, on the train. One hand, one phone. That is the entire premise.</p>
         <h2>Question</h2>
@@ -126,7 +126,7 @@ iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go 
           <h3>Reason</h3>
         <p><b>I chose Claude Code on Web because of the sandbox.</b> On each request, Claude Code on Web spins up a temporary Ubuntu environment in the cloud and runs Claude Code (the AI coding agent) inside it.</p>
         <p>The usual Claude Code installs on a PC and runs there. That gives it access to local files, and it starts installing whatever tools it needs (with approval, but still). An AI free to wander around my own machine is, frankly, an uncomfortable feeling. — Though to be fair, my out-of-support Intel Mac can't run Claude Code properly anyway; even if it could, I don't think I would have chosen that path.</p>
-        <p>On Web, whatever the AI does happens inside a disposable Ubuntu, and it can never reach my assets. I can hand the work over with a clear head. That feeling of being able to fully delegate is what matters in gap-time development: you send the request, close the app, and go back to the kids.</p>
+        <p>On Web, whatever the AI does happens inside a disposable Ubuntu, and it can never reach my assets. I can hand the work over with a clear head. That feeling of being able to fully delegate is what matters in gap-time development: you send the request, close the app, and go back to the kids. And because it's a sandbox, I can approve installs without a second thought.</p>
         <p><b>GitHub is the piece that patches over the sandbox's volatility.</b> A disposable environment loses its data when it ends, so the output needs somewhere else to live. That's GitHub: the home of the source and its history. On top of it, GitHub Actions — CI/CD that also spins up a temporary Linux box and runs your commands — takes over the automation downstream.</p>
         <p><b>I chose EXPO because you can verify on a real device without building.</b> EXPO is a React Native-based framework with EAS (Expo Application Services), its cloud platform, and Expo Go, an app for on-device checks. Push the repository's contents to EAS (an "update"), and the app inside Expo Go on your phone swaps itself out. No App Store in between. Which means <b>there is no build anywhere in a development cycle</b>.</p>
         <p>Actions triggers on merges to the main branch. Connect it all and it looks like this:</p>
@@ -144,8 +144,8 @@ iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go 
         <div class="sub">
           <h3>Options</h3>
           <ul class="body">
-            <li><b>Codex (OpenAI)</b> — when I tried it (spring 2026) it wasn't usable from the iPhone app, only through a browser, which failed the one-handed-phone UX test. Note that Codex landed in the ChatGPT app in May 2026, so it deserves a re-evaluation if you're choosing today.</li>
-            <li><b>Flutter</b> — considered as the cross-platform alternative. But EXPO's PoC (Proof of Concept) satisfied every requirement before Flutter's PoC ever ran. It didn't lose a comparison; the comparison became unnecessary — that's the accurate telling.</li>
+            <li><b>Codex (OpenAI)</b> — when I tried it (spring 2026) it wasn't usable from the iPhone app, only through a browser, which failed the one-handed-phone UX test. Note that Codex landed in the ChatGPT app in May 2026, so it deserves a re-evaluation if you're choosing today. I did confirm it runs, so Codex or Gemini — at this point it's a matter of taste.</li>
+            <li><b>Flutter</b> — considered as the cross-platform alternative. But EXPO's PoC (Proof of Concept) satisfied every requirement before Flutter's PoC ever ran. It didn't lose a comparison; the comparison became unnecessary — that's the accurate telling. If you already know Flutter, you could reach the same result with it.</li>
           </ul>
         </div>
       </div>
@@ -167,6 +167,46 @@ iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go 
         <p>Also: if you keep using this OTA delivery in production as-is, in-development code can accidentally reach released users during maintenance. Once you've shipped, read <a href="ota-channels.html">1.1.3 Safe EAS Update operation</a> to split the delivery paths safely.</p>
       </div>
     </section>
+
+    <section class="repro" aria-label="How to reproduce">
+      <p class="repro-h">■ Reproduce it yourself</p>
+      <p class="lead">A note for anyone who wants to reproduce this setup. Not meant to be read straight through — the prompt shows a few lines and scrolls.</p>
+      <ol>
+        <li>Create a GitHub repository (empty is fine)</li>
+        <li>Create an Expo account (<a href="https://expo.dev" target="_blank" rel="noopener">expo.dev</a>, free)</li>
+        <li>Issue an Expo access token (expo.dev → Account settings → Access tokens)</li>
+        <li>Create a project in Expo and take a screenshot of the Project details</li>
+        <li>Register <code>EXPO_TOKEN</code> in the repo's Secrets (repo Settings → Secrets and variables → Actions → New repository secret)</li>
+      </ol>
+      <p class="step-h">In Claude Code on Web, point it at the repo above, attach the Expo Project details screenshot, and paste the following.</p>
+      <pre class="paste">Set up a new Expo (SDK 54) + React Native app in this empty repository.
+The goal: reach a state where "merging to main makes GitHub Actions run
+EAS Update automatically, and I can verify it in Expo Go on my iPhone."
+
+[What to build]
+1. A minimal Expo app (App.js just shows "Hello World")
+   - Entry point is App.js
+   - To avoid the white-screen trap, do NOT write icon / splash / favicon /
+     runtimeVersion / updates.url in app.json at first (no images yet either)
+2. Put legacy-peer-deps=true in .npmrc (to avoid the Expo 54 + React 19
+   peer-dependency conflict)
+3. Add package-lock.json to .gitignore (CI does a clean install every time)
+4. GitHub Actions workflow .github/workflows/eas-update.yml
+   - Trigger: push to main
+   - Body: npm install --legacy-peer-deps → EAS setup → eas update
+   - Auth uses the EXPO_TOKEN secret
+
+[How I work]
+- Direct pushes to main fail on protection, so use branch → PR → merge to main
+
+When you're done, tell me step by step what I should do next on my end.</pre>
+      <p>After that, if you say "something isn't working," it tells you "check X." Ask "what's X?" and it explains everything.</p>
+    </section>
+
+    <aside class="closing" aria-label="A note to close">
+      <p>One day to stand up this CI/CD environment.</p>
+      <p>Five days including the app itself, and the programming was done.</p>
+    </aside>
   </article>
 
   <nav class="treenav" aria-label="Sitemap">

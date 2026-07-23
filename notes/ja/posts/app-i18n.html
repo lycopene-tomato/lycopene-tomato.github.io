@@ -35,7 +35,7 @@
   "description": "アプリ本体の多言語対応は、AI に最も任せやすい作業。表示文字列を言語ファイルとして外に出し、「この言語ファイルを○語に翻訳して」と依頼するだけでかなり進む。重要なのは翻訳技術ではなく、最初から多言語化しやすい構造で実装し、各文字列に文脈を残しておくこと。",
   "inLanguage": "ja",
   "datePublished": "2026-07-12",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/app-i18n.html",
@@ -119,6 +119,7 @@
           <p><b>文字列が一か所に集約されていれば、翻訳も差し替えも一度で済むからである。</b> コードに散らばっていると、AI もどこを訳せばいいか分からず、言語追加のたびに全画面を触ることになる。言語ファイルにまとめておけば、AI がまとめて訳せて、言語を足すのもファイルを 1 枚増やすだけになる。</p>
           <blockquote>大事なのは、翻訳の技術ではない。<br>多言語化しやすい構造で、最初から実装しておくことである。</blockquote>
           <p>ただし、一つ落とし穴がある。キーと値だけを AI に渡すと、その単語がどの画面の何を指すのか分からず、誤訳する。「Home」が家なのか先頭画面なのか、AI には判断できない。だから各文字列に、<mark>「どの画面の、何のための言葉か」という文脈をコメントで添えておく。</mark>これが訳の精度を大きく左右する。</p>
+          <p>この 2 つから、2 言語対応で意味を予測し、意味情報として開発時に意味を残すことで、飛躍的に精度を上げることができる。</p>
         </div>
 
         <div class="sub">
@@ -144,6 +145,81 @@
         <p>アプリ本体が多言語化できたら、次はそれを世に出すためのストア申請情報を多言語化する。続きは <a href="store-i18n.html">1.2.2 アプリ申請を多言語対応しよう</a>。</p>
       </div>
     </section>
+
+    <section class="repro" aria-label="再現メモ">
+      <p class="repro-h">■ 再現できる方法</p>
+      <p class="lead">この構成を自分で再現したい人向けのメモ。読み物ではないので、指示文は数行だけ表示してスクロールにしてある。</p>
+      <p class="step-h">はじめに、下記を貼り付けで実行。</p>
+      <pre class="paste">このアプリを多言語対応にしたいですが、今はまだ UI を作っている途中なので、
+最初は日本語と英語の 2 言語だけで土台を作ってください。
+（あとで全言語に広げるので、そのとき楽になる構造にしておいてほしい）
+
+【作ってほしいもの】
+1. i18n-js のセットアップ（i18n.js）
+   - expo-localization で端末の言語を判定
+   - 対応外の言語は英語にフォールバック（defaultLocale = 'en'）
+   - 今は locales/ja.json と locales/en.json の 2 つだけ import
+   - 将来ここに import を足すだけで言語を増やせるコメントを残す
+2. 翻訳ファイル
+   - locales/ja.json（日本語＝マスター）
+   - locales/en.json（英語）
+   - キーは snake_case で意味を表す名前にする
+   - 変数の埋め込みは %{変数名} 形式にする
+3. アプリのコードの文字列を i18n.t('キー') に置き換える
+   - 画面に直書きされている日本語・英語の文字列を全部キー化する
+
+【ルール】
+- 翻訳キーは ja.json を正とし、en.json はその対訳にする
+- ハードコードされた表示文字列が残らないようにする
+  （i18n.t() を通さない生の文字列が画面に出ていないかチェック）
+
+作り終えたら、今後 UI に文言を足すときにどういう手順でキーを追加すれば
+いいか（ja.json に足す → en.json に足す → i18n.t で参照）を簡単に
+まとめてください。</pre>
+      <p class="step-h">次に多言語対応するときに、下記を貼り付けで実行。</p>
+      <pre class="paste">UI がほぼ固まったので、多言語対応を全言語に広げてください。
+ja.json をマスターとして、そこから各言語に翻訳します。
+
+【やってほしいこと】
+1. UI 文字列（i18n）を 44 ロケールに拡張
+   - 対象言語:
+     zh, zh-TW, ko, es, fr, de, pt, it, nl, ar, ru, tr, hi, uk, he,
+     id, ms, th, vi, da, sv, no, fi, pl, cs, sk, hu, ro, hr, el, ca,
+     bn, gu, kn, ml, mr, or, pa, ta, te, ur, sl
+     （＝ ja / en に上記を足して 44）
+   - locales/&lt;lang&gt;.json を各言語分そろえる。ja.json のキー構造を完全に踏襲し、
+     値だけ各言語に翻訳する（キーの過不足がないこと）
+   - i18n.js の import を全言語分そろえる
+   - 繁体字（zh-TW / zh-HK 等）と簡体字（zh）を取り違えないように
+
+2. アプリ名（plist）を 50 ロケールに拡張
+   - locales/plist/&lt;lang&gt;.json に CFBundleDisplayName だけを持つ
+   - 対象は 50 ロケール:
+     ja, en-US, en-AU, en-CA, en-GB, zh-Hans, zh-Hant, ko, es-ES, es-MX,
+     fr-FR, fr-CA, de-DE, it, pt-BR, pt-PT, nl-NL, ru, uk, tr, ar-SA, he,
+     hi, id, ms, th, vi, da, sv, no, fi, pl, cs, sk, hu, ro, hr, el, ca,
+     bn-BD, gu-IN, kn-IN, ml-IN, mr-IN, or-IN, pa-IN, ta-IN, te-IN, ur-PK,
+     sl-SI
+
+3. app.json の言語設定を拡張
+   - ios.infoPlist.CFBundleLocalizations に上記ロケールを列挙
+   - locales セクションに各 plist/&lt;lang&gt;.json へのパスを列挙
+
+【ルール・注意】
+- 翻訳はすべて ja.json / plist/ja.json を正として訳す
+- 変数埋め込み %{変数名} は各言語でもそのまま残す（訳して壊さない）
+- 未対応言語は英語にフォールバックする方針は維持
+- アラビア語・ヘブライ語など RTL 言語も文字列は用意する
+  （レイアウトの RTL 対応が必要な箇所があれば指摘してください）
+
+作り終えたら、キーの数が全言語で一致しているか（欠けや余りがないか）を
+確認した結果を報告してください。</pre>
+    </section>
+
+    <aside class="closing" aria-label="ひとこと">
+      <p>翻訳に 1 日かかります。</p>
+      <p>まずは、2 言語リリースで問題ないかと思います。Pro 契約だと、1 セッション (5 時間枠) で終わらないので、継続して続きから実行してもらいます。また、50 ロケール対応はやり過ぎなので、減らしてください。実行完了後に「客観的に確認して」と言うと、「間違ってました。直します。」と言ってきます。</p>
+    </aside>
   </article>
 
   <nav class="treenav" aria-label="サイトマップ">

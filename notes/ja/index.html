@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#fcfcfa" />
 <title>Architecture Notes — 軌跡は、誰かの地図に。個人開発の ADR ケーススタディ集 | Lyco App</title>
-<meta name="description" content="プロダクト開発は、アプリを作って公開して終わりではない。届けて、改善を繰り返し、届け続ける。lycoapp.com の個人開発で実際に行った意思決定を ADR (Architecture Decision Records) の形で残す、実践のケーススタディ集。" />
+<meta name="description" content="プロダクト開発は、アプリを作って公開して終わりではない。届けて、改善を繰り返し、届け続ける。lycoapp.com の個人開発で実際に行った意思決定を ADR (Architecture Decision Records) として残しています。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/" />
 <link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/" />
 <link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/" />
@@ -94,6 +94,16 @@
       "@type": "Question",
       "name": "開発にいくらかかっていますか?",
       "acceptedAnswer": { "@type": "Answer", "text": "固定費は Claude Pro の 20 ドル/月と Apple Developer Program の 99 ドル/年で、残りは無料枠で回しています。内訳は「1 AI 駆動スマホ開発」の記事にあります。" }
+    },
+    {
+      "@type": "Question",
+      "name": "本当にスマホだけで開発していますか?",
+      "acceptedAnswer": { "@type": "Answer", "text": "証明書作成時に PC ブラウザを 1 回使っています。それ以外、Web サイトも DNS 設定も、すべてスマホです。" }
+    },
+    {
+      "@type": "Question",
+      "name": "私にもできますか?",
+      "acceptedAnswer": { "@type": "Answer", "text": "はい。できます。困ったら AI に聞くと、手順も全部教えてくれました。" }
     }
   ]
 }
@@ -120,21 +130,14 @@
     <p class="kicker">A solo developer's decision log</p>
     <h1>軌跡は、<em>誰かの地図</em>に。</h1>
     <p class="sub">プロダクト開発の歩み、あなたの道と交差する場所。</p>
-    <p class="desc">プロダクト開発は、アプリを作って、Web サイトを公開して、それで終われません。困っている人へサービスを届け、改善を繰り返し、届け続けること。</p>
+    <p class="desc">プロダクト開発は、アプリを作るだけではありません。困っている人へサービスを届け、改善を繰り返し、届け続けること。スマホだけで開発してみた記録です。</p>
     <p class="poem">点と点は、線となり届く。<br>線は、円を描き、<br><b>動き出したその軌跡は、誰かの道しるべに。</b></p>
   </header>
 
   <h2 class="sec-h2" id="about-site"><span class="no">01</span><span class="jp">このサイトについて</span><span class="en">About</span></h2>
   <div class="about">
-    <p>LycoApp Notes は、<a href="https://lycoapp.com/">本家 Lyco App</a> の個人開発で実際に行っている、プロダクト開発の記録です。その過程を、<span class="hl">ADR (Architecture Decision Records)</span> の形で整理しています。</p>
-    <p>ここでの記録は、設計手法の解説ではありません。</p>
-    <div class="rec">
-      <div class="r"><span class="n">i</span><span class="t">なぜ、その判断をしたのか</span><span class="d">前提と制約。当時の選択肢。</span></div>
-      <div class="r"><span class="n">ii</span><span class="t">結果はどうなったのか</span><span class="d">やってみて良かった事、悪かった事。</span></div>
-      <div class="r"><span class="n">iii</span><span class="t">改善ポイントと、気を付ける事</span><span class="d">次にやるなら、どこを変えるか。</span></div>
-    </div>
-    <p class="case">を、各セクションに分けて記載する ── 実践のケーススタディ集です。</p>
-    <p>なぜ、ADR なのか。AI が作業を代わってくれて、人間の仕事が意思決定へ寄っていく時代 ── これからのプロダクト開発で価値を持つドキュメントは、設計書よりも「なぜそう決めたか」の記録だと考えているからです。始まりの話は <a href="posts/poc.html">0 始める前に PoC をしてみた</a> に書きました。</p>
+    <p>LycoApp Notes は、<a href="https://lycoapp.com/">本家 Lyco App</a> の個人開発で実際に行っている、プロダクト開発の記録です。その過程を、<span class="hl">ADR (Architecture Decision Records)</span> で整理してみました。</p>
+    <p>なぜ、ADR なのか。AI が作業を代わってくれて、人間の仕事が意思決定へ寄っていく時代 ── これからのプロダクト開発で価値を持つドキュメントは、設計書よりも「なぜそう決めたか」の記録だと考えているからです。</p>
   </div>
 
   <h2 class="sec-h2" id="for-you"><span class="no">02</span><span class="jp">こんな方へ</span><span class="en">For You</span></h2>
@@ -144,14 +147,13 @@
       <li>個人開発を始めたい</li>
       <li>スマートフォンだけでアプリ開発をしてみたい</li>
       <li>CI/CD 環境を作りたい</li>
-      <li>PoC からサービスへ育てていきたい</li>
+      <li>サービスへ育てていきたい</li>
       <li>ADR を書いてみたい</li>
       <li>Web サイトを作ってみたい</li>
-      <li>SEO をしてみたい</li>
       <li>マーケティングやマネタイズまで考えたい</li>
       <li>アプリを作った後、次に何をしようかな</li>
     </ul>
-    <p class="note">すべてを一度に読む必要はありません。必要になった所だけ読んでいただければと思います。実際にやってみた結果 ── フィージビリティスタディの結果集だと思ってもらえれば幸いです。</p>
+    <p class="note">すべてを一度に読む必要はありません。必要になった所だけ読んでいただければと思います。実際にやってみた結果 ── フィージビリティスタディの結果集だと思ってもらえれば幸いです。(簡単に手順も書いています。)</p>
   </div>
 
   <h2 class="sec-h2" id="goal"><span class="no">03</span><span class="jp">このサイトが目指していること</span><span class="en">Goal</span></h2>
@@ -252,6 +254,14 @@
     <details>
       <summary>開発にいくらかかっていますか?</summary>
       <p class="a">固定費は Claude Pro の 20 ドル/月と Apple Developer Program の 99 ドル/年で、残りは無料枠で回しています。内訳は <a href="posts/dev.html">1 AI 駆動スマホ開発</a> にあります。</p>
+    </details>
+    <details>
+      <summary>本当にスマホだけで開発していますか?</summary>
+      <p class="a">証明書作成時に PC ブラウザを 1 回使っています。それ以外、Web サイトも DNS 設定も、すべてスマホです。</p>
+    </details>
+    <details>
+      <summary>私にもできますか?</summary>
+      <p class="a">はい。できます。困ったら AI に聞くと、手順も全部教えてくれました。</p>
     </details>
   </div>
 </main>

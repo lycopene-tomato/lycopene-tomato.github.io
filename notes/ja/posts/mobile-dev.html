@@ -35,7 +35,7 @@
   "description": "iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone。コミットするだけで手元のアプリが数分後に変わる、build 不要の開発ループ。sandbox だから安心して任せられる。",
   "inLanguage": "ja",
   "datePublished": "2026-07-02",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/mobile-dev.html",
@@ -82,7 +82,7 @@
       <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
       <div class="bd">
         <aside class="tldr" aria-label="要約">
-          <p>パイプラインは iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone。AI はクラウドの使い捨て sandbox の中で動くので、手元の資産に触れさせずに丸投げできる。main に merge されると数分で手元の Expo Go アプリが自動更新され、開発中に build は一度も要らない。弱点は 3 つのクラウドの直列 — どこか 1 つ落ちるとループが止まる。</p>
+          <p>パイプラインは iPhone の Claude アプリ → Claude Code on Web → GitHub → GitHub Actions → EAS → iPhone の Expo Go アプリ。AI はクラウドの使い捨て sandbox の中で動くので、手元の資産に触れさせずに丸投げできる。main に merge されると数分で手元の Expo Go アプリが自動更新され、開発中に build は一度も要らない。</p>
         </aside>
         <p class="lbl">Tools</p>
         <ul class="kit" aria-label="使う物">
@@ -98,7 +98,7 @@
       <p class="blk-h"><span class="no">01</span><span class="jp">物語</span><span class="en">Story</span></p>
       <div class="bd">
         <h2>Situation</h2>
-        <p><a href="env.html">1.1 開発環境構築</a> で書いたとおり、日常で PC を開く時間はなく、開発は隙間時間しかない。</p>
+        <p><a href="env.html">1.1 開発環境構築</a> で書いたとおり、日常で PC を開く時間はない。新規に Mac を買い換える余裕もない。あるのは好奇心だけ。</p>
 
         <h2>Complication</h2>
         <p>その隙間時間にできることは、スマホをいじる程度である。ソファで、寝かしつけの布団の中で、電車で。片手でスマホ。それがすべての前提になる。</p>
@@ -115,20 +115,20 @@
         <ul class="crit">
           <li>スマホだけで iPhone アプリを作れること</li>
           <li>Mac がなくても成立すること</li>
-          <li>セキュリティが担保されていること — AI に手元の資産を触らせない</li>
+          <li>AI に自分の資源を触らせないこと</li>
         </ul>
 
         <h2>Answer</h2>
         <pre><span class="c"># 開発ループの全体 (右端でまた iPhone に戻る)</span>
-iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go → iPhone</pre>
+iPhone の Claude アプリ → Claude Code on Web → GitHub → GitHub Actions → EAS → iPhone の Expo Go アプリ</pre>
         <p>iPhone の Claude アプリから依頼を出すと、コーディングから手元のアプリの更新までが自動で流れ、数分後に同じ iPhone の Expo Go で動作確認できる。</p>
         <blockquote>依頼も、確認も、手の中の iPhone だけ。<br>開発中に、build は一度も要らない。</blockquote>
 
         <div class="sub">
           <h3>Reason</h3>
         <p><b>Claude Code on Web を選んだ理由は、sandbox である。</b> Claude Code on Web は、依頼のたびにクラウド上へ一時的な Ubuntu 環境を立ち上げ、その中で Claude Code (AI コーディングエージェント) を動かす仕組みになっている。</p>
-        <p>通常の Claude Code は PC にインストールして PC 上で動かす。するとローカルのファイルにアクセスできてしまうし、作業に必要なツールを (承認は取ってくるものの) 次々インストールし始める。自分の PC の中を AI が自由に見て回れる状態は、率直に気持ちが悪い。— というより、そもそもサポート切れの Intel Mac には Claude Code をまともに入れられないのだが、仮に入れられたとしても選ばなかったと思う。</p>
-        <p>On Web なら、AI が何をしようと使い捨ての Ubuntu の中の話で、こちらの資産には届かない。安心して丸投げできる。この「任せきれる」感覚が、隙間時間開発では効いてくる。依頼したら閉じて、育児に戻れるからである。</p>
+        <p>通常の Claude Code は PC にインストールして PC 上で動かす。するとローカルのファイルにアクセスできてしまうし、作業に必要なツールを (承認は取ってくるものの) 次々インストールし始める。自分の PC の中を AI が自由に見て回れる状態は、率直に気持ちが悪い。— というより、そもそもサポート切れの Intel Mac には Claude Code をインストールしようとしたら拒否られたのだが。。。仮に入れられたとしても選びたくはない。</p>
+        <p>On Web なら、AI が何をしようと使い捨ての Ubuntu の中の話で、こちらの資産には届かない。安心して丸投げできる。この「任せきれる」感覚が、隙間時間開発では効いてくる。依頼したら閉じて、育児に戻れる。sandbox 環境なので、何かをインストールするときも安心してインストールの承認ができる。</p>
         <p><b>GitHub は、sandbox の揮発性を埋めるピースである。</b> 使い捨て環境は、終わればデータも消える。だから成果物を保存する場所が別に要る。それが GitHub で、ソースの置き場所と履歴管理を担う。さらに GitHub Actions — これも一時的な Linux を立ち上げてコマンドを流してくれる CI/CD (継続的インテグレーション / デリバリー) の仕組み — が、後段の自動化を受け持つ。</p>
         <p><b>EXPO を選んだ理由は、build なしで実機確認できることである。</b> EXPO は React Native ベースの開発フレームワークで、EAS (Expo Application Services) というクラウド基盤と、Expo Go という実機確認用アプリを持つ。GitHub のリポジトリの内容を EAS に流し込む (update する) と、手元の Expo Go 上のアプリが差し替わる。App Store を経由しない。つまり<b>開発中の 1 サイクルに build が存在しない</b>。</p>
         <p>Actions のトリガーは main ブランチへの merge にしてある。全部つなげると、こうなる。</p>
@@ -147,8 +147,8 @@ iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go 
         <div class="sub">
           <h3>Options</h3>
           <ul class="body">
-            <li><b>Codex (OpenAI)</b> — 試した時点 (2026 年春) では iPhone アプリから使えず、ブラウザ操作になった。片手スマホの UX として成立しなかったため見送り。なお 2026 年 5 月に ChatGPT アプリへ Codex が搭載されたので、いま選定するなら再評価の余地がある。</li>
-            <li><b>Flutter</b> — クロスプラットフォームのフレームワークとして検討はした。ただ EXPO の PoC (Proof of Concept) の時点で要件をすべて満たしてしまったので、Flutter の PoC は行っていない。比較して負けたのではなく、比較する必要がなくなった、が正確なところ。</li>
+            <li><b>Codex (OpenAI)</b> — 試した時点 (2026 年春) では iPhone アプリから使えず、ブラウザ操作になった。片手スマホの UX として成立しなかったため見送り。なお 2026 年 5 月に ChatGPT アプリへ Codex が搭載されたので、いま選定するなら再評価の余地がある。また、動作確認だけは行っており、動くことは確認済みのため、Codex でも Gemini でも、ここは好みの問題だと思う。</li>
+            <li><b>Flutter</b> — クロスプラットフォームのフレームワークとして検討はした。ただ EXPO の PoC (Proof of Concept) の時点で要件をすべて満たしてしまったので、Flutter の PoC は行っていない。比較して負けたのではなく、比較する必要がなくなった、が正確なところ。Flutter 経験者であれば、こちらを採用しても同等なことはできると思う。</li>
           </ul>
         </div>
       </div>
@@ -163,13 +163,54 @@ iPhone → Claude Code on Web → GitHub → GitHub Actions → EAS → Expo Go 
 
         <h2 class="b">Bad</h2>
         <p>Claude・GitHub・EAS という 3 つのクラウドにまたがってパイプラインを自動で繋げているため、<b>どこか 1 か所で障害が起きるとループ全体が止まる</b>。</p>
-        <p>実害として、こんなハマり方をした。バグを直したはずなのに直っていない。おかしいな、と修正サイクルを何周か回したら、実は EAS 側の障害で update が反映されていなかった — というオチである。シビアな納期で開発しているわけではないので障害自体は気長に待てばいいのだが、<b>「挙動がおかしい」と思ったら、まず各クラウドのステータスページを確認する</b>ことをおすすめする。自分のコードを疑う前に、インフラを疑う日が月に一度くらいはある。</p>
+        <p>実害として、こんなハマり方をした。バグを直したはずなのに直っていない。おかしいな、と修正サイクルを何周か回したら、実は EAS 側の障害で update が反映されていなかった。というオチである。シビアな納期で開発しているわけではないので障害自体は気長に待てばいいのだが、<b>「挙動がおかしい」と思ったら、まず各クラウドのステータスページを確認する</b>ことをおすすめする。自分のコードを疑う前に、インフラを疑う日が月に一度くらいはある。</p>
 
         <h2 class="f">Follow-up</h2>
         <p>このループで作れるのは「開発中のアプリ」まで。App Store に出すには build と submit が必要で、そこで Mac 問題が再登場する。続きは <a href="cloud-build.html">1.1.2 Mac なしで iPhone アプリを build する方法</a>。</p>
         <p>なお、この OTA 配信をそのまま本番でも使うと、改修時に開発中のコードが公開ユーザーへ誤って届く危険がある。リリースできたら、配信を安全に分離する <a href="ota-channels.html">1.1.3 EAS Update の安全な運用</a> を読んでほしい。</p>
       </div>
     </section>
+
+    <section class="repro" aria-label="再現メモ">
+      <p class="repro-h">■ 再現できる方法</p>
+      <p class="lead">この構成を自分で再現したい人向けのメモ。読み物ではないので、指示文は数行だけ表示してスクロールにしてある。</p>
+      <ol>
+        <li>GitHub リポジトリを作る (空でよい)</li>
+        <li>Expo アカウントを作る (<a href="https://expo.dev" target="_blank" rel="noopener">expo.dev</a> 無料)</li>
+        <li>Expo アクセストークンを発行 (expo.dev → Account settings → Access tokens)</li>
+        <li>Expo でプロジェクトを作成。Project details のスクショを取っておく</li>
+        <li>GitHub リポジトリの Secrets に <code>EXPO_TOKEN</code> を登録 (リポジトリ Settings → Secrets and variables → Actions → New repository secret)</li>
+      </ol>
+      <p class="step-h">Claude Code on Web で上記のリポジトリを指定し、Expo の Project details のスクショを添付して、下記を貼り付けで実行。</p>
+      <pre class="paste">Expo (SDK 54) + React Native の新規アプリを、この空リポジトリに立ち上げてください。
+目的は「main にマージしたら GitHub Actions が自動で EAS Update を実行し、
+iPhone の Expo Go で動作確認できる」状態を作ることです。
+
+【作ってほしいもの】
+1. 最小構成の Expo アプリ（App.js に「Hello World」を表示するだけ）
+   - エントリーポイントは App.js
+   - 白画面ハマりを避けるため、app.json には icon / splash / favicon /
+     runtimeVersion / updates.url を最初は書かない（画像もまだ用意しない）
+2. .npmrc に legacy-peer-deps=true を入れる（Expo 54 + React 19 の
+   peer 依存衝突を回避するため）
+3. package-lock.json は .gitignore に入れる（CI が毎回クリーンインストールするので）
+4. GitHub Actions ワークフロー .github/workflows/eas-update.yml
+   - トリガー: main への push
+   - 中身: npm install --legacy-peer-deps → EAS セットアップ → eas update
+   - 認証は Secrets の EXPO_TOKEN を使う
+
+【開発の進め方】
+- main への直接 push は保護で失敗するので、ブランチ → PR → main マージの
+  流れにしてください
+
+作り終えたら、私が次に手元で何をすればいいか手順で教えてください。</pre>
+      <p>後は「なんか動かないんだけど」と聞けば「○○を確認してください」と言われる。「○○って何?」と聞くと色々と教えてくれる。</p>
+    </section>
+
+    <aside class="closing" aria-label="ひとこと">
+      <p>この CI/CD 環境構築に 1 日。</p>
+      <p>アプリ開発を含めて、5 日間でプログラミングが終わった。</p>
+    </aside>
   </article>
 
   <nav class="treenav" aria-label="サイトマップ">

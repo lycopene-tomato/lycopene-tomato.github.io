@@ -12,7 +12,7 @@
 <link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/shots-i18n.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="How to Localize App Screenshots Without a Mac — Use Every Trick at Once" />
-<meta property="og:description" content="No Mac, fifty locales of screenshots. One method fails; four together work. The last 1px is still done by hand." />
+<meta property="og:description" content="No Mac, fifty locales of screenshots. One method fails; four together work." />
 <meta property="og:url" content="https://lycoapp.com/notes/en/posts/shots-i18n.html" />
 <meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
 <meta property="og:image:width" content="1200" />
@@ -35,7 +35,7 @@
   "description": "The hardest localization job was screenshots. The ideal — an emulator on a Mac switching languages — wasn't available: no Mac. The record of solving it with all four moves at once: language-independent UI, real-device shots, Flow batch conversion, and annotated English reuse.",
   "inLanguage": "en",
   "datePublished": "2026-07-12",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/shots-i18n.html",
@@ -82,7 +82,7 @@
       <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
       <div class="bd">
         <aside class="tldr" aria-label="Summary">
-          <p>The hardest part of localization was the screenshots. The ideal is an emulator on a Mac, switching languages and shooting automatically — but there is no Mac. So the answer was to use all four available moves at once: design the UI to depend on language as little as possible, shoot major languages on the real device, batch-convert the rest with AI (Flow), and draw annotations onto the English set for reuse across languages. The generated images go into Git as a ZIP, Claude lays them out, and GitHub Actions uploads them to the store. Only the final 1px adjustment stays human.</p>
+          <p>The hardest part of localization was the screenshots. The ideal is an emulator on a Mac, switching languages and shooting automatically — but there is no Mac. So the answer was to use all four available moves at once: design the UI to depend on language as little as possible, shoot major languages on the real device, batch-convert the rest with AI (Flow), and draw annotations onto the English set for reuse across languages. The generated images go into Git as a ZIP, Claude lays them out, and GitHub Actions uploads them to the store.</p>
         </aside>
       </div>
     </section>
@@ -93,7 +93,7 @@
         <h2>Situation</h2>
         <p>By <a href="store-i18n.html">1.2.2</a>, all the text — app and listing — is localized. What remains is the screenshots.</p>
         <h2>Complication</h2>
-        <p>Properly, you'd boot an emulator on a Mac and automate screenshots across language switches. But as <a href="cloud-build.html">1.1.2</a> established, there is no Mac at hand. Producing screenshots for fifty locales looked impossible through any single method.</p>
+        <p>Properly, you'd boot an emulator on a Mac and automate screenshots across language switches. But as <a href="cloud-build.html">1.1.2</a> established, there is no Mac at hand. Producing screenshots for fifty locales looked impossible.</p>
         <h2>Question</h2>
         <blockquote>Without a Mac, how do you produce screenshots in dozens of languages?</blockquote>
       </div>
@@ -130,7 +130,8 @@
           <h3>Options</h3>
           <ul class="body">
             <li><b>Shoot everything on a real device</b> — faithful, but the effort scales with every language. Not realistic.</li>
-            <li><b>Generate everything with AI</b> — fast, but details break and Apple's strict sizes are missed. Hence: use everything.</li>
+            <li><b>Generate everything with AI</b> — fast, but details break easily and the translation isn't accurate either.</li>
+            <li><b>Have Claude swap the images</b> — Claude's weak spot is that it has no image-generation engine. What came out was awful, so I gave up on it.</li>
           </ul>
         </div>
       </div>
@@ -140,15 +141,196 @@
       <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
       <div class="bd">
         <h2 class="g">Good</h2>
-        <p>Multilingual screenshots, no Mac involved. The language-independent UI and the annotated-English reuse also shrank the sheer volume that needed generating. A mountain of dull work now turns over smoothly with AI in the mix.</p>
+        <p>Multilingual screenshots, no Mac involved. The language-independent UI and the annotated-English reuse also shrank the sheer volume that needed generating. A mountain of dull work now turns over smoothly with AI in the mix. Flow generates a good number of images on the free tier, and being able to download them as a ZIP is a big plus.</p>
 
         <h2 class="b">Bad</h2>
-        <p>Apple's screenshots <mark>fail to upload if the size is off by a single pixel.</mark> That one adjustment sits beyond what AI absorbs, so a human finishes it by hand. Knowing where automation ends is part of the design.</p>
+        <p>Because the code isn't fed into the image generation (at translation time), the accuracy is poor. Run an image through the generation AI for fix after fix, and since the text is part of the image, it degrades further each pass. There's plenty of room for improvement.</p>
 
         <h2 class="f">Follow-up</h2>
         <p>With app, listing, and screenshots all localized, the product is ready for a worldwide release. Where to aim it — the idea that a narrow niche becomes a market when the world is the denominator — continues in <a href="stp.html">3.1.2 STP</a>.</p>
       </div>
     </section>
+
+    <section class="repro" aria-label="How to reproduce">
+      <p class="repro-h">■ Reproduce it yourself</p>
+      <p class="lead">A note for anyone who wants to reproduce this setup. Not meant to be read straight through — the prompts show a few lines and scroll. Instructions are in English; the reference code (Gemfile / workflow / Fastfile) is the shared artifact and kept as-is.</p>
+      <p class="step-h">First, build the mechanism. Paste the following in one copy (prompt + Gemfile + workflow + Fastfile together).</p>
+      <pre class="paste">I want to build a mechanism that auto-uploads App Store Connect screenshots from
+GitHub Actions using fastlane (calling spaceship directly).
+
+Assumptions:
+- The ASC API key is registered in GitHub Secrets as APPLE_API_KEY_ID /
+  APPLE_API_KEY_ISSUER_ID / APPLE_API_KEY_P8 (three of them)
+- The app is registered on ASC with SKU=&lt;your SKU&gt;, Bundle ID=&lt;your BundleID&gt;
+
+What to build:
+1. Gemfile ... pin the fastlane 2.228 line
+2. Implement an upload_screenshots_direct lane in fastlane/Fastfile via direct spaceship
+   - read apps/&lt;SKU&gt;/screenshots/&lt;locale&gt;/*.png
+   - put iPhone files into the APP_IPHONE_67 set and iPad files into the
+     APP_IPAD_PRO_3GEN_129 set, replacing and uploading
+   - skip locales with no local images (= don't delete ones uploaded via another path)
+3. One workflow_dispatch workflow for screenshots under .github/workflows/.
+   Pass APP_SKU / APP_BUNDLE_ID and the three Secrets via env (use a long timeout)
+4. apps/&lt;SKU&gt;/screenshots/&lt;locale&gt;/ for 50 locales (with .gitkeep)
+
+Also, write a Python script that reads a ZIP placed in apps/&lt;SKU&gt;/, decides the
+locale from the language tag in each filename, splits iPhone into 3 vertically /
+iPad into 2 vertically -&gt; center-crops -&gt; resizes to Apple's recommended sizes
+(iPhone 1320x2868 / iPad 2752x2064) and writes them out to
+apps/&lt;SKU&gt;/screenshots/&lt;locale&gt;/. Make it print a "which file -&gt; which locale"
+mapping table before running.
+
+source "https://rubygems.org"
+gem "fastlane", "~&gt; 2.228.0"
+
+
+name: &lt;SKU&gt; — screenshots
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Run fastlane upload_screenshots_direct
+        env:
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_KEY_ISSUER_ID: ${{ secrets.APPLE_API_KEY_ISSUER_ID }}
+          APPLE_API_KEY_P8: ${{ secrets.APPLE_API_KEY_P8 }}
+          APP_SKU: &lt;SKU&gt;
+          APP_BUNDLE_ID: &lt;BundleID&gt;
+          FASTLANE_SKIP_UPDATE_CHECK: "1"
+        run: bundle exec fastlane ios upload_screenshots_direct
+
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Upload per-locale screenshots via spaceship (bypasses deliver's broken screenshot upload)"
+  lane :upload_screenshots_direct do |options|
+    sku       = options[:sku]       || ENV["APP_SKU"]
+    bundle_id = options[:bundle_id] || ENV["APP_BUNDLE_ID"]
+    UI.user_error!("sku is required")       if sku.nil? || sku.empty?
+    UI.user_error!("bundle_id is required") if bundle_id.nil? || bundle_id.empty?
+
+    screenshots_path = File.expand_path("../apps/#{sku}/screenshots", __dir__)
+    UI.user_error!("screenshots not found: #{screenshots_path}") unless Dir.exist?(screenshots_path)
+
+    require "spaceship"
+    Spaceship::ConnectAPI.token = Spaceship::ConnectAPI::Token.create(
+      key_id:    ENV.fetch("APPLE_API_KEY_ID"),
+      issuer_id: ENV.fetch("APPLE_API_KEY_ISSUER_ID"),
+      key:       ENV.fetch("APPLE_API_KEY_P8"),
+    )
+
+    app = Spaceship::ConnectAPI::App.find(bundle_id)
+    UI.user_error!("app not found for bundle_id=#{bundle_id}") if app.nil?
+
+    version = app.get_edit_app_store_version
+    UI.user_error!("no edit version found on App Store Connect") if version.nil?
+    UI.message("Writing screenshots to version #{version.version_string} (#{version.app_store_state})")
+
+    # 出力ファイル名 -&gt; ASC のスクショ表示タイプ。
+    # "iPhone" ファイルは 1320x2868 (iPhone 6.9")、Apple が 6.7"/6.9" 共用にする枠へ。
+    # "iPad" ファイルは 2752x2064、iPad Pro 12.9" 3rd gen 横向き。
+    device_of = -&gt;(filename) {
+      case filename
+      when /iPhone/i then "APP_IPHONE_67"
+      when /iPad/i   then "APP_IPAD_PRO_3GEN_129"
+      else nil
+      end
+    }
+
+    summary_lines = ["## Direct screenshot upload to #{version.version_string}", ""]
+    updated = 0
+    version.get_app_store_version_localizations.sort_by(&amp;:locale).each do |loc|
+      locale_dir = File.join(screenshots_path, loc.locale)
+      unless Dir.exist?(locale_dir)
+        summary_lines &lt;&lt; "- **#{loc.locale}**: skipped (no local directory)"
+        next
+      end
+
+      pngs = Dir.children(locale_dir).select { |f| f.downcase.end_with?(".png") }.sort
+      if pngs.empty?
+        summary_lines &lt;&lt; "- **#{loc.locale}**: skipped (no PNGs)"
+        next
+      end
+
+      groups = pngs.group_by { |f| device_of.call(f) }.reject { |k, _| k.nil? }
+      if groups.empty?
+        summary_lines &lt;&lt; "- **#{loc.locale}**: skipped (no iPhone/iPad files)"
+        next
+      end
+
+      existing_sets = loc.get_app_screenshot_sets.group_by(&amp;:screenshot_display_type)
+      groups.each do |display_type, files|
+        set = existing_sets[display_type]&amp;.first
+        if set
+          # 既存スクショを消してから新しいものに入れ替える。
+          set.app_screenshots.each do |shot|
+            shot.delete!
+          end
+        else
+          set = loc.create_app_screenshot_set(attributes: {
+            screenshotDisplayType: display_type,
+          })
+        end
+
+        files.each do |filename|
+          path = File.join(locale_dir, filename)
+          UI.message("  #{loc.locale}/#{filename} -&gt; #{display_type}")
+          set.upload_screenshot(path: path, wait_for_processing: true)
+        end
+      end
+      summary_lines &lt;&lt; "- **#{loc.locale}**: uploaded #{pngs.length} screenshot(s)"
+      updated += 1
+    end
+
+    summary_lines &lt;&lt; ""
+    summary_lines &lt;&lt; "Updated #{updated} locale(s)."
+    report = summary_lines.join("\n")
+    UI.message(report)
+
+    step_summary = ENV["GITHUB_STEP_SUMMARY"]
+    File.write(step_summary, report) if step_summary &amp;&amp; !step_summary.empty?
+  end
+end</pre>
+      <p class="step-h">Then, after placing a ZIP of per-language screenshots in apps/&lt;app&gt;/, paste the following.</p>
+      <pre class="paste">I placed a ZIP of per-language screenshot images in apps/&lt;app&gt;/.
+Process it for the App Store.
+
+- decide the locale from the language tag in the filename (ja_01.png / en-US_... /
+  韓国語.png etc.)
+- split iPhone into 3 vertically / iPad into 2 vertically, center-crop and resize
+  to Apple's recommended sizes (iPhone 6.9" = 1320x2868 / iPad 13" = 2752x2064)
+- expand family copies like en-US -&gt; en-AU / en-CA / en-GB
+- auto-expand "other language" images to every unspecified locale
+
+Show a "which file -&gt; which locale" mapping table and let me confirm before running.
+Once I say OK, generate into apps/&lt;app&gt;/screenshots/&lt;locale&gt;/.
+
+Before uploading &lt;app&gt;'s screenshots, check first.
+List every locale's screenshots folder, and print each locale's count and
+filenames, so I can confirm you won't delete a locale I don't want touched.</pre>
+      <p>If something's unclear, ask "what are you doing?" and it explains; when it works, ask it to "make this a skill" and it does. Don't /clear or start a new session until the skill is made — memory is lost, so building the skill within Claude's memory (same session) keeps the work stable.</p>
+      <p>You don't have to localize screenshots. The default-language images are used in common, so for something clear like a game, you can release with a single set that reads through illustration.</p>
+    </section>
+
+    <aside class="closing" aria-label="A note to close">
+      <p>Development: 5 days<br>Builds: 2 days<br>Localization: 1 day<br>Listing copy: 1 day<br>Screenshot creation: 1 day<br>Plus throwing together a web page and submitting — 10 days total.</p>
+      <p>From here, 4 days to the start of review. Explain the flagged items, 2 days to the start of re-review. (Review waits are surprisingly long.)</p>
+      <p>By the third week, the app was live worldwide. The CI/CD environment was done, so releasing one app a week became possible. And my sleep hours dropped, too.</p>
+    </aside>
   </article>
 
   <nav class="treenav" aria-label="Sitemap">

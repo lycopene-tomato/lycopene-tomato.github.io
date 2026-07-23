@@ -35,7 +35,7 @@
   "description": "Budget: zero. Hardware: an iPhone and an out-of-support Intel Mac. I asked Claude's chat to build a Swift game and output it as a Zip — minutes later it ran on a real device. That moment started three months of solo development.",
   "inLanguage": "en",
   "datePublished": "2026-07-02",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/poc.html",
@@ -111,9 +111,16 @@
         <p>A carelessly requested game ran carelessly well. This is not a story about quality. The fact itself — a working iPhone app, on a real device, from nothing but a chat message, without writing a line of code — felt like watching an era change in front of me.</p>
 
         <h2>Product</h2>
-        <p>The PoC passed, so I went for the real thing: build an actual product and see how far generative AI can carry it. That product became the apps at <a href="https://lycoapp.com/">lycoapp.com</a>, and this Architecture Notes is the record of those three months.</p>
+        <p>The PoC passed, so I went for the real thing: build an actual product and see how far generative AI can carry it. That product became the apps at <a href="https://lycoapp.com/">lycoapp.com</a>, and this Architecture Notes is the record of those three months. In three months, everything written here got done, once through.</p>
+        <ul class="body">
+          <li>10 apps released</li>
+          <li>A website built</li>
+          <li>A domain acquired</li>
+          <li>AdMob / BMC / affiliates</li>
+        </ul>
+        <p>All of it built on a phone.</p>
         <p>I ran the project on the OODA loop (Observe / Orient / Decide / Act) rather than plan-everything-first PDCA. With generative AI the landscape shifts every week, so observe first, judge on the spot, and move — that rhythm fit.</p>
-        <p>One thing I want to underline: every technology used in this product was <b>new to me</b>. I have used similar things at work, but nothing here was chosen because it was familiar. Each choice was weighed flat against the requirements. So each article should read as a selection record with no strings attached.</p>
+        <p>One thing I want to underline: every technology used in this product was <b>new to me</b>. As an engineer I have used similar things at work, but I had never built an app, never used GitHub. Nothing here was chosen because it was familiar. Each choice was weighed flat against the requirements. So each article should read as a selection record with no strings attached.</p>
       </div>
     </section>
 
@@ -122,10 +129,11 @@
       <div class="bd">
         <h2>ADR</h2>
         <p>The results are kept as ADRs (Architecture Decision Records). The format layers the SCQA framework (Situation / Complication / Question / Answer) on top of MADR (Markdown Any Decision Records): start from the situation, raise the question, line up the criteria, then give the answer, the reasons, the options that lost, and an honest look back — all as one continuous story. This format, too, was new to me.</p>
-        <p>You won't find step-by-step instructions here, for two reasons. First, the heart of an ADR is "why we decided," not "how to do it." Second, asking an AI for the steps is simply faster. Everything documented here actually runs, so you can hand an article to an AI and say "reproduce this" — it will usually do a fine job.</p>
+        <p>You won't find detailed step-by-step manuals here, for two reasons. First, the heart of an ADR is "why we decided," not "how to do it." Second, asking an AI for the steps is simply faster. Everything documented here actually runs, so you can hand an article to an AI and say "reproduce this" — it will usually do a fine job. That's why each article ends with an instruction prompt for the AI. As long as you convey what you want, you can settle the rest by talking it through with the AI.</p>
         <p>One step further: this is not just about saving labor. If AI takes over the doing, and the human work shifts toward deciding, then the document worth keeping in product development may not be the design spec at all, but the record of why each decision was made. Watching that era begin through this PoC is what convinced me.</p>
         <blockquote>Not the design docs — the record of decisions (ADR)<br>is becoming the heart of development documentation.</blockquote>
         <p>So please read this site as a record of "why it was decided," not "what was done." The road runs like this: <a href="dev.html">1 AI-driven phone-only development</a> gets you building, <a href="brand.html">2 Brand foundation</a> prepares a vessel for the track record, <a href="growth.html">3 Marketing</a> decides what to build, and <a href="monetize.html">4 Monetization</a> keeps the product alive. From here, the actual decisions begin.</p>
+        <p>The PoC was finished in a single day.</p>
       </div>
     </section>
   </article>

@@ -343,6 +343,33 @@ article .blk:first-of-type{margin-top:24px}
 .result h2.f{background:#e6f5f8;color:#0e8fa3}
 .result h2+p{margin-top:8px}
 
+/* ============================================================
+   記事末尾の付録: 再現メモ (.repro) + ひとことコメント (.closing)
+   ADR 本文とは格を落とし「読み飛ばし可の付録」を視覚化する。
+   指示文サンプルは pre.paste で数行だけ見せて縦スクロール。
+   本文ではないので冒頭の read-time には含めない。
+   ============================================================ */
+.repro{margin:44px 0 0;padding:18px 20px 22px;border:1px solid var(--line-strong);border-radius:10px;background:#faf9f6}
+.repro-h{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--sub)}
+.repro-h::after{content:"";flex:1;height:1px;background:var(--line)}
+.repro .lead{margin:0 0 14px;font-size:12.5px;color:var(--muted)}
+.repro ol{margin:0 0 12px;padding-left:1.5em;font-size:14px}
+.repro ol li{margin:0 0 7px;line-height:1.75}
+.repro .step-h{font-weight:700;font-size:13.5px;margin:18px 0 8px;color:var(--ink)}
+.repro>p{font-size:13.5px;color:var(--sub);margin:12px 0 0;line-height:1.8}
+.repro code{font-family:var(--mono);font-size:12.5px;background:#f0efe9;border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+/* 指示文サンプル: 5 行ぶんだけ見せて縦スクロール (行高 1.7×13.5px ≒ 23px × 5 + padding) */
+pre.paste{max-height:150px;overflow-y:auto}
+.paste .copy-btn{opacity:1}  /* 付録の指示文は常時コピー可にする */
+
+/* 末尾ひとことコメント: 著者のラフな感想。本文から格を落とした手記トーン。 */
+.closing{margin:32px 0 0;padding:16px 0 0;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;line-height:1.95}
+.closing p{margin:0 0 6px}
+.closing p:last-child{margin:0}
+
+/* コードブロックのコピーボタンはタッチ端末では常時表示 (hover 不能なため) */
+@media (hover:none){.copy-btn{opacity:1}}
+
 /* --- 印刷: ADR は紙/PDF でも読まれる想定 --- */
 @media print{
   .site-header,.site-footer,.treenav,.progress,.skip,.crumbs .sep:last-of-type{display:none!important}

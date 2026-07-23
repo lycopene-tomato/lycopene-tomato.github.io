@@ -35,7 +35,7 @@
   "description": "Localizing the app itself is the easiest job to hand to AI. Pull display strings out into language files, then ask: 'translate this file into Spanish, Korean, Traditional Chinese.' What matters is not translation skill but a structure built for localization from day one, with context on every string.",
   "inLanguage": "en",
   "datePublished": "2026-07-12",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/app-i18n.html",
@@ -117,6 +117,7 @@
         <p><b>Because when strings live in one place, translation and replacement happen once.</b> Scattered through the code, even AI can't tell what to translate, and every added language means touching every screen. Collected into a language file, AI translates in one pass, and adding a language means adding one file.</p>
         <blockquote>What matters is not the translation technique.<br>It is implementing a localization-friendly structure from the start.</blockquote>
         <p>One pitfall, though. Hand AI only keys and values, and it can't tell what screen a word lives on or what it means — is "Home" a house, or the first screen? So <mark>attach a comment to each string: which screen, and what for.</mark> That context decides most of the translation quality.</p>
+        <p>From these two — predicting meaning from the two-language pass, and leaving meaning as context at development time — the accuracy jumps dramatically.</p>
         </div>
 
         <div class="sub">
@@ -142,6 +143,80 @@
         <p>With the app localized, next comes the store listing that carries it into the world. Continued in <a href="store-i18n.html">1.2.2 How to localize your store listing</a>.</p>
       </div>
     </section>
+
+    <section class="repro" aria-label="How to reproduce">
+      <p class="repro-h">■ Reproduce it yourself</p>
+      <p class="lead">A note for anyone who wants to reproduce this setup. Not meant to be read straight through — the prompts show a few lines and scroll.</p>
+      <p class="step-h">First, paste the following.</p>
+      <pre class="paste">I want to localize this app, but the UI is still being built, so for now set up
+the foundation in just two languages, Japanese and English.
+(I'll expand to all languages later, so make the structure easy to grow then.)
+
+[What to build]
+1. Set up i18n-js (i18n.js)
+   - detect the device language with expo-localization
+   - fall back to English for unsupported languages (defaultLocale = 'en')
+   - for now import only locales/ja.json and locales/en.json
+   - leave a comment noting you can add languages just by adding imports here
+2. Translation files
+   - locales/ja.json (Japanese = master)
+   - locales/en.json (English)
+   - use snake_case keys that express meaning
+   - use %{variable} form for interpolation
+3. Replace the strings in the app code with i18n.t('key')
+   - key every Japanese/English string currently hard-coded on screens
+
+[Rules]
+- treat ja.json as the source of truth; en.json is its counterpart
+- make sure no hard-coded display strings remain
+  (check that no raw string bypassing i18n.t() shows on screen)
+
+When you're done, briefly summarize the procedure for adding a key when I add UI
+text later (add to ja.json → add to en.json → reference via i18n.t).</pre>
+      <p class="step-h">Then, when it's time to localize, paste the following.</p>
+      <pre class="paste">The UI is mostly fixed, so expand the localization to all languages.
+Translate from ja.json as the master into each language.
+
+[What to do]
+1. Expand the UI strings (i18n) to 44 locales
+   - target languages:
+     zh, zh-TW, ko, es, fr, de, pt, it, nl, ar, ru, tr, hi, uk, he,
+     id, ms, th, vi, da, sv, no, fi, pl, cs, sk, hu, ro, hr, el, ca,
+     bn, gu, kn, ml, mr, or, pa, ta, te, ur, sl
+     (= ja / en plus the above = 44)
+   - provide locales/&lt;lang&gt;.json for each language. Follow ja.json's key
+     structure exactly and translate only the values (no missing or extra keys)
+   - line up the imports in i18n.js for every language
+   - don't mix up Traditional (zh-TW / zh-HK etc.) and Simplified (zh)
+
+2. Expand the app name (plist) to 50 locales
+   - locales/plist/&lt;lang&gt;.json holds only CFBundleDisplayName
+   - target 50 locales:
+     ja, en-US, en-AU, en-CA, en-GB, zh-Hans, zh-Hant, ko, es-ES, es-MX,
+     fr-FR, fr-CA, de-DE, it, pt-BR, pt-PT, nl-NL, ru, uk, tr, ar-SA, he,
+     hi, id, ms, th, vi, da, sv, no, fi, pl, cs, sk, hu, ro, hr, el, ca,
+     bn-BD, gu-IN, kn-IN, ml-IN, mr-IN, or-IN, pa-IN, ta-IN, te-IN, ur-PK,
+     sl-SI
+
+3. Expand the language settings in app.json
+   - list the above locales in ios.infoPlist.CFBundleLocalizations
+   - list the path to each plist/&lt;lang&gt;.json in the locales section
+
+[Rules / notes]
+- translate everything with ja.json / plist/ja.json as the source of truth
+- keep %{variable} interpolation intact in every language (don't translate/break it)
+- keep the fallback-to-English policy for unsupported languages
+- prepare strings for RTL languages like Arabic and Hebrew too
+  (point out any places that need RTL layout support)
+
+When you're done, report whether the key counts match across all languages
+(nothing missing or extra).</pre>
+    </section>
+
+    <aside class="closing" aria-label="A note to close">
+      <p>Translation takes about a day.</p>
+      <p>Two languages is fine for the first release. On a Pro plan it won't finish in one session (a 5-hour window), so I have it continue from where it left off. And 50 locales is overkill, so cut it down. After it finishes, say "review this objectively" and it comes back with "I was wrong. Fixing it."</p>
+    </aside>
   </article>
 
   <nav class="treenav" aria-label="Sitemap">

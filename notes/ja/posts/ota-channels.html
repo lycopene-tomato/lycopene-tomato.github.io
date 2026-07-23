@@ -35,7 +35,7 @@
   "description": "OTA は便利だが、運用を誤ると開発中のコードが公開ユーザーへ配信される事故につながる。配信経路を stg (開発) と prd (公開) に分け、runtimeVersion を appVersion に固定する。OTA が届く条件「channel 一致 AND runtimeVersion 一致」で、誤配信とクラッシュを構造的に防ぐ運用の記録。",
   "inLanguage": "ja",
   "datePublished": "2026-07-11",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/ota-channels.html",
@@ -82,7 +82,7 @@
       <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
       <div class="bd">
         <aside class="tldr" aria-label="要約">
-          <p>OTA (Over The Air Update) は便利だが、運用を誤ると開発中のコードがそのまま公開ユーザーへ配信される事故につながる。そこで配信経路を stg (開発) と prd (公開) の 2 つの channel に分け、stg は GitHub Actions が自動配信、prd は手動配信にした。さらに runtimeVersion を appVersion に固定し、ネイティブを変えたらアプリバージョンを上げる。OTA が届く条件は <mark>channel 一致 AND runtimeVersion 一致</mark> の 2 つ。この 2 つを設計することで、誤配信もネイティブ非互換によるクラッシュも、仕組みで防げる。</p>
+          <p>OTA (Over The Air Update) は便利だが、運用を誤ると開発中のコードがそのまま公開ユーザーへ配信される事故につながる。そこで配信経路を stg (開発) と prd (公開) の 2 つの channel に分け、stg は GitHub Actions が自動配信、prd は手動配信にした。</p>
         </aside>
         <p class="lbl">Tools</p>
         <ul class="kit" aria-label="使う物">
@@ -100,13 +100,13 @@
         <p><a href="mobile-dev.html">1.1.1</a> と <a href="cloud-build.html">1.1.2</a> で、開発ループとリリースの仕組みは通った。main にマージすると OTA が配信される。まず最初のリリースまでは、この構成で足りる。</p>
 
         <h2>Complication</h2>
-        <p>問題は、リリースした後の改修フェーズである。一般的な構成はこうなっている。</p>
+        <p>問題は、リリースした後の改修フェーズである。このままだと</p>
         <pre>main にマージ
       ↓
   EAS Update
       ↓
   公開ユーザー</pre>
-        <p>この構成だと、デバッグコードや一時的な修正が誤って main に入ったとき、そのまま公開ユーザーへ OTA が届いてしまう。さらに、ネイティブコードを変更した後でも OTA は配信できるため、古いアプリへ互換性のない JavaScript が降ってクラッシュする危険もある。</p>
+        <p>デバッグコードや一時的な修正が誤って main に入ったとき、そのまま公開ユーザーへ OTA が届いてしまう。さらに、ネイティブコードを変更した後でも OTA は配信できるため、古いアプリへ互換性のない JavaScript が降ってクラッシュする危険もある。</p>
 
         <h2>Question</h2>
         <blockquote>開発中のコードや、ネイティブ非互換な更新を、公開ユーザーへ誤って届けないようにするには?</blockquote>
@@ -170,6 +170,7 @@ runtimeVersion が一致</pre>
           <h3>Options</h3>
           <ul class="body">
             <li><b>単一 channel のまま運用する</b> — main → EAS Update → 公開ユーザー、という素の構成。設定は最もシンプルだが、誤配信とネイティブ非互換クラッシュのリスクをそのまま抱える。最初のリリースまではこれでよいが、改修フェーズに入る前に分離した。</li>
+            <li><b>Fingerprint で管理する</b> — 現在推奨されているのはこの方法なのだが、そこまで厳密なバージョン管理はしないので見送った。過去バージョンに対して OTA をかけたりはしないので (みんな、アプリを更新してね)。</li>
           </ul>
         </div>
       </div>
@@ -198,6 +199,53 @@ Expo Go で確認</pre>
         <p>この stg / prd 分離は、一度組めば他のアプリでもそのまま使える。だから <mark>Git のテンプレートリポジトリにして、新規アプリはコピーして始める</mark> 運用にした。最初のリリースは <a href="mobile-dev.html">1.1.1</a> と <a href="cloud-build.html">1.1.2</a> の素の構成で済ませ、リリースが済んだらこの分離を入れてテンプレ化しておく。以降のアプリは、最初から安全な OTA 運用の上でスタートできる。</p>
       </div>
     </section>
+
+    <section class="repro" aria-label="再現メモ">
+      <p class="repro-h">■ 再現できる方法</p>
+      <p class="lead">この構成を自分で再現したい人向けのメモ。読み物ではないので、指示文は数行だけ表示してスクロールにしてある。</p>
+      <p class="step-h">下記を貼り付けで実行。</p>
+      <pre class="paste">EAS の配信を「開発用」と「公開用」の 2 チャネルに分けて、開発中のマージが
+公開ユーザーに誤って OTA 配信されない構成に変えてください。
+
+【やってほしいこと】
+1. チャネル設計
+   - stg（開発確認用）: main にマージしたら自動で配信。購読するのは私（開発者）だけ
+   - prd（公開用）: ストアのユーザー向け。自動配信はせず、手動トリガのときだけ配信
+   → 「自動で動くのは stg だけ」にして、main にデバッグコードが混ざっても
+     公開ユーザーには構造的に届かないようにする
+
+2. eas-update.yml を stg 専用に変更
+   - main push → channel stg にだけ eas update
+   - Expo Go は exposdk 系ランタイムしか読めないので、stg publish のときだけ
+     CI 内で runtimeVersion を sdkVersion ポリシーに一時書き換える
+     （リポジトリにはコミットしない）
+
+3. eas-update-prd.yml を新規追加（手動トリガ / workflow_dispatch）
+   - channel prd に eas update
+   - runtimeVersion は app.json の appVersion ポリシーのまま
+     （＝ version を上げると古いバイナリには OTA が届かない「ネイティブ互換フェンス」）
+
+4. 誤配信ガード
+   - もし広告などのデバッグ用フラグ（例: FORCE_TEST_ADS = true）を使うなら、
+     prd 配信・iOS ビルドのワークフロー先頭で、そのフラグが true のまま
+     残っていたら CI を落とすガードステップを入れてください
+
+5. ドキュメント化
+   - どういうチャネル構成で、どの操作がどのチャネルに配信されるのかを
+     運用ルールとして OPERATIONS.md に、
+     「公開ユーザーに配信したい」「切り戻したい」等のシナリオ別手順を
+     RUNBOOK.md にまとめてください
+
+作り終えたら、日常の開発フロー（開発中は Expo Go で stg ブランチを見る、
+公開ユーザーに配信したいときだけ prd ワークフローを手動実行する）を
+私向けに要約してください。</pre>
+      <p>取りあえず、<mark>開発環境を構築するときは、Claude の頭の良いモデルを使った方が無難</mark>です。そこでクレジットをケチるとハマりまくって、逆にクレジットを大量消費しました。分からないことがあったら、スクショやエラーメッセージをそのまま Claude に送ると説明してくれます。</p>
+    </section>
+
+    <aside class="closing" aria-label="ひとこと">
+      <p>環境切り分けに 1 日。</p>
+      <p>リリース後の次のタイミングでやれば良いので、焦る必要はないです。</p>
+    </aside>
   </article>
 
   <nav class="treenav" aria-label="サイトマップ">

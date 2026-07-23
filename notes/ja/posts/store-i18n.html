@@ -35,7 +35,7 @@
   "description": "多言語対応が必要なのはアプリだけではない。App Store や Google Play の申請情報も各言語で登録が要る。1 言語なら手入力でいいが、50 言語では非現実的。だから申請情報も Git で管理し、AI で翻訳、GitHub Actions からストアへ自動登録する。",
   "inLanguage": "ja",
   "datePublished": "2026-07-12",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/store-i18n.html",
@@ -143,6 +143,369 @@
         <p>テキスト (本体・申請) の多言語化が済んだ。最後に残るのが、いちばん手強い画像 — スクリーンショットである。続きは <a href="shots-i18n.html">1.2.3 スクリーンショットを多言語対応しよう</a>。</p>
       </div>
     </section>
+
+    <section class="repro" aria-label="再現メモ">
+      <p class="repro-h">■ 再現できる方法</p>
+      <p class="lead">この構成を自分で再現したい人向けのメモ。読み物ではないので、指示文は数行だけ表示してスクロールにしてある。</p>
+      <p>submit ができていれば、下記の設定は既に入っていると思う。App Store Connect API Key を発行 (Users and Access → Integrations → App Store Connect API)。<code>.p8</code> ファイル・Key ID・Issuer ID の 3 点を控える (.p8 は再ダウンロード不可なので必ず保存)。GitHub Secrets に 3 つ追加: <code>APPLE_API_KEY</code> (.p8 の全文) / <code>APPLE_API_KEY_ID</code> / <code>APPLE_API_KEY_ISSUER_ID</code>。</p>
+      <p class="step-h">そのうえで、下記を 1 回のコピペで貼り付けて実行 (プロンプト + Gemfile + workflow + Fastfile + 設定テンプレをまとめて渡す)。</p>
+      <pre class="paste">App Store Connect のメタデータを GitHub Actions から fastlane
+(spaceship 直叩き)で自動アップロードする仕組みを作りたい。
+
+前提:
+・ASC の API キーは GitHub Secrets に APPLE_API_KEY_ID /
+  APPLE_API_KEY_ISSUER_ID / APPLE_API_KEY_P8 の3つで登録済み
+・アプリは SKU=&lt;自分のSKU&gt;、Bundle ID=&lt;自分のBundleID&gt; で ASC 登録済み
+
+作ってほしいもの:
+1. Gemfile … fastlane 2.228 系を固定
+2. fastlane/Fastfile に upload_metadata_direct レーンを spaceship 直叩きで実装
+   ・apps/&lt;SKU&gt;/store.config.json.txt を読む
+   ・ASC の編集中バージョンに title/subtitle/description/keywords/
+     promoText/releaseNotes/copyright をロケール別に書き込む
+   ・空欄のフィールドはスキップ、初回1.0では releaseNotes を自動除外
+3. .github/workflows/ に metadata 用の workflow_dispatch ワークフローを1つ。
+   env に APP_SKU / APP_BUNDLE_ID と3つの Secret を渡す
+4. apps/&lt;SKU&gt;/store.config.json.txt の空テンプレ(apple.info の下に
+   50ロケール分のキーだけ用意、値は空)
+
+source "https://rubygems.org"
+gem "fastlane", "~&gt; 2.228.0"
+
+name: &lt;SKU&gt; — metadata
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Run fastlane upload_metadata_direct
+        env:
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_KEY_ISSUER_ID: ${{ secrets.APPLE_API_KEY_ISSUER_ID }}
+          APPLE_API_KEY_P8: ${{ secrets.APPLE_API_KEY_P8 }}
+          APP_SKU: &lt;SKU&gt;
+          APP_BUNDLE_ID: &lt;BundleID&gt;
+          FASTLANE_SKIP_UPDATE_CHECK: "1"
+        run: bundle exec fastlane ios upload_metadata_direct
+
+&lt;SKU&gt; / &lt;BundleID&gt; が分からなかったら聞いて、確認して。
+
+
+deliver を使わず spaceship で直接 API を叩いています。fastlane 2.228 に
+残っているバグ(AppInfo のリレーション名間違い・エラーを握り潰す update
+ラッパー)を回避するコードが入っているのがポイントです。ハマるので下記を参照。
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Upload per-locale version metadata via spaceship, reading apps/&lt;SKU&gt;/store.config.json.txt directly"
+  lane :upload_metadata_direct do |options|
+    sku       = options[:sku]       || ENV["APP_SKU"]
+    bundle_id = options[:bundle_id] || ENV["APP_BUNDLE_ID"]
+    UI.user_error!("sku is required")       if sku.nil? || sku.empty?
+    UI.user_error!("bundle_id is required") if bundle_id.nil? || bundle_id.empty?
+
+    config_path = File.expand_path("../apps/#{sku}/store.config.json.txt", __dir__)
+    UI.user_error!("store.config.json.txt not found: #{config_path}") unless File.exist?(config_path)
+
+    require "json"
+    config = JSON.parse(File.read(config_path, encoding: "UTF-8"))
+    locales_data = config.dig("apple", "info") || {}
+    copyright_value = config.dig("apple", "copyright")
+    UI.user_error!("apple.info missing in #{config_path}") if locales_data.empty?
+
+    require "spaceship"
+    Spaceship::ConnectAPI.token = Spaceship::ConnectAPI::Token.create(
+      key_id:    ENV.fetch("APPLE_API_KEY_ID"),
+      issuer_id: ENV.fetch("APPLE_API_KEY_ISSUER_ID"),
+      key:       ENV.fetch("APPLE_API_KEY_P8"),
+    )
+
+    # fastlane 2.228.0 のバグ回避:
+    # spaceship の post_app_info_localization が誤ったリレーション
+    # ("appStoreVersion"/"appStoreVersions") を送るので、正しい
+    # ("appInfo"/"appInfos") を送る実装で上書きする。
+    fix_module = Module.new do
+      def post_app_info_localization(app_info_id: nil, attributes: {})
+        body = {
+          data: {
+            type: "appInfoLocalizations",
+            attributes: attributes,
+            relationships: {
+              appInfo: {
+                data: {
+                  type: "appInfos",
+                  id: app_info_id,
+                },
+              },
+            },
+          },
+        }
+        tunes_request_client.post("v1/appInfoLocalizations", body)
+      end
+    end
+    Spaceship::ConnectAPI::Tunes::API.prepend(fix_module)
+
+    app = Spaceship::ConnectAPI::App.find(bundle_id)
+    UI.user_error!("app not found for bundle_id=#{bundle_id}") if app.nil?
+
+    version = app.get_edit_app_store_version
+    UI.user_error!("no edit version found on App Store Connect") if version.nil?
+    UI.message("Writing to version #{version.version_string} (#{version.app_store_state})")
+
+    # JSON key -&gt; AppStoreVersionLocalization API field
+    field_map = {
+      "description"  =&gt; :description,
+      "promoText"    =&gt; :promotional_text,
+      "marketingUrl" =&gt; :marketing_url,
+      "supportUrl"   =&gt; :support_url,
+      "releaseNotes" =&gt; :whats_new,
+    }
+
+    # spaceship の update は snake_case を受け付けるが、create を叩く
+    # post_app_store_version_localization は camelCase でないと
+    # Apple API に「unknown attribute」と弾かれる。
+    snake_to_camel = lambda do |sym|
+      parts = sym.to_s.split("_")
+      (parts[0] + parts[1..].map(&amp;:capitalize).join).to_sym
+    end
+    to_camel_attrs = lambda do |attrs|
+      attrs.each_with_object({}) { |(k, v), h| h[snake_to_camel.call(k)] = v }
+    end
+
+    summary_lines = ["## Direct metadata upload to #{version.version_string}", ""]
+
+    # ---------------------------------------------------------------------
+    # 0) AppStoreVersion レベルの copyright(アプリ共通の1値)。
+    # ---------------------------------------------------------------------
+    if copyright_value &amp;&amp; !copyright_value.to_s.strip.empty?
+      copyright_value = copyright_value.to_s.strip
+      if version.copyright == copyright_value
+        summary_lines &lt;&lt; "Copyright unchanged: `#{copyright_value}`"
+      else
+        UI.message("Updating version copyright -&gt; #{copyright_value}")
+        begin
+          version.update(attributes: { copyright: copyright_value })
+          summary_lines &lt;&lt; "Copyright updated: `#{copyright_value}`"
+        rescue =&gt; e
+          UI.error("Failed to update copyright: #{e.message.lines.first.strip}")
+          summary_lines &lt;&lt; "⚠️ Copyright update failed (#{e.message.lines.first.strip})"
+        end
+      end
+      summary_lines &lt;&lt; ""
+    end
+
+    # ---------------------------------------------------------------------
+    # 1) 先に AppInfoLocalization(アプリレベルでロケールを登録)。
+    #    新規ロケールを版レベルの書き込み前に認識させるため、こちらが先。
+    # ---------------------------------------------------------------------
+    app_info = app.fetch_edit_app_info
+    app_updated = 0
+    app_created = 0
+    if app_info
+      summary_lines &lt;&lt; "## App-level localization updates (AppInfo)"
+
+      # ローカライズされたアプリ名が Apple に弾かれる SKU(希望名が別
+      # アカウントで登録済み)は、name を送ると AppInfo リクエスト全体が
+      # 失敗して subtitle / privacyPolicyUrl まで巻き添えになる。該当 SKU は
+      # name を送らず、アプリ名は ASC 上で手動管理する。該当なければ空でよい。
+      skip_app_name_skus = %w[]
+
+      app_field_map = {
+        "title"            =&gt; :name,
+        "subtitle"         =&gt; :subtitle,
+        "privacyPolicyUrl" =&gt; :privacyPolicyUrl,
+      }
+      app_field_map.delete("title") if skip_app_name_skus.include?(sku)
+      existing_app_locs = app_info.get_app_info_localizations
+                                  .each_with_object({}) { |loc, h| h[loc.locale] = loc }
+
+      locales_data.each_key do |loc_code|
+        loc_data = locales_data[loc_code]
+
+        app_attrs = {}
+        app_field_map.each do |json_key, api_field|
+          val = loc_data[json_key]
+          app_attrs[api_field] = val.to_s.strip if val.is_a?(String) &amp;&amp; !val.strip.empty?
+        end
+
+        if app_attrs.empty?
+          summary_lines &lt;&lt; "- **#{loc_code}**: AppInfo skipped (no fields)"
+          next
+        end
+
+        app_fmt_err = lambda do |e|
+          msg = e.message.to_s.gsub(/\s+/, " ").strip
+          msg = msg[0, 400] + "…" if msg.length &gt; 400
+          "#{e.class}: #{msg}"
+        end
+
+        if existing_app_locs.key?(loc_code)
+          UI.message("Updating AppInfo[#{loc_code}] (#{app_attrs.keys.join(', ')})...")
+          begin
+            # spaceship の AppInfoLocalization#update はエラーを握り潰すので、
+            # 低レベル PATCH を直接叩く。
+            Spaceship::ConnectAPI.patch_app_info_localization(
+              app_info_localization_id: existing_app_locs[loc_code].id,
+              attributes: to_camel_attrs.call(app_attrs),
+            )
+            summary_lines &lt;&lt; "- **#{loc_code}**: AppInfo updated #{app_attrs.keys.length} field(s)"
+            app_updated += 1
+          rescue =&gt; e
+            err = app_fmt_err.call(e)
+            UI.error("Failed to update AppInfo[#{loc_code}]: #{err}")
+            summary_lines &lt;&lt; "- **#{loc_code}**: ⚠️ AppInfo update failed (#{err})"
+          end
+        else
+          UI.message("Creating AppInfo[#{loc_code}] (#{app_attrs.keys.join(', ')})...")
+          begin
+            app_info.create_app_info_localization(
+              attributes: to_camel_attrs.call(app_attrs).merge(locale: loc_code),
+            )
+            summary_lines &lt;&lt; "- **#{loc_code}**: AppInfo created #{app_attrs.keys.length} field(s)"
+            app_created += 1
+          rescue =&gt; e
+            err = app_fmt_err.call(e)
+            UI.error("Failed to create AppInfo[#{loc_code}]: #{err}")
+            summary_lines &lt;&lt; "- **#{loc_code}**: ⚠️ AppInfo create failed (#{err})"
+          end
+        end
+      end
+      summary_lines &lt;&lt; ""
+    else
+      summary_lines &lt;&lt; "AppInfo edit version not available; skipped app-level localization update."
+      summary_lines &lt;&lt; ""
+    end
+
+    # ---------------------------------------------------------------------
+    # 2) AppStoreVersionLocalization(版ごとの description / promo など)。
+    #    AppInfo で作った新規ロケールが版レベルでも見えるよう再取得。
+    # ---------------------------------------------------------------------
+    summary_lines &lt;&lt; "## Version-level localization updates"
+    updated = 0
+    created = 0
+    existing_version_locs = version.get_app_store_version_localizations
+                                   .each_with_object({}) { |loc, h| h[loc.locale] = loc }
+
+    # Apple は初回 1.0 では whatsNew(リリースノート)を弾く
+    # ("Attribute 'whatsNew' cannot be edited at this time")。前バージョンが
+    # 無いため。1.0 のときは自動除外して残りだけ上げる。
+    is_initial_version = version.version_string.to_s.strip == "1.0"
+    if is_initial_version
+      summary_lines &lt;&lt; "_(initial 1.0 — releaseNotes/whatsNew skipped; not editable on first version)_"
+    end
+
+    locales_data.each_key do |loc_code|
+      loc_data = locales_data[loc_code]
+
+      attrs = {}
+      field_map.each do |json_key, api_field|
+        val = loc_data[json_key]
+        attrs[api_field] = val.to_s.strip if val.is_a?(String) &amp;&amp; !val.strip.empty?
+      end
+      kw = loc_data["keywords"]
+      attrs[:keywords] = kw.join(",") if kw.is_a?(Array) &amp;&amp; !kw.empty?
+
+      attrs.delete(:whats_new) if is_initial_version
+
+      if attrs.empty?
+        summary_lines &lt;&lt; "- **#{loc_code}**: skipped (no non-empty fields)"
+        next
+      end
+
+      fmt_err = lambda do |e|
+        msg = e.message.to_s.gsub(/\s+/, " ").strip
+        msg = msg[0, 400] + "…" if msg.length &gt; 400
+        "#{e.class}: #{msg}"
+      end
+
+      if existing_version_locs.key?(loc_code)
+        UI.message("Updating #{loc_code} (#{attrs.keys.join(', ')})...")
+        begin
+          # spaceship の update ラッパーは bare rescue でエラーを握り潰し、
+          # @locale だけ再 raise する。低レベル PATCH を直接叩いて本当の
+          # API エラーがログに出るようにする。
+          Spaceship::ConnectAPI.patch_app_store_version_localization(
+            app_store_version_localization_id: existing_version_locs[loc_code].id,
+            attributes: to_camel_attrs.call(attrs),
+          )
+          summary_lines &lt;&lt; "- **#{loc_code}**: updated #{attrs.keys.length} field(s)"
+          updated += 1
+        rescue =&gt; e
+          err = fmt_err.call(e)
+          UI.error("Failed to update #{loc_code}: #{err}")
+          summary_lines &lt;&lt; "- **#{loc_code}**: ⚠️ update failed (#{err})"
+        end
+      else
+        UI.message("Creating #{loc_code} (#{attrs.keys.join(', ')})...")
+        begin
+          version.create_app_store_version_localization(
+            attributes: to_camel_attrs.call(attrs).merge(locale: loc_code),
+          )
+          summary_lines &lt;&lt; "- **#{loc_code}**: created #{attrs.keys.length} field(s)"
+          created += 1
+        rescue =&gt; e
+          err = fmt_err.call(e)
+          UI.error("Failed to create #{loc_code}: #{err}")
+          summary_lines &lt;&lt; "- **#{loc_code}**: ⚠️ create failed (#{err})"
+        end
+      end
+    end
+
+    summary_lines &lt;&lt; ""
+    summary_lines &lt;&lt; "App-level: #{app_updated} updated, #{app_created} created. Version-level: #{updated} updated, #{created} created."
+    report = summary_lines.join("\n")
+    UI.message(report)
+
+    step_summary = ENV["GITHUB_STEP_SUMMARY"]
+    File.write(step_summary, report) if step_summary &amp;&amp; !step_summary.empty?
+  end
+end
+
+{
+  "apple": {
+    "copyright": "2026 Your Name.",
+    "info": {
+      "ja": {
+        "title": "アプリ名",
+        "subtitle": "",
+        "promoText": "",
+        "description": "",
+        "keywords": [],
+        "releaseNotes": "",
+        "privacyPolicyUrl": "https://example.com/privacy",
+        "supportUrl": "https://example.com/support",
+        "marketingUrl": "https://example.com"
+      },
+      "en-US": { "...": "同じ構造で各ロケール分" }
+    }
+  }
+}</pre>
+      <p>細かい挙動については、GitHub Actions の実行結果をそのまま Claude にコピペして修正してもらってください。library のバージョンや Apple の仕様変更によって、挙動が変わったりします。</p>
+    </section>
+
+    <aside class="closing" aria-label="ひとこと">
+      <p>こちらの翻訳も Pro 契約だと 1 日かかります。</p>
+      <p>まずは 2 言語でリリースして。先に、説明文だけ多言語対応するのがコスパが良いです。</p>
+      <ol>
+        <li>アプリ 2 言語リリース</li>
+        <li>説明文だけ多言語リリース</li>
+        <li>アプリ多言語リリース</li>
+        <li>スクショ多言語リリース</li>
+      </ol>
+      <p>仕組みだけ作っておいても損はしないかな。</p>
+    </aside>
   </article>
 
   <nav class="treenav" aria-label="サイトマップ">

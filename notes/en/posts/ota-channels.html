@@ -35,7 +35,7 @@
   "description": "OTA is convenient — and misused, it ships in-development code straight to released users. Split delivery into stg (dev) and prd (production) channels, pin runtimeVersion to appVersion, and let the delivery condition — channel match AND runtimeVersion match — prevent both accidents and crashes by design.",
   "inLanguage": "en",
   "datePublished": "2026-07-11",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/ota-channels.html",
@@ -82,7 +82,7 @@
       <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
       <div class="bd">
         <aside class="tldr" aria-label="Summary">
-          <p>OTA (Over The Air Update) is convenient, but run carelessly it can ship in-development code straight to released users. So delivery is split into two channels — stg (dev), delivered automatically by GitHub Actions, and prd (production), delivered by hand — and runtimeVersion is pinned to appVersion, so bumping the app version whenever native code changes. An OTA reaches a device only when <mark>channel matches AND runtimeVersion matches</mark>. Design those two conditions, and both accidental releases and native-incompatibility crashes are prevented by the mechanism itself.</p>
+          <p>OTA (Over The Air Update) is convenient, but run carelessly it can ship in-development code straight to released users. So delivery is split into two channels — stg (dev), delivered automatically by GitHub Actions, and prd (production), delivered by hand.</p>
         </aside>
         <p class="lbl">Tools</p>
         <ul class="kit" aria-label="Tools">
@@ -99,13 +99,13 @@
         <h2>Situation</h2>
         <p><a href="mobile-dev.html">1.1.1</a> and <a href="cloud-build.html">1.1.2</a> established the dev loop and the release path. Merge to main, and an OTA goes out. Up to the first release, that setup is enough.</p>
         <h2>Complication</h2>
-        <p>The problem is the maintenance phase after release. The common setup looks like this:</p>
+        <p>The problem is the maintenance phase after release. Left as-is:</p>
         <pre>merge to main
       ↓
   EAS Update
       ↓
 released users</pre>
-        <p>In this shape, if debug code or a temporary fix slips into main by mistake, the OTA carries it straight to released users. Worse, OTAs can still be delivered after native code changes — and incompatible JavaScript landing on an old binary means crashes.</p>
+        <p>If debug code or a temporary fix slips into main by mistake, the OTA carries it straight to released users. Worse, OTAs can still be delivered after native code changes — and incompatible JavaScript landing on an old binary means crashes.</p>
         <h2>Question</h2>
         <blockquote>How do you make sure in-development code, or a native-incompatible update, never reaches released users by accident?</blockquote>
       </div>
@@ -167,6 +167,7 @@ runtimeVersion matches</pre>
           <h3>Options</h3>
           <ul class="body">
             <li><b>Stay on a single channel</b> — main → EAS Update → released users, the plain setup. Simplest configuration, but it keeps carrying both the accidental-release risk and the native-crash risk. Fine up to the first release; separate before entering maintenance.</li>
+            <li><b>Manage with Fingerprint</b> — this is the currently recommended approach, but I don't do version management that strict, so I passed. I don't push OTAs to past versions anyway (everyone, please update your app).</li>
           </ul>
         </div>
       </div>
@@ -195,6 +196,53 @@ check in Expo Go</pre>
         <p>Once built, this stg / prd separation carries to every next app unchanged. So it became <mark>a Git template repository — new apps start as a copy</mark>. Ship the first release on the plain setup from <a href="mobile-dev.html">1.1.1</a> and <a href="cloud-build.html">1.1.2</a>, then fold in this separation and template it. Every app after that starts life on safe OTA rails.</p>
       </div>
     </section>
+
+    <section class="repro" aria-label="How to reproduce">
+      <p class="repro-h">■ Reproduce it yourself</p>
+      <p class="lead">A note for anyone who wants to reproduce this setup. Not meant to be read straight through — the prompt shows a few lines and scrolls.</p>
+      <p class="step-h">Paste the following.</p>
+      <pre class="paste">Split the EAS delivery into "dev" and "production" channels so that a merge
+during development is never delivered to released users by mistake via OTA.
+
+[What to do]
+1. Channel design
+   - stg (dev verification): auto-delivered when I merge to main. Only I (the dev)
+     subscribe to it
+   - prd (production): for store users. No auto-delivery; delivered only on a manual trigger
+   → Make "the only thing that runs automatically is stg," so even if debug code
+     mixes into main, it structurally never reaches released users
+
+2. Change eas-update.yml to be stg-only
+   - main push → eas update to channel stg only
+   - Since Expo Go only reads exposdk-style runtimes, only on stg publish,
+     rewrite runtimeVersion to the sdkVersion policy inside CI temporarily
+     (do NOT commit it to the repo)
+
+3. Add a new eas-update-prd.yml (manual trigger / workflow_dispatch)
+   - eas update to channel prd
+   - keep runtimeVersion on app.json's appVersion policy
+     (= bumping version means old binaries don't get the OTA — a "native-compat fence")
+
+4. Misdelivery guard
+   - If you use a debug flag for ads etc. (e.g. FORCE_TEST_ADS = true), add a guard
+     step at the top of the prd-delivery and iOS-build workflows that fails CI if
+     that flag is still left true
+
+5. Documentation
+   - Write, as operating rules in OPERATIONS.md, which channel configuration exists
+     and which action delivers to which channel, and put scenario-based procedures
+     ("I want to deliver to released users," "I want to roll back," etc.) in RUNBOOK.md
+
+When you're done, summarize the daily dev flow for me (during dev I watch the stg
+branch in Expo Go; only when I want to deliver to released users do I run the prd
+workflow manually).</pre>
+      <p>Honestly, <mark>when you're building out the dev environment, use Claude's smarter model</mark> — skimping on credits there got me stuck over and over and burned far more credits in the end. When something's unclear, send the screenshot or error message straight to Claude and it explains.</p>
+    </section>
+
+    <aside class="closing" aria-label="A note to close">
+      <p>One day to split the environments.</p>
+      <p>You can do it at the next opportunity after release, so there's no need to rush.</p>
+    </aside>
   </article>
 
   <nav class="treenav" aria-label="Sitemap">

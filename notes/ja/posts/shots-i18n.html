@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#2f6fed" />
 <title>スクリーンショットを多言語対応しよう — Mac なしで、4 つの手を全部使う | Architecture Notes</title>
-<meta name="description" content="一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した記録。最後の 1px 調整だけは人がやる。" />
+<meta name="description" content="一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した。" />
 <link rel="canonical" href="https://lycoapp.com/notes/ja/posts/shots-i18n.html" />
 <link rel="alternate" hreflang="ja" href="https://lycoapp.com/notes/ja/posts/shots-i18n.html" />
 <link rel="alternate" hreflang="en" href="https://lycoapp.com/notes/en/posts/shots-i18n.html" />
 <link rel="alternate" hreflang="x-default" href="https://lycoapp.com/notes/en/posts/shots-i18n.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="スクリーンショットを多言語対応しよう — Mac なしで、4 つの手を全部使う" />
-<meta property="og:description" content="一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した記録。最後の 1px 調整だけは人がやる。" />
+<meta property="og:description" content="一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した。" />
 <meta property="og:url" content="https://lycoapp.com/notes/ja/posts/shots-i18n.html" />
 <meta property="og:image" content="https://lycoapp.com/notes/assets/og-notes.png" />
 <meta property="og:image:width" content="1200" />
@@ -32,10 +32,10 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "スクリーンショットを多言語対応しよう — Mac なしで、4 つの手を全部使う",
-  "description": "一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した記録。最後の 1px 調整だけは人がやる。",
+  "description": "一番苦労したのがスクリーンショットの多言語対応。理想は Mac のエミュレーターで言語を切り替えて自動撮影だが、Mac がない。UI の言語非依存設計・実機撮影・Flow での一括変換・英語版への説明流用の 4 つを全部使って解決した。",
   "inLanguage": "ja",
   "datePublished": "2026-07-12",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/ja/posts/shots-i18n.html",
@@ -82,7 +82,7 @@
       <p class="blk-h"><span class="no">00</span><span class="jp">要約</span><span class="en">Overview</span></p>
       <div class="bd">
         <aside class="tldr" aria-label="要約">
-          <p>一番苦労したのが、スクリーンショットの多言語対応だった。理想は Mac のエミュレーターで言語を切り替えながら自動撮影することだが、Mac がない。そこで、4 つの選択肢を「全部使う」ことにした。UI をできるだけ言語に依存しない設計にし、主要言語は実機で撮り、その他は AI (Flow) で一括変換し、英語版に説明を描き込んで他言語でも流用する。生成した画像は Git にまとめ、Claude で配置し、GitHub Actions からストアへ。最後の 1px 調整だけは、人が仕上げる。</p>
+          <p>一番苦労したのが、スクリーンショットの多言語対応だった。理想は Mac のエミュレーターで言語を切り替えながら自動撮影することだが、Mac がない。そこで、4 つの選択肢を「全部使う」ことにした。UI をできるだけ言語に依存しない設計にし、主要言語は実機で撮り、その他は AI (Flow) で一括変換し、英語版に説明を描き込んで他言語でも流用する。生成した画像は Git にまとめ、Claude で配置し、GitHub Actions からストアへ。</p>
         </aside>
       </div>
     </section>
@@ -94,7 +94,7 @@
         <p><a href="store-i18n.html">1.2.2</a> までで、テキスト (アプリ本体・申請情報) の多言語化は済んだ。残るのは、スクリーンショットである。</p>
 
         <h2>Complication</h2>
-        <p>本来なら、Mac 上でエミュレーターを起動し、言語を切り替えながら自動で撮影するのが理想だ。しかし <a href="cloud-build.html">1.1.2</a> のとおり、手元に Mac はない。50 言語分のスクリーンショットを用意するのは、一つの手法だけでは不可能に見えた。</p>
+        <p>本来なら、Mac 上でエミュレーターを起動し、言語を切り替えながら自動で撮影するのが理想だ。しかし <a href="cloud-build.html">1.1.2</a> のとおり、手元に Mac はない。50 ロケール分のスクリーンショットを用意するのは、不可能に見えた。</p>
 
         <h2>Question</h2>
         <blockquote>Mac なしで、大量の言語のスクリーンショットをどう用意するか?</blockquote>
@@ -123,7 +123,7 @@
 
         <div class="sub">
           <h3>Reason</h3>
-          <p><b>組み合わせでしか、Mac なしの制約を越えられないからである。</b> 全部を実機で撮れば言語数分の手間で潰れ、全部を AI 生成にすれば細部が崩れてサイズ要件も外れる。</p>
+          <p><b>組み合わせでしか、Mac なしの制約を越えられない。</b> 全部を実機で撮れば言語数分の手間で潰れ、全部を AI 生成にすれば細部が崩れてサイズ要件も外れる。</p>
           <blockquote>どれか一つでは詰む。<br>けれど、組み合わせれば越えられる。</blockquote>
           <p>とりわけ Flow は、一度に大量の画像を生成して ZIP でまとめて落とせるうえ、生成を待つ間に次の生成を指示できるので、作業効率がとても高い。</p>
         </div>
@@ -132,7 +132,8 @@
           <h3>Options</h3>
           <ul class="body">
             <li><b>全部を実機で撮影する</b> — 忠実だが、言語数だけ撮影の手間がかかり、現実的でない。</li>
-            <li><b>全部を AI で生成する</b> — 速いが、細部が崩れやすく、Apple の厳密なサイズ要件も満たせない。だから「全部使う」に落ち着いた。</li>
+            <li><b>全部を AI で生成する</b> — 速いが、細部が崩れやすく、翻訳も正確ではない。</li>
+            <li><b>Claude で画像置換してもらう</b> — Claude の弱いところとして、画像生成エンジンを持っていない。酷いものが出てきたので諦めた。</li>
           </ul>
         </div>
       </div>
@@ -142,15 +143,195 @@
       <p class="blk-h"><span class="no">03</span><span class="jp">結果</span><span class="en">Result</span></p>
       <div class="bd">
         <h2 class="g">Good</h2>
-        <p>Mac なしで、多言語のスクリーンショットが用意できた。UI の言語非依存設計と英語版の説明流用のおかげで、生成すべき量そのものも抑えられた。地味に大量だった作業が、AI との組み合わせで回るようになった。</p>
+        <p>Mac なしで、多言語のスクリーンショットが用意できた。UI の言語非依存設計と英語版の説明流用のおかげで、生成すべき量そのものも抑えられた。地味に大量だった作業が、AI との組み合わせで回るようになった。Flow は、無料枠で結構画像生成ができる。それを ZIP で DL できる点も大きい。</p>
 
         <h2 class="b">Bad</h2>
-        <p>Apple のスクリーンショットは、<mark>1px でもサイズが違うとアップロードできない。</mark>AI では吸収しきれないこの微調整だけは、最後に人が手で仕上げている。自動化できる部分と、できない部分の線引きが要る。</p>
+        <p>コードを画像生成 (翻訳時) に入れていないので、精度が悪い。何度も画像生成 AI に修正をかけていくと、文字が画像なのでどんどん劣化していく。改善の余地は色々ありそう。</p>
 
         <h2 class="f">Follow-up</h2>
         <p>これで、アプリ本体・申請情報・スクリーンショットの 3 つすべてが多言語化でき、世界公開の準備が整った。狭いニッチでも、世界を母集団にすれば市場になる — その狙いを定める話は <a href="stp.html">3.1.2 STP</a> に続く。</p>
       </div>
     </section>
+
+    <section class="repro" aria-label="再現メモ">
+      <p class="repro-h">■ 再現できる方法</p>
+      <p class="lead">この構成を自分で再現したい人向けのメモ。読み物ではないので、指示文は数行だけ表示してスクロールにしてある。</p>
+      <p class="step-h">まずは、仕組みを作成。下記を 1 回のコピペで貼り付けて実行 (プロンプト + Gemfile + workflow + Fastfile をまとめて渡す)。</p>
+      <pre class="paste">App Store Connect のスクリーンショットを GitHub Actions から fastlane
+(spaceship 直叩き)で自動アップロードする仕組みを作りたい。
+
+前提:
+・ASC の API キーは GitHub Secrets に APPLE_API_KEY_ID /
+  APPLE_API_KEY_ISSUER_ID / APPLE_API_KEY_P8 の3つで登録済み
+・アプリは SKU=&lt;自分のSKU&gt;、Bundle ID=&lt;自分のBundleID&gt; で ASC 登録済み
+
+作ってほしいもの:
+1. Gemfile … fastlane 2.228 系を固定
+2. fastlane/Fastfile に upload_screenshots_direct レーンを spaceship 直叩きで実装
+   ・apps/&lt;SKU&gt;/screenshots/&lt;locale&gt;/*.png を読む
+   ・iPhone ファイルは APP_IPHONE_67、iPad ファイルは APP_IPAD_PRO_3GEN_129
+     のスクショセットに入れ替えアップロード
+   ・ローカルに画像が無いロケールはスキップ(= 別経路で上げ済みを消さない)
+3. .github/workflows/ に screenshots 用の workflow_dispatch ワークフローを1つ。
+   env に APP_SKU / APP_BUNDLE_ID と3つの Secret を渡す(timeout は長めに)
+4. apps/&lt;SKU&gt;/screenshots/&lt;locale&gt;/ を50ロケール分(.gitkeep 付き)
+
+さらに、apps/&lt;SKU&gt;/ に置いた ZIP を読んで、ファイル名の言語タグで
+ロケールを判定し、iPhone は縦3分割・iPad は縦2分割 → 中央トリミング →
+Apple 推奨サイズ(iPhone 1320×2868 / iPad 2752×2064)へリサイズして
+apps/&lt;SKU&gt;/screenshots/&lt;locale&gt;/ に書き出す Python スクリプトも作って。
+実行前に「どのファイルが→どのロケールに行くか」の対応表を出す作りにして。
+
+
+source "https://rubygems.org"
+gem "fastlane", "~&gt; 2.228.0"
+
+
+name: &lt;SKU&gt; — screenshots
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Run fastlane upload_screenshots_direct
+        env:
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_KEY_ISSUER_ID: ${{ secrets.APPLE_API_KEY_ISSUER_ID }}
+          APPLE_API_KEY_P8: ${{ secrets.APPLE_API_KEY_P8 }}
+          APP_SKU: &lt;SKU&gt;
+          APP_BUNDLE_ID: &lt;BundleID&gt;
+          FASTLANE_SKIP_UPDATE_CHECK: "1"
+        run: bundle exec fastlane ios upload_screenshots_direct
+
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Upload per-locale screenshots via spaceship (bypasses deliver's broken screenshot upload)"
+  lane :upload_screenshots_direct do |options|
+    sku       = options[:sku]       || ENV["APP_SKU"]
+    bundle_id = options[:bundle_id] || ENV["APP_BUNDLE_ID"]
+    UI.user_error!("sku is required")       if sku.nil? || sku.empty?
+    UI.user_error!("bundle_id is required") if bundle_id.nil? || bundle_id.empty?
+
+    screenshots_path = File.expand_path("../apps/#{sku}/screenshots", __dir__)
+    UI.user_error!("screenshots not found: #{screenshots_path}") unless Dir.exist?(screenshots_path)
+
+    require "spaceship"
+    Spaceship::ConnectAPI.token = Spaceship::ConnectAPI::Token.create(
+      key_id:    ENV.fetch("APPLE_API_KEY_ID"),
+      issuer_id: ENV.fetch("APPLE_API_KEY_ISSUER_ID"),
+      key:       ENV.fetch("APPLE_API_KEY_P8"),
+    )
+
+    app = Spaceship::ConnectAPI::App.find(bundle_id)
+    UI.user_error!("app not found for bundle_id=#{bundle_id}") if app.nil?
+
+    version = app.get_edit_app_store_version
+    UI.user_error!("no edit version found on App Store Connect") if version.nil?
+    UI.message("Writing screenshots to version #{version.version_string} (#{version.app_store_state})")
+
+    # 出力ファイル名 -&gt; ASC のスクショ表示タイプ。
+    # "iPhone" ファイルは 1320x2868 (iPhone 6.9")、Apple が 6.7"/6.9" 共用にする枠へ。
+    # "iPad" ファイルは 2752x2064、iPad Pro 12.9" 3rd gen 横向き。
+    device_of = -&gt;(filename) {
+      case filename
+      when /iPhone/i then "APP_IPHONE_67"
+      when /iPad/i   then "APP_IPAD_PRO_3GEN_129"
+      else nil
+      end
+    }
+
+    summary_lines = ["## Direct screenshot upload to #{version.version_string}", ""]
+    updated = 0
+    version.get_app_store_version_localizations.sort_by(&amp;:locale).each do |loc|
+      locale_dir = File.join(screenshots_path, loc.locale)
+      unless Dir.exist?(locale_dir)
+        summary_lines &lt;&lt; "- **#{loc.locale}**: skipped (no local directory)"
+        next
+      end
+
+      pngs = Dir.children(locale_dir).select { |f| f.downcase.end_with?(".png") }.sort
+      if pngs.empty?
+        summary_lines &lt;&lt; "- **#{loc.locale}**: skipped (no PNGs)"
+        next
+      end
+
+      groups = pngs.group_by { |f| device_of.call(f) }.reject { |k, _| k.nil? }
+      if groups.empty?
+        summary_lines &lt;&lt; "- **#{loc.locale}**: skipped (no iPhone/iPad files)"
+        next
+      end
+
+      existing_sets = loc.get_app_screenshot_sets.group_by(&amp;:screenshot_display_type)
+      groups.each do |display_type, files|
+        set = existing_sets[display_type]&amp;.first
+        if set
+          # 既存スクショを消してから新しいものに入れ替える。
+          set.app_screenshots.each do |shot|
+            shot.delete!
+          end
+        else
+          set = loc.create_app_screenshot_set(attributes: {
+            screenshotDisplayType: display_type,
+          })
+        end
+
+        files.each do |filename|
+          path = File.join(locale_dir, filename)
+          UI.message("  #{loc.locale}/#{filename} -&gt; #{display_type}")
+          set.upload_screenshot(path: path, wait_for_processing: true)
+        end
+      end
+      summary_lines &lt;&lt; "- **#{loc.locale}**: uploaded #{pngs.length} screenshot(s)"
+      updated += 1
+    end
+
+    summary_lines &lt;&lt; ""
+    summary_lines &lt;&lt; "Updated #{updated} locale(s)."
+    report = summary_lines.join("\n")
+    UI.message(report)
+
+    step_summary = ENV["GITHUB_STEP_SUMMARY"]
+    File.write(step_summary, report) if step_summary &amp;&amp; !step_summary.empty?
+  end
+end</pre>
+      <p class="step-h">次に、各言語のスクショ画像を詰めた ZIP を apps/&lt;アプリ名&gt;/ に置いてから、下記をコピペして依頼。</p>
+      <pre class="paste">apps/&lt;アプリ名&gt;/ に、各言語のスクショ画像を詰めた ZIP を置いた。
+これを App Store 用に処理して。
+
+・ファイル名の言語タグ(ja_01.png / en-US_… / 韓国語.png など)でロケール判定
+・iPhone は縦3分割・iPad は縦2分割、中央トリミングで Apple 推奨サイズにリサイズ
+  (iPhone 6.9" = 1320×2868 / iPad 13" = 2752×2064)
+・en-US → en-AU / en-CA / en-GB のような家族コピーも展開
+・「その他言語」画像は未指定ロケール全部に自動展開
+
+実行前に「どのファイルが → どのロケールに行くか」の対応表を出して確認させて。
+OK を出したら apps/&lt;アプリ名&gt;/screenshots/&lt;locale&gt;/ に生成して。
+
+&lt;アプリ名&gt; のスクショをアップする前にチェックして。
+screenshots フォルダを全ロケール分ならべて、各ロケールの枚数と
+ファイル名を一覧で出して。触ってほしくないロケールを消さないか確認したい。</pre>
+      <p>よく分からなかったら「何してるの?」と聞けば教えてくれるし、うまくいったら「スキルにして」と頼んだらスキルにしてくれる。スキル化するまで /clear や新しいセッションで再開しないこと。記憶が無くなるので、Claude の記憶 (同じセッション内) でスキル化させると、作業が安定する。</p>
+      <p>無理にスクショを多言語にする必要はない。デフォルト言語の画像が共通で使われるので、ゲームなど分かりやすいものであれば、無理して複数作らなくても、イラストで分かればリリースはできる。</p>
+    </section>
+
+    <aside class="closing" aria-label="ひとこと">
+      <p>開発に 5 日<br>build に 2 日<br>多言語に 1 日<br>申請文言に 1 日<br>スクショ作成に 1 日<br>Web ページを適当に作って申請するまで、合計 10 日。</p>
+      <p>ここから審査開始に 4 日。指摘内容を説明して、再審査開始に 2 日。(案外、審査待ちは長い。)</p>
+      <p>3 週目にはアプリが全世界に公開された。CI/CD 環境の構築は終わったので、1 週間に 1 本のペースでアプリのリリースが可能になった。そして、睡眠時間も減った。</p>
+    </aside>
   </article>
 
   <nav class="treenav" aria-label="サイトマップ">

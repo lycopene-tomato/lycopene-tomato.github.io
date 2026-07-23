@@ -35,7 +35,7 @@
   "description": "The app isn't the only thing that needs localizing: App Store and Google Play listings need every language too. Manual entry works for one language and breaks at fifty. So the listing lives in Git, AI translates it, and GitHub Actions registers it with the store.",
   "inLanguage": "en",
   "datePublished": "2026-07-12",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-07-23",
   "author": { "@id": "https://lycoapp.com/ja/about/#lyco" },
   "publisher": { "@type": "Organization", "name": "Lyco App", "url": "https://lycoapp.com/" },
   "mainEntityOfPage": "https://lycoapp.com/notes/en/posts/store-i18n.html",
@@ -141,6 +141,369 @@
         <p>Text — the app and the listing — is done. What remains is the toughest customer: images. Continued in <a href="shots-i18n.html">1.2.3 How to localize app screenshots</a>.</p>
       </div>
     </section>
+
+    <section class="repro" aria-label="How to reproduce">
+      <p class="repro-h">■ Reproduce it yourself</p>
+      <p class="lead">A note for anyone who wants to reproduce this setup. Not meant to be read straight through — the prompt shows a few lines and scrolls. The instruction is in English; the reference code (Gemfile / workflow / Fastfile) is the shared artifact and kept as-is.</p>
+      <p>If submit is already working, the settings below are probably in place. Issue an App Store Connect API Key (Users and Access → Integrations → App Store Connect API). Note the three: <code>.p8</code> file, Key ID, Issuer ID (the .p8 can't be re-downloaded, so save it). Add three GitHub Secrets: <code>APPLE_API_KEY</code> (full .p8 text) / <code>APPLE_API_KEY_ID</code> / <code>APPLE_API_KEY_ISSUER_ID</code>.</p>
+      <p class="step-h">Then paste the following in one copy (prompt + Gemfile + workflow + Fastfile + config template together).</p>
+      <pre class="paste">I want to build a mechanism that auto-uploads App Store Connect metadata from
+GitHub Actions using fastlane (calling spaceship directly).
+
+Assumptions:
+- The ASC API key is registered in GitHub Secrets as APPLE_API_KEY_ID /
+  APPLE_API_KEY_ISSUER_ID / APPLE_API_KEY_P8 (three of them)
+- The app is registered on ASC with SKU=&lt;your SKU&gt;, Bundle ID=&lt;your BundleID&gt;
+
+What to build:
+1. Gemfile ... pin the fastlane 2.228 line
+2. Implement an upload_metadata_direct lane in fastlane/Fastfile via direct spaceship
+   - read apps/&lt;SKU&gt;/store.config.json.txt
+   - write title/subtitle/description/keywords/promoText/releaseNotes/copyright
+     per-locale into the ASC editing version
+   - skip empty fields; auto-exclude releaseNotes on the initial 1.0
+3. One workflow_dispatch workflow for metadata under .github/workflows/.
+   Pass APP_SKU / APP_BUNDLE_ID and the three Secrets via env
+4. An empty apps/&lt;SKU&gt;/store.config.json.txt template (under apple.info, only the
+   keys for 50 locales, with empty values)
+
+source "https://rubygems.org"
+gem "fastlane", "~&gt; 2.228.0"
+
+name: &lt;SKU&gt; — metadata
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Run fastlane upload_metadata_direct
+        env:
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_KEY_ISSUER_ID: ${{ secrets.APPLE_API_KEY_ISSUER_ID }}
+          APPLE_API_KEY_P8: ${{ secrets.APPLE_API_KEY_P8 }}
+          APP_SKU: &lt;SKU&gt;
+          APP_BUNDLE_ID: &lt;BundleID&gt;
+          FASTLANE_SKIP_UPDATE_CHECK: "1"
+        run: bundle exec fastlane ios upload_metadata_direct
+
+If you don't know &lt;SKU&gt; / &lt;BundleID&gt;, ask me and confirm.
+
+
+This calls the API directly with spaceship, not deliver. The key point is that
+it includes code working around bugs still in fastlane 2.228 (the wrong AppInfo
+relationship name, and the update wrapper that swallows errors). It's a trap, so see below.
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Upload per-locale version metadata via spaceship, reading apps/&lt;SKU&gt;/store.config.json.txt directly"
+  lane :upload_metadata_direct do |options|
+    sku       = options[:sku]       || ENV["APP_SKU"]
+    bundle_id = options[:bundle_id] || ENV["APP_BUNDLE_ID"]
+    UI.user_error!("sku is required")       if sku.nil? || sku.empty?
+    UI.user_error!("bundle_id is required") if bundle_id.nil? || bundle_id.empty?
+
+    config_path = File.expand_path("../apps/#{sku}/store.config.json.txt", __dir__)
+    UI.user_error!("store.config.json.txt not found: #{config_path}") unless File.exist?(config_path)
+
+    require "json"
+    config = JSON.parse(File.read(config_path, encoding: "UTF-8"))
+    locales_data = config.dig("apple", "info") || {}
+    copyright_value = config.dig("apple", "copyright")
+    UI.user_error!("apple.info missing in #{config_path}") if locales_data.empty?
+
+    require "spaceship"
+    Spaceship::ConnectAPI.token = Spaceship::ConnectAPI::Token.create(
+      key_id:    ENV.fetch("APPLE_API_KEY_ID"),
+      issuer_id: ENV.fetch("APPLE_API_KEY_ISSUER_ID"),
+      key:       ENV.fetch("APPLE_API_KEY_P8"),
+    )
+
+    # fastlane 2.228.0 のバグ回避:
+    # spaceship の post_app_info_localization が誤ったリレーション
+    # ("appStoreVersion"/"appStoreVersions") を送るので、正しい
+    # ("appInfo"/"appInfos") を送る実装で上書きする。
+    fix_module = Module.new do
+      def post_app_info_localization(app_info_id: nil, attributes: {})
+        body = {
+          data: {
+            type: "appInfoLocalizations",
+            attributes: attributes,
+            relationships: {
+              appInfo: {
+                data: {
+                  type: "appInfos",
+                  id: app_info_id,
+                },
+              },
+            },
+          },
+        }
+        tunes_request_client.post("v1/appInfoLocalizations", body)
+      end
+    end
+    Spaceship::ConnectAPI::Tunes::API.prepend(fix_module)
+
+    app = Spaceship::ConnectAPI::App.find(bundle_id)
+    UI.user_error!("app not found for bundle_id=#{bundle_id}") if app.nil?
+
+    version = app.get_edit_app_store_version
+    UI.user_error!("no edit version found on App Store Connect") if version.nil?
+    UI.message("Writing to version #{version.version_string} (#{version.app_store_state})")
+
+    # JSON key -&gt; AppStoreVersionLocalization API field
+    field_map = {
+      "description"  =&gt; :description,
+      "promoText"    =&gt; :promotional_text,
+      "marketingUrl" =&gt; :marketing_url,
+      "supportUrl"   =&gt; :support_url,
+      "releaseNotes" =&gt; :whats_new,
+    }
+
+    # spaceship の update は snake_case を受け付けるが、create を叩く
+    # post_app_store_version_localization は camelCase でないと
+    # Apple API に「unknown attribute」と弾かれる。
+    snake_to_camel = lambda do |sym|
+      parts = sym.to_s.split("_")
+      (parts[0] + parts[1..].map(&amp;:capitalize).join).to_sym
+    end
+    to_camel_attrs = lambda do |attrs|
+      attrs.each_with_object({}) { |(k, v), h| h[snake_to_camel.call(k)] = v }
+    end
+
+    summary_lines = ["## Direct metadata upload to #{version.version_string}", ""]
+
+    # ---------------------------------------------------------------------
+    # 0) AppStoreVersion レベルの copyright(アプリ共通の1値)。
+    # ---------------------------------------------------------------------
+    if copyright_value &amp;&amp; !copyright_value.to_s.strip.empty?
+      copyright_value = copyright_value.to_s.strip
+      if version.copyright == copyright_value
+        summary_lines &lt;&lt; "Copyright unchanged: `#{copyright_value}`"
+      else
+        UI.message("Updating version copyright -&gt; #{copyright_value}")
+        begin
+          version.update(attributes: { copyright: copyright_value })
+          summary_lines &lt;&lt; "Copyright updated: `#{copyright_value}`"
+        rescue =&gt; e
+          UI.error("Failed to update copyright: #{e.message.lines.first.strip}")
+          summary_lines &lt;&lt; "⚠️ Copyright update failed (#{e.message.lines.first.strip})"
+        end
+      end
+      summary_lines &lt;&lt; ""
+    end
+
+    # ---------------------------------------------------------------------
+    # 1) 先に AppInfoLocalization(アプリレベルでロケールを登録)。
+    #    新規ロケールを版レベルの書き込み前に認識させるため、こちらが先。
+    # ---------------------------------------------------------------------
+    app_info = app.fetch_edit_app_info
+    app_updated = 0
+    app_created = 0
+    if app_info
+      summary_lines &lt;&lt; "## App-level localization updates (AppInfo)"
+
+      # ローカライズされたアプリ名が Apple に弾かれる SKU(希望名が別
+      # アカウントで登録済み)は、name を送ると AppInfo リクエスト全体が
+      # 失敗して subtitle / privacyPolicyUrl まで巻き添えになる。該当 SKU は
+      # name を送らず、アプリ名は ASC 上で手動管理する。該当なければ空でよい。
+      skip_app_name_skus = %w[]
+
+      app_field_map = {
+        "title"            =&gt; :name,
+        "subtitle"         =&gt; :subtitle,
+        "privacyPolicyUrl" =&gt; :privacyPolicyUrl,
+      }
+      app_field_map.delete("title") if skip_app_name_skus.include?(sku)
+      existing_app_locs = app_info.get_app_info_localizations
+                                  .each_with_object({}) { |loc, h| h[loc.locale] = loc }
+
+      locales_data.each_key do |loc_code|
+        loc_data = locales_data[loc_code]
+
+        app_attrs = {}
+        app_field_map.each do |json_key, api_field|
+          val = loc_data[json_key]
+          app_attrs[api_field] = val.to_s.strip if val.is_a?(String) &amp;&amp; !val.strip.empty?
+        end
+
+        if app_attrs.empty?
+          summary_lines &lt;&lt; "- **#{loc_code}**: AppInfo skipped (no fields)"
+          next
+        end
+
+        app_fmt_err = lambda do |e|
+          msg = e.message.to_s.gsub(/\s+/, " ").strip
+          msg = msg[0, 400] + "…" if msg.length &gt; 400
+          "#{e.class}: #{msg}"
+        end
+
+        if existing_app_locs.key?(loc_code)
+          UI.message("Updating AppInfo[#{loc_code}] (#{app_attrs.keys.join(', ')})...")
+          begin
+            # spaceship の AppInfoLocalization#update はエラーを握り潰すので、
+            # 低レベル PATCH を直接叩く。
+            Spaceship::ConnectAPI.patch_app_info_localization(
+              app_info_localization_id: existing_app_locs[loc_code].id,
+              attributes: to_camel_attrs.call(app_attrs),
+            )
+            summary_lines &lt;&lt; "- **#{loc_code}**: AppInfo updated #{app_attrs.keys.length} field(s)"
+            app_updated += 1
+          rescue =&gt; e
+            err = app_fmt_err.call(e)
+            UI.error("Failed to update AppInfo[#{loc_code}]: #{err}")
+            summary_lines &lt;&lt; "- **#{loc_code}**: ⚠️ AppInfo update failed (#{err})"
+          end
+        else
+          UI.message("Creating AppInfo[#{loc_code}] (#{app_attrs.keys.join(', ')})...")
+          begin
+            app_info.create_app_info_localization(
+              attributes: to_camel_attrs.call(app_attrs).merge(locale: loc_code),
+            )
+            summary_lines &lt;&lt; "- **#{loc_code}**: AppInfo created #{app_attrs.keys.length} field(s)"
+            app_created += 1
+          rescue =&gt; e
+            err = app_fmt_err.call(e)
+            UI.error("Failed to create AppInfo[#{loc_code}]: #{err}")
+            summary_lines &lt;&lt; "- **#{loc_code}**: ⚠️ AppInfo create failed (#{err})"
+          end
+        end
+      end
+      summary_lines &lt;&lt; ""
+    else
+      summary_lines &lt;&lt; "AppInfo edit version not available; skipped app-level localization update."
+      summary_lines &lt;&lt; ""
+    end
+
+    # ---------------------------------------------------------------------
+    # 2) AppStoreVersionLocalization(版ごとの description / promo など)。
+    #    AppInfo で作った新規ロケールが版レベルでも見えるよう再取得。
+    # ---------------------------------------------------------------------
+    summary_lines &lt;&lt; "## Version-level localization updates"
+    updated = 0
+    created = 0
+    existing_version_locs = version.get_app_store_version_localizations
+                                   .each_with_object({}) { |loc, h| h[loc.locale] = loc }
+
+    # Apple は初回 1.0 では whatsNew(リリースノート)を弾く
+    # ("Attribute 'whatsNew' cannot be edited at this time")。前バージョンが
+    # 無いため。1.0 のときは自動除外して残りだけ上げる。
+    is_initial_version = version.version_string.to_s.strip == "1.0"
+    if is_initial_version
+      summary_lines &lt;&lt; "_(initial 1.0 — releaseNotes/whatsNew skipped; not editable on first version)_"
+    end
+
+    locales_data.each_key do |loc_code|
+      loc_data = locales_data[loc_code]
+
+      attrs = {}
+      field_map.each do |json_key, api_field|
+        val = loc_data[json_key]
+        attrs[api_field] = val.to_s.strip if val.is_a?(String) &amp;&amp; !val.strip.empty?
+      end
+      kw = loc_data["keywords"]
+      attrs[:keywords] = kw.join(",") if kw.is_a?(Array) &amp;&amp; !kw.empty?
+
+      attrs.delete(:whats_new) if is_initial_version
+
+      if attrs.empty?
+        summary_lines &lt;&lt; "- **#{loc_code}**: skipped (no non-empty fields)"
+        next
+      end
+
+      fmt_err = lambda do |e|
+        msg = e.message.to_s.gsub(/\s+/, " ").strip
+        msg = msg[0, 400] + "…" if msg.length &gt; 400
+        "#{e.class}: #{msg}"
+      end
+
+      if existing_version_locs.key?(loc_code)
+        UI.message("Updating #{loc_code} (#{attrs.keys.join(', ')})...")
+        begin
+          # spaceship の update ラッパーは bare rescue でエラーを握り潰し、
+          # @locale だけ再 raise する。低レベル PATCH を直接叩いて本当の
+          # API エラーがログに出るようにする。
+          Spaceship::ConnectAPI.patch_app_store_version_localization(
+            app_store_version_localization_id: existing_version_locs[loc_code].id,
+            attributes: to_camel_attrs.call(attrs),
+          )
+          summary_lines &lt;&lt; "- **#{loc_code}**: updated #{attrs.keys.length} field(s)"
+          updated += 1
+        rescue =&gt; e
+          err = fmt_err.call(e)
+          UI.error("Failed to update #{loc_code}: #{err}")
+          summary_lines &lt;&lt; "- **#{loc_code}**: ⚠️ update failed (#{err})"
+        end
+      else
+        UI.message("Creating #{loc_code} (#{attrs.keys.join(', ')})...")
+        begin
+          version.create_app_store_version_localization(
+            attributes: to_camel_attrs.call(attrs).merge(locale: loc_code),
+          )
+          summary_lines &lt;&lt; "- **#{loc_code}**: created #{attrs.keys.length} field(s)"
+          created += 1
+        rescue =&gt; e
+          err = fmt_err.call(e)
+          UI.error("Failed to create #{loc_code}: #{err}")
+          summary_lines &lt;&lt; "- **#{loc_code}**: ⚠️ create failed (#{err})"
+        end
+      end
+    end
+
+    summary_lines &lt;&lt; ""
+    summary_lines &lt;&lt; "App-level: #{app_updated} updated, #{app_created} created. Version-level: #{updated} updated, #{created} created."
+    report = summary_lines.join("\n")
+    UI.message(report)
+
+    step_summary = ENV["GITHUB_STEP_SUMMARY"]
+    File.write(step_summary, report) if step_summary &amp;&amp; !step_summary.empty?
+  end
+end
+
+{
+  "apple": {
+    "copyright": "2026 Your Name.",
+    "info": {
+      "ja": {
+        "title": "アプリ名",
+        "subtitle": "",
+        "promoText": "",
+        "description": "",
+        "keywords": [],
+        "releaseNotes": "",
+        "privacyPolicyUrl": "https://example.com/privacy",
+        "supportUrl": "https://example.com/support",
+        "marketingUrl": "https://example.com"
+      },
+      "en-US": { "...": "同じ構造で各ロケール分" }
+    }
+  }
+}</pre>
+      <p>For the finer behavior, paste the GitHub Actions run output straight into Claude and have it fix things — behavior shifts with library versions and Apple spec changes.</p>
+    </section>
+
+    <aside class="closing" aria-label="A note to close">
+      <p>This translation also takes about a day on a Pro plan.</p>
+      <p>Release in two languages first. Localizing just the description first is the best value.</p>
+      <ol>
+        <li>Release the app in two languages</li>
+        <li>Release the description in more languages</li>
+        <li>Release the app in more languages</li>
+        <li>Release the screenshots in more languages</li>
+      </ol>
+      <p>Building the mechanism ahead of time doesn't hurt.</p>
+    </aside>
   </article>
 
   <nav class="treenav" aria-label="Sitemap">
