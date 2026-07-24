@@ -222,7 +222,9 @@ table.cmp td:first-child{font-weight:600;white-space:nowrap;color:var(--sub)}
    記事ページには使わない。設計意図は LP/NOTES_GUIDE.md §2.2。
    ============================================================ */
 /* hero */
-.ed{padding:46px 0 30px}
+/* 上下の余白バランス: kicker 上 (28px) は kicker 下 (18px) と釣り合わせ、
+   下 padding は 0 にして 01 の上の間隔を 02 以降 (.sec-h2 の margin) と揃える */
+.ed{padding:28px 0 0}
 .ed .kicker{display:flex;align-items:center;gap:12px;margin:0 0 18px}
 .ed .kicker::after{content:"";flex:1;height:1px;background:var(--line)}
 .ed h1{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
@@ -322,6 +324,13 @@ article .blk:first-of-type{margin-top:24px}
 .kit b{font-weight:700;color:var(--ink);flex:none}
 .kit .use{color:var(--muted);font-size:12px}
 .kit .cost{margin-left:auto;flex:none;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--sub)}
+/* 狭い画面で用途 (.use) が長いと 1 行に収まらず右へはみ出すため、用途だけ下段へ回す
+   (en は "already owned" 等が長く、375〜390px で見切れていた) */
+@media(max-width:560px){
+  .kit li{flex-wrap:wrap}
+  .kit b{min-width:0}
+  .kit .use{order:3;flex:0 0 100%}
+}
 
 /* 02 解決: Criteria は素のリスト。Reason / Options は .sub で字下げ従属し、
    .sub を分けることで内側の線が Reason と Options の間で 1 回切れる */
@@ -358,9 +367,16 @@ article .blk:first-of-type{margin-top:24px}
 .repro .step-h{font-weight:700;font-size:13.5px;margin:18px 0 8px;color:var(--ink)}
 .repro>p{font-size:13.5px;color:var(--sub);margin:12px 0 0;line-height:1.8}
 .repro code{font-family:var(--mono);font-size:12.5px;background:#f0efe9;border:1px solid var(--line);border-radius:4px;padding:1px 5px}
-/* 指示文サンプル: 5 行ぶんだけ見せて縦スクロール (行高 1.7×13.5px ≒ 23px × 5 + padding) */
-pre.paste{max-height:150px;overflow-y:auto}
-.paste .copy-btn{opacity:1}  /* 付録の指示文は常時コピー可にする */
+/* 指示文サンプル: 5 行ぶんだけ見せて縦スクロール (行高 1.7×13.5px ≒ 23px × 5 + padding)。
+   横スクロールさせると右上のコピーボタンが画面外へ逃げるため、折り返して
+   縦スクロールだけで全量読める / コピーできるようにする。 */
+pre.paste{max-height:150px;overflow-y:auto;overflow-x:hidden;
+  white-space:pre-wrap;overflow-wrap:break-word}
+/* コピーボタンは pre の外 (ラッパー) に置き、ブロック上部に常時出す。
+   pre の中だとスクロールで一緒に流れて消える + 本文に被るため。 */
+.paste-wrap{margin:14px 0 0}
+.paste-wrap pre.paste{margin:0}
+.paste-wrap .copy-btn{position:static;display:block;margin:0 0 6px auto;opacity:1}
 
 /* 末尾ひとことコメント: 著者のラフな感想。本文から格を落とした手記トーン。 */
 .closing{margin:32px 0 0;padding:16px 0 0;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;line-height:1.95}

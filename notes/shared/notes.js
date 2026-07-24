@@ -17,9 +17,11 @@
     }, { passive: true });
   }
 
-  /* --- copy button on <pre> --- */
+  /* --- copy button on <pre class="paste"> ---
+     付録 (再現メモ) の貼り付け用サンプルだけに付ける。本文中の pre は
+     「読ませる」ためのもので、コピーさせる意図がないので対象外。 */
   if (navigator.clipboard) {
-    var pres = document.querySelectorAll("article pre");
+    var pres = document.querySelectorAll("article pre.paste");
     var labelCopy = document.documentElement.lang === "ja" ? "コピー" : "copy";
     var labelDone = document.documentElement.lang === "ja" ? "コピーした" : "copied";
     pres.forEach(function (pre) {
@@ -35,7 +37,13 @@
           setTimeout(function () { btn.textContent = labelCopy; }, 1600);
         });
       });
-      pre.appendChild(btn);
+      /* ボタンは pre の「外」(ラッパー) に置く。pre の中に入れると縦スクロール
+         した時に一緒に流れて画面外へ消えてしまうため。 */
+      var wrap = document.createElement("div");
+      wrap.className = "paste-wrap";
+      pre.parentNode.insertBefore(wrap, pre);
+      wrap.appendChild(btn);
+      wrap.appendChild(pre);
     });
   }
 
