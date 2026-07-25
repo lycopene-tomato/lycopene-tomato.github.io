@@ -324,14 +324,14 @@ article .blk:first-of-type{margin-top:24px}
 .kit b{font-weight:700;color:var(--ink);flex:none}
 .kit .use{color:var(--muted);font-size:12px}
 .kit .cost{margin-left:auto;flex:none;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--sub)}
-/* 狭い画面で右へはみ出す件 (en の "already owned" 等) の吸収。
-   用途 (.use) には下限幅を持たせ、それを割るときだけ次の行へ回す
-   ── 1 行に収まる ja はそのまま 1 行 (無駄に行を増やして間延びさせない)。
-   折り返したときの行間は 2px まで詰めて、項目の切れ目 (padding 分) より
-   狭くし「どの用途がどの項目のものか」が一目で分かるようにする。 */
+/* 狭い画面 (スマホ縦) は 名前 / 用途 / 費用 を縦に積む (2026-07-25 ユーザー確定)。
+   横並びのまま折り返すと、どの用途がどの項目のものか分かりにくく、右へも
+   はみ出していた (en の "already owned" 等)。行間は詰めて 1 項目を 1 かたまりに
+   見せ、項目どうしは padding の空白で分ける。横向き / PC は 1 行のまま。 */
 @media(max-width:560px){
-  .kit li{flex-wrap:wrap;row-gap:2px}
-  .kit .use{min-width:7em}
+  .kit li{display:block;padding:9px 2px;line-height:1.55}
+  .kit b,.kit .use,.kit .cost{display:block}
+  .kit .cost{margin-left:0}
 }
 
 /* 02 解決: Criteria は素のリスト。Reason / Options は .sub で字下げ従属し、
