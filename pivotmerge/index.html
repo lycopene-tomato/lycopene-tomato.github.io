@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pivot &amp; Merge — a number puzzle you play by rotating 2×2 blocks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="Pivot &amp; Merge gives you one move: spin the nearest 2×2 block. Matching tiles that end up side by side merge — four at once multiplies by eight — then the board falls and chains. iPhone puzzle game." />
+<meta name="theme-color" content="#FBF6EF" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#101012" media="(prefers-color-scheme: dark)" />
+<link rel="canonical" href="https://lycoapp.com/pivotmerge/" />
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Pivot &amp; Merge" />
+<meta property="og:description" content="Pivot &amp; Merge gives you one move: spin the nearest 2×2 block. Matching tiles that end up side by side merge — four at once multiplies by eight — then the board falls and chains. iPhone puzzle game." />
+<meta property="og:url" content="https://lycoapp.com/pivotmerge/" />
+<meta property="og:image" content="https://lycoapp.com/pivotmerge/ogp.jpg" />
+<meta property="og:site_name" content="Lyco App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Pivot &amp; Merge" />
+<meta name="twitter:description" content="Pivot &amp; Merge gives you one move: spin the nearest 2×2 block. Matching tiles that end up side by side merge — four at once multiplies by eight — then the board falls and chains. iPhone puzzle game." />
+<meta name="twitter:image" content="https://lycoapp.com/pivotmerge/ogp.jpg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  :root {
+    --paper: #FBF6EF;
+    --ink: #26293C;
+    --muted: #6D7490;
+    --amber: #F0862A;
+  }
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    font-family: "Helvetica Neue", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(60% 45% at 18% 12%, #FFD3E7 0%, transparent 60%),radial-gradient(55% 40% at 88% 16%, #CDE5FA 0%, transparent 60%),radial-gradient(65% 50% at 50% 92%, #FFDFBE 0%, transparent 55%),radial-gradient(80% 60% at 50% 50%, #FBF6EF 0%, #EFE7DC 100%);
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: max(env(safe-area-inset-top), 24px) 20px max(env(safe-area-inset-bottom), 24px);
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .card {
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .icon {
+    width: 156px;
+    height: 156px;
+    border-radius: 32px;
+    box-shadow: 0 18px 40px rgba(31, 24, 18, 0.18), 0 4px 10px rgba(31, 24, 18, 0.08);
+    display: block;
+    background: #fff;
+  }
+  h1 {
+    margin: 6px 0 0;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .tagline {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .stores {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 4px;
+  }
+  .store-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #000;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: inherit;
+    border: 1px solid #000;
+    transition: transform .15s ease, box-shadow .15s ease;
+    position: relative;
+    line-height: 1.1;
+  }
+  .store-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,0.22); }
+  .store-btn .label {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .store-btn .small { font-size: 10px; opacity: 0.85; }
+  .store-btn .big { font-size: 17px; font-weight: 600; }
+  .store-btn svg { display: block; }
+  .store-btn[aria-disabled="true"] {
+    background: #B5B0A8;
+    border-color: #B5B0A8;
+    cursor: default;
+    opacity: 0.85;
+  }
+  .store-btn[aria-disabled="true"]:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .coming-soon-tag {
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    background: #FFD27A;
+    color: #2C2218;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    transform: rotate(4deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+  }
+  body.is-ios .store-btn--apple { transform: scale(1.03); }
+  body.is-android .store-btn--play .coming-soon-tag { background: var(--amber); color: #fff; }
+  body.is-android .store-btn--apple { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+  .footer {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--amber);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px 6px 8px;
+    border: 1px solid rgba(140, 110, 70, 0.32);
+    border-radius: 999px;
+    background: rgba(255, 252, 246, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background .15s ease, transform .15s ease;
+  }
+  .footer-link img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    /* puzzle PNG already has transparent background */
+  }
+  .footer-link:hover {
+    background: rgba(255, 246, 224, 0.95);
+    transform: translateY(-1px);
+  }
+  .footer .copy {
+    font-size: 10px;
+    color: var(--muted);
+    opacity: 0.65;
+    letter-spacing: 0.3px;
+  }
+  @media (prefers-color-scheme: dark) {
+    body {
+      color: #FBF6EE;
+      background:
+        radial-gradient(60% 45% at 18% 12%, #4A2846 0%, transparent 60%),radial-gradient(55% 40% at 88% 16%, #1D3A5E 0%, transparent 60%),radial-gradient(65% 50% at 50% 92%, #5B3A1B 0%, transparent 55%),radial-gradient(80% 60% at 50% 50%, #1B2436 0%, #10151F 100%);
+    }
+    .tagline { color: rgba(255, 248, 235, 0.78); }
+    .footer-link {
+      background: rgba(20, 16, 12, 0.55);
+      color: #FFE4A8;
+      border-color: rgba(255, 220, 150, 0.32);
+    }
+    .footer .copy { color: rgba(255, 248, 235, 0.55); }
+    .icon { background: rgba(0,0,0,0.1); }
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <img class="icon" src="icon.png" width="156" height="156" alt="Pivot &amp; Merge app icon" />
+    <h1>Pivot &amp; Merge</h1>
+    <p class="tagline">Rotate × Merge = Chain reactions</p>
+
+    <div class="stores">
+      <div class="store-btn store-btn--apple" role="button" aria-disabled="true" aria-label="Pivot &amp; Merge coming soon on the App Store">
+        <span class="coming-soon-tag">Coming soon</span>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+          <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+        </svg>
+        <span class="label">
+          <span class="small">Download on the</span>
+          <span class="big">App Store</span>
+        </span>
+      </div>
+
+      <div class="store-btn store-btn--play" role="button" aria-disabled="true" aria-label="Google Play coming soon">
+        <span class="coming-soon-tag">Coming soon</span>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+          <path d="M3 3v18l15-9L3 3z"/>
+        </svg>
+        <span class="label">
+          <span class="small">GET IT ON</span>
+          <span class="big">Google Play</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a class="footer-link" href="https://lycoapp.com/" aria-label="Visit lycoapp.com">
+        <img src="/images/logo-puzzle.png" alt="" aria-hidden="true" />
+        <span>lycoapp.com</span>
+      </a>
+      <span class="copy">© 2026 Lyco App</span>
+    </div>
+  </main>
+
+<script>
+(function () {
+  var ua = navigator.userAgent || "";
+  if (/iPhone|iPad|iPod/i.test(ua) && !window.MSStream) {
+    document.body.classList.add("is-ios");
+  } else if (/Android/i.test(ua)) {
+    document.body.classList.add("is-android");
+  }
+})();
+</script>
+<script defer src="../shared/analytics.js"></script>
+</body>
+</html>
