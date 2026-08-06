@@ -2,25 +2,25 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
-<title>PC-9801 의 N88-BASIC 게임을 iPhone 으로 이식──일본 잡지 베마가의 100 줄 테니스 게임, 30 년 뒤 — Lyco App</title>
+<title>아이가 게임하고 싶다는데 폰에 하나도 없어서, 시간 제한 없는 퍼즐을 만들었습니다 — Lyco App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="일본에 80 년대부터 『マイコン BASIC マガジン (베마가 / Bēmaga)』라는 hobbyist 프로그래밍 잡지가 있어서, 매호마다 작은 게임의 전체 소스 코드를 잡지 지면에 인쇄해 두면 독자가 PC-9801 에 한 줄 한 줄 직접 입력해서 돌렸어요. 그 중 『Receive No.1』(N88-BASIC 100 줄, 2 인용 테니스) 를 30 년 뒤 iPhone 으로 그대로 옮겼습니다. 물리, 삼각함수 테이블 원본 그대로 + 당시 못 했던 GA 학습 CPU 대전 추가." />
-<link rel="canonical" href="https://lycoapp.com/ko/blog/posts/receive-no1.html" />
-<link rel="alternate" hreflang="ja"        href="https://lycoapp.com/ja/blog/posts/receive-no1.html" />
-<link rel="alternate" hreflang="en-US"     href="https://lycoapp.com/en-US/blog/posts/receive-no1.html" />
-<link rel="alternate" hreflang="zh-Hant"   href="https://lycoapp.com/zh-Hant/blog/posts/receive-no1.html" />
-<link rel="alternate" hreflang="ko"        href="https://lycoapp.com/ko/blog/posts/receive-no1.html" />
-<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/receive-no1.html" />
+<meta name="description" content="Pivot &amp; Merge 를 만든 이야기. 시간 제한 없는 퍼즐 게임입니다. 밖에서 아이가 게임하고 싶다고 했는데 제 폰에 하나도 없던 게 시작이었어요. 테트리스・뿌요뿌요・2048 에서 빌려온 것과, 일부러 뺀 것." />
+<link rel="canonical" href="https://lycoapp.com/ko/blog/posts/minute-to-learn.html" />
+<link rel="alternate" hreflang="ja" href="https://lycoapp.com/ja/blog/posts/minute-to-learn.html" />
+<link rel="alternate" hreflang="en-US" href="https://lycoapp.com/en-US/blog/posts/minute-to-learn.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/zh-Hant/blog/posts/minute-to-learn.html" />
+<link rel="alternate" hreflang="ko" href="https://lycoapp.com/ko/blog/posts/minute-to-learn.html" />
+<link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/blog/posts/minute-to-learn.html" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="PC-9801 의 N88-BASIC 게임을 iPhone 으로 이식──일본 잡지 베마가의 100 줄 테니스 게임, 30 년 뒤" />
-<meta property="og:description" content="일본 80 년대 잡지 『베마가』의 테니스 게임, PC-9801 N88-BASIC 100 줄을 30 년 뒤 iPhone 에 한 줄 한 줄 그대로 이식. 물리 그대로 + 당시 못 했던 GA 학습 CPU 대전 추가." />
-<meta property="og:url" content="https://lycoapp.com/ko/blog/posts/receive-no1.html" />
+<meta property="og:title" content="아이가 게임하고 싶다는데 폰에 하나도 없어서, 시간 제한 없는 퍼즐을 만들었습니다" />
+<meta property="og:description" content="Pivot &amp; Merge 를 만든 이야기. 시간 제한 없는 퍼즐 게임입니다. 밖에서 아이가 게임하고 싶다고 했는데 제 폰에 하나도 없던 게 시작이었어요. 테트리스・뿌요뿌요・2048 에서 빌려온 것과, 일부러 뺀 것." />
+<meta property="og:url" content="https://lycoapp.com/ko/blog/posts/minute-to-learn.html" />
 <meta property="og:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
-<meta property="og:locale" content="ko_KR" />
 <meta property="og:site_name" content="Lyco App" />
+<meta property="og:locale" content="ko_KR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="PC-9801 의 N88-BASIC 게임을 iPhone 으로 이식──일본 잡지 베마가의 100 줄 테니스 게임, 30 년 뒤" />
-<meta name="twitter:description" content="일본 80 년대 잡지 『베마가』의 테니스 게임, PC-9801 N88-BASIC 100 줄을 30 년 뒤 iPhone 에 한 줄 한 줄 그대로 이식. 물리 그대로 + 당시 못 했던 GA 학습 CPU 대전 추가." />
+<meta name="twitter:title" content="아이가 게임하고 싶다는데 폰에 하나도 없어서, 시간 제한 없는 퍼즐을 만들었습니다" />
+<meta name="twitter:description" content="Pivot &amp; Merge 를 만든 이야기. 시간 제한 없는 퍼즐 게임입니다. 밖에서 아이가 게임하고 싶다고 했는데 제 폰에 하나도 없던 게 시작이었어요. 테트리스・뿌요뿌요・2048 에서 빌려온 것과, 일부러 뺀 것." />
 <meta name="twitter:image" content="https://lycoapp.com/images/og-blog-default.jpeg" />
 <link rel="stylesheet" href="/shared/blog-rich.css" />
 <style>
@@ -83,24 +83,21 @@
   .post-byline-sep { margin: 0 8px; opacity: .4; }
   /* END blog-extension-styles */
 </style>
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "PC-9801 의 N88-BASIC 게임을 iPhone 으로 이식──일본 잡지 베마가의 100 줄 테니스 게임, 30 년 뒤",
-  "description": "일본 80 년대 잡지 『베마가』의 테니스 게임, PC-9801 N88-BASIC 100 줄을 30 년 뒤 iPhone 에 한 줄 한 줄 그대로 이식. 물리 그대로 + 당시 못 했던 GA 학습 CPU 대전 추가.",
-  "datePublished": "2026-06-03",
-  "dateModified": "2026-07-11",
+  "headline": '아이가 게임하고 싶다는데 폰에 하나도 없어서, 시간 제한 없는 퍼즐을 만들었습니다',
+  "description": 'Pivot & Merge 를 만든 이야기. 시간 제한 없는 퍼즐 게임입니다. 밖에서 아이가 게임하고 싶다고 했는데 제 폰에 하나도 없던 게 시작이었어요. 테트리스・뿌요뿌요・2048 에서 빌려온 것과, 일부러 뺀 것.',
+  "datePublished": "2026-08-06",
+  "dateModified": "2026-08-06",
   "author": { "@type": "Person", "@id": "https://lycoapp.com/ko/about/#lyco", "name": "Lyco" },
   "publisher": {
     "@type": "Organization",
     "name": "Lyco App",
     "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
   },
-  "mainEntityOfPage": "https://lycoapp.com/ko/blog/posts/receive-no1.html",
+  "mainEntityOfPage": "https://lycoapp.com/ko/blog/posts/minute-to-learn.html",
   "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#tldr"] },
   "inLanguage": "ko"
 }
@@ -126,7 +123,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "PC-9801 의 N88-BASIC 게임을 iPhone 으로 이식──일본 잡지 베마가의 100 줄 테니스 게임, 30 년 뒤"
+      "name": "아이가 게임하고 싶다는데 폰에 하나도 없어서, 시간 제한 없는 퍼즐을 만들었습니다"
     }
   ]
 }
@@ -136,59 +133,89 @@
 <body class="acc-other">
 <div id="site-header"></div>
 <div class="wrap">
-  <a class="back" href="../index.html">← 글 목록으로</a>
-  <h1>PC-9801 의 N88-BASIC 게임을 iPhone 으로 이식──일본 잡지 베마가의 100 줄 테니스 게임, 30 년 뒤</h1>
-  <div class="meta">2026-06-03</div>
+  <a class="back" href="../index.html">← 글 목록</a>
+  <h1>아이가 게임하고 싶다는데 폰에 하나도 없어서, 시간 제한 없는 퍼즐을 만들었습니다</h1>
+  <div class="meta">2026-08-06</div>
   <!-- BEGIN series-box -->
   <!-- END series-box -->
   <!-- BEGIN tags -->
   <div class="post-tags">
     <span class="post-tags-label">태그:</span>
-    <a class="post-tag" href="../tag/retro-pc.html">레트로 PC</a>
+    <a class="post-tag" href="../tag/quote-essay.html">생각하는 것</a>
   </div>
   <!-- END tags -->
   <div class="body">
 
-<p id="tldr" class="post-tldr">먼저 말씀드리면, 이 글은 육아랑 상관없습니다. 일본에 80 년대부터 <em>マイコン BASIC マガジン</em> ── 다들 줄여서 <strong>베마가 (Bēmaga)</strong> 라고 부르던 hobbyist 프로그래밍 잡지가 있었는데, 매호마다 작은 게임의 전체 소스 코드를 잡지 지면에 인쇄해 두면 독자가 PC-9801 에 한 줄 한 줄 손으로 타이핑해서 돌리는 문화였어요. 그 중 한 작품 ── 『Receive No.1』, N88-BASIC 으로 쓰여진 100 줄짜리 2 인용 테니스 ── 를 30 년 뒤에 iPhone 으로 한 줄 한 줄 그대로 옮겼습니다. 그리고 당시 기계로는 못 했던 것 하나 ── GA (유전 알고리즘) 로 학습한 CPU 대전 ── 을 추가했어요.</p>
+<p id="tldr" class="post-tldr">시간 제한 없는 퍼즐 <strong>Pivot &amp; Merge</strong> 를 만들었습니다. 밖에서 아이가 게임하고 싶다고 했는데 제 폰에 게임이 하나도 없던 게 시작이었어요. 테트리스・뿌요뿌요・2048 에서 빌려온 것과, 일부러 뺀 것에 대한 이야기.</p>
 
-<p>이 글, 진짜로 육아랑 상관없어요. 우리 집 애한테는 이 재미가 잘 안 와 닿을 것 같기도 하고.</p>
+<p>밖에 나가 있으면 아이가 게임하고 싶다고 할 때가 있습니다. 대개 기다리는 시간이 갑자기 길어졌을 때예요.</p>
 
-<p><strong>Receive No.1</strong> 을 30 년 만에 iPhone 에 올렸습니다.</p>
+<p>그래서 제 폰을 보면 게임이 하나도 없습니다. 게임을 안 하던 사람은 아닌데, 바빠서 할 시간이 없고, 깔려 있으면 결국 만지게 되니까 아예 처음부터 안 깔았거든요. 저도 똑같아요, 하는 분 계실 것 같은데요.</p>
 
-<p>일본 레트로 PC 문화에 익숙하지 않은 분들을 위해 한 줄 배경 설명. 80–90 년대 일본에 <strong>マイコン BASIC マガジン</strong>, 줄여서 <strong>베마가 (Bēmaga)</strong> 라는 잡지가 있었는데, 이 잡지의 핵심은 <em>매호마다 작은 게임의 전체 소스 코드를 잡지에 그대로 인쇄</em>해 둔 다는 거예요. 잡지를 사서, PC-9801 앞에 앉아서, <em>그 코드를 처음부터 끝까지 손으로 타이핑해서 돌리는</em> ── 소위 type-in 문화. <em>Receive No.1</em> 도 그 중 한 작품으로, N88-BASIC (NEC PC 용 Microsoft 계열 BASIC 방언) 으로 쓰여진 <strong>약 100 줄</strong>짜리 2 인용 테니스 게임이에요.</p>
+<h2>먼저 「안 넣을 것」을 정했습니다</h2>
 
-<h2>코드도, 물리도, 아마 버그까지도 ── 그대로</h2>
-
-<pre><code>670 BEEP:IF SU=T THEN SU=ABS(SU-3) ELSE P(SU)=P(SU)+1
-680 GOSUB *TOKUTENKAKU:IF P(SU)=15 THEN GOTO *SHOUHAI</code></pre>
-
-<p>이 점수 판정 한 줄에서 시작해서, <code>BX=BX+VX:BY=BY+VY/1.5:VY=VY+1</code> 중력 모델, <code>HX=X+7+32*CS(AA), HY=Y+31*SN(AA)</code> 팔의 충돌 판정, <code>DIM CS(360), SN(360)</code> 으로 22.5° 간격으로 미리 채워 둔 삼각함수 테이블까지 ── <strong>당시 로직을 한 줄 한 줄 그대로 휴대폰에 옮겼습니다</strong>.</p>
-
-<p>물리가 일치하니까, 당시 그 감각이 전부 그대로 살아 있어요:</p>
+<p>만들기 전에 정한 건 기능이 아니라 제약 쪽이었습니다. 요구사항 정의라기보다 「안 할 것」 리스트에 가까웠어요.</p>
 
 <ul>
-  <li>서브는 코트 끝에서 똑바로 위로 올라갔다가 다시 떨어집니다</li>
-  <li>팔을 휘두르는 그 순간이 공의 각도와 속도를 결정합니다</li>
-  <li>세 번 닿으면 공이 죽어요</li>
-  <li>서버만 점수를 낼 수 있어요 (옛날 테니스 규칙)</li>
+  <li>시간 제한을 넣지 않는다</li>
+  <li>쾌감은 있어야 한다</li>
+  <li>규칙이 단순하고, 제대로 끝이 있다</li>
 </ul>
 
-<h2>당시 하드웨어가 못 했던 것: CPU 대전</h2>
+<p>세 번째가 은근히 큽니다. 끝이 없는 게임을 아이한테 쥐여주면, 「이제 그만해」를 말하는 역할이 이쪽으로 넘어옵니다. 그 역할은 피하고 싶었어요.</p>
+
+<h2>단순한데 깊은 게임이라고 하면</h2>
+
+<p>테트리스, 뿌요뿌요, 2048, HATETRIS, 리버시 (오델로).</p>
+
+<p>테트리스는 그 모양이랑 규칙이 다듬어진 정도가 진짜 대단합니다. 영화 《테트리스》도 봤는데, 전 세계가 열광한 것도 이해가 가요. 그리고 거기서 뿌요뿌요.</p>
+
+<p>단순한 게임은 이제 다 나왔겠지 싶었는데, 2048 이 등장했습니다. Threes! 랑 1024 에서 영감을 받은 건 다들 아는 얘기지만, 그래도 이 시대에 새 게임이 나오는구나 싶어서 좀 감동했어요.</p>
+
+<p>HATETRIS 도 같은 종류의 놀라움입니다. 「항상 최악의 블록이 떨어진다」로 규칙 하나만 바꿨는데 저렇게 다른 게임이 됩니다. <strong>스펙 한 줄이 먹히는</strong> 게 이런 거구나 싶었어요.</p>
+
+<h2>배우는 데 1 분, 통달하는 데 평생</h2>
+
+<p>만들고 싶었던 건 리버시 (오델로) 의 발상 쪽이었습니다.</p>
+
+<blockquote>배우는 데 1 분, 통달하는 데 평생<br />A minute to learn, a lifetime to master</blockquote>
+
+<p>조금 만져 보면 규칙을 알 수 있다. 아이도 안다. 아이한테 넘겨줄 수 있고, 공부도 조금은 된다. 그런 걸 만들어 보고 싶었습니다.</p>
+
+<h2>좋은 데만 가져왔습니다</h2>
+
+<p>한 일은 명작들의 좋은 부분 가져오기입니다.</p>
 
 <ul>
-  <li><strong>성장하는 CPU</strong>: 유전자 20 개를 진화시키는 학습형 AI. 데스크탑에서 약 1500 세대 돌린 것을 「초기 CPU」 로 같이 넣어 놨습니다. 유전 알고리즘은 베마가 100 줄 안에는 없었던 거예요. 직접 키워서 JSON 으로 내보내고 친구한테 넘길 수도 있습니다.</li>
-  <li><strong>관람 모드</strong>: CPU 끼리 계속 치게 두고 보고만 있는 모드. 랠리가 한참 이어질 때가 있어서, 보고 있으면 좀 묘하게 빠져들어요.</li>
+  <li>2048 의 덧셈</li>
+  <li>2048 의 턴제</li>
+  <li>테트리스의 낙하</li>
+  <li>뿌요뿌요의 연쇄</li>
 </ul>
 
-<p><a class="app-link" href="../../apps/receive.html">Receive No.1 보기 →</a></p>
+<p>2048 은 턴제인데 연쇄가 없습니다. 뿌요뿌요는 연쇄가 있는데 알아서 떨어집니다. 이 둘을 분해해서 한쪽씩 가져온 셈이에요.</p>
+
+<p>판에 손가락을 올리면 가장 가까운 2×2 가 돕니다. 같은 숫자가 이어지면 합쳐지고, 비워진 칸으로 위의 타일이 떨어지고, 거기서 또 맞으면 연쇄.</p>
+
+<p>턴제라서 손을 대기 전까지 판은 움직이지 않습니다. 부르면 그 자리에서 닫을 수 있고, 다음에 열면 같은 판이 그대로 남아 있어요.</p>
+
+<h2>쥐여줘 봤더니</h2>
+
+<p>우리 아이는 「네 개를 붙이면 8 이 된다」를 알고 나서, 그 모양을 노리고 만들기 시작했습니다. 덧셈이라기보다 배수의 감각이 먼저 들어오는 모양이에요. 속으로 『그걸 거기서 알아채나』 싶었습니다. 구구단도 2 의 배수 감각만 쥐고 있으면 절반은 외운 거라고 해도 되려나요?</p>
+
+<p>숫자 감각이 자연스럽게 붙는다, 고 하면 좀 과장이지만요.</p>
+
+<p>가볍게 시작할 수 있고, 가볍게 그만둘 수 있고, 아이한테도 넘겨줄 수 있다. 만들고 싶었던 건 그 정도였고, 통달하는 데 평생이 걸릴지는 아직 모르겠습니다. 제 최고 타일이 16384 에서 멈춰 있어서…</p>
+
+<p><a class="app-link" href="../../apps/pivotmerge.html">Pivot & Merge 보러가기 →</a></p>
 
   </div>
   <!-- BEGIN related-posts -->
   <!-- END related-posts -->
   <!-- BEGIN post-nav -->
   <nav class="post-nav">
-    <a class="post-nav-prev" href="app-timer.html"><span class="post-nav-label">← 이전 글</span><span class="post-nav-title">타이머만 맞추면 싸움──시간 끝나면 무너지는 아이를 위한, 직접 발사하는 시각 타이머</span></a>
-    <a class="post-nav-next" href="minute-to-learn.html"><span class="post-nav-label">다음 글 →</span><span class="post-nav-title">아이가 게임하고 싶다는데 폰에 하나도 없어서, 시간 제한 없는 퍼즐을 만들었습니다<span class="new-badge" style="display:inline-block;padding:1px 6px;margin-left:6px;background:#E89A3D;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;border-radius:4px;vertical-align:middle;">New</span></span></a>
+    <a class="post-nav-prev" href="receive-no1.html"><span class="post-nav-label">← 이전 글</span><span class="post-nav-title">PC-9801 의 N88-BASIC 게임을 iPhone 으로 이식──일본 잡지 베마가의 100 줄 테니스 게임, 30 년 뒤</span></a>
+    <a class="post-nav-next" href="survivorship-bias.html"><span class="post-nav-label">다음 글 →</span><span class="post-nav-title">생존자 편향과 육아──무사히 돌아온 비행기만 보고 있었어요</span></a>
   </nav>
   <!-- END post-nav -->
   <!-- BEGIN byline -->

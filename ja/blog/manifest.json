@@ -147,6 +147,22 @@
       "app_badge": "Receive No.1"
     },
     {
+      "_comment": "0-B (Pivot & Merge / SKU: pivotmerge)。ゲーム 2 本目、ReceiveNo1 と同じ育児テーマ外の枠。色=エンジニア集中 (直近 3 本の 短文自虐 / 真面目分析 / 共感+静かな怒り を破る)。タグは quote-essay 単独 ── オセロの箱の標語「覚えるのは1分、極めるには一生」に立ち止まって設計思想を書き直した記事なので、tag の定義 (本の中の言葉に立ち止まる) に合う。1 記事 1 ターゲット原則。章立ては B シーン先行型。テトリス/ぷよぷよ/2048/HATETRIS の固有名は本文で出す (エッセイ文脈)。LP の apps[] コピー側では出さない分担。",
+      "slug": "minute-to-learn",
+      "date": "2026-08-06",
+      "tags": [
+        "quote-essay"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "section": "apps",
+      "pinned": false,
+      "app_badge_key": "pivot-merge",
+      "title": "「ゲームしたい」に渡せるものが無かったので、時間制限のないパズルを作った",
+      "description": "時間制限のないパズル Pivot &amp; Merge を作った話。出先で子供に渡せるゲームが自分のスマホに 1 個も入っていなかったのが発端。テトリス・ぷよぷよ・2048 から借りたものと、あえて外したもの。",
+      "app_badge": "Pivot & Merge"
+    },
+    {
       "_comment": "成長ノート (slug: growthtrend, SKU: growthtrend) のアプリ別コラム (0-B)。LP/BLOG_DRAFTS/survivorship-bias.md (元 0-C) をユーザーが書き直し、成長ノートで着地する 0-B に転換 (2026-07-02、アプリリリースに合わせて公開)。前半: Wald の帰還爆撃機 → 生存者バイアス → 3 応用 (SNS 育児術 / ママ友の成功談 / 子の「大丈夫」) → 見えない弾痕の地図 (TroubleNote 内部言及)。後半: イスラエル空軍のカーネマン vs 教官 → 平均への回帰 (Galton) → 「昨日は出来てたのに」の錯覚 → Dweck (能力褒め vs 努力褒め) は別記事予告 → 認知バイアスは知っても消えない → 移動平均のトレンドで見る = 怒らないため・親の平穏のためのアプリ、で成長ノート着地。tags は cognitive-bias (外圧で苦しむ親)。色は『短文自虐 + 軽い分析』。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆 (翻訳ではない)。locale 置換: en-US = Instagram / r/Parenting / mom at pickup、zh-Hant = FB 媽媽社團 / 同學的媽媽、ko = 맘카페 / 같은 반 엄마。引用 4 本 (Wald 1943 / Kahneman & Tversky 1973 / Galton 1886 / Mueller & Dweck 1998) は 4 言語共通、全てソースリンク付き。",
       "slug": "survivorship-bias",
       "date": "2026-07-02",
