@@ -204,6 +204,24 @@
       "app_badge": "last-days"
     },
     {
+      "_comment": "0-C 一般 (日常雑記型)。ユーザーの実体験下書き起点。夏休みの宿題 3 種 (学校 / 塾 / 学期中の持ち越し) を全部 Todoビンゴの盤面 8 枚に細切りし、模造紙+付箋で夏休み全体を壁に貼った実践レポート。柱は「可視化した直後がいちばん量に見える」= 押し入れを全部出した直後の部屋の比喩、そして量を減らさなかった判断。仕掛けの核は「宿題 1 個でゲーム 5 分」ではなく「ビンゴ 1 列でゲーム 5 分」。既存 0-B の app-bingo が『夏休みの宿題はカレンダービンゴで』と書いていたのを、今回は課題種別が交差するので使わなかった、と自己反証する章を持つのが本記事の独自性。色=実用ガイド (直近 3 本 エンジニア集中 / 短文自虐 / 真面目分析 を破る)。tags は koe-kake 単独 (ハウツー検索の親 → 育児テク消費 → アプリ導線、1 記事 1 ターゲット原則)。引用研究なし (直近 2 本が引用付きだったので体験談型に振る)。0-C だが仕掛けが TodoBingo のコア機能そのものなので SKILL §5.3.1 によりカテゴリピルを個別アプリ CTA に置換。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆。locale 置換: en-US = 米国に学校配布の夏休み宿題制度が無いため summer packet / bridge workbook / 学年の積み残し + butcher paper、比喩は garage clean-out。zh-Hant = 暑假作業 / 補習班暑期班 / 壁報紙+便利貼。ko = 여름방학 숙제 / 학원 여름 특강 / 전지+포스트잇。",
+      "slug": "summer-homework-bingo",
+      "date": "2026-08-08",
+      "tags": [
+        "koe-kake"
+      ],
+      "series_id": null,
+      "series_order": null,
+      "related_slugs": [
+        "app-bingo",
+        "app-sugoroku"
+      ],
+      "section": "latest",
+      "pinned": false,
+      "title": "\"이걸 어떻게 다 해!\" ── 여름방학 숙제가 안 끝나는 아이와, 전지 한 장과 TodoBingo",
+      "description": "여름방학 숙제가 도무지 안 끝나서, 학교 숙제도 학원 교재도 밀린 것도 전부 TodoBingo 판에 잘게 쪼개 넣고 전지에 붙여 벽에 걸었습니다. 한 달 잡았던 계획이 2 주 만에 거의 정리됐어요."
+    },
+    {
       "_comment": "0-C 一般コラム。LP/BLOG_DRAFTS/paradox-of-choice.md 起点。フック: 朝の『何着る?』に子が 3 分固まる → Iyengar & Lepper (2000) ジャム実験 (24 種 vs 6 種、購買率 10 倍差) → 子も 24 種ジャムの大人と同じ過負荷 → 2 択にしたら 3 秒で決まる → Lyco App の Todo 系 (TodoGatya / TodoBingo) も同じ『選択肢を絞る』設計だった → 仕事の要件定義でも『選択できる不自由』として実践している (エンジニア視点で着地) → 締めに親自身の『何でも良いよ』というロールリバーサルでオチ。tags は koe-kake (ハウツー検索の親に『2 択にする』言葉がけ訴求) / cognitive-bias (パラドックスで外圧の理由を言語化、自分を責めなくていい)。色は『真面目分析』。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆。シーン細部のローカル置換 (en-US: mac and cheese / grilled cheese / chicken nuggets / zh-Hant: 咖哩飯 / 炒飯 / 飯糰 / ko: 카레 / 우동 / 주먹밥) で各 locale の親に届くように。",
       "slug": "paradox-of-choice",
       "date": "2026-06-22",
