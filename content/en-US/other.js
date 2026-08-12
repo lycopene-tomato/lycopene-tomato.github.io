@@ -86,7 +86,7 @@ window.__CONTENT__["en-US"].categories.other = {
       ],
       setupSteps: [
         { title: "Put a finger down and spin", desc: "The four nearest cells turn under your finger. The angle you release at is the one that sticks; let go while it is still gray and nothing happens." },
-        { title: "Merge across or down", desc: "Once my kid learned that four in a square multiply by eight, they started building that shape on purpose." },
+        { title: "Merge across or down", desc: "Once my kid learned that four in a square makes 8, they started building that shape on purpose." },
         { title: "Watch it fall and match", desc: "The chain keeps going after you lift your finger, and that part we just watch together." },
       ],
     },
