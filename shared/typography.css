@@ -1,0 +1,68 @@
+/* ============================================================
+ * typography.css — 文章の折り返し (読みやすい位置で改行)
+ * ============================================================
+ * メディアクエリは使わない。「どこで折ってよいか」だけをブラウザに渡し、
+ * 実際の改行位置は表示幅に応じてブラウザが毎回計算する。よって 320px でも
+ * 1200px でも常に区切りの良い位置で折れる。ブレークポイントごとに <br> を
+ * 打つ方式は想定外の幅で崩れるため採らない。
+ *
+ * 読み込み経路 (単一の正はこのファイル):
+ *   - motion.css      … LP 全ページ + privacy-policy
+ *   - blog-rich.css   … ブログ (motion.css 経由の 3 段チェーンを避けて直 import)
+ *   - notes/shared/notes.css … Architecture Notes
+ *   - about / in-app / シェアルーターは <link> で直接読む
+ *     (これらは共通 CSS を持たず inline <style> のみのため)
+ *
+ * エンジンごとの効き方 (Chromium 実測、幅 300px の日本語 1 段落):
+ *   指定なし  最終行 2 文字 / pretty 3 文字 / auto-phrase 6 文字 /
+ *   pretty + auto-phrase 12 文字
+ *   → Chromium では auto-phrase が、Safari では pretty が主に効く。
+ *     WebKit の pretty は段落の全行を対象に短い最終行を防ぐ実装 (Safari 26+)。
+ *     Chromium の pretty は末尾 4 行のみが対象で、日本語にはほぼ効かない。
+ * ============================================================ */
+
+body {
+  /* 行頭に 、。?! が来ないよう禁則を厳格化 (全ブラウザ対応済み) */
+  line-break: strict;
+  /* 長い URL だけは途中で折って溢れを防ぐ。
+     anywhere ではなく break-word (min-content 幅に影響させない) */
+  overflow-wrap: break-word;
+  /* 最終行に 1-2 文字だけ残る孤立行を避ける
+     (Chrome 117+ / Safari 26+。Firefox 未対応だが無害に無視される) */
+  text-wrap: pretty;
+}
+
+/* コードは孤立行回避の対象外に戻す (text-wrap-style は継承されるため)。
+   longhand 非対応ブラウザでは無視されるが、その場合も実害はない。 */
+pre, code, kbd, samp {
+  text-wrap-style: auto;
+}
+
+/* 見出し・タイトルは各行の長さを揃える (Chrome 114+ / Safari 17.5+ / Firefox 121+) */
+h1, h2, h3,
+.title, .pen-sub, .section-label, .post-tldr, .tagline, .lead {
+  text-wrap: balance;
+}
+
+/* 日本語は文節の切れ目で折る。Chromium 119+ のみ。
+ * Safari は実装作業中で、対応した日に自動で有効になる (こちら側の対応は不要)。
+ * 長い本文には掛けない ── 右端のギザギザが強くなって逆に読みにくいため、
+ * 見出し・カードタイトル・箇条書き・TL;DR といった短いテキストに限定する。 */
+html[lang="ja"] h1,
+html[lang="ja"] h2,
+html[lang="ja"] h3,
+html[lang="ja"] li,
+html[lang="ja"] .title,
+html[lang="ja"] .pen-sub,
+html[lang="ja"] .section-label,
+html[lang="ja"] .post-tldr,
+html[lang="ja"] .tagline,
+html[lang="ja"] .lead {
+  word-break: auto-phrase;
+}
+
+/* 韓国語は単語の途中で折らない (全ブラウザ対応済み)。
+   溢れは上の overflow-wrap: break-word が受ける。 */
+html[lang="ko"] body {
+  word-break: keep-all;
+}

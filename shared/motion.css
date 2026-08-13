@@ -12,6 +12,7 @@
  * font-weight: 900 は使わない (どのフォントでも潰れる)。最大 700 まで。
  * ---------------------------------------------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Quicksand:wght@500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap");
+@import url("typography.css");
 
 :root {
   /* デフォルト = 日本語想定 */
