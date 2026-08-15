@@ -71,6 +71,43 @@
 }
 </script>
 <!-- END breadcrumb-jsonld -->
+<!-- BEGIN collection-jsonld -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "ADHD の記事一覧 — 子育てコラム | Lyco App",
+  "description": "「うちの子、もしかして…」と気になっている方へ。ADHD 研究をアプリ作りと子育ての参考にした記事 (子をラベル化はしません)。",
+  "url": "https://lycoapp.com/ja/blog/tag/adhd-related.html",
+  "inLanguage": "ja",
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": "https://lycoapp.com/ja/blog/#blog",
+    "name": "コラム",
+    "url": "https://lycoapp.com/ja/blog/",
+    "inLanguage": "ja"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": 2,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "url": "https://lycoapp.com/ja/blog/posts/rewards-and-dopamine.html",
+        "name": "褒美が無いとやらない子にならない？──「ご褒美で釣る」子育てとドーパミン研究の話"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "url": "https://lycoapp.com/ja/blog/posts/remember-to-remember.html",
+        "name": "子供がTodoリストを見るのを忘れる──ワーキングメモリと「忘れない事を忘れない」"
+      }
+    ]
+  }
+}
+</script>
+<!-- END collection-jsonld -->
 </head>
 <body>
 <div id="site-header"></div>
@@ -80,6 +117,11 @@
   <p class="lead">「うちの子、もしかして…」と気になっている方へ。ADHD 研究をアプリ作りと子育ての参考にした記事 (子をラベル化はしません)。</p>
 
   <div class="posts">
+    <a class="post" href="../posts/rewards-and-dopamine.html">
+    <div class="date">2026-04-28</div>
+    <div class="title">褒美が無いとやらない子にならない？──「ご褒美で釣る」子育てとドーパミン研究の話</div>
+    <div class="excerpt">Lyco App はご褒美やゲーム性を多く組み込んでいます。「ご褒美が無いと動かない子を作るのでは?」という疑問に、ADHD 研究のドーパミン特性と習慣化の視点からお答えします。</div>
+  </a>
     <a class="post" href="../posts/remember-to-remember.html">
     <div class="date">2026-05-11</div>
     <div class="title">子供がTodoリストを見るのを忘れる──ワーキングメモリと「忘れない事を忘れない」</div>
