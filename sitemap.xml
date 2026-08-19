@@ -578,15 +578,83 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/en-US/about/" />
   </url>
   <url>
-    <loc>https://lycoapp.com/lastdays/</loc>
+    <loc>https://lycoapp.com/privacy-policy/ja/</loc>
     <lastmod>2026-08-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/privacy-policy/ja/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/privacy-policy/en-US/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/privacy-policy/zh-Hant/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/privacy-policy/ko/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/privacy-policy/en-US/" />
+  </url>
+  <url>
+    <loc>https://lycoapp.com/privacy-policy/en-US/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/privacy-policy/ja/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/privacy-policy/en-US/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/privacy-policy/zh-Hant/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/privacy-policy/ko/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/privacy-policy/en-US/" />
+  </url>
+  <url>
+    <loc>https://lycoapp.com/privacy-policy/zh-Hant/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/privacy-policy/ja/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/privacy-policy/en-US/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/privacy-policy/zh-Hant/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/privacy-policy/ko/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/privacy-policy/en-US/" />
+  </url>
+  <url>
+    <loc>https://lycoapp.com/privacy-policy/ko/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lycoapp.com/privacy-policy/ja/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://lycoapp.com/privacy-policy/en-US/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://lycoapp.com/privacy-policy/zh-Hant/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lycoapp.com/privacy-policy/ko/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lycoapp.com/privacy-policy/en-US/" />
   </url>
   <url>
     <loc>https://lycoapp.com/growthtrend/</loc>
     <lastmod>2026-08-11</lastmod>
   </url>
   <url>
+    <loc>https://lycoapp.com/lastdays/</loc>
+    <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
     <loc>https://lycoapp.com/pivotmerge/</loc>
+    <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/planetlooptimer/</loc>
+    <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/receiveno1/</loc>
+    <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/todobank/</loc>
+    <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/todobingo/</loc>
+    <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/todofarm/</loc>
+    <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/todogatya/</loc>
+    <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/todoladders/</loc>
+    <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lycoapp.com/troublenote/</loc>
     <lastmod>2026-08-11</lastmod>
   </url>
   <url>

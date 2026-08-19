@@ -14,12 +14,30 @@
 
 ## Apps (iOS, Apple App Store)
 
+Eleven apps, shelved on the site under four categories: Todo (habit building), Timer (getting started / stopping), Log (parent-side records), Other (bonus shelf).
+
+### Todo — habit building
+
 - [TodoGatya](https://lycoapp.com/en-US/apps/gacha.html): To-do app with a gacha-style reward animation when tasks complete. Built to give kids a small starting switch when motivation is low.
 - [TodoBingo](https://lycoapp.com/en-US/apps/bingo.html): To-do app organized as a bingo card. Completed lines show visual progress.
 - [TodoLadders](https://lycoapp.com/en-US/apps/sugoroku.html): To-do app where finishing tasks advances a board-game piece (Japanese name: Todoすごろく).
 - [TodoFarm](https://lycoapp.com/en-US/apps/farm.html): To-do app where completed tasks grow virtual farm crops.
-- [PlanetLoopTimer](https://lycoapp.com/en-US/apps/timer.html): Visual loop timer for repeated daily activities — newest app.
+- [TodoBank](https://lycoapp.com/en-US/apps/bank.html): A passbook for deals like "ten worksheets for game time", so the promise lives in a balance instead of in either party's memory. Low-energy days can withdraw from savings.
+
+### Timer — starting and stopping
+
+- [PlanetLoopTimer](https://lycoapp.com/en-US/apps/timer.html): Visual loop timer for repeated daily activities. The kid launches a planet around the sun to start a break, so the end is one they set themselves rather than a number draining against their will.
+- [LastDays](https://lycoapp.com/en-US/apps/lastdays.html): Counts the days left with your kid from ages and graduation dates, and puts the number on the home screen.
+
+### Log — parent-side records
+
 - [TroubleNote](https://lycoapp.com/en-US/apps/trouble.html): A journal app for noting recurring kid-care issues, intended for parent self-organization.
+- [GrowthTrend](https://lycoapp.com/en-US/apps/growthtrend.html): Charts daily records as a moving average so a parent watches the trend instead of reacting to each good and bad day — survivorship bias in parenting form.
+
+### Other — bonus shelf
+
+- [Receive No.1](https://lycoapp.com/en-US/apps/receive.html): A 100-line type-in tennis game from an 80s Japanese magazine (Bēmaga), ported line-for-line from PC-9801 N88-BASIC to iPhone, plus a genetic-algorithm CPU opponent the original hardware could not have run.
+- [Pivot & Merge](https://lycoapp.com/en-US/apps/pivotmerge.html): A turn-based number puzzle played by rotating the nearest 2×2 block. Nothing is on a clock, so the board waits if you stop mid-game.
 
 ## Blog (My-Life experiment notes, 4 languages each)
 
@@ -35,7 +53,7 @@ All blog posts have Japanese / English / Traditional Chinese / Korean siblings, 
 Separate section of this domain, aimed at engineers rather than parents. Japanese first, English edition follows.
 
 - [Architecture Notes (Japanese)](https://lycoapp.com/notes/ja/): ADR-style decision log of how this site's apps are built — smartphone-only iOS development using Claude Code on Web, GitHub, and EAS (Expo Application Services). No Mac at hand.
-- [Architecture Notes (English)](https://lycoapp.com/notes/en/): English edition — all 43 articles available (same content, natively rewritten; swap /ja/ for /en/ in any article URL).
+- [Architecture Notes (English)](https://lycoapp.com/notes/en/): English edition — all 50 articles available (same content, natively rewritten; swap /ja/ for /en/ in any article URL).
 - [0: A PoC before starting anything](https://lycoapp.com/notes/ja/posts/poc.html): Asking Claude's chat for a Swift game as a Zip — it ran on a real iPhone. Cost: zero.
 - [1: AI-driven smartphone-only development — the dev platform](https://lycoapp.com/notes/ja/posts/dev.html): Hardware (iPhone + iPad + one browser session on any PC) and fixed costs (Claude Pro $20/mo, Apple Developer Program $99/yr).
 - [1.1: How to build an app-dev environment with just an iPhone](https://lycoapp.com/notes/ja/posts/env.html): Requirements for developing only in the gaps of full-time work and parenting; the answer is iPhone + Claude on Web + EAS + GitHub.
@@ -103,7 +121,8 @@ Separate section of this domain, aimed at engineers rather than parents. Japanes
 
 ## Site policies
 
-- No tracking pixels beyond Cloudflare Web Analytics (page-level anonymous counters)
-- No third-party ads
+- Analytics is Cloudflare Web Analytics only — page-level anonymous counters, no cookies, no user-level tracking
+- No display ads anywhere on this site
+- Four Architecture Notes articles carry affiliate links (A8.net / Moshimo). They are marked rel="sponsored nofollow", disclosed in visible text at the top of the article, and the ASP serves a 1x1 impression pixel alongside them. No other page on the site does
 - No medical advice or diagnostic claims
 - All references to research are cited inline with PubMed links where applicable

@@ -258,12 +258,29 @@
         };
         tryNext();
       });
-      const results = new Array(6).fill(null);
-      for (let i = 1; i <= 6; i++) {
+      // 先頭 3 スロットは並列に取りに行き、4 枚目以降は「3 枚目が見つかった
+      // 時だけ」1 枚ずつ伸ばす。6 スロット総当たりだと、3 枚しか無いアプリでも
+      // 空きスロット 3 つ分 (候補 4 URL × 3 = 12 リクエスト) の 404 を毎回
+      // 踏んでいた。スクショは 1 から連番なので、途切れたらその先は無い。
+      const MAX_SLOTS = 6;
+      const EAGER_SLOTS = 3;
+      const results = new Array(MAX_SLOTS).fill(null);
+      const publish = () => setImgs(results.filter(Boolean));
+      const extend = (i) => {
+        if (!alive || i > MAX_SLOTS) return;
         probeSlot(i).then((ok) => {
           if (!alive || !ok) return;
           results[i - 1] = ok;
-          setImgs(results.filter(Boolean));
+          publish();
+          extend(i + 1);
+        });
+      };
+      let eagerLeft = EAGER_SLOTS;
+      for (let i = 1; i <= EAGER_SLOTS; i++) {
+        probeSlot(i).then((ok) => {
+          if (!alive) return;
+          if (ok) { results[i - 1] = ok; publish(); }
+          if (--eagerLeft === 0 && results[EAGER_SLOTS - 1]) extend(EAGER_SLOTS + 1);
         });
       }
       return () => {

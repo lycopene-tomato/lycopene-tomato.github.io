@@ -35,7 +35,7 @@
   "publisher": {
     "@type": "Organization",
     "name": "Lyco App",
-    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-mark.jpeg" }
+    "logo": { "@type": "ImageObject", "url": "https://lycoapp.com/images/logo-puzzle.png" }
   }
 }
 </script>
@@ -99,6 +99,11 @@
   .contact-row a { color: #3F8C7E; text-decoration: none; font-weight: 700; }
   .contact-row a:hover { text-decoration: underline; }
   .site-header-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; gap: 12px; max-width: 1200px; margin: 0 auto; }
+  /* ヘッダー追従。About は typography.css を直接読んでいて motion.css /
+     blog-rich.css の階層に乗らないので、sticky がここまで届かない。
+     React は body 直下の #site-header に描画し、内側の .site-header は
+     親の高さ分しか無いため、ブログと同じく親側を sticky にする。 */
+  body > #site-header { position: sticky; top: 0; z-index: 60; }
   .site-nav { flex: 1; justify-content: center; }
   @media (max-width: 900px) { .site-nav { display: none !important; } .site-menu-btn { display: block !important; } }
   .faq { margin: 32px 0; padding: 20px 22px; background: #FBF4E8; border: 1px solid #E8D9BC; border-radius: 10px; }

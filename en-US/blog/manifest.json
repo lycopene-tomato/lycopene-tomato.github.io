@@ -161,7 +161,7 @@
       "pinned": false,
       "app_badge_key": "pivot-merge",
       "title": "My kid wanted a game and my phone had none, so I built a puzzle with no timer",
-      "description": "How Pivot &amp; Merge came about: a puzzle game with no timer, built because my kid asked for a game while we were out and I had zero installed. What I borrowed from Tetris, Puyo Puyo and 2048, and what I left out on purpose.",
+      "description": "How Pivot & Merge came about: a puzzle game with no timer, built because my kid asked for a game while we were out and I had zero installed. What I borrowed from Tetris, Puyo Puyo and 2048, and what I left out on purpose.",
       "app_badge": "Pivot & Merge"
     },
     {
@@ -241,7 +241,7 @@
       "pinned": false,
       "app_badge": null,
       "title": "The paradox of choice in parenting — why \"pick whatever you want\" froze my kid",
-      "description": ""
+      "description": "Closet open, kid frozen for three minutes. \"Just pick something.\" Iyengar & Lepper's 2000 jam study (24 options vs 6) explains it. Why narrowing choices got him moving — and why the same logic runs through our Todo apps and the way I scope projects at work."
     },
     {
       "_comment": "「育児フレームワーク」シリーズ 第 2 回 (0-C 一般)。LP/BLOG_DRAFTS/tdd-parenting.md 起点。フック: 算数プリント上から 3 連続バツ → 前なら『あ〜あ』とヒント出してた癖 (productive-failure 参照) → 失敗そのものは悪くない (覚えてるのは間違えた所) → 勉強の本質は 3 段目 (解く・答え合わせ・なぜ間違ったかを覚える) → システム開発の『バグ曲線』『人はミスする前提』 → 『人は』と言った瞬間に学習にも流用できる → 問題集こそ TDD (問題 = テストシナリオ / 解答 = 期待出力 / セットで用意) → 目的は問題を解く事じゃなく『自分をグリーンにする事』 → 失敗確認駆動 (Failure Confirmation Driven) 着地 → 子との問答 (1+1=?, 1+2=?, 1+3=?: 分かってる問題やっても成長しない、バツ = 自ら自分を伸ばせる場所) → 予習してから問題集を解く reframe で締め。4 言語派生 (ja/en-US/zh-Hant/ko)、各言語ペルソナで独立執筆。tags は dev-methods (エンジニア父・母ニッチ)。色はエンジニア×育児。related_slugs: productive-failure (parenting-paradox シリーズなのでクロスシリーズ参照)。",
